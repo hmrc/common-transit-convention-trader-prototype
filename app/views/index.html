@@ -10,7 +10,11 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
+<<<<<<< HEAD
         The GOV.UK Prototype Kit
+=======
+       Experimentation
+>>>>>>> test
         <span class="govuk-caption-xl">{{releaseVersion}}</span>
       </h1>{{releaseVersion | log }}
       <p>
@@ -41,4 +45,107 @@
     </div>
 </div>
 
+<<<<<<< HEAD
+=======
+
+
+<h2 class="govuk-heading-m" style="margin-top: 25px;">Experimentation</h2>
+
+<p>Below, there are some examples of different components such as buttons, sort lists, and radio buttons. </p>
+
+<button class="govuk-button" data-module="govuk-button">
+  Example Button
+</button>
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="sort">
+    Sort by
+  </label>
+  <select class="govuk-select" id="sort" name="sort">
+    <option value="published">Recently published</option>
+    <option value="updated" selected>Recently updated</option>
+    <option value="views">Most views</option>
+    <option value="comments">Most comments</option>
+  </select>
+</div>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+        Checkbox Example 
+      </h1>
+    </legend>
+    <span id="waste-hint" class="govuk-hint">
+      Select all that apply.
+    </span>
+    <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+        <label class="govuk-label govuk-checkboxes__label" for="waste">
+          Option 1
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+        <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+          Option 2
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+        <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+          Option 3
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+        Radio Examples
+      </h1>
+    </legend>
+    <span id="changed-name-hint" class="govuk-hint">
+      This is where hint text would sit. 
+    </span>
+    <div class="govuk-radios govuk-radios--inline">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="changed-name">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="changed-name-2">
+          No
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="more-detail">
+    Text input example. 
+  </label>
+  <span id="more-detail-hint" class="govuk-hint">
+    This is where the hint text would sit. 
+  </span>
+  <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+</div>
+
+
+
+
+
+
+
+>>>>>>> test
 {% endblock %}
