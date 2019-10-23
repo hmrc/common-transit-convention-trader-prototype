@@ -1,145 +1,54 @@
-
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  GOV.UK Prototype Kit
+GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-       937023285702835
-        <span class="govuk-caption-xl">{{releaseVersion}}</span>
-      </h1>{{releaseVersion | log }}
-      <p>
-        This kit lets you rapidly create HTML prototypes of GOV.UK services
-      </p>
-      
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <p>
-        It contains all you need to prototype anything from simple static pages to complex, data-driven transactions.
-      </p>
 
-      <h2 class="govuk-heading-m">About this page</h2>
+    <h1 class="govuk-heading-xl">
+      Common Transit Convention for traders
+    </h1>
+    <p>The prototype is a way of exploring ideas, and is subject to change.</p>
+    <p>Contact <a href="mailto:ladine.cook@digital.hmrc.gov.uk">Ladine Cook</a>, <a
+        href="mailto:rebecca.wood@digital.hmrc.gov.uk">Rebecca Wood</a> (Interaction Designers) or <a
+        href="mailto:ruth.dixon@digital.hmrc.gov.uk">Ruth Dixon</a> (Content Designer) if you have any questions.</p>
 
-      <p>We recommend you add links to your prototype to this page, rather than delete it.
-        You'll find this page in the kit at '/app/views/index.html'.</p>
+    <h2 class="govuk-heading-m">Arrivals Journey</h2>
 
-      <p>You can change the service name by editing the file '/app/config.js'.</p>
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Date</th>
+          <th scope="col" class="govuk-table__header">Comments</th>
+          <th scope="col" class="govuk-table__header">Link</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">23/10/2019</td>
+          <td class="govuk-table__cell">First draft of the arrivals journey</td>
+          <td class="govuk-table__cell"><a href="version-0/movement-reference.html">Version 0</a></td>
+        </tr>
+      </tbody>
+    </table>
 
-      <h2 class="govuk-heading-m">Examples and documentation</h2>
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li><a href="/docs/tutorials-and-examples">Example pages and documentation</a></li>
-        <li>
-          <a href="https://design-system.service.gov.uk">
-            GOV.UK Design System
-          </a>
-        </li>
-      </ul>
-    </div>
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
 </div>
-
-
-
-<h2 class="govuk-heading-m" style="margin-top: 25px;">Experimentation</h2>
-
-<p>Below, there are some examples of different components such as buttons, sort lists, and radio buttons. </p>
-
-<button class="govuk-button" data-module="govuk-button">
-  Example Button
-</button>
-
-<div class="govuk-form-group">
-  <label class="govuk-label" for="sort">
-    Sort by
-  </label>
-  <select class="govuk-select" id="sort" name="sort">
-    <option value="published">Recently published</option>
-    <option value="updated" selected>Recently updated</option>
-    <option value="views">Most views</option>
-    <option value="comments">Most comments</option>
-  </select>
-</div>
-
-<div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-      <h1 class="govuk-fieldset__heading">
-        Checkbox Example 
-      </h1>
-    </legend>
-    <span id="waste-hint" class="govuk-hint">
-      Select all that apply.
-    </span>
-    <div class="govuk-checkboxes">
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
-        <label class="govuk-label govuk-checkboxes__label" for="waste">
-          Option 1
-        </label>
-      </div>
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
-        <label class="govuk-label govuk-checkboxes__label" for="waste-2">
-          Option 2
-        </label>
-      </div>
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
-        <label class="govuk-label govuk-checkboxes__label" for="waste-3">
-          Option 3
-        </label>
-      </div>
-    </div>
-  </fieldset>
-</div>
-
-
-<div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-      <h1 class="govuk-fieldset__heading">
-        Radio Examples
-      </h1>
-    </legend>
-    <span id="changed-name-hint" class="govuk-hint">
-      This is where hint text would sit. 
-    </span>
-    <div class="govuk-radios govuk-radios--inline">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes">
-        <label class="govuk-label govuk-radios__label" for="changed-name">
-          Yes
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no">
-        <label class="govuk-label govuk-radios__label" for="changed-name-2">
-          No
-        </label>
-      </div>
-    </div>
-  </fieldset>
-</div>
-
-
-<div class="govuk-form-group">
-  <label class="govuk-label" for="more-detail">
-    Text input example. 
-  </label>
-  <span id="more-detail-hint" class="govuk-hint">
-    This is where the hint text would sit. 
-  </span>
-  <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-</div>
-
-
-
-
-
-
-
 {% endblock %}
