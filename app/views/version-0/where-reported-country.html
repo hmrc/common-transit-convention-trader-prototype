@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Where are the goods located?
+Which country was the event reported in? 
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,18 +13,13 @@ Where are the goods located?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="/url/of/next/page" method="post">
+    <h1 class="govuk-heading-xl">Which country was the event reported in?</h1>
 
-<h1 class="govuk-heading-xl">Where are the goods located?</h1>
-
-{% from "govuk/components/button/macro.njk" import govukButton %}
-
+  
 {{ govukButton({
   text: "Save and continue",
-  href: "customs-facility"
+  href: "where-reported-place"
 }) }}
-
-    </form>
 
   </div>
 </div>

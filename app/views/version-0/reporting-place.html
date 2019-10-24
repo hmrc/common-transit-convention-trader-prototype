@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Was the event reported in place? 
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="/url/of/previous/page">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      classes: "govuk-radios--inline",
+      idPrefix: "reporting-place",
+      name: "reporting-place",
+      fieldset: {
+        legend: {
+          text: "Was the event reported at place?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+        text: ""
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Yes"
+        },
+        {
+          value: "no",
+          text: "No"
+        }
+      ]
+    }) }}
+    
+    
+    {{ govukButton({
+      text: "Save and continue",
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

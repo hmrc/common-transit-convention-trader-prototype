@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Was the event reported in country? 
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="/url/of/previous/page">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      classes: "govuk-radios--inline",
+      idPrefix: "reporting-country",
+      name: "reporting-country",
+      fieldset: {
+        legend: {
+          text: "Was the event reported in country?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+        text: ""
+      },
+      items: [
+        {
+          value: "yes redirect(reporting-place)",
+          text: "Yes"
+        },
+        {
+          value: "no redirect(where-reported-country)",
+          text: "No"
+        }
+      ]
+    }) }}
+    
+    {{ govukButton({
+      text: "Save and continue"
+    }) }}
+
+  </form>
+ </div>
+</div>
+
+{% endblock %}

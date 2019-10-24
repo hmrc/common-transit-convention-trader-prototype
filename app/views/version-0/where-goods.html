@@ -33,7 +33,7 @@ Where are the goods?
             text: "Border Force location"
           },
           {
-            value: "authorised-consignee-location",
+            value: "authorised-consignee-location, redirect(authorised-location-code)",
             text: "Authorised Consignee location"
           }
         ]
@@ -48,14 +48,6 @@ Where are the goods?
     </form>
   </div>
 </div>
-
-
-<script>
-  nextPageRoutes = {
-      'border-force-location': 'border-force-office',
-      'authorised-consignee-location': 'authorised-location-code'
-  }
- </script>
 
 
 {% endblock %}

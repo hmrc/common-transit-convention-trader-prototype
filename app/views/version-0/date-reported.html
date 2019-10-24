@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+When did the event happen?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="/url/of/previous/page">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+      {{ govukDateInput({
+        id: "date-reported",
+        namePrefix: "date-reported",
+        fieldset: {
+          legend: {
+            text: "When was the event reported?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: ""
+        }
+      }) }}
+
+{{ govukButton({
+  text: "Save and continue",
+  href: "who-reported"
+}) }}
+
+  </div>
+</div>
+
+{% endblock %}

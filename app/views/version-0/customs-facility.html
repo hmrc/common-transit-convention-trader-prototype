@@ -20,15 +20,15 @@ Which customs approved facility has the goods?
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
       {{ govukInput({
-  id: "movement-reference",
-  name: "movement-reference"
+  id: "customs-facility",
+  name: "customs-facility"
 }) }}
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {{ govukButton({
   text: "Save and continue",
-  href: "authorised-location-code"
+  href: "trader-name"
 }) }}
 
     </form>
