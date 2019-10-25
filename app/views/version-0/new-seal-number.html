@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Which country was the event reported in? 
+What is the new seal number?
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,25 +13,24 @@ Which country was the event reported in?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">Which country was the event reported in?</h1>
+      <h1 class="govuk-heading-xl">What is the new seal number?</h1>
 
     <form class="form" method="post">
 
-      {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/input/macro.njk" import govukInput %}
 
       {{ govukInput({
-  id:"where-reported-country",
-  name: "where-reported-country"
-}) }}
+    id: "vehicle-reference",
+    name: "vehicle-reference"
+  }) }}
 
-{% from "govuk/components/button/macro.njk" import govukButton %}
 
-    </form>
-  
 {{ govukButton({
   text: "Save and continue",
-  href: "where-reported-place"
+  href: "seal-list"
 }) }}
+
+    </form>
 
   </div>
 </div>

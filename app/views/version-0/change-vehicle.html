@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Has this event been reported to a customs authority?
+Did the goods move to a different vehicle or container?
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,8 +15,8 @@ Has this event been reported to a customs authority?
 
     <form class="form" method="post">
 
-
     {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
 
 {{ govukRadios({
   classes: "govuk-radios--inline",
@@ -24,7 +24,7 @@ Has this event been reported to a customs authority?
   name: "changed-name",
   fieldset: {
     legend: {
-      text: "Has this event been reported to a customs authority?",
+      text: "Did the goods move to a different vehicle or container?",
       isPageHeading: true,
       classes: "govuk-fieldset__legend--xl"
     }
@@ -34,11 +34,11 @@ Has this event been reported to a customs authority?
   },
   items: [
     {
-      value: "yes, redirect(date-reported)",
+      value: "yes, redirect(new-transport-type)",
       text: "Yes"
     },
     {
-      value: "no, redirect(change-vehicle)",
+      value: "no, redirect(incident-information)",
       text: "No"
     }
   ]

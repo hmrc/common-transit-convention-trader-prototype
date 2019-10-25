@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Where are the goods?
+Has anything else happened on route? 
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,36 +18,41 @@ Where are the goods?
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        idPrefix: "where-are-the-goods",
-        name: "where-are-the-goods",
+        classes: "govuk-radios--inline",
+        idPrefix: "changed-name",
+        name: "changed-name",
         fieldset: {
           legend: {
-            text: "Where are the goods?",
+            text: "Has anything else happened on route?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
         },
+        hint: {
+          text: ""
+        },
         items: [
           {
-            value: "border-force-location, redirect(border-force-office)",
-            text: "Border Force office"
+            value: "yes redirect(event-country)",
+            text: "Yes"
           },
           {
-            value: "authorised-consignee-location, redirect(authorised-location-code)",
-            text: "Authorised consignee's location"
+            value: "no redirect(check-answers)",
+            text: "No"
           }
         ]
       }) }}
 
+
+
+
       {{ govukButton({
-        text: "Save and continue"
-      }) }}
-
-
+    text: "Save and continue"
+  }) }}
 
     </form>
+
   </div>
 </div>
-
 
 {% endblock %}

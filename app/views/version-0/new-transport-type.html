@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Has this event been reported to a customs authority?
+What did the goods move to? 
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,12 +19,12 @@ Has this event been reported to a customs authority?
     {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
 {{ govukRadios({
-  classes: "govuk-radios--inline",
+  classes: "govuk-radios",
   idPrefix: "changed-name",
   name: "changed-name",
   fieldset: {
     legend: {
-      text: "Has this event been reported to a customs authority?",
+      text: "What did the goods move to?",
       isPageHeading: true,
       classes: "govuk-fieldset__legend--xl"
     }
@@ -34,12 +34,16 @@ Has this event been reported to a customs authority?
   },
   items: [
     {
-      value: "yes, redirect(date-reported)",
-      text: "Yes"
+      value: "vehicle, redirect(vehicle-reference)",
+      text: "Vehicle"
     },
     {
-      value: "no, redirect(change-vehicle)",
-      text: "No"
+      value: "container, redirect()",
+      text: "Container"
+    },
+    {
+      value: "both, redirect(vehicle-reference)",
+      text: "Both"
     }
   ]
 }) }}

@@ -13,6 +13,8 @@ Was the event reported in place?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
+    <form class="form" method="post">
+
     {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
     {{ govukRadios({
@@ -31,11 +33,11 @@ Was the event reported in place?
       },
       items: [
         {
-          value: "yes",
+          value: "yes redirect(anything-else-happened)",
           text: "Yes"
         },
         {
-          value: "no",
+          value: "no redirect(where-reported-place)",
           text: "No"
         }
       ]
@@ -43,9 +45,10 @@ Was the event reported in place?
     
     
     {{ govukButton({
-      text: "Save and continue",
+      text: "Save and continue"
     }) }}
 
+  </form>
   </div>
 </div>
 

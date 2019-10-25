@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the EORI number of the trader at destination?
+Has something happened on route?
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,6 +12,8 @@ What is the EORI number of the trader at destination?
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
 
     {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -35,7 +37,7 @@ What is the EORI number of the trader at destination?
       text: "Yes"
     },
     {
-      value: "no",
+      value: "no redirect(check-answers)",
       text: "No"
     }
   ]
@@ -43,10 +45,10 @@ What is the EORI number of the trader at destination?
 
 
 {{ govukButton({
-  text: "Save and continue",
-  href: "event-country"
+  text: "Save and continue"
 }) }}
 
+</form>
   </div>
 </div>
 
