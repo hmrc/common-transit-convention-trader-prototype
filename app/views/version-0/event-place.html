@@ -20,15 +20,16 @@ Where did the event happen?
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
       {{ govukInput({
+        classes: "govuk-input--width-20",
   id: "event-place",
   name: "event-place"
 }) }}
 
-{% from "govuk/components/button/macro.njk" import govukButton %}
+      {% from "govuk/components/button/macro.njk" import govukButton %}
 
     </form>
 
-{{ govukButton({
+    {{ govukButton({
   text: "Save and continue",
   href: "event-report"
 }) }}

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the name or reference of the vehicle?
+Which country is the vehicle registered in?
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,7 +13,14 @@ What is the name or reference of the vehicle?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">Which country is the vehicle from?</h1>
+    <h1 class="govuk-heading-xl">Which country is the vehicle registered in?</h1>
+
+    {{ govukInput({
+      classes: "govuk-input--width-20",
+      id: "vehicle-reference",
+      name: "vehicle-reference"
+    }) }}
+
 
     {{ govukButton({
       text: "Save and continue",
