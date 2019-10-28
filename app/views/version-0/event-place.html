@@ -15,7 +15,7 @@ Where did the event happen?
 
     <h1 class="govuk-heading-xl">Where did the event happen?</h1>
 
-    <form class="form" method="post">
+    <form class="form" action="event-report" method="post">
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
@@ -27,12 +27,13 @@ Where did the event happen?
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
-    </form>
 
-    {{ govukButton({
-  text: "Save and continue",
-  href: "event-report"
+
+      {{ govukButton({
+  text: "Save and continue"
 }) }}
+
+    </form>
 
   </div>
 </div>

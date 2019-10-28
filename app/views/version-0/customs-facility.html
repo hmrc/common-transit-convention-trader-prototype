@@ -15,7 +15,7 @@ Which customs approved facility has the goods?
 
     <h1 class="govuk-heading-xl">Which customs approved location has the goods?</h1>
 
-    <form class="form" method="post">
+    <form class="form" action="trader-name" method="post">
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
@@ -28,8 +28,7 @@ Which customs approved facility has the goods?
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
       {{ govukButton({
-  text: "Save and continue",
-  href: "trader-name"
+  text: "Save and continue"
 }) }}
 
     </form>

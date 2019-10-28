@@ -13,9 +13,12 @@ Was the event reported in country?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
+
     <form class="form" method="post">
 
     {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    {% set heading="Was the event reported in "+data['event-country']+"?" %}
 
     {{ govukRadios({
       classes: "govuk-radios--inline",
@@ -23,7 +26,7 @@ Was the event reported in country?
       name: "reporting-country",
       fieldset: {
         legend: {
-          text: "Was the event reported in country?",
+          text: heading,
           isPageHeading: true,
           classes: "govuk-fieldset__legend--xl"
         }

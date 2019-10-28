@@ -13,6 +13,8 @@ When did the event happen?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
+      <form action="who-reported" class="form" method="post">
+
       {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
 
       {{ govukDateInput({
@@ -31,8 +33,7 @@ When did the event happen?
       }) }}
 
 {{ govukButton({
-  text: "Save and continue",
-  href: "who-reported"
+  text: "Save and continue"
 }) }}
 
   </div>

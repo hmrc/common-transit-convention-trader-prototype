@@ -13,6 +13,8 @@ What is the address of the trader at destination?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
+      <form action="trader-eori" class="form" method="post">
+
     {% from "govuk/components/input/macro.njk" import govukInput %}
     {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
     
@@ -63,32 +65,8 @@ What is the address of the trader at destination?
 
 
     {{ govukButton({
-      text: "Save and continue",
-      href: "trader-eori"
+      text: "Save and continue"
     }) }}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   </div>

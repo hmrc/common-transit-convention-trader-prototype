@@ -17,6 +17,9 @@ Check your answers before submitting your declaration
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
+      
+    <form class="form" action="success-screen" method="post">
+
       <h1 class="govuk-heading-xl">Check your answers before submitting your declaration</h1>
 
       <h2 class="govuk-heading-m">Personal details</h2>
@@ -26,10 +29,10 @@ Check your answers before submitting your declaration
         rows: [
           {
             key: {
-              text: "Name"
+              text: "Movement reference number"
             },
             value: {
-              text: ""
+              text: data['movement-reference']
             },
             actions: {
               items: [
@@ -43,10 +46,10 @@ Check your answers before submitting your declaration
           },
           {
             key: {
-              text: "Date of birth"
+              text: "Where are the goods?"
             },
             value: {
-              text: ""
+              text: data['where-are-the-goods']
             },
             actions: {
               items: [
@@ -60,10 +63,10 @@ Check your answers before submitting your declaration
           },
           {
             key: {
-              text: "Address"
+              text: "Where are the goods located?"
             },
             value: {
-              html: ""
+              text: data['border-force-office']
             },
             actions: {
               items: [
@@ -184,6 +187,8 @@ Check your answers before submitting your declaration
           text: "Accept and send",
           href: "success-screen"
         }) }}
+
+      </form>
 
       </form>
 

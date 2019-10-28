@@ -15,7 +15,7 @@ Which country was the event reported in?
 
     <h1 class="govuk-heading-xl">Which country was the event reported in?</h1>
 
-    <form class="form" method="post">
+    <form class="form" action="where-reported-place" method="post">
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
@@ -26,12 +26,13 @@ Which country was the event reported in?
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
-    </form>
+
   
 {{ govukButton({
-  text: "Save and continue",
-  href: "where-reported-place"
+  text: "Save and continue"
 }) }}
+
+</form>
 
   </div>
 </div>

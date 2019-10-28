@@ -15,7 +15,7 @@ What is the name of the trader at destination?
 
     <h1 class="govuk-heading-xl">What is the name of the trader at destination?</h1>
 
-    <form class="form" method="post">
+    <form class="form" action="trader-address" method="post">
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
@@ -28,8 +28,7 @@ What is the name of the trader at destination?
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {{ govukButton({
-  text: "Save and continue",
-  href: "trader-address"
+  text: "Save and continue"
 }) }}
 
     </form>

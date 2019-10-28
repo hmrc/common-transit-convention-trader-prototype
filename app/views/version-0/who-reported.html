@@ -15,7 +15,7 @@ Who reported the event?
 
     <h1 class="govuk-heading-xl">Who reported the event?</h1>
 
-    <form class="form" method="post">
+    <form class="form" action="reporting-country"method="post">
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
@@ -28,8 +28,7 @@ Who reported the event?
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {{ govukButton({
-  text: "Save and continue",
-  href: "reporting-country"
+  text: "Save and continue"
 }) }}
 
     </form>
