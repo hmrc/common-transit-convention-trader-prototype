@@ -7,21 +7,23 @@ Check your answers before submitting your declaration
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
-  {{ govukBackLink({
+{{ govukBackLink({
     text: "Back",
     href: "#"
   }) }}
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      
+
     <form class="form" action="success-screen" method="post">
 
       <h1 class="govuk-heading-xl">Check your answers before submitting your declaration</h1>
 
+      {% if (data['where-are-the-goods'] == "Border Force Location") %}
+      ​
       <h2 class="govuk-heading-m">Personal details</h2>
 
       {{ govukSummaryList({
@@ -61,6 +63,9 @@ Check your answers before submitting your declaration
               ]
             }
           },
+
+
+
           {
             key: {
               text: "Where are the goods located?"
@@ -80,9 +85,10 @@ Check your answers before submitting your declaration
           },
           {
             key: {
-              text: "Contact details"
+              text: "Which customs approved location has the goods?"
             },
             value: {
+              text: data['customs-facility'],
               html: ''
             },
             actions: {
@@ -97,6 +103,52 @@ Check your answers before submitting your declaration
           }
         ]
       }) }}
+      ​
+      {% else %}
+      ​
+      <h2 class="govuk-heading-m">Personal details</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Movement reference number"
+            },
+            value: {
+              text: data['movement-reference']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Where are the goods?"
+            },
+            value: {
+              text: data['where-are-the-goods']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "date of birth"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+      ​
+      {% endif %}
 
 
       <h2 class="govuk-heading-m">Application details</h2>
@@ -177,7 +229,8 @@ Check your answers before submitting your declaration
 
       <h2 class="govuk-heading-m">Now send your application</h2>
 
-      <p class="govuk-body">By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+      <p class="govuk-body">By submitting this notification you are confirming that, to the best of your knowledge, the
+        details you are providing are correct.</p>
 
       <form action="/form-handler" method="post" novalidate>
 
@@ -190,31 +243,8 @@ Check your answers before submitting your declaration
 
       </form>
 
-      </form>
+    </form>
 
-    </div>
   </div>
+</div>
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
