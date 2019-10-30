@@ -24,7 +24,7 @@ Check your answers before submitting your declaration
 
       {% if (data['where-are-the-goods'] == "Border Force Location") %}
       ​
-      <h2 class="govuk-heading-m">Personal details</h2>
+      <h2 class="govuk-heading-m">Title 1</h2>
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
@@ -106,7 +106,7 @@ Check your answers before submitting your declaration
       ​
       {% else %}
       ​
-      <h2 class="govuk-heading-m">Personal details</h2>
+      <h2 class="govuk-heading-m">Title 1</h2>
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
@@ -168,81 +168,198 @@ Check your answers before submitting your declaration
       {% endif %}
 
 
-      <h2 class="govuk-heading-m">Application details</h2>
+      <h2 class="govuk-heading-m">Trader details</h2>
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
-              text: "Previous application number"
+              text: "Name"
             },
             value: {
-              text: ""
+              text: data['trader-name']
             },
             actions: {
               items: [
                 {
                   href: "#",
                   text: "Change",
-                  visuallyHiddenText: "previous application number"
+                  visuallyHiddenText: "trader name"
                 }
               ]
             }
-          },
+          },           
+          
           {
             key: {
-              text: "Licence type"
+              text: "Address"
             },
             value: {
-              text: ""
+             html: data['address-line-1'] + "<br>" + data['address-line-2'] + "<br>" + data['address-town'] + "<br>" + data['address-postcode']
             },
             actions: {
               items: [
                 {
                   href: "#",
                   text: "Change",
-                  visuallyHiddenText: "licence type"
+                  visuallyHiddenText: "trader-address"
                 }
               ]
             }
-          },
+          },      
+            
+          
           {
             key: {
-              text: "Home address"
+              text: "EORI number"
             },
             value: {
-              html: ""
+              text: data['eori-number']
             },
             actions: {
               items: [
                 {
                   href: "#",
                   text: "Change",
-                  visuallyHiddenText: "home address"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Licence period"
-            },
-            value: {
-              text: ""
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "licence period"
+                  visuallyHiddenText: "eori number"
                 }
               ]
             }
           }
         ]
+      }) }}, 
+
+
+
+
+
+
+      {% if (data['something-happened'] == "Yes ") %}
+
+      <h2 class="govuk-heading-m">Events</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+
+        {
+          key: {
+            text: "Has something happened on route?"
+          },
+          value: {
+            text: data['something-happened'],
+            html: ''
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "somethinghappened"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Which country did the event happen in?"
+          },
+          value: {
+            text: data['event-country'],
+            html: ''
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "eventcountry"
+              }
+            ]
+          }
+        },
+
+
+        {
+          key: {
+            text: "Where did the event happen?"
+          },
+          value: {
+            text: data['event-place'],
+            html: ''
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "eventcountry"
+              }
+            ]
+          }
+        }, 
+
+
+
+        {
+          key: {
+            text: "Has this event been reported to a customs authority?"
+          },
+          value: {
+            text: data['event-report'],
+            html: ''
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "somethinghappened"
+              }
+            ]
+          }
+        }
+
+        ]
       }) }}
+
+
+      {% else %}
+
+
+      <h2 class="govuk-heading-m">Events</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+
+        {
+          key: {
+            text: "Has something happened on route?"
+          },
+          value: {
+            text: data['something-happened'],
+            html: ''
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "something happened"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+
+      {% endif %}
+
+      
 
       <h2 class="govuk-heading-m">Now send your application</h2>
 
