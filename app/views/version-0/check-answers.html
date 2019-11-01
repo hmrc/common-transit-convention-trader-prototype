@@ -351,8 +351,8 @@ Check your answers before submitting your declaration
           text: "When was the event reported?"
         },
         value: {
-          text: data['date-reported '],
-          html: ''
+          text: data['date-reported'],
+          html: data['date-reported-day'] +" "+ data['date-reported-month'] +" "+ data['date-reported-year']
         },
         actions: {
           items: [
@@ -386,6 +386,56 @@ Check your answers before submitting your declaration
 
       ]
     }) }}
+
+    
+    {% else %}
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+    
+    {
+      key: {
+        text: "Did the goods move to a different vehicle or container?"
+      },
+      value: {
+        text: data['change-vehicle'],
+        html: ''
+      },
+      actions: {
+        items: [
+          {
+            href: "date-reported",
+            text: "Change",
+            visuallyHiddenText: "changevehicle"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Who reported the event?"
+      },
+      value: {
+        text: data['who-reported'],
+        html: ''
+      },
+      actions: {
+        items: [
+          {
+            href: "who-reported",
+            text: "Change",
+            visuallyHiddenText: "eventcountry"
+          }
+        ]
+      }
+    }
+
+    ]
+  }) }}
+
+
 
       {% endif %}
 
