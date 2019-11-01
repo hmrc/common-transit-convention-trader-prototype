@@ -20,11 +20,7 @@ Check your answers before submitting your declaration
 
     <form class="form" action="success-screen" method="post">
 
-      <h1 class="govuk-heading-xl">Check your answers before submitting your declaration</h1>
-
-      {% if (data['where-are-the-goods'] == "Border Force Location") %}
-      ​
-      <h2 class="govuk-heading-m">Title 1</h2>
+      <h1 class="govuk-heading-xl">Check your answers</h1>
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
@@ -45,7 +41,17 @@ Check your answers before submitting your declaration
                 }
               ]
             }
-          },
+          }
+          ]
+        }) }}
+
+      {% if (data['where-are-the-goods'] == "Border Force Location") %}
+
+      <h2 class="govuk-heading-m">Goods location</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [  
           {
             key: {
               text: "Where are the goods?"
@@ -63,7 +69,6 @@ Check your answers before submitting your declaration
               ]
             }
           },
-
 
 
           {
@@ -106,28 +111,12 @@ Check your answers before submitting your declaration
       ​
       {% else %}
       ​
-      <h2 class="govuk-heading-m">Title 1</h2>
+      <h2 class="govuk-heading-m">Goods location</h2>
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
-          {
-            key: {
-              text: "Movement reference number"
-            },
-            value: {
-              text: data['movement-reference']
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          },
+          
           {
             key: {
               text: "Where are the goods?"
@@ -196,7 +185,7 @@ Check your answers before submitting your declaration
               text: "Address"
             },
             value: {
-             html: data['address-line-1'] + "<br>" + data['address-line-2'] + "<br>" + data['address-town'] + "<br>" + data['address-postcode']
+             html: data['address-line-1'] + "<br>" + data['address-town'] + "<br>" + data['address-postcode']
             },
             actions: {
               items: [
@@ -228,14 +217,41 @@ Check your answers before submitting your declaration
             }
           }
         ]
-      }) }}, 
+      }) }}
 
 
 
 
+      {% if (data['something-happened'] == "No ") %}
 
+      <h2 class="govuk-heading-m">Events</h2>
 
-      {% if (data['something-happened'] == "Yes ") %}
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+      {
+        key: {
+          text: "Has something happened on route?"
+        },
+        value: {
+          text: data['something-happened'],
+          html: ''
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "somethinghappened"
+            }
+          ]
+        }
+      }
+        ]
+      }) }}
+
+      {% else %}
+
 
       <h2 class="govuk-heading-m">Events</h2>
 
@@ -301,14 +317,12 @@ Check your answers before submitting your declaration
           }
         }, 
 
-
-
         {
           key: {
             text: "Has this event been reported to a customs authority?"
           },
           value: {
-            text: data['event-report'],
+            text: data['event-report'], 
             html: ''
           },
           actions: {
@@ -316,54 +330,80 @@ Check your answers before submitting your declaration
               {
                 href: "#",
                 text: "Change",
-                visuallyHiddenText: "somethinghappened"
+                visuallyHiddenText: "eventreport"
               }
             ]
           }
         }
-
         ]
       }) }}
 
+      {% endif %}
 
-      {% else %}
-
-
-      <h2 class="govuk-heading-m">Events</h2>
+      {% if (data['event-report'] == "Yes") %}
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
-
-        {
-          key: {
-            text: "Has something happened on route?"
-          },
-          value: {
-            text: data['something-happened'],
-            html: ''
-          },
-          actions: {
-            items: [
-              {
-                href: "#",
-                text: "Change",
-                visuallyHiddenText: "something happened"
-              }
-            ]
-          }
+      
+      {
+        key: {
+          text: "When was the event reported?"
+        },
+        value: {
+          text: data['date-reported '],
+          html: ''
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "datereported"
+            }
+          ]
         }
-        ]
-      }) }}
+      },
 
+      {
+        key: {
+          text: "Who reported the event?"
+        },
+        value: {
+          text: data['who-reported'],
+          html: ''
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "eventcountry"
+            }
+          ]
+        }
+      }
+
+      ]
+    }) }}
 
       {% endif %}
 
-      
+    
 
-      <h2 class="govuk-heading-m">Now send your application</h2>
 
-      <p class="govuk-body">By submitting this notification you are confirming that, to the best of your knowledge, the
+
+
+
+
+
+
+
+
+
+      <h2 class="govuk-heading-m">Now send your arrival notification</h2>
+
+      <p class="govuk-body">By sending this notification you are confirming that, to the best of your knowledge, the
         details you are providing are correct.</p>
 
       <form action="/form-handler" method="post" novalidate>
@@ -371,7 +411,7 @@ Check your answers before submitting your declaration
         <input type="hidden" name="answers-checked" value="true">
 
         {{ govukButton({
-          text: "Accept and send",
+          text: "Confirm and send",
           href: "success-screen"
         }) }}
 

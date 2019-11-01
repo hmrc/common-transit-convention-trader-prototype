@@ -20,8 +20,8 @@ Has this event been reported to a customs authority?
 
 {{ govukRadios({
   classes: "govuk-radios--inline",
-  idPrefix: "changed-name",
-  name: "changed-name",
+  idPrefix: "event-report",
+  name: "event-report",
   fieldset: {
     legend: {
       text: "Has this event been reported to a customs authority?",
@@ -34,11 +34,11 @@ Has this event been reported to a customs authority?
   },
   items: [
     {
-      value: "yes, redirect(date-reported)",
+      value: "Yes, redirect(date-reported)",
       text: "Yes"
     },
     {
-      value: "no, redirect(change-vehicle)",
+      value: "No, redirect(change-vehicle)",
       text: "No"
     }
   ]
