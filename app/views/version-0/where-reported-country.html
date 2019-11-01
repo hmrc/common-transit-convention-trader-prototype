@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Which country was the event reported in? 
+Which country was the event reported in?
 {% endblock %}
 
 {% block beforeContent %}
@@ -20,19 +20,20 @@ Which country was the event reported in?
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
       {{ govukInput({
+        classes: "govuk-input--width-20",
   id:"where-reported-country",
   name: "where-reported-country"
 }) }}
 
-{% from "govuk/components/button/macro.njk" import govukButton %}
+      {% from "govuk/components/button/macro.njk" import govukButton %}
 
 
-  
-{{ govukButton({
+
+      {{ govukButton({
   text: "Save and continue"
 }) }}
 
-</form>
+    </form>
 
   </div>
 </div>
