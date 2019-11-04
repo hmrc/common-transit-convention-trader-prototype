@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the movement reference number (MRN)?
+Error: What is the movement reference number (MRN)?
 {% endblock %}
 
 {% block beforeContent %}
@@ -9,6 +9,21 @@ What is the movement reference number (MRN)?
 {% endblock %}
 
 {% block content %}
+
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Enter the MRN ",
+      href: "#mrn-empty"
+    }
+    
+  ]
+}) }}
+
+
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
@@ -21,8 +36,17 @@ What is the movement reference number (MRN)?
 
       {{ govukInput({
         classes: "govuk-input--width-20",
+        hint: {
+          text: "It is on the transit accompanying document (TAD) with the goods. For example, 20GB00005112345678.  "
+        },
         id: "movement-reference",
-        name: "movement-reference"
+        name: "movement-reference",
+        errorMessage: {
+          text: "Enter the MRN"
+        }
+        
+        
+
       }) }}
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
