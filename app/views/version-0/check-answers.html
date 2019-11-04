@@ -45,7 +45,7 @@ Check your answers before submitting your declaration
           ]
         }) }}
 
-      {% if (data['where-are-the-goods'] == "Border Force Location") %}
+      {% if (data['where-are-the-goods'] == "Border Force office") %}
 
       <h2 class="govuk-heading-m">Goods location</h2>
 
@@ -248,10 +248,19 @@ Check your answers before submitting your declaration
         }
       }
         ]
-      }) }}
+      }) }}        
+      
+      {% endif %}
 
-      {% else %}
 
+    
+      
+
+
+
+      
+
+       {% if (data['something-happened'] == "Yes") + (data['event-report'] == "No") %}
 
       <h2 class="govuk-heading-m">Events</h2>
 
@@ -297,7 +306,6 @@ Check your answers before submitting your declaration
           }
         },
 
-
         {
           key: {
             text: "Where did the event happen?"
@@ -315,7 +323,7 @@ Check your answers before submitting your declaration
               }
             ]
           }
-        }, 
+        },
 
         {
           key: {
@@ -335,17 +343,98 @@ Check your answers before submitting your declaration
             ]
           }
         }
+
+
         ]
       }) }}
 
+
       {% endif %}
 
-      {% if (data['event-report'] == "Yes") %}
+       {% if (data['something-happened'] == "Yes") + (data['event-report'] == "Yes") %}
+
+       <h2 class="govuk-heading-m">Events</h2>
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
-      
+
+        {
+          key: {
+            text: "Has something happened on route else?"
+          },
+          value: {
+            text: data['something-happened'],
+            html: ''
+          },
+          actions: {
+            items: [
+              {
+                href: "something-happened",
+                text: "Change",
+                visuallyHiddenText: "somethinghappened"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Which country did the event happen in?"
+          },
+          value: {
+            text: data['event-country'],
+            html: ''
+          },
+          actions: {
+            items: [
+              {
+                href: "event-country",
+                text: "Change",
+                visuallyHiddenText: "eventcountry"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Where did the event happen?"
+          },
+          value: {
+            text: data['event-place'],
+            html: ''
+          },
+          actions: {
+            items: [
+              {
+                href: "event-place",
+                text: "Change",
+                visuallyHiddenText: "eventcountry"
+              }
+            ]
+          }
+        },
+
+      {
+        key: {
+          text: "Has this event been reported to a customs authority?"
+        },
+        value: {
+          text: data['event-report'], 
+          html: ''
+        },
+        actions: {
+          items: [
+            {
+              href: "event-report",
+              text: "Change",
+              visuallyHiddenText: "eventreport"
+            }
+          ]
+        }
+      },
+
       {
         key: {
           text: "When was the event reported?"
@@ -383,80 +472,20 @@ Check your answers before submitting your declaration
           ]
         }
       }
-
       ]
     }) }}
 
-    
-    {% else %}
-
-    {{ govukSummaryList({
-      classes: 'govuk-!-margin-bottom-9',
-      rows: [
-    
-    {
-      key: {
-        text: "Did the goods move to a different vehicle or container?"
-      },
-      value: {
-        text: data['change-vehicle'],
-        html: ''
-      },
-      actions: {
-        items: [
-          {
-            href: "date-reported",
-            text: "Change",
-            visuallyHiddenText: "changevehicle"
-          }
-        ]
-      }
-    },
-
-    {
-      key: {
-        text: "Who reported the event?"
-      },
-      value: {
-        text: data['who-reported'],
-        html: ''
-      },
-      actions: {
-        items: [
-          {
-            href: "who-reported",
-            text: "Change",
-            visuallyHiddenText: "eventcountry"
-          }
-        ]
-      }
-    }
-
-    ]
-  }) }}
-
-
-
+  
       {% endif %}
 
-    
 
-
-
-
-
-
-
-
-
-
+      
+     
 
       <h2 class="govuk-heading-m">Now send your arrival notification</h2>
 
       <p class="govuk-body">By sending this notification you are confirming that, to the best of your knowledge, the
         details you are providing are correct.</p>
-
-      <form action="/form-handler" method="post" novalidate>
 
         <input type="hidden" name="answers-checked" value="true">
 
@@ -465,10 +494,8 @@ Check your answers before submitting your declaration
           href: "success-screen"
         }) }}
 
-      </form>
-
     </form>
-
   </div>
 </div>
+
 {% endblock %}
