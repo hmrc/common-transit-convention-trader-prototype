@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-xl">
+      Arrivals errors
+    </h1>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Date</th>
+          <th scope="col" class="govuk-table__header">Comments</th>
+          <th scope="col" class="govuk-table__header">Link</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">04/11/2019</td>
+          <td class="govuk-table__cell">MRN errors</td>
+          <td class="govuk-table__cell"><a href="mrn-empty.html">MRN empty</a><br>
+          <a href="mrn-too-long.html">MRN too many/few characters</a> <br>
+          <a href="mrn-format.html">MRN wrong format</a>
+         </td>
+         
+        </tr>
+       
+      </tbody>
+    </table>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>
+{% endblock %}
