@@ -253,13 +253,6 @@ Check your answers before submitting your declaration
       {% endif %}
 
 
-    
-      
-
-
-
-      
-
        {% if (data['something-happened'] == "Yes") + (data['event-report'] == "No") %}
 
       <h2 class="govuk-heading-m">Events</h2>
@@ -343,11 +336,8 @@ Check your answers before submitting your declaration
             ]
           }
         }
-
-
         ]
       }) }}
-
 
       {% endif %}
 
@@ -361,7 +351,7 @@ Check your answers before submitting your declaration
 
         {
           key: {
-            text: "Has something happened on route else?"
+            text: "Has something happened on route?"
           },
           value: {
             text: data['something-happened'],
@@ -475,8 +465,38 @@ Check your answers before submitting your declaration
       ]
     }) }}
 
-  
       {% endif %}
+
+
+      {% if (data['event-report'] == "No") %}
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+
+        {
+          key: {
+            text: "Did the goods move to a different vehicle or container?"
+          },
+          value: {
+            text: data['something-happened'],
+            html: ''
+          },
+          actions: {
+            items: [
+              {
+                href: "something-happened",
+                text: "Change",
+                visuallyHiddenText: "somethinghappened"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+      {% endif %}
+
 
 
       
