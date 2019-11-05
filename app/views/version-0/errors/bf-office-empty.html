@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Where are the goods located?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Enter where the goods are located ",
+      href: "#mrn-empty"
+    }
+    
+  ]
+}) }}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="customs-facility" method="post">
+
+<h1 class="govuk-heading-xl">Where are the goods located?</h1>
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  
+  fieldset: {
+    legend: {
+      text: "Where are the goods located?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl",
+      classes: "govuk-input--width-20"
+    }
+  },
+  hint: {
+    text: "Enter the Border Force office name or code. For example, Dover or GB000060."
+  },
+  errorMessage: {
+  text: "Enter where the goods are located"
+  },
+  id: "bf-office",
+  name: "bf-office"
+}) }}
+
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Save and continue"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
