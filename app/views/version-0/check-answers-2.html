@@ -273,7 +273,7 @@
 
                 {% endif %}
 
-                {% if (data['event-report'] == "Yes") %}
+                {#{% if (data['event-report'] == "Yes") %}
                     {% set events = (events.push(
                     { 
                     key: {
@@ -418,7 +418,7 @@
             }
           }
       ), events) %}
-                {% endif %}
+                {% endif %}#}
 
                 {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
