@@ -20,8 +20,8 @@ Did the goods move to a different vehicle or container?
 
 {{ govukRadios({
   classes: "govuk-radios--inline",
-  idPrefix: "changed-name",
-  name: "changed-name",
+  idPrefix: "change-vehicle",
+  name: "change-vehicle",
   fieldset: {
     legend: {
       text: "Did the goods move to a different vehicle or container?",
@@ -34,11 +34,11 @@ Did the goods move to a different vehicle or container?
   },
   items: [
     {
-      value: "yes, redirect(new-transport-type)",
+      value: "Yes, redirect(new-transport-type)",
       text: "Yes"
     },
     {
-      value: "no, redirect(incident-information)",
+      value: "No, redirect(incident-information)",
       text: "No"
     }
   ]
