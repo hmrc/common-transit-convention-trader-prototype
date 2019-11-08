@@ -273,7 +273,7 @@
 
                 {% endif %}
 
-                {#{% if (data['event-report'] == "Yes") %}
+                {% if (data['event-report'] == "Yes") %}
                     {% set events = (events.push(
                     { 
                     key: {
@@ -334,27 +334,44 @@
 
                 {% if (data['reporting-country'] == "No " ) %}
                     {% set events = (events.push(
-            { 
+                { 
+                key: {
+                  text: "Which country was the event reported in?"
+                },
+                value: {
+                  text: data['reporting-country']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "where-reported-country",
+                      text: "Change",
+                      visuallyHiddenText: "when the event was reported"
+                    }
+                  ]
+                }
+              },
+               { 
             key: {
-              text: "Which country was the event reported in?"
+              text: "Where was the event reported?"
             },
             value: {
-              text: data['where-reported-country']
+              text: data['where-reported-place']
             },
             actions: {
               items: [
                 {
-                  href: "where-reported-country",
+                  href: "where-reported-place",
                   text: "Change",
                   visuallyHiddenText: "when the event was reported"
                 }
               ]
             }
           }
-      ), events) %}
+              ), events) %}
                 {% endif %}
 
-                {% if (data['event-report'] == "Yes") %}
+                {% if (data['reporting-country'] == "Yes ") %}
                     {% set events = (events.push(
           { 
             key: {
@@ -368,7 +385,7 @@
                 {
                   href: "reporting-place",
                   text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
+                  visuallyHiddenText: "if the event was reported in"
                 }
               ]
             }
@@ -418,7 +435,7 @@
             }
           }
       ), events) %}
-                {% endif %}#}
+                {% endif %}
 
                 {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
