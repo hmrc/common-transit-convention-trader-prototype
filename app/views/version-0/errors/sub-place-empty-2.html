@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Which customs approved facility has the goods?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Which customs approved location has the goods?</h1>
+
+    <form class="form" action="trader-name" method="post">
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      {{ govukInput({
+        label: {
+         
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        },
+        hint: {
+          text: ""
+        },
+        errorMessage: {
+          text: "Enter which customs approved location has the goods"
+        },
+        classes: "govuk-input--width-20",
+        id: "customs-facility",
+        name: "customs-facility"
+        
+}) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+  text: "Save and continue"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
