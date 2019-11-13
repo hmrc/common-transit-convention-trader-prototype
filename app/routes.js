@@ -5,6 +5,6 @@ const router = express.Router()
 
 //Routes for Departures
 
-router.use('/departures/version-1', require('./views/departures/version-1routes'));
+router.use('/departures/version-1', require('./views/departures/version-1/routes'));
 
 module.exports = router
