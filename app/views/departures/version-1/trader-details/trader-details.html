@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What are the traders details? 
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="check-answers" method="post">
+
+        <h1 class="govuk-heading-xl">What are the traders details?</h1>
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+          label: {
+            text: "Name"
+          },
+          id: "event-name",
+          classes: "govuk-input--width-20",
+          name: "event-name"
+        }) }} 
+
+
+  
+
+        {{ govukInput({
+          label: {
+            text: "Address"
+          },
+          id: "address-line-1",
+          classes: "govuk-input--width-25",
+          name: "event-name"
+        }) }} 
+
+        {{ govukInput({
+          label: {
+            text: ""
+          },
+          id: "address-line-2",
+          classes: "govuk-input--width-25",
+          name: "event-name"
+        }) }} 
+
+        {{ govukInput({
+          label: {
+            text: ""
+          },
+          id: "address-line-3",
+          classes: "govuk-input--width-25",
+          name: "event-name"
+        }) }} 
+
+        
+        {{ govukInput({
+          label: {
+            text: ""
+          },
+          id: "address-line-4",
+          classes: "govuk-input--width-25",
+          name: "event-name"
+        }) }} 
+
+
+                
+        {{ govukInput({
+          label: {
+            text: "Country"
+          },
+          id: "country",
+          classes: "govuk-input--width-20",
+          name: "event-name"
+        }) }} 
+
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Save and continue"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
