@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers before submitting your declaration
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <form class="form" action="success-screen" method="post">
+
+      <h1 class="govuk-heading-xl">Check your answers</h1>
+
+      {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: [
+                {
+                    key: {
+                    text: "Local reference number"
+                    },
+                    value: {
+                    text: data['local-reference']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "local-reference-number",
+                        text: "Change",
+                        visuallyHiddenText: "local refernece number"
+                        }
+                    ]
+                    }
+                }
+                ]
+                }) }}
+
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

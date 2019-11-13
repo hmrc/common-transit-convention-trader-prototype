@@ -1,0 +1,229 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-xl">
+      NCTS Homepage
+    </h1>
+
+    <p class="govuk-body"><a href="#">Create new arrival</a></p>
+
+    <p class="govuk-body"><a href="#">Create new departure</a></p>
+
+    <!--
+      Arrivals
+    -->
+
+    <h2 class="govuk-heading-l">Arrivals</h2>
+
+    <!-- <p class="govuk-body"><a href="#">Create new arrival</a></p> -->
+
+    <h3 class="govuk-heading-m">11/11/19 11:13 (last updated)</h3>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "MRN"
+          },
+          value: {
+            text: "LS20090910MRN0001654"
+          }
+        },
+        {
+          key: {
+            text: "Message"
+          },
+          value: {
+            html: '<a href="#">Arrival Notification Rejected</a>',
+            href: '#'
+          }
+        },
+        {
+          key: {
+            text: "Presenter"
+          },
+          value: {
+            html: 'Corleone'
+          }
+        },
+        {
+          key: {
+            text: "Office"
+          },
+          value: {
+            text: "GB000218"
+          }
+        },
+        {
+          key: {
+            text: "Procedure"
+          },
+          value: {
+            text: "Normal"
+          }
+        }
+      ]
+    }) }}
+
+    <br><br><br>
+
+    <h3 class="govuk-heading-m">10/11/19 08:00 (last updated)</h3>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "MRN"
+          },
+          value: {
+            text: "10GB000060100C06E0"
+          }
+        },
+        {
+          key: {
+            text: "Message"
+          },
+          value: {
+            html: '<a href="#">Goods released</a>',
+            href: '#'
+          }
+        },
+        {
+          key: {
+            text: "Presenter"
+          },
+          value: {
+            html: '45644441234569'
+          }
+        },
+        {
+          key: {
+            text: "Office"
+          },
+          value: {
+            text: "GB000218"
+          }
+        },
+        {
+          key: {
+            text: "Procedure"
+          },
+          value: {
+            text: "Normal"
+          }
+        }
+      ]
+    }) }}
+
+    <br><br><br>
+
+    <!--
+      Departures
+    -->
+
+    <h2 class="govuk-heading-l">Departures</h2>
+
+    <h3 class="govuk-heading-m">11/11/19 15:25 (last updated)</h3>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "LRN"
+          },
+          value: {
+            text: "10GB000060100C06E0"
+          }
+        },
+        {
+          key: {
+            text: "Message"
+          },
+          value: {
+            html: '<a href="#">Declaration rejected</a>',
+            href: '#'
+          }
+        },
+        {
+          key: {
+            text: "Principal"
+          },
+          value: {
+            html: 'NCTS UK TEST LAB HMCE'
+          }
+        },
+        {
+          key: {
+            text: "Office"
+          },
+          value: {
+            text: "GB000218"
+          }
+        }
+      ]
+    }) }}
+
+    <br><br><br>
+
+    <h3 class="govuk-heading-m">10/11/19 07:30 (last updated)</h3>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "LRN"
+          },
+          value: {
+            text: "10GB000060100C06E0"
+          }
+        },
+        {
+          key: {
+            text: "MRN"
+          },
+          value: {
+            text: "10GB000060100C06F8"
+          }
+        },
+        {
+          key: {
+            text: "Message"
+          },
+          value: {
+            html: '<a href="#">Declaration rejected</a>',
+            href: '#'
+          }
+        },
+        {
+          key: {
+            text: "Principal"
+          },
+          value: {
+            html: 'NCTS UK TEST LAB HMCE'
+          }
+        },
+        {
+          key: {
+            text: "Office"
+          },
+          value: {
+            text: "GB000218"
+          }
+        }
+      ]
+    }) }}
+
+    <br><br><br>
+
+  </div>
+</div>
+{% endblock %}
