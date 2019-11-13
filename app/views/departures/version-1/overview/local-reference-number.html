@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is the local reference number (LRN)?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">What is the local reference number (LRN)?</h1>
+
+    <form action="what-declaration-type" class="form" method="post">
+
+      {{ govukInput({
+        classes: "govuk-input--width-20",
+        id: "local-reference",
+        name: "local-reference"
+      }) }}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

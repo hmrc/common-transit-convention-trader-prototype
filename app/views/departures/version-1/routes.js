@@ -3,8 +3,9 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
-//Routes for Departures
-
-router.use('/departures/version-1', require('./views/departures/version-1routes'));
+//Local reference number to what declaration type
+router.post('/sign-in', function(req, res) {
+  res.redirect('tax-year-selection');
+});
 
 module.exports = router

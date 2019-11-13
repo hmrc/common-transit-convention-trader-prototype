@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="/url/of/previous/page">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+       Homepage versions
+      </h1>
+
+      <h2 class="govuk-heading-l">
+       Version 1 ideas
+      </h2>
+
+      <p><a href="version-1/homepage-list">List view</a></p>
+      <p><a href="version-1/homepage-summary-table">Summary table</a></p>
+      <p><a href="version-1/homepage-overview">Overview page with indivdual detail page</a></p>
+
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
