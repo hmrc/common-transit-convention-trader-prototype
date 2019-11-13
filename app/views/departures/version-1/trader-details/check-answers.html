@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is the traders EORI number?
+{% endblock %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">Check your answers</h1>
+
+      <form class="form" action="customs-facility" method="post">
+
+   
+
+    {% if (data['is-eori-known'] == "Yes ") %}
+
+   {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+        key: {
+               text: "Do you know the trader's GB EORI?"
+             },
+             value: {
+               text: data['is-eori-known']
+             },
+             actions: {
+               items: [
+                 {
+                   href: "#",
+                   text: "Change",
+                   visuallyHiddenText: "name"
+                 }
+               ]
+             }
+           },
+        
+        
+     
+
+
+          
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+        </form>
+
+      </div>
+    </div>
+  {% endblock %}  

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the total number of items you are declaring? 
+What is the total number of packages you are declaring? 
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,18 +13,18 @@ What is the total number of items you are declaring?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="declare-packages" method="post">
+    <form class="form" action="" method="post">
 
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
-<h1 class="govuk-heading-xl">What is the total number of goods you are declaring?</h1>
+<h1 class="govuk-heading-xl">What is the total number of packages you are declaring?</h1>
 {{ govukInput({
   label: {
     text: ""
   },
-  id: "event-name",
+  id: "number-of-packages",
   classes: "govuk-input--width-10",
-  name: "event-name"
+  name: "number-of-packages"
 }) }}
             
 
