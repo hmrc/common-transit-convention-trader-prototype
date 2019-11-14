@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Where are the goods located?
+What is the total number of packages you are declaring? 
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,18 +13,20 @@ Where are the goods located?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="customs-facility" method="post">
-
-<h1 class="govuk-heading-xl">Where are the goods located?</h1>
+    <form class="form" action="total-gross-mass" method="post">
 
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
+<h1 class="govuk-heading-xl">What is the total number of packages you are declaring?</h1>
 {{ govukInput({
-  classes: "govuk-input--width-20",
-id: "vehicle-reference",
-name: "vehicle-reference"
+  label: {
+    text: ""
+  },
+  id: "number-of-packages",
+  classes: "govuk-input--width-10",
+  name: "number-of-packages"
 }) }}
-
+            
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
 

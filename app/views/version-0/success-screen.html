@@ -1,13 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Success
+Arrival notification received - Name of service - GOV.UK
+{% endblock %}
 
-
-{{ govukBackLink({
-    text: "Back",
-    href: "#"
-  }) }}
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
 
 <div class="govuk-grid-row">
@@ -21,29 +19,29 @@ Success
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         {{ govukPanel({
-        titleText: "Application complete",
-        html: "Your reference number<br><strong>HDJ2123F</strong>"
+        titleText: "Received arrival notification",
+        html: "MRN <strong>1900005112345678</strong>"
       }) }}
 
-        <p class="govuk-body">We have sent you a confirmation email.</p>
+        <p class="govuk-body"></p>
 
-        <h2 class="govuk-heading-m"></h2>
+        <h2 class="govuk-heading-m">What happens next</h2>
 
-        <p class="govuk-body">
+        <p class="govuk-body">We send the arrival notification to a European Commission system. It checks the details provided and gives a response.
         </p>
-        <p class="govuk-body">
+        <p class="govuk-body"> 
         </p>
 
-        <p class="govuk-body">
-          <a href="#" class="govuk-link"></a> 
+        <p class="govuk-body">Go to 
+          <a href="#" class="govuk-link">X</a> to find out when goods have been released.
         </p>
       </div>
     </div>
 
-    {{ govukButton({
+  <!--  {{ govukButton({
           text: "Accept and send"
-        }) }}
-
+        }) }}-->
+       
     </form>
 
   </div>
