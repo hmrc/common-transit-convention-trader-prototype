@@ -19,8 +19,8 @@ Do you need to declare any packages?
 
 {{ govukRadios({
   classes: "govuk-radios--inline",
-  idPrefix: "changed-name",
-  name: "changed-name",
+  idPrefix: "declare-packages",
+  name: "declare-packages",
   fieldset: {
     legend: {
       text: "Do you need to declare any packages?",
@@ -33,11 +33,11 @@ Do you need to declare any packages?
   },
   items: [
     {
-      value: "yes redirect(number-of-packages)",
+      value: "Yes redirect(number-of-packages)",
       text: "Yes"
     },
     {
-      value: "no redirect(total-gross-mass)",
+      value: "No redirect(total-gross-mass)",
       text: "No"
     }
   ]
