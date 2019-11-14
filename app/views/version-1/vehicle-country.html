@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Which country is the vehicle registered in?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% if (data['new-transport-type'] == "Vehicle") %}
+    <form class="form" action="seals-changed" method="post">
+    {% else %}
+    <form class="form" action="new-container-number" method="post">
+    {% endif %}
+
+
+    <h1 class="govuk-heading-xl">Which country is the vehicle registered in?</h1>
+
+    {{ govukInput({
+      classes: "govuk-input--width-20",
+      id: "vehicle-country",
+      name: "vehicle-country"
+    }) }}
+
+
+    {{ govukButton({
+      text: "Save and continue"
+    }) }}
+
+  </div>
+</div>
+
+
+{% endblock %}

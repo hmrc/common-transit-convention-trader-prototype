@@ -16,7 +16,7 @@ Error: Where are the goods located?
   titleText: "There is a problem",
   errorList: [
     {
-      text: "Enter where the goods are located ",
+      text: "Enter which Border Force office has the goods",
       href: "#mrn-empty"
     }   
   ]
@@ -31,7 +31,7 @@ Error: Where are the goods located?
 
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
-<h1 class="govuk-heading-xl">Where are the goods located?</h1>
+<h1 class="govuk-heading-xl">Which Border Force office has the goods?</h1>
 
 {{ govukInput({
   idPrefix: "bf-office",
@@ -45,10 +45,10 @@ Error: Where are the goods located?
     }
   },
   hint: {
-    text: "Give the Border Force office name or code. For example, Dover or GB000060."
+    text: "Give the office location or code. For example, Dover or GB000060."
   },
   errorMessage: {
-  text: "Enter where the goods are located"
+  text: "Enter which Border Force office has the goods"
   }
   
 }) }}

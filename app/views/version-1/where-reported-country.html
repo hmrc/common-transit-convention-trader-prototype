@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Which customs approved facility has the goods?
+Which country was the event reported in?
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,31 +13,21 @@ Which customs approved facility has the goods?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">Which customs sub-place has the goods?</h1>
+    <h1 class="govuk-heading-xl">Which country was the event reported in?</h1>
 
-    <form class="form" action="trader-name" method="post">
+    <form class="form" action="where-reported-place" method="post">
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
       {{ govukInput({
-        label: {
-         
-          isPageHeading: true,
-          classes: "govuk-fieldset__legend--xl"
-        },
-        hint: {
-          text: "A sub-place has been approved to end transit movements."
-        },
-        errorMessage: {
-          text: "Enter which customs sub-place has the goods"
-        },
         classes: "govuk-input--width-20",
-        id: "customs-facility",
-        name: "customs-facility"
-        
+  id:"where-reported-country",
+  name: "where-reported-country"
 }) }}
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
+
+
 
       {{ govukButton({
   text: "Save and continue"
