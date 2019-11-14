@@ -19,8 +19,8 @@ Do you need to declare any packages?
 
 {{ govukRadios({
   classes: "govuk-radios--inline",
-  idPrefix: "changed-name",
-  name: "changed-name",
+  idPrefix: "do-you-need-seals-info",
+  name: "do-you-need-seals-info",
   fieldset: {
     legend: {
       text: "Do you need to add seals information?",
@@ -33,11 +33,11 @@ Do you need to declare any packages?
   },
   items: [
     {
-      value: "yes redirect(seals-information)",
+      value: "Yes redirect(seal-id-details)",
       text: "Yes"
     },
     {
-      value: "no redirect(check-answers)",
+      value: "No redirect(check-answers)",
       text: "No"
     }
   ]
