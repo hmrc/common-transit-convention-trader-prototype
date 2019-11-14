@@ -70,7 +70,7 @@
 
         {% if (data['where-are-the-goods'] == "Border Force office") %}
           {% set goodsLocation = (goodsLocation.push(
-                    { 
+                    {
                     key: {
                     text: "Where are the goods located?"
                     },
@@ -87,7 +87,7 @@
                     ]
                     }
                 },
-                { 
+                {
                     key: {
                     text: "Which customs approved location has the goods?"
                     },
@@ -109,7 +109,7 @@
 
         {% if (data['where-are-the-goods'] == "Authorised consignee’s location") %}
           {% set goodsLocation = (goodsLocation.push(
-                { 
+                {
                 key: {
                   text: "Authorised location code"
                 },
@@ -155,7 +155,7 @@
                             }
                           ]
                         }
-                      },           
+                      },
                       {
                         key: {
                           text: "Address"
@@ -172,7 +172,7 @@
                             }
                           ]
                         }
-                      },      
+                      },
                       {
                         key: {
                           text: "EORI number"
@@ -218,7 +218,7 @@
 
         {% if (data['something-happened'] == "Yes ") %}
           {% set events = (events.push(
-                    { 
+                    {
                     key: {
                     text: "Which country did the event happen in?"
                     },
@@ -235,7 +235,7 @@
                     ]
                     }
                     },
-                    { 
+                    {
                     key: {
                     text: "Where did the event happen?"
                     },
@@ -252,7 +252,7 @@
                     ]
                     }
                     },
-                    { 
+                    {
                     key: {
                     text: "Has this event been reported to a customs authority?"
                     },
@@ -275,7 +275,7 @@
 
         {% if (data['event-report'] == "Yes") %}
           {% set events = (events.push(
-                    { 
+                    {
                     key: {
                     text: "When was the event reported?"
                     },
@@ -294,7 +294,7 @@
                     }
                 },
 
-                { 
+                {
                     key: {
                     text: "Who reported the event?"
                     },
@@ -312,7 +312,7 @@
                     }
                 },
 
-                { 
+                {
                     key: {
                     text: "Was the event reported in "+data['event-country']+"?"
                     },
@@ -334,7 +334,7 @@
 
         {% if (data['reporting-country'] == "No " ) %}
           {% set events = (events.push(
-                { 
+                {
                 key: {
                   text: "Which country was the event reported in?"
                 },
@@ -351,7 +351,7 @@
                   ]
                 }
               },
-               { 
+               {
             key: {
               text: "Where was the event reported?"
             },
@@ -373,7 +373,7 @@
 
         {% if (data['reporting-country'] == "Yes ") %}
           {% set events = (events.push(
-          { 
+          {
             key: {
               text: "Was the event reported in "+data['event-place']+"?"
             },
@@ -395,7 +395,7 @@
 
         {% if (data['reporting-place'] == "No " ) %}
           {% set events = (events.push(
-            { 
+            {
             key: {
               text: "Where was the event reported?"
             },
@@ -417,7 +417,7 @@
 
         {% if (data['event-report'] == "Yes") %}
           {% set events = (events.push(
-          { 
+          {
             key: {
               text: "Has there been any other events on the route?"
             },
@@ -437,10 +437,10 @@
       ), events) %}
         {% endif %}
 
-        
+
         {% if (data['event-report'] == "No") %}
           {% set events = (events.push(
-          { 
+          {
             key: {
               text: "Did the goods move to a different vehicle or container?"
             },
@@ -462,7 +462,7 @@
 
         {% if (data['change-vehicle'] == "No") %}
           {% set events = (events.push(
-          { 
+          {
             key: {
               text: "What happened on route?"
             },
@@ -484,7 +484,7 @@
 
         {% if (data['change-vehicle'] == "Yes") %}
           {% set events = (events.push(
-          { 
+          {
             key: {
               text: "What did the goods move to?"
             },
@@ -506,7 +506,7 @@
 
         {% if (data['new-transport-type'] == "Vehicle") %}
           {% set events = (events.push(
-          { 
+          {
             key: {
               text: "What is the name, registration or reference?"
             },
@@ -523,7 +523,7 @@
               ]
             }
           },
-          { 
+          {
             key: {
               text: "Which country is the vehicle registered in?"
             },
@@ -545,7 +545,7 @@
 
         {% if (data['new-transport-type'] == "Container") %}
           {% set events = (events.push(
-          { 
+          {
             key: {
               text: "What is the new container number?"
             },
@@ -567,7 +567,7 @@
 
         {% if (data['new-transport-type'] == "Both") %}
           {% set events = (events.push(
-          { 
+          {
             key: {
               text: "What is the name, registration or reference?"
             },
@@ -584,7 +584,7 @@
               ]
             }
           },
-          { 
+          {
             key: {
               text: "Which country is the vehicle registered in?"
             },
@@ -601,7 +601,7 @@
               ]
             }
           },
-          { 
+          {
             key: {
               text: "What is the new container number?"
             },
@@ -644,7 +644,7 @@
 
         {% if (data['seals-changed'] == "Yes ") %}
           {% set events = (events.push(
-          { 
+          {
             key: {
               text: "What is the new seal number?"
             },
@@ -684,7 +684,7 @@
                 }
                 ), events) %}
 
-         
+
 
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',

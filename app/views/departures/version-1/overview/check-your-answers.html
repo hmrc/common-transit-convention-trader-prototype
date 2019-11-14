@@ -1,52 +1,301 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Check your answers before submitting your declaration
+  Check your answers before submitting your declaration
 
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
 
-{{ govukBackLink({
+  {{ govukBackLink({
     text: "Back",
     href: "#"
   }) }}
 {% endblock %}
 
 {% block content %}
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds-from-desktop">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
 
-    <form class="form" action="success-screen" method="post">
+      <form class="form" method="post">
 
-      <h1 class="govuk-heading-xl">Check your answers</h1>
+      {% set overviewList = [] %}
 
-      {{ govukSummaryList({
-                classes: 'govuk-!-margin-bottom-9',
-                rows: [
-                {
+        <h1 class="govuk-heading-xl">Check your answers before submitting your declaration</h1>
+
+        {% set overviewList = (overviewList.push(
+            {
                     key: {
-                    text: "Local reference number"
+                    text: "What is the local reference number?"
                     },
                     value: {
-                    text: data['local-reference']
+                    text: data['local-reference-number']
                     },
                     actions: {
                     items: [
                         {
                         href: "local-reference-number",
                         text: "Change",
-                        visuallyHiddenText: "local refernece number"
+                        visuallyHiddenText: "local-reference-number"
+                        }
+                    ]
+                    }
+                }, 
+
+                {
+                    key: {
+                    text: "What declaration type do you want to make?"
+                    },
+                    value: {
+                    text: data['declaration-type']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "declaration-type",
+                        text: "Change",
+                        visuallyHiddenText: "type of declaration"
+                        }
+                    ]
+                    }
+                },
+
+                {
+                    key: {
+                    text: "Have you used containers?"
+                    },
+                    value: {
+                    text: data['have-you-used-containers']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "have-you-used-containers",
+                        text: "Change",
+                        visuallyHiddenText: "have you used containers"
+                        }
+                    ]
+                    }
+                }, 
+
+                {
+                    key: {
+                    text: "Where is the place of declaration?"
+                    },
+                    value: {
+                    text: data['place-of-declaration']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "place-of-declaration",
+                        text: "Change",
+                        visuallyHiddenText: "place-of-declaration"
+                        }
+                    ]
+                    }
+                },
+
+                {
+                    key: {
+                    text: "Are you making this declaration on behalf of someone else?"
+                    },
+                    value: {
+                    text: data['on-behalf-of-someone-else']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "on-behalf-of-someone-else",
+                        text: "Change",
+                        visuallyHiddenText: "Are you making this declaration on behalf of someone else?"
+                        }
+                      ]
+                    }
+                  }
+                
+              ), overviewList) %}
+
+
+    {% if (data['on-behalf-of-someone-else'] == "Yes") %}
+        {% set overviewList = (overviewList.push(
+                  {
+                    key: {
+                      text: "What is the representative’s name and capacity?"
+                    },
+                    value: {
+                      html: data['representative-name'] + "<br>" + data['representative-capacity']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "name-and-capacity",
+                          text: "Change",
+                          visuallyHiddenText: "name and capacity"
+                        }
+                      ]
+                    }
+                  }
+        ), overviewList) %}
+    {% endif %}
+
+        {% set overviewList = (overviewList.push(
+                  {
+                    key: {
+                    text: "What is the country of despatch?"
+                    },
+                    value: {
+                    text: data['local-reference-number']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "local-reference-number",
+                        text: "Change",
+                        visuallyHiddenText: "local-reference-number"
+                        }
+                    ]
+                    }
+                },
+
+                {
+                    key: {
+                    text: "What is the office of departure?"
+                    },
+                    value: {
+                    text: data['office-of-departure']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "office-of-departure",
+                        text: "Change",
+                        visuallyHiddenText: "office-of-departure"
+                        }
+                    ]
+                    }
+                },
+
+                {
+                    key: {
+                    text: "Do you need to add a country of destination"
+                    },
+                    value: {
+                    text: data['add-country-of-destination']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "add-country-of-destination",
+                        text: "Change",
+                        visuallyHiddenText: "add-country-of-destination"
                         }
                     ]
                     }
                 }
-                ]
+                
+              ), overviewList) %}
+
+    {% if (data['add-country-of-destination'] == "Yes") %}
+        {% set overviewList = (overviewList.push(
+                  {
+                    key: {
+                      text: "What is the country of destination?"
+                    },
+                    value: {
+                      html: data['country-of-destination']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "country-of-destination",
+                          text: "Change",
+                          visuallyHiddenText: "country of destination"
+                        }
+                      ]
+                    }
+                  }
+        ), overviewList) %}
+    {% endif %}      
+
+      {% set overviewList = (overviewList.push(
+
+                  {
+                    key: {
+                    text: "What is the office of destination?"
+                    },
+                    value: {
+                    text: data['office-of-destination']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "office-of-destination",
+                        text: "Change",
+                        visuallyHiddenText: "office-of-destination"
+                        }
+                    ]
+                    }
+                  },
+
+                  {
+                    key: {
+                    text: "Do you need to add offices of transit?"
+                    },
+                    value: {
+                    text: data['add-offices-of-transit']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "add-offices-of-transit",
+                        text: "Change",
+                        visuallyHiddenText: "add-offices-of-transit"
+                        }
+                    ]
+                    }
+                  } 
+                
+              ), overviewList) %}
+              
+      {% if (data['add-country-of-destination'] == "Yes") %}
+        {% set overviewList = (overviewList.push(
+                  {
+                    key: {
+                      text: "What is the country of destination?"
+                    },
+                    value: {
+                      html: data['country-of-destination']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "country-of-destination",
+                          text: "Change",
+                          visuallyHiddenText: "country of destination"
+                        }
+                      ]
+                    }
+                  }
+        ), overviewList) %}
+    {% endif %}                
+
+
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: overviewList
+                }) }}
+ 
+        {{ govukButton({
+                text: "Save and continue",
+                href: ""
                 }) }}
 
 
-    </form>
+      </form>
+    </div>
   </div>
-</div>
 
 {% endblock %}
+

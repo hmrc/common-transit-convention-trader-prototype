@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the local reference number (LRN)?
+What is the office of destination?
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,14 +13,14 @@ What is the local reference number (LRN)?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">What is the local reference number (LRN)?</h1>
+    <h1 class="govuk-heading-xl">What is the office of destination?</h1>
 
-    <form action="what-declaration-type" class="form" method="post">
+    <form action="add-offices-of-transit" class="form" method="post">
 
       {{ govukInput({
         classes: "govuk-input--width-20",
-        id: "local-reference-number",
-        name: "local-reference-number"
+        id: "office-of-destination",
+        name: "office-of-destination"
       }) }}
 
       {{ govukButton({
