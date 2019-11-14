@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Where was the event reported?
+What is the office of transit?
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,23 +13,21 @@ Where was the event reported?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">Where was the event reported?</h1>
+    <h1 class="govuk-heading-xl">What is the office of transit?</h1>
 
-    <form class="form" action="anything-else-happened" method="post">
+    <form class="form" action="offices-of-transit-list" method="post">
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
       {{ govukInput({
-        classes: "govuk-input--width-21",
-    id: "where-reported-place",
-    name: "where-reported-place"
-  }) }}
-
-      {% from "govuk/components/button/macro.njk" import govukButton %}
+        classes: "govuk-input--width-20",
+        id: "office-of-transit",
+        name: "office-of-transit"
+      }) }}
 
       {{ govukButton({
-    text: "Save and continue"
-  }) }}
+        text: "Save and continue"
+      }) }}
 
     </form>
 

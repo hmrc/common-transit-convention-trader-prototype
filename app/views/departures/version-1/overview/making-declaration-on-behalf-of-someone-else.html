@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Have any of the seals changed?
+Are you making this declaration on behalf of someone else?
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,17 +13,15 @@ Have any of the seals changed?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" method="post">
-
-        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      <form method="post">
 
         {{ govukRadios({
           classes: "govuk-radios--inline",
-          idPrefix: "seals-changed",
-          name: "seals-changed",
+          idPrefix: "on-behalf-of-someone-else",
+          name: "on-behalf-of-someone-else",
           fieldset: {
             legend: {
-              text: "Have any of the seals changed?",
+              text: "Are you making this declaration on behalf of someone else?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
@@ -33,21 +31,21 @@ Have any of the seals changed?
           },
           items: [
             {
-              value: "Yes redirect(new-seal-number)",
+              value: "Yes, redirect(name-and-capacity)",
               text: "Yes"
             },
             {
-              value: "No redirect(anything-else-happened)",
+              value: "No, redirect(country-of-despatch)",
               text: "No"
             }
           ]
         }) }}
 
-{{ govukButton({
-  text: "Save and continue"
-}) }}
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
 
-    </form>
+      </form>
 
   </div>
 </div>

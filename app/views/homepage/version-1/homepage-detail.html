@@ -1,0 +1,194 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukBackLink({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+    <h1 class="govuk-heading-xl">
+      Application detail
+    </h1>
+
+    <!--
+      Arrivals
+    -->
+
+    <h2 class="govuk-heading-l">11/11/19 11:13 (last updated)</h2>
+
+    <!-- <h3 class="govuk-heading-m">11/11/19 11:13 (last updated)</h3> -->
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "MRN"
+          },
+          value: {
+            text: "LS20090910MRN0001654"
+          }
+        },
+        {
+          key: {
+            text: "Message"
+          },
+          value: {
+            html: '<a href="#">Arrival Notification Rejected</a>',
+            href: '#'
+          }
+        },
+        {
+          key: {
+            text: "Presenter"
+          },
+          value: {
+            html: 'Corleone'
+          }
+        },
+        {
+          key: {
+            text: "Office"
+          },
+          value: {
+            text: "GB000218"
+          }
+        },
+        {
+          key: {
+            text: "Procedure"
+          },
+          value: {
+            text: "Normal"
+          }
+        }
+      ]
+    }) }}
+
+    <br><br><br>
+
+    <h2 class="govuk-heading-l">Arrival Notification Rejected</h2>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Date"
+          },
+          value: {
+            text: "10 November 2019"
+          }
+        },
+        {
+          key: {
+            text: "MRN"
+          },
+          value: {
+            html: 'LS20090910MRN0001654'
+          }
+        },
+        {
+          key: {
+            text: "Arrival Rejection Reason"
+          },
+          value: {
+            html: 'Invalid IE007 Message'
+          }
+        },
+        {
+          key: {
+            text: "Reason"
+          },
+          value: {
+            text: "The arrival notification is invalid because of errors (see details below)."
+          }
+        }
+      ]
+    }) }}
+
+    <!-- <h3 class="govuk-heading-m">Errors</h3> -->
+
+    {{ govukTable({
+      caption: "Errors",
+      captionClasses: "govuk-heading-m",
+      firstCellIsHeader: true,
+      head: [
+        {
+          text: "Error in field"
+        },
+        {
+          text: "Type"
+        },
+        {
+          text: "Reason"
+        }
+      ],
+      rows: [
+        [
+          {
+            text: "HEA.Document/Reference number"
+          },
+          {
+            text: "Invalid MRN"
+          },
+          {
+            text: "Invalid MRN"
+          }
+        ],
+        [
+          {
+            text: "TRD.Name"
+          },
+          {
+            text: "Not supported in this position"
+          },
+          {
+            text: "C160"
+          }
+        ],
+        [
+          {
+            text: "TRD.Street and number"
+          },
+          {
+            text: "Not supported in this position"
+          },
+          {
+            text: "C160"
+          }
+        ],
+        [
+          {
+            text: "TRD.Postal code"
+          },
+          {
+            text: "Not supported in this position"
+          },
+          {
+            text: "C160"
+          }
+        ],
+        [
+          {
+            text: "TRD.City"
+          },
+          {
+            text: "Not supported in this position"
+          },
+          {
+            text: "C160"
+          }
+        ]
+      ]
+    }) }}
+
+  </div>
+</div>
+{% endblock %}

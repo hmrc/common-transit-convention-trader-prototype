@@ -16,6 +16,8 @@ Was the event reported in place?
     <form class="form" method="post">
 
     {% from "govuk/components/radios/macro.njk" import govukRadios %}
+    {% set heading="Was the event reported in "+data['event-place']+"?" %}
+
 
     {{ govukRadios({
       classes: "govuk-radios--inline",
@@ -23,7 +25,7 @@ Was the event reported in place?
       name: "reporting-place",
       fieldset: {
         legend: {
-          text: "Was the event reported at place?",
+          text: heading,
           isPageHeading: true,
           classes: "govuk-fieldset__legend--xl"
         }
@@ -33,11 +35,11 @@ Was the event reported in place?
       },
       items: [
         {
-          value: "yes redirect(anything-else-happened)",
+          value: "Yes redirect(anything-else-happened)",
           text: "Yes"
         },
         {
-          value: "no redirect(where-reported-place)",
+          value: "No redirect(where-reported-place)",
           text: "No"
         }
       ]

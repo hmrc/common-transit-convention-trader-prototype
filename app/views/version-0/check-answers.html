@@ -342,9 +342,9 @@ Check your answers before submitting your declaration
 
       {% endif %}
 
-       {% if (data['something-happened'] == "Yes") + (data['event-report'] == "Yes") %}
-
-       <h2 class="govuk-heading-m">Events</h2>
+      {% if (data['something-happened'] == "Yes") + (data['event-report'] == "Yes") %}
+      
+      <h2 class="govuk-heading-m">Events</h2>
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
@@ -407,138 +407,92 @@ Check your answers before submitting your declaration
           }
         },
 
-      {
-        key: {
-          text: "Has this event been reported to a customs authority?"
+        {
+          key: {
+            text: "Has this event been reported to a customs authority?"
+          },
+          value: {
+            text: data['event-report'], 
+            html: ''
+          },
+          actions: {
+            items: [
+              {
+                href: "event-report",
+                text: "Change",
+                visuallyHiddenText: "eventreport"
+              }
+            ]
+          }
         },
-        value: {
-          text: data['event-report'], 
-          html: ''
+  
+        {
+          key: {
+            text: "When was the event reported?"
+          },
+          value: {
+            text: data['date-reported'],
+            html: data['date-reported-day'] +" "+ data['date-reported-month'] +" "+ data['date-reported-year']
+          },
+          actions: {
+            items: [
+              {
+                href: "date-reported",
+                text: "Change",
+                visuallyHiddenText: "datereported"
+              }
+            ]
+          }
         },
-        actions: {
-          items: [
-            {
-              href: "event-report",
-              text: "Change",
-              visuallyHiddenText: "eventreport"
-            }
-          ]
+
+        {
+          key: {
+            text: "Who reported the event?"
+          },
+          value: {
+            text: data['who-reported'],
+            html: ''
+          },
+          actions: {
+            items: [
+              {
+                href: "who-reported",
+                text: "Change",
+                visuallyHiddenText: "eventcountry"
+              }
+            ]
+          }
+        },
+  
+        {
+          key: {
+            text:  "Was the event reported in "+data['event-country']+"?"
+          },
+          value: {
+            text: data['reporting-country'],
+            html: ''
+          },
+          actions: {
+            items: [
+              {
+                href: "event-country",
+                text: "Change",
+                visuallyHiddenText: "eventcountry"
+              }
+            ]
+          }
         }
-      },
+        ]
+      }) }}
 
-      {
-        key: {
-          text: "When was the event reported?"
-        },
-        value: {
-          text: data['date-reported'],
-          html: data['date-reported-day'] +" "+ data['date-reported-month'] +" "+ data['date-reported-year']
-        },
-        actions: {
-          items: [
-            {
-              href: "date-reported",
-              text: "Change",
-              visuallyHiddenText: "datereported"
-            }
-          ]
-        }
-      },
-
-      {
-        key: {
-          text: "Who reported the event?"
-        },
-        value: {
-          text: data['who-reported'],
-          html: ''
-        },
-        actions: {
-          items: [
-            {
-              href: "who-reported",
-              text: "Change",
-              visuallyHiddenText: "eventcountry"
-            }
-          ]
-        }
-      },
-
-      {
-        key: {
-          text:  "Was the event reported in "+data['event-country']+"?"
-        },
-        value: {
-          text: data['reporting-country'],
-          html: ''
-        },
-        actions: {
-          items: [
-            {
-              href: "event-country",
-              text: "Change",
-              visuallyHiddenText: "eventcountry"
-            }
-          ]
-        }
-      },
-
-      {% if (data['reporting-country'] == "Yes") %}
-
-      {
-        key: {
-          text:  "Was the event reported in "+data['event-place']+"?"
-        },
-        value: {
-          text: data['reporting-place'],
-          html: ''
-        },
-        actions: {
-          items: [
-            {
-              href: "event-country",
-              text: "Change",
-              visuallyHiddenText: "eventcountry"
-            }
-          ]
-        }
-      },
-
-      {% else %}
-
-      {
-        key: {
-          text:  "Which country was the event reported in?"
-        },
-        value: {
-          text: data['where-reported-country'],
-          html: ''
-        },
-        actions: {
-          items: [
-            {
-              href: "event-country",
-              text: "Change",
-              visuallyHiddenText: "eventcountry"
-            }
-          ]
-        }
-      }
-      ]
-    }) }}
+      
 
       {% endif %}
-      {% endif %}
+
+       
 
      
 
-      {% if hungry %}
-  I am hungry
-{% elif tired %}
-  I am tired
-{% else %}
-  I am good!
-{% endif %}
 
       <h2 class="govuk-heading-m">Now send your arrival notification</h2>
 

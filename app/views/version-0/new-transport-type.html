@@ -20,8 +20,8 @@ What did the goods move to?
 
 {{ govukRadios({
   classes: "govuk-radios",
-  idPrefix: "changed-name",
-  name: "changed-name",
+  idPrefix: "new-transport-type",
+  name: "new-transport-type",
   fieldset: {
     legend: {
       text: "What did the goods move to?",
@@ -34,15 +34,15 @@ What did the goods move to?
   },
   items: [
     {
-      value: "vehicle, redirect(vehicle-reference)",
+      value: "Vehicle, redirect(vehicle-reference)",
       text: "Vehicle"
     },
     {
-      value: "container, redirect(new-container-number)",
+      value: "Container, redirect(new-container-number)",
       text: "Container"
     },
     {
-      value: "both, redirect(vehicle-reference)",
+      value: "Both, redirect(vehicle-reference)",
       text: "Both"
     }
   ]
