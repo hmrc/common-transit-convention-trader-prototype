@@ -117,9 +117,9 @@ Check your answers
                     actions: {
                       items: [
                         {
-                          href: "number-of-packages",
+                          href: "total-gross-mass",
                           text: "Change",
-                          visuallyHiddenText: "how many packages"
+                          visuallyHiddenText: "total gross mass"
                         }
                       ]
                     }
@@ -154,7 +154,7 @@ Check your answers
           set goodsSummary = (goodsSummary.push( 
             {
                     key: {
-                    text: "Is the agreed location code 'pre-lodged'?"
+                    text: "Is the agreed location code pre-lodged?"
                     },
                     value: {
                     text: data['is-it-prelodged']
@@ -198,7 +198,7 @@ Check your answers
                   {% set goodsSummary = (goodsSummary.push(
                   {
                     key: {
-                      text: 
+                      text: "What is the customs sub-place?"
                     },
                     value: {
                       text: data['customs-sub-place']
@@ -240,8 +240,7 @@ Check your answers
                 ), goodsSummary) %}
 
 
-
-{% if (data['do-you-need-seals-info'] == "Yes") %}
+{% if (data['do-you-need-seals-info'] == "Yes ") %}
           {% set goodsSummary = (goodsSummary.push(
                   {
                     key: {

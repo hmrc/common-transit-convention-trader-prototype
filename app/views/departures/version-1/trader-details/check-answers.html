@@ -1,63 +1,107 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the traders EORI number?
+Check your answers
 {% endblock %}
-
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "#"
-  }) }}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
+
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <h1 class="govuk-heading-xl">Check your answers</h1>
+      <form class="form" action="../task-list" method="post">
 
-      <form class="form" action="customs-facility" method="post">
+        <h1 class="govuk-heading-xl">Check your answers</h1>
 
-   
-
-    {% if (data['is-eori-known'] == "Yes ") %}
-
-   {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-9',
-        rows: [
-        key: {
-               text: "Do you know the trader's GB EORI?"
-             },
-             value: {
-               text: data['is-eori-known']
-             },
-             actions: {
-               items: [
-                 {
-                   href: "#",
-                   text: "Change",
-                   visuallyHiddenText: "name"
-                 }
-               ]
-             }
-           },
+        {%
+          set goodsSummary = [
+            {
+                    key: {
+                    text: "Do you know the traders GB EORI?"
+                    },
+                    value: {
+                    text: data['is-eori-known']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "is-eori-known",
+                        text: "Change",
+                        visuallyHiddenText: "total number of items"
+                        }
+                    ]
+                    }
+                }
+          ]
+        %}
         
-        
-     
 
 
-          
-          {{ govukButton({
-            text: "Save and continue"
-          }) }}
+        {% if (data['is-eori-known'] == "Yes ") %}
+          {% set goodsSummary = (goodsSummary.push(
+                  {
+                    key: {
+                      text: "What is the trader's EORI number?"
+                    },
+                    value: {
+                      text: data['what-is-eori']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "what-is-eori",
+                          text: "Change",
+                          visuallyHiddenText: "what is eori"
+                        }
+                      ]
+                    }
+                  }
+              ), goodsSummary) %}
 
-        </form>
+        {% else %}
 
-      </div>
+                  {% set goodsSummary = (goodsSummary.push(
+                  {
+                    key: {
+                      text: "What are the trader's details?"
+                    },
+                    value: {
+                      html: data['name'] + "<br>" + "<br>" + data['number-street'] + "<br>" + data['town'] + "<br>" + data['postcode'] + "<br>" + data['country']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "number-street",
+                          text: "Change",
+                          visuallyHiddenText: "number-street"
+                        }
+                      ]
+                    }
+                  }
+              ), goodsSummary) %}
+
+        {% endif %}
+
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: goodsSummary
+                }) }}
+
+        {{ govukButton({
+                text: "Save and continue",
+                href: ""
+                }) }}
+
+      </form>
     </div>
-  {% endblock %}  
+  </div>
+
+{% endblock %}
