@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What type of guarantee are you using?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="liability-amount" method="post">
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  classes: "govuk-radios--stacked",
+  idPrefix: "guarantee-type",
+  name: "guarantee-type",
+  fieldset: {
+    legend: {
+      text: "What type of guarantee are you using?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+    {
+      value: "cash deposit guarantee redirect(other-guarantee-reference)",
+      text: "Cash deposit guarantee"
+    },
+
+        {
+      value: "Comprehensive guarantee redirect(guarantee-reference)",
+      text: "Comprehensive guarantee"
+    },
+
+        {
+      value: "Flat-rate voucher redirect(guarantee-reference)",
+      text: "Flat-rate voucher"
+    },
+
+        {
+      value: "Guarantee not required for redirect(other-guarantee-reference)",
+      text: "Guarantee not required for"
+    },
+
+        {
+      value: "Guarantee not required for journey redirect(other-guarantee-reference)",
+      text: "Guarantee not required for journey"
+    },
+
+        {
+      value: "Guarantee waived redirect(other-guarantee-reference)",
+      text: "Guarantee waived redirect"
+    },
+
+        {
+      value: "Guarantee waiver redirect(guarantee-reference)",
+      text: "Guarantee waiver"
+    },
+
+        {
+      value: "Guarantee waiver by agreement redirect(other-guarantee-reference)",
+      text: "Guarantee waiver by agreement"
+    },
+
+        {
+      value: "Guarantee waiver, secured amount redirect(other-guarantee-reference)",
+      text: "Guarantee waiver, secured amount"
+    },
+
+        {
+      value: "Individual guarantee redirect(guarantee-reference)",
+      text: "Individual guarantee"
+    }, 
+
+          {
+      value: "Individual guarantee with multiple usage redirect(guarantee-reference)",
+      text: "Individual guarantee with multiple usage"
+    }
+  ]
+}) }}
+        
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Save and continue"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
