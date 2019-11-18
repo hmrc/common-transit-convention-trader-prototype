@@ -28,14 +28,14 @@ Check your answers
                     text: "What type of guarantee are you using?"
                     },
                     value: {
-                    text: data['total-number-of-items']
+                    text: data['guarantee-type']
                     },
                     actions: {
                     items: [
                         {
-                        href: "total-number-of-items",
+                        href: "guarantee-type",
                         text: "Change",
-                        visuallyHiddenText: "total number of items"
+                        visuallyHiddenText: "guarantee-type"
                         }
                     ]
                     }
@@ -43,11 +43,11 @@ Check your answers
                 ), guaranteeSummary) %}
 
       
-        {% if (data['guarantee-type'] == "comprehensive guarantee", "flat rate voucher", "guarantee waiver", "individual guarantee", "individual guarantee with multiple usage") %}
+        {% if (data['guarantee-type'] == "Comprehensive guarantee ") or (data['guarantee-type'] == "Flat-rate voucher ") or (data['guarantee-type'] == "Guarantee waiver ") or (data['guarantee-type'] == "Individual guarantee ") or (data['guarantee-type'] == "Individual guarantee with multiple usage ") %} 
           {% set guaranteeSummary = (guaranteeSummary.push(
                   {
                     key: {
-                      text: "What is the guarantee reference number"
+                      text: "What is the guarantee reference number?"
                     },
                     value: {
                       text: data['guarantee-reference']
@@ -94,6 +94,27 @@ Check your answers
                     },
                     value: {
                       text: data['other-guarantee-reference']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "other-guarantee-reference",
+                          text: "Change",
+                          visuallyHiddenText: "other guarantee reference"
+                        }
+                      ]
+                    }
+                  }
+              ), guaranteeSummary) %}
+
+
+                  {% set guaranteeSummary = (guaranteeSummary.push(
+                  {
+                    key: {
+                      text: "What is the liability amount?"
+                    },
+                    value: {
+                      text: data['liability-amount']
                     },
                     actions: {
                       items: [
