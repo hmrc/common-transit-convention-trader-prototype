@@ -22,7 +22,6 @@
         <h1 class="govuk-heading-xl">Check your answers</h1>
 
         {% set eventInfo = [] %}
-        <h2 class="govuk-heading-m">Events</h1>
 
         {% set eventInfo = (eventInfo.push(
                   {
@@ -97,7 +96,9 @@
 
         {% set vehicleContainer = [] %}
 
+
         {% set vehicleContainer = (vehicleContainer.push(
+          
           { 
             key: {
               text: "Did the goods move to a different vehicle or container?"
@@ -286,12 +287,12 @@
               text: "Have any of the seals changed?"
             },
             value: {
-              text: data['where-are-the-goods']
+              text: data['seals-changed']
             },
             actions: {
               items: [
                 {
-                  href: "where-goods",
+                  href: "seals-changed",
                   text: "Change",
                   visuallyHiddenText: "date of birth"
                 }
@@ -300,11 +301,27 @@
           }
       ), sealInfo) %}
 
+      {% if (data['seals-changed'] == "Yes") %}
+      {% endif %}
+
+        <h2 class="govuk-heading-m">Events</h1>
 
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
-                rows: eventInfo,
-                rows: vehicleContainer,
+                rows: eventInfo
+        }) }}
+
+        <h2 class="govuk-heading-m">Vehicle or container</h1>
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: vehicleContainer
+        }) }}
+
+        <h2 class="govuk-heading-m">Seals</h1>
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
                 rows: sealInfo
         }) }}
 
