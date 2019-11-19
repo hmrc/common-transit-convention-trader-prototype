@@ -15,7 +15,7 @@ Where are the goods located?
 
     <form class="form" action="trader-name" method="post">
 
-<h1 class="govuk-heading-xl">Which Border Force office supervises this place?</h1>
+<h1 class="govuk-heading-xl">Which Border Force office supervises {{ data['customs-facility'] }}?</h1>
 
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
