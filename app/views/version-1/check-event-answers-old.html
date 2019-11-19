@@ -21,10 +21,10 @@
 
         <h1 class="govuk-heading-xl">Check your answers</h1>
 
-        {% set eventInfo = [] %}
+        {% set somethingHappened = [] %}
         <h2 class="govuk-heading-m">Events</h1>
 
-        {% set eventInfo = (eventInfo.push(
+        {% set somethingHappened = (somethingHappened.push(
                   {
                     key: {
                       text: "Has something happened on route?"
@@ -44,81 +44,85 @@
                   },
                   { 
                     key: {
-                      text: "Which country did the event happen in?"
+                    text: "Which country did the event happen in?"
                     },
                     value: {
-                      text: data['event-country']
+                    text: data['event-country']
                     },
                     actions: {
-                      items: [
+                    items: [
                         {
-                          href: "event-country",
-                          text: "Change",
-                          visuallyHiddenText: "which country the event happened in"
+                        href: "event-country",
+                        text: "Change",
+                        visuallyHiddenText: "which country the event happened in"
                         }
-                      ]
+                    ]
                     }
-                  },
-                  { 
+                    },
+                    { 
                     key: {
-                      text: "Where did the event happen?"
+                    text: "Where did the event happen?"
                     },
                     value: {
-                      text: data['event-place']
+                    text: data['event-place']
                     },
                     actions: {
-                      items: [
+                    items: [
                         {
-                          href: "event-place",
-                          text: "Change",
-                          visuallyHiddenText: "where the event happened"
+                        href: "event-place",
+                        text: "Change",
+                        visuallyHiddenText: "where the event happened"
                         }
-                      ]
+                    ]
                     }
-                  },
-                  { 
+                    },
+                    { 
                     key: {
-                      text: "Has this event been reported to a customs authority?"
+                    text: "Has this event been reported to a customs authority?"
                     },
                     value: {
-                      text: data['event-report']
+                    text: data['event-report']
                     },
                     actions: {
-                      items: [
-                          {
-                            href: "event-report",
-                            text: "Change",
-                            visuallyHiddenText: "if the event has been reported"
-                          }
-                      ]
+                    items: [
+                        {
+                        href: "event-report",
+                        text: "Change",
+                        visuallyHiddenText: "if the event has been reported"
+                        }
+                    ]
                     }
-                  }
-                  ), eventInfo) %}
+                    }
+                 ), somethingHappened) %}
 
         {% set vehicleContainer = [] %}
 
+        <h2 class="govuk-heading-m">Vehicle or container</h1>
+
         {% set vehicleContainer = (vehicleContainer.push(
-          { 
-            key: {
-              text: "Did the goods move to a different vehicle or container?"
-            },
-            value: {
-              text: data['change-vehicle']
-            },
-            actions: {
-              items: [
-                {
-                  href: "change-vehicle",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
-                }
-              ]
-            }
-          }
-      ), vehicleContainer) %}
+                  {
+                    key: {
+                      text: "Did the goods move to a different vehicle or container?"
+                    },
+                    value: {
+                      text: data['change-vehicle']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "change-vehicle",
+                          text: "Change",
+                          visuallyHiddenText: "change vehicle"
+                        }
+                      ]
+                    }
+                  }
+                  ), vehicleContainer) %}
+
+        {#}% set incident = [] %}
 
         {% if (data['change-vehicle'] == "No") %}
-          {% set vehicleContainer = (vehicleContainer.push(
+          {% set incident = (incident.push(
           { 
             key: {
               text: "What happened on route?"
@@ -136,11 +140,13 @@
               ]
             }
           }
-      ), vehicleContainer) %}
+      ), incident) %}
         {% endif %}
+        
+        {#{% set vehicleInfo = [] %}
 
         {% if (data['change-vehicle'] == "Yes") %}
-          {% set vehicleContainer = (vehicleContainer.push(
+          {% set vehicleInfo = (vehicleInfo.push(
           { 
             key: {
               text: "What did the goods move to?"
@@ -158,11 +164,11 @@
               ]
             }
           }
-      ), vehicleContainer) %}
+      ), vehicleInfo) %}
         {% endif %}
 
         {% if (data['new-transport-type'] == "Vehicle") %}
-          {% set vehicleContainer = (vehicleContainer.push(
+          {% set vehicleInfo = (vehicleInfo.push(
           { 
             key: {
               text: "What is the name, registration or reference?"
@@ -197,11 +203,11 @@
               ]
             }
           }
-      ), vehicleContainer) %}
+      ), vehicleInfo) %}
         {% endif %}
 
         {% if (data['new-transport-type'] == "Container") %}
-          {% set vehicleContainer = (vehicleContainer.push(
+          {% set vehicleInfo = (vehicleInfo.push(
           { 
             key: {
               text: "What is the new container number?"
@@ -219,11 +225,11 @@
               ]
             }
           }
-      ), vehicleContainer) %}
+      ), vehicleInfo) %}
         {% endif %}
 
         {% if (data['new-transport-type'] == "Both") %}
-          {% set vehicleContainer = (vehicleContainer.push(
+          {% set vehicleInfo = (vehicleInfo.push(
           { 
             key: {
               text: "What is the name, registration or reference?"
@@ -275,37 +281,79 @@
               ]
             }
           }
-      ), vehicleContainer) %}
+      ), vehicleInfo) %}
         {% endif %}
 
-        {% set sealInfo = [] %}
+        {% set seals = [] %}
 
-        {% set sealInfo = (sealInfo.push(
-          {
+        <h2 class="govuk-heading-m">Seals</h1>
+
+        {% set seals = (seals.push(
+                {
+                    key: {
+                    text: "Have any of the seals changed?"
+                    },
+                    value: {
+                    text: data['seals-changed']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "seals-changed",
+                        text: "Change",
+                        visuallyHiddenText: "date of birth"
+                        }
+                    ]
+                    }
+                }
+                ), seals) %}
+
+        {% if (data['seals-changed'] == "Yes ") %}
+          {% set seals = (seals.push(
+          { 
             key: {
-              text: "Have any of the seals changed?"
+              text: "What is the new seal number?"
             },
             value: {
-              text: data['where-are-the-goods']
+              text: data['new-seal-number']
             },
             actions: {
               items: [
                 {
-                  href: "where-goods",
+                  href: "new-seal-number",
                   text: "Change",
-                  visuallyHiddenText: "date of birth"
+                  visuallyHiddenText: "if the event was reported in "
                 }
               ]
             }
           }
-      ), sealInfo) %}
+      ), seals) %}
+        {% endif %}
 
+        {% set seals = (seals.push(
+                {
+                    key: {
+                    text: "Has there been any other events on route?"
+                    },
+                    value: {
+                    text: data['anything-else-happened']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "anything-else-happened",
+                        text: "Change",
+                        visuallyHiddenText: "date of birth"
+                        }
+                    ]
+                    }
+                }
+                ), seals) %}#}
 
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
-                rows: eventInfo,
-                rows: vehicleContainer,
-                rows: sealInfo
+                rows: somethingHappened,
+                rows: vehicleContainer
         }) }}
 
         {{ govukButton({
