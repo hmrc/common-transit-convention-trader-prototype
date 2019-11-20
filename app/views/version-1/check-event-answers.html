@@ -26,7 +26,7 @@
         {% set eventInfo = (eventInfo.push(
                   {
                     key: {
-                      text: "Has something happened on route?"
+                      text: "Did something happen on the route?"
                     },
                     value: {
                       text: data['something-happened']
@@ -43,7 +43,7 @@
                   },
                   { 
                     key: {
-                      text: "Which country did the event happen in?"
+                      text: "Which country were the goods in when the event happened?"
                     },
                     value: {
                       text: data['event-country']
@@ -77,7 +77,7 @@
                   },
                   { 
                     key: {
-                      text: "Has this event been reported to a customs authority?"
+                      text: "Has this event been reported to customs?"
                     },
                     value: {
                       text: data['event-report']
@@ -166,7 +166,7 @@
           {% set vehicleContainer = (vehicleContainer.push(
           { 
             key: {
-              text: "What is the name, registration or reference?"
+              text: "What is the vehicle name, registration or reference?"
             },
             value: {
               text: data['vehicle-reference']
@@ -227,7 +227,7 @@
           {% set vehicleContainer = (vehicleContainer.push(
           { 
             key: {
-              text: "What is the name, registration or reference?"
+              text: "What is the vehicle name, registration or reference?"
             },
             value: {
               text: data['vehicle-reference']
