@@ -79,7 +79,7 @@ Check your answers before sending this arrival notification - Name of service - 
                     text: "Which customs sub-place has the goods?"
                     },
                     value: {
-                    text: data['border-force-office']
+                    text: data['customs-facility']
                     },
                     actions: {
                     items: [
@@ -96,14 +96,14 @@ Check your answers before sending this arrival notification - Name of service - 
                     text: "Which Border Force office supervises this place?"
                     },
                     value: {
-                    text: data['customs-facility']
+                    text: data['border-force-office']
                     },
                     actions: {
                     items: [
                         {
-                        href: "customs-facility",
+                        href: "border-force-office",
                         text: "Change",
-                        visuallyHiddenText: "which location has the goods?"
+                        visuallyHiddenText: "which Border Force office supervises this place"
                         }
                     ]
                     }
@@ -198,7 +198,7 @@ Check your answers before sending this arrival notification - Name of service - 
                       
                       {
                         key: {
-                          text: "Is NE11 1AA the place of notification?"
+                          text: "Is "+data['address-postcode']+" the place of notification?"
                         },
                         value: {
                           text: data['place-postcode']
@@ -208,7 +208,7 @@ Check your answers before sending this arrival notification - Name of service - 
                             {
                               href: "place-of-notification-postcode",
                               text: "Change",
-                              visuallyHiddenText: "if the postcode is the place of notification"
+                              visuallyHiddenText: "if "+data['address-postcode']+" is the place of notification"
                             }
                           ]
                         }
@@ -216,7 +216,7 @@ Check your answers before sending this arrival notification - Name of service - 
 
                       {
                         key: {
-                          text: "What is the place of notification?"
+                          text: "Where is the place of notification?"
                         },
                         value: {
                           text: data['place-notification']
