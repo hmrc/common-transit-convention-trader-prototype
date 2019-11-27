@@ -301,7 +301,26 @@
           }
       ), sealInfo) %}
 
-      {% if (data['seals-changed'] == "Yes") %}
+      {% if (data['seals-changed'] == "Yes ") %}
+      {% set sealInfo = (sealInfo.push(
+          { 
+            key: {
+              text: "What is the new seal number?"
+            },
+            value: {
+              text: data['new-seal-number']
+            },
+            actions: {
+              items: [
+                {
+                  href: "new-seal-number",
+                  text: "Change",
+                  visuallyHiddenText: "if the event was reported in "
+                }
+              ]
+            }
+          }
+      ), sealInfo) %}
       {% endif %}
 
         <h2 class="govuk-heading-m">Events</h1>

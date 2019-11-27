@@ -25,9 +25,9 @@ Check your answers before sending this arrival notification - Name of service - 
 
         <h1 class="govuk-heading-xl">Check your answers before sending this arrival notification</h1>
 
-        {{ govukSummaryList({
-                classes: 'govuk-!-margin-bottom-9',
-                rows: [
+        {% set movementReference = [] %}
+
+        {% set movementReference = (movementReference.push(
                 {
                     key: {
                     text: "Movement reference number"
@@ -40,17 +40,14 @@ Check your answers before sending this arrival notification - Name of service - 
                         {
                         href: "movement-reference",
                         text: "Change",
-                        visuallyHiddenText: "movement reference number"
+                        visuallyHiddenText: "date of birth"
                         }
                     ]
                     }
                 }
-                ]
-                }) }}
+                ), movementReference) %}
 
         {% set goodsLocation = [] %}
-
-        <h2 class="govuk-heading-m">Goods details</h1>
 
         {% set goodsLocation = (goodsLocation.push(
                 {
@@ -133,115 +130,70 @@ Check your answers before sending this arrival notification - Name of service - 
                 ), goodsLocation) %}
         {% endif %}
 
-        {{ govukSummaryList({
-                classes: 'govuk-!-margin-bottom-9',
-                rows: goodsLocation
-                }) }}
+        {% set traderDetails = [] %}
 
-        <h2 class="govuk-heading-m">Trader details</h1>
-
-        {{ govukSummaryList({
-                    classes: 'govuk-!-margin-bottom-9',
-                    rows: [
-                      {
-                        key: {
-                          text: "Name"
-                        },
-                        value: {
-                          text: data['trader-name']
-                        },
-                        actions: {
-                          items: [
-                            {
-                              href: "trader-name",
-                              text: "Change",
-                              visuallyHiddenText: "trader name"
-                            }
-                          ]
-                        }
-                      },           
-                      {
-                        key: {
-                          text: "Address"
-                        },
-                        value: {
-                         html: data['address-line-1'] + "<br>" + data['address-town'] + "<br>" + data['address-postcode']
-                        },
-                        actions: {
-                          items: [
-                            {
-                              href: "trader-address",
-                              text: "Change",
-                              visuallyHiddenText: "trader-address"
-                            }
-                          ]
-                        }
-                      },      
-                      {
-                        key: {
-                          text: "EORI number"
-                        },
-                        value: {
-                          text: data['eori-number']
-                        },
-                        actions: {
-                          items: [
-                            {
-                              href: "trader-eori",
-                              text: "Change",
-                              visuallyHiddenText: "eori number"
-                            }
-                          ]
-                        }
-                      }
-                    ]
-                  }) }}
-
-        {% set events = [] %}
-        <h2 class="govuk-heading-m">Events</h1>
-
-        {% set events = (events.push(
-                  {
+        {% set traderDetails = (traderDetails.push(
+                {
                     key: {
-                      text: "Has something happened on route?"
+                    text: "Name"
                     },
                     value: {
-                      text: data['something-happened']
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "something-happened",
-                          text: "Change",
-                          visuallyHiddenText: "if something happened"
-                        }
-                      ]
-                    }
-                  }
-                  ), events) %}
-
-        {% if (data['something-happened'] == "Yes ") %}
-          {% set events = (events.push(
-                    { 
-                    key: {
-                    text: "Which country did the event happen in?"
-                    },
-                    value: {
-                    text: data['event-country']
+                    text: data['trader-name']
                     },
                     actions: {
                     items: [
                         {
-                        href: "event-country",
+                        href: "trader-name",
                         text: "Change",
-                        visuallyHiddenText: "which country the event happened in"
+                        visuallyHiddenText: "date of birth"
                         }
                     ]
                     }
-                    },
-                    { 
+                },
+                {
                     key: {
-                    text: "Where did the event happen?"
+                    text: "Address"
+                    },
+                    value: {
+                    text: data['address-line-1'] + "<br>" + data['address-town'] + "<br>" + data['address-postcode']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "trader-address",
+                        text: "Change",
+                        visuallyHiddenText: "date of birth"
+                        }
+                    ]
+                    }
+                },
+                {
+                    key: {
+                    text: "EORI number"
+                    },
+                    value: {
+                    text: data['eori-number']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "eori-number",
+                        text: "Change",
+                        visuallyHiddenText: "date of birth"
+                        }
+                    ]
+                    }
+                }
+                ), traderDetails) %}
+
+        
+
+        {% set events = [] %}
+
+        {% set events = (events.push(
+                {
+                    key: {
+                    text: "Event 1"
                     },
                     value: {
                     text: data['event-place']
@@ -249,427 +201,31 @@ Check your answers before sending this arrival notification - Name of service - 
                     actions: {
                     items: [
                         {
-                        href: "event-place",
-                        text: "Change",
-                        visuallyHiddenText: "where the event happened"
-                        }
-                    ]
-                    }
-                    },
-                    { 
-                    key: {
-                    text: "Has this event been reported to a customs authority?"
-                    },
-                    value: {
-                    text: data['event-report']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "event-report",
-                        text: "Change",
-                        visuallyHiddenText: "if the event has been reported"
-                        }
-                    ]
-                    }
-                    }
-                 ), events) %}
-
-        {% endif %}
-
-        {% if (data['event-report'] == "Yes") %}
-          {% set events = (events.push(
-                    { 
-                    key: {
-                    text: "When was the event reported?"
-                    },
-                    value: {
-                    text: data['date-reported'],
-                    html: data['date-reported-day'] +" "+ data['date-reported-month'] +" "+ data['date-reported-year']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "date-reported",
-                        text: "Change",
-                        visuallyHiddenText: "when the event was reported"
-                        }
-                    ]
-                    }
-                },
-
-                { 
-                    key: {
-                    text: "Who reported the event?"
-                    },
-                    value: {
-                    text: data['who-reported']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "who-reported",
-                        text: "Change",
-                        visuallyHiddenText: "who reported the event"
-                        }
-                    ]
-                    }
-                },
-
-                { 
-                    key: {
-                    text: "Was the event reported in "+data['event-country']+"?"
-                    },
-                    value: {
-                    text: data['reporting-country']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "reporting-country",
-                        text: "Change",
-                        visuallyHiddenText: "if the event was reported in "
-                        }
-                    ]
-                    }
-                }
-            ), events) %}
-        {% endif %}
-
-        {% if (data['reporting-country'] == "No " ) %}
-          {% set events = (events.push(
-                { 
-                key: {
-                  text: "Which country was the event reported in?"
-                },
-                value: {
-                  text: data['reporting-country']
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "where-reported-country",
-                      text: "Change",
-                      visuallyHiddenText: "when the event was reported"
-                    }
-                  ]
-                }
-              },
-               { 
-            key: {
-              text: "Where was the event reported?"
-            },
-            value: {
-              text: data['where-reported-place']
-            },
-            actions: {
-              items: [
-                {
-                  href: "where-reported-place",
-                  text: "Change",
-                  visuallyHiddenText: "when the event was reported"
-                }
-              ]
-            }
-          }
-              ), events) %}
-        {% endif %}
-
-        {% if (data['reporting-country'] == "Yes ") %}
-          {% set events = (events.push(
-          { 
-            key: {
-              text: "Was the event reported in "+data['event-place']+"?"
-            },
-            value: {
-              text: data['reporting-place']
-            },
-            actions: {
-              items: [
-                {
-                  href: "reporting-place",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in"
-                }
-              ]
-            }
-          }
-      ), events) %}
-        {% endif %}
-
-        {% if (data['reporting-place'] == "No " ) %}
-          {% set events = (events.push(
-            { 
-            key: {
-              text: "Where was the event reported?"
-            },
-            value: {
-              text: data['where-reported-place']
-            },
-            actions: {
-              items: [
-                {
-                  href: "where-reported-place",
-                  text: "Change",
-                  visuallyHiddenText: "when the event was reported"
-                }
-              ]
-            }
-          }
-      ), events) %}
-        {% endif %}
-
-        {% if (data['event-report'] == "Yes") %}
-          {% set events = (events.push(
-          { 
-            key: {
-              text: "Has there been any other events on route?"
-            },
-            value: {
-              text: data['anything-else-happened']
-            },
-            actions: {
-              items: [
-                {
-                  href: "anything-else-happened",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
-                }
-              ]
-            }
-          }
-      ), events) %}
-        {% endif %}
-
-        
-        {% if (data['event-report'] == "No") %}
-          {% set events = (events.push(
-          { 
-            key: {
-              text: "Did the goods move to a different vehicle or container?"
-            },
-            value: {
-              text: data['change-vehicle']
-            },
-            actions: {
-              items: [
-                {
-                  href: "change-vehicle",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
-                }
-              ]
-            }
-          }
-      ), events) %}
-        {% endif %}
-
-        {% if (data['change-vehicle'] == "No") %}
-          {% set events = (events.push(
-          { 
-            key: {
-              text: "What happened on route?"
-            },
-            value: {
-              text: data['what-happened']
-            },
-            actions: {
-              items: [
-                {
-                  href: "incident-information",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
-                }
-              ]
-            }
-          }
-      ), events) %}
-        {% endif %}
-
-        {% if (data['change-vehicle'] == "Yes") %}
-          {% set events = (events.push(
-          { 
-            key: {
-              text: "What did the goods move to?"
-            },
-            value: {
-              text: data['new-transport-type']
-            },
-            actions: {
-              items: [
-                {
-                  href: "new-transport-type",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
-                }
-              ]
-            }
-          }
-      ), events) %}
-        {% endif %}
-
-        {% if (data['new-transport-type'] == "Vehicle") %}
-          {% set events = (events.push(
-          { 
-            key: {
-              text: "What is the name, registration or reference?"
-            },
-            value: {
-              text: data['vehicle-reference']
-            },
-            actions: {
-              items: [
-                {
-                  href: "vehicle-reference",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
-                }
-              ]
-            }
-          },
-          { 
-            key: {
-              text: "Which country is the vehicle registered in?"
-            },
-            value: {
-              text: data['vehicle-country']
-            },
-            actions: {
-              items: [
-                {
-                  href: "vehicle-country",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
-                }
-              ]
-            }
-          }
-      ), events) %}
-        {% endif %}
-
-        {% if (data['new-transport-type'] == "Container") %}
-          {% set events = (events.push(
-          { 
-            key: {
-              text: "What is the new container number?"
-            },
-            value: {
-              text: data['new-container-number']
-            },
-            actions: {
-              items: [
-                {
-                  href: "new-container-name",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
-                }
-              ]
-            }
-          }
-      ), events) %}
-        {% endif %}
-
-        {% if (data['new-transport-type'] == "Both") %}
-          {% set events = (events.push(
-          { 
-            key: {
-              text: "What is the name, registration or reference?"
-            },
-            value: {
-              text: data['vehicle-reference']
-            },
-            actions: {
-              items: [
-                {
-                  href: "vehicle-reference",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
-                }
-              ]
-            }
-          },
-          { 
-            key: {
-              text: "Which country is the vehicle registered in?"
-            },
-            value: {
-              text: data['vehicle-country']
-            },
-            actions: {
-              items: [
-                {
-                  href: "vehicle-country",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
-                }
-              ]
-            }
-          },
-          { 
-            key: {
-              text: "What is the new container number?"
-            },
-            value: {
-              text: data['new-container-number']
-            },
-            actions: {
-              items: [
-                {
-                  href: "new-container-name",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
-                }
-              ]
-            }
-          }
-      ), events) %}
-        {% endif %}
-
-
-        {% set events = (events.push(
-                {
-                    key: {
-                    text: "Have any of the seals changed?"
-                    },
-                    value: {
-                    text: data['seals-changed']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "seals-changed",
+                        href: "check-event-answers",
                         text: "Change",
                         visuallyHiddenText: "date of birth"
                         }
                     ]
                     }
-                }
-                ), events) %}
-
-        {% if (data['seals-changed'] == "Yes ") %}
-          {% set events = (events.push(
-          { 
-            key: {
-              text: "What is the new seal number?"
-            },
-            value: {
-              text: data['new-seal-number']
-            },
-            actions: {
-              items: [
+                },
                 {
-                  href: "new-seal-number",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
-                }
-              ]
-            }
-          }
-      ), events) %}
-        {% endif %}
-
-        {% set events = (events.push(
-                {
+                    key: {
+                    text: "Event 2"
+                    },
+                    value: {
+                    text: "Champs Elysees in Paris"
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "check-event-answers",
+                        text: "Change",
+                        visuallyHiddenText: "date of birth"
+                        }
+                    ]
+                    }
+                },
+                 {
                     key: {
                     text: "Has there been any other events on route?"
                     },
@@ -688,14 +244,38 @@ Check your answers before sending this arrival notification - Name of service - 
                 }
                 ), events) %}
 
+
+        
+
          
 
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
-                rows: movementReference,
-                rows: goodsLocation,
-                rows: events
+                rows: movementReference
         }) }}
+
+        <h2 class="govuk-heading-m">Goods details</h1>
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: goodsLocation
+        }) }}
+
+        <h2 class="govuk-heading-m">Trader details</h1>
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: traderDetails
+        }) }}
+
+        <h2 class="govuk-heading-m">Events</h2>
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: events
+
+        }) }}
+
 
         <h2 class="govuk-heading-m">Now send your arrival notification</h2>
 
