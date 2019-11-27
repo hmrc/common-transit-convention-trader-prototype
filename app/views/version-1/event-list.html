@@ -13,7 +13,7 @@ You have added 1 new container
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">You have added 1 container</h1>
+    <h1 class="govuk-heading-xl">You have added 2 events</h1>
 
     <form class="form" method="post">
 
@@ -22,28 +22,50 @@ You have added 1 new container
           rows: [
             {
               key: {
-                text: data['new-container-number'],
+                text: "Event 1",
                 classes: "govuk-!-width-one-half"
               },
               value: {
-                text: ""
+                text: data['event-place']
               },
               actions: {
                 classes: "govuk-!-width-one-third",
                 items: [
                   {
-                    href: "new-container-number",
+                    href: "check-event-answers",
                     text: "Change",
                     visuallyHiddenText: "name"
                   },
                   {
-                    href: "remove-container",
+                    href: "remove-event",
                     text: "Remove",
                     visuallyHiddenText: ""
                   }
                 ]
               }
-            }
+            },
+            { 
+                    key: {
+                      text: "Event 2"
+                    },
+                    value: {
+                      text: "Champs Elysees in Paris"
+                    },
+                    actions: {
+                      items: [
+                        {
+                    href: "check-event-answers",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  },
+                  {
+                    href: "remove-event",
+                    text: "Remove",
+                    visuallyHiddenText: ""
+                  }
+                      ]
+                    }
+                  }
           ]
         }) }}
 
@@ -58,18 +80,21 @@ You have added 1 new container
           name: "changed-name",
           fieldset: {
             legend: {
-              text: "Do you need to add another container?",
+              text: "Do you need to add another event?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--m"
             }
           },
+          hint: {
+          text: "This will be on the transit accompanying document (TAD). Tell us about accidents, damage to seals, unloading goods, changes to the vehicle, type of transport or route."
+        },
           items: [
             {
-              value: "yes redirect(new-container-number-2)",
+              value: "yes redirect(event-country)",
               text: "Yes"
             },
             {
-              value: "no redirect(seals-changed)",
+              value: "no redirect(check-answers)",
               text: "No"
             }
           ]
