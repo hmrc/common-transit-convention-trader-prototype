@@ -155,7 +155,7 @@ Check your answers before sending this arrival notification - Name of service - 
                     text: "Address"
                     },
                     value: {
-                    text: data['address-line-1'] + "<br>" + data['address-town'] + "<br>" + data['address-postcode']
+                    html: data['address-line-1'] + "<br>" + data['address-town'] + "<br>" + data['address-postcode']
                     },
                     actions: {
                     items: [
@@ -227,7 +227,7 @@ Check your answers before sending this arrival notification - Name of service - 
                 },
                  {
                     key: {
-                    text: "Has there been any other events on route?"
+                    text: "Do you need to add another event?"
                     },
                     value: {
                     text: data['anything-else-happened']
@@ -235,7 +235,7 @@ Check your answers before sending this arrival notification - Name of service - 
                     actions: {
                     items: [
                         {
-                        href: "anything-else-happened",
+                        href: "event-list",
                         text: "Change",
                         visuallyHiddenText: "date of birth"
                         }
