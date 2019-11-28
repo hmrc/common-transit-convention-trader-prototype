@@ -12,11 +12,11 @@ Which country is the vehicle registered in?
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    {% if (data['new-transport-type'] == "Vehicle") %}
+    {#{% if (data['new-transport-type'] == "Vehicle") %}
     <form class="form" action="seals-changed" method="post">
     {% else %}
     <form class="form" action="new-container-number" method="post">
-    {% endif %}
+    {% endif %}#}
 
 
     <h1 class="govuk-heading-xl">Which country is the vehicle registered in?</h1>
@@ -29,7 +29,8 @@ Which country is the vehicle registered in?
 
 
     {{ govukButton({
-      text: "Save and continue"
+      text: "Save and continue",
+      href: "seals-changed"
     }) }}
 
   </div>
