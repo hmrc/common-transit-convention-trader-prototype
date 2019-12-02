@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is the access code?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="check-answers" method="post">
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+<h1 class="govuk-heading-xl">What is the access code?</h1>
+{{ govukInput({
+  label: {
+    text: ""
+  },
+  id: "access-code",
+  classes: "govuk-input--width-20",
+  name: "access-code"
+}) }}
+            
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Save and continue"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

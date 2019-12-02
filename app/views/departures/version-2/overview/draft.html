@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers before submitting your declaration
+
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <form class="form" method="post">
+
+        <h1 class="govuk-heading-xl">DraftCheck your answers</h1>
+
+      {% set onBehalf = [] %}
+
+      {% if (data['on-behalf-of-someone-else'] == "Yes") %}
+        {% set onBehalf = (onBehalf.push(
+
+          {
+            key: {
+              text: "Are you making this declaration on behalf of someone else?"
+            },
+            value: {
+              text: data['on-behalf-of-someone-else']
+            },
+            actions: {
+              items: [
+                {
+                  href: "making-declaration-on-behalf-of-someone-else",
+                  text: "Change",
+                  visuallyHiddenText: "Making declaration on behalf of someone else"
+                }
+              ]
+            }
+          }
+
+      ), onBehalf) %}
+       {% endif %}
+
+       {{ govukSummaryList({
+         classes: 'govuk-!-margin-bottom-9',
+         rows: onBehalf
+       }) }}
+
+
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

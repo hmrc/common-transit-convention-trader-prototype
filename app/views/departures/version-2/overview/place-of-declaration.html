@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Where is the place of declaration?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Where is the place of declaration?</h1>
+
+    <form action="making-declaration-on-behalf-of-someone-else" class="form" method="post">
+
+      {{ govukInput({
+        classes: "govuk-input--width-20",
+        id: "place-of-declaration",
+        name: "place-of-declaration"
+      }) }}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

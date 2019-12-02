@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What are the traders details? 
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="check-answers" method="post">
+
+        <h1 class="govuk-heading-xl">What are the traders details?</h1>
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+          label: {
+            text: "Name"
+          },
+          id: "name",
+          classes: "govuk-input--width-20",
+          name: "traderName"
+        }) }} 
+
+         {{ govukInput({
+          label: {
+            text: "Number and street"
+          },
+          id: "number-street",
+          classes: "govuk-input--width-20",
+          name: "number-street"
+        }) }} 
+
+        {{ govukInput({
+          label: {
+            text: "Town"
+          },
+          id: "town",
+          classes: "govuk-input--width-20",
+          name: "town"
+        }) }} 
+
+        {{ govukInput({
+          label: {
+            text: "Postcode"
+          },
+          id: "postcode",
+          classes: "govuk-input--width-20",
+          name: "postcode"
+        }) }} 
+
+        
+        {{ govukInput({
+          label: {
+            text: "Country"
+          },
+          id: "country",
+          classes: "govuk-input--width-20",
+          name: "country"
+        }) }} 
+
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Save and continue"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
