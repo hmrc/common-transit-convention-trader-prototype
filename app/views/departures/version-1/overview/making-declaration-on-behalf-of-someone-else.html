@@ -21,7 +21,7 @@ Are you making this declaration on behalf of someone else?
           name: "on-behalf-of-someone-else",
           fieldset: {
             legend: {
-              text: "Are you making this declaration on behalf of someone else?",
+              text: "Who are you making this declaration for?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
@@ -31,12 +31,12 @@ Are you making this declaration on behalf of someone else?
           },
           items: [
             {
-              value: "Yes, redirect(name-and-capacity)",
-              text: "Yes"
+              value: "No, redirect(country-of-despatch)",
+              text: "Myself"
             },
             {
-              value: "No, redirect(country-of-despatch)",
-              text: "No"
+              value: "Yes, redirect(name-and-capacity)",
+              text: "Someone else"
             }
           ]
         }) }}
