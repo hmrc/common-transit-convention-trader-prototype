@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Did anything else happen on the route? 
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="correct-mrn-error" method="post">
+
+     <h1 class="govuk-heading-xl">Arrival notification rejected</h1>
+    <p class="govuk-heading-body">You sent an arrival notification for movement reference number 10IT021300100054F2.</p>
+  
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Trader at destination"
+      },
+      value: {
+        text: "M&S"
+      }
+    },
+    {
+      key: {
+        text: "EORI number"
+      },
+      value: {
+        html: "GB02847107794274"
+      }
+    },
+    {
+      key: {
+        text: "Place of notification"
+      },
+      value: {
+        html: '<p class="govuk-body">Teesport</p>'
+      }
+    }, 
+    {
+      key: {
+        text: "Supervising office"
+      },
+      value: {
+        html: 'Newcastle'
+      }
+    }, 
+    {
+      key: {
+        text: "Procedure"
+      },
+      value: {
+        html: '<p class="govuk-body">Normal</p>'
+      }
+    }
+  ]
+}) }}
+
+
+    <p class="govuk-heading-body">It has been rejected because we cannot find a transit declaration with that reference.</p>
+    <p class="govuk-heading-body">Check that you have entered the correct movement reference number.</p>
+    <p class="govuk-heading-body">If the movement reference number is correct, you will need to telephone the helpdesk 0300 322 7095. It is open 8:00am to 5:00pm excluding bank holildays.</p>
+
+      {{ govukButton({
+    text: "Continue"
+  }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
