@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Did something happen on the route?
+Did any events happen on the journey?
 {% endblock %}
 
 {% block beforeContent %}
@@ -25,13 +25,24 @@ Did something happen on the route?
   name: "something-happened",
   fieldset: {
     legend: {
-      text: "Did something happen on the route?",
+      text: "Did any events happen on the journey?",
       isPageHeading: true, 
       classes: "govuk-fieldset__legend--xl"
     }
   },
   hint: {
-    text: "This will be on the transit accompanying document (TAD). Tell us about accidents, damage to seals, unloading goods, changes to the vehicle, type of transport or route."
+    html: 
+    '<p class="govuk-hint">It should be recorded on the transit accompanying document (TAD).</p>
+    <p class="govuk-hint">Tell us if:</p>
+
+      <ul class="govuk-list govuk-list--bullet govuk-hint">
+      <li>there was an accident</li>
+      <li>any seals were damaged</li>
+      <li>goods had to be unloaded</li>
+      <li>goods moved to a different vehicle</li>
+      <li>goods moved to a different type of transport</li>
+      <li>the planned route changed</li>
+      </ul>'
   },
   items: [
     {
