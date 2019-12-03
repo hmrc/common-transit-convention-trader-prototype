@@ -3,7 +3,6 @@
 {% block pageTitle %}
 GOV.UK Prototype Kit
 {% endblock %}
-
 {% block beforeContent %}
 <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
@@ -16,7 +15,7 @@ GOV.UK Prototype Kit
   <form class="form" method="post">
 
 
-    {% set heading="Are you sure you want to delete this declaration?" %}
+    {% set heading="Are you sure you want to delete the arrival notification sent for 10IT02130010005402?" %}
 
     {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -33,11 +32,11 @@ GOV.UK Prototype Kit
         },
         items: [
           {
-            value: "Yes redirect(draft-declarations)",
+            value: "Yes redirect(arrivals)",
             text: "Yes"
           },
           {
-            value: "No redirect(draft-declarations)",
+            value: "No redirect(arrivals)",
             text: "No"
           }
         ]
