@@ -101,7 +101,7 @@
           
           { 
             key: {
-              text: "Did the goods move to a different container or vehicle?"
+              text: "Did the goods move to a different vehicle or container?"
             },
             value: {
               text: data['change-vehicle']
@@ -223,15 +223,17 @@
       ), vehicleContainer) %}
         {% endif %}
 
+        {% set newContainer = [] %}
+
+
         {% if (data['new-transport-type'] == "Both") %}
-          {% set vehicleContainer = (vehicleContainer.push(
-            
+          {% set newContainer = (newContainer.push(
             { 
               key: {
                 text: "What is the new container number?"
               },
               value: {
-                text: data['new-container-number']
+                text: "390"
               },
               actions: {
                 items: [
@@ -243,6 +245,33 @@
                 ]
               }
             },
+            { 
+              key: {
+                text: "What is the new container number?"
+              },
+              value: {
+                text: "876"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "new-container-name",
+                    text: "Change",
+                    visuallyHiddenText: "if the event was reported in "
+                  }
+                ]
+              }
+            }
+          
+      ), newContainer) %}
+        {% endif %}
+
+        {% set newVehicle = [] %}
+
+
+        {% if (data['new-transport-type'] == "Both") %}
+          {% set newVehicle = (newVehicle.push(
+            
             { 
             key: {
               text: "What is the vehicle name, registration or reference?"
@@ -277,7 +306,8 @@
               ]
             }
           }
-      ), vehicleContainer) %}
+          
+      ), newVehicle) %}
         {% endif %}
 
         {% set sealInfo = [] %}
@@ -288,7 +318,7 @@
               text: "Have any of the seals changed?"
             },
             value: {
-              text: data['seals-changed']
+              text: "Yes"
             },
             actions: {
               items: [
@@ -302,14 +332,33 @@
           }
       ), sealInfo) %}
 
-      {% if (data['seals-changed'] == "Yes ") %}
-      {% set sealInfo = (sealInfo.push(
+      {% set newSeal = [] %}
+
+
+      {% set newSeal = (newSeal.push(
           { 
             key: {
-              text: "What is the new seal number?"
+              text: "New seal number"
             },
             value: {
-              text: data['new-seal-number']
+              text: "2222"
+            },
+            actions: {
+              items: [
+                {
+                  href: "new-seal-number",
+                  text: "Change",
+                  visuallyHiddenText: "if the event was reported in "
+                }
+              ]
+            }
+          },
+          { 
+            key: {
+              text: "New seal number"
+            },
+            value: {
+              text: "9922"
             },
             actions: {
               items: [
@@ -321,8 +370,7 @@
               ]
             }
           }
-      ), sealInfo) %}
-      {% endif %}
+      ), newSeal) %}
 
 
         {{ govukSummaryList({
@@ -330,21 +378,45 @@
                 rows: eventInfo
         }) }}
 
-        <h2 class="govuk-heading-m">Different vehicle and container</h1>
+        <h2 class="govuk-heading-m">Different vehicle and container</h2>
 
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
                 rows: vehicleContainer
         }) }}
 
-        <h2 class="govuk-heading-m">Changed seals</h1>
+        <h2 class="govuk-heading-m">Different container</h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: newContainer
+        }) }}
+
+        <h2 class="govuk-heading-m">Different vehicle</h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: newVehicle
+        }) }}
+
+
+        <h2 class="govuk-heading-m">Changed seals</h2>
 
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
                 rows: sealInfo
         }) }}
 
+        <h2 class="govuk-heading-m">New seals</h2>
+
+        {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-9',
+            rows: newSeal
+    }) }}
+
         <p><a href="event-list">Add or remove seals</a><p>
+
+
 
 
         {{ govukButton({

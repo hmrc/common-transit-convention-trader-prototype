@@ -1,21 +1,16 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Check your answers before sending this arrival notification - Name of service - GOV.UK
+  Check your answers before sending this arrival notification - Name of service - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
-<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+  <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
 
-
-  
-
-  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-  {% from "govuk/components/button/macro.njk" import govukButton %}
-
-  
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -186,8 +181,6 @@ Check your answers before sending this arrival notification - Name of service - 
                 }
                 ), traderDetails) %}
 
-        
-
         {% set events = [] %}
 
         {% set events = (events.push(
@@ -224,30 +217,9 @@ Check your answers before sending this arrival notification - Name of service - 
                         }
                     ]
                     }
-                },
-                 {
-                    key: {
-                    text: "Do you need to add another event?"
-                    },
-                    value: {
-                    text: data['anything-else-happened']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "event-list",
-                        text: "Change",
-                        visuallyHiddenText: "date of birth"
-                        }
-                    ]
-                    }
                 }
+                
                 ), events) %}
-
-
-        
-
-         
 
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
@@ -273,9 +245,9 @@ Check your answers before sending this arrival notification - Name of service - 
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
                 rows: events
-
         }) }}
 
+        <p><a href="event-list">Add or remove events</a><p>
 
         <h2 class="govuk-heading-m">Now send your arrival notification</h2>
 
