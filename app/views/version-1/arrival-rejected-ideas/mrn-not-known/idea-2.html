@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Arrival notification rejected
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="correct-mrn-error" method="post">
+
+     <h1 class="govuk-heading-xl">Arrival notification rejected</h1>
+
+    <h2 class="govuk-heading-m">Arrival notification details</h2>
+  
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Movement reference number"
+      },
+      value: {
+        text: "987653456789876"
+      }
+    },
+        {
+      key: {
+        text: "Trader at destination"
+      },
+      value: {
+        text: "M&S"
+      }
+    },
+    {
+      key: {
+        text: "EORI number"
+      },
+      value: {
+        html: "GB02847107794274"
+      }
+    },
+    {
+      key: {
+        text: "Place of notification"
+      },
+      value: {
+        html: '<p class="govuk-body">Teesport</p>'
+      }
+    }, 
+    {
+      key: {
+        text: "Supervising office"
+      },
+      value: {
+        html: 'Newcastle'
+      }
+    }, 
+    {
+      key: {
+        text: "Procedure"
+      },
+      value: {
+        html: '<p class="govuk-body">Normal</p>'
+      }
+    }
+  ]
+}) }}
+
+<h2 class="govuk-heading-m">Reason for rejection</h2>
+    <p class="govuk-heading-body">It has been rejected because we cannot find a transit declaration with that reference.</p>
+
+
+  <h2 class="govuk-heading-m">What happens next</h2>  
+  <p class="govuk-body">You need to: </p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>Check that you have entered the correct movement reference number</li>
+  <li>Fix any errors</li>
+  <li>Send the arrival notification again</li>
+</ul>
+
+
+<h2 class="govuk-heading-m">What do you want to do?</h2>
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  idPrefix: "what-do-you-want-do-to",
+  name: "what-do-you-want-to-do",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "correct the movement reference number",
+      text: "Correct the movement reference number"
+    },
+    {
+      value: "delete the arrival notification",
+      text: "Delete the arrival notification"
+    }
+  ]
+}) }}
+
+
+   
+
+      {{ govukButton({
+    text: "Continue"
+  }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
