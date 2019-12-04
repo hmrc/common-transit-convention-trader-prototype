@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Did anything else happen on the route? 
+This arrival notification was rejected
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,14 +15,23 @@ Did anything else happen on the route?
 
     <form class="form" action="correct-mrn-error" method="post">
 
-     <h1 class="govuk-heading-xl">Arrival notification rejected</h1>
-    <p class="govuk-heading-body">You sent an arrival notification for movement reference number 10IT021300100054F2.</p>
+     <h1 class="govuk-heading-xl">This arrival notification was rejected</h1>
+
+    <h2 class="govuk-heading-m">Arrival notification details</h2>
   
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
 {{ govukSummaryList({
   rows: [
     {
+      key: {
+        text: "Movement reference number"
+      },
+      value: {
+        text: "987653456789876"
+      }
+    },
+        {
       key: {
         text: "Trader at destination"
       },
@@ -65,10 +74,21 @@ Did anything else happen on the route?
   ]
 }) }}
 
+<h2 class="govuk-heading-m">Why did it get rejected</h2>
+    <p class="govuk-heading-body">Because the movement reference number entered is not in the correct format</p>
+    <p class="govuk-body">Movement reference numbers must:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>Start with the year, like 19</li>
+  <li>Show the country code of the place the goods are from, like IT for Italy</li>
+  <li>Show the office of departure code (for example, Roma 1 is 306100)</li>
+  <li>Finish with eight numbers</li>
+</ul>
 
-    <p class="govuk-heading-body">It has been rejected because we cannot find a transit declaration with that reference.</p>
-    <p class="govuk-heading-body">Check that you have entered the correct movement reference number.</p>
-    <p class="govuk-heading-body">If the movement reference number is correct, you will need to telephone the helpdesk 0300 322 7095. It is open 8:00am to 5:00pm excluding bank holildays.</p>
+
+  <h2 class="govuk-heading-m">What can you do</h2>  
+  <p class="govuk-body">Check that you have entered the correct movement reference number. Fix any errors and send the arrival notification again.</p>
+  <p class="govuk-body">If the movement reference number is correct, you will need to contact the helpdesk.</p>
+
 
       {{ govukButton({
     text: "Continue"
