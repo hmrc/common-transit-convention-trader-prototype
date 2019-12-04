@@ -101,7 +101,7 @@
           
           { 
             key: {
-              text: "Did the goods move to a different container or vehicle?"
+              text: "Did the goods move to a different vehicle or container?"
             },
             value: {
               text: data['change-vehicle']
@@ -223,16 +223,17 @@
       ), vehicleContainer) %}
         {% endif %}
 
+        {% set newContainer = [] %}
+
+
         {% if (data['new-transport-type'] == "Both") %}
-        
-          {% set vehicleContainer = (vehicleContainer.push(
-            
+          {% set newContainer = (newContainer.push(
             { 
               key: {
-                text: "What is the new container number?"
+                text: "What are the new container numbers?"
               },
               value: {
-                text: data['new-container-number']
+                html: '12345678909997, <br> 78756756757655758, <br> 9753246674534'
               },
               actions: {
                 items: [
@@ -243,7 +244,16 @@
                   }
                 ]
               }
-            },
+            }
+      ), newContainer) %}
+        {% endif %}
+
+        {% set newVehicle = [] %}
+
+
+        {% if (data['new-transport-type'] == "Both") %}
+          {% set newVehicle = (newVehicle.push(
+            
             { 
             key: {
               text: "What is the vehicle name, registration or reference?"
@@ -278,7 +288,8 @@
               ]
             }
           }
-      ), vehicleContainer) %}
+          
+      ), newVehicle) %}
         {% endif %}
 
         {% set sealInfo = [] %}
@@ -300,17 +311,13 @@
                 }
               ]
             }
-          }
-      ), sealInfo) %}
-
-      {% if (data['seals-changed'] == "Yes ") %}
-      {% set sealInfo = (sealInfo.push(
+          },
           { 
             key: {
-              text: "What is the new seal number?"
+              text: "New seal numbers"
             },
             value: {
-              text: data['new-seal-number']
+              html: '1092, <br> 3442, <br> 9986, <br> 9834'
             },
             actions: {
               items: [
@@ -323,7 +330,8 @@
             }
           }
       ), sealInfo) %}
-      {% endif %}
+
+      
 
 
         {{ govukSummaryList({
@@ -331,16 +339,32 @@
                 rows: eventInfo
         }) }}
 
-        <h2 class="govuk-heading-m">Different vehicle and container</h1>
+        <h2 class="govuk-heading-m">Different vehicle and container</h2>
 
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
                 rows: vehicleContainer
         }) }}
 
-        <h3 class="govuk-heading-s">Container numbers</h3>
+        <h2 class="govuk-heading-m">Different container</h2>
 
-        <h2 class="govuk-heading-m">Changed seals</h1>
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: newContainer
+        }) }}
+
+        <p><a href="event-list">Add or remove containers</a><p>
+
+
+        <h2 class="govuk-heading-m">Different vehicle</h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: newVehicle
+        }) }}
+
+
+        <h2 class="govuk-heading-m">Changed seals</h2>
 
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
@@ -348,6 +372,8 @@
         }) }}
 
         <p><a href="event-list">Add or remove seals</a><p>
+
+
 
 
         {{ govukButton({

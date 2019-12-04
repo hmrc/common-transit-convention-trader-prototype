@@ -147,7 +147,7 @@
               text: "What did the goods move to?"
             },
             value: {
-              text: data['new-transport-type']
+              text: "Container and vehicle"
             },
             actions: {
               items: [
@@ -230,21 +230,38 @@
           {% set newContainer = (newContainer.push(
             { 
               key: {
-                text: "What are the new container numbers?"
+                text: "66967526735625"
               },
               value: {
-                html: '12345678909997 <br> 78756756757655758 <br> 9753246674534'
+                html: ''
               },
               actions: {
                 items: [
                   {
-                    href: "new-container-name",
+                    href: "seal-list",
                     text: "Change",
                     visuallyHiddenText: "if the event was reported in "
                   }
                 ]
               }
-            }
+            },
+            { 
+                key: {
+                  text: "90811526735625"
+                },
+                value: {
+                  html: ''
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "seal-list",
+                      text: "Change",
+                      visuallyHiddenText: "if the event was reported in "
+                    }
+                  ]
+                }
+              }
       ), newContainer) %}
         {% endif %}
 
@@ -300,7 +317,7 @@
               text: "Have any of the seals changed?"
             },
             value: {
-              text: data['seals-changed']
+              text: "Yes"
             },
             actions: {
               items: [
@@ -311,13 +328,18 @@
                 }
               ]
             }
-          },
+          }
+      ), sealInfo) %}
+
+      {% set newSeal = [] %}
+
+        {% set newSeal = (newSeal.push(  
           { 
             key: {
-              text: "New seal number"
+              html: '7678'
             },
             value: {
-              text: "1092"
+              text: ""
             },
             actions: {
               items: [
@@ -331,10 +353,27 @@
           },
           { 
             key: {
-              text: "New seal number"
+              html: '7078'
             },
             value: {
-              text: "8966"
+              text: ""
+            },
+            actions: {
+              items: [
+                {
+                  href: "new-seal-number",
+                  text: "Change",
+                  visuallyHiddenText: "if the event was reported in "
+                }
+              ]
+            }
+          },
+          { 
+            key: {
+              html: '7998'
+            },
+            value: {
+              text: ""
             },
             actions: {
               items: [
@@ -346,10 +385,10 @@
               ]
             }
           }
-      ), sealInfo) %}
-
+      ), newSeal) %}
       
-
+      
+          
 
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
@@ -363,14 +402,17 @@
                 rows: vehicleContainer
         }) }}
 
-        <h2 class="govuk-heading-m">Different container</h2>
+        <h2 class="govuk-heading-s">Container numbers</h2>
 
         {{ govukSummaryList({
           classes: 'govuk-!-margin-bottom-9',
           rows: newContainer
         }) }}
 
-        <h2 class="govuk-heading-m">Different vehicle</h2>
+        <p><a href="container-list.html">Add or remove containers</a><p>
+
+
+        <h2 class="govuk-heading-s">Vehicle information</h2>
 
         {{ govukSummaryList({
           classes: 'govuk-!-margin-bottom-9',
@@ -385,10 +427,16 @@
                 rows: sealInfo
         }) }}
 
-        <p><a href="event-list">Add or remove seals</a><p>
+        <h2 class="govuk-heading-s">Seal numbers</h2>
 
+        {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-9',
+            rows: newSeal
+        }) }}
 
+        <p><a href="seal-list">Add or remove seals</a><p>
 
+       
 
         {{ govukButton({
                 text: "Save and continue",
