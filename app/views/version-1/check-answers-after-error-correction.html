@@ -21,7 +21,7 @@ Check your answers before sending this arrival notification - Name of service - 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <form class="form" action="success-screen" method="post">
+      <form class="form" action="arrival-sent-after-error-correction" method="post">
 
         <h1 class="govuk-heading-xl">Check your answers before sending this arrival notification</h1>
 
@@ -33,14 +33,14 @@ Check your answers before sending this arrival notification - Name of service - 
                     text: "Movement reference number"
                     },
                     value: {
-                    text: data['correct-mrn-error']
+                    text: data['movement-reference-reject']
                     },
                     actions: {
                     items: [
                         {
-                        href: "correct-mrn-error",
+                        href: "movement-reference-reject",
                         text: "Change",
-                        visuallyHiddenText: "correct mrn error"
+                        visuallyHiddenText: "movement-reference-reject"
                         }
                     ]
                     }
@@ -55,28 +55,28 @@ Check your answers before sending this arrival notification - Name of service - 
                     text: "Where are the goods?"
                     },
                     value: {
-                    text: data['where-are-the-goods']
+                    text: "Border force office"
                     },
                     actions: {
                     items: [
                         {
                         href: "where-goods",
                         text: "Change",
-                        visuallyHiddenText: "date of birth"
+                        visuallyHiddenText: "where are the goods"
                         }
                     ]
                     }
                 }
                 ), goodsLocation) %}
 
-        {% if (data['where-are-the-goods'] == "Border Force office") %}
+        
           {% set goodsLocation = (goodsLocation.push(
                     { 
                     key: {
-                    text: "Where are the goods located?"
+                    text: "Which customs sub-place or approved location has the goods?"
                     },
                     value: {
-                    text: data['border-force-office']
+                    text: "Teesport"
                     },
                     actions: {
                     items: [
@@ -90,10 +90,10 @@ Check your answers before sending this arrival notification - Name of service - 
                 },
                 { 
                     key: {
-                    text: "Which customs approved location has the goods?"
+                    text: "Which border force office supervises?"
                     },
                     value: {
-                    text: data['customs-facility']
+                    text: "Newcastle"
                     },
                     actions: {
                     items: [
@@ -106,7 +106,7 @@ Check your answers before sending this arrival notification - Name of service - 
                     }
                 }
                 ), goodsLocation) %}
-        {% endif %}
+        
 
         {% if (data['where-are-the-goods'] == "Authorised consignee’s location") %}
           {% set goodsLocation = (goodsLocation.push(
@@ -138,7 +138,7 @@ Check your answers before sending this arrival notification - Name of service - 
                     text: "Name"
                     },
                     value: {
-                    text: data['trader-name']
+                    text: "M&S"
                     },
                     actions: {
                     items: [
@@ -155,14 +155,14 @@ Check your answers before sending this arrival notification - Name of service - 
                     text: "Address"
                     },
                     value: {
-                    html: data['address-line-1'] + "<br>" + data['address-town'] + "<br>" + data['address-postcode']
+                    html: "10 Hastings Street <br> Newcastle <br> NE92J29"
                     },
                     actions: {
                     items: [
                         {
                         href: "trader-address",
                         text: "Change",
-                        visuallyHiddenText: "date of birth"
+                        visuallyHiddenText: "trader address"
                         }
                     ]
                     }
@@ -172,7 +172,7 @@ Check your answers before sending this arrival notification - Name of service - 
                     text: "EORI number"
                     },
                     value: {
-                    text: data['eori-number']
+                    text: "GB02847107794274"
                     },
                     actions: {
                     items: [
@@ -196,14 +196,14 @@ Check your answers before sending this arrival notification - Name of service - 
                     text: "Event 1"
                     },
                     value: {
-                    text: data['event-place']
+                    text: "Berlin in Germany"
                     },
                     actions: {
                     items: [
                         {
                         href: "check-event-answers",
                         text: "Change",
-                        visuallyHiddenText: "date of birth"
+                        visuallyHiddenText: "check event answers"
                         }
                     ]
                     }
@@ -230,7 +230,7 @@ Check your answers before sending this arrival notification - Name of service - 
                     text: "Do you need to add another event?"
                     },
                     value: {
-                    text: data['anything-else-happened']
+                    text: "No"
                     },
                     actions: {
                     items: [
@@ -284,7 +284,7 @@ Check your answers before sending this arrival notification - Name of service - 
 
         {{ govukButton({
                 text: "Confirm and send",
-                href: "arrival-sent"
+                href: "arrival-sent-after-error-correction"
                 }) }}
 
       </form>
