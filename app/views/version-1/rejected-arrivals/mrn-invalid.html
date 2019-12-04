@@ -39,17 +39,25 @@ Arrival notification rejected
 
 <p class="govuk-body">We expect movement reference numbers to:</p>
 <ul class="govuk-list govuk-list--bullet">
-  <li>start with the year, like 19</li>
-  <li>show the country code of the place the start goods from</li>
+  <li>start with numbers to show the year, like 19</li>
+  <li>show the country code of the place the start goods from, like GB</li>
   <li>show the office of departure code</li>
   <li>finish with eight numbers</li>
 </ul>
 
-<p class="govuk-body">Your arrival notification details:</h2>
+<p class="govuk-body">Your arrival notification details:</p>
 
 {{ govukSummaryList({
       rows: [
-    {
+      {
+        key: {
+          text: "Updated"
+        },
+        value: {
+          text: "25 November 2019 9:19am"
+        }
+      },
+      {
       key: {
         text: "Trader at destination"
       },
