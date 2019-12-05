@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Check your answers before sending this arrival notification - Name of service - GOV.UK
+Check your answers before sending this arrival notification - Name of service - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
 
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
@@ -13,16 +13,18 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <form class="form" action="success-screen" method="post">
+    <form class="form" action="success-screen" method="post">
 
-        <h1 class="govuk-heading-xl">Check your answers before sending this arrival notification</h1>
+      <h1 class="govuk-heading-xl">Check your answers before sending this arrival notification</h1>
 
-        {% set movementReference = [] %}
+      <!-- Movement reference -->
 
-        {% set movementReference = (movementReference.push(
+      {% set movementReference = [] %}
+
+      {% set movementReference = (movementReference.push(
                 {
                     key: {
                     text: "Movement reference number"
@@ -42,9 +44,16 @@
                 }
                 ), movementReference) %}
 
-        {% set goodsLocation = [] %}
+      {{ govukSummaryList({
+                  classes: 'govuk-!-margin-bottom-9',
+                  rows: movementReference
+          }) }}
 
-        {% set goodsLocation = (goodsLocation.push(
+      <!-- Goods details -->
+
+      {% set goodsLocation = [] %}
+
+      {% set goodsLocation = (goodsLocation.push(
                 {
                     key: {
                     text: "Where are the goods?"
@@ -64,8 +73,8 @@
                 }
                 ), goodsLocation) %}
 
-        {% if (data['where-are-the-goods'] == "Border Force office") %}
-          {% set goodsLocation = (goodsLocation.push(
+      {% if (data['where-are-the-goods'] == "Border Force office") %}
+      {% set goodsLocation = (goodsLocation.push(
                     { 
                     key: {
                     text: "Where are the goods located?"
@@ -101,10 +110,10 @@
                     }
                 }
                 ), goodsLocation) %}
-        {% endif %}
+      {% endif %}
 
-        {% if (data['where-are-the-goods'] == "Authorised consignee’s location") %}
-          {% set goodsLocation = (goodsLocation.push(
+      {% if (data['where-are-the-goods'] == "Authorised consignee’s location") %}
+      {% set goodsLocation = (goodsLocation.push(
                 { 
                 key: {
                   text: "Authorised location code"
@@ -123,7 +132,16 @@
                 }
               }
                 ), goodsLocation) %}
-        {% endif %}
+      {% endif %}
+
+      <h2 class="govuk-heading-m">Goods details</h1>
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: goodsLocation
+        }) }}
+
+        <!-- Trader details -->
 
         {% set traderDetails = [] %}
 
@@ -181,86 +199,64 @@
                 }
                 ), traderDetails) %}
 
-        {% set events = [] %}
-
-        {% set events = (events.push(
-                {
-                    key: {
-                    text: "Event 1"
-                    },
-                    value: {
-                    text: data['event-place']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "check-event-answers",
-                        text: "Change",
-                        visuallyHiddenText: "date of birth"
-                        }
-                    ]
-                    }
-                },
-                {
-                    key: {
-                    text: "Event 2"
-                    },
-                    value: {
-                    text: "Champs Elysees in Paris"
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "check-event-answers",
-                        text: "Change",
-                        visuallyHiddenText: "date of birth"
-                        }
-                    ]
-                    }
-                }
-                
-                ), events) %}
-
-        {{ govukSummaryList({
-                classes: 'govuk-!-margin-bottom-9',
-                rows: movementReference
-        }) }}
-
-        <h2 class="govuk-heading-m">Goods details</h1>
-
-        {{ govukSummaryList({
-                classes: 'govuk-!-margin-bottom-9',
-                rows: goodsLocation
-        }) }}
-
         <h2 class="govuk-heading-m">Trader details</h1>
 
-        {{ govukSummaryList({
-                classes: 'govuk-!-margin-bottom-9',
-                rows: traderDetails
-        }) }}
+          {{ govukSummaryList({
+                        classes: 'govuk-!-margin-bottom-9',
+                        rows: traderDetails
+                }) }}
 
-        <h2 class="govuk-heading-m">Events</h2>
+          <!-- Events -->
 
-        {{ govukSummaryList({
-                classes: 'govuk-!-margin-bottom-9',
-                rows: events
-        }) }}
+          <h2 class="govuk-heading-m">Events</h2>
 
-        <p><a href="event-list">Add or remove events</a><p>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Event 1
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['event-place'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="event-place.html">
+                  Change<span class="govuk-visually-hidden">
+                    name</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Event 2
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Champs Elysees in Paris
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="event-place.html">
+                  Change<span class="govuk-visually-hidden">
+                    date of birth</span>
+                </a>
+              </dd>
+            </div>
+            <p style="margin-top: 15px;"><a href="event-list">Add or remove events</a><p>
 
-        <h2 class="govuk-heading-m">Now send your arrival notification</h2>
+          </dl>
 
-        <p class="govuk-body">By sending this you are confirming that the details you are providing are correct, to the best of your knowledge.</p>
-        <input type="hidden" name="answers-checked" value="true">
 
-        {{ govukButton({
+              <h2 class="govuk-heading-m">Now send your arrival notification</h2>
+
+              <p class="govuk-body">By sending this you are confirming that the details you are providing are correct,
+                to the best of your knowledge.</p>
+              <input type="hidden" name="answers-checked" value="true">
+
+              {{ govukButton({
                 text: "Confirm and send",
                 href: "arrival-sent"
                 }) }}
 
-      </form>
-    </div>
+    </form>
   </div>
+</div>
 
 {% endblock %}
