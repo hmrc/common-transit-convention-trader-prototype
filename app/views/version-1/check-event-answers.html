@@ -19,7 +19,9 @@
 
       <form class="form" action="success-screen" method="post">
 
-                <h1 class="govuk-heading-xl">Check your answers for this event</h1>
+        <h1 class="govuk-heading-xl">Check your answers for this event</h1>
+
+        <!-- First section -->
 
         {% set eventInfo = [] %}
 
@@ -94,14 +96,11 @@
                   }
                   ), eventInfo) %}
 
-        {% set vehicleContainer = [] %}
-
-
-        {% set vehicleContainer = (vehicleContainer.push(
-          
-          { 
+        {% if (data['change-vehicle'] == "No") %}
+          {% set eventInfo = (eventInfo.push(
+          {
             key: {
-              text: "Did the goods move to a different container or vehicle?"
+              text: "Did the goods move to a different vehicle or container?"
             },
             value: {
               text: data['change-vehicle']
@@ -111,15 +110,12 @@
                 {
                   href: "change-vehicle",
                   text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
+                  visuallyHiddenText: "change vehicle"
                 }
-              ]
-            }
-          }
-      ), vehicleContainer) %}
+                ]
+              }
+            },
 
-        {% if (data['change-vehicle'] == "No") %}
-          {% set vehicleContainer = (vehicleContainer.push(
           { 
             key: {
               text: "What happened on route?"
@@ -137,10 +133,17 @@
               ]
             }
           }
-      ), vehicleContainer) %}
+      ), eventInfo) %}
         {% endif %}
 
-        {% if (data['change-vehicle'] == "Yes") %}
+        {{ govukSummaryList({
+                    classes: 'govuk-!-margin-bottom-9',
+                    rows: eventInfo
+                  }) }}
+
+        <!-- Different container or vehicle -->
+
+        {# {% if (data['change-vehicle'] == "Yes") %}
           {% set vehicleContainer = (vehicleContainer.push(
           { 
             key: {
@@ -160,203 +163,259 @@
             }
           }
       ), vehicleContainer) %}
-        {% endif %}
+        {% endif %} #}
 
-        {% if (data['new-transport-type'] == "Vehicle") %}
-          {% set vehicleContainer = (vehicleContainer.push(
-          { 
-            key: {
-              text: "What is the vehicle name, registration or reference?"
-            },
-            value: {
-              text: data['vehicle-reference']
-            },
-            actions: {
-              items: [
-                {
-                  href: "vehicle-reference",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
-                }
-              ]
-            }
-          },
-          { 
-            key: {
-              text: "Which country is the vehicle registered in?"
-            },
-            value: {
-              text: data['vehicle-country']
-            },
-            actions: {
-              items: [
-                {
-                  href: "vehicle-country",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
-                }
-              ]
-            }
-          }
-      ), vehicleContainer) %}
-        {% endif %}
+        {{ govukSummaryList({
+                    classes: 'govuk-!-margin-bottom-9',
+                    rows: vehicleContainer
+                  }) }}
+
+        {# If container #}
 
         {% if (data['new-transport-type'] == "Container") %}
-          {% set vehicleContainer = (vehicleContainer.push(
-          { 
-            key: {
-              text: "What is the new container number?"
-            },
-            value: {
-              text: data['new-container-number']
-            },
-            actions: {
-              items: [
-                {
-                  href: "new-container-name",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
-                }
-              ]
-            }
-          }
-      ), vehicleContainer) %}
-        {% endif %}
+          <h2 class="govuk-heading-m">Different container</h2>
 
-        {% if (data['new-transport-type'] == "Both") %}
-        
-          {% set vehicleContainer = (vehicleContainer.push(
-            
-            { 
-              key: {
-                text: "What is the new container number?"
-              },
-              value: {
-                text: data['new-container-number']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "new-container-name",
-                    text: "Change",
-                    visuallyHiddenText: "if the event was reported in "
-                  }
-                ]
-              }
-            },
-            { 
-            key: {
-              text: "What is the vehicle name, registration or reference?"
-            },
-            value: {
-              text: data['vehicle-reference']
-            },
-            actions: {
-              items: [
-                {
-                  href: "vehicle-reference",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
-                }
-              ]
-            }
-          },
-          { 
-            key: {
-              text: "Which country is the vehicle registered in?"
-            },
-            value: {
-              text: data['vehicle-country']
-            },
-            actions: {
-              items: [
-                {
-                  href: "vehicle-country",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
-                }
-              ]
-            }
-          }
-      ), vehicleContainer) %}
-        {% endif %}
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Did the goods move to a different container or vehicle?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['change-vehicle'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="change-vehicle">
+                  Change<span class="govuk-visually-hidden">
+                    name</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                What did the goods move to?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['new-transport-type'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="new-transport-type">
+                  Change<span class="govuk-visually-hidden">
+                    date of birth</span>
+                </a>
+              </dd>
+            </div>
+          </dl>
 
-        {% set sealInfo = [] %}
+          <h3 class="govuk-heading-s">Container numbers</h3>
 
-        {% set sealInfo = (sealInfo.push(
-          {
-            key: {
-              text: "Have any of the seals changed?"
-            },
-            value: {
-              text: data['seals-changed']
-            },
-            actions: {
-              items: [
-                {
-                  href: "seals-changed",
-                  text: "Change",
-                  visuallyHiddenText: "date of birth"
-                }
-              ]
-            }
-          }
-      ), sealInfo) %}
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__value">
+                {{ data['new-container-number'] }}
+              </dt>
+              <dd class="govuk-summary-list__value"></dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="new-container-number.html">
+                  Change<span class="govuk-visually-hidden">
+                    name</span>
+                </a>
+              </dd>
+            </div>
+            {% if (data['new-container-number-2']) %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__value">
+                {{ data['new-container-number-2'] }}
+              </dt>
+              <dd class="govuk-summary-list__value"></dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="new-container-number-2.html">
+                  Change<span class="govuk-visually-hidden">
+                    name</span>
+                </a>
+              </dd>
+            </div>
+             {% endif %}
+            <p style="margin-top: 15px;">
+              <a href="container-list.html">Add or remove containers</a>
+              <p></dl>
+            {% endif %}
 
-      {% if (data['seals-changed'] == "Yes ") %}
-      {% set sealInfo = (sealInfo.push(
-          { 
-            key: {
-              text: "What is the new seal number?"
-            },
-            value: {
-              text: data['new-seal-number']
-            },
-            actions: {
-              items: [
-                {
-                  href: "new-seal-number",
-                  text: "Change",
-                  visuallyHiddenText: "if the event was reported in "
-                }
-              ]
-            }
-          }
-      ), sealInfo) %}
-      {% endif %}
+            {# If vehicle #}
 
+            {% if (data['new-transport-type'] == "Vehicle") %}
+              <h2 class="govuk-heading-m">Different vehicle</h2>
 
-        {{ govukSummaryList({
-                classes: 'govuk-!-margin-bottom-9',
-                rows: eventInfo
-        }) }}
+              <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Did the goods move to a different container or vehicle?
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ data['change-vehicle'] }}
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="change-vehicle">
+                      Change<span class="govuk-visually-hidden">
+                        name</span>
+                    </a>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    What did the goods move to?
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ data['new-transport-type'] }}
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="new-transport-type">
+                      Change<span class="govuk-visually-hidden">
+                        date of birth</span>
+                    </a>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    What is the vehicle name, registration or reference?
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ data['vehicle-reference'] }}
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="vehicle-reference">
+                      Change<span class="govuk-visually-hidden">
+                        name</span>
+                    </a>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Which country is the vehicle registered in?
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ data['vehicle-country'] }}
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="vehicle-country">
+                      Change<span class="govuk-visually-hidden">
+                        date of birth</span>
+                    </a>
+                  </dd>
+                </div>
+              </dl>
 
-        <h2 class="govuk-heading-m">Different vehicle and container</h1>
+            {% endif %}
 
-        {{ govukSummaryList({
-                classes: 'govuk-!-margin-bottom-9',
-                rows: vehicleContainer
-        }) }}
+            {# If both #}
 
-        <h3 class="govuk-heading-s">Container numbers</h3>
+            {% if (data['new-transport-type'] == "Both") %}
+              <h2 class="govuk-heading-m">Different container and vehicle</h2>
 
-        <h2 class="govuk-heading-m">Changed seals</h1>
+              <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Did the goods move to a different container or vehicle?
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ data['change-vehicle'] }}
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="change-vehicle">
+                      Change<span class="govuk-visually-hidden">
+                        name</span>
+                    </a>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    What did the goods move to?
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    Container and vehicle
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="new-transport-type">
+                      Change<span class="govuk-visually-hidden">
+                        date of birth</span>
+                    </a>
+                  </dd>
+                </div>
+              </dl>
 
-        {{ govukSummaryList({
-                classes: 'govuk-!-margin-bottom-9',
-                rows: sealInfo
-        }) }}
+              <h3 class="govuk-heading-s">Container numbers</h3>
 
-        <p><a href="event-list">Add or remove seals</a><p>
+              <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__value">
+                    {{ data['new-container-number'] }}
+                  </dt>
+                  <dd class="govuk-summary-list__value"></dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="new-container-number.html">
+                      Change<span class="govuk-visually-hidden">
+                        name</span>
+                    </a>
+                  </dd>
+                </div>
+                {% if (data['new-container-number-2']) %}
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__value">
+                      {{ data['new-container-number-2'] }}
+                    </dt>
+                    <dd class="govuk-summary-list__value"></dd>
+                    <dd class="govuk-summary-list__actions">
+                      <a class="govuk-link" href="new-container-number-2.html">
+                        Change<span class="govuk-visually-hidden">
+                          name</span>
+                      </a>
+                    </dd>
+                  </div>
+                {% endif %}
+                <p style="margin-top: 15px;">
+                  <a href="container-list.html">Add or remove containers</a>
+                  <p></dl>
 
+                  <h3 class="govuk-heading-s">Vehicle information</h3>
 
-        {{ govukButton({
+                  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        What is the vehicle name, registration or reference?
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {{ data['vehicle-reference'] }}
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="vehicle-reference">
+                          Change<span class="govuk-visually-hidden">
+                            name</span>
+                        </a>
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Which country is the vehicle registered in?
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {{ data['vehicle-country'] }}
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="vehicle-country">
+                          Change<span class="govuk-visually-hidden">
+                            date of birth</span>
+                        </a>
+                      </dd>
+                    </div>
+                  </dl>
+                {% endif %}
+
+                {{ govukButton({
                 text: "Save and continue",
                 href: "event-list"
                 }) }}
 
-      </form>
-    </div>
-  </div>
+              </form>
+            </div>
+          </div>
 
-{% endblock %}
+        {% endblock %}
