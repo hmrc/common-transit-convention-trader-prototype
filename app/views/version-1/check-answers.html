@@ -37,7 +37,7 @@ Check your answers before sending this arrival notification - Name of service - 
                         {
                         href: "movement-reference",
                         text: "Change",
-                        visuallyHiddenText: "date of birth"
+                        visuallyHiddenText: "movement reference number"
                         }
                     ]
                     }
@@ -66,7 +66,7 @@ Check your answers before sending this arrival notification - Name of service - 
                         {
                         href: "where-goods",
                         text: "Change",
-                        visuallyHiddenText: "date of birth"
+                        visuallyHiddenText: "where the goods are"
                         }
                     ]
                     }
@@ -76,8 +76,25 @@ Check your answers before sending this arrival notification - Name of service - 
       {% if (data['where-are-the-goods'] == "Border Force office") %}
       {% set goodsLocation = (goodsLocation.push(
                     { 
+                      key: {
+                      text: "Which customs sub-place or approved location has the goods?"
+                      },
+                      value: {
+                      text: data['customs-facility']
+                      },
+                      actions: {
+                      items: [
+                          {
+                          href: "customs-facility",
+                          text: "Change",
+                          visuallyHiddenText: "which sub-place or approved location has the goods?"
+                          }
+                      ]
+                      }
+                    },
+                    { 
                     key: {
-                    text: "Where are the goods located?"
+                    text: "Which Border Force office supervises Berwick?"
                     },
                     value: {
                     text: data['border-force-office']
@@ -87,28 +104,12 @@ Check your answers before sending this arrival notification - Name of service - 
                         {
                         href: "border-force-office",
                         text: "Change",
-                        visuallyHiddenText: "address"
-                        }
-                    ]
-                    }
-                },
-                { 
-                    key: {
-                    text: "Which customs approved location has the goods?"
-                    },
-                    value: {
-                    text: data['customs-facility']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "customs-facility",
-                        text: "Change",
-                        visuallyHiddenText: "which location has the goods?"
+                        visuallyHiddenText: "which Border Force office supervises Berwick"
                         }
                     ]
                     }
                 }
+                
                 ), goodsLocation) %}
       {% endif %}
 
@@ -126,7 +127,7 @@ Check your answers before sending this arrival notification - Name of service - 
                     {
                       href: "authorised-location-code",
                       text: "Change",
-                      visuallyHiddenText: "address"
+                      visuallyHiddenText: "authorised location"
                     }
                   ]
                 }
@@ -158,10 +159,27 @@ Check your answers before sending this arrival notification - Name of service - 
                         {
                         href: "trader-name",
                         text: "Change",
-                        visuallyHiddenText: "date of birth"
+                        visuallyHiddenText: "trader’s name"
                         }
                     ]
                     }
+                },
+                {
+                  key: {
+                  text: "EORI number"
+                  },
+                  value: {
+                  text: data['eori-number']
+                  },
+                  actions: {
+                  items: [
+                      {
+                      href: "eori-number",
+                      text: "Change",
+                      visuallyHiddenText: "trader’s EORI number"
+                      }
+                  ]
+                  }
                 },
                 {
                     key: {
@@ -175,31 +193,15 @@ Check your answers before sending this arrival notification - Name of service - 
                         {
                         href: "trader-address",
                         text: "Change",
-                        visuallyHiddenText: "date of birth"
-                        }
-                    ]
-                    }
-                },
-                {
-                    key: {
-                    text: "EORI number"
-                    },
-                    value: {
-                    text: data['eori-number']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "eori-number",
-                        text: "Change",
-                        visuallyHiddenText: "date of birth"
+                        visuallyHiddenText: "trader’s address"
                         }
                     ]
                     }
                 }
+                
                 ), traderDetails) %}
 
-        <h2 class="govuk-heading-m">Trader details</h1>
+        <h2 class="govuk-heading-m">Trader’s details</h1>
 
           {{ govukSummaryList({
                         classes: 'govuk-!-margin-bottom-9',
@@ -221,7 +223,7 @@ Check your answers before sending this arrival notification - Name of service - 
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="event-place.html">
                   Change<span class="govuk-visually-hidden">
-                    name</span>
+                    event 1</span>
                 </a>
               </dd>
             </div>
@@ -235,7 +237,7 @@ Check your answers before sending this arrival notification - Name of service - 
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="event-place.html">
                   Change<span class="govuk-visually-hidden">
-                    date of birth</span>
+                    event 2</span>
                 </a>
               </dd>
             </div>
