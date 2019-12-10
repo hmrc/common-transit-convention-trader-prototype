@@ -59,8 +59,6 @@ Check your answers
                 }
           ]
         %}
-        
-
 
         {% if (data['declare-packages'] == "Yes ") %}
           {% set goodsSummary = (goodsSummary.push(
@@ -82,165 +80,157 @@ Check your answers
                     }
                   }
               ), goodsSummary) %}
-
-            {% set goodsSummary = (goodsSummary.push(
-                              {
-                    key: {
-                      text: "What is the total gross mass?"
-                    },
-                    value: {
-                      text: data['total-gross-mass']
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "total-gross-mass",
-                          text: "Change",
-                          visuallyHiddenText: "total gross mass"
-                        }
-                      ]
-                    }
-                  }
-
-              ), goodsSummary) %}
-
-        {% else %}
-
-                  {% set goodsSummary = (goodsSummary.push(
-                  {
-                    key: {
-                      text: "What is the total gross mass (kg)?"
-                    },
-                    value: {
-                      text: data['total-gross-mass']
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "total-gross-mass",
-                          text: "Change",
-                          visuallyHiddenText: "total gross mass"
-                        }
-                      ]
-                    }
-                  }
-              ), goodsSummary) %}
-
         {% endif %}
-
-        {%
-          set goodsSummary = (goodsSummary.push( 
+        
+        {% set goodsSummary = (goodsSummary.push(
             {
-                    key: {
-                    text: "Where is the loading place?"
-                    },
-                    value: {
-                    text: data['loading-place']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "loading-place",
-                        text: "Change",
-                        visuallyHiddenText: "loading place"
-                        }
-                    ]
-                    }
-                }
-                ), goodsSummary) %}
+              key: {
+                text: "What is the total gross mass (kg)?"
+              },
+              value: {
+                text: data['total-gross-mass']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "total-gross-mass",
+                    text: "Change",
+                    visuallyHiddenText: "total gross mass"
+                  }
+                ]
+              }
+            }
+        ), goodsSummary) %}
+
+        {% set goodsSummary = (goodsSummary.push( 
+          {
+            key: {
+                  text: "Where is the loading place?"
+                  },
+                  value: {
+                  text: data['loading-place']
+                  },
+                  actions: {
+                  items: [
+                      {
+                      href: "loading-place",
+                      text: "Change",
+                      visuallyHiddenText: "loading place"
+                      }
+                  ]
+                  }
+              }
+         ), goodsSummary) %}
 
 
-                {%
-          set goodsSummary = (goodsSummary.push( 
+          {% set goodsSummary = (goodsSummary.push( 
             {
-                    key: {
-                    text: "Is the agreed location code pre-lodged?"
-                    },
-                    value: {
-                    text: data['is-it-prelodged']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "is-it-prelodged",
-                        text: "Change",
-                        visuallyHiddenText: "Is the agreed location code pre-lodged?"
-                        }
-                    ]
-                    }
-                }
-                ), goodsSummary) %}
+              key: {
+              text: "Is the agreed location code pre-lodged?"
+              },
+              value: {
+              text: data['is-it-prelodged']
+              },
+              actions: {
+              items: [
+                  {
+                  href: "is-it-prelodged",
+                  text: "Change",
+                  visuallyHiddenText: "Is the agreed location code pre-lodged?"
+                  }
+              ]
+              }
+          }
+          ), goodsSummary) %}
 
 
- {% if (data['is-location-code-prelodged'] == "Yes") %}
+        {% if (data['is-it-prelodged'] == "Yes ") %}
           {% set goodsSummary = (goodsSummary.push(
-                  {
-                    key: {
-                      text: "What is the agreed location of the goods?"
-                    },
-                    value: {
-                      text: data['agreed-location']
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "agreed-location",
-                          text: "Change",
-                          visuallyHiddenText: "agreed location"
-                        }
-                      ]
+              {
+                key: {
+                  text: "What is the agreed location of the goods?"
+                },
+                value: {
+                  text: data['agreed-location']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "agreed-location",
+                      text: "Change",
+                      visuallyHiddenText: "agreed location"
                     }
-                  }
-              ), goodsSummary) %}
+                  ]
+                }
+              }
+          ), goodsSummary) %}
+        {% endif %}
 
-        {% else %}
+        {% set goodsSummary = (goodsSummary.push( 
+          {
+            key: {
+            text: "Do you need to add a customs sub-place?"
+            },
+            value: {
+            text: data['add-customs-sub-place']
+            },
+            actions: {
+            items: [
+                {
+                href: "is-it-prelodged",
+                text: "Change",
+                visuallyHiddenText: "Do you need to add a customs sub-place?"
+                }
+            ]
+            }
+          }
+        ), goodsSummary) %}        
 
-                  {% set goodsSummary = (goodsSummary.push(
-                  {
-                    key: {
-                      text: "What is the customs sub-place?"
-                    },
-                    value: {
-                      text: data['customs-sub-place']
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "customs-sub-place",
-                          text: "Change",
-                          visuallyHiddenText: "customs sub place"
-                        }
-                      ]
+        {% if (data['add-customs-sub-place'] == "Yes ") %}
+          {% set goodsSummary = (goodsSummary.push(
+                    {
+                      key: {
+                        text: "What is the customs sub-place?"
+                      },
+                      value: {
+                        text: data['customs-sub-place']
+                      },
+                      actions: {
+                        items: [
+                          {
+                            href: "customs-sub-place",
+                            text: "Change",
+                            visuallyHiddenText: "customs sub place"
+                          }
+                        ]
+                      }
                     }
-                  }
-              ), goodsSummary) %}
-
+                ), goodsSummary) %}
         {% endif %}
 
 
-        {%
-          set goodsSummary = (goodsSummary.push( 
-            {
-                    key: {
-                    text: "Do you need to add seals information?"
-                    },
-                    value: {
-                    text: data['do-you-need-seals-info']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "do-you-need-seals-info",
-                        text: "Change",
-                        visuallyHiddenText: "do you need seals info"
-                        }
-                    ]
-                    }
-                }
-                ), goodsSummary) %}
+        {% set goodsSummary = (goodsSummary.push( 
+          {
+                  key: {
+                  text: "Do you need to add seals information?"
+                  },
+                  value: {
+                  text: data['do-you-need-seals-info']
+                  },
+                  actions: {
+                  items: [
+                      {
+                      href: "do-you-need-seals-info",
+                      text: "Change",
+                      visuallyHiddenText: "do you need seals info"
+                      }
+                  ]
+                  }
+              }
+        ), goodsSummary) %}
 
 
-{% if (data['do-you-need-seals-info'] == "Yes ") %}
+        {% if (data['do-you-need-seals-info'] == "Yes ") %}
           {% set goodsSummary = (goodsSummary.push(
                   {
                     key: {
@@ -261,7 +251,6 @@ Check your answers
                     }
                   }
               ), goodsSummary) %}
-
         {% endif %}
 
         {{ govukSummaryList({

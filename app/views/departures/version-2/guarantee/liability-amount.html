@@ -15,13 +15,16 @@ What is the liability amount?
 
     <form class="form" action="access-code" method="post">
 
-      <div class="govuk-form-group">
-        <label class="govuk-label" for="liability-amount" >
-          <h1 class="govuk-heading-xl">What is the liability amount?</h1>
-        </label>
-        <span class="govuk-body">£</span>
-        <input class="govuk-input govuk-input--width-10" id="liability-amount" name="liability-amount" type="text">
-      </div>
+      <h1 class="govuk-heading-xl">What is the liability amount?</h1>
+
+        {{ hmrcInputCurrency({
+            name: "liability-amount",
+            id: "liability-amount",
+            classes: "govuk-input--width-10",
+            autocomplete: "off",
+            type: "tel"
+            })
+        }}
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
