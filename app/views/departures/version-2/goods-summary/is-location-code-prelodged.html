@@ -15,40 +15,40 @@ Is the agreed location code pre-lodged?
 
     <form class="form" action="" method="post">
 
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-{{ govukRadios({
-  classes: "govuk-radios--inline",
-  idPrefix: "is-it-prelodged",
-  name: "is-it-prelodged",
-  fieldset: {
-    legend: {
-      text: "Is the agreed location code pre-lodged?",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--xl"
-    }
-  },
-  hint: {
-    text: ""
-  },
-  items: [
-    {
-      value: "Yes redirect(agreed-location)",
-      text: "Yes"
-    },
-    {
-      value: "No redirect(do-you-need-to-add-customs-sub-place)",
-      text: "No"
-    }
-  ]
-}) }}
-        
+    {{ govukRadios({
+      classes: "govuk-radios--inline",
+      idPrefix: "is-it-prelodged",
+      name: "is-it-prelodged",
+      fieldset: {
+        legend: {
+          text: "Is the agreed location code pre-lodged?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+        text: ""
+      },
+      items: [
+        {
+          value: "Yes redirect(agreed-location)",
+          text: "Yes"
+        },
+        {
+          value: "No redirect(do-you-need-to-add-customs-sub-place)",
+          text: "No"
+        }
+      ]
+    }) }}
+            
 
-{% from "govuk/components/button/macro.njk" import govukButton %}
+    {% from "govuk/components/button/macro.njk" import govukButton %}
 
-{{ govukButton({
-  text: "Save and continue"
-}) }}
+    {{ govukButton({
+      text: "Save and continue"
+    }) }}
 
     </form>
 
