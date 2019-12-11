@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Are you sure you want to delete this arrival notification?</h1>
+
+  <form class="form" method="post">
+
+    <!--  
+    
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "place-postcode",
+        name: "place-postcode",
+        fieldset: {
+          legend: {
+            text: heading,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "Delete arrival notification redirect(arrivals)",
+            text: "Delete arrival notification"
+          },
+          {
+            value: "Keep arrival notification redirect(arrivals)",
+            text: "Keep arrival notification"
+          }
+        ]
+      }) }}
+
+      -->
+
+      <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Date and time sent</th>
+              <th scope="col" class="govuk-table__header">Movement reference number</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">29 September 2019   14:00</td>
+              <td class="govuk-table__cell">987654323456789</td>
+            </tr>
+          </tbody>
+        </table>
+
+      <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+              </h1>
+            </legend>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+                <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                  Delete this arrival notification
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+                <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                  Keep this arrival notification
+                </label>
+              </div>   
+            </div>
+          </fieldset>
+        </div>
+
+
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+{% endblock %}
