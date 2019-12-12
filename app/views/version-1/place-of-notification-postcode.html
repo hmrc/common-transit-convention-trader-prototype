@@ -15,7 +15,16 @@ Has anything else happened on route?
 
     <form class="form" method="post">
 
-        {% set heading="Is "+data['address-postcode']+" the postcode of the place of notification? " %}
+        <h1 class="govuk-heading-xl">Are you completing the arrival notification at this address?</h1>
+
+
+
+
+        <p class="govuk-body-l">
+          {{ data['address-line-1'] }}<br>
+          {{ data['address-town'] }}<br>
+          {{ data['address-postcode'] }}
+        </p>
 
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -26,14 +35,11 @@ Has anything else happened on route?
         name: "place-postcode",
         fieldset: {
           legend: {
-            text: heading,
-            isPageHeading: true,
+            isPageHeading: false,
             classes: "govuk-fieldset__legend--xl"
           }
         },
-        hint: {
-          text: "Tell us if you are completing the arrival notification at the trader’s address. "
-        },
+        
         items: [
           {
             value: "Yes redirect(something-happened)",
