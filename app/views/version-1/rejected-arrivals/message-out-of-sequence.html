@@ -15,15 +15,13 @@ There are errors in this arrival notification
 
     <form class="form" action="correct-mrn-error" method="post">
 
-    <h1 class="govuk-heading-xl">Sorry, there is a problem with the service</h1>
+    <h1 class="govuk-heading-xl">Sorry, there is a problem</h1>
 
-    <p class="govuk-heading-body">OPTION 1: This arrival notification has been rejected.we did not get information in the expected order.</p>
+    <p class="govuk-heading-body">The arrival notification was rejected because the service received messages out of sequence.</p>
 
-    <p class="govuk-heading-body">OPTION 2: The EU system rejected it because information was not sent in the expected order.</p>
+    <p class="govuk-body">You will need to <a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries">contact the helpdesk</a> to fix this.</p>
 
-    <p class="govuk-body">You need to <a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries">contact the helpdesk</a> for advice.</p>
-
-    <p class="govuk-body">Rejected arrival notification details</p> 
+    <h2 class="govuk-heading-m">Rejected arrival notification </h2> 
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
 {{ govukSummaryList({
@@ -112,11 +110,14 @@ There are errors in this arrival notification
       text: "Delete this arrival notification"
     }
   ]
-}) }} -->
+}) }} 
 
       {{ govukButton({
     text: "Continue"
   }) }}
+  -->
+
+  <p class="govuk-body"><a href="#">Go to manage transit movements</a></p>
 
     </form>
 
