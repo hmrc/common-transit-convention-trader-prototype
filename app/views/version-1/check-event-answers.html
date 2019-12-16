@@ -26,23 +26,7 @@
         {% set eventInfo = [] %}
 
         {% set eventInfo = (eventInfo.push(
-                  {
-                    key: {
-                      text: "Did any events happen on the journey?"
-                    },
-                    value: {
-                      text: data['something-happened']
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "something-happened",
-                          text: "Change",
-                          visuallyHiddenText: "if any events happened on the journey"
-                        }
-                      ]
-                    }
-                  },
+                  
                   { 
                     key: {
                       text: "Which country were the goods in when the event happened?"

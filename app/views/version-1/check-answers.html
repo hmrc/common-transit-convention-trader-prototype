@@ -215,6 +215,20 @@ Check your answers before sending this arrival notification - Name of service - 
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
+                Did any events happen on the journey?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['something-happened'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="delete-event-notification.html">
+                  Change<span class="govuk-visually-hidden">
+                    event 1</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
                 Event 1
               </dt>
               <dd class="govuk-summary-list__value">
