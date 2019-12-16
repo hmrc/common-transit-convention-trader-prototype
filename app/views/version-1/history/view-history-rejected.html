@@ -16,25 +16,21 @@ View history
             <div class="govuk-grid-column-two-thirds">
                 <h1 class="govuk-heading-xl">View status history</h1>
 
+                {{ govukSummaryList({
+                    rows: [
+                      {
+                        key: {
+                          text: "Movement reference number"
+                        },
+                        value: {
+                          text: "10IT02130010005402"
+                        }
+                      }
+                    ]
+                  }) }}
+
                 <dl class="govuk-summary-list">
-                    <div class="govuk-summary-list__row">
-                      <dt class="govuk-summary-list__key">
-                        Goods released
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                        2 December 2019 at 10:19am
-                      </dd>
-                      
-                    </div>
-                    <div class="govuk-summary-list__row">
-                      <dt class="govuk-summary-list__key">
-                        Arrival notification sent
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                        2 December at 10:17am
-                      </dd>
-                     
-                    </div>
+                    
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
                         Arrival notification rejected
@@ -55,7 +51,7 @@ View history
                     </div>
                   </dl>
 
-                  <p><a href="arrivals.html" class="govuk-link">Go back to arrival notifications</a></p>
+                  <p><a href="../arrivals-history.html" class="govuk-link">Go back to arrival notifications</a></p>
 
 
             </div>
