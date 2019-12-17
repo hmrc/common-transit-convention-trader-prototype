@@ -23,8 +23,10 @@ There are errors in this arrival notification
      <p class="govuk-body">It has been rejected because the name of the trader at the destination:</p>
 
      <ul class="govuk-list govuk-list--bullet">
-      <li>is too long</li>
-      <li>has invalid characters</li>
+      <li>is missing (13)</li>
+      <li>has invalid characters (37)</li>
+      <li>is too long (39)</li>
+      <li>is too short (39)</li>
     </ul>
   
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
@@ -33,7 +35,7 @@ There are errors in this arrival notification
   rows: [
     {
       key: {
-        html: "Name of trader at the destination"
+        html: "Name of the trader at the destination"
       },
       value: {
         html: "World Wrestling Entertainment (international) Limited!"
