@@ -17,11 +17,11 @@ There are errors in this arrival notification
 
     <h1 class="govuk-heading-xl">Sorry, there is a problem with the service</h1>
 
-    <p class="govuk-heading-body">We received information and response messages in the wrong order.</p>
+    <p class="govuk-heading-body">We received information in the wrong order.</p>
 
     <p class="govuk-body">You will need to <a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries">contact the helpdesk</a> to fix this.</p>
 
-    <h2 class="govuk-heading-m">Rejected arrival notification </h2> 
+    {#<h2 class="govuk-heading-m">Rejected arrival notification </h2> 
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
 {{ govukSummaryList({
@@ -84,7 +84,7 @@ There are errors in this arrival notification
       }
     }
   ]
-}) }}
+}) }}#}
    
 <!--<h2 class="govuk-heading-m">What do you want to do?</h2>
 

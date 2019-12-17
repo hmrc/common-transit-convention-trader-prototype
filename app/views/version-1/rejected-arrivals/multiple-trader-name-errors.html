@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-There are errors in this arrival notification - ? - GOV.UK
+There are errors in this arrival notification
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,9 +18,14 @@ There are errors in this arrival notification - ? - GOV.UK
      <h1 class="govuk-heading-xl">There are errors in this arrival notification</h1>
 
      
-    <p class="govuk-heading-body">It has been rejected because someone has already sent us an arrival notification for:</p>
+    
 
-   
+     <p class="govuk-body">It has been rejected because the trader at destination’s name:</p>
+
+     <ul class="govuk-list govuk-list--bullet">
+      <li>is too long</li>
+      <li>has invalid characters</li>
+    </ul>
   
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
@@ -28,41 +33,46 @@ There are errors in this arrival notification - ? - GOV.UK
   rows: [
     {
       key: {
-        text: "Movement reference number"
+        html: "Trader at destination’s name"
       },
       value: {
-        text: "10IT02130010005402"
+        html: "World Wrestling Entertainment (international) Limited!"
       }
     }
   ]
 }) }}
 
-{#<p class="govuk-body">Your arrival notification details:</h2>
+
+
+    
+    
+
+{#<h2 class="govuk-heading-m">Rejected arrival notification</h2>
 
 {{ govukSummaryList({
   rows: [
-    {
-        key: {
-          text: "Updated"
-        },
-        value: {
-          text: "25 November 2019 9:19am"
-        }
+  {
+    key: {
+      text: "Movement reference number"
     },
+    value: {
+      text: "10IT02130010005402"
+    }
+  },
+    {
+      key: {
+        text: "Updated"
+      },
+      value: {
+        text: "25 November 2019 9:19am"
+      }
+    },  
     {
       key: {
         text: "Trader at destination"
       },
       value: {
         text: "M&S"
-      }
-    },
-    {
-      key: {
-        text: "EORI number"
-      },
-      value: {
-        html: "GB02847107794274"
       }
     },
     {
@@ -93,7 +103,7 @@ There are errors in this arrival notification - ? - GOV.UK
 }) }}#}
    
 
-<p class="govuk-body">If have not sent an arrival notification, you will need to <a href="#">contact the helpdesk</a>.</p>
+<!--<p class="govuk-body">If the movement reference number you have given is correct, you will need to <a href="#">contact the helpdesk</a>.</p>-->
 
 <h2 class="govuk-heading-m">What do you want to do?</h2>
 
@@ -111,8 +121,8 @@ There are errors in this arrival notification - ? - GOV.UK
   },
   items: [
     {
-      value: "fix-errors, redirect(../movement-reference-reject)",
-      text: "Fix errors and send the arrival notification again"
+      value: "fix-errors, redirect(../trader-eori-reject)",
+      text: "Fix the error and send the arrival notification again"
     },
     {
       value: "delete-arrival-notification, redirect(../delete-notification)",
