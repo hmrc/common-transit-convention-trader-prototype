@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Arrival notification rejected
+There is an error in this arrival notification
 {% endblock %}
 
 {% block beforeContent %}
@@ -16,32 +16,7 @@ Arrival notification rejected
     <form class="form" action="correct-mrn-error" method="post">
 
      <h1 class="govuk-heading-xl">There is an error in this arrival notification</h1>
-
-     
-    <p class="govuk-body">It has been rejected because it is missing the:</p>
-
-   
-  
-{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-
-{{ govukSummaryList({
-  rows: [
-    {
-      key: {
-        html: "Trader at destination’s<br>EORI number"
-      },
-      value: {
-        html: ""
-      }
-    }
-  ]
-}) }}
-
-<!--<p class="govuk-body">We expect an EORI number to:</p>
-<ul class="govuk-list govuk-list--bullet">
-  <li>start with 2 letters to show the country, like GB</li>
-  <li>finish with numbers</li>
-</ul>-->
+    <p class="govuk-body">It has been rejected because it is missing the EORI number of the trader at the destination.</p>
 
 
 <h2 class="govuk-heading-m">Rejected arrival notification</h2>
