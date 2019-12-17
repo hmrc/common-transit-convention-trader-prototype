@@ -37,6 +37,24 @@ There are errors in this arrival notification - ? - GOV.UK
   ]
 }) }}
 
+<p class="govuk-body">It has been rejected because of the EORI number is too long:</p>
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+  rows: [
+    
+    {
+      key: {
+        html: "EORI number of the trader at the destination"
+      },
+      value: {
+        html: "GB02847107794274"
+      }
+    }
+  ]
+}) }}
+
 {#<p class="govuk-body">Your arrival notification details:</h2>
 
 {{ govukSummaryList({
