@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Arrival notification rejected
+There is an error in this arrival notification - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,7 +15,7 @@ Arrival notification rejected
 
     <form class="form" action="correct-mrn-error" method="post">
 
-     <h1 class="govuk-heading-xl">There are errors in this arrival notification</h1>
+     <h1 class="govuk-heading-xl">There is an error in this arrival notification</h1>
 
      
     <p class="govuk-heading-body">It has been rejected because we cannot find a transit declaration with:</p>
@@ -112,7 +112,7 @@ Arrival notification rejected
   items: [
     {
       value: "fix-errors, redirect(../movement-reference-reject)",
-      text: "Fix errors and send the arrival notification again"
+      text: "Fix the error and send the arrival notification again"
     },
     {
       value: "delete-arrival-notification, redirect(../delete-notification)",
