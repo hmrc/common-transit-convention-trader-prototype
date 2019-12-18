@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add offices of transit?
+Do you need to add transport details?
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,11 +17,11 @@ Do you need to add offices of transit?
 
         {{ govukRadios({
           classes: "govuk-radios--inline",
-          idPrefix: "add-offices-of-transit",
-          name: "add-offices-of-transit",
+          idPrefix: "add-transport-details",
+          name: "add-transport-details",
           fieldset: {
             legend: {
-              text: "Do you need to add an office of transit?",
+              text: "Do you need to add transport details?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
@@ -31,11 +31,11 @@ Do you need to add offices of transit?
           },
           items: [
             {
-              value: "Yes, redirect(office-of-transit)",
+              value: "Yes, redirect(transport-details/which-transport-details)",
               text: "Yes"
             },
             {
-              value: "No, redirect(add-transport-details)",
+              value: "No, redirect(check-your-answers)",
               text: "No"
             }
           ]

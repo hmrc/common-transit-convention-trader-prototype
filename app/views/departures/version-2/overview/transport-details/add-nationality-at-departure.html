@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Do you need to add a nationality at departure?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- 
+      If the user has selected to enter transport details at departure only they need to be directed to check your answers upon answering "no"
+    -->
+
+    {% if (data['which-transport-details'] == "At the point of departure") %}
+
+      <form method="post">
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "add-nationality-at-departure",
+          name: "add-nationality-at-departure",
+          fieldset: {
+            legend: {
+              text: "Do you need to add a nationality at departure?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "Yes, redirect(nationality-at-departure)",
+              text: "Yes"
+            },
+            {
+              value: "No, redirect(../check-your-answers)",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    {% else %}
+
+      <form method="post">
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "add-nationality-at-departure",
+          name: "add-nationality-at-departure",
+          fieldset: {
+            legend: {
+              text: "Do you need to add a nationality at departure?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "Yes, redirect(nationality-at-departure)",
+              text: "Yes"
+            },
+            {
+              value: "No, redirect(mode-at-border)",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}
