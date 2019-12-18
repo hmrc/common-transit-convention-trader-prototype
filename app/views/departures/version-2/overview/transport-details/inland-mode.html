@@ -1,0 +1,248 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is the inland mode?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form method="post">
+
+      <!-- 
+          If the user has selected 'yes' to have-you-used-containers they need to be directed to nationality-at-departure
+      -->      
+
+      {% if (data['have-you-used-containers'] == "Yes") %}
+
+          {{ govukRadios({
+            classes: "govuk-radios",
+            idPrefix: "inland-mode",
+            name: "inland-mode",
+            fieldset: {
+              legend: {
+                text: "What is the inland mode?Test",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "(17) (semi)Trailer on sea-going vessel, redirect(nationality-at-departure)",
+                text: "(17) (semi)Trailer on sea-going vessel"
+              },
+              {
+                value: "(4) Air transport, redirect(nationality-at-departure)",
+                text: "(4) Air transport"
+              },
+              {
+                value: "(40) Air transport, redirect(nationality-at-departure)",
+                text: "(40) Air transport"
+              },
+              {
+                value: "(7) Fixed transport installations, redirect(nationality-at-departure)",
+                text: "(7) Fixed transport installations"
+              },
+              {
+                value: "(70) Fixed transport installations, redirect(nationality-at-departure)",
+                text: "(70) Fixed transport installations"
+              },
+              {
+                value: "(80) Inland waterway transport, redirect(nationality-at-departure)",
+                text: "(80) Inland waterway transport"
+              },
+              {
+                value: "(8) Inland waterway transport, redirect(nationality-at-departure)",
+                text: "(8) Inland waterway transport"
+              },
+              {
+                value: "(18) Inlang waterway vessel on sea-going, redirect(nationality-at-departure)",
+                text: "(18) Inlang waterway vessel on sea-going"
+              },
+              {
+                value: "(90) Own propulsion, redirect(nationality-at-departure)",
+                text: "(90) Own propulsion"
+              },
+              {
+                value: "(9) Own propulsion, redirect(nationality-at-departure)",
+                text: "(9) Own propulsion"
+              },
+              {
+                value: "(5) Postal Consignment, redirect(nationality-at-departure)",
+                text: "(5) Postal Consignment"
+              },
+              {
+                value: "(50) Postal Consignment, redirect(nationality-at-departure)",
+                text: "(50) Postal Consignment"
+              },
+              {
+                value: "(16) Powered road vehicle on sea-going, redirect(nationality-at-departure)",
+                text: "(16) Powered road vehicle on sea-going"
+              },
+              {
+                value: "(2) Rail transport, redirect(add-nationality-at-departure)",
+                text: "(2) Rail transport"
+              },
+              {
+                value: "(20) Rail transport, redirect(add-nationality-at-departure)",
+                text: "(20) Rail transport"
+              },
+              {
+                value: "(12) Railway wagon on sea-going vessel, redirect(add-nationality-at-departure)",
+                text: "(12) Railway wagon on sea-going vessel"
+              },
+              {
+                value: "(3) Road transport, redirect(nationality-at-departure)",
+                text: "(3) Road transport"
+              },
+              {
+                value: "(30) Road transport, redirect(nationality-at-departure)",
+                text: "(30) Road transport"
+              },
+              {
+                value: "(23) Road vehicle on railwagon, redirect(nationality-at-departure)",
+                text: "(23) Road vehicle on railwagon"
+              },
+              {
+                value: "(1) Sea transport, redirect(nationality-at-departure)",
+                text: "(1) Sea transport"
+              },
+              {
+                value: "(10) Sea transport, redirect(nationality-at-departure)",
+                text: "(10) Sea transport"
+              }
+            ]
+          }) }}
+
+        {% else %}
+
+        <!-- 
+          If the user has selected 'no' to have-you-used-containers they need to be branched off as normal
+          (5),(50),(7),(70) go to nationality-at-departure
+          (2),(20) go to add-nationality-at-departure
+        -->  
+
+          {{ govukRadios({
+            classes: "govuk-radios",
+            idPrefix: "inland-mode",
+            name: "inland-mode",
+            fieldset: {
+              legend: {
+                text: "What is the inland mode?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "(17) (semi)Trailer on sea-going vessel, redirect(id-at-departure)",
+                text: "(17) (semi)Trailer on sea-going vessel"
+              },
+              {
+                value: "(4) Air transport, redirect(id-at-departure)",
+                text: "(4) Air transport"
+              },
+              {
+                value: "(40) Air transport, redirect(id-at-departure)",
+                text: "(40) Air transport"
+              },
+              {
+                value: "(7) Fixed transport installations, redirect(nationality-at-departure)",
+                text: "(7) Fixed transport installations"
+              },
+              {
+                value: "(70) Fixed transport installations, redirect(nationality-at-departure)",
+                text: "(70) Fixed transport installations"
+              },
+              {
+                value: "(80) Inland waterway transport, redirect(id-at-departure)",
+                text: "(80) Inland waterway transport"
+              },
+              {
+                value: "(8) Inland waterway transport, redirect(id-at-departure)",
+                text: "(8) Inland waterway transport"
+              },
+              {
+                value: "(18) Inlang waterway vessel on sea-going, redirect(id-at-departure)",
+                text: "(18) Inlang waterway vessel on sea-going"
+              },
+              {
+                value: "(90) Own propulsion, redirect(id-at-departure)",
+                text: "(90) Own propulsion"
+              },
+              {
+                value: "(9) Own propulsion, redirect(id-at-departure)",
+                text: "(9) Own propulsion"
+              },
+              {
+                value: "(5) Postal Consignment, redirect(nationality-at-departure)",
+                text: "(5) Postal Consignment"
+              },
+              {
+                value: "(50) Postal Consignment, redirect(nationality-at-departure)",
+                text: "(50) Postal Consignment"
+              },
+              {
+                value: "(16) Powered road vehicle on sea-going, redirect(id-at-departure)",
+                text: "(16) Powered road vehicle on sea-going"
+              },
+              {
+                value: "(2) Rail transport, redirect(add-nationality-at-departure)",
+                text: "(2) Rail transport"
+              },
+              {
+                value: "(20) Rail transport, redirect(add-nationality-at-departure)",
+                text: "(20) Rail transport"
+              },
+              {
+                value: "(12) Railway wagon on sea-going vessel, redirect(add-nationality-at-departure)",
+                text: "(12) Railway wagon on sea-going vessel"
+              },
+              {
+                value: "(3) Road transport, redirect(id-at-departure)",
+                text: "(3) Road transport"
+              },
+              {
+                value: "(30) Road transport, redirect(id-at-departure)",
+                text: "(30) Road transport"
+              },
+              {
+                value: "(23) Road vehicle on railwagon, redirect(id-at-departure)",
+                text: "(23) Road vehicle on railwagon"
+              },
+              {
+                value: "(1) Sea transport, redirect(id-at-departure)",
+                text: "(1) Sea transport"
+              },
+              {
+                value: "(10) Sea transport, redirect(id-at-departure)",
+                text: "(10) Sea transport"
+              }
+            ]
+          }) }} 
+
+        {% endif %}         
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -313,7 +313,300 @@
                     }
                   }                  
         ), overviewList) %}
-    {% endif %}                
+    {% endif %}    
+
+
+    <!--
+      Transport details section start
+    -->   
+
+    <!-- Do you need to add transport details? --> 
+    {% set overviewList = (overviewList.push(
+      {
+          key: {
+            text: "Do you need to add transport details?"
+          },
+          value: {
+            html: data['add-transport-details']
+          },
+          actions: {
+            items: [
+              {
+                href: "add-transport-details",
+                text: "Change",
+                visuallyHiddenText: "Add transport details"
+              }
+            ]
+          }
+        }
+      ), overviewList) %}
+
+      <!-- 
+        If add-transport-details = "Yes" 
+      --> 
+      {% if (data['add-transport-details'] == "Yes") %}
+
+        <!-- Which transport details do you need to add? --> 
+        {% set overviewList = (overviewList.push(
+        {
+            key: {
+              text: "Which transport details do you need to add?"
+            },
+            value: {
+              html: data['which-transport-details']
+            },
+            actions: {
+              items: [
+                {
+                  href: "which-transport-details",
+                  text: "Change",
+                  visuallyHiddenText: "Which transport details"
+                }
+              ]
+            }
+          }
+        ), overviewList) %}
+
+          <!-- 
+            If which-transport-details = "at departure or both" 
+          --> 
+          {% if (data['which-transport-details'] == "At the point of departure") or (data['which-transport-details'] == "Both") %}
+
+                    <!-- What is the inland mode? --> 
+                    {% set overviewList = (overviewList.push(
+                    {
+                        key: {
+                          text: "What is the inland mode?"
+                        },
+                        value: {
+                          html: data['inland-mode']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "inland-mode",
+                              text: "Change",
+                              visuallyHiddenText: "Inland mode"
+                            }
+                          ]
+                        }
+                      }
+                    ), overviewList) %}
+
+              <!-- 
+                If inland mode = "2, or 20" 
+              --> 
+              {% if (data['inland-mode'] == "(2) Rail transport") or (data['inland-mode'] == "(20) Rail transport") %}
+
+                  <!-- Do you need to add nationality at departure? --> 
+                    {% set overviewList = (overviewList.push(
+                    {
+                        key: {
+                          text: "Do you need to add a nationality at departure?"
+                        },
+                        value: {
+                          html: data['add-nationality-at-departure']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "add-nationality-at-departure",
+                              text: "Change",
+                              visuallyHiddenText: "Inland mode"
+                            }
+                          ]
+                        }
+                      }
+                    ), overviewList) %}
+                    
+              {% endif %}
+
+              <!-- 
+                If inland mode = 5,50,7,70, containers used = yes, or add nationality at departure = yes 
+              --> 
+              {% if (data['inland-mode'] == "(5) Postal Consignment") or
+                    (data['inland-mode'] == "(50) Postal Consignment") or
+                    (data['inland-mode'] == "(7) Fixed transport installations") or
+                    (data['inland-mode'] == "(70) Fixed transport installations") or
+                    (data['have-you-used-containers'] == "Yes") or
+                    (data['add-nationality-at-departure'] == "Yes")
+              %}
+
+                    <!-- What is the nationality at departure? --> 
+                    {% set overviewList = (overviewList.push(
+                    {
+                        key: {
+                          text: "What is the nationality at departure?"
+                        },
+                        value: {
+                          html: data['nationality-at-departure']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "-nationality-at-departure",
+                              text: "Change",
+                              visuallyHiddenText: "Inland mode"
+                            }
+                          ]
+                        }
+                      }
+                    ), overviewList) %}
+
+              {% else %}
+
+                    <!-- What is the ID at departure? -->
+                    {% set overviewList = (overviewList.push(
+                          {
+                              key: {
+                                text: "What is the ID at departure?"
+                              },
+                              value: {
+                                html: data['identity-at-departure']
+                              },
+                              actions: {
+                                items: [
+                                  {
+                                    href: "id-at-departure",
+                                    text: "Change",
+                                    visuallyHiddenText: "Inland mode"
+                                  }
+                                ]
+                              }
+                            }
+                          ), overviewList) %}
+
+                    <!-- What is the nationality at departure? --> 
+                    {% set overviewList = (overviewList.push(
+                    {
+                        key: {
+                          text: "What is the nationality at departure?"
+                        },
+                        value: {
+                          html: data['nationality-at-departure']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "-nationality-at-departure",
+                              text: "Change",
+                              visuallyHiddenText: "Inland mode"
+                            }
+                          ]
+                        }
+                      }
+                    ), overviewList) %}                    
+
+              {% endif %}
+
+          {% endif %}   
+
+          <!-- 
+            If which-transport-details = "at border or both" 
+          --> 
+          {% if (data['which-transport-details'] == "At the border") or (data['which-transport-details'] == "Both") %}
+
+            <!-- What is the mode at the border? --> 
+              {% set overviewList = (overviewList.push(
+              {
+                  key: {
+                    text: "What is the mode at the border?"
+                  },
+                  value: {
+                    html: data['mode-at-border']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "mode-at-border",
+                        text: "Change",
+                        visuallyHiddenText: "Inland mode"
+                      }
+                    ]
+                  }
+                }
+              ), overviewList) %}
+
+              <!-- What is the ID crossing the border? --> 
+              {% set overviewList = (overviewList.push(
+              {
+                  key: {
+                    text: "What is the ID crossing the border?"
+                  },
+                  value: {
+                    html: data['identity-at-border']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "identity-at-border",
+                        text: "Change",
+                        visuallyHiddenText: "Inland mode"
+                      }
+                    ]
+                  }
+                }
+              ), overviewList) %} 
+
+              <!-- What is the mode crossing the border? --> 
+              {% set overviewList = (overviewList.push(
+              {
+                  key: {
+                    text: "What is the mode crossing the border?"
+                  },
+                  value: {
+                    html: data['mode-crossing-border']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "mode-crossing-border",
+                        text: "Change",
+                        visuallyHiddenText: "Inland mode"
+                      }
+                    ]
+                  }
+                }
+              ), overviewList) %}     
+
+                  <!--
+                    If nationality crossing the border is NOT empty
+                  -->
+
+                  {% if (data['nationality-crossing-border'] | length != "0" ) %}
+
+                      <!-- What is the nationality crossing the border? -->
+                      {% set overviewList = (overviewList.push(
+                      {
+                          key: {
+                            text: "What is the nationality crossing the border?"
+                          },
+                          value: {
+                            html: data['nationality-crossing-border']
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "nationality-crossing-border",
+                                text: "Change",
+                                visuallyHiddenText: "Inland mode"
+                              }
+                            ]
+                          }
+                        }
+                      ), overviewList) %}    
+
+
+                  {% endif %}   
+
+          {% endif %}   
+
+      {% endif %}    
+
+
+    <!--
+      Transport details section end
+    -->             
 
         {{ govukSummaryList({
            classes: 'govuk-!-margin-bottom-9',
