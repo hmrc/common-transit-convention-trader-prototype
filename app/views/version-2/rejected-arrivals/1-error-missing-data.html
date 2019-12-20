@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+There is an error in this arrival notification
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="correct-mrn-error" method="post">
+
+     <h1 class="govuk-heading-xl">There is an error in this arrival notification</h1>
+    <p class="govuk-body">It was rejected because the EORI number of the trader at the destination is missing.</p>
+
+
+{#<h2 class="govuk-heading-m">Rejected arrival notification</h2>
+
+{{ govukSummaryList({
+  rows: [
+  {
+    key: {
+      text: "Movement reference number"
+    },
+    value: {
+      text: "10IT02130010005402"
+    }
+  },
+    {
+      key: {
+        text: "Updated"
+      },
+      value: {
+        text: "25 November 2019 9:19am"
+      }
+    },  
+    {
+      key: {
+        text: "Trader at destination"
+      },
+      value: {
+        text: "M&S"
+      }
+    },
+    {
+      key: {
+        text: "Place of notification"
+      },
+      value: {
+        html: '<p class="govuk-body">Teesport</p>'
+      }
+    }, 
+    {
+      key: {
+        text: "Supervising office"
+      },
+      value: {
+        html: 'Newcastle'
+      }
+    }, 
+    {
+      key: {
+        text: "Procedure"
+      },
+      value: {
+        html: '<p class="govuk-body">Normal</p>'
+      }
+    }
+  ]
+}) }} #}
+   
+
+<!--<p class="govuk-body">If the movement reference number you have given is correct, you will need to <a href="#">contact the helpdesk</a>.</p>-->
+
+<h2 class="govuk-heading-m">What do you want to do?</h2>
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  idPrefix: "what-do-you-want-do-to",
+  name: "what-do-you-want-to-do",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "fix-errors, redirect(../trader-eori-reject)",
+      text: "Fix the error and send the arrival notification again"
+    },
+    {
+      value: "delete-arrival-notification, redirect(../delete-notification)",
+      text: "Delete this arrival notification"
+    }
+  ]
+}) }}
+
+      {{ govukButton({
+    text: "Continue"
+  }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

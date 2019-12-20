@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">There are errors in this arrival notification</h1>
+
+  <form class="form" method="post">
+ 
+    <h2 class="govuk-heading-m">Rejected arrival notification details</h2>
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Updated
+        </dt>
+        <dd class="govuk-summary-list__value">
+          16 November 2019 12:20pm
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Movement reference number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          4567898765432345678
+        </dd>
+      </div>
+    </dl>
+
+<br> 
+    <h2 class="govuk-heading-m">Errors</h2>
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          What is the movement reference number?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          The movement reference number you inputted, is not in the correct format. It must: <br> 
+          <br>
+          <ul style="margin-left:20px;padding:0">
+          <li>Be 12 to 15 characters long</li>
+          <li>Be a combination of letters and numbers</li>
+          </ul>
+        </dd>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<br>
+
+<h2 class="govuk-heading-m">What do you want to do?</h2>
+
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  classes: "govuk-radios--stacked",
+  idPrefix: "place-postcode",
+  name: "place-postcode",
+  fieldset: {
+    legend: {
+      text: heading,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  items: [
+    {
+      value: "Yes redirect(arrivals)",
+      text: "Fix the errors and continue"
+    },
+    {
+      value: "Delete this arrival notification redirect(arrivals)",
+      text: "Delete this arrival notification"
+    }
+  ]
+}) }}
+
+
+
+{{ govukButton({
+  text: "Save and continue"
+}) }}
+
+
+
+{% endblock %}
+

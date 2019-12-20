@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Sorry, there is a problem with the service
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="correct-mrn-error" method="post">
+
+    <h1 class="govuk-heading-xl">Sorry, there is a problem with the service</h1>
+
+    <p class="govuk-heading-body">We received information in the wrong order.</p>
+
+    <p class="govuk-body">You will need to <a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries">contact the helpdesk</a> to fix this.</p>
+
+    {#<h2 class="govuk-heading-m">Rejected arrival notification </h2> 
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Movement reference number"
+      },
+      value: {
+        text: "10IT02130010005402"
+      }
+    },
+
+    {
+      key: {
+        text: "Updated"
+      },
+      value: {
+        text: "25 November 2019 9:19am"
+      }
+    },  
+    {
+      key: {
+        text: "Trader at destination"
+      },
+      value: {
+        text: "M&S"
+      }
+    },
+    {
+      key: {
+        text: "EORI number"
+      },
+      value: {
+        html: "GB02847107794274"
+      }
+    },
+    {
+      key: {
+        text: "Place of notification"
+      },
+      value: {
+        html: '<p class="govuk-body">Teesport</p>'
+      }
+    }, 
+    {
+      key: {
+        text: "Supervising office"
+      },
+      value: {
+        html: 'Newcastle'
+      }
+    }, 
+    {
+      key: {
+        text: "Procedure"
+      },
+      value: {
+        html: '<p class="govuk-body">Normal</p>'
+      }
+    }
+  ]
+}) }}#}
+   
+<!--<h2 class="govuk-heading-m">What do you want to do?</h2>
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  idPrefix: "what-do-you-want-do-to",
+  name: "what-do-you-want-to-do",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "fix-errors, redirect(../movement-reference-reject)",
+      text: "Fix errors and send the arrival notification again"
+    },
+    {
+      value: "delete-arrival-notification, redirect(../delete-notification)",
+      text: "Delete this arrival notification"
+    }
+  ]
+}) }} 
+
+      {{ govukButton({
+    text: "Continue"
+  }) }}
+  -->
+
+  <p class="govuk-body"><a href="#">Go to manage transit movements</a></p>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
