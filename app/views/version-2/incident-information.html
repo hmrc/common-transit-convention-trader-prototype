@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What happened on the route?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">What happened on the route?</h1>
+
+    <form class="form" action="check-event-answers" method="post">
+
+        {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+        {{ govukTextarea({
+          name: "what-happened",
+          id: "what-happened",
+          label: {
+            text: ""
+          },
+          hint: {
+            text: ""
+          }
+        }) }}
+    
+
+{{ govukButton({
+  text: "Save and continue"
+}) }}
+</form>
+  </div>
+</div>
+
+{% endblock %}

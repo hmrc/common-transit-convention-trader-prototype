@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What did the goods move to? 
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  classes: "govuk-radios",
+  idPrefix: "new-transport-type",
+  name: "new-transport-type",
+  fieldset: {
+    legend: {
+      text: "What did the goods move to?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+    {
+      value: "Container, redirect(new-container-number)",
+      text: "A different container"
+    },
+    {
+      value: "Vehicle, redirect(vehicle-reference)",
+      text: "A different vehicle"
+    },
+    {
+      value: "Both, redirect(new-container-number)",
+      text: "Both"
+    }
+  ]
+}) }}
+
+
+{{ govukButton({
+  text: "Save and continue"
+}) }}
+</form>
+  </div>
+</div>
+
+{% endblock %}

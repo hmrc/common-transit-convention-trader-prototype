@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is the movement reference number (MRN)?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">What is the movement reference number (MRN)?</h1>
+
+    <form action="check-answers-after-error-correction" class="form" method="post">
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      {{ govukInput({
+        classes: "govuk-input--width-20",
+        hint: {
+          text: "It is on the transit accompanying document (TAD) that is with the goods. It is 18 characters like 19GB00005112345678."
+        },
+        id: "movement-reference-reject",
+        name: "movement-reference-reject"
+      }) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Save and continue"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
