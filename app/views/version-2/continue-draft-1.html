@@ -16,9 +16,9 @@ Continue draft declaration
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
 
-    <form class="form" action="success-screen" method="post">
+    <form class="form" method="post">
 
-      <h1 class="govuk-heading-xl">Draft arrival notification</h1>
+      <h1 class="govuk-heading-xl">Arrival notification</h1>
 
       <!-- Movement reference -->
 
@@ -30,7 +30,7 @@ Continue draft declaration
                     text: "Movement reference number"
                     },
                     value: {
-                    text: "09865434567890987"
+                    text: "10GB000060100C06E0"
                     },
                     actions: {
                     items: [
@@ -71,7 +71,7 @@ Continue draft declaration
                       text: "Which customs sub-place or approved location has the goods?"
                       },
                       value: {
-                      text: "Teesport"
+                      text: "Newcastle Airport"
                       },
                       actions: {
                       items: [
@@ -82,10 +82,10 @@ Continue draft declaration
                     },
                     { 
                     key: {
-                    text: "Which Border Force office supervises Teesport?"
+                    text: "Which Border Force office supervises Newcastle Airport?"
                     },
                     value: {
-                    text: "Newcastle"
+                    text: "Teesport"
                     },
                     actions: {
                     items: [
@@ -96,7 +96,7 @@ Continue draft declaration
                 }
                 ), goodsLocation) %}
 
-      <h2 class="govuk-heading-m">Goods details</h1>
+      <h2 class="govuk-heading-m">Goods location</h1>
 
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
@@ -162,7 +162,7 @@ Continue draft declaration
 
          
 
-            {% from "govuk/components/radios/macro.njk" import govukRadios %}
+         {#   {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
             {{ govukRadios({
             classes: "govuk-radios--inline",
@@ -185,14 +185,14 @@ Continue draft declaration
                 text: "No"
               }
             ]
-          }) }}
+          }) }}  #}
 
           {{ govukButton({
             text: "Continue",
-            href: ""
+            href: "place-of-notification-postcode"
             }) }}
 
-
+          <p class="govuk-body"><a href="draft-declarations">Go to drafts</a></p>
     </form>
   </div>
 </div>

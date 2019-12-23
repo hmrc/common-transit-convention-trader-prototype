@@ -50,7 +50,7 @@ Check your answers before sending this arrival notification - Name of service - 
 
         {% set goodsLocation = [] %}
 
-        <h2 class="govuk-heading-m">Goods details</h1>
+        <h2 class="govuk-heading-m">Goods location</h1>
 
         {% set goodsLocation = (goodsLocation.push(
                 {
@@ -198,7 +198,7 @@ Check your answers before sending this arrival notification - Name of service - 
                       
                       {
                         key: {
-                          text: "Is "+data['address-postcode']+" the place of notification?"
+                          text: "Are you completing the arrival notification at the trader’s address?"
                         },
                         value: {
                           text: data['place-postcode']
@@ -234,60 +234,62 @@ Check your answers before sending this arrival notification - Name of service - 
                     ]
                   }) }}
 
-        {% set events = [] %}
-        <h2 class="govuk-heading-m">Events</h2>
-
-        {% set events = (events.push(
-                  {
-                    key: {
-                      text: "Has something happened on the route?"
-                    },
-                    value: {
-                      text: data['something-happened']
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "something-happened",
-                          text: "Change",
-                          visuallyHiddenText: "if something happened on the journey"
-                        }
-                      ]
-                    }
-                  }
-                  ), events) %}
-
-          {% set seals = [] %}
-          <h2 class="govuk-heading-m">Seals</h2>
+                  {% set events = [] %}
+                  <h2 class="govuk-heading-m">Events</h1>
           
-                  {% set seals = (seals.push(
+                  {% set events = (events.push(
                             {
                               key: {
-                                text: "Do you need to give details about customs seals?"
+                                text: "Has something happened on the route?"
                               },
                               value: {
-                                text: data['seals-changed']
+                                text: data['something-happened']
                               },
                               actions: {
                                 items: [
                                   {
-                                    href: "seals-changed",
+                                    href: "something-happened",
                                     text: "Change",
-                                    visuallyHiddenText: "if you need to give details about customs seals"
+                                    visuallyHiddenText: "if something happened on the journey"
                                   }
                                 ]
                               }
                             }
-                            ), seals) %}
+                            ), events) %}
+
+         
+ 
 
        
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
                 rows: movementReference,
                 rows: goodsLocation,
-                rows: events,
-                rows: seals
+                rows: events
         }) }}
+
+          <!-- Seals -->
+
+          <h2 class="govuk-heading-m">Seals</h2>
+
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Do you need to add seals information?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['seals-changed'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="seals-changed">
+                  Change<span class="govuk-visually-hidden">
+                    if you need to add seals information</span>
+                </a>
+              </dd>
+            </div>
+            
+
+          </dl>
 
         <h2 class="govuk-heading-m">Now send your arrival notification</h2>
 
