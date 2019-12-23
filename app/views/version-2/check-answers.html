@@ -135,7 +135,7 @@ Check your answers before sending this arrival notification - Name of service - 
                 ), goodsLocation) %}
       {% endif %}
 
-      <h2 class="govuk-heading-m">Goods details</h1>
+      <h2 class="govuk-heading-m">Goods location</h2>
 
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
@@ -200,14 +200,62 @@ Check your answers before sending this arrival notification - Name of service - 
                 }
                 
                 ), traderDetails) %}
+          
+        <!-- Place of notification -->
+
+        {% set placeNotification = [] %}
+
+        {% set placeNotification = (placeNotification.push(
+                {
+                    key: {
+                    text: "Did you complete the arrival notification at the trader’s address?"
+                    },
+                    value: {
+                    text: data['place-postcode']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "place-of-notification-postcode",
+                        text: "Change",
+                        visuallyHiddenText: "where you completed the arrival notification"
+                        }
+                    ]
+                    }
+                },
+                {
+                  key: {
+                  text: "Where are you completing this arrival notification?"
+                  },
+                  value: {
+                  text: data['place-notification']
+                  },
+                  actions: {
+                  items: [
+                      {
+                      href: "place-of-notification",
+                      text: "Change",
+                      visuallyHiddenText: "trader’s EORI number"
+                      }
+                  ]
+                  }
+                }
+                
+                ), placeNotification) %}
 
         <h2 class="govuk-heading-m">Trader’s details</h1>
 
           {{ govukSummaryList({
-                        classes: 'govuk-!-margin-bottom-9',
+                        classes: '',
                         rows: traderDetails
                 }) }}
+                {{ govukSummaryList({
+                  classes: 'govuk-!-margin-bottom-9',
+                  rows: placeNotification
+          }) }}
+        
 
+                
           <!-- Events -->
 
           <h2 class="govuk-heading-m">Events</h2>
@@ -258,6 +306,58 @@ Check your answers before sending this arrival notification - Name of service - 
             <p style="margin-top: 15px;"><a href="event-list">Add or remove events</a><p>
 
           </dl>
+
+          <!-- Seals -->
+
+          <h2 class="govuk-heading-m">Seals</h2>
+
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Do you need to add seals information?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['seals-changed'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden">
+                    if you need to add seals information</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Seal 1
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['new-seal-number'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="new-seal-number.html">
+                  Change<span class="govuk-visually-hidden">
+                    seal 1</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Seal 2
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['new-seal-number-2'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="new-seal-number-2.html">
+                  Change<span class="govuk-visually-hidden">
+                    seal 2</span>
+                </a>
+              </dd>
+            </div>
+            <p style="margin-top: 15px;"><a href="seal-list">Add or remove seals</a><p>
+
+          </dl>
+
 
 
               <h2 class="govuk-heading-m">Now send your arrival notification</h2>
