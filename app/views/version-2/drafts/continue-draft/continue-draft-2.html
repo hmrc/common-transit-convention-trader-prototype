@@ -18,33 +18,44 @@ Continue draft declaration
 
     <form class="form" method="post">
 
-      <h1 class="govuk-heading-xl">Arrival notification</h1>
 
+      
+      <h1 class="govuk-heading-xl">Continue draft arrival notification</h1>
+
+
+      <h1 class="govuk-heading-m">Saved anwers</h1>
       <!-- Movement reference -->
 
       {% set movementReference = [] %}
 
-      {% set movementReference = (movementReference.push(
+    {% set movementReference = (movementReference.push(
+        {
+            key: {
+            text: "Movement reference number"
+            },
+            value: {
+            text: "10GB000060100C06E0"
+            },
+            actions: {
+            items: [
                 {
-                    key: {
-                    text: "Movement reference number"
-                    },
-                    value: {
-                    text: "10GB000060100C06E0"
-                    },
-                    actions: {
-                    items: [
-                        {
-                        }
-                    ]
-                    }
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
                 }
-                ), movementReference) %}
+            ]
+            }
+        }
+        ), movementReference) %}
+
+   
 
       {{ govukSummaryList({
                   classes: 'govuk-!-margin-bottom-9',
                   rows: movementReference
           }) }}
+
+
 
       <!-- Goods details -->
 
@@ -61,6 +72,9 @@ Continue draft declaration
                     actions: {
                     items: [
                         {
+                          href: "#",
+                          text: "Change",
+                          visuallyHiddenText: "name"
                         }
                     ]
                     }
@@ -76,6 +90,9 @@ Continue draft declaration
                       actions: {
                       items: [
                           {
+                            href: "#",
+                            text: "Change",
+                            visuallyHiddenText: "name"
                           }
                       ]
                       }
@@ -90,6 +107,9 @@ Continue draft declaration
                     actions: {
                     items: [
                         {
+                          href: "#",
+                          text: "Change",
+                          visuallyHiddenText: "name"
                         }
                     ]
                     }
@@ -118,6 +138,9 @@ Continue draft declaration
                     actions: {
                     items: [
                         {
+                          href: "#",
+                          text: "Change",
+                          visuallyHiddenText: "name"
                         }
                     ]
                     }
@@ -132,6 +155,9 @@ Continue draft declaration
                   actions: {
                   items: [
                       {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "name"
                       }
                   ]
                   }
@@ -146,6 +172,9 @@ Continue draft declaration
                     actions: {
                     items: [
                         {
+                          href: "#",
+                          text: "Change",
+                          visuallyHiddenText: "name"
                         }
                     ]
                     }
@@ -187,10 +216,13 @@ Continue draft declaration
             ]
           }) }}  #}
 
+    
           {{ govukButton({
-            text: "Continue",
+            text: "Continue arrival notification",
             href: "place-of-notification-postcode"
             }) }}
+
+
 
           <p class="govuk-body"><a href="draft-declarations">Go to drafts</a></p>
     </form>
