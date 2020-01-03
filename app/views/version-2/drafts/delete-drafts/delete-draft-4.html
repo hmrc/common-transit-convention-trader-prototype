@@ -73,49 +73,16 @@ Delete draft declaration
         items: [
           {
             value: "yes",
-            text: "Yes"
+            text: "Delete draft arrival notification"
           },
           {
             value: "no",
-            text: "No"
+            text: "Keep draft arrival notification"
           }
         ]
       }) }}
 
 
-     
-
-
-
-
-
-      
-         {#   {% from "govuk/components/radios/macro.njk" import govukRadios %}
-
-            {{ govukRadios({
-            classes: "govuk-radios--inline",
-            idPrefix: "another-container",
-            name: "another-container",
-            fieldset: {
-              legend: {
-                text: "Do you want to continue with this arrival notification?",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--m"
-              }
-            },
-            items: [
-              {
-                value: "yes redirect(something-happened)",
-                text: "Yes"
-              },
-              {
-                value: "no redirect(draft-declarations)",
-                text: "No"
-              }
-            ]
-          }) }}  #}
-
-    
           {{ govukButton({
             text: "Continue",
             href: "place-of-notification-postcode"

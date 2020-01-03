@@ -23,34 +23,7 @@ Delete draft declaration
       <h1 class="govuk-heading-xl">Are you sure you want to delete this draft arrival notification?</h1>
 
 
-      {% from "govuk/components/table/macro.njk" import govukTable %}
 
-      {{ govukTable({
-        caption: "",
-        firstCellIsHeader: false,
-        head: [
-          {
-            text: "Created"
-          },
-          {
-            text: "Movement reference number"
-          }
-        ],
-        rows: [
-          [
-            {
-              text: "25 November 2019 9:45am"
-            },
-            {
-              text: "98756721839010293"
-            }
-          ],
-          [  
-          ],
-          [
-          ]
-        ]
-      }) }}
 
 
 
@@ -79,6 +52,35 @@ Delete draft declaration
             value: "no",
             text: "No"
           }
+        ]
+      }) }}
+
+      {% from "govuk/components/table/macro.njk" import govukTable %}
+
+      {{ govukTable({
+        caption: "",
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "Created"
+          },
+          {
+            text: "Movement reference number"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "25 November 2019 9:45am"
+            },
+            {
+              text: "98756721839010293"
+            }
+          ],
+          [  
+          ],
+          [
+          ]
         ]
       }) }}
 
