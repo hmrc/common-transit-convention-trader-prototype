@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Arrival notification received - Name of service - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    {% set mainClasses = "govuk-main-wrapper--l" %}
+
+    {% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+    {% block content %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        {{ govukPanel({
+        titleText: "Sent arrival notification",
+        html: "for movement reference number <strong>19GB00005112345678</strong>"  
+      }) }}
+
+        <p class="govuk-body"></p>
+
+        <h2 class="govuk-heading-m">What happens next</h2>
+
+        <p class="govuk-body">You need to: </p> 
+        
+        <ul class="govuk-list govuk-list--bullet">
+        <li>email Border Force at the office where the goods will be presented (also known as the office of destination)</li>
+        <li>tell them that you are waiting for goods to be released</li>
+        <li>send copies of any paperwork to prove that duties and taxes have been paid or goods have moved out of transit</li>
+        <li>keep <a href="../version-1/arrivals-history.html" class="govuk-link">checking for the latest updates to arrival notifications</a> to see when Border Force release the goods</li>
+        </ul>
+
+        <p class="govuk-body">If an arrival notification gets rejected, you can view and fix any issues then send it again.</p>
+
+        <p class="govuk-body">Contact Border Force at Teesport, telephone 01642 440 111, if the goods are not released or you have a problem.</p>
+
+        <p class="govuk-body">Go to 
+          <a href="homepage.html" class="govuk-link">manage transit movements</a>.
+        </p>
+      </div>
+    </div>
+
+  <!--  {{ govukButton({
+          text: "Accept and send"
+        }) }}-->
+       
+    </form>
+
+  </div>
+</div>
+{% endblock %}
