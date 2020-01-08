@@ -328,8 +328,11 @@
 
               <h3 class="govuk-heading-s">Container numbers</h3>
 
-              <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+              <dl class="govuk-summary-list govuk-!-margin-bottom-4">
                 <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Container 1
+                  </dt>
                   <dt class="govuk-summary-list__value">
                     {{ data['new-container-number'] }}
                   </dt>
@@ -343,6 +346,9 @@
                 </div>
                 {% if (data['new-container-number-2']) %}
                   <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Container 2
+                    </dt>
                     <dt class="govuk-summary-list__value">
                       {{ data['new-container-number-2'] }}
                     </dt>
@@ -355,9 +361,10 @@
                     </dd>
                   </div>
                 {% endif %}
-                <p style="margin-top: 15px;">
+                </dl>
+                <p>
                   <a href="container-list.html">Add or remove containers</a>
-                  <p></dl>
+                  <p>
 
                   <h3 class="govuk-heading-s">Vehicle information</h3>
 
@@ -392,6 +399,82 @@
                     </div>
                   </dl>
                 {% endif %}
+
+                <!-- Seals -->
+
+          <h2 class="govuk-heading-m">Seals</h2>
+
+          {% if (data['seals-changed'] == "No ") %}
+
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Do you need to add seals information?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['seals-changed'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="seals-changed.html">
+                  Change<span class="govuk-visually-hidden">
+                    if you need to add seals information</span>
+                </a>
+              </dd>
+            </div>
+          </dl>
+          {% endif %}
+
+          {% if (data['seals-changed'] == "Yes ") %}
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Do you need to add seals information?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['seals-changed'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden">
+                    if you need to add seals information</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Seal 1
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['new-seal-number'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="new-seal-number.html">
+                  Change<span class="govuk-visually-hidden">
+                    seal 1</span>
+                </a>
+              </dd>
+            </div>
+            {% if (data['new-seal-number-2']) %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Seal 2
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['new-seal-number-2'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="new-seal-number-2.html">
+                  Change<span class="govuk-visually-hidden">
+                    seal 2</span>
+                </a>
+              </dd>
+            </div>
+            {% endif %}
+          </dl>
+          {% endif %}
+
+
+          <p style="margin-top: 15px;"><a href="seal-list">Add or remove seals</a><p></p>
 
                 {{ govukButton({
                 text: "Save and continue",
