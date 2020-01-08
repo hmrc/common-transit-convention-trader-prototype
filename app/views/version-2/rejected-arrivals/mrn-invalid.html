@@ -22,26 +22,22 @@ There is an error in this arrival notification
 
    
   
-{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-
-{{ govukSummaryList({
-  rows: [
-    {
-      key: {
-        text: "Movement reference number"
-      },
-      value: {
-        text: "10IT02130010005402"
-      }
-    }
-  ]
-}) }}
+    <dl class="govuk-summary-list govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key" style="width: 48%">
+          Movement reference number
+        </dt>
+        <dd class="govuk-summary-list__value" style="width: 62%">
+          10IT02130010005402
+        </dd>
+      </div>
+    </dl>
 
 <p class="govuk-body">We expect movement reference numbers to:</p>
 <ul class="govuk-list govuk-list--bullet">
   <li>start with numbers to show the year, like 19</li>
   <li>show the country code of the place the goods start from, like GB</li>
-  <li>finish with 14 numbers</li>
+  <li>be 18 characters long</li>
 </ul>
 
 {#<p class="govuk-body">Rejected arrival notification</p>
@@ -122,7 +118,7 @@ There is an error in this arrival notification
     text: "Fix the error and send the arrival notification again"
   },
   {
-    value: "delete-arrival-notification, redirect(../delete-notification)",
+    value: "delete-arrival-notification, redirect(delete-notification)",
     text: "Delete this arrival notification"
   }
 ]
