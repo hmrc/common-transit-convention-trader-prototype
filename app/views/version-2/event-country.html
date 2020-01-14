@@ -4,6 +4,12 @@
 Which country did the event happen in?
 {% endblock %}
 
+{% block pageHead %}
+<!--[if gt IE 8]><!-->
+<link href="/public/stylesheets/accessible-autocomplete.css" media="all" rel="stylesheet" type="text/css" />
+<!--<![endif]-->
+{% endblock %}
+
 {% block beforeContent %}
 <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
@@ -18,14 +24,23 @@ Which country did the event happen in?
 
       <h1 class="govuk-heading-xl">Which country were the goods in when it happened?</h1>
 
-      {{ govukInput({
-      classes: "govuk-input--width-20",
-      
-      id: "event-country",
-      name: "event-country",
-      value: data['event-country']
-      }) }}
 
+      {{ govukSelect({
+        classes: "govuk-input--width-20 autocomplete-country",
+        label: {
+          text: header,
+          isPageHeading: true,
+          classes: "govuk-label--xl"
+        },
+        id: "event-country",
+        name: "event-country",
+        hint: {
+          text: "Give the office location or code. For example, Dover or GB000060. "
+        },
+        items: CTCData.countries,
+        value: data['event-country']
+
+      }) }}
 
 
       {{ govukButton({
@@ -35,4 +50,8 @@ Which country did the event happen in?
   </div>
 </form>
 
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/location-autocomplete.js"></script>
 {% endblock %}
