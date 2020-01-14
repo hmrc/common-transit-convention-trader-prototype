@@ -4,6 +4,12 @@
 Where are the goods located?
 {% endblock %}
 
+{% block pageHead %}
+<!--[if gt IE 8]><!-->
+<link href="/public/stylesheets/accessible-autocomplete.css" media="all" rel="stylesheet" type="text/css" />
+<!--<![endif]-->
+{% endblock %}
+
 {% block beforeContent %}
 <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
@@ -19,15 +25,22 @@ Where are the goods located?
 
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
-{{ govukInput({
-  classes: "govuk-input--width-20",
+
+{{ govukSelect({
+  classes: "govuk-input--width-20 autocomplete",
+  label: {
+    text: header,
+    isPageHeading: true,
+    classes: "govuk-label--xl"
+  },
+  id: "border-force-office",
+  name: "border-force-office",
   hint: {
     text: "Give the office location or code. For example, Dover or GB000060. "
   },
-  id: "border-force-office",
-  name: "border-force-office"
+  errorMessage: form.value.error,
+  items: CTCData.officesOfDeparture
 }) }}
-
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
@@ -40,4 +53,8 @@ Where are the goods located?
   </div>
 </div>
 
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/accessible-autocomplete.js"></script>
 {% endblock %}
