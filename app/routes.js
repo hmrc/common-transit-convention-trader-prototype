@@ -8,6 +8,11 @@ function getData(res){
     // console.log(dummyData.officesOfDeparture)
 }
 
+// Route index page
+router.get('/', function (req, res) {
+    res.render('index', {  })
+  })
+
 
 /* catch-all routes */
 router.get('*', function (req, res, next) {
