@@ -18,3 +18,120 @@ $govuk-assets-path: '/govuk/assets/';
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 @import 'components/input-currency';
 
+
+$mobile: 1000px;
+
+.hmrc-responsive-table {
+    width: 100%;
+
+    thead {
+      border: 0;
+      clip: rect(0 0 0 0);
+      -webkit-clip-path: inset(50%);
+      clip-path: inset(50%);
+      height: 1px;
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+
+      @media (min-width: $mobile) {
+        clip: auto;
+        -webkit-clip-path: none;
+        clip-path: none;
+        display: table-header-group;
+        height: auto;
+        overflow: auto;
+        position: relative;
+        width: auto;
+      }
+    }
+
+    tbody {
+
+      tr {
+        display: block;
+        margin-bottom: 1.5em;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        @media (max-width: $mobile) {
+          background-color: #fff;
+          box-shadow: 0 4px 0 0 #d8dde0;
+          padding: 0 0.5em;
+        }
+
+        @media (min-width: $mobile) {
+          display: table-row;
+        }
+
+        th {
+          text-align: right;
+
+          @media (min-width: $mobile) {
+            text-align: left;
+          }
+        }
+
+        td {
+          display: block; // For browsers that don't support flexbox
+          min-width: 1px;
+          text-align: right;
+
+          @media (min-width: $mobile) {
+            display: table-cell;
+            text-align: left;
+          }
+
+          @media (max-width: $mobile) {
+            padding-right: 0;
+            &:last-child {
+              border-bottom: none;
+            }
+          }
+
+        }
+      }
+    }
+  }
+
+  .hmrc-responsive-table__data {
+    @media (max-width: $mobile) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .hmrc-responsive-table__heading {
+      display: block;
+      font-weight: 700;
+      padding-right: 1em;
+      text-align: left;
+
+    @media (min-width: $mobile) {
+      display: none;
+    }
+  }
+
+  .hmrc-reponsive-table__numeric {
+    @media (min-width: $mobile) {
+      text-align: right;
+    }
+  }
+
+  .table-foot {
+    border-bottom: 1px solid #bfc1c3;
+    display: flex;
+    font-weight: 700;
+    justify-content: space-between;
+    padding: 1em 0 75em;
+  }
+
+.hmrc-responsive-table__value {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
