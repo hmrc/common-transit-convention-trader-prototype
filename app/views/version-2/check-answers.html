@@ -137,16 +137,16 @@ Check your answers before sending this arrival notification - Name of service - 
 
       <h2 class="govuk-heading-m">Goods location</h2>
 
-        {{ govukSummaryList({
+      {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
                 rows: goodsLocation
         }) }}
 
-        <!-- Trader details -->
+      <!-- Trader details -->
 
-        {% set traderDetails = [] %}
+      {% set traderDetails = [] %}
 
-        {% set traderDetails = (traderDetails.push(
+      {% set traderDetails = (traderDetails.push(
                 {
                     key: {
                     text: "Name"
@@ -200,62 +200,51 @@ Check your answers before sending this arrival notification - Name of service - 
                 }
                 
                 ), traderDetails) %}
+
+      <h2 class="govuk-heading-m">Trader’s details</h1>
+
+        {{ govukSummaryList({
+            classes: '',
+            rows: traderDetails
+        }) }}
+
+          <h2 class="govuk-heading-m">Need heading for place of notification section</h2>
+
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Did you complete the arrival notification at the trader’s address?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['place-postcode'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="place-of-notification-postcode.html">
+                  Change<span class="govuk-visually-hidden">
+                    need content</span>
+                </a>
+              </dd>
+            </div>
+            {% if (data['place-postcode'] == "No ") %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Where are you completing this arrival notification?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['place-notification'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="place-notification.html">
+                  Change<span class="govuk-visually-hidden">
+                    need content</span>
+                </a>
+              </dd>
+            </div>
+            {% endif %}
+          </dl>
+
           
-        <!-- Place of notification -->
 
-        {% set placeNotification = [] %}
-
-        {% set placeNotification = (placeNotification.push(
-                {
-                    key: {
-                    text: "Did you complete the arrival notification at the trader’s address?"
-                    },
-                    value: {
-                    text: data['place-postcode']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "place-of-notification-postcode",
-                        text: "Change",
-                        visuallyHiddenText: "where you completed the arrival notification"
-                        }
-                    ]
-                    }
-                },
-                {
-                  key: {
-                  text: "Where are you completing this arrival notification?"
-                  },
-                  value: {
-                  text: data['place-notification']
-                  },
-                  actions: {
-                  items: [
-                      {
-                      href: "place-notification",
-                      text: "Change",
-                      visuallyHiddenText: "trader’s EORI number"
-                      }
-                  ]
-                  }
-                }
-                
-                ), placeNotification) %}
-
-        <h2 class="govuk-heading-m">Trader’s details</h1>
-
-          {{ govukSummaryList({
-                        classes: '',
-                        rows: traderDetails
-                }) }}
-                {{ govukSummaryList({
-                  classes: 'govuk-!-margin-bottom-9',
-                  rows: placeNotification
-          }) }}
-        
-
-                
           <!-- Events -->
 
           <h2 class="govuk-heading-m">Events</h2>
@@ -305,10 +294,11 @@ Check your answers before sending this arrival notification - Name of service - 
             </div>
           </dl>
 
-          <p style="margin-top: 15px;"><a href="event-list">Add or remove events</a><p>
+          <p style="margin-top: 15px;"><a href="event-list">Add or remove events</a>
+            <p>
 
 
-          
+
 
               <h2 class="govuk-heading-m">Now send your arrival notification</h2>
 

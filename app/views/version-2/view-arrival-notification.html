@@ -94,7 +94,7 @@ Check your answers before sending this arrival notification - Name of service - 
                 }
                 ), goodsLocation) %}
 
-      <h2 class="govuk-heading-m">Goods details</h1>
+      <h2 class="govuk-heading-m">Goods location</h1>
 
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
@@ -148,7 +148,6 @@ Check your answers before sending this arrival notification - Name of service - 
                     ]
                     }
                 }
-                
                 ), traderDetails) %}
 
         <h2 class="govuk-heading-m">Trader’s details</h1>
@@ -156,6 +155,49 @@ Check your answers before sending this arrival notification - Name of service - 
           {{ govukSummaryList({
                         classes: 'govuk-!-margin-bottom-9',
                         rows: traderDetails
+                }) }}
+
+                {% set placeNotification = [] %}
+
+      {% set placeNotification = (placeNotification.push(
+                {
+                    key: {
+                    text: "Did you complete the arrival notification at the trader’s address?"
+                    },
+                    value: {
+                    text: "No"
+                    },
+                    actions: {
+                    items: [
+                        {
+                        
+                        }
+                    ]
+                    }
+                },
+                {
+                  key: {
+                  text: "Where are you completing this arrival notification?"
+                  },
+                  value: {
+                  text: "AA1 1AA"
+                  },
+                  actions: {
+                  items: [
+                      {
+                      
+                      }
+                  ]
+                  }
+                }
+                
+                ), placeNotification) %}
+                
+                <h2 class="govuk-heading-m">Need heading for place of notification section</h1>
+
+                  {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: placeNotification
                 }) }}
 
           <!-- Events -->
@@ -181,6 +223,10 @@ Check your answers before sending this arrival notification - Name of service - 
                 Berlin in Germany
               </dd>
               <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="view-event.html">
+                  View<span class="govuk-visually-hidden">
+                    event 1</span>
+                </a>
               </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -190,7 +236,11 @@ Check your answers before sending this arrival notification - Name of service - 
               <dd class="govuk-summary-list__value">
                 Champs Elysees in Paris
               </dd>
-              <dd class="govuk-summary-list__actions"></dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="view-event.html">
+                  View<span class="govuk-visually-hidden">
+                    event 2</span>
+                </a>
               </dd>
             </div>
           </dl>

@@ -194,45 +194,44 @@ Check your answers before sending this arrival notification - Name of service - 
                             }
                           ]
                         }
-                      },
-                      
-                      {
-                        key: {
-                          text: "Are you completing the arrival notification at the trader’s address?"
-                        },
-                        value: {
-                          text: data['place-postcode']
-                        },
-                        actions: {
-                          items: [
-                            {
-                              href: "place-of-notification-postcode",
-                              text: "Change",
-                              visuallyHiddenText: "if "+data['address-postcode']+" is the postcode of the place of notification"
-                            }
-                          ]
-                        }
-                      },
-
-                      {
-                        key: {
-                          text: "Where is the place of notification?"
-                        },
-                        value: {
-                          text: data['place-notification']
-                        },
-                        actions: {
-                          items: [
-                            {
-                              href: "place-notification",
-                              text: "Change",
-                              visuallyHiddenText: "place of notification"
-                            }
-                          ]
-                        }
                       }
                     ]
                   }) }}
+
+                  <h2 class="govuk-heading-m">Need heading for place of notification section</h2>
+
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Did you complete the arrival notification at the trader’s address?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['place-postcode'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="place-of-notification-postcode.html">
+                  Change<span class="govuk-visually-hidden">
+                    need content</span>
+                </a>
+              </dd>
+            </div>
+            {% if (data['place-postcode'] == "No ") %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Where are you completing this arrival notification?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['place-notification'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="place-notification.html">
+                  Change<span class="govuk-visually-hidden">
+                    need content</span>
+                </a>
+              </dd>
+            </div>
+            {% endif %}
+          </dl>
 
                   {% set events = [] %}
                   <h2 class="govuk-heading-m">Events</h1>
