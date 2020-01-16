@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-There is an error in this arrival notification
+Arrival notification rejected
 {% endblock %}
 
 {% block beforeContent %}
@@ -16,7 +16,28 @@ There is an error in this arrival notification
     <form class="form" action="correct-mrn-error" method="post">
 
      <h1 class="govuk-heading-xl">There is an error in this arrival notification</h1>
-    <p class="govuk-body">It has been rejected because the country where event happened must be included in the list of answers.</p>
+
+     
+    <p class="govuk-body">It has been rejected because your answer is not in the list of countries. </p>
+
+   
+  
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        html: "Country where event happened"
+      },
+      value: {
+        html: "Republic of Ireland"
+      }
+    }
+  ]
+}) }}
+
+<p class="govuk-body">You can <a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries">contact the helpdesk (opens in a new window or tab)</a> for advice.</p>
 
 
 {#<h2 class="govuk-heading-m">Rejected arrival notification</h2>
@@ -72,40 +93,12 @@ There is an error in this arrival notification
       }
     }
   ]
-}) }} #}
+}) }}#}
    
 
 <!--<p class="govuk-body">If the movement reference number you have given is correct, you will need to <a href="#">contact the helpdesk (opens in a new window or tab)</a>.</p>-->
 
-<h2 class="govuk-heading-m">What do you want to do?</h2>
-
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
-
-{{ govukRadios({
-  idPrefix: "what-do-you-want-do-to",
-  name: "what-do-you-want-to-do",
-  fieldset: {
-    legend: {
-      text: "",
-      isPageHeading: false,
-      classes: "govuk-fieldset__legend--l"
-    }
-  },
-  items: [
-    {
-      value: "fix-errors, redirect(../trader-eori-reject)",
-      text: "Fix the error and send the arrival notification again"
-    },
-    {
-      value: "delete-arrival-notification, redirect(../delete-notification)",
-      text: "Delete this arrival notification"
-    }
-  ]
-}) }}
-
-      {{ govukButton({
-    text: "Continue"
-  }) }}
+<p class="govuk-body"><a href="#">Go to manage transit movements</a></p>
 
     </form>
 
