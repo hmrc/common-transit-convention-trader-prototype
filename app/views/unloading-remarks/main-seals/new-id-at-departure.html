@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is the new ID at departure?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form class="form" method="post" action="change-transport-nationality-at-departure">
+
+        <h1 class="govuk-heading-xl">What is the new ID at departure?</h1>
+
+        {{ govukInput({
+        id: "new-id-at-departure",
+        name: "new-id-at-departure"
+        }) }}
+
+        {{ govukButton({
+            text: "Save and continue"
+        }) }}
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+
+

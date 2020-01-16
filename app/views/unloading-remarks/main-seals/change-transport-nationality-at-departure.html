@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Do you need to change the transport nationality at departure?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form class="form" method="post">
+
+        {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "allGoodsUnloaded",
+        name: "allGoodsUnloaded",
+        fieldset: {
+          legend: {
+            text: "Do you need to change the transport nationality at departure?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+            text: "Current transport nationality at departure: UK"
+        },
+        items: [
+        {
+          value: "Yes, redirect(new-transport-nationality-at-departure)",
+          text: "Yes"
+        },
+        {
+          value: "No, redirect(change-total-gross-mass)",
+          text: "No"
+        }
+          
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
