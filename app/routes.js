@@ -40,4 +40,6 @@ router.get('*', function (req, res, next) {
 
   })
 
+router.use('/unloading-remarks/main-seals', require('./views/unloading-remarks/main-seals/routes'));
+
 module.exports = router
