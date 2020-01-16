@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Unloading remarks sent
+
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+      {{ govukPanel({
+        titleText: "Unloading remarks sent",
+        html: "<br><strong></strong>"
+      }) }}
+
+      <p class="govuk-body"> </p>
+
+      <h2 class="govuk-heading-m"> </h2>
+
+      <p class="govuk-body">
+        
+      </p>
+      <p class="govuk-body">
+        
+      </p>
+
+      <p class="govuk-body">
+        <a href="#" class="govuk-link"> </a>
+      </p>
+    </div>
+  </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

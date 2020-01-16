@@ -41,5 +41,6 @@ router.get('*', function (req, res, next) {
   })
 
 router.use('/unloading-remarks/main-seals', require('./views/unloading-remarks/main-seals/routes'));
+router.use('/unloading-remarks/workaround-seals', require('./views/unloading-remarks/workaround-seals/routes'));
 
 module.exports = router

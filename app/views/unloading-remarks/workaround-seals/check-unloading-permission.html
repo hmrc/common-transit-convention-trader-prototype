@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Have all the goods been unloaded?
+Check unloading permission
 {% endblock %}
 
 {% block beforeContent %}
@@ -91,8 +91,8 @@ Have all the goods been unloaded?
 
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        idPrefix: "allGoodsUnloaded",
-        name: "allGoodsUnloaded",
+        idPrefix: "check-unloading-permission",
+        name: "check-unloading-permission",
         fieldset: {
           legend: {
             text: "Do you need to change any of this information?",
@@ -102,11 +102,11 @@ Have all the goods been unloaded?
         },
         items: [
         {
-          value: "Yes, redirect(change-id-at-departure)",
+          value: "Yes, redirect(changes-to-report)",
           text: "Yes"
         },
         {
-          value: "No, redirect(check-your-answers)",
+          value: "No, redirect(check-answers)",
           text: "No"
         }
           
