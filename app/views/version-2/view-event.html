@@ -17,7 +17,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <form class="form" action="success-screen" method="post">
+      <form class="form" method="post">
 
         <h1 class="govuk-heading-xl">Event 1</h1>
 
@@ -27,14 +27,7 @@
 
         {% set eventCountry = "" %}
         {% set vehicleCountry = "" %}
-        {% for country in CTCData.countries %}
-          {% if country.value == data['event-country'] | trim %}
-            {% set eventCountry = country.text %}
-          {% endif %}
-          {% if country.value == data['vehicle-country'] | trim %}
-            {% set vehicleCountry = country.text %}
-          {% endif %}
-        {% endfor %}
+        
 
         {% set eventInfo = (eventInfo.push(
 
@@ -43,7 +36,7 @@
                       text: "Which country were the goods in when the event happened?"
                     },
                     value: {
-                      text: "Poland"
+                      text: "Germany"
                     },
                     actions: {
                       items: [
@@ -58,7 +51,7 @@
                       text: "Where did the event happen?"
                     },
                     value: {
-                      text: "A4 in Krakow"
+                      text: "Berlin"
                     },
                     actions: {
                       items: [
@@ -100,7 +93,7 @@
                     Did the goods move to a different container or vehicle?
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    {{ data['change-vehicle'] }}
+                    Yes
                   </dd>
                   <dd class="govuk-summary-list__actions">
                   </dd>
@@ -119,7 +112,7 @@
 
               <h3 class="govuk-heading-s">Container numbers</h3>
 
-              <dl class="govuk-summary-list govuk-!-margin-bottom-4">
+              <dl class="govuk-summary-list govuk-!-margin-bottom-9">
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
                     Container 1
@@ -173,13 +166,13 @@
          
           <h2 class="govuk-heading-m">Seals</h2>
 
-          <dl class="govuk-summary-list govuk-!-margin-bottom-4">
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Have any of the seals changed?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['seals-changed'] }}
+                Yes
               </dd>
               <dd class="govuk-summary-list__actions">
               </dd>
@@ -207,7 +200,7 @@
             </div>
           </dl>
 
-          <p class="govuk-body"><a href="arrivals-history">Go back to view arrival notification</a></p>
+          <p class="govuk-body"><a href="view-arrival-notification.html">Go back to view arrival notification</a></p>
 
 
               </form>
