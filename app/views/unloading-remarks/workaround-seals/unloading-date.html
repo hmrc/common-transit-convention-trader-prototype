@@ -13,11 +13,11 @@ What date were the goods unloaded?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" method="post">
+    <form class="form" action="check-unloading-permission" method="post">
 
       {{ govukDateInput({
-        id: "date-goods-unloaded",
-        namePrefix: "date-goods-unloaded",
+        name: "unloading-date",
+        id: "unloading-date",
         fieldset: {
           legend: {
             text: "What date were the goods unloaded?",
@@ -33,8 +33,6 @@ What date were the goods unloaded?
       {{ govukButton({
         text: "Save and continue"
       }) }}
-
-
 
     </form>
   </div>

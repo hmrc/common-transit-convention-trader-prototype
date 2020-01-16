@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+  
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <h1 class="govuk-heading-xl">Check your answers</h1>
+
+      <h2 class="govuk-heading-m"></h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Is the state of the seals okay?"
+            },
+            value: {
+              text: data['state-of-seals']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Is the state of the seals okay?"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Have the goods been unloaded?"
+            },
+            value: {
+              text: data['all-unloading-complete']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Have the goods been unloaded?"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "When were the goods unloaded?"
+            },
+            value: {
+              text: data['unloading-date']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "When were the goods unloaded?"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you need to change any of this information?"
+            },
+            value: {
+              text: data['check-unloading-permission']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Do you need to change any of this information?"
+                }
+              ]
+            }
+          }, 
+          {
+            key: {
+              text: "What changes do you need to report?"
+            },
+            value: {
+              text: data['changes-to-report']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "What changes do you need to report?"
+                }
+              ]
+            }
+          } 
+        ]
+      }) }}
+
+      <form action="/form-handler" method="post" novalidate>
+
+        <input type="hidden" name="answers-checked" value="true">
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
