@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to change the transport ID at departure?
+Do you need to change the vehicle name, registration or reference?
 {% endblock %}
 
 {% block beforeContent %}
@@ -11,17 +11,18 @@ Do you need to change the transport ID at departure?
 {% block content %}
 
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds">
 
-        <form class="form" method="post">
+    <form class="form" method="post">
+      
 
-        {{ govukRadios({
+      {# {{ govukRadios({
         classes: "govuk-radios--inline",
         idPrefix: "allGoodsUnloaded",
         name: "allGoodsUnloaded",
         fieldset: {
           legend: {
-            text: "Do you need to change the transport ID at departure?",
+            text: "Do you need to change the vehicle name, registration or reference?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
@@ -44,10 +45,92 @@ Do you need to change the transport ID at departure?
 
       {{ govukButton({
         text: "Save and continue"
+      }) }} #}
+
+      <!-- 
+        List view example duplicated from Arrivals /version-2/rejected-arrivals/mrn-unknown
+      -->
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              Do you need to change the vehicle name, registration or reference?
+            </h1>
+          </legend>
+
+          <span>
+            <dl class="govuk-summary-list govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key" style="width: 48%">
+                  Vehicle name, registration or reference
+                </dt>
+                <dd class="govuk-summary-list__value" style="width: 62%">
+                  BA537
+                </dd>
+              </div>
+            </dl>
+          </span>
+
+
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="changeIdAtDeparture" name="changeIdAtDeparture" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="changeIdAtDeparture">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="changeIdAtDeparture-2" name="changeIdAtDeparture" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="changeIdAtDeparture-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- 
+        List view example with field name and field data in just spans
+      -->
+
+      {# <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              Do you need to change the vehicle name, registration or reference?
+            </h1>
+          </legend>
+
+          <span>
+             <p class="govuk-bod">Vehicle name, registration or reference: <p class="govuk-body">BA537</p></p>
+          </span>
+
+
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="changed-name">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div> #}
+
+      {{ govukButton({
+        text: "Save and continue"
       }) }}
 
-        </form>
-    </div>
+
+    </form>
+  </div>
 </div>
 
 

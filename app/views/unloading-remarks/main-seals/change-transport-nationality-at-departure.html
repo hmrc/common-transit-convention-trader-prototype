@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to change the transport nationality at departure?
+Do you need to change the country the vehicle registered in?
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,17 +17,17 @@ Do you need to change the transport nationality at departure?
 
         {{ govukRadios({
         classes: "govuk-radios--inline",
-        idPrefix: "allGoodsUnloaded",
-        name: "allGoodsUnloaded",
+        idPrefix: "vehicle-country",
+        name: "vehicle-country",
         fieldset: {
           legend: {
-            text: "Do you need to change the transport nationality at departure?",
+            text: "Do you need to change the country the vehicle registered in?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
         },
         hint: {
-            text: "Current transport nationality at departure: UK"
+            text: "Current country the vehicle is registered in: UK"
         },
         items: [
         {
