@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the new total gross mass?
+What is the new seal number or mark?
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,13 +13,13 @@ What is the new total gross mass?
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-        <form class="form" method="post" action="change-declared-items">
+        <form class="form" method="post" action="change-add-seal-ids-updated">
 
-        <h1 class="govuk-heading-xl">What is the new total gross mass?</h1>
+        <h1 class="govuk-heading-xl">What is the new seal number or mark?</h1>
 
         {{ govukInput({
-        id: "new-total-gross-mass",
-        name: "new-total-gross-mass"
+        id: "new-seal-number",
+        name: "new-seal-number"
         }) }}
 
         {{ govukButton({

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the new ID at departure?
+What is the name or reference of the vehicle?
 {% endblock %}
 
 {% block beforeContent %}
@@ -11,28 +11,29 @@ What is the new ID at departure?
 {% block content %}
 
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds">
 
-        <form class="form" method="post" action="change-transport-nationality-at-departure">
+    <h1 class="govuk-heading-xl">What is the vehicle name, registration or reference?</h1>
 
-        <h1 class="govuk-heading-xl">What is the new ID at departure?</h1>
+    <form class="form" action="change-transport-nationality-at-departure" method="post">
 
-        {{ govukInput({
-        id: "new-id-at-departure",
-        name: "new-id-at-departure"
-        }) }}
+      {% from "govuk/components/input/macro.njk" import govukInput %}
 
-        {{ govukButton({
-            text: "Save and continue"
-        }) }}
+      {{ govukInput({
+        classes: "govuk-input--width-20",
+        id: "new-vehicle-reference",
+        name: "new-vehicle-reference"
+      }) }}
 
-        </form>
-    </div>
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+      text: "Save and continue"
+      }) }}
+
+    </form>
+
+  </div>
 </div>
 
-
 {% endblock %}
-
-
-
-
