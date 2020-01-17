@@ -25,14 +25,25 @@
 
         {% set eventInfo = [] %}
 
+        {% set eventCountry = "" %}
+        {% set vehicleCountry = "" %}
+        {% for country in CTCData.countries %}
+          {% if country.value == data['event-country'] | trim %}
+            {% set eventCountry = country.text %}
+          {% endif %}
+          {% if country.value == data['vehicle-country'] | trim %}
+            {% set vehicleCountry = country.text %}
+          {% endif %}
+        {% endfor %}
+
         {% set eventInfo = (eventInfo.push(
-                  
-                  { 
+
+                  {
                     key: {
                       text: "Which country were the goods in when the event happened?"
                     },
                     value: {
-                      text: data['event-country']
+                      text: eventCountry
                     },
                     actions: {
                       items: [
@@ -44,7 +55,7 @@
                       ]
                     }
                   },
-                  { 
+                  {
                     key: {
                       text: "Where did the event happen?"
                     },
@@ -61,7 +72,7 @@
                       ]
                     }
                   },
-                  { 
+                  {
                     key: {
                       text: "Has this event been reported to customs?"
                     },
@@ -100,7 +111,7 @@
               }
             },
 
-          { 
+          {
             key: {
               text: "What happened on route?"
             },
@@ -129,7 +140,7 @@
 
         {# {% if (data['change-vehicle'] == "Yes") %}
           {% set vehicleContainer = (vehicleContainer.push(
-          { 
+          {
             key: {
               text: "What did the goods move to?"
             },
@@ -284,7 +295,7 @@
                     Which country is the vehicle registered in?
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    {{ data['vehicle-country'] }}
+                    {{ vehicleCountry }}
                   </dd>
                   <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="vehicle-country">
@@ -407,14 +418,16 @@
 
                 <!-- Seals -->
 
-          <h2 class="govuk-heading-m">Seals</h2>
+
 
           {% if (data['seals-changed'] == "No ") %}
+
+          <h2 class="govuk-heading-m">Seals</h2>
 
           <dl class="govuk-summary-list govuk-!-margin-bottom-4">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Do you need to add seals information?
+                Have any of the seals changed?
               </dt>
               <dd class="govuk-summary-list__value">
                 {{ data['seals-changed'] }}
@@ -430,10 +443,12 @@
           {% endif %}
 
           {% if (data['seals-changed'] == "Yes ") %}
+          <h2 class="govuk-heading-m">Seals</h2>
+
           <dl class="govuk-summary-list govuk-!-margin-bottom-4">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Do you need to add seals information?
+                Have any of the seals changed?
               </dt>
               <dd class="govuk-summary-list__value">
                 {{ data['seals-changed'] }}

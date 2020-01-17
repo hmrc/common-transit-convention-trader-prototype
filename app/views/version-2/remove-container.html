@@ -13,11 +13,24 @@ Did something happen on the route?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-   
+   <h1 class="govuk-heading-xl">Are you sure you want to remove this container?</h1>
 
       <form class="form" method="post">
 
-    {% set heading="Are you sure you want to remove the container "+data['new-container-number']+"?" %}
+   
+
+
+    
+    <dl class="govuk-summary-list govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key" style="width: 48%">
+          Container
+        </dt>
+        <dd class="govuk-summary-list__value" style="width: 62%">
+          {{ data['new-container-number'] }}
+        </dd>
+      </div>
+    </dl>
 
     {% from "govuk/components/radios/macro.njk" import govukRadios %}
 

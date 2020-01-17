@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check unloading permission
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+    <h1 class="govuk-heading-xl">Check unloading permission</h1>
+    
+    <!-- summary table -->
+
+    {{ govukSummaryList({
+    rows: [
+        {
+        key: {
+            text: "Transport ID at departure"
+        },
+        value: {
+            text: "BA357"
+        }
+        },
+
+        {
+        key: {
+            text: "Transport nationality at departure"
+        },
+        value: {
+            text: "GB"
+        }
+        },
+
+        {
+        key: {
+            text: "Total number of items"
+        },
+        value: {
+            text: "3"
+        }
+        },
+
+        {
+        key: {
+            text: "Total number of packages"
+        },
+        value: {
+            text: "3"
+        }
+        },
+
+        {
+        key: {
+            text: "Total gross mass (kg)"
+        },
+        value: {
+            text: "800"
+        }
+        },
+
+        {
+        key: {
+            text: "Number of seals"
+        },
+        value: {
+            text: "7"
+        }
+        },
+
+        {
+        key: {
+            text: "Identities of seals"
+        },
+        value: {
+            html: "1234<br>1234<br>1234<br>1234<br>1234<br>1234<br>1234<br>"
+        }
+        }
+
+    ]
+    }) }}
+
+    <!-- radios -->
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "check-unloading-permission",
+        name: "check-unloading-permission",
+        fieldset: {
+          legend: {
+            text: "Do you need to change any of this information?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+        {
+          value: "Yes, redirect(changes-to-report)",
+          text: "Yes"
+        },
+        {
+          value: "No, redirect(check-answers)",
+          text: "No"
+        }
+          
+        ]
+      }) }}
+
+      <!-- Button -->
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
