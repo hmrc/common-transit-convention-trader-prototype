@@ -3,9 +3,9 @@ $mobile: 1000px;
 .hmrc-responsive-table {
     width: 100%;
 
-    // @media (min-width: $mobile) {
-    //   table-layout: fixed;
-    // }
+    @media (min-width: $mobile) {
+      table-layout: fixed;
+    }
 
     thead {
       border: 0;
@@ -64,6 +64,7 @@ $mobile: 1000px;
 
           @media (min-width: $mobile) {
             display: table-cell;
+            text-align: left;
           }
 
           @media (max-width: $mobile) {
