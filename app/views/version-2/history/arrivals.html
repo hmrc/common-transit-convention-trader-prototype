@@ -19,79 +19,106 @@ GOV.UK Prototype Kit
 
     <p class="govuk-body"><a href="../../version-1/movement-reference">Make an arrival notification</a></p>
 
-    <!-- 
+    <!--
       22 November section
     -->
 
-    <h2 class="govuk-heading-l">25 November 2019</h2>
 
-    <div class="govuk-summary-list govuk-!-margin-bottom-2">
-      <div class="govuk-summary-list__row">
-        <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Updated</span>
-        <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Movement reference number</span>
-        <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Presenter</span>
-        <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Office</span>
-        <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Procedure</span>
-        <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Status</span>
-        <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Action</span>
-      </div>
-      <div class="govuk-summary-list__row">
-        <span class="govuk-summary-list__value govuk-!-width-full">9:19am</span>
-        <span class="govuk-summary-list__value govuk-!-width-full">10GB000060100C06E0</span>
-        <span class="govuk-summary-list__value govuk-!-width-full">Corleone</span>
-        <span class="govuk-summary-list__value govuk-!-width-full">GB000060</span>
-        <span class="govuk-summary-list__value govuk-!-width-full">Normal</span>
-        <span class="govuk-summary-list__value govuk-!-width-full">Goods released</span>
-        <span class="govuk-summary-list__value govuk-!-width-full"><a href="view-history.html">View history<span class="govuk-visually-hidden"> for 10GB000060100C06E0</span> </a></span>
-        <span class="govuk-summary-list__value govuk-!-width-full"> </span>
-      </div>
-      <div class="govuk-summary-list__row">
-        <span class="govuk-summary-list__value govuk-!-width-full">9:19am</span>
-        <span class="govuk-summary-list__value govuk-!-width-full">LS20090910MRN0001654</span>
-        <span class="govuk-summary-list__value govuk-!-width-full">Corleone</span>
-        <span class="govuk-summary-list__value govuk-!-width-full">GB000060</span>
-        <span class="govuk-summary-list__value govuk-!-width-full">Simplified</span>
-        <span class="govuk-summary-list__value govuk-!-width-full">Arrival notification sent</span>
-        <span class="govuk-summary-list__value govuk-!-width-full"> </span>
-      </div>
-      <div class="govuk-summary-list__row">
-        <span class="govuk-summary-list__value govuk-!-width-full">9:19am</span>
-        <span class="govuk-summary-list__value govuk-!-width-full">10IT02130010005402</span>
-        <span class="govuk-summary-list__value govuk-!-width-full">M&S</span>
-        <span class="govuk-summary-list__value govuk-!-width-full">	GB02847107794274</span>
-        <span class="govuk-summary-list__value govuk-!-width-full">Normal</span>
-        <span class="govuk-summary-list__value govuk-!-width-full">Arrival notification rejected</span>
-        <span class="govuk-summary-list__value govuk-!-width-full"><a href="rejected-arrivals/mrn-unknown">View and fix errors<span class="govuk-visually-hidden"> for 19IT021300100054F2</span></a>
-        <br><p style="padding-top: 10px;"><a href="view-history-list.html">View history<span class="govuk-visually-hidden"> for 10IT02130010005402</span></a></p>
-      </span>
-      </div>
-      <div class="govuk-summary-list__row">
-          <span class="govuk-summary-list__value govuk-!-width-full">9:19am</span>
-          <span class="govuk-summary-list__value govuk-!-width-full">19IT02130010005433</span>
-          <span class="govuk-summary-list__value govuk-!-width-full">M&S</span>
-          <span class="govuk-summary-list__value govuk-!-width-full">	GB02847107794274</span>
-          <span class="govuk-summary-list__value govuk-!-width-full">Normal</span>
-          <span class="govuk-summary-list__value govuk-!-width-full">Arrival notification rejected</span>
-          <span class="govuk-summary-list__value govuk-!-width-full"><a href="rejected-arrivals/mrn-duplicate">View and fix errors<span class="govuk-visually-hidden"> for 19IT021300100054F2</span> </a>
-          <br><p style="padding-top: 10px;"><a href="view-history-list.html">View history<span class="govuk-visually-hidden"> for 10IT02130010005402</span></a></p>
-        </span>
-        
-        </div>            
-        <div class="govuk-summary-list__row">
-          <span class="govuk-summary-list__value govuk-!-width-full">9:19am</span>
-          <span class="govuk-summary-list__value govuk-!-width-full">19IT02130010005433</span>
-          <span class="govuk-summary-list__value govuk-!-width-full">M&S</span>
-          <span class="govuk-summary-list__value govuk-!-width-full">	GB02847107794274</span>
-          <span class="govuk-summary-list__value govuk-!-width-full">Normal</span>
-          <span class="govuk-summary-list__value govuk-!-width-full">Arrival notification rejected</span>
-          <span class="govuk-summary-list__value govuk-!-width-full"><a href="rejected-arrivals/mrn-invalid">View and fix errors<span class="govuk-visually-hidden"> for 19IT021300100054F2</span> </a>
-          <br><p style="padding-top: 10px;"><a href="view-history-list.html">View history<span class="govuk-visually-hidden"> for 10IT02130010005402</span></a></p>
-        </span>
-        </div>            
+    {%
+      set nov25 = [
+        {
+          "updated": "9:19am",
+          "mrn": "10GB000060100C06E0",
+          "presenter": "Corleone",
+          "office": "GB000060",
+          "procedure": "Normal",
+          "status": "Goods released",
+          "actions": ["history"]
+        },
+        {
+          "updated": "9:19am",
+          "mrn": "LS20090910MRN0001654",
+          "presenter": "Corleone",
+          "office": "GB000060",
+          "procedure": "Simplified",
+          "status": "Arrival notification sent",
+          "actions": []
+        },
+        {
+          "updated": "9:19am",
+          "mrn": "10IT02130010005402",
+          "presenter": "M&amp;S",
+          "office": "GB02847107794274",
+          "procedure": "Normal",
+          "status": "Arrival notification rejected",
+          "actions": ["history", "errors"]
+        },
+        {
+          "updated": "9:19am",
+          "mrn": "19IT02130010005433",
+          "presenter": "M&amp;S",
+          "office": "GB02847107794274",
+          "procedure": "Normal",
+          "status": "Arrival notification rejected",
+          "actions": ["history", "errors"]
+        },
+        {
+          "updated": "9:19am",
+          "mrn": "19IT02130010005433",
+          "presenter": "M&amp;S",
+          "office": "GB02847107794274",
+          "procedure": "Normal",
+          "status": "Arrival notification rejected",
+          "actions": ["history", "errors"]
+        }
+      ]
 
-    </div>
+    %}
+  <h2 class="govuk-heading-l">25 November 2019</h2>
 
-    <br><br><br>
+    <table class="govuk-table hmrc-responsive-table" role="grid">
+      <caption class="govuk-visually-hidden">25 November 2019</caption>
+      <thead role="rowgroup">
+        <tr role="row">
+          <th class="govuk-table__header" scope="col" role="columnheader">Updated</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Movement reference number</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Presenter</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Office</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Procedure</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Status</th>
+          <th class="govuk-table__header u--w-10" scope="col" role="columnheader">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for notice in nov25 %}
+          <tr role="row">
+            <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Updated</span>{{ notice.updated }}</td>
+            <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Movement reference number</span><span class="hmrc-responsive-table__value">{{ notice.mrn }}</span></td>
+            <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Presenter</span>{{ notice.presenter | safe }}</td>
+            <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Office</span><span class="hmrc-responsive-table__value">{{ notice.office }}</span></td>
+            <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Procedure</span>{{ notice.procedure }}</td>
+            <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Status</span>{{ notice.status }}</td>
+            <td class="govuk-table__cell u--w-10" role="gridcell">
+              <span class="hmrc-responsive-table__heading" aria-hidden="true">Action</span>
+              <div>
+              {% for action in notice.actions %}
+                {% if action == "errors" %}
+                  <a href="rejected-arrivals/mrn-duplicate">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                {% endif %}
+                {% if action == "history" %}
+                  <a href="view-history.html">View history<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span> </a>
+                {% endif %}
+                {% if loop.index != notice.actions.length %}
+                <br />
+                {% endif %}
+              {% endfor %}
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
 
   <!--<h2 class="govuk-heading-l">22 November 2019</h2>
 Messages in this section relate to simplified arrivals journeys - not done yet
@@ -127,7 +154,7 @@ Messages in this section relate to simplified arrivals journeys - not done yet
         <span class="govuk-summary-list__value govuk-!-width-full">GB000060</span>
         <span class="govuk-summary-list__value govuk-!-width-full">Normal</span>
         <span class="govuk-summary-list__value govuk-!-width-full"><a href="#">Unloading remarks rejected</a></span>
-      </div>            
+      </div>
     </div> -->
 
     <br><br><br>
@@ -145,7 +172,7 @@ Messages in this section relate to simplified arrivals journeys - not done yet
 {# <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <!-- 
+    <!--
       22 November section
     -->
 
@@ -159,14 +186,14 @@ Messages in this section relate to simplified arrivals journeys - not done yet
           <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Presenter</span>
           <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Office</span>
           <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Procedure</span>
-        </div>   
+        </div>
         <div class="govuk-summary-list__row">
           <span class="govuk-summary-list__value govuk-!-width-full">9:19am</span>
           <span class="govuk-summary-list__value govuk-!-width-full"><a href="#">Unloading permission granted</a></span>
           <span class="govuk-summary-list__value govuk-!-width-full">Corleone</span>
           <span class="govuk-summary-list__value govuk-!-width-full">GB000060</span>
           <span class="govuk-summary-list__value govuk-!-width-full">Normal</span>
-        </div>             
+        </div>
       </div>
     <br><br><br>
 
@@ -179,14 +206,14 @@ Messages in this section relate to simplified arrivals journeys - not done yet
           <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Presenter</span>
           <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Office</span>
           <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Procedure</span>
-        </div>   
+        </div>
         <div class="govuk-summary-list__row">
           <span class="govuk-summary-list__value govuk-!-width-full">9:19am</span>
           <span class="govuk-summary-list__value govuk-!-width-full"><a href="#">Syntax error</a></span>
           <span class="govuk-summary-list__value govuk-!-width-full">Corleone</span>
           <span class="govuk-summary-list__value govuk-!-width-full">GB000060</span>
           <span class="govuk-summary-list__value govuk-!-width-full">Normal</span>
-        </div>             
+        </div>
       </div>
     <br><br><br>
 
@@ -198,14 +225,14 @@ Messages in this section relate to simplified arrivals journeys - not done yet
           <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Presenter</span>
           <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Office</span>
           <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Procedure</span>
-        </div>   
+        </div>
         <div class="govuk-summary-list__row">
           <span class="govuk-summary-list__value govuk-!-width-full">9:19am</span>
           <span class="govuk-summary-list__value govuk-!-width-full"><a href="#">Syntax error</a></span>
           <span class="govuk-summary-list__value govuk-!-width-full">Corleone</span>
           <span class="govuk-summary-list__value govuk-!-width-full">GB000060</span>
           <span class="govuk-summary-list__value govuk-!-width-full">Normal</span>
-        </div>             
+        </div>
       </div>
     <br><br><br>
 
@@ -217,17 +244,17 @@ Messages in this section relate to simplified arrivals journeys - not done yet
           <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Presenter</span>
           <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Office</span>
           <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Procedure</span>
-        </div>   
+        </div>
         <div class="govuk-summary-list__row">
           <span class="govuk-summary-list__value govuk-!-width-full">9:19am</span>
           <span class="govuk-summary-list__value govuk-!-width-full"><a href="#">Syntax error</a></span>
           <span class="govuk-summary-list__value govuk-!-width-full">Corleone</span>
           <span class="govuk-summary-list__value govuk-!-width-full">GB000060</span>
           <span class="govuk-summary-list__value govuk-!-width-full">Normal</span>
-        </div>             
+        </div>
       </div>
-      
-    <br><br><br>    
+
+    <br><br><br>
 
 
 
