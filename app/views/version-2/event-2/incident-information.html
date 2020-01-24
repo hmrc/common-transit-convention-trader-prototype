@@ -15,13 +15,13 @@ What happened on the route?
 
       <h1 class="govuk-heading-xl">What happened on the route?</h1>
 
-    <form class="form" action="seals-changed" method="post">
+    <form class="form" method="post">
 
         {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 
         {{ govukTextarea({
-          name: "what-happened",
-          id: "what-happened",
+          name: "what-happened-2",
+          id: "what-happened-2",
           label: {
             text: ""
           },
@@ -29,11 +29,24 @@ What happened on the route?
             text: ""
           }
         }) }}
-    
 
-{{ govukButton({
-  text: "Save and continue"
-}) }}
+        {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
+
+        {{ govukButton({
+          text: "Save and continue",
+          href: "check-event-answers"
+        }) }}
+
+        {% endif %}
+
+        {% if (data['where-are-the-goods'] == "BorderForce") %}
+
+        {{ govukButton({
+          text: "Save and continue",
+          href: "seals-changed"
+        }) }}
+
+        {% endif %}
 </form>
   </div>
 </div>

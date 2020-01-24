@@ -73,7 +73,7 @@ Check your answers before sending this arrival notification - Name of service - 
                 }
                 ), goodsLocation) %}
 
-      {% if (data['where-are-the-goods'] == "Border Force office") %}
+      {% if (data['where-are-the-goods'] == "BorderForce") %}
       {% set goodsLocation = (goodsLocation.push(
                     { 
                       key: {
@@ -113,7 +113,7 @@ Check your answers before sending this arrival notification - Name of service - 
                 ), goodsLocation) %}
       {% endif %}
 
-      {% if (data['where-are-the-goods'] == "Authorised consignee’s location") %}
+      {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
       {% set goodsLocation = (goodsLocation.push(
                 { 
                 key: {
@@ -272,31 +272,37 @@ Check your answers before sending this arrival notification - Name of service - 
                 {{ data['event-place'] }}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="event-place.html">
+                <a class="govuk-link" href="event/event-1/event-place.html">
                   Change<span class="govuk-visually-hidden">
                     event 1</span>
                 </a>
               </dd>
             </div>
+
+            {% if (data['event-country-2']) %}
+
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Event 2
               </dt>
               <dd class="govuk-summary-list__value">
-                Champs Elysees in Paris
+                {{ data['event-place-2'] }}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="event-place.html">
+                <a class="govuk-link" href="event-2/event-place.html">
                   Change<span class="govuk-visually-hidden">
                     event 2</span>
                 </a>
               </dd>
             </div>
-          </dl>
+         {% endif %}
+        </dl>
 
-          <p style="margin-top: 15px;"><a href="event-list">Add or remove events</a>
-            <p>
-
+        {% if (data['event-country-2']) %}
+        <p style="margin-top: 15px;"><a href="event-2/event-list.html">Add or remove events</a></p>
+        {% else %}
+        <p style="margin-top: 15px;"><a href="event/event-1/event-list.html">Add or remove events</a></p>
+        {% endif %}
 
 
 
