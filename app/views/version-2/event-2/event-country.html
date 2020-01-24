@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Which country is the vehicle registered in?
+Which country did the event happen in?
 {% endblock %}
 
 {% block pageHead %}
@@ -16,13 +16,13 @@ Which country is the vehicle registered in?
 
 {% block content %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <form class="form" action="seals-changed" method="post">
+<form action="event-place" class="form" method="post">
 
 
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">Which country is the vehicle registered in?</h1>
+      <h1 class="govuk-heading-xl">Which country were the goods in when it happened?</h1>
 
 
       {{ govukSelect({
@@ -32,24 +32,23 @@ Which country is the vehicle registered in?
           isPageHeading: true,
           classes: "govuk-label--xl"
         },
-        id: "vehicle-country",
-        name: "vehicle-country",
+        id: "event-country-2",
+        name: "event-country-2",
+        hint: {
+          text: " "
+        },
         items: CTCData.countries,
-        value: data['vehicle-country']
+        value: data['event-country']
 
       }) }}
 
 
-    {{ govukButton({
+      {{ govukButton({
       text: "Save and continue"
-    }) }}
-
-  </form>
-
+      }) }}
+    </div>
   </div>
-</div>
-
-
+</form>
 
 {% endblock %}
 
