@@ -22,7 +22,7 @@ Check your answers for this event
       <h1 class="govuk-heading-xl">Check your answers for this event</h1>
 
       <!-- First section -->
-      {% set eventCountry = "" %}
+      {#{% set eventCountry = "" %}
       {% set vehicleCountry = "" %}
       {% for country in CTCData.countries %}
         {% if country.value == data['event-country'] | trim %}
@@ -31,7 +31,7 @@ Check your answers for this event
         {% if country.value == data['vehicle-country'] | trim %}
           {% set vehicleCountry = country.text %}
         {% endif %}
-      {% endfor %}
+      {% endfor %}#}
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
@@ -39,7 +39,7 @@ Check your answers for this event
             Which country were the goods in when the event happened?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['event-country'] }}
+            {{ data['event-country-2'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="event-country.html">
@@ -53,7 +53,7 @@ Check your answers for this event
             Where did the event happen?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['event-place'] }}
+            {{ data['event-place-2'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="what-happened.html">
@@ -67,7 +67,7 @@ Check your answers for this event
             Has this event been reported to customs?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['event-report'] }}
+            {{ data['event-report-2'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="event-report.html">
@@ -87,7 +87,7 @@ Check your answers for this event
             Did the goods move to a different vehicle or container?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['change-vehicle'] }}
+            {{ data['change-vehicle-2'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="change-vehicle">
@@ -101,7 +101,7 @@ Check your answers for this event
             What happened on route?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['what-happened'] }}
+            {{ data['what-happened-2'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="what-happened.html">
@@ -126,7 +126,7 @@ Check your answers for this event
             Did the goods move to a different container or vehicle?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['change-vehicle'] }}
+            {{ data['change-vehicle-2'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="change-vehicle">
@@ -159,7 +159,7 @@ Check your answers for this event
             Container 1
           </dt>
           <dt class="govuk-summary-list__value">
-            {{ data['new-container-number'] }}
+            {{ data['event-2-new-container-number'] }}
           </dt>
           <dd class="govuk-summary-list__value"></dd>
           <dd class="govuk-summary-list__actions">
@@ -194,7 +194,7 @@ Check your answers for this event
 
           {# If vehicle #}
 
-          {% if (data['new-transport-type'] == "Vehicle") %}
+          {% if (data['new-transport-type-2'] == "Vehicle") %}
           <h2 class="govuk-heading-m">Different vehicle</h2>
 
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -217,7 +217,7 @@ Check your answers for this event
                 What did the goods move to?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['new-transport-type'] }}
+                {{ data['new-transport-type-2'] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="new-transport-type">
@@ -269,7 +269,7 @@ Check your answers for this event
                 Did the goods move to a different container or vehicle?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['change-vehicle'] }}
+                {{ data['change-vehicle-2'] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="change-vehicle">
@@ -302,7 +302,7 @@ Check your answers for this event
                 Container 1
               </dt>
               <dt class="govuk-summary-list__value">
-                {{ data['new-container-number'] }}
+                {{ data['event-2-new-container-number'] }}
               </dt>
               <dd class="govuk-summary-list__value"></dd>
               <dd class="govuk-summary-list__actions">
@@ -312,13 +312,13 @@ Check your answers for this event
                 </a>
               </dd>
             </div>
-            {% if (data['new-container-number-2']) %}
+            {% if (data['event-2-new-container-number-2']) %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Container 2
               </dt>
               <dt class="govuk-summary-list__value">
-                {{ data['new-container-number-2'] }}
+                {{ data['event-2-new-container-number-2'] }}
               </dt>
               <dd class="govuk-summary-list__value"></dd>
               <dd class="govuk-summary-list__actions">
@@ -341,7 +341,7 @@ Check your answers for this event
                     What is the vehicle name, registration or reference?
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    {{ data['vehicle-reference'] }}
+                    {{ data['vehicle-reference-2'] }}
                   </dd>
                   <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="vehicle-reference">
@@ -355,7 +355,7 @@ Check your answers for this event
                     Which country is the vehicle registered in?
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    {{ data['vehicle-country'] }}
+                    {{ data['vehicle-country-2'] }}
                   </dd>
                   <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="vehicle-country">
@@ -369,7 +369,7 @@ Check your answers for this event
 
               <!-- Seals -->
 
-              {% if (data['seals-changed'] == "No ") %}
+              {% if (data['event-2-seals-changed'] == "No ") %}
 
               <h2 class="govuk-heading-m">Seals</h2>
 
@@ -379,7 +379,7 @@ Check your answers for this event
                     Have any of the seals changed?
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    {{ data['seals-changed'] }}
+                    {{ data['event-2-seals-changed'] }}
                   </dd>
                   <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="seals-changed.html">
@@ -391,7 +391,7 @@ Check your answers for this event
               </dl>
               {% endif %}
 
-              {% if (data['seals-changed'] == "Yes ") %}
+              {% if (data['event-2-seals-changed'] == "Yes ") %}
               <h2 class="govuk-heading-m">Seals</h2>
 
               <dl class="govuk-summary-list govuk-!-margin-bottom-4">
@@ -400,7 +400,7 @@ Check your answers for this event
                     Have any of the seals changed?
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    {{ data['seals-changed'] }}
+                    {{ data['event-2-seals-changed'] }}
                   </dd>
                   <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="seals-changed.html">
@@ -414,7 +414,7 @@ Check your answers for this event
                     Seal 1
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    {{ data['new-seal-number'] }}
+                    {{ data['event-2-new-seal-number'] }}
                   </dd>
                   <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="new-seal-number.html">
@@ -423,13 +423,13 @@ Check your answers for this event
                     </a>
                   </dd>
                 </div>
-                {% if (data['new-seal-number-2']) %}
+                {% if (data['event-2-new-seal-number-2']) %}
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
                     Seal 2
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    {{ data['new-seal-number-2'] }}
+                    {{ data['event-2-new-seal-number-2'] }}
                   </dd>
                   <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="new-seal-number-2.html">
