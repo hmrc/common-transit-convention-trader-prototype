@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Declared items
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+      <h1 class="govuk-heading-xl">Declared items</h1>
+
+      <div class="govuk-summary-list govuk-!-margin-bottom-2">
+        <div class="govuk-summary-list__row">
+          <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Seal ID</span>
+          <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Action</span>
+        </div>
+        <div class="govuk-summary-list__row">
+          <span class="govuk-summary-list__value govuk-!-width-full">1234</span>
+          <span class="govuk-summary-list__value govuk-!-width-full"><a href="add-new-seal">Change</a></span>
+        </div>
+        <div class="govuk-summary-list__row">
+          <span class="govuk-summary-list__value govuk-!-width-full">1234</span>
+          <span class="govuk-summary-list__value govuk-!-width-full"><a href="#">Change</a></span>
+        </div>
+        <div class="govuk-summary-list__row">
+          <span class="govuk-summary-list__value govuk-!-width-full">1234</span>
+          <span class="govuk-summary-list__value govuk-!-width-full"><a href="#">Change</a></span>
+        </div>
+      </div>
+
+      <br><br>
+
+      <!-- radios -->
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "allGoodsUnloaded",
+        name: "allGoodsUnloaded",
+        fieldset: {
+          legend: {
+            text: "Do you need to change or add any declared items?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+        {
+          value: "Yes, redirect(change-add-declared-items)",
+          text: "Yes"
+        },
+        {
+          value: "No, redirect(change-seal-ids)",
+          text: "No"
+        }
+          
+        ]
+      }) }}
+
+      <!-- Button -->
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

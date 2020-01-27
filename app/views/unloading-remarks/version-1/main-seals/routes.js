@@ -25,18 +25,18 @@ router.post('/change-id-at-departure', function (req, res) {
     Anything else and the user is taken to "change-id-at-departure"
 */
 
-router.post('/unloading-date', function (req, res) {
+// router.post('/unloading-date', function (req, res) {
 
-    // let stateOfSeals = req.session.data.stateOfSeals;
-    let allGoodsUnloaded = req.session.data.allGoodsUnloaded;
+//     // let stateOfSeals = req.session.data.stateOfSeals;
+//     let allGoodsUnloaded = req.session.data.allGoodsUnloaded;
 
-    if ( allGoodsUnloaded == ('Yes')) {
-        res.redirect('check-unloading-permission');
-    } else {
-        res.redirect('change-id-at-departure');
-    }
+//     if ( allGoodsUnloaded == ('Yes')) {
+//         res.redirect('check-unloading-permission');
+//     } else {
+//         res.redirect('change-id-at-departure');
+//     }
 
-})
+// })
 
 /*
     If the user selects "yes" to "state of seals", AND "yes" to "unloading complete", then they are taken to "check unloading permission"
