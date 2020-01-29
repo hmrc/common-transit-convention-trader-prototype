@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="/url/of/previous/page">Back</a>
+  <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -18,6 +18,8 @@
       </h1>
 
       <p><a href="homepage.html">Arrivals journey</a> from home page and including seals</p>
+      <p><a href="homepage-no-arrivals.html">Homepage with no arrival notifications</a></p>
+
 
       <h2 class="govuk-heading-m">Arrival notification rejection</h2>
       <p><a href="rejected-arrivals/mrn-invalid">Invalid movement reference number</a></p>
@@ -31,6 +33,7 @@
       <p><a href="rejected-arrivals/too-long">Element too long</a></p>
       <p><a href="rejected-arrivals/too-short">Element too short</a></p>
       <p><a href="problem-with-service-data-start-again">Problem with service</a> - back button or user actions mean data incomplete. User needs to start again.</p>
+      <p><a href="problem-with-service-remove-at-same-time">Problem with service</a> - data removed by one user, and another user signed in, data is incomplete, need to redo event data.</p>
 
 
 
