@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Change unloading permission
+Change declared information
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,7 +15,7 @@ Change unloading permission
 
     <form class="form" method="post">
 
-      <h1 class="govuk-heading-xl">Change unloading permission</h1>
+      <h1 class="govuk-heading-xl">Change declared information</h1>
 
 
 
@@ -32,7 +32,7 @@ Change unloading permission
           "actions": ["changeNation"]
         },
         {
-          "declarationField": "Total gross mass (kg)",
+          "declarationField": "Total gross mass in kilograms",
           "declarationInfo": "800",
           "actions": ["changeMass"]
         }
@@ -108,7 +108,7 @@ Change unloading permission
 
       {{ govukButton({
         text: "Save and continue",
-        href: "are-seals-broken"
+        href: "are-any-seals-broken"
       }) }}
 
 

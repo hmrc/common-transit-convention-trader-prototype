@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Are all of the seals unbroken and legibile?
+Are any of the seals broken?
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,22 +17,22 @@ Are all of the seals unbroken and legibile?
 
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        idPrefix: "allGoodsUnloaded",
-        name: "allGoodsUnloaded",
+        idPrefix: "sealsBroken",
+        name: "sealsBroken",
         fieldset: {
           legend: {
-            text: "Are all of the seals unbroken and legibile?",
+            text: "Are any of the seals broken?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
         },
         items: [
         {
-          value: "Yes, redirect(change-seal-ids)",
+          value: "Yes, redirect(can-seals-be-read)",
           text: "Yes"
         },
         {
-          value: "No, redirect(seal-damage-details)",
+          value: "No, redirect(can-seals-be-read)",
           text: "No"
         }
           

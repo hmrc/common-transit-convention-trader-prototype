@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What seal damages do you need to report?
+What is wrong with the seals?
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,20 +13,18 @@ What seal damages do you need to report?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="change-seal-ids" method="post">
+    <form class="form" action="declared-seal-numbers" method="post">
 
-        <h1 class="govuk-heading-xl">What seal damages do you need to report?</h1>
-        {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+        <h1 class="govuk-heading-xl">What is wrong with the seals?</h1>
 
-        {{ govukTextarea({
-        name: "seal-damages-to-report",
-        id: "seal-damages-to-report",
-        label: {
-            text: ""
-        },
-        hint: {
-            text: "List all discrepencies and new items"
-        }
+        {{ govukCharacterCount({
+          name: "with-hint",
+          id: "with-hint",
+          maxlength: 350,
+          label: {
+            text: "",
+            classes: "govuk-heading-xl"
+          }
         }) }}
 
       {{ govukButton({

@@ -21,23 +21,19 @@ Check declared information
       set declarationInfo = [
         {
           "declarationField": "Transport ID at departure",
-          "declarationInfo": "BA357",
-          "action": "Action"
+          "declarationInfo": "BA357"
         },
         {
           "declarationField": "Transport nationality at departure",
-          "declarationInfo": "GB",
-          "action": "Action"
+          "declarationInfo": "GB"
         },
         {
-          "declarationField": "Total gross mass (kg)",
-          "declarationInfo": "800",
-          "action": "Action"
+          "declarationField": "Total gross mass in kilograms",
+          "declarationInfo": "800"
         }
       ]
 
     %}
-  {# <h2 class="govuk-heading-l">25 November 2019</h2> #}
 
     <table class="govuk-table hmrc-responsive-table" role="grid">
       <caption class="govuk-visually-hidden">25 November 2019</caption>
@@ -108,11 +104,11 @@ Check declared information
         },
         items: [
         {
-          value: "Yes, redirect(change-unloading-permission)",
+          value: "Yes, redirect(change-declared-information)",
           text: "Yes"
         },
         {
-          value: "No, redirect(are-seals-broken)",
+          value: "No, redirect(are-any-seals-broken)",
           text: "No"
         }
           

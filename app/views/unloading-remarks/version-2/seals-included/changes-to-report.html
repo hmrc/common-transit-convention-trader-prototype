@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What do you need to report?
+What else do you need to report?
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,18 +15,17 @@ What do you need to report?
 
     <form class="form" action="check-your-answers" method="post">
 
-        <h1 class="govuk-heading-xl">What do you need to report?</h1>
+        <h1 class="govuk-heading-xl">What else do you need to report?</h1>
         {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 
-        {{ govukTextarea({
-        name: "changes-to-report",
-        id: "changes-to-report",
-        label: {
-            text: ""
-        },
-        hint: {
-            text: "List all discrepencies and new items"
-        }
+        {{ govukCharacterCount({
+          name: "with-hint",
+          id: "with-hint",
+          maxlength: 350,
+          label: {
+            text: "",
+            classes: "govuk-heading-xl"
+          }
         }) }}
 
       {{ govukButton({
