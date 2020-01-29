@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Have all the goods been unloaded?
+Are all of the seals unbroken and legibile?
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,18 +21,18 @@ Have all the goods been unloaded?
         name: "allGoodsUnloaded",
         fieldset: {
           legend: {
-            text: "Have all the goods been unloaded?",
+            text: "Are all of the seals unbroken and legibile?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
         },
         items: [
         {
-          value: "Yes, redirect(unloading-date)",
+          value: "Yes, redirect(change-seal-ids)",
           text: "Yes"
         },
         {
-          value: "No, redirect(unloading-date)",
+          value: "No, redirect(seal-damage-details)",
           text: "No"
         }
           
