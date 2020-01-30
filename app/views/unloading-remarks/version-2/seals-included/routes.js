@@ -1,24 +1,23 @@
 const express = require('express')
 const router = express.Router()
 
-/*
-    If the user selects "Yes" to "Do you need to change the vehicle name, registration or reference?", then they are taken to "new-id-at-departure"
+    /*
+        If the user selects "yes" to "state of seals", AND "yes" to "unloading complete", then they are taken to "check unloading permission"
 
-    If the user selects "No", then they are taken to "change-transport-nationality-at-departure"
-*/
+        Anything else and the user is taken to "change unloading permission"
+    */
 
-    router.post('/change-id-at-departure', function (req, res) {
+    router.post('/can-seals-be-read', function (req, res) {
 
-        let changeIdAtDeparture = req.session.data.changeIdAtDeparture;
+        let sealsBroken = req.session.data.sealsBroken;
+        let canSealsBeRead = req.session.data.canSealsBeRead;
 
-        if ( changeIdAtDeparture == ('Yes')) {
-            res.redirect('new-id-at-departure');
+        if (sealsBroken == ('Yes') || canSealsBeRead == ('No')) {
+            res.redirect('seal-damage-details');
         } else {
-            res.redirect('change-transport-nationality-at-departure');
+            res.redirect('declared-seal-numbers');
         }
 
     })
 
-
-
-  module.exports = router
+module.exports = router

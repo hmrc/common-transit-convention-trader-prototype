@@ -17,7 +17,6 @@ Change unloading permission
 
       <h1 class="govuk-heading-xl">Change unloading permission</h1>
 
-
      {%
       set declaration = [
         {
@@ -71,13 +70,13 @@ Change unloading permission
                   <a href="new-vehicle-id">{{ data['new-vehicle-country'] }}<span class="govuk-visually-hidden"> for {{ notice.newInfo }}</span></a>
                 {% endif %} #}
 
-                {% if data['new-vehicle-registration'] | length != "0" %}
+                {# {% if data['new-vehicle-registration'] | length != "0" %}
                   <a href="new-vehicle-id">{{ data['new-vehicle-registration'] }}<span class="govuk-visually-hidden"> for {{ notice.newInfo }}</span></a>
                 {% elif data['new-vehicle-registration'] | length != "0" %}
                   <a href="new-vehicle-id">{{ data['new-vehicle-country'] }}<span class="govuk-visually-hidden"> for {{ notice.newInfo }}</span></a>
                 {% elif data['new-total-gross-mass'] | length != "0" %}
                   <a href="new-vehicle-id">{{ data['new-total-gross-mass'] }}<span class="govuk-visually-hidden"> for {{ notice.newInfo }}</span></a>
-                {% endif %}
+                {% endif %} #}
 
 
                 {# {% if data['new-vehicle-country'] | length != "0" %}
@@ -114,6 +113,7 @@ Change unloading permission
               {% endfor %}          
               </div>
             </td>
+            
           </tr>
         {% endfor %}
       </tbody>
@@ -167,7 +167,7 @@ Change unloading permission
 
       {{ govukButton({
         text: "Save and continue",
-        href: "are-seals-broken"
+        href: "are-any-seals-broken"
       }) }}
 
 
