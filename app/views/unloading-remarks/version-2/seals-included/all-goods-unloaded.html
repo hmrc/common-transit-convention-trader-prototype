@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Is the state of the seals okay?
+Have all of the goods been unloaded?
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,26 +15,24 @@ Is the state of the seals okay?
 
     <form class="form" method="post">
 
-      {% from "govuk/components/radios/macro.njk" import govukRadios %}
-
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        idPrefix: "stateOfSeals",
-        name: "stateOfSeals",
+        idPrefix: "allGoodsUnloaded",
+        name: "allGoodsUnloaded",
         fieldset: {
           legend: {
-            text: "Is the state of the seals okay?",
+            text: "Have all of the goods been unloaded?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
         },
         items: [
         {
-          value: "Yes, redirect(all-unloading-complete)",
+          value: "Yes, redirect(date-goods-unloaded)",
           text: "Yes"
         },
         {
-          value: "No, redirect(all-unloading-complete)",
+          value: "No, redirect(not-all-goods-unloaded)",
           text: "No"
         }
           

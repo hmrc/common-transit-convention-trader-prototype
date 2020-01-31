@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What date were the goods unloaded?
+Are any of the seals broken?
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,24 +15,32 @@ What date were the goods unloaded?
 
     <form class="form" method="post">
 
-      {{ govukDateInput({
-        id: "date-goods-unloaded",
-        namePrefix: "date-goods-unloaded",
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "sealsBroken",
+        name: "sealsBroken",
         fieldset: {
           legend: {
-            text: "What date were the goods unloaded?",
+            text: "Are any of the seals broken?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
         },
-        hint: {
-          text: "For example, 14 1 2020"
+        items: [
+        {
+          value: "Yes, redirect(can-seals-be-read)",
+          text: "Yes"
+        },
+        {
+          value: "No, redirect(can-seals-be-read)",
+          text: "No"
         }
+          
+        ]
       }) }}
 
       {{ govukButton({
-        text: "Save and continue",
-        href: "change-seal-ids"
+        text: "Save and continue"
       }) }}
 
 

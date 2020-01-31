@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Have all the goods been unloaded?
+What date were the goods unloaded?
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,32 +15,24 @@ Have all the goods been unloaded?
 
     <form class="form" method="post">
 
-      {{ govukRadios({
-        classes: "govuk-radios--inline",
-        idPrefix: "allGoodsUnloaded",
-        name: "allGoodsUnloaded",
+      {{ govukDateInput({
+        id: "date-goods-unloaded",
+        namePrefix: "date-goods-unloaded",
         fieldset: {
           legend: {
-            text: "Have all the goods been unloaded?",
+            text: "What date were the goods unloaded?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
         },
-        items: [
-        {
-          value: "Yes, redirect(unloading-date)",
-          text: "Yes"
-        },
-        {
-          value: "No, redirect(unloading-date)",
-          text: "No"
+        hint: {
+          text: "For example, 14 1 2020"
         }
-          
-        ]
       }) }}
 
       {{ govukButton({
-        text: "Save and continue"
+        text: "Save and continue",
+        href: "check-declared-information"
       }) }}
 
 

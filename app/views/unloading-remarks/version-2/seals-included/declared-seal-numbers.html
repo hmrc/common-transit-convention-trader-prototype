@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Declared seal IDs
+Declared seal numbers or marks
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,7 +15,7 @@ Declared seal IDs
 
     <form class="form" method="post">
 
-    <h1 class="govuk-heading-xl">Declared seal IDs</h1>
+    <h1 class="govuk-heading-xl">Declared seal numbers or marks</h1>
     
     <!-- summary -->
 
@@ -59,18 +59,18 @@ Declared seal IDs
         name: "allGoodsUnloaded",
         fieldset: {
           legend: {
-            text: "Do you need to change or add any declared seal IDs?",
+            text: "Do you need to change or add any seal numbers or marks?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }
         },
         items: [
         {
-          value: "Yes, redirect(change-add-seal-ids)",
+          value: "Yes, redirect(change-add-seal-numbers)",
           text: "Yes"
         },
         {
-          value: "No, redirect(check-unloading-permission)",
+          value: "No, redirect(declared-items)",
           text: "No"
         }
           

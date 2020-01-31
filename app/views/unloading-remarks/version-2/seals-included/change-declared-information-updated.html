@@ -1,0 +1,180 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Change unloading permission
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+      <h1 class="govuk-heading-xl">Change unloading permission</h1>
+
+     {%
+      set declaration = [
+        {
+          "declarationField": "Transport ID at departure",
+          "declarationInfo": "BA357",
+          "newInfo": "",
+          "actions": ["changeID"]
+        },
+        {
+          "declarationField": "Transport nationality at departure",
+          "declarationInfo": "GB",
+          "newInfo": "",
+          "actions": ["changeNation"]
+        },
+        {
+          "declarationField": "Total gross mass (kg)",
+          "declarationInfo": "800",
+          "newInfo": "",
+          "actions": ["changeMass"]
+        }
+      ]
+
+    %}
+
+    <table class="govuk-table hmrc-responsive-table" role="grid">
+      <caption class="govuk-visually-hidden">25 November 2019</caption>
+      <thead role="rowgroup">
+        <tr role="row">
+          <th class="govuk-table__header" scope="col" role="columnheader">Declaration field</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Declared information</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">New information</th>
+          <th class="govuk-table__header u--w-10" scope="col" role="columnheader">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for notice in declaration %}
+          <tr role="row">
+            <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Declaration field</span>{{ notice.declarationField }}</td>
+            <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Declared information</span><span class="hmrc-responsive-table__value">{{ notice.declarationInfo }}</span></td>
+
+
+           <td class="govuk-table__cell u--w-10" role="gridcell">
+                <span class="hmrc-responsive-table__heading" aria-hidden="true">Action</span>
+              <div>
+            {% for action in notice.actions %}
+
+            {# {% if data['new-vehicle-registration'] | length != "0" %}
+                  <a href="new-vehicle-id">{{ data['new-vehicle-registration'] }}<span class="govuk-visually-hidden"> for {{ notice.newInfo }}</span></a>
+                {% else %}
+                  <a href="new-vehicle-id">{{ data['new-vehicle-country'] }}<span class="govuk-visually-hidden"> for {{ notice.newInfo }}</span></a>
+                {% endif %} #}
+
+                {# {% if data['new-vehicle-registration'] | length != "0" %}
+                  <a href="new-vehicle-id">{{ data['new-vehicle-registration'] }}<span class="govuk-visually-hidden"> for {{ notice.newInfo }}</span></a>
+                {% elif data['new-vehicle-registration'] | length != "0" %}
+                  <a href="new-vehicle-id">{{ data['new-vehicle-country'] }}<span class="govuk-visually-hidden"> for {{ notice.newInfo }}</span></a>
+                {% elif data['new-total-gross-mass'] | length != "0" %}
+                  <a href="new-vehicle-id">{{ data['new-total-gross-mass'] }}<span class="govuk-visually-hidden"> for {{ notice.newInfo }}</span></a>
+                {% endif %} #}
+
+
+                {# {% if data['new-vehicle-country'] | length != "0" %}
+                  <a href="new-vehicle-id">{{ data['new-vehicle-country'] }}<span class="govuk-visually-hidden"> for {{ notice.newInfo }}</span></a>
+                {% endif %}
+                {% if data['new-total-gross-mass'] | length != "0" %}
+                  <a href="new-vehicle-id">{{ data['new-total-gross-mass'] }}<span class="govuk-visually-hidden"> for {{ notice.newInfo }}</span></a>
+                {% endif %}
+                {% if loop.index != notice.actions.length %}
+                <br />
+                {% endif %} #}
+              {% endfor %}          
+              </div>
+            </td>          
+
+
+
+           <td class="govuk-table__cell u--w-10" role="gridcell">
+                <span class="hmrc-responsive-table__heading" aria-hidden="true">Action</span>
+              <div>
+            {% for action in notice.actions %}
+                {% if action == "changeID" %}
+                  <a href="new-vehicle-id">Change<span class="govuk-visually-hidden"> for {{ notice.action }}</span></a>
+                {% endif %}
+                {% if action == "changeNation" %}
+                  <a href="new-vehicle-country">Change<span class="govuk-visually-hidden"> for {{ notice.action }}</span> </a>
+                {% endif %}
+                {% if action == "changeMass" %}
+                  <a href="new-total-gross-mass">Change<span class="govuk-visually-hidden"> for {{ notice.action }}</span> </a>
+                {% endif %}
+                {% if loop.index != notice.actions.length %}
+                <br />
+                {% endif %}
+              {% endfor %}          
+              </div>
+            </td>
+            
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>     
+
+
+
+
+      {# <div class="govuk-summary-list govuk-!-margin-bottom-2">
+        <div class="govuk-summary-list__row">
+          <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Field name</span>
+          <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Declared information</span>
+          <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">New information</span>
+          <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Action</span>
+        </div>
+        <div class="govuk-summary-list__row">
+          <span class="govuk-summary-list__value govuk-!-width-full">Vehicle name, registration or reference</span>
+          <span class="govuk-summary-list__value govuk-!-width-full">BA537</span>
+          {% if (data['new-vehicle-registration'] | length != "0" ) %}
+          <span class="govuk-summary-list__value govuk-!-width-full">{{ data['new-vehicle-registration'] }}</span>
+          {% else %}
+          <span class="govuk-summary-list__value govuk-!-width-full"></span>
+          {% endif %}
+          <span class="govuk-summary-list__value govuk-!-width-full"><a href="new-vehicle-reference">Change</a></span>
+        </div>
+        <div class="govuk-summary-list__row">
+          <span class="govuk-summary-list__value govuk-!-width-full">Country vehicle registered in</span>
+          <span class="govuk-summary-list__value govuk-!-width-full">UK</span>
+          {% if (data['new-vehicle-country'] | length != "0" ) %}
+          <span class="govuk-summary-list__value govuk-!-width-full">{{ data['new-vehicle-country'] }}</span>
+          {% else %}
+          <span class="govuk-summary-list__value govuk-!-width-full"></span>
+          {% endif %}
+          <span class="govuk-summary-list__value govuk-!-width-full"><a href="new-vehicle-country">Change</a></span>
+        </div>
+        <div class="govuk-summary-list__row">
+          <span class="govuk-summary-list__value govuk-!-width-full">Total gross mass (kg)</span>
+          <span class="govuk-summary-list__value govuk-!-width-full">800kg</span>
+          {% if (data['total-gross-mass'] | length != "0" ) %}
+          <span class="govuk-summary-list__value govuk-!-width-full">{{ data['new-total-gross-mass'] }}</span>
+          {% else %}
+          <span class="govuk-summary-list__value govuk-!-width-full"></span>
+          {% endif %}
+          <span class="govuk-summary-list__value govuk-!-width-full"><a href="new-total-gross-mass">Change</a></span>
+        </div>
+      </div> #}
+
+      <br>
+
+      <!-- Button -->
+
+      {{ govukButton({
+        text: "Save and continue",
+        href: "are-any-seals-broken"
+      }) }}
+
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
