@@ -39,7 +39,7 @@ Which country is the vehicle registered in?
 
       }) }}
 
-    {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
+    {% if (data['where-are-the-goods'] == "Authorised consignee's location") %}
 
     {{ govukButton({
       text: "Save and continue",
@@ -48,7 +48,7 @@ Which country is the vehicle registered in?
 
     {% endif %}
 
-    {% if (data['where-are-the-goods'] == "BorderForce") %}
+    {% if (data['where-are-the-goods'] == "Border Force location") %}
 
     {{ govukButton({
       text: "Save and continue",
