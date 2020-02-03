@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Did the goods move to a different vehicle or container?
+What did the goods move to? 
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,16 +15,16 @@ Did the goods move to a different vehicle or container?
 
     <form class="form" method="post">
 
+
     {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-
 {{ govukRadios({
-  classes: "govuk-radios--inline",
-  idPrefix: "change-vehicle-2",
-  name: "change-vehicle-2",
+  classes: "govuk-radios",
+  idPrefix: "new-transport-type-2",
+  name: "new-transport-type-2",
   fieldset: {
     legend: {
-      text: "Did the goods move to a different vehicle or container?",
+      text: "What did the goods move to?",
       isPageHeading: true,
       classes: "govuk-fieldset__legend--xl"
     }
@@ -34,12 +34,16 @@ Did the goods move to a different vehicle or container?
   },
   items: [
     {
-      value: "Yes, redirect(new-transport-type)",
-      text: "Yes"
+      value: "Container, redirect(new-container-number)",
+      text: "A different container"
     },
     {
-      value: "No, redirect(incident-information)",
-      text: "No"
+      value: "Vehicle, redirect(vehicle-reference)",
+      text: "A different vehicle"
+    },
+    {
+      value: "Both, redirect(new-container-number)",
+      text: "Both"
     }
   ]
 }) }}
@@ -49,6 +53,8 @@ Did the goods move to a different vehicle or container?
   text: "Save and continue"
 }) }}
 </form>
+<p><a href="homepage.html">Go back to manage transit movements</a></p>
+
   </div>
 </div>
 

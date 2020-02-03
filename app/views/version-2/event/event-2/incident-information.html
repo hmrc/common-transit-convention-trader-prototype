@@ -30,7 +30,7 @@ What happened on the route?
           }
         }) }}
 
-        {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
+        {% if (data['where-are-the-goods'] == "Authorised consignee's location") %}
 
         {{ govukButton({
           text: "Save and continue",
@@ -39,7 +39,7 @@ What happened on the route?
 
         {% endif %}
 
-        {% if (data['where-are-the-goods'] == "BorderForce") %}
+        {% if (data['where-are-the-goods'] == "Border Force location") %}
 
         {{ govukButton({
           text: "Save and continue",
@@ -48,6 +48,8 @@ What happened on the route?
 
         {% endif %}
 </form>
+<p><a href="homepage.html">Go back to manage transit movements</a></p>
+
   </div>
 </div>
 

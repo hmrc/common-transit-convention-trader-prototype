@@ -28,13 +28,15 @@ What is the movement reference number (MRN)?
         name: "movement-reference"
       }) }}
 
-{% from "govuk/components/button/macro.njk" import govukButton %}
+      {% from "govuk/components/button/macro.njk" import govukButton %}
 
-{{ govukButton({
-  text: "Save and continue"
-}) }}
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
 
     </form>
+
+    <p><a href="homepage.html">Go back to manage transit movements</a></p>
 
   </div>
 </div>

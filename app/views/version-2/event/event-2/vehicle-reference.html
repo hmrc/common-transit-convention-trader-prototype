@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Where did the event happen?
+What is the name or reference of the vehicle?
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,30 +13,26 @@ Where did the event happen?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">Where did the event happen?</h1>
+    <h1 class="govuk-heading-xl">What is the name, registration or reference of the new vehicle?</h1>
 
-    <form class="form" action="event-report" method="post">
+    <form class="form" action="vehicle-country" method="post">
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
       {{ govukInput({
         classes: "govuk-input--width-20",
-        hint: {
-          text: "Give the nearest town or road number."
-        },
-        id: "event-place-2",
-        name: "event-place-2"
+        id: "vehicle-reference-2",
+        name: "vehicle-reference-2"
       }) }}
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
-
-
       {{ govukButton({
-  text: "Save and continue"
-}) }}
+      text: "Save and continue"
+      }) }}
 
     </form>
+    <p><a href="homepage.html">Go back to manage transit movements</a></p>
 
   </div>
 </div>

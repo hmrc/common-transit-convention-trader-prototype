@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the name or reference of the vehicle?
+What is the new container number of the vehicle?
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,25 +13,25 @@ What is the name or reference of the vehicle?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">What is the name, registration or reference of the new vehicle?</h1>
+    <h1 class="govuk-heading-xl">What is the new container number?</h1>
 
-    <form class="form" action="vehicle-country" method="post">
+    <form class="form" action="container-list-2" method="post">
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
       {{ govukInput({
         classes: "govuk-input--width-20",
-        id: "vehicle-reference-2",
-        name: "vehicle-reference-2"
-      }) }}
+    id: "event-2-new-container-number-2",
+    name: "new-container-number-2"
+  }) }}
 
-      {% from "govuk/components/button/macro.njk" import govukButton %}
 
       {{ govukButton({
-      text: "Save and continue"
-      }) }}
+    text: "Save and continue"
+  }) }}
 
     </form>
+    <p><a href="homepage.html">Go back to manage transit movements</a></p>
 
   </div>
 </div>

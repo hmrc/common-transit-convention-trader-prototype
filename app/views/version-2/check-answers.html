@@ -53,13 +53,18 @@ Check your answers before sending this arrival notification - Name of service - 
 
       {% set goodsLocation = [] %}
 
+      {% set whereGoods = "Authorised consignee's location" %} 
+      {% if (data['where-are-the-goods'] == "BorderForce") %}
+      {% set whereGoods = "Border Force location" %} 
+      {% endif %}
+
       {% set goodsLocation = (goodsLocation.push(
                 {
                     key: {
                     text: "Where are the goods?"
                     },
                     value: {
-                    text: data['where-are-the-goods']
+                    text: whereGoods
                     },
                     actions: {
                     items: [
@@ -272,7 +277,7 @@ Check your answers before sending this arrival notification - Name of service - 
                 {{ data['event-place'] }}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="event/event-1/event-place.html">
+                <a class="govuk-link" href="event/event-1/check-event-answers.html">
                   Change<span class="govuk-visually-hidden">
                     event 1</span>
                 </a>
@@ -289,7 +294,7 @@ Check your answers before sending this arrival notification - Name of service - 
                 {{ data['event-place-2'] }}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="event-2/event-place.html">
+                <a class="govuk-link" href="event/event-2/check-event-answers.html">
                   Change<span class="govuk-visually-hidden">
                     event 2</span>
                 </a>
@@ -318,6 +323,9 @@ Check your answers before sending this arrival notification - Name of service - 
                 }) }}
 
     </form>
+
+    <p><a href="homepage.html">Go back to manage transit movements</a></p>
+
   </div>
 </div>
 
