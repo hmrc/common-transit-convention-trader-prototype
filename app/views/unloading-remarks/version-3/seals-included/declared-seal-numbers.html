@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Declared seal numbers or marks
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+    <h1 class="govuk-heading-xl">Declared seal numbers or marks</h1>
+    
+    <!-- summary -->
+
+      <p>seal_it1</p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <p>seal_it2</p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <p>seal_it3</p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">  
+
+      <p>seal_it4</p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <p>seal_it5</p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <p>seal_it6</p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">  
+
+      <p>seal_it7</p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible"> 
+
+      <p>seal_it8</p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible"> 
+
+    <!-- radios -->
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "allGoodsUnloaded",
+        name: "allGoodsUnloaded",
+        fieldset: {
+          legend: {
+            text: "Do you need to change or add any seal numbers or marks?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+        {
+          value: "Yes, redirect(change-add-seal-numbers)",
+          text: "Yes"
+        },
+        {
+          value: "No, redirect(declared-items)",
+          text: "No"
+        }
+          
+        ]
+      }) }}
+
+      <!-- Button -->
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
