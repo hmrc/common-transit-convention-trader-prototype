@@ -46,4 +46,6 @@ router.use('/unloading-remarks/version-1/workaround-seals', require('./views/unl
 
 router.use('/unloading-remarks/version-2/seals-included', require('./views/unloading-remarks/version-2/seals-included/routes'));
 
+router.use('/unloading-remarks/version-3/seals-included', require('./views/unloading-remarks/version-3/seals-included/routes'));
+
 module.exports = router
