@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Declared items
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post" Action="anything-else-to-report">
+
+      <h1 class="govuk-heading-xl">Declared items</h1>
+
+      {%
+      set declarationInfo = [
+        {
+          "itemDescription": "Chocolate",
+          "action": "Change"
+        },
+        {
+          "itemDescription": "TVs",
+          "action": "Change"
+        },
+        {
+          "itemDescription": "iPads",
+          "action": "Change"
+        },
+        {
+          "itemDescription": "Android tablets",
+          "action": "Change"
+        }
+      ]
+
+    %}
+
+      <table class="govuk-table hmrc-responsive-table" role="grid">
+        <caption class="govuk-visually-hidden">#</caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th class="govuk-table__header" scope="col" role="columnheader">Item description</th>
+            <th class="govuk-table__header" scope="col" role="columnheader">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for info in declarationInfo %}
+          <tr role="row">
+            <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading"
+                aria-hidden="true">Item description</span>{{ info.itemDescription }}</td>
+            <td class="govuk-table__cell" role="gridcell"><a href="#">Change<span
+                  class="govuk-visually-hidden"> for {{ notice.action }}</span></a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+
+      {# <div class="govuk-summary-list govuk-!-margin-bottom-2">
+        <div class="govuk-summary-list__row">
+          <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Item description</span>
+          <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Action</span>
+        </div>
+        <div class="govuk-summary-list__row">
+          <span class="govuk-summary-list__value govuk-!-width-full">Chocolate</span>
+          <span class="govuk-summary-list__value govuk-!-width-full"><a href="change-item">Change</a></span>
+        </div>
+        <div class="govuk-summary-list__row">
+          <span class="govuk-summary-list__value govuk-!-width-full">TVs</span>
+          <span class="govuk-summary-list__value govuk-!-width-full"><a href="#">Change</a></span>
+        </div>
+        <div class="govuk-summary-list__row">
+          <span class="govuk-summary-list__value govuk-!-width-full">iPads</span>
+          <span class="govuk-summary-list__value govuk-!-width-full"><a href="#">Change</a></span>
+        </div>
+        <div class="govuk-summary-list__row">
+          <span class="govuk-summary-list__value govuk-!-width-full">Android tablets</span>
+          <span class="govuk-summary-list__value govuk-!-width-full"><a href="#">Change</a></span>
+        </div>
+      </div> #}
+
+      <br>
+
+      <p><a href="#">Add new item</a></p>
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
