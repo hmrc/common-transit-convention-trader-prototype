@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Did something happen on the route?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+   
+
+      <form class="form" method="post">
+
+    {% set heading="Are you sure you want to remove the event that happened in "+data['event-place']+"?" %}
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "something-happened",
+  name: "something-happened",
+  fieldset: {
+    legend: {
+      text: heading,
+      isPageHeading: true, 
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+    {
+      value: "Yes redirect(event-list)",
+      text: "Yes"
+    },
+    {
+      value: "No redirect(event-list)",
+      text: "No"
+    }
+  ]
+}) }}
+
+
+{{ govukButton({
+  text: "Save and continue"
+}) }}
+
+</form>
+<p><a href="homepage.html">Go back to manage transit movements</a></p>
+
+  </div>
+</div>
+
+{% endblock %}

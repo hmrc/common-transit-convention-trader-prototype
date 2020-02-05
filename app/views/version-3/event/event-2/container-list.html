@@ -1,0 +1,211 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You have added 1 new container
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">You have added 1 container</h1>
+
+          <form class="form" method="post">
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: [
+            {
+              key: {
+                text: "Container 1",
+                classes: "govuk-!-width-one-half"
+              },
+              value: {
+                text: data['event-2-new-container-number']
+              },
+              actions: {
+                classes: "govuk-!-width-one-third",
+                items: [
+                  {
+                    href: "new-container-number",
+                    text: "Change",
+                    visuallyHiddenText: " for container FF12345677898"
+                  },
+                  {
+                    href: "remove-container",
+                    text: "Remove",
+                    visuallyHiddenText: " for container FF12345677898"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+      <!-- If user selects both container and transhipment -->
+
+        {% if (data['new-transport-type'] == "Both") %}
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "another-container",
+          name: "another-container",
+          fieldset: {
+            legend: {
+              text: "Do you need to add another container?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes redirect(new-container-number-2)",
+              text: "Yes"
+            },
+            {
+              value: "no redirect(vehicle-reference)",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {% endif %}
+
+        <!-- If user selects Border Force office (normal procedure) and container, then show seals question -->
+
+
+        {% if (data['new-transport-type'] == "Container") and (data['where-are-the-goods'] == "Border Force location") %}
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "another-container",
+          name: "another-container",
+          fieldset: {
+            legend: {
+              text: "Do you need to add another container?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes redirect(new-container-number-2)",
+              text: "Yes"
+            },
+            {
+              value: "no redirect(seals-changed)",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        <!-- If user selects Border Force office (normal procedure) and vehicle, then show seals question -->
+      
+        {% elseif (data['new-transport-type'] == "Vehicle") and (data['where-are-the-goods'] == "Border Force location") %}
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "another-container",
+          name: "another-container",
+          fieldset: {
+            legend: {
+              text: "Do you need to add another container?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes redirect(new-container-number-2)",
+              text: "Yes"
+            },
+            {
+              value: "no redirect(seals-changed)",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        <!-- If user selects authorised consignee (simplified procedure) and container, then DON'T show seals question -->
+
+        {% elseif (data['new-transport-type'] == "Container") and (data['where-are-the-goods'] == "Authorised consignee's location") %}
+        
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "another-container",
+          name: "another-container",
+          fieldset: {
+            legend: {
+              text: "Do you need to add another container?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes redirect(new-container-number-2)",
+              text: "Yes"
+            },
+            {
+              value: "no redirect(check-event-answers)",
+              text: "No"
+            }
+          ]
+        }) }}
+
+
+        <!-- If user selects authorised consignee (simplified procedure) and vehicle, then DON'T show seals question -->
+
+        {% elseif (data['new-transport-type'] == "Vehicle") and (data['where-are-the-goods'] == "Authorised consignee's location") %}
+        
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "another-container",
+          name: "another-container",
+          fieldset: {
+            legend: {
+              text: "Do you need to add another container?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes redirect(new-container-number-2)",
+              text: "Yes"
+            },
+            {
+              value: "no redirect(check-event-answers)",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {% endif %}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+      <p><a href="homepage.html">Go back to manage transit movements</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Are you completing this arrival notification at the trader’s address? 
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+        <h1 class="govuk-heading-xl">Are you completing this arrival notification at the trader’s address?</h1>
+
+
+
+
+        <p class="govuk-body-l">
+          {{ data['address-line-1'] }}<br>
+          {{ data['address-town'] }}<br>
+          {{ data['address-postcode'] }}
+        </p>
+
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "place-postcode",
+        name: "place-postcode",
+        fieldset: {
+          legend: {
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        
+        items: [
+          {
+            value: "Yes redirect(event/something-happened)",
+            text: "Yes"
+          },
+          {
+            value: "No redirect(place-notification)",
+            text: "No"
+          }
+        ]
+      }) }}
+
+
+
+
+      {{ govukButton({
+    text: "Save and continue"
+  }) }}
+
+    </form>
+
+
+    <p><a href="homepage.html">Go back to manage transit movements</a></p>
+
+
+  </div>
+</div>
+
+{% endblock %}
