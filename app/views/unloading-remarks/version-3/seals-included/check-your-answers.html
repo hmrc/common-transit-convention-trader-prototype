@@ -17,7 +17,6 @@ Check your answers
 
     <h1 class="govuk-heading-xl">Check your answers</h1>
 
-
       <!-- Goods questions -->
 
       {% set goodsQuestions = [] %}
@@ -49,7 +48,7 @@ Check your answers
               text: "What date were the goods unloaded?"
             },
             value: {
-              text: data['dateGoodsUnloaded']
+              html: data['date-goods-unloaded-day'] + " " + data['date-goods-unloaded-month'] + " " + data['date-goods-unloaded-year']
             },
             actions: {
               items: [
