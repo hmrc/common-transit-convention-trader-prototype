@@ -15,9 +15,55 @@ Change unloading permission
 
     <form class="form" method="post">
 
-      <h1 class="govuk-heading-xl">Change unloading permission</h1>
+      <h1 class="govuk-heading-xl">Check the declared information</h1>
 
-     {%
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Transport ID at departure
+          </dt>
+          <dd class="govuk-summary-list__value">
+            BA357
+          </dd>
+          <dd class="govuk-summary-list__value">
+            BA3344
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="new-vehicle-id">
+              Change<span class="govuk-visually-hidden"> name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Transport nationality at departure
+          </dt>
+          <dd class="govuk-summary-list__value">
+           United Kingdom
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="new-vehicle-country">
+              Change<span class="govuk-visually-hidden"> </span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Total gross mass in kilograms
+          </dt>
+          <dd class="govuk-summary-list__value">
+            800
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="new-total-gross-mass">
+              Change<span class="govuk-visually-hidden"> address</span>
+            </a>
+          </dd>
+        </div>
+        
+      </dl>
+
+  <!--  {%
       set declaration = [
         {
           "declarationField": "Transport ID at departure",
@@ -27,12 +73,12 @@ Change unloading permission
         },
         {
           "declarationField": "Transport nationality at departure",
-          "declarationInfo": "GB",
+          "declarationInfo": "United Kingdom",
           "newInfo": "",
           "actions": ["changeNation"]
         },
         {
-          "declarationField": "Total gross mass (kg)",
+          "declarationField": "Total gross mass in kilograms",
           "declarationInfo": "800",
           "newInfo": "",
           "actions": ["changeMass"]
@@ -163,7 +209,7 @@ Change unloading permission
 
       <br>
 
-      <!-- Button -->
+    <!--   Button -->
 
       {{ govukButton({
         text: "Save and continue",

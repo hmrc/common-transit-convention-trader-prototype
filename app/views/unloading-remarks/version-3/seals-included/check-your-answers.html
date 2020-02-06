@@ -23,7 +23,7 @@ Check your answers
       {% set goodsQuestions = [] %}
 
 
-      {% set goodsQuestions = (goodsQuestions.push(
+     <!-- {% set goodsQuestions = (goodsQuestions.push(
           {
             key: {
               text: "Have all of the goods been unloaded?"
@@ -41,7 +41,7 @@ Check your answers
               ]
             }
           }
-        ), goodsQuestions) %} 
+        ), goodsQuestions) %} -->
 
       {% set goodsQuestions = (goodsQuestions.push(
           {
@@ -56,7 +56,7 @@ Check your answers
                 {
                   href: "date-goods-unloaded",
                   text: "Change",
-                  visuallyHiddenText: "Date goods were unloaded"
+                  visuallyHiddenText: "date goods were unloaded"
                 }
               ]
             }
