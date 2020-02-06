@@ -15,9 +15,63 @@ Declared items
 
     <form class="form" method="post" Action="anything-else-to-report">
 
-      <h1 class="govuk-heading-xl">Declared items</h1>
+      <h1 class="govuk-heading-xl">Check the declared items</h1>
 
-      {%
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Chocolate
+          </dt>
+          <dd class="govuk-summary-list__value">
+           
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            TVs
+          </dt>
+          <dd class="govuk-summary-list__value">
+            
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> date of birth</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+           iPads
+          </dt>
+          <dd class="govuk-summary-list__value">
+           
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> address</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+           Android tablets
+          </dt>
+          <dd class="govuk-summary-list__value">
+            
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> contact details</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+     
+     <!-- {%
       set declarationInfo = [
         {
           "itemDescription": "Chocolate",
@@ -83,7 +137,7 @@ Declared items
         </div>
       </div> #}
 
-      <br>
+      <br>-->
 
       <p><a href="#">Add new item</a></p>
 
