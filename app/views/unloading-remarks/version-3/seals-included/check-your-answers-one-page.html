@@ -1,0 +1,321 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+    <h1 class="govuk-heading-xl">Check your answers before sending your unloading remarks</h1>
+
+    <h2 class="govuk-heading-m"></h2>
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+      {
+        key: {
+          text: "When were the goods unloaded?"
+        },
+        value: {
+          text: "6 February 2020"
+        },
+        actions: {
+          items: [
+            {
+              href: "date-goods-unloaded",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      }
+  
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Transport and weight details</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+
+        {
+          key: {
+            text: "Transport ID at departure"
+          },
+          value: {
+            text: "BA357"
+          },
+          actions: {
+            items: [
+              {
+                href: "new-vehicle-id",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Transport nationality at departure"
+          },
+          value: {
+            text: "United Kingdom"
+          },
+          actions: {
+            items: [
+              {
+                href: "new-vehicle-country",
+                text: "Change",
+                visuallyHiddenText: "date of birth"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Total gross mass in kilograms"
+          },
+          value: {
+            text: "800"
+          },
+          actions: {
+            items: [
+              {
+                href: "new-total-gross-mass",
+                text: "Change",
+                visuallyHiddenText: "address"
+              }
+            ]
+          }
+        }
+        
+      ]
+    }) }}
+
+
+    <h2 class="govuk-heading-m">Seals</h2>
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "Are any of the seals broken?"
+          },
+          value: {
+            text: "Yes"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "previous application number"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Can all of the seal numbers or marks be read?"
+          },
+          value: {
+            text: "No"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "licence type"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "What is wrong with the seals?"
+          },
+          value: {
+            text: "Someone has tampered with them"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "home address"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Seal numbers or marks"
+          },
+          value: {
+            html: "seal_it1 <br>seal-it2"
+          },
+          actions: {
+            items: [
+              {
+                href: "change-add-seal-numbers",
+                text: "Change",
+                visuallyHiddenText: "home address"
+              }
+            ]
+          }
+        }
+        
+      ]
+    }) }}
+
+
+    <h2 class="govuk-heading-m">Changes to declared items</h2>
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+
+      {
+        key: {
+          text: "Chocolate"
+        },
+        value: {
+          text: ""
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      },
+
+      {
+        key: {
+          text: "TVs"
+        },
+        value: {
+          text: ""
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "iPads"
+        },
+        value: {
+          text: ""
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Android tablets"
+        },
+        value: {
+          text: ""
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      }
+      
+    ]
+  }) }}
+
+
+  <h2 class="govuk-heading-m">Other changes to report</h2>
+
+  {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-9',
+    rows: [
+
+    {
+      key: {
+        text: "Is there anything else to report?"
+      },
+      value: {
+        text: "Yes"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "What else do you need to report?"
+      },
+      value: {
+        text: "Stuff"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    }
+    ]
+  }) }}
+
+      {{ govukButton({
+        text: "Save and continue",
+        href: "confirmation"
+      }) }}
+
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
