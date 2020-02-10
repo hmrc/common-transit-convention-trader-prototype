@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Seal numbers or marks
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+    <h1 class="govuk-heading-xl">Check seal numbers or marks</h1>
+
+    {%
+      set declarationInfo = [
+        {
+          "sealNumber": "seal_it1",
+          "action": "Change"
+        },
+        {
+          "sealNumber": "seal_it2",
+          "action": "Change"
+        },
+        {
+          "sealNumber": "seal_it3",
+          "action": "Change"
+        },
+        {
+          "sealNumber": "seal_it4",
+          "action": "Change"
+        },
+        {
+          "sealNumber": "seal_it5",
+          "action": "Change"
+        },
+        {
+          "sealNumber": "seal_it6",
+          "action": "Change"
+        },
+        {
+          "sealNumber": "seal_it7",
+          "action": "Change"
+        },
+        {
+          "sealNumber": "seal_it8",
+          "action": "Change"
+        }
+      ]
+
+    %}
+
+    <table class="govuk-table hmrc-responsive-table" role="grid">
+      <caption class="govuk-visually-hidden">#</caption>
+      <thead role="rowgroup">
+        <tr role="row">
+          
+        </tr>
+      </thead>
+      <tbody>
+        {% for info in declarationInfo %}
+          <tr role="row">
+            <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Seal number or mark</span>{{ info.sealNumber }}</td>
+            <td class="govuk-table__cell" role="gridcell"><a href="new-seal-number">Change<span class="govuk-visually-hidden"> for {{ notice.action }}</span></a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+        {# <div class="govuk-summary-list govuk-!-margin-bottom-2">
+          <div class="govuk-summary-list__row">
+            <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Seal number or mark</span>
+            <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Action</span>
+          </div>
+          <div class="govuk-summary-list__row">
+            <span class="govuk-summary-list__value govuk-!-width-full">1234</span>
+            <span class="govuk-summary-list__value govuk-!-width-full"><a href="new-seal-number">Change</a></span>
+          </div>
+          <div class="govuk-summary-list__row">
+            <span class="govuk-summary-list__value govuk-!-width-full">1234</span>
+            <span class="govuk-summary-list__value govuk-!-width-full"><a href="#">Change</a></span>
+          </div>
+          <div class="govuk-summary-list__row">
+            <span class="govuk-summary-list__value govuk-!-width-full">1234</span>
+            <span class="govuk-summary-list__value govuk-!-width-full"><a href="#">Change</a></span>
+          </div>
+        </div> #}
+
+        <br>
+
+        <p><a href="#">Add a new seal number or mark</a></p>
+
+        <br>
+
+      {{ govukButton({
+        text: "Save and continue",
+        href: "can-seals-be-read"
+      }) }}
+
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
