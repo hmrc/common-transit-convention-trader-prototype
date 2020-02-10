@@ -1,0 +1,439 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+    <h1 class="govuk-heading-xl">Check your answers before sending these unloading remarks</h1>
+
+
+      
+    
+    <!-- Goods questions -->
+
+      {% set goodsQuestions = [] %}
+
+
+      {% set goodsQuestions = (goodsQuestions.push(
+          {
+            key: {
+              text: "When were the goods unloaded?"
+            },
+            value: {
+              text: "13 February 2020"
+            },
+            actions: {
+              items: [
+                {
+                  href: "date-goods-unloaded",
+                  text: "Change",
+                  visuallyHiddenText: "when goods were unloaded"
+                }
+              ]
+            }
+          }
+        ), goodsQuestions) %} 
+
+      {{ govukSummaryList({
+           classes: 'govuk-!-margin-bottom-9',
+           rows: goodsQuestions
+        }) }}
+
+
+      <!-- Declared information -->
+
+      {% set declaredInformation = [] %}
+
+      <h2 class="govuk-heading-m">Transport</h2>
+
+      {% set declaredInformation = (declaredInformation.push(
+          {
+            key: {
+              text: "Did the goods arrive on a vehicle with the name, registration or reference BA357?"
+            },
+            value: {
+              text: data['changeDeclaredInformation']
+            },
+            actions: {
+              items: [
+                {
+                  href: "check-declared-information",
+                  text: "Change",
+                  visuallyHiddenText: "Change any declared information"
+                }
+              ]
+            }
+          }
+        ), declaredInformation) %} 
+
+        {% set declaredInformation = (declaredInformation.push(
+          {
+            key: {
+              text: "Is the vehicle registered in the United Kingdom?"
+            },
+            value: {
+              text: data['vehicle-country']
+            },
+            actions: {
+              items: [
+                {
+                  href: "vehicle-country",
+                  text: "Change",
+                  visuallyHiddenText: "where the vehicle is registered"
+                }
+              ]
+            }
+          }
+        ), declaredInformation) %}
+
+        
+      
+
+      <!-- Conditional content - if answer is no, display new fields -->
+
+      {% if (data['transit-id'] == "No") %}
+
+        <!-- New vehicle ID -->
+        {% if (data['new-vehicle-registration'] | length != "0" ) %}
+
+          {% set declaredInformation = (declaredInformation.push(
+            {
+              key: {
+                text: "What is the name, registration or reference of the new vehicle?"
+              },
+              value: {
+                text: data['new-vehicle-registration']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "new-vehicle-id",
+                    text: "Change",
+                    visuallyHiddenText: "name, registration or reference of the new vehicle"
+                  }
+                ]
+              }
+            }
+          ), declaredInformation) %}
+        
+        {% endif %}
+
+        <!-- New vehicle country -->
+
+        {% if (data['vehicle-country'] == "No") %}
+     
+          {% set declaredInformation = (declaredInformation.push(
+            {
+              key: {
+                text: "Which country is the vehicle now registered in?"
+              },
+              value: {
+                text: data['new-vehicle-country']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "new-vehicle-country",
+                    text: "Change",
+                    visuallyHiddenText: "which country the vehicle is registered in"
+                  }
+                ]
+              }
+            }
+          ), declaredInformation) %} 
+        
+        {% endif %}
+
+       
+        
+        {% endif %}
+
+      
+
+
+      {{ govukSummaryList({
+           classes: 'govuk-!-margin-bottom-9',
+           rows: declaredInformation
+        }) }}
+
+        <h2 class="govuk-heading-m">Weight of items</h2>
+
+        {% set grossMass = [] %}
+
+        {% set grossMass = (grossMass.push(
+          {
+            key: {
+              text: "Is the total gross mass of the goods that arrived 800 kilograms?"
+            },
+            value: {
+              text: data['gross-mass']
+            },
+            actions: {
+              items: [
+                {
+                  href: "vehicle-country",
+                  text: "Change",
+                  visuallyHiddenText: "where the vehicle is registered"
+                }
+              ]
+            }
+          }
+        ), grossMass) %}
+
+
+         <!-- New total gross mass -->
+       
+         {% if (data['gross-mass'] == "No") %}
+
+         {% set grossMass = (grossMass.push(
+           {
+             key: {
+               text: "What is the new total gross mass in kilograms?"
+             },
+             value: {
+               text: data['new-total-gross-mass']
+             },
+             actions: {
+               items: [
+                 {
+                   href: "new-total-gross-mass",
+                   text: "Change",
+                   visuallyHiddenText: "total gross mass"
+                 }
+               ]
+             }
+           }
+         ), grossMass) %} 
+
+         {% endif %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: grossMass
+       }) }}
+
+
+
+         <!-- Seals -->
+
+      {% set sealNumbers = [] %}
+
+      <h2 class="govuk-heading-m">Seals</h2>
+
+      {% set sealNumbers = (sealNumbers.push(
+          {
+            key: {
+              text: "Check seal numbers or marks"
+            },
+            value: {
+              text: "No changes reported"
+            },
+            actions: {
+              items: [
+                {
+                  href: "change-add-seal-numbers",
+                  text: "Change",
+                  visuallyHiddenText: "or add any seal numbers or marks"
+                }
+              ]
+            }
+          }
+        ), sealNumbers) %}       
+
+      {{ govukSummaryList({
+           classes: 'govuk-!-margin-bottom-9',
+           rows: sealNumbers
+        }) }}
+
+
+      <!-- Seal conditions -->
+
+      {% set sealConditions = [] %}
+
+      {% set sealConditions = (sealConditions.push(
+        {
+          key: {
+            text: "Can all of the seal numbers or marks be read?"
+          },
+          value: {
+            text: data['canSealsBeRead']
+          },
+          actions: {
+            items: [
+              {
+                href: "can-seals-be-read",
+                text: "Change",
+                visuallyHiddenText: "Can all seal numbers or marks be read"
+              }
+            ]
+          }
+        }
+      ), sealConditions) %}  
+
+      {% set sealConditions = (sealConditions.push(
+          {
+            key: {
+              text: "Are any of the seals broken?"
+            },
+            value: {
+              text: data['sealsBroken']
+            },
+            actions: {
+              items: [
+                {
+                  href: "are-any-seals-broken",
+                  text: "Change",
+                  visuallyHiddenText: "Are any seals broken"
+                }
+              ]
+            }
+          }
+        ), sealConditions) %} 
+
+      
+
+        <!-- What is wrong with seals - text area -->
+        {% if (data['sealsBroken'] == "Yes") or (data['canSealsBeRead'] == "No") %}
+
+          {% set sealConditions = (sealConditions.push(
+            {
+              key: {
+                text: "What is wrong with the seals?"
+              },
+              value: {
+                text: data['sealDamageDetails']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "seal-damage-details",
+                    text: "Change",
+                    visuallyHiddenText: "Seal damage details"
+                  }
+                ]
+              }
+            }
+          ), sealConditions) %} 
+        
+        {% endif %}                 
+
+      {{ govukSummaryList({
+           classes: 'govuk-!-margin-bottom-9',
+           rows: sealConditions
+        }) }}
+
+      
+      <!-- Declared items -->
+
+      {% set declaredItems = [] %}
+
+      <h2 class="govuk-heading-m">Declared items</h2>
+
+      {% set declaredItems = (declaredItems.push(
+          {
+            key: {
+              text: "Check items"
+            },
+            value: {
+              text: "No changes reported"
+            },
+            actions: {
+              items: [
+                {
+                  href: "change-add-declared-items",
+                  text: "Change",
+                  visuallyHiddenText: "Change or add declared items"
+                }
+              ]
+            }
+          }
+        ), declaredItems) %}       
+
+      {{ govukSummaryList({
+           classes: 'govuk-!-margin-bottom-9',
+           rows: declaredItems
+        }) }}
+
+      <!-- Anything else to report -->
+
+      {% set anythingToReport = [] %}
+
+      <h2 class="govuk-heading-m">Anything else to report</h2>
+
+      {% set anythingToReport = (anythingToReport.push(
+          {
+            key: {
+              text: "Is there anything else to report?"
+            },
+            value: {
+              text: data['anythingToReport']
+            },
+            actions: {
+              items: [
+                {
+                  href: "anything-else-to-report",
+                  text: "Change",
+                  visuallyHiddenText: "Anything else to report"
+                }
+              ]
+            }
+          }
+        ), anythingToReport) %}       
+
+        <!-- New total gross mass -->
+        {% if (data['anythingToReport'] == "Yes" ) %}
+
+          {% set anythingToReport = (anythingToReport.push(
+            {
+              key: {
+                text: "What else do you need to report?"
+              },
+              value: {
+                text: data['changesToReport']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "changes-to-report",
+                    text: "Change",
+                    visuallyHiddenText: "Changes to report"
+                  }
+                ]
+              }
+            }
+          ), anythingToReport) %}      
+
+        {% endif %}   
+
+      {{ govukSummaryList({
+           classes: 'govuk-!-margin-bottom-9',
+           rows: anythingToReport
+        }) }}
+
+
+
+
+      {{ govukButton({
+        text: "Save and continue",
+        href: "confirmation"
+      }) }}
+
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

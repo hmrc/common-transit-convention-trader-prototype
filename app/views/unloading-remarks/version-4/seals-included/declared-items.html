@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Declared items
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+      <h1 class="govuk-heading-xl">Check items</h1>
+
+      <p>Chocolate</p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <p>TVs</p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <p>iPads</p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <p>Android tablets</p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+      {# {%
+      set declarationInfo = [
+        {
+          "itemDescription": "Chocolate",
+          "action": "Change"
+        },
+        {
+          "itemDescription": "TVs",
+          "action": "Change"
+        },
+        {
+          "itemDescription": "iPads",
+          "action": "Change"
+        },
+        {
+          "itemDescription": "Android tablets",
+          "action": "Change"
+        }
+      ]
+
+    %}
+
+      <table class="govuk-table hmrc-responsive-table" role="grid">
+        <caption class="govuk-visually-hidden">#</caption>
+      
+        <tbody>
+          {% for info in declarationInfo %}
+          <tr role="row">
+            <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading"
+                aria-hidden="true">Item description</span>{{ info.itemDescription }}</td>
+            <td class="govuk-table__cell" role="gridcell"><a href="new-seal-number">Change<span
+                  class="govuk-visually-hidden"> for {{ notice.action }}</span></a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table> #}
+
+      {# <div class="govuk-summary-list govuk-!-margin-bottom-2">
+        <div class="govuk-summary-list__row">
+          <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Item description</span>
+          <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Action</span>
+        </div>
+        <div class="govuk-summary-list__row">
+          <span class="govuk-summary-list__value govuk-!-width-full">Chocolate</span>
+          <span class="govuk-summary-list__value govuk-!-width-full"><a href="change-item">Change</a></span>
+        </div>
+        <div class="govuk-summary-list__row">
+          <span class="govuk-summary-list__value govuk-!-width-full">TVs</span>
+          <span class="govuk-summary-list__value govuk-!-width-full"><a href="#">Change</a></span>
+        </div>
+        <div class="govuk-summary-list__row">
+          <span class="govuk-summary-list__value govuk-!-width-full">iPads</span>
+          <span class="govuk-summary-list__value govuk-!-width-full"><a href="#">Change</a></span>
+        </div>
+        <div class="govuk-summary-list__row">
+          <span class="govuk-summary-list__value govuk-!-width-full">Android tablets</span>
+          <span class="govuk-summary-list__value govuk-!-width-full"><a href="#">Change</a></span>
+        </div>
+      </div> #}
+
+      <br><br>
+
+      <!-- radios -->
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "changeAddItems",
+        name: "changeAddItems",
+        fieldset: {
+          legend: {
+            text: "Do you need to change or add any items?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+        {
+          value: "Yes, redirect(change-add-declared-items)",
+          text: "Yes"
+        },
+        {
+          value: "No, redirect(anything-else-to-report)",
+          text: "No"
+        }
+          
+        ]
+      }) }}
+
+      <!-- Button -->
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

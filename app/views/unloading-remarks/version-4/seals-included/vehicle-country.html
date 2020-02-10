@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Are you completing this arrival notification at the trader’s address? 
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+        <h1 class="govuk-heading-xl">Is this vehicle registered in the United Kingdom? </h1>
+
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "vehicle-country",
+        name: "vehicle-country",
+        fieldset: {
+          legend: {
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        
+        items: [
+          {
+            value: "Yes redirect(gross-mass)",
+            text: "Yes"
+          },
+          {
+            value: "No redirect(new-vehicle-country)",
+            text: "No"
+          }
+        ]
+      }) }}
+
+
+
+
+      {{ govukButton({
+    text: "Save and continue"
+  }) }}
+
+    </form>
+
+
+    <p><a href="homepage.html">Go back to manage transit movements</a></p>
+
+
+  </div>
+</div>
+
+{% endblock %}
