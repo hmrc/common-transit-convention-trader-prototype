@@ -15,8 +15,7 @@ Are you completing this arrival notification at the trader’s address?
 
     <form class="form" method="post">
 
-        <h1 class="govuk-heading-xl">Is this vehicle registered in the United Kingdom? </h1>
-
+      <h1 class="govuk-heading-xl">Is this vehicle registered in the United Kingdom? </h1>
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -43,18 +42,11 @@ Are you completing this arrival notification at the trader’s address?
         ]
       }) }}
 
-
-
-
       {{ govukButton({
-    text: "Save and continue"
-  }) }}
+        text: "Continue"
+      }) }}
 
     </form>
-
-
-    <p><a href="homepage.html">Go back to manage transit movements</a></p>
-
 
   </div>
 </div>

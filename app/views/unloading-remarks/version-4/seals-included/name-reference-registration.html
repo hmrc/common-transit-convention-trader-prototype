@@ -15,8 +15,7 @@ Are you completing this arrival notification at the trader’s address?
 
     <form class="form" method="post">
 
-        <h1 class="govuk-heading-xl">Did the goods arrive on a vehicle with the name, registration or reference BA357? </h1>
-
+      <h1 class="govuk-heading-xl">Did the goods arrive on a vehicle with the name, registration or reference BA357?</h1>
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -43,18 +42,11 @@ Are you completing this arrival notification at the trader’s address?
         ]
       }) }}
 
-
-
-
       {{ govukButton({
-    text: "Save and continue"
-  }) }}
+        text: "Continue"
+      }) }}
 
     </form>
-
-
-    <p><a href="homepage.html">Go back to manage transit movements</a></p>
-
 
   </div>
 </div>
