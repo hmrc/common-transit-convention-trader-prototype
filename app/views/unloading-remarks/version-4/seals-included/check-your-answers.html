@@ -160,7 +160,7 @@ Check your answers
         Weight of items 
       -->
 
-        <h2 class="govuk-heading-m">Weight of items</h2>
+        <h2 class="govuk-heading-m">Weight of goods</h2>
 
         {% set grossMass = [] %}
 
@@ -419,13 +419,16 @@ Check your answers
            rows: anythingToReport
         }) }}
 
+        <h2 class="govuk-heading-m">Now send your unloading remarks</h2>
 
+        <p class="govuk-body">By sending this you are confirming that the details you are providing are correct,
+          to the best of your knowledge.</p>
+        <input type="hidden" name="answers-checked" value="true">
 
-
-      {{ govukButton({
-        text: "Continue",
-        href: "confirmation"
-      }) }}
+        {{ govukButton({
+          text: "Confirm and send",
+          href: "confirmation"
+          }) }}
 
 
 
