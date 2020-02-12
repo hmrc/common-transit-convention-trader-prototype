@@ -16,14 +16,12 @@ Check your answers
     <form class="form" method="post">
 
     <h1 class="govuk-heading-xl">Check your answers before sending these unloading remarks</h1>
-
-
-      
     
-    <!-- Goods questions -->
+    <!-- 
+      Goods questions 
+    -->
 
       {% set goodsQuestions = [] %}
-
 
       {% set goodsQuestions = (goodsQuestions.push(
           {
@@ -51,13 +49,15 @@ Check your answers
         }) }}
 
 
-      <!-- Declared information -->
+      <!-- 
+        Transport 
+      -->
 
-      {% set declaredInformation = [] %}
+      {% set transportList = [] %}
 
       <h2 class="govuk-heading-m">Transport</h2>
 
-      {% set declaredInformation = (declaredInformation.push(
+      {% set transportList = (transportList.push(
           {
             key: {
               text: "Did the goods arrive on a vehicle with the name, registration or reference BA357?"
@@ -75,39 +75,14 @@ Check your answers
               ]
             }
           }
-        ), declaredInformation) %} 
+        ), transportList) %} 
 
-        {% set declaredInformation = (declaredInformation.push(
-          {
-            key: {
-              text: "Is the vehicle registered in the United Kingdom?"
-            },
-            value: {
-              text: data['vehicle-country']
-            },
-            actions: {
-              items: [
-                {
-                  href: "vehicle-country",
-                  text: "Change",
-                  visuallyHiddenText: "where the vehicle is registered"
-                }
-              ]
-            }
-          }
-        ), declaredInformation) %}
 
-        
-      
-
-      <!-- Conditional content - if answer is no, display new fields -->
-
-      {% if (data['transit-id'] == "No") %}
+        {% if (data['transit-id'] == "No ") %}
 
         <!-- New vehicle ID -->
-        {% if (data['new-vehicle-registration'] | length != "0" ) %}
 
-          {% set declaredInformation = (declaredInformation.push(
+          {% set transportList = (transportList.push(
             {
               key: {
                 text: "What is the name, registration or reference of the new vehicle?"
@@ -125,15 +100,35 @@ Check your answers
                 ]
               }
             }
-          ), declaredInformation) %}
-        
-        {% endif %}
+          ), transportList) %}
+
+         {% endif %}
+
+          {% set transportList = (transportList.push(
+                    {
+                      key: {
+                        text: "Is the vehicle registered in the United Kingdom?"
+                      },
+                      value: {
+                        text: data['vehicle-country']
+                      },
+                      actions: {
+                        items: [
+                          {
+                            href: "vehicle-country",
+                            text: "Change",
+                            visuallyHiddenText: "where the vehicle is registered"
+                          }
+                        ]
+                      }
+                    }
+                  ), transportList) %}
 
         <!-- New vehicle country -->
 
-        {% if (data['vehicle-country'] == "No") %}
+        {% if (data['vehicle-country'] == "No ") %}
      
-          {% set declaredInformation = (declaredInformation.push(
+          {% set transportList = (transportList.push(
             {
               key: {
                 text: "Which country is the vehicle now registered in?"
@@ -151,21 +146,19 @@ Check your answers
                 ]
               }
             }
-          ), declaredInformation) %} 
+          ), transportList) %} 
         
         {% endif %}
 
-       
-        
-        {% endif %}
-
-      
-
-
-      {{ govukSummaryList({
+          {{ govukSummaryList({
            classes: 'govuk-!-margin-bottom-9',
-           rows: declaredInformation
+           rows: transportList
         }) }}
+
+
+      <!-- 
+        Weight of items 
+      -->
 
         <h2 class="govuk-heading-m">Weight of items</h2>
 
@@ -191,10 +184,9 @@ Check your answers
           }
         ), grossMass) %}
 
-
          <!-- New total gross mass -->
        
-         {% if (data['gross-mass'] == "No") %}
+         {% if (data['gross-mass'] == "No ") %}
 
          {% set grossMass = (grossMass.push(
            {
@@ -225,7 +217,9 @@ Check your answers
 
 
 
-         <!-- Seals -->
+     <!-- 
+      Seals 
+     -->
 
       {% set sealNumbers = [] %}
 
@@ -334,7 +328,9 @@ Check your answers
         }) }}
 
       
-      <!-- Declared items -->
+      <!-- 
+        Declared items 
+      -->
 
       {% set declaredItems = [] %}
 
@@ -365,7 +361,9 @@ Check your answers
            rows: declaredItems
         }) }}
 
-      <!-- Anything else to report -->
+      <!-- 
+        Anything else to report 
+      -->
 
       {% set anythingToReport = [] %}
 
