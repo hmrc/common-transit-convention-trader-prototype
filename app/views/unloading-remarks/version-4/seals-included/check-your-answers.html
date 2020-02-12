@@ -16,6 +16,22 @@ Check your answers
     <form class="form" method="post">
 
     <h1 class="govuk-heading-xl">Check your answers before sending these unloading remarks</h1>
+
+    {# <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['goodsUnloadedDay'] }} {{ data['goodsUnloadedMonth'] }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+        </dl> #}
     
     <!-- 
       Goods questions 
@@ -26,17 +42,17 @@ Check your answers
       {% set goodsQuestions = (goodsQuestions.push(
           {
             key: {
-              text: "When were the goods unloaded?"
+              text: "What date were the goods unloaded?"
             },
             value: {
-              text: "13 February 2020"
+              html: data['date-goods-unloaded-day'] + " " + data['date-goods-unloaded-month'] + " " + data['date-goods-unloaded-year']
             },
             actions: {
               items: [
                 {
                   href: "date-goods-unloaded",
                   text: "Change",
-                  visuallyHiddenText: "when goods were unloaded"
+                  visuallyHiddenText: "date goods were unloaded"
                 }
               ]
             }
@@ -221,11 +237,43 @@ Check your answers
       Seals 
      -->
 
-      {% set sealNumbers = [] %}
+    {% set sealConditions = [] %}
+    
+     <!-- If the user has made changes, then display all new seal numbers -->
+
+    {% if (data['addSealNumber'] | length != "0" ) or (data['changeSealNumber'] | length != "0") %}
 
       <h2 class="govuk-heading-m">Seals</h2>
 
-      {% set sealNumbers = (sealNumbers.push(
+      {% set sealConditions = (sealConditions.push(
+          {
+            key: {
+              text: "New seal numbers or marks"
+            },
+            value: {
+              html: data['changeSealNumber'] + "<br>" + data['addSealNumber']
+            },
+            actions: {
+              items: [
+                {
+                  href: "change-add-seal-numbers",
+                  text: "Change",
+                  visuallyHiddenText: "or add any seal numbers or marks"
+                }
+              ]
+            }
+          }
+        ), sealConditions) %}       
+
+     <!-- If user hasn't made any changes -->
+
+    {% else %}
+
+      {% set sealConditions = [] %}
+
+      <h2 class="govuk-heading-m">Seals</h2>
+
+      {% set sealConditions = (sealConditions.push(
           {
             key: {
               text: "Check seal numbers or marks"
@@ -243,17 +291,12 @@ Check your answers
               ]
             }
           }
-        ), sealNumbers) %}       
+        ), sealConditions) %}   
 
-      {{ govukSummaryList({
-           classes: 'govuk-!-margin-bottom-9',
-           rows: sealNumbers
-        }) }}
-
+    {% endif %} 
 
       <!-- Seal conditions -->
 
-      {% set sealConditions = [] %}
 
       {% set sealConditions = (sealConditions.push(
         {

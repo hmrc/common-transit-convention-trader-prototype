@@ -21,4 +21,8 @@ module.exports = {
 
   // Insert values here
 
+  "addSealNumber": "",
+
+  "changeSealNumber": ""
+
 }
