@@ -7,7 +7,7 @@ const router = express.Router()
         Anything else and the user is taken to "change unloading permission"
     */
 
-    router.post('/can-seals-be-read', function (req, res) {
+    router.post('/are-any-seals-broken', function (req, res) {
 
         let sealsBroken = req.session.data.sealsBroken;
         let canSealsBeRead = req.session.data.canSealsBeRead;
@@ -15,7 +15,7 @@ const router = express.Router()
         if (sealsBroken == ('Yes') || canSealsBeRead == ('No')) {
             res.redirect('seal-damage-details');
         } else {
-            res.redirect('declared-seal-numbers');
+            res.redirect('change-add-declared-items');
         }
 
     })
