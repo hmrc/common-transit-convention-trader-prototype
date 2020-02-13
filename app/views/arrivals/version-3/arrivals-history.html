@@ -16,12 +16,97 @@ GOV.UK Prototype Kit
 
     <p class="govuk-body"><a href="movement-reference">Make an arrival notification</a></p>
 
-    <!-- 
-      22 November section
-    -->
+    {%
+      set feb13 = [
+        {
+          "updated": "12:34am",
+          "mrn": "20NL5631291B1A3361",
+          "trader": "BMW (UK) Limited",
+          "office": "Birmingham Airport (GB000011)",
+          "procedure": "Simplified",
+          "status": "You can unload",
+          "actions": ["unloading"]
+        },
+        {
+          "updated": "11:03pm",
+          "mrn": "10GB000060100C06E0",
+          "trader": "Caterpillar",
+          "office": "Teesport	(GB000219)",
+          "procedure": "Normal",
+          "status": "Goods released",
+          "actions": ["history"]
+        },
+        {
+          "updated": "9:19am",
+          "mrn": "10IT02130010005402",
+          "trader": "Marks and Spencers",
+          "office": "Liverpool (GB000080)",
+          "procedure": "Normal",
+          "status": "Arrival notification rejected",
+          "actions": ["errors", "history"]
+        }
+      ]
+    %}
 
     <h2 class="govuk-heading-m">13 February 2020</h2>
 
+    <table class="govuk-table hmrc-responsive-table" role="table">
+      <caption class="govuk-visually-hidden">13 February 2020</caption>
+      <thead role="rowgroup">
+        <tr role="row">
+          <th class="govuk-table__header" scope="col" role="columnheader">Updated</th>
+          <th class="govuk-table__header u--w-15" scope="col" role="columnheader">Movement reference number</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Trader name</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Office</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Procedure</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Status</th>
+          <th class="govuk-table__header u--w-10" scope="col" role="columnheader">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for notice in feb13 %}
+          <tr role="row">
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Updated</span>{{ notice.updated }}</td>
+            <td class="govuk-table__cell u--w-15" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Movement reference number</span><span class="hmrc-responsive-table__value">{{ notice.mrn }}</span></td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Trader name</span>{{ notice.trader | safe }}</td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Office</span><span class="hmrc-responsive-table__value">{{ notice.office }}</span></td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Procedure</span>{{ notice.procedure }}</td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Status</span>{{ notice.status }}</td>
+            <td class="govuk-table__cell u--w-10" role="cell">
+              <span class="hmrc-responsive-table__heading" aria-hidden="true">Action</span>
+              {% if notice.actions.length > 0 %}
+                <ul class="govuk-list">
+              {% else %}
+                <div>
+              {% endif %}
+
+              {% for action in notice.actions %}
+                {% if notice.actions.length > 0 %}<li>{% endif %}
+                {% if action == "errors" %}
+                  <a href="rejected-arrivals/mrn-duplicate">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                {% endif %}
+                {% if action == "history" %}
+                  <a href="view-history.html">View history<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span> </a>
+                {% endif %}
+                {% if action == "unloading" %}
+                  <a href="../../unloading-remarks/version-3/seals-included/all-goods-unloaded">Make unloading remarks<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                {% endif %}
+                {% if notice.actions.length > 0 %}</li>{% endif %}
+              {% endfor %}
+
+              {% if notice.actions | length > 0 %}
+                </ul>
+              {% else %}
+                </div>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+
+<!--
     <div class="govuk-summary-list govuk-!-margin-bottom-2">
       <div class="govuk-summary-list__row">
         <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Updated</span>
@@ -62,9 +147,90 @@ GOV.UK Prototype Kit
         <br><p style="padding-top: 10px;"><a href="history/view-history-rejected.html">View history<span class="govuk-visually-hidden"> for 10IT02130010005402</span></a></p></span>
     </div>
     </div>
-
+  -->
     <h2 class="govuk-heading-m govuk-!-margin-top-6">12 February 2020</h2>
 
+    {%
+      set feb12 = [
+        {
+          "updated": "5.39pm",
+          "mrn": "10DK0004601366B740",
+          "trader": "Unilever",
+          "office": "Ramsgate	(GB000047)",
+          "procedure": "Normal",
+          "status": "Arrival notification rejected",
+          "actions": ["history","errors"]
+        },
+        {
+          "updated": "12:39pm",
+          "mrn": "19IT02130010005433",
+          "trader": "British Airways",
+          "office": "Felixstowe	(GB000051)",
+          "procedure": "Normal",
+          "status": "Arrival notification rejected",
+          "actions": ["history","errors"]
+        }
+      ]
+    %}
+
+
+
+
+    <table class="govuk-table hmrc-responsive-table" role="table">
+      <caption class="govuk-visually-hidden">12 February 2020</caption>
+      <thead role="rowgroup">
+        <tr role="row">
+          <th class="govuk-table__header" scope="col" role="columnheader">Updated</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Movement reference number</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Trader name</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Office</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Procedure</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Status</th>
+          <th class="govuk-table__header u--w-10" scope="col" role="columnheader">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for notice in feb12 %}
+          <tr role="row">
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Updated</span>{{ notice.updated }}</td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Movement reference number</span><span class="hmrc-responsive-table__value">{{ notice.mrn }}</span></td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Trader name</span>{{ notice.trader | safe }}</td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Office</span><span class="hmrc-responsive-table__value">{{ notice.office }}</span></td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Procedure</span>{{ notice.procedure }}</td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Status</span>{{ notice.status }}</td>
+            <td class="govuk-table__cell u--w-10" role="cell">
+              <span class="hmrc-responsive-table__heading" aria-hidden="true">Action</span>
+              {% if notice.actions.length > 0 %}
+                <ul class="govuk-list">
+              {% else %}
+                <div>
+              {% endif %}
+
+              {% for action in notice.actions %}
+                {% if notice.actions.length > 0 %}<li>{% endif %}
+                {% if action == "errors" %}
+                  <a href="rejected-arrivals/mrn-duplicate">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                {% endif %}
+                {% if action == "history" %}
+                  <a href="view-history.html">View history<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span> </a>
+                {% endif %}
+                {% if action == "unloading" %}
+                  <a href="../../unloading-remarks/version-3/seals-included/all-goods-unloaded">Make unloading remarks<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                {% endif %}
+                {% if notice.actions.length > 0 %}</li>{% endif %}
+              {% endfor %}
+
+              {% if notice.actions | length > 0 %}
+                </ul>
+              {% else %}
+                </div>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+<!--
     <div class="govuk-summary-list govuk-!-margin-bottom-2">
       <div class="govuk-summary-list__row">
         <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Updated</span>
@@ -75,7 +241,7 @@ GOV.UK Prototype Kit
         <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Status</span>
         <span class="govuk-summary-list__key govuk-!-width-full govuk-!-font-weight-bold">Action</span>
       </div>
-      
+
       <div class="govuk-summary-list__row">
           <span class="govuk-summary-list__value govuk-!-width-full">5.39pm</span>
           <span class="govuk-summary-list__value govuk-!-width-full">10DK0004601366B740</span>
@@ -85,7 +251,7 @@ GOV.UK Prototype Kit
           <span class="govuk-summary-list__value govuk-!-width-full">Arrival notification rejected</span>
           <span class="govuk-summary-list__value govuk-!-width-full"><a href="rejected-arrivals/mrn-duplicate">View and fix errors<span class="govuk-visually-hidden"> for 19IT021300100054F2</span> </a>
           <br><p style="padding-top: 10px;"><a href="history/view-history-rejected.html">View history<span class="govuk-visually-hidden"> for 10IT02130010005402</span></a></p></span>
-        </div>            
+        </div>
         <div class="govuk-summary-list__row">
           <span class="govuk-summary-list__value govuk-!-width-full">12:39pm</span>
           <span class="govuk-summary-list__value govuk-!-width-full">19IT02130010005433</span>
@@ -95,13 +261,12 @@ GOV.UK Prototype Kit
           <span class="govuk-summary-list__value govuk-!-width-full">Arrival notification rejected</span>
           <span class="govuk-summary-list__value govuk-!-width-full"><a href="rejected-arrivals/mrn-invalid">View and fix errors<span class="govuk-visually-hidden"> for 19IT021300100054F2</span> </a>
           <br><p style="padding-top: 10px;"><a href="history/view-history-rejected.html">View history<span class="govuk-visually-hidden"> for 10IT02130010005402</span></a></p></span>
-        </div>            
+        </div>
 
     </div>
+  -->
 
-   
-
-    <p class="govuk-body" style="padding-top: 15px; "><a href="homepage">Go to manage transit movements</a></p>
+    <p class="govuk-body govuk-!-margin-top-3"><a href="homepage">Go to manage transit movements</a></p>
 
   </div>
 </div>
