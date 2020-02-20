@@ -1,0 +1,181 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check packages
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post" action="container-numbers">
+
+    <span class="govuk-caption-xl">Change item</span>
+    <h1 class="govuk-heading-xl">Check packages</h1>
+
+      <h2 class="govuk-heading-m">Package one</h2>
+
+        {{ govukSummaryList({
+        rows: [
+            {
+            key: {
+                text: "Type"
+            },
+            value: {
+                text: ""
+            },
+            actions: {
+                items: [
+                {
+                    href: "new-commodity-code",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Number of packages"
+            },
+            value: {
+                text: ""
+            },
+            actions: {
+                items: [
+                {
+                    href: "new-description-of-goods",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Number of pieces"
+            },
+            value: {
+                text: ""
+            },
+            actions: {
+                items: [
+                {
+                    href: "new-gross-mass",
+                    text: "Change",
+                    visuallyHiddenText: "contact information"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Marks and numbers"
+            },
+            value: {
+                text: ""
+            },
+            actions: {
+                items: [
+                {
+                    href: "new-net0mass",
+                    text: "Change",
+                    visuallyHiddenText: "contact details"
+                }
+                ]
+            }
+            }
+        ]
+        }) }}
+
+      <h2 class="govuk-heading-m">Package two</h2>
+
+        {{ govukSummaryList({
+        rows: [
+            {
+            key: {
+                text: "Type"
+            },
+            value: {
+                text: ""
+            },
+            actions: {
+                items: [
+                {
+                    href: "new-commodity-code",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Number of packages"
+            },
+            value: {
+                text: ""
+            },
+            actions: {
+                items: [
+                {
+                    href: "new-description-of-goods",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Number of pieces"
+            },
+            value: {
+                text: ""
+            },
+            actions: {
+                items: [
+                {
+                    href: "new-gross-mass",
+                    text: "Change",
+                    visuallyHiddenText: "contact information"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Marks and numbers"
+            },
+            value: {
+                text: ""
+            },
+            actions: {
+                items: [
+                {
+                    href: "new-net0mass",
+                    text: "Change",
+                    visuallyHiddenText: "contact details"
+                }
+                ]
+            }
+            }
+        ]
+        }) }}        
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}        
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

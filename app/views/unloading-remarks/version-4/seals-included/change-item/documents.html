@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check document and certificate information
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post" action="anything-else-to-report">
+
+    <span class="govuk-caption-xl">Change item</span>
+    <h1 class="govuk-heading-xl">Check document and certificate information</h1>
+
+        {{ govukSummaryList({
+        rows: [
+            {
+            key: {
+                text: "Type"
+            },
+            value: {
+                text: "(952) TIR carnet"
+            },
+            actions: {
+                items: [
+                {
+                    href: "new-document-type",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Document reference"
+            },
+            value: {
+                text: "XE25000002"
+            },
+            actions: {
+                items: [
+                {
+                    href: "new-document-reference",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Complement of information"
+            },
+            value: {
+                text: ""
+            },
+            actions: {
+                items: [
+                {
+                    href: "new-complement-of-information",
+                    text: "Change",
+                    visuallyHiddenText: "contact information"
+                }
+                ]
+            }
+            }
+        ]
+        }) }}
+
+        <p><a href="#">Add another document or certificate</a></p>
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}        
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

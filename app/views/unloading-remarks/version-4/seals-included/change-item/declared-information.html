@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check declared information
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post" action="packages">
+
+    <span class="govuk-caption-xl">Change item</span>
+    <h1 class="govuk-heading-xl">Check declared information</h1>
+
+        {{ govukSummaryList({
+        rows: [
+            {
+            key: {
+                text: "Commodity code"
+            },
+            value: {
+                text: ""
+            },
+            actions: {
+                items: [
+                {
+                    href: "new-commodity-code",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Description of goods"
+            },
+            value: {
+                text: ""
+            },
+            actions: {
+                items: [
+                {
+                    href: "new-description-of-goods",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Gross mass in kilograms"
+            },
+            value: {
+                text: "100"
+            },
+            actions: {
+                items: [
+                {
+                    href: "new-gross-mass",
+                    text: "Change",
+                    visuallyHiddenText: "contact information"
+                }
+                ]
+            }
+            },
+            {
+            key: {
+                text: "Net mass in kilograms"
+            },
+            value: {
+                text: "105"
+            },
+            actions: {
+                items: [
+                {
+                    href: "new-net0mass",
+                    text: "Change",
+                    visuallyHiddenText: "contact details"
+                }
+                ]
+            }
+            }
+        ]
+        }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}        
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
