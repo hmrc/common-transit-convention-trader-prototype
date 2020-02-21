@@ -11,3 +11,5 @@ public
 node_modules/*
 .tmuxp.*
 package-lock.json
+
+.vscode/settings.json

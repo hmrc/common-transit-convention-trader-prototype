@@ -1,12 +1,15 @@
 {% extends "layout.html" %}
 
-{% block pageTitle %}
-Check your answers for this event
-
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
+{% block pageTitle %}
+Check your answers for this event
+{% endblock %}
+
+
+{% block beforeContent %}
 {{ govukBackLink({
     text: "Back",
     href: "#"
@@ -22,16 +25,7 @@ Check your answers for this event
       <h1 class="govuk-heading-xl">Check your answers for this event</h1>
 
       <!-- First section -->
-      {#{% set eventCountry = "" %}
-      {% set vehicleCountry = "" %}
-      {% for country in CTCData.countries %}
-        {% if country.value == data['event-country'] | trim %}
-          {% set eventCountry = country.text %}
-        {% endif %}
-        {% if country.value == data['vehicle-country'] | trim %}
-          {% set vehicleCountry = country.text %}
-        {% endif %}
-      {% endfor %}#}
+
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
@@ -39,7 +33,7 @@ Check your answers for this event
             Which country were the goods in when the event happened?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['event-country-2'] }}
+            {{ data['event-country-2'] | getCountry }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="event-country.html">
@@ -140,7 +134,7 @@ Check your answers for this event
             What did the goods move to?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['new-transport-type'] }}
+            {{ data['new-transport-type-2'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="new-transport-type">
@@ -231,7 +225,7 @@ Check your answers for this event
                 What is the vehicle name, registration or reference?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['vehicle-reference'] }}
+                {{ data['vehicle-reference-2'] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="vehicle-reference">
@@ -245,7 +239,7 @@ Check your answers for this event
                 Which country is the vehicle registered in?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ vehicleCountry }}
+                {{ data['vehicle-country-2'] | getCountry }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="vehicle-country">
@@ -269,7 +263,7 @@ Check your answers for this event
                 Did the goods move to a different container or vehicle?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['change-vehicle-2'] }}
+                {{ data['change-vehicle'] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="change-vehicle">
@@ -355,7 +349,7 @@ Check your answers for this event
                     Which country is the vehicle registered in?
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    {{ data['vehicle-country-2'] }}
+                    {{ data['vehicle-country'] }}
                   </dd>
                   <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="vehicle-country">
@@ -450,6 +444,7 @@ Check your answers for this event
                 }) }}
 
     </form>
+
     <p><a href="homepage.html">Go back to manage transit movements</a></p>
 
   </div>

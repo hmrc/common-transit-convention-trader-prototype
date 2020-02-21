@@ -43,17 +43,22 @@ Which country is the vehicle registered in?
 
     {{ govukButton({
       text: "Save and continue",
-      href: "check-event-answers"
+      attributes: {
+        formaction: "check-event-answers"
+      }
     }) }}
 
     {% endif %}
 
-    {% if (data['where-are-the-goods'] == "BorderForce") %}
+    {% if (data['where-are-the-goods'] == "BorderForce") or data['where-are-the-goods'] == null %}
 
     {{ govukButton({
       text: "Save and continue",
-      href: "seals-changed"
+      attributes: {
+        formaction: "seals-changed"
+      }
     }) }}
+
 
     {% endif %}
 

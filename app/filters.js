@@ -38,6 +38,41 @@ module.exports = function (env) {
 
   ------------------------------------------------------------------ */
 
+
+  function getData(){
+    var dummyData = require('./data/data.js')
+    return dummyData;
+  }
+
+  filters.getCountry = function(code){
+    if(code){
+      var data = getData();
+      var retVal = code;
+      data.countries.forEach(function(country){
+        if(country.value.toLowerCase().trim() == code.toLowerCase().trim()){
+          //console.log("-" + country.value.toLowerCase().trim() + "-", "-" + code.toLowerCase().trim() + "-")
+          retVal = country.text;
+        }
+      })
+    }
+    return retVal;
+  }
+
+  filters.getOffice = function(code){
+    if(code){
+      var data = getData();
+      var retVal = code;
+      data.officesOfDeparture.forEach(function(office){
+        if(office.value.toLowerCase().trim() == code.toLowerCase().trim()){
+          //console.log("-" + office.value.toLowerCase().trim() + "-", "-" + code.toLowerCase().trim() + "-")
+          retVal = office.text;
+        }
+      })
+    }
+    return retVal;
+  }
+
+
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
