@@ -17,7 +17,7 @@ GOV.UK Prototype Kit
     <p class="govuk-body"><a href="movement-reference">Make an arrival notification</a></p>
 
     {%
-      set feb13 = [
+      set feb19 = [
         {
           "updated": "12:34am",
           "mrn": "20NL5631291B1A3361",
@@ -48,10 +48,10 @@ GOV.UK Prototype Kit
       ]
     %}
 
-    <h2 class="govuk-heading-m">13 February 2020</h2>
+    <h2 class="govuk-heading-m">19 February 2020</h2>
 
     <table class="govuk-table hmrc-responsive-table" role="table">
-      <caption class="govuk-visually-hidden">13 February 2020</caption>
+      <caption class="govuk-visually-hidden">19 February 2020</caption>
       <thead role="rowgroup">
         <tr role="row">
           <th class="govuk-table__header" scope="col" role="columnheader">Updated</th>
@@ -64,7 +64,7 @@ GOV.UK Prototype Kit
         </tr>
       </thead>
       <tbody>
-        {% for notice in feb13 %}
+        {% for notice in feb19 %}
           <tr role="row">
             <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Updated</span>{{ notice.updated }}</td>
             <td class="govuk-table__cell u--w-15" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Movement reference number</span><span class="hmrc-responsive-table__value">{{ notice.mrn }}</span></td>
@@ -89,7 +89,7 @@ GOV.UK Prototype Kit
                   <a href="view-history.html">View history<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span> </a>
                 {% endif %}
                 {% if action == "unloading" %}
-                  <a href="../../unloading-remarks/version-3/seals-included/all-goods-unloaded">Make unloading remarks<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                  <a href="../../unloading-remarks/version-4/seals-included/all-goods-unloaded">Make unloading remarks<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
                 {% endif %}
                 {% if notice.actions.length > 0 %}</li>{% endif %}
               {% endfor %}
@@ -124,7 +124,7 @@ GOV.UK Prototype Kit
         <span class="govuk-summary-list__value govuk-!-width-full">Birmingham Airport (GB000011)</span>
         <span class="govuk-summary-list__value govuk-!-width-full">Simplified</span>
         <span class="govuk-summary-list__value govuk-!-width-full">You can unload</span>
-        <span class="govuk-summary-list__value govuk-!-width-full"><a href="../../unloading-remarks/version-3/seals-included/all-goods-unloaded">Make unloading remarks <span class="govuk-visually-hidden">for 20GB000060100C06E0</span> </a></span></span>
+        <span class="govuk-summary-list__value govuk-!-width-full"><a href="../../unloading-remarks/version-4/seals-included/all-goods-unloaded">Make unloading remarks <span class="govuk-visually-hidden">for 20GB000060100C06E0</span> </a></span></span>
       </div>
       <div class="govuk-summary-list__row">
         <span class="govuk-summary-list__value govuk-!-width-full">11:03pm</span>
@@ -148,10 +148,10 @@ GOV.UK Prototype Kit
     </div>
     </div>
   -->
-    <h2 class="govuk-heading-m govuk-!-margin-top-6">12 February 2020</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-6">18 February 2020</h2>
 
     {%
-      set feb12 = [
+      set feb18 = [
         {
           "updated": "5.39pm",
           "mrn": "10DK0004601366B740",
@@ -177,7 +177,7 @@ GOV.UK Prototype Kit
 
 
     <table class="govuk-table hmrc-responsive-table" role="table">
-      <caption class="govuk-visually-hidden">12 February 2020</caption>
+      <caption class="govuk-visually-hidden">18 February 2020</caption>
       <thead role="rowgroup">
         <tr role="row">
           <th class="govuk-table__header" scope="col" role="columnheader">Updated</th>
@@ -190,7 +190,7 @@ GOV.UK Prototype Kit
         </tr>
       </thead>
       <tbody>
-        {% for notice in feb12 %}
+        {% for notice in feb18 %}
           <tr role="row">
             <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Updated</span>{{ notice.updated }}</td>
             <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Movement reference number</span><span class="hmrc-responsive-table__value">{{ notice.mrn }}</span></td>
@@ -215,7 +215,7 @@ GOV.UK Prototype Kit
                   <a href="view-history.html">View history<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span> </a>
                 {% endif %}
                 {% if action == "unloading" %}
-                  <a href="../../unloading-remarks/version-3/seals-included/all-goods-unloaded">Make unloading remarks<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                  <a href="../../unloading-remarks/version-4/seals-included/all-goods-unloaded">Make unloading remarks<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
                 {% endif %}
                 {% if notice.actions.length > 0 %}</li>{% endif %}
               {% endfor %}

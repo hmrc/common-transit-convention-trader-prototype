@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Is this vehicle registered in the United Kingdom?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+      <h1 class="govuk-heading-xl">Is this vehicle registered in the United Kingdom?</h1>
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "vehicle-country",
+        name: "vehicle-country",
+        fieldset: {
+          legend: {
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        
+        items: [
+          {
+            value: "Yes redirect(gross-mass)",
+            text: "Yes"
+          },
+          {
+            value: "No redirect(new-vehicle-country)",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

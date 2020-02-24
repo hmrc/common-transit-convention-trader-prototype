@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Container numbers
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post" action="documents">
+    
+    <span class="govuk-caption-xl">Change item</span>
+    <h1 class="govuk-heading-xl">Container numbers</h1>
+
+        <table class="govuk-table hmrc-responsive-table" role="grid">
+        <caption class="govuk-visually-hidden">Container numbers</caption>
+        <thead role="rowgroup">
+            <tr role="row">
+            </tr>
+        </thead>
+        <tbody>
+            <tr role="row">
+                <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Original</span>seal_it1</td>
+                <td class="govuk-table__cell" role="gridcell"><a href="change-seal-number">Change<span class="govuk-visually-hidden"> for {{ notice.action }}</span></a></td>
+            </tr>
+            <tr role="row">
+                <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Original</span>seal_it2</td>
+                <td class="govuk-table__cell" role="gridcell"><a href="#">Change<span class="govuk-visually-hidden"> for {{ notice.action }}</span></a></td>
+            </tr>
+            <tr role="row">
+                <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Original</span>seal_it3</td>
+                <td class="govuk-table__cell" role="gridcell"><a href="#">Change<span class="govuk-visually-hidden"> for {{ notice.action }}</span></a></td>
+            </tr>
+            <tr role="row">
+                <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Original</span>seal_it4</td>
+                <td class="govuk-table__cell" role="gridcell"><a href="#">Change<span class="govuk-visually-hidden"> for {{ notice.action }}</span></a></td>
+            </tr>
+            
+        </tbody>
+        </table>    
+
+        <br>
+
+        <p><a href="#">Add a new container number</a></p>
+
+        <br>
+      
+      {{ govukButton({
+        text: "Continue"
+      }) }}  
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

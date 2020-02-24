@@ -1,0 +1,131 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check declared information
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+    <h1 class="govuk-heading-xl">Check declared information</h1>
+
+     {%
+      set declarationInfo = [
+        {
+          "declarationField": "Transport ID at departure",
+          "declarationInfo": "BA357"
+        },
+        {
+          "declarationField": "Transport nationality at departure",
+          "declarationInfo": "GB"
+        },
+        {
+          "declarationField": "Total gross mass in kilograms",
+          "declarationInfo": "800"
+        }
+      ]
+
+    %}
+
+    <table class="govuk-table hmrc-responsive-table" role="grid">
+      <caption class="govuk-visually-hidden">25 November 2019</caption>
+      <thead role="rowgroup">
+        <tr role="row">
+          <th class="govuk-table__header" scope="col" role="columnheader">Declaration field</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Declared information</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for info in declarationInfo %}
+          <tr role="row">
+            <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Declaration field</span>{{ info.declarationField }}</td>
+            <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Declared information</span><span class="hmrc-responsive-table__value">{{ info.declarationInfo }}</span></td>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    
+    <!-- summary table -->
+
+    {# {{ govukSummaryList({
+    rows: [
+        {
+        key: {
+            text: "Transport ID at departure"
+        },
+        value: {
+            text: "BA357"
+        }
+        },
+
+        {
+        key: {
+            text: "Transport nationality at departure"
+        },
+        value: {
+            text: "GB"
+        }
+        },
+
+        {
+        key: {
+            text: "Total gross mass (kg)"
+        },
+        value: {
+            text: "800"
+        }
+        }
+
+    ]
+    }) }} #}
+
+    <!-- radios -->
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "changeDeclaredInformation",
+        name: "changeDeclaredInformation",
+        fieldset: {
+          legend: {
+            text: "Do you need to change any of this information?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+        {
+          value: "Yes, redirect(change-declared-information)",
+          text: "Yes"
+        },
+        {
+          value: "No, redirect(are-any-seals-broken)",
+          text: "No"
+        }
+          
+        ]
+      }) }}
+
+      <!-- Button -->
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Did the goods arrive on a vehicle with the name, registration or reference BA357?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+      <h1 class="govuk-heading-xl">Did the goods arrive on a vehicle with the name, registration or reference BA357?</h1>
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "transit-id",
+        name: "transit-id",
+        fieldset: {
+          legend: {
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        
+        items: [
+          {
+            value: "Yes redirect(vehicle-country)",
+            text: "Yes"
+          },
+          {
+            value: "No redirect(new-vehicle-id)",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

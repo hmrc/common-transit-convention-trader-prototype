@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+You must unload all of the goods before you send any unloading remarks
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">You must unload all of the goods before you send any unloading remarks</h1>
+      <p class="govuk-body">View and print the unloading permissions accompanying document for movement reference 20NL5631291B1A3361. </p>
+     
+      <p class="govuk-body">You can use this document to check that the unloaded goods match the information in the transit declaration. 
+       
+      </p>
+    </div>
+  </div>
+
+
+
+
+      {{ govukButton({
+        text: "Continue",
+        href: "date-goods-unloaded"
+      }) }}
+
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

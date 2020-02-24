@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Unloading remarks submitted
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: "Sent unloading remarks",
+        html: "for movement reference number <strong>20NL5631291B1A3361</strong>"
+      }) }}
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+      <p class="govuk-body">You must wait for Border Force to end this transit movement. </p>
+
+      <p class="govuk-body"><a href="../arrivals-history-after-unloading">Go to arrival notifications</a> to see the latest messages. </p>
+      
+    </div>
+  </div>
+{% endblock %}
+
+
+
