@@ -37,7 +37,12 @@ module.exports = function (env) {
     documentation.
 
   ------------------------------------------------------------------ */
-
+  filters.getpage = function (str, dir) {
+    // gets the page part of the url for the page listings in admin
+    // var p = str.split("/")
+    // return p[p.length - 1]
+    return str.replace(dir, '')
+  }
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */

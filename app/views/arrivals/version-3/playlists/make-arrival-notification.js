@@ -1,0 +1,31 @@
+module.exports = {
+    'directory': 'views/arrivals/version-3',
+    'playlist': [
+        {'view':'movement-reference'},
+        {'view':'where-goods'},
+        {'view':'customs-facility'},
+        {'view':'border-force-office'},
+        {'view':'trader-name'},
+        {'view':'trader-eori'},
+        {'view':'trader-address'},
+        {'view':'place-of-notification-postcode'},
+        {'view':'place-notification'},
+        {'view':'event/something-happened'},
+        {'view':'event/event-1/event-country'},
+        {'view':'event/event-1/event-place'},
+        {'view':'event/event-1/event-report'},
+        {'view':'event/event-1/change-vehicle'},
+        {'view':'event/event-1/new-transport-type'},
+        {'view':'event/event-1/new-container-number'},
+        {'view':'event/event-1/container-list'},
+        {'view':'event/event-1/vehicle-reference'},
+        {'view':'event/event-1/vehicle-country'},
+        {'view':'event/event-1/seals-changed'},
+        {'view':'event/event-1/new-seal-number'},
+        {'view':'event/event-1/seal-list'},
+        {'view':'event/event-1/check-event-answers'},
+        {'view':'event/event-1/event-list'},
+        {'view':'check-answers'},
+        {'view':'arrival-sent'}
+    ]
+}
