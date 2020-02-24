@@ -21,15 +21,15 @@ What is the name of the trader at destination?
 
       {{ govukInput({
         classes: "govuk-input--width-20",
-  id: "trader-name",
-  name: "trader-name"
-}) }}
+        id: "trader-name",
+        name: "trader-name"
+      }) }}
 
-{% from "govuk/components/button/macro.njk" import govukButton %}
+      {% from "govuk/components/button/macro.njk" import govukButton %}
 
-{{ govukButton({
-  text: "Save and continue"
-}) }}
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
 
     </form>
     <p><a href="homepage.html">Go back to manage transit movements</a></p>
