@@ -47,9 +47,9 @@ Did the goods move to a different vehicle or container?
 
         {% endif %}
 
-        {% if (data['event-report'] == "Yes") %}
+        {% if (data['event-report'] == "Yes") or (data['event-report'] == null) %}
 
-  
+
           {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
               {{ govukRadios({

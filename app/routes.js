@@ -3,8 +3,11 @@ const router = express.Router()
 
 //router.use('/arrivals/version-3', require('./views/arrivals/version-3/routes'))
 
-router.use('/arrivals/version-([0-9]+)', (req, res, next) => {
-  require(`./views/arrivals/version-3/routes`)(req, res, next)
+router.use('/arrivals/version-3', (req, res, next) => {
+  require('./views/arrivals/version-3/routes')(req, res, next)
+})
+router.use('/unloading-remarks/version-4', (req, res, next) => {
+  require('./views/unloading-remarks/version-4/routes')(req, res, next)
 })
 
 // Add your routes here - above the module.exports line
@@ -29,7 +32,6 @@ router.get('/', function (req, res) {
 /* catch-all routes */
 router.get('*', function (req, res, next) {
     getData(res)
-    console.log('catch-all')
     res.render('./' + req._parsedUrl.pathname)
     return
   })

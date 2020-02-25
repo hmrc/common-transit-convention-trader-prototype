@@ -67,11 +67,12 @@
         border-left: 5px solid;
     }
 
-    .page h2 {
+    .page__url {
         word-break: break-word;
         font-size: 0.8em;
         line-height: 1.1;
         padding-bottom: 5px;
+        margin-bottom: 0;
     }
     .page-inner {
         border: 1px solid #000;
@@ -80,13 +81,15 @@
         background: #fff url(/public/images/admin/loader.svg) 50% 50% no-repeat;
     }
     .page--exit .page-inner {
-        background: none;
+        background: #005ea5;
+        color: white;
         padding: 20px;
         box-sizing: border-box;
     }
     .page--exit {
         height: 100%;
-        background: #005ea5;
+    }
+    .page--exit a {
         color: white;
     }
     iframe {
@@ -156,10 +159,66 @@
         display: block;
         padding-bottom: 1em;
     }
+
+    .govuk-grid-row {
+        margin: 0;
+    }
+    .govuk-width-container {
+        max-width: 1960px;
+        padding: 0 20px;
+    }
+    .playlist__wrapper {
+        overflow: scroll;
+        margin-bottom: 4rem;
+        padding-bottom: 2rem;
+    }
+    .playlist__wrapper > ul {
+        /* width: 6000px; */
+        grid-template-columns: repeat( auto, var(--page-width) );
+        display: grid;
+        grid-column-gap: 15px;
+        grid-row-gap: 20px;
+    }
+    .page {
+        display: flex;
+        margin: 0;
+        flex-direction: column;
+    }
+    .page-inner {
+        margin-top: auto;
+    }
+    .page--branch-end:after {
+        content: "";
+        display: inline-block;
+        width: calc(var(--page-width)/3);
+        height: calc(var(--page-width)/3);
+        background: url(/public/images/admin/arrow-branch-in.svg) 0 0 no-repeat;
+        position: absolute;
+        top: 20px;
+        right: calc((var(--page-width)/-3) - 20px);
+        background-size: contain;
+    }
+    .page--branch-start:before {
+        content: "";
+        display: inline-block;
+        width: calc(var(--page-width)/3);
+        height: calc(var(--page-width)/3);
+        background: url(/public/images/admin/arrow-branch-out.svg) 0 0 no-repeat;
+        position: absolute;
+        top: 20px;
+        left: calc((var(--page-width)/-3) - 20px);
+        background-size: contain;
+    }
+    .page--happy-path {
+        background: url(/public/images/admin/arrow-happy.svg) 100% 50% no-repeat;
+    }
+    .page--no-next-arrow:after {
+        display: none;
+    }
 </style>
 
         <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds">
+            <div class="govuk-grid-column-two-thirds" style="padding-left: 0;">
                 <h1 class="govuk-heading-xl">{{ title }}</h1>
             </div>
             <div class="govuk-grid-column-one-third">
@@ -177,34 +236,64 @@
             </div>
         </div>
         <div class="govuk-grid-row">
-        <ul>
-        {% for play in playlist %}
-
-
-                    {% if play.routeStart %}
-                    <li class="page--route-heading{% if play.route %} page-playlist--withroute{% endif %} {% if play.childRoute %} page-playlist--childroute{% endif %}"><h2 class="heading-small">{{ play.route }}</h2></li>
+        {% for playlist in playlists %}
+        <h2 class="govuk-heading-l" id="{{ playlist.name | toID }}">{{ playlist.name }}</h2>
+        <div class="playlist__wrapper">
+            <ul>
+            {% set itemCount = 0 %}
+            {% for play in playlist.playlist %}
+                <!-- hide next arrow if the next item is branched off as we'll be showing a large arrow in its place -->
+                {% set hideArrow = false %}
+                {% set currIndex = loop.index %}
+                {% for play2 in playlist.playlist %}
+                    {% if currIndex + 1 == loop.index %}
+                        {% if play2.branchStart %}
+                            {% set hideArrow = true %}
+                        {% endif %}
                     {% endif %}
-                    <li class="page page--playlist {% if play.route %} page-playlist--withroute{% endif %} {% if play.childRoute %} page-playlist--childroute{% endif %}">
-                        <h2><a href="../{{ play.view }}">/{{ play.view }}</a></h2>
+                {% endfor %}
+
+                <!-- set branching styles -->
+                {% set itemCount = itemCount + 1 %}
+                {% set row = 1 %}
+                {% if play.branchLevel %}
+                    {% set row = 1 + play.branchLevel %}
+                {% endif %}
+                {% set itemStyle = "grid-column: " + itemCount + "; grid-row: " + row %}
+
+                <!-- show large arrow to show happy path if this item is a branch -->
+                {% if play.showParallel %}<li class="page page--happy-path" style="grid-column: {{itemCount}}; grid-row: {{ row - 1 }}"></li>{% endif %}
+
+
+                {% if play.view %}
+                <li class="page page--playlist {% if hideArrow == true %} page--no-next-arrow {% endif %} {% if play.branchStart %} page--branch-start{% endif %}{% if play.branchEnd %} page--branch-end{% endif %}" style="{{itemStyle}}">
+                    <h3 class="page__url govuk-body"><a href="../{{ play.view }}">/{{ play.view }}</a></h3>
+                    <div class="page-inner">
+                        <iframe src="../{{ play.view }}"></iframe>
+                    </div>
+                </li>
+                {% endif %}
+
+
+                {# show jump off to another playlist #}
+                {% if play.exitTo %}
+                    {% set itemStyle = "grid-column:" + itemCount + "; grid-row: " + row %}
+                    <li class="page page--playlist page--exit{% if hideArrow == true %} page--no-next-arrow {% endif %} {% if play.branchStart %} page--branch-start{% endif %}{% if play.branchEnd %} page--branch-end{% endif %}" style="{{itemStyle}}">
                         <div class="page-inner">
-                            <iframe src="../{{ play.view }}"></iframe>
+                            {% for exit in play.exitTo %}
+                            <div class="govuk-heading-m"><a href="#{{ exit | toID }}">{{ exit }}</a></div>
+                            {% endfor %}
                         </div>
                     </li>
-                    {% if play.routeEnd %}
-                    <li style="display: block;"></li>
-                    {% endif %}
+                {% endif %}
 
-                    {# show jump off to another playlist #}
-                    {% if play.exitTo %}
-                        <li class="page page--playlist page--exit">
-                            <div class="page-inner">
-                                {{ play.exitTo }}
-                            </div>
-                        </li>
-                    {% endif %}
-
+                {% if play.skip %}
+                {% set itemCount = itemCount - 1 %}
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
         {% endfor %}
-        </ul>
         </div>
 
 
