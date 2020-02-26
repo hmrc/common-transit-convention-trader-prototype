@@ -37,17 +37,13 @@
       <!-- Goods details -->
 
       {% set goodsLocation = [] %}
-      {% set whereGoods = "Authorised consignee's location" %}
-      {% if (data['where-are-the-goods'] == "BorderForce") %}
-        {% set whereGoods = "Border Force location" %}
-      {% endif %}
 
       {% set goodsLocation = (goodsLocation.push({
         key: {
           text: "Where are the goods?"
         },
         value: {
-          text: whereGoods
+          text: data['where-are-the-goods'] | getConsignee
         },
         actions: {
           items: [ {

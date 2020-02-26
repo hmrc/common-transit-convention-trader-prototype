@@ -72,6 +72,17 @@ module.exports = function (env) {
     return retVal;
   }
 
+  filters.getConsignee = function (str) {
+    switch(str){
+      case "AuthorisedConsignee":
+        return "Authorised consignee's location";
+      case "BorderForce":
+        return "Border Force location";
+      default:
+        return str;
+    }
+  }
+
 
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
