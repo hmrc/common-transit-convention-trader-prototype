@@ -174,7 +174,7 @@
     }
     .playlist__wrapper > ul {
         /* width: 6000px; */
-        grid-template-columns: repeat( auto, var(--page-width) );
+        grid-template-columns: repeat( auto-fit, var(--page-width) );
         display: grid;
         grid-column-gap: 15px;
         grid-row-gap: 20px;
@@ -281,7 +281,7 @@
                     <li class="page page--playlist page--exit{% if hideArrow == true %} page--no-next-arrow {% endif %} {% if play.branchStart %} page--branch-start{% endif %}{% if play.branchEnd %} page--branch-end{% endif %}" style="{{itemStyle}}">
                         <div class="page-inner">
                             {% for exit in play.exitTo %}
-                            <div class="govuk-heading-m"><a href="#{{ exit | toID }}">{{ exit }}</a></div>
+                            <div class="govuk-heading-s"><a href="#{{ exit | toID }}">{{ exit }}</a></div>
                             {% endfor %}
                         </div>
                     </li>
