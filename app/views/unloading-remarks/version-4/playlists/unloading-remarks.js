@@ -13,12 +13,12 @@ module.exports = {
                 {'view':'seals-included/gross-mass'},
                 {'view':'seals-included/new-total-gross-mass',          'branchLevel': 1, 'branchStart': true, 'branchEnd': true, 'showParallel': true},
                 {'view':'seals-included/change-add-seal-numbers'},
-                {'exitTo': ['Change seal','Add new seal']},
+                {'exitTo': ['#Change seal','#Add new seal']},
                 {'view':'seals-included/can-seals-be-read'},
                 {'view':'seals-included/are-any-seals-broken'},
                 {'view':'seals-included/seal-damage-details',           'branchLevel': 1, 'branchStart': true, 'branchEnd': true, 'showParallel': true},
                 {'view':'seals-included/change-add-declared-items'},
-                {'exitTo': ['Change item']},
+                {'exitTo': ['#Change item']},
                 {'view':'seals-included/check-your-answers'},
                 {'view':'seals-included/confirmation'}
             ]

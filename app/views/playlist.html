@@ -1,9 +1,18 @@
 {% extends "layout.html" %}
 
-{% set pageHeading = "Page list" %}
+{% set pageHeading = "" %}
+{% if title %}
+    {% set pageHeading = title %}
+{% else %}
+    {% for playlist in playlists %}
+        {% if loop.first%}
+            {% set pageHeading = playlist.parent.name %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
 
-{% block page_title %}
-{{ govPageTitle(pageHeading, pageSection, serviceName) }}
+{% block pageTitle %}
+{{ pageHeading }} - {{ serviceName }}
 {% endblock %}
 
 {% block content %}
@@ -81,6 +90,7 @@
         color: white;
         padding: 20px;
         box-sizing: border-box;
+        overflow: scroll;
     }
     .page--exit {
         height: 100%;
@@ -224,11 +234,14 @@
     .page--no-next-arrow:after {
         display: none;
     }
+    .playlist__heading:target {
+        background: yellow;
+    }
 </style>
 
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds" style="padding-left: 0;">
-                <h1 class="govuk-heading-xl">{{ title }}</h1>
+                <h1 class="govuk-heading-xl">{{ pageHeading }}</h1>
             </div>
             <div class="govuk-grid-column-one-third">
 
@@ -246,7 +259,9 @@
         </div>
         <div class="govuk-grid-row">
         {% for playlist in playlists %}
-        <h2 class="govuk-heading-l" id="{{ playlist.name | toID }}">{{ playlist.name }}</h2>
+        {% if playlist.name != pageHeading %}
+        <h2 class="playlist__heading govuk-heading-l" id="{{ playlist.name | toID }}">{{ playlist.name }}</h2>
+        {% endif %}
         <div class="playlist__wrapper">
             <ul>
             {% set itemCount = 0 %}
@@ -290,7 +305,7 @@
                     <li class="page page--playlist page--exit{% if hideArrow == true %} page--no-next-arrow {% endif %} {% if play.branchStart %} page--branch-start{% endif %}{% if play.branchEnd %} page--branch-end{% endif %}" style="{{itemStyle}}">
                         <div class="page-inner">
                             {% for exit in play.exitTo %}
-                            <div class="govuk-heading-s"><a href="#{{ exit | toID }}">{{ exit }}</a></div>
+                            <div class="govuk-heading-s"><a href="{{ exit | toID }}">{{ exit }}</a></div>
                             {% endfor %}
                         </div>
                     </li>

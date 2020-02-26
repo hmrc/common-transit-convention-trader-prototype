@@ -1,13 +1,19 @@
 const express = require('express')
 const router = express.Router()
 
-var playlistArrivals = require('./playlists/make-arrival-notification');
 
-router.get('/playlists/arrivals', function (req, res) {
+
+router.get('/playlists/:name', function (req, res) {
+  var list = req.params.name
+  var playlist = require('./playlists/' + list);
+  var title = playlist.playlists[0].name;
+  if(playlist.name){
+    title = playlist.name
+  }
   res.render('./playlist', {
-    'title': 'Arrivals',
-    'playlists': playlistArrivals.playlists,
-    'playlistDir': playlistArrivals.directory
+    'title': title,
+    'playlists': playlist.playlists,
+    'playlistDir': playlist.directory
   })
 })
 
