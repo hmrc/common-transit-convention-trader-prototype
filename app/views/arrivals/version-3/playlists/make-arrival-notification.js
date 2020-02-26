@@ -46,7 +46,7 @@ module.exports = {
 
                 {'view': 'event/event-1/seals-changed'},
                 {'view': 'event/event-1/new-seal-number', 'branchLevel': 1, 'branchStart': true, 'showParallel': true},
-                {'view': 'event/event-1/seal-list', 'branchLevel': 1, 'branchEnd': true, 'showParallel': true},
+                {'view': 'event/event-1/seal-list', 'branchLevel': 1, 'branchEnd': true, 'showParallel': true, 'loopBack': true},
                 {'view':'event/event-1/check-event-answers'},
                 {'view':'event/event-1/event-list'}
             ]
@@ -55,10 +55,10 @@ module.exports = {
             'name': 'BF Transhipment Container',
             'playlist': [
                 {'view': 'event/event-1/new-container-number'},
-                {'view': 'event/event-1/container-list'},
+                {'view': 'event/event-1/container-list', 'loopBack': true},
                 {'view': 'event/event-1/seals-changed'},
                 {'view': 'event/event-1/new-seal-number', 'branchLevel': 1, 'branchStart': true, 'showParallel': true},
-                {'view': 'event/event-1/seal-list', 'branchLevel': 1, 'branchEnd': true, 'showParallel': true},
+                {'view': 'event/event-1/seal-list', 'branchLevel': 1, 'branchEnd': true, 'showParallel': true, 'loopBack': true},
                 {'view': 'event/event-1/check-event-answers'},
                 {'view': 'event/event-1/event-list'}
             ]
@@ -67,7 +67,7 @@ module.exports = {
             'name': 'AC Transhipment Container',
             'playlist': [
                 {'view': 'event/event-1/new-container-number'},
-                {'view': 'event/event-1/container-list'},
+                {'view': 'event/event-1/container-list', 'loopBack': true},
                 {'view': 'event/event-1/check-event-answers'},
                 {'view': 'event/event-1/event-list'}
             ]
@@ -76,7 +76,7 @@ module.exports = {
             'name': 'AC BF Transhipment Both',
             'playlist': [
                 {'view': 'event/event-1/new-container-number'},
-                {'view': 'event/event-1/container-list'},
+                {'view': 'event/event-1/container-list', 'loopBack': true},
                 {'exitTo': ['BF Transhipment Vehicle', 'AC Transhipment Vehicle']}
             ]
         },
@@ -87,7 +87,7 @@ module.exports = {
                 {'view': 'event/event-1/vehicle-country'},
                 {'view': 'event/event-1/seals-changed'},
                 {'view': 'event/event-1/new-seal-number', 'branchLevel': 1, 'branchStart': true, 'showParallel': true},
-                {'view': 'event/event-1/seal-list', 'branchLevel': 1, 'branchEnd': true, 'showParallel': true},
+                {'view': 'event/event-1/seal-list', 'branchLevel': 1, 'branchEnd': true, 'showParallel': true, 'loopBack': true},
                 {'view': 'event/event-1/check-event-answers'},
                 {'view': 'event/event-1/event-list'}
             ]

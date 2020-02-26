@@ -42,15 +42,11 @@
     .page-playlist--withroute {
         transform: translateX(50px)
     }
-        {# .page-playlist--withroute .page-inner {
-            outline: 5px solid blue
-        } #}
+
     .page-playlist--childroute {
         transform: translateX(100px)
     }
-        {# .page-playlist--childroute .page-inner {
-            outline: 5px solid orange
-        } #}
+
 
     .page--route-heading:before {
         content: "";
@@ -170,12 +166,13 @@
     .playlist__wrapper {
         overflow: scroll;
         margin-bottom: 4rem;
-        padding-bottom: 2rem;
+        padding-bottom: 10rem;
     }
     .playlist__wrapper > ul {
         /* width: 6000px; */
-        grid-template-columns: repeat( auto-fit, var(--page-width) );
+        grid-template-columns: repeat( auto, var(--page-width) );
         display: grid;
+        justify-content: flex-start;
         grid-column-gap: 15px;
         grid-row-gap: 20px;
     }
@@ -211,6 +208,18 @@
     }
     .page--happy-path {
         background: url(/public/images/admin/arrow-happy.svg) 100% 50% no-repeat;
+    }
+    .page--loopBack:before {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        background: url(/public/images/admin/arrow-loop.svg) 100% 50% no-repeat;
+        width: calc(var(--page-width)*.5);
+        height: calc(var(--page-width)*.5);
+        left: calc((var(--page-width)*-0.25) - 20px);
+        bottom: calc((var(--page-width)*-0.5) - 10px);
+        background-size: contain;
+        opacity: 0.4;
     }
     .page--no-next-arrow:after {
         display: none;
@@ -266,7 +275,7 @@
 
 
                 {% if play.view %}
-                <li class="page page--playlist {% if hideArrow == true %} page--no-next-arrow {% endif %} {% if play.branchStart %} page--branch-start{% endif %}{% if play.branchEnd %} page--branch-end{% endif %}" style="{{itemStyle}}">
+                <li class="page page--playlist {% if hideArrow == true %} page--no-next-arrow {% endif %} {% if play.loopBack %} page--loopBack {% endif %}{% if play.branchStart %} page--branch-start{% endif %}{% if play.branchEnd %} page--branch-end{% endif %}" style="{{itemStyle}}">
                     <h3 class="page__url govuk-body"><a href="../{{ play.view }}">/{{ play.view }}</a></h3>
                     <div class="page-inner">
                         <iframe src="../{{ play.view }}"></iframe>
