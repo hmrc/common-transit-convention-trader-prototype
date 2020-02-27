@@ -37,21 +37,51 @@ module.exports = function (env) {
     documentation.
 
   ------------------------------------------------------------------ */
-  String.prototype.replaceAll = function (search, replacement) {
-    var target = this
-    return target.split(search).join(replacement)
+
+  function getData(){
+    var dummyData = require('./data/data.js')
+    return dummyData;
   }
 
-  filters.getpage = function (str, dir) {
-    // gets the page part of the url for the page listings in admin
-    // var p = str.split("/")
-    // return p[p.length - 1]
-    return str.replace(dir, '')
+  filters.getCountry = function(code){
+    if(code){
+      var data = getData();
+      var retVal = code;
+      data.countries.forEach(function(country){
+        if(country.value.toLowerCase().trim() == code.toLowerCase().trim()){
+          //console.log("-" + country.value.toLowerCase().trim() + "-", "-" + code.toLowerCase().trim() + "-")
+          retVal = country.text;
+        }
+      })
+    }
+    return retVal;
   }
 
-  filters.toID = function (str) {
-    return str.replaceAll(" ", "-").toLowerCase();
+  filters.getOffice = function(code){
+    if(code){
+      var data = getData();
+      var retVal = code;
+      data.officesOfDeparture.forEach(function(office){
+        if(office.value.toLowerCase().trim() == code.toLowerCase().trim()){
+          //console.log("-" + office.value.toLowerCase().trim() + "-", "-" + code.toLowerCase().trim() + "-")
+          retVal = office.text;
+        }
+      })
+    }
+    return retVal;
   }
+
+  filters.getConsignee = function (str) {
+    switch(str){
+      case "AuthorisedConsignee":
+        return "Authorised consignee's location";
+      case "BorderForce":
+        return "Border Force location";
+      default:
+        return str;
+    }
+  }
+
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */

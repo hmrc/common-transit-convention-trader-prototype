@@ -34,7 +34,9 @@ What happened on the route?
 
         {{ govukButton({
           text: "Save and continue",
-          href: "check-event-answers"
+          attributes: {
+            formaction: "check-event-answers"
+          }
         }) }}
 
         {% endif %}
@@ -43,7 +45,9 @@ What happened on the route?
 
         {{ govukButton({
           text: "Save and continue",
-          href: "seals-changed"
+          attributes: {
+            formaction: "seals-changed"
+          }
         }) }}
 
         {% endif %}

@@ -9,13 +9,13 @@ Check your answers before sending this arrival notification - Name of service - 
 {% endblock %}
 
 
-  
+
 
   {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
   {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
   {% from "govuk/components/button/macro.njk" import govukButton %}
 
-  
+
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -58,7 +58,7 @@ Check your answers before sending this arrival notification - Name of service - 
                     text: "Where are the goods?"
                     },
                     value: {
-                    text: data['where-are-the-goods']
+                    text: data['where-are-the-goods'] | getConsignee
                     },
                     actions: {
                     items: [
@@ -74,7 +74,7 @@ Check your answers before sending this arrival notification - Name of service - 
 
         {% if (data['where-are-the-goods'] == "Border Force office") %}
           {% set goodsLocation = (goodsLocation.push(
-                    { 
+                    {
                     key: {
                     text: "Which customs sub-place has the goods?"
                     },
@@ -91,7 +91,7 @@ Check your answers before sending this arrival notification - Name of service - 
                     ]
                     }
                 },
-                { 
+                {
                     key: {
                     text: "Which Border Force office supervises this place?"
                     },
@@ -113,7 +113,7 @@ Check your answers before sending this arrival notification - Name of service - 
 
         {% if (data['where-are-the-goods'] == "Authorised consignee’s location") %}
           {% set goodsLocation = (goodsLocation.push(
-                { 
+                {
                 key: {
                   text: "Authorised location code"
                 },
@@ -159,8 +159,8 @@ Check your answers before sending this arrival notification - Name of service - 
                             }
                           ]
                         }
-                      },           
-                         
+                      },
+
                       {
                         key: {
                           text: "EORI"
@@ -235,7 +235,7 @@ Check your answers before sending this arrival notification - Name of service - 
 
                   {% set events = [] %}
                   <h2 class="govuk-heading-m">Events</h1>
-          
+
                   {% set events = (events.push(
                             {
                               key: {
@@ -256,10 +256,10 @@ Check your answers before sending this arrival notification - Name of service - 
                             }
                             ), events) %}
 
-         
- 
 
-       
+
+
+
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
                 rows: movementReference,
@@ -267,7 +267,7 @@ Check your answers before sending this arrival notification - Name of service - 
                 rows: events
         }) }}
 
-          
+
 
         <h2 class="govuk-heading-m">Now send your arrival notification</h2>
 

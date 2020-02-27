@@ -35,7 +35,7 @@ Which country is the vehicle registered in?
         id: "vehicle-country-2",
         name: "vehicle-country-2",
         items: CTCData.countries,
-        value: data['vehicle-country']
+        value: data['vehicle-country-2']
 
       }) }}
 
@@ -43,16 +43,20 @@ Which country is the vehicle registered in?
 
     {{ govukButton({
       text: "Save and continue",
-      href: "check-event-answers"
+      attributes: {
+        formaction: "check-event-answers"
+      }
     }) }}
 
     {% endif %}
 
-    {% if (data['where-are-the-goods'] == "Border Force location") %}
+    {% if (data['where-are-the-goods'] == "BorderForce") or data['where-are-the-goods'] == null %}
 
     {{ govukButton({
       text: "Save and continue",
-      href: "seals-changed"
+      attributes: {
+        formaction: "seals-changed"
+      }
     }) }}
 
     {% endif %}
