@@ -49,7 +49,7 @@
 
       <!-- If user selects both container and transhipment -->
 
-        {% if (data['new-transport-type'] == "Both") %}
+        {% if (data['new-transport-type'] == "Both") or (data['new-transport-type'] == null) %}
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -109,7 +109,7 @@
             }) }}
 
         <!-- If user selects Border Force office (normal procedure) and vehicle, then show seals question -->
-      
+
         {% elseif (data['new-transport-type'] == "Vehicle") and (data['where-are-the-goods'] == "BorderForce") %}
 
             {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -140,7 +140,7 @@
         <!-- If user selects authorised consignee (simplified procedure) and container, then DON'T show seals question -->
 
         {% elseif (data['new-transport-type'] == "Container") and (data['where-are-the-goods'] == "AuthorisedConsignee") %}
-        
+
             {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
               {{ govukRadios({
@@ -170,7 +170,7 @@
         <!-- If user selects authorised consignee (simplified procedure) and vehicle, then DON'T show seals question -->
 
         {% elseif (data['new-transport-type'] == "Vehicle") and (data['where-are-the-goods'] == "AuthorisedConsignee") %}
-            
+
             {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
               {{ govukRadios({
