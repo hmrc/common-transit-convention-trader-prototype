@@ -1,17 +1,32 @@
 const express = require('express')
 const router = express.Router()
 
+//router.use('/arrivals/version-3', require('./views/arrivals/version-3/routes'))
+
+router.use('/arrivals/version-3', (req, res, next) => {
+  require('./views/arrivals/version-3/routes')(req, res, next)
+})
+router.use('/unloading-remarks/version-4', (req, res, next) => {
+  require('./views/unloading-remarks/version-4/routes')(req, res, next)
+})
+
 // Add your routes here - above the module.exports line
 function getData(res){
-    var dummyData = require('./data/data.js')
-    res.locals['CTCData'] = dummyData
-    // console.log(dummyData.officesOfDeparture)
+  var dummyData = require('./data/data.js')
+  res.locals['CTCData'] = dummyData
+  // console.log(dummyData.officesOfDeparture)
 }
 
 // Route index page
 router.get('/', function (req, res) {
-    res.render('index', {  })
-  })
+  res.render('index', {  })
+})
+
+
+
+
+
+
 
 
 /* catch-all routes */

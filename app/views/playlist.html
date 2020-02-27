@@ -1,0 +1,353 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = "" %}
+{% if title %}
+    {% set pageHeading = title %}
+{% else %}
+    {% for playlist in playlists %}
+        {% if loop.first%}
+            {% set pageHeading = playlist.parent.name %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% block pageTitle %}
+{{ pageHeading }} - {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+<style>
+    .link-back + .page-header {
+        margin-top: 0;
+    }
+
+    :root {
+        --page-width: 300px;
+    }
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+    .page {
+        margin: 0 15px 20px 0;
+        display: inline-block;
+        width: var(--page-width);
+        position: relative;
+    }
+    .page--playlist:after {
+        content: "";
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        background: url(/public/images/admin/arrow.svg) 0 0 no-repeat;
+        position: absolute;
+        top: 50%;
+        right: -16px;
+        background-size: 15px 15px;
+    }
+    .page:last-child:after {
+        display: none;
+    }
+    .page-playlist--withroute {
+        transform: translateX(50px)
+    }
+
+    .page-playlist--childroute {
+        transform: translateX(100px)
+    }
+
+
+    .page--route-heading:before {
+        content: "";
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        background: url(/public/images/admin/arrow.svg) 0 0 no-repeat;
+        position: absolute;
+        top: 0;
+        left: -30px;
+        background-size: 15px 15px;
+        height: 260px;
+        background-position: 0 66%;
+        border-left: 5px solid;
+    }
+
+    .page__url {
+        word-break: break-word;
+        font-size: 0.8em;
+        line-height: 1.1;
+        padding-bottom: 5px;
+        margin-bottom: 0;
+    }
+    .page-inner {
+        border: 1px solid #000;
+        overflow: hidden;
+        height: 200px;
+        background: #fff url(/public/images/admin/loader.svg) 50% 50% no-repeat;
+    }
+    .page--exit .page-inner {
+        background: #005ea5;
+        color: white;
+        padding: 20px;
+        box-sizing: border-box;
+        overflow: scroll;
+    }
+    .page--exit {
+        height: 100%;
+    }
+    .page--exit a {
+        color: white;
+    }
+    iframe {
+        width: 300%;
+        height: 600px;
+        transform: scale(0.33333);
+        transform-origin: 0 0;
+        background: none;
+        border: 0;
+    }
+    .page-width-wrapper {
+        position: relative;
+        margin-top: 3em;
+        width: 250px;
+
+    }
+    .page-width {
+        width: 100%;
+    }
+    .page-width:after {
+        content: "";
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: url(/public/images/admin/desktop.svg) 50% 50% no-repeat;
+    }
+    .page-width[data-device="desktop"]:after {
+        background-image: url(/public/images/admin/desktop.svg)
+    }
+    .page-width[data-device="tablet"]:after {
+        background-image: url(/public/images/admin/tablet.svg)
+    }
+    .page-width[data-device="mobile"]:after {
+        background-image: url(/public/images/admin/mobile.svg)
+    }
+    input[type="range"] {
+        width: calc(100% - 40px);
+        display: inline-block;
+        margin: 0;
+    }
+    input[type="range"]::-moz-range-track {
+        height: 1px;
+    }
+    input[type=range]::-moz-range-thumb {
+        height: 12px;
+        width: 12px;
+        background: #ccc;
+        border: 1px solid #aaa;
+    }
+    output {
+        position: absolute;
+        right: 0;
+        top: 0.25em;
+        font-size: 0.8em;
+        opacity: 0.8;
+    }
+   output:after {
+    content: "px";
+   }
+   .non-playlisted {
+        padding: 2em 1em;
+        background: lightgray;
+        margin: 0 -1em;
+   }
+   .non-playlisted:before {
+        content: "Pages not added to playlist";
+        display: block;
+        padding-bottom: 1em;
+    }
+
+    .govuk-grid-row {
+        margin: 0;
+    }
+    .govuk-width-container {
+        max-width: 1960px;
+        padding: 0 20px;
+    }
+    .playlist__wrapper {
+        overflow: scroll;
+        margin-bottom: 4rem;
+        padding-bottom: 10rem;
+    }
+    .playlist__wrapper > ul {
+        /* width: 6000px; */
+        grid-template-columns: repeat( auto, var(--page-width) );
+        display: grid;
+        justify-content: flex-start;
+        grid-column-gap: 15px;
+        grid-row-gap: 20px;
+    }
+    .page {
+        display: flex;
+        margin: 0;
+        flex-direction: column;
+    }
+    .page-inner {
+        margin-top: auto;
+    }
+    .page--branch-end:after {
+        content: "";
+        display: inline-block;
+        width: calc(var(--page-width)/3);
+        height: calc(var(--page-width)/3);
+        background: url(/public/images/admin/arrow-branch-in.svg) 0 0 no-repeat;
+        position: absolute;
+        top: 20px;
+        right: calc((var(--page-width)/-3) - 20px);
+        background-size: contain;
+    }
+    .page--branch-start:before {
+        content: "";
+        display: inline-block;
+        width: calc(var(--page-width)/3);
+        height: calc(var(--page-width)/3);
+        background: url(/public/images/admin/arrow-branch-out.svg) 0 0 no-repeat;
+        position: absolute;
+        top: 20px;
+        left: calc((var(--page-width)/-3) - 20px);
+        background-size: contain;
+    }
+    .page--happy-path {
+        background: url(/public/images/admin/arrow-happy.svg) 100% 50% no-repeat;
+    }
+    .page--loopBack:before {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        background: url(/public/images/admin/arrow-loop.svg) 100% 50% no-repeat;
+        width: calc(var(--page-width)*.5);
+        height: calc(var(--page-width)*.5);
+        left: calc((var(--page-width)*-0.25) - 20px);
+        bottom: calc((var(--page-width)*-0.5) - 10px);
+        background-size: contain;
+        opacity: 0.4;
+    }
+    .page--no-next-arrow:after {
+        display: none;
+    }
+    .playlist__heading:target {
+        background: yellow;
+    }
+</style>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds" style="padding-left: 0;">
+                <h1 class="govuk-heading-xl">{{ pageHeading }}</h1>
+            </div>
+            <div class="govuk-grid-column-one-third">
+
+                <form onsubmit="return false" oninput="width.value = pageWidth.valueAsNumber * 3">
+                <div class="govuk-form-group page-width-wrapper govuk-body">
+                    <label for="pageWidth">Change device size</label>
+                    <div class="page-width">
+
+                        <input class="govuk-form-control" id="pageWidth" name="pageWidth" type="range" min="110" max="300" value="300" /><output for="pageWidth" name="width">900</output>
+
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="govuk-grid-row">
+        {% for playlist in playlists %}
+        {% if playlist.name != pageHeading %}
+        <h2 class="playlist__heading govuk-heading-l" id="{{ playlist.name | toID }}">{{ playlist.name }}</h2>
+        {% endif %}
+        <div class="playlist__wrapper">
+            <ul>
+            {% set itemCount = 0 %}
+            {% for play in playlist.playlist %}
+                <!-- hide next arrow if the next item is branched off as we'll be showing a large arrow in its place -->
+                {% set hideArrow = false %}
+                {% set currIndex = loop.index %}
+                {% for play2 in playlist.playlist %}
+                    {% if currIndex + 1 == loop.index %}
+                        {% if play2.branchStart %}
+                            {% set hideArrow = true %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+
+                <!-- set branching styles -->
+                {% set itemCount = itemCount + 1 %}
+                {% set row = 1 %}
+                {% if play.branchLevel %}
+                    {% set row = 1 + play.branchLevel %}
+                {% endif %}
+                {% set itemStyle = "grid-column: " + itemCount + "; grid-row: " + row %}
+
+                <!-- show large arrow to show happy path if this item is a branch -->
+                {% if play.showParallel %}<li class="page page--happy-path" style="grid-column: {{itemCount}}; grid-row: {{ row - 1 }}"></li>{% endif %}
+
+
+                {% if play.view %}
+                <li class="page page--playlist {% if hideArrow == true %} page--no-next-arrow {% endif %} {% if play.loopBack %} page--loopBack {% endif %}{% if play.branchStart %} page--branch-start{% endif %}{% if play.branchEnd %} page--branch-end{% endif %}" style="{{itemStyle}}">
+                    <h3 class="page__url govuk-body"><a href="../{{ play.view }}">/{{ play.view }}</a></h3>
+                    <div class="page-inner">
+                        <iframe src="../{{ play.view }}"></iframe>
+                    </div>
+                </li>
+                {% endif %}
+
+
+                {# show jump off to another playlist #}
+                {% if play.exitTo %}
+                    {% set itemStyle = "grid-column:" + itemCount + "; grid-row: " + row %}
+                    <li class="page page--playlist page--exit{% if hideArrow == true %} page--no-next-arrow {% endif %} {% if play.branchStart %} page--branch-start{% endif %}{% if play.branchEnd %} page--branch-end{% endif %}" style="{{itemStyle}}">
+                        <div class="page-inner">
+                            {% for exit in play.exitTo %}
+                            <div class="govuk-heading-s"><a href="{{ exit | toID }}">{{ exit }}</a></div>
+                            {% endfor %}
+                        </div>
+                    </li>
+                {% endif %}
+
+                {% if play.skip %}
+                {% set itemCount = itemCount - 1 %}
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+        </div>
+
+
+            <script>
+                const pages = [].slice.call(document.querySelectorAll('.page'));
+                const deviceWidth = document.querySelector('input[type="range"]');
+
+                deviceWidth.addEventListener('change', handleUpdate);
+                deviceWidth.addEventListener('mousemove', handleUpdate);
+
+                function handleUpdate(e) {
+                    pages.forEach(page => page.style.setProperty('--page-width', this.value + 'px'))
+                    if(this.value < 150){
+                        $('.page-width').attr('data-device', 'mobile')
+                    }
+                    if(this.value > 150){
+                        $('.page-width').attr('data-device', 'tablet')
+                    }
+                    if(this.value >= 212){
+                        $('.page-width').attr('data-device', 'desktop')
+                    }
+
+
+                }
+
+                if(document.querySelectorAll('.non-playlisted .page').length == 0){
+                    var np = document.querySelector('.non-playlisted')
+                    np.classList.add('visually-hidden');
+                }
+            </script>
+
+
+{% endblock %}

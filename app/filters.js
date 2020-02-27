@@ -38,7 +38,6 @@ module.exports = function (env) {
 
   ------------------------------------------------------------------ */
 
-
   function getData(){
     var dummyData = require('./data/data.js')
     return dummyData;
@@ -82,7 +81,6 @@ module.exports = function (env) {
         return str;
     }
   }
-
 
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
