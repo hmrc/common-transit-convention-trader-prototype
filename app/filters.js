@@ -43,6 +43,11 @@ module.exports = function (env) {
     return dummyData;
   }
 
+  String.prototype.replaceAll = function (search, replacement) {
+    var target = this
+    return target.split(search).join(replacement)
+  }
+
   filters.getCountry = function(code){
     if(code){
       var data = getData();
@@ -80,6 +85,19 @@ module.exports = function (env) {
       default:
         return str;
     }
+  }
+
+
+
+  filters.getpage = function (str, dir) {
+    // gets the page part of the url for the page listings in admin
+    // var p = str.split("/")
+    // return p[p.length - 1]
+    return str.replace(dir, '')
+  }
+
+  filters.toID = function (str) {
+    return str.replaceAll(" ", "-").toLowerCase();
   }
 
   /* ------------------------------------------------------------------
