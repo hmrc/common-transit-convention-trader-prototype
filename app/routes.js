@@ -65,4 +65,6 @@ router.use('/unloading-remarks/version-3/seals-included', require('./views/unloa
 
 router.use('/unloading-remarks/version-4/seals-included', require('./views/unloading-remarks/version-4/seals-included/routes'));
 
+router.use('/unloading-remarks/version-5/seals-included', require('./views/unloading-remarks/version-5/seals-included/routes'));
+
 module.exports = router

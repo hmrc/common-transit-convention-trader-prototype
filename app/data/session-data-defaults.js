@@ -23,6 +23,14 @@ module.exports = {
 
   "addSealNumber": "",
 
-  "changeSealNumber": ""
+  "changeSealNumber": "",
+
+  //Unloading remarks default values
+
+  "total-gross-mass": "800",
+
+  "vehicle-country": "United Kingdom",
+
+  "vehicle-registration": "NG54"
 
 }
