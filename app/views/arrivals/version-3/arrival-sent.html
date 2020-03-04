@@ -25,46 +25,23 @@ Arrival notification received - Name of service - GOV.UK
 
         <h2 class="govuk-heading-m">What happens next</h2>
 
-        <!--Normal procedure complete procedure at Border Force location -->
-
-         
-
-       
-  
-
-       <!-- <p class="govuk-body">Go to 
-          <a href="homepage.html" class="govuk-link">manage transit movements</a>.
-        </p>
--->
-        <!--Simplified procedure (completed at authorised consignee's premises-->
-
-
-        {% if data['where-are-the-goods'] == "AuthorisedConsignee" %}
-        
-        <p class="govuk-body">You must wait for permission to unload. </p>
-
-        <p class="govuk-body"><a href="../version-3/arrivals-history">Go to arrival notifications</a> to see the latest messages. </p>
-
-        {% else %}
-
-        <p class="govuk-body">Send an email to the office where the goods will be presented (also known as the office of destination). Make sure you:</p>
+       <!-- <p class="govuk-body">Send an email to the office where the goods will be presented (also known as the office of destination). Make sure you:</p>
         
         <ul class="govuk-list govuk-list--bullet">
         <li>tell them that you are waiting for goods to be released</li>
         <li>send copies of any paperwork to show that duties and taxes have been paid or goods have moved out of transit</li>
         </ul>
         
-        
+        -->
       
-        <p class="govuk-body"><a href="../version-3/arrivals-history.html" class="govuk-link">Check for the latest updates to arrival notifications</a> to find out when Border Force release the goods. </p>
+        <p class="govuk-body"><a href="../version-3/arrivals-history.html" class="govuk-link">Check the status of arrival notifications</a> and find out when goods are released. </p>
 
-        <p class="govuk-body">If the goods are not released or you have another problem, contact Border Force at Teesport, telephone 01642 440 111.</p>
+        <p class="govuk-body">If the goods are not released or you have another problem, contact Border Force at Teesport, telephone 01642 440 111.</p> 
+  <!--Or should this link to https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries as ladine/simon!-->
 
-        <!--Or should this link to https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries as ladine/simon!-->
-
-        {% endif %}
-
-
+<!--       <p class="govuk-body">Go to 
+          <a href="homepage.html" class="govuk-link">manage transit movements</a>.
+        </p>-->
       </div>
     </div>
 

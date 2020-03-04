@@ -15,7 +15,7 @@ Check your declaration data to what has been found
 
     <form class="form" method="post" action="anything-else-to-report">
 
-    <h1 class="govuk-heading-xl">Check your declaration data to what has been found</h1>
+    <h1 class="govuk-heading-xl">Check what you found against the declaration details</h1>
 
       <!--
         Transport
@@ -23,12 +23,12 @@ Check your declaration data to what has been found
 
       {% set transportList = [] %}
 
-      <h2 class="govuk-heading-m">Transport</h2>
+      <h2 class="govuk-heading-m">Vehicle used</h2>
 
       {% set transportList = (transportList.push(
           {
             key: {
-              text: "Vehicle name, registration or reference"
+              text: "Name, registration or reference"
             },
             value: {
               text: data['vehicle-registration']
@@ -38,7 +38,7 @@ Check your declaration data to what has been found
                 {
                   href: "new-vehicle-id",
                   text: "Change",
-                  visuallyHiddenText: "Change any declared information"
+                  visuallyHiddenText: "Change vehicle name, registration or reference"
                 }
               ]
             }
@@ -48,7 +48,7 @@ Check your declaration data to what has been found
           {% set transportList = (transportList.push(
                     {
                       key: {
-                        text: "Country the vehicle is registered in"
+                        text: "Registered"
                       },
                       value: {
                         text: data['vehicle-country']
@@ -81,7 +81,7 @@ Check your declaration data to what has been found
         {% set grossMass = (grossMass.push(
           {
             key: {
-              text: "Total gross mass of the goods in kilograms"
+              text: "Total gross mass in kilograms"
             },
             value: {
               text: data['total-gross-mass']
@@ -133,7 +133,7 @@ Check your declaration data to what has been found
         Seal marks or numbers
       -->
     
-    <h2 class="govuk-heading-m">Seal marks or numbers</h2>
+    <h2 class="govuk-heading-m">Seals</h2>
 
     <table class="govuk-table hmrc-responsive-table" role="grid">
       <caption class="govuk-visually-hidden">#</caption>
