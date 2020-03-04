@@ -49,6 +49,121 @@ Check your answers
         }) }}
 
 
+
+      <!--
+        Transport
+      -->
+
+      {% set transportList = [] %}
+
+      <h2 class="govuk-heading-m">Vehicle used</h2>
+
+      {% set transportList = (transportList.push(
+          {
+            key: {
+              text: "Name, registration or reference"
+            },
+            value: {
+              text: data['vehicle-registration']
+            },
+            actions: {
+              items: [
+                {
+                  href: "new-vehicle-id",
+                  text: "Change",
+                  visuallyHiddenText: "Change vehicle name, registration or reference"
+                }
+              ]
+            }
+          }
+        ), transportList) %}
+
+          {% set transportList = (transportList.push(
+                    {
+                      key: {
+                        text: "Registered"
+                      },
+                      value: {
+                        text: data['vehicle-country']
+                      },
+                      actions: {
+                        items: [
+                          {
+                            href: "new-vehicle-country",
+                            text: "Change",
+                            visuallyHiddenText: "where the vehicle is registered"
+                          }
+                        ]
+                      }
+                    }
+                  ), transportList) %}
+
+          {{ govukSummaryList({
+           classes: 'govuk-!-margin-bottom-9',
+           rows: transportList
+        }) }}
+
+      <!-- 
+        Weight of items 
+      -->
+
+        <h2 class="govuk-heading-m">Weight of goods</h2>
+
+        {% set grossMass = [] %}
+
+        {% set grossMass = (grossMass.push(
+          {
+            key: {
+              text: "Total gross mass in kilograms"
+            },
+            value: {
+              text: data['total-gross-mass']
+            },
+            actions: {
+              items: [
+                {
+                  href: "new-total-gross-mass",
+                  text: "Change",
+                  visuallyHiddenText: "where the vehicle is registered"
+                }
+              ]
+            }
+          }
+        ), grossMass) %}
+
+         <!-- New total gross mass -->
+       
+         {% if (data['gross-mass'] == "No ") %}
+
+         {% set grossMass = (grossMass.push(
+           {
+             key: {
+               text: "What is the new total gross mass in kilograms?"
+             },
+             value: {
+               text: data['new-total-gross-mass']
+             },
+             actions: {
+               items: [
+                 {
+                   href: "new-total-gross-mass",
+                   text: "Change",
+                   visuallyHiddenText: "total gross mass"
+                 }
+               ]
+             }
+           }
+         ), grossMass) %} 
+
+         {% endif %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: grossMass
+       }) }}
+
+
+
      <!-- 
       Seals 
      -->
@@ -64,7 +179,7 @@ Check your answers
       {% set sealConditions = (sealConditions.push(
           {
             key: {
-              text: "New seal numbers or marks"
+              text: "Seal 1 "
             },
             value: {
               html: data['changeSealNumber'] + "<br>" + data['addSealNumber']
