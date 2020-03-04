@@ -1,0 +1,214 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your declaration data to what has been found
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post" action="anything-else-to-report">
+
+    <h1 class="govuk-heading-xl">Check your declaration data to what has been found</h1>
+
+      <!--
+        Transport
+      -->
+
+      {% set transportList = [] %}
+
+      <h2 class="govuk-heading-m">Transport</h2>
+
+      {% set transportList = (transportList.push(
+          {
+            key: {
+              text: "Vehicle name, registration or reference"
+            },
+            value: {
+              text: data['vehicle-registration']
+            },
+            actions: {
+              items: [
+                {
+                  href: "new-vehicle-id",
+                  text: "Change",
+                  visuallyHiddenText: "Change any declared information"
+                }
+              ]
+            }
+          }
+        ), transportList) %}
+
+          {% set transportList = (transportList.push(
+                    {
+                      key: {
+                        text: "Country the vehicle is registered in"
+                      },
+                      value: {
+                        text: data['vehicle-country']
+                      },
+                      actions: {
+                        items: [
+                          {
+                            href: "new-vehicle-country",
+                            text: "Change",
+                            visuallyHiddenText: "where the vehicle is registered"
+                          }
+                        ]
+                      }
+                    }
+                  ), transportList) %}
+
+          {{ govukSummaryList({
+           classes: 'govuk-!-margin-bottom-9',
+           rows: transportList
+        }) }}
+
+      <!-- 
+        Weight of items 
+      -->
+
+        <h2 class="govuk-heading-m">Weight of goods</h2>
+
+        {% set grossMass = [] %}
+
+        {% set grossMass = (grossMass.push(
+          {
+            key: {
+              text: "Total gross mass of the goods in kilograms"
+            },
+            value: {
+              text: data['total-gross-mass']
+            },
+            actions: {
+              items: [
+                {
+                  href: "new-total-gross-mass",
+                  text: "Change",
+                  visuallyHiddenText: "where the vehicle is registered"
+                }
+              ]
+            }
+          }
+        ), grossMass) %}
+
+         <!-- New total gross mass -->
+       
+         {% if (data['gross-mass'] == "No ") %}
+
+         {% set grossMass = (grossMass.push(
+           {
+             key: {
+               text: "What is the new total gross mass in kilograms?"
+             },
+             value: {
+               text: data['new-total-gross-mass']
+             },
+             actions: {
+               items: [
+                 {
+                   href: "new-total-gross-mass",
+                   text: "Change",
+                   visuallyHiddenText: "total gross mass"
+                 }
+               ]
+             }
+           }
+         ), grossMass) %} 
+
+         {% endif %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: grossMass
+       }) }}
+
+      <!-- 
+        Seal marks or numbers
+      -->
+    
+    <h2 class="govuk-heading-m">Seal marks or numbers</h2>
+
+    <table class="govuk-table hmrc-responsive-table" role="grid">
+      <caption class="govuk-visually-hidden">#</caption>
+      <thead role="rowgroup">
+        <tr role="row">
+        </tr>
+      </thead>
+      <tbody>
+        <tr role="row">
+            <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Original</span>seal_id1</td>
+            <td class="govuk-table__cell" role="gridcell"><a href="change-seal-number">Change<span class="govuk-visually-hidden"> for {{ notice.action }}</span></a></td>
+        </tr>
+        <tr role="row">
+          <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Original</span>seal_id2</td>
+          <td class="govuk-table__cell" role="gridcell"><a href="#">Change<span class="govuk-visually-hidden"> for {{ notice.action }}</span></a></td>
+        </tr>
+        <tr role="row">
+          <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Original</span>seal_id3</td>
+          <td class="govuk-table__cell" role="gridcell"><a href="#">Change<span class="govuk-visually-hidden"> for {{ notice.action }}</span></a></td>
+        </tr>
+        <tr role="row">
+          <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Original</span>seal_id4</td>
+          <td class="govuk-table__cell" role="gridcell"><a href="#">Change<span class="govuk-visually-hidden"> for {{ notice.action }}</span></a></td>
+        </tr>
+        
+      </tbody>
+    </table>    
+
+      <p class="govuk-body"><a href="add-seal-number">Add a new seal number or mark</a></p>
+
+      <br><br>
+      
+      <!-- 
+        Declared items 
+      -->
+
+    <h2 class="govuk-heading-m">Declared items</h2>
+
+
+      <table class="govuk-table hmrc-responsive-table" role="grid">
+      <caption class="govuk-visually-hidden">#</caption>
+      <thead role="rowgroup">
+        <tr role="row">
+        </tr>
+      </thead>
+      <tbody>
+        <tr role="row">
+            <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Original</span>Flowers</td>
+            <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Original</span>2 boxes</td>
+            <td class="govuk-table__cell" role="gridcell"><a href="changes-to-item">Change<span class="govuk-visually-hidden"> for {{ notice.action }}</span></a></td>
+        </tr>
+        <tr role="row">
+          <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Original</span>Chocolate</td>
+          <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Original</span>2 boxes<br>2 barrels</td>
+            
+          <td class="govuk-table__cell" role="gridcell"><a href="changes-to-item">Change<span class="govuk-visually-hidden"> for {{ notice.action }}</span></a></td>
+        </tr>
+        
+      </tbody>
+    </table> 
+
+      <p><a href="tell-us-about-new-item">Add new item</a></p>
+
+      <br><br>
+      
+
+        {{ govukButton({
+          text: "Continue"
+          }) }}
+
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
