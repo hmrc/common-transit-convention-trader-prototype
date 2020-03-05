@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Tell us about the new item
+What is the new item?
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,7 +15,11 @@ Tell us about the new item
 
     <form class="form" action="unloading-remarks" method="post">
 
-        <h1 class="govuk-heading-xl">Tell us about the new item</h1>
+        <h1 class="govuk-heading-xl">What is the new item?</h1>
+
+        <span id="event-name-hint" class="govuk-hint">
+          Include a description and commodity code. Get details from the invoice like item value, taxes and duty amounts.  
+        </span>
         {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 
         {{ govukCharacterCount({
@@ -24,6 +28,7 @@ Tell us about the new item
           maxlength: 350,
           label: {
             text: "",
+           
             classes: "govuk-heading-xl"
           }
         }) }}
