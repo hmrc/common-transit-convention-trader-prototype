@@ -89,7 +89,7 @@ GOV.UK Prototype Kit
                   <a href="view-history.html">View history<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span> </a>
                 {% endif %}
                 {% if action == "unloading" %}
-                  <a href="../../unloading-remarks/version-4/seals-included/all-goods-unloaded">Make unloading remarks<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                  <a href="../../unloading-remarks/version-5/seals-included/all-goods-unloaded">Make unloading remarks<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
                 {% endif %}
                 {% if notice.actions.length > 0 %}</li>{% endif %}
               {% endfor %}
@@ -159,7 +159,7 @@ GOV.UK Prototype Kit
           "office": "Ramsgate	(GB000047)",
           "procedure": "Normal",
           "status": "Arrival notification rejected",
-          "actions": ["history","errors"]
+          "actions": ["errors","history"]
         },
         {
           "updated": "12:39pm",
@@ -168,7 +168,7 @@ GOV.UK Prototype Kit
           "office": "Felixstowe	(GB000051)",
           "procedure": "Normal",
           "status": "Arrival notification rejected",
-          "actions": ["history","errors"]
+          "actions": ["errors","history"]
         }
       ]
     %}
@@ -215,7 +215,7 @@ GOV.UK Prototype Kit
                   <a href="view-history.html">View history<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span> </a>
                 {% endif %}
                 {% if action == "unloading" %}
-                  <a href="../../unloading-remarks/version-4/seals-included/all-goods-unloaded">Make unloading remarks<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                  <a href="../../unloading-remarks/version-5/seals-included/all-goods-unloaded">Make unloading remarks<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
                 {% endif %}
                 {% if notice.actions.length > 0 %}</li>{% endif %}
               {% endfor %}
