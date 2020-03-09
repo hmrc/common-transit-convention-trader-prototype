@@ -15,14 +15,14 @@ Is GB123456123456123 the EORI number you want to use for this movement?
 
     <form class="form" action="consignee-address" method="post">
 
-    <h1 class="govuk-heading-xl">Is GB123456789012345 the EORI number for {{ data['trader-name'] }}?</h1>
+    <h1 class="govuk-heading-xl">Is GB123456789012345 the EORI number for {{ data['consignee-name'] }}?</h1>
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        idPrefix: "place-postcode",
-        name: "place-postcode",
+        idPrefix: "consigneeEoriToUse",
+        name: "consigneeEoriToUse",
         fieldset: {
           legend: {
             isPageHeading: false,

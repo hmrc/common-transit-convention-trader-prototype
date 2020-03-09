@@ -79,7 +79,7 @@ module.exports = function (env) {
   filters.getConsignee = function (str) {
     switch(str){
       case "AuthorisedConsignee":
-        return "Authorised consignee's location";
+        return "Authorised consignee’s location";
       case "BorderForce":
         return "Border Force location";
       default:
