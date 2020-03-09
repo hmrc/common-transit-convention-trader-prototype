@@ -15,7 +15,7 @@ What is the address for the authorised consignee?
 
       <form action="event/something-happened-simplified" class="form" method="post">
 
-        <h1 class="govuk-heading-xl">What is the address for {{ data['trader-name'] }}?</h1>
+        <h1 class="govuk-heading-xl">What is the address for {{ data['consignee-name'] }}?</h1>
 
     {% from "govuk/components/input/macro.njk" import govukInput %}
     {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
@@ -28,9 +28,9 @@ What is the address for the authorised consignee?
         label: {
           html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
         },
-        id: "address-line-1",
+        id: "consignee-address-line-1",
         classes: "govuk-!-width-two-thirds",
-        name: "address-line-1"
+        name: "consignee-address-line-1"
       }) }}
     
       <!-- {{ govukInput({ 
@@ -46,8 +46,8 @@ What is the address for the authorised consignee?
           text: "Town or city"
         },
         classes: "govuk-!-width-two-thirds",
-        id: "address-town",
-        name: "address-town"
+        id: "consignee-address-town",
+        name: "consignee-address-town"
       }) }}
 
     
@@ -56,8 +56,8 @@ What is the address for the authorised consignee?
           text: "Postcode"
         },
         classes: "govuk-input--width-10",
-        id: "address-postcode",
-        name: "address-postcode"
+        id: "consignee-address-postcode",
+        name: "consignee-address-postcode"
       }) }}
     
     {% endcall %}

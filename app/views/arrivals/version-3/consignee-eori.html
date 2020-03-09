@@ -13,7 +13,7 @@ What is the EORI number of the trader at destination?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">What is the EORI number for {{ data['trader-name'] }}?</h1>
+    <h1 class="govuk-heading-xl">What is the EORI number for {{ data['consignee-name'] }}?</h1>
 
     <form class="form" action="consignee-address" method="post">
 
@@ -21,8 +21,8 @@ What is the EORI number of the trader at destination?
 
       {{ govukInput({
         classes: "govuk-input--width-20",
-        id: "eori-number",
-        name: "eori-number"
+        id: "consignee-eori-number",
+        name: "consignee-eori-number"
       }) }}
 
       {% from "govuk/components/button/macro.njk" import govukButton %}

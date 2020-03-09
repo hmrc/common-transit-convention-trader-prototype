@@ -112,50 +112,178 @@
         rows: goodsLocation
       }) }}
 
-      <!-- Trader details -->
+        <!-- 
+          Normal procedure - trader's details
+        -->
 
-      <h2 class="govuk-heading-m">Trader’s details</h2>
+        {% if (data['where-are-the-goods'] == "BorderForce") %}
 
-      {{ govukSummaryList({
-        classes: '',
-        rows: [
-        {
-          key: { text: "Name" },
-          value: { text: data['trader-name'] },
-          actions: {
-            items: [{
-              href: "trader-name",
-              text: "Change",
-              visuallyHiddenText: "trader’s name"
-            }]
-          }
-        },
-        {
-          key: { text: "EORI number" },
-          value: { text: data['eori-number'] },
-          actions: {
-            items: [{
-              href: "trader-eori",
-              text: "Change",
-              visuallyHiddenText: "trader’s EORI number"
-            }]
-          }
-        },
-        {
-          key: { text: "Address" },
-          value: {
-            html: data['address-line-1'] + "<br />" + data['address-town'] + "<br />" + data['address-postcode']
-          },
-          actions: {
-            items: [{
-              href: "trader-address",
-              text: "Change",
-              visuallyHiddenText: "trader’s address"
-            }]
-          }
-        }
-        ]
-      }) }}
+        <h2 class="govuk-heading-m">Trader’s details</h1>
+
+        {{ govukSummaryList({
+                    classes: 'govuk-!-margin-bottom-9',
+                    rows: [
+                      {
+                        key: {
+                          text: "Name"
+                        },
+                        value: {
+                          text: data['trader-name']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "trader-name",
+                              text: "Change",
+                              visuallyHiddenText: "trader’s name"
+                            }
+                          ]
+                        }
+                      },
+
+                      {
+                        key: {
+                          text: "EORI"
+                        },
+                        value: {
+                          text: data['eori-number']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "trader-eori",
+                              text: "Change",
+                              visuallyHiddenText: "trader’s EORI number"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        key: {
+                          text: "Address"
+                        },
+                        value: {
+                         html: data['address-line-1'] + "<br>" + data['address-town'] + "<br>" + data['address-postcode']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "trader-address",
+                              text: "Change",
+                              visuallyHiddenText: "trader’s address"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }) }}
+
+          {% endif %}
+
+        <!-- 
+          Simplified procedure - consignee's details
+        -->
+
+        {% set consigneeDetails = [] %}
+
+        <h2 class="govuk-heading-m">Authorised consignee’s details</h1>
+
+        {% set consigneeDetails = (consigneeDetails.push(
+                {
+                    key: {
+                    text: "What is the name of the authorised consignee?"
+                    },
+                    value: {
+                    text: data['consignee-name'] | getConsignee
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "Authorised consignee’s name"
+                        }
+                    ]
+                    }
+                }
+                ), consigneeDetails) %}
+
+          {% set consigneeDetails = (consigneeDetails.push(
+                    {
+                    key: {
+                    html: "Is GB123456789012345 the EORI number for " + data['consignee-name'] + "?"
+                    },
+                    value: {
+                    text: data['consigneeEoriToUse']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "customs sub-place or approved location"
+                        }
+                    ]
+                    }
+                }
+          ), consigneeDetails) %}
+
+        {% if (data['consigneeEoriToUse'] == "No ") %}
+
+          {% set consigneeDetails = (consigneeDetails.push(
+                {
+                    key: {
+                    html: "What is the EORI number for " + data['consignee-name'] + "?"
+                    },
+                    value: {
+                    text: data['consignee-eori-number']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "consignee-eori",
+                        text: "Change",
+                        visuallyHiddenText: "which Border Force office supervises this place"
+                        }
+                    ]
+                    }
+                }
+          ), consigneeDetails) %}
+              
+        {% endif %}
+
+          {% set consigneeDetails = (consigneeDetails.push(
+
+
+                {
+                        key: {
+                          text: "Address"
+                        },
+                        value: {
+                         html: data['consignee-address-line-1'] + "<br>" + data['consignee-address-town'] + "<br>" + data['consignee-address-postcode']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "consignee-address",
+                              text: "Change",
+                              visuallyHiddenText: "consignee’s address"
+                            }
+                          ]
+                        }
+                      }
+
+                
+                ), consigneeDetails) %}
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: consigneeDetails
+                }) }}
+
+      <!--
+         Place where arrival notification was completed
+      -->   
 
       <h2 class="govuk-heading-m">Place where this was completed</h2>
 
