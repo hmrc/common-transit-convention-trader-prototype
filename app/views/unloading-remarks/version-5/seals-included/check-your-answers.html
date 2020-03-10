@@ -48,186 +48,15 @@ Check your answers
            rows: goodsQuestions
         }) }}
 
-
-
-      <!--
-        Transport
-      -->
-
-      {% set transportList = [] %}
-
-      <h2 class="govuk-heading-m">Vehicle used</h2>
-
-      {% set transportList = (transportList.push(
-          {
-            key: {
-              text: "Name, registration or reference"
-            },
-            value: {
-              text: data['vehicle-registration']
-            },
-            actions: {
-              items: [
-                {
-                  href: "new-vehicle-id",
-                  text: "Change",
-                  visuallyHiddenText: "Change vehicle name, registration or reference"
-                }
-              ]
-            }
-          }
-        ), transportList) %}
-
-          {% set transportList = (transportList.push(
-                    {
-                      key: {
-                        text: "Registered"
-                      },
-                      value: {
-                        text: data['vehicle-country']
-                      },
-                      actions: {
-                        items: [
-                          {
-                            href: "new-vehicle-country",
-                            text: "Change",
-                            visuallyHiddenText: "where the vehicle is registered"
-                          }
-                        ]
-                      }
-                    }
-                  ), transportList) %}
-
-          {{ govukSummaryList({
-           classes: 'govuk-!-margin-bottom-9',
-           rows: transportList
-        }) }}
-
-      <!-- 
-        Weight of items 
-      -->
-
-        <h2 class="govuk-heading-m">Weight of goods</h2>
-
-        {% set grossMass = [] %}
-
-        {% set grossMass = (grossMass.push(
-          {
-            key: {
-              text: "Total gross mass in kilograms"
-            },
-            value: {
-              text: data['total-gross-mass']
-            },
-            actions: {
-              items: [
-                {
-                  href: "new-total-gross-mass",
-                  text: "Change",
-                  visuallyHiddenText: "where the vehicle is registered"
-                }
-              ]
-            }
-          }
-        ), grossMass) %}
-
-         <!-- New total gross mass -->
-       
-         {% if (data['gross-mass'] == "No ") %}
-
-         {% set grossMass = (grossMass.push(
-           {
-             key: {
-               text: "What is the new total gross mass in kilograms?"
-             },
-             value: {
-               text: data['new-total-gross-mass']
-             },
-             actions: {
-               items: [
-                 {
-                   href: "new-total-gross-mass",
-                   text: "Change",
-                   visuallyHiddenText: "total gross mass"
-                 }
-               ]
-             }
-           }
-         ), grossMass) %} 
-
-         {% endif %}
-
-        {{ govukSummaryList({
-          classes: 'govuk-!-margin-bottom-9',
-          rows: grossMass
-       }) }}
-
-
-
      <!-- 
       Seals 
      -->
 
-    {% set sealConditions = [] %}
-    
-     <!-- If the user has made changes, then display all new seal numbers -->
-
-    {% if (data['addSealNumber'] | length != "0" ) or (data['changeSealNumber'] | length != "0") %}
-
-      <h2 class="govuk-heading-m">Seals</h2>
-
-      {% set sealConditions = (sealConditions.push(
-          {
-            key: {
-              text: "Seal 1 "
-            },
-            value: {
-              html: data['changeSealNumber'] + "<br>" + data['addSealNumber']
-            },
-            actions: {
-              items: [
-                {
-                  href: "change-add-seal-numbers",
-                  text: "Change",
-                  visuallyHiddenText: "or add any seal numbers or marks"
-                }
-              ]
-            }
-          }
-        ), sealConditions) %}       
-
-     <!-- If user hasn't made any changes -->
-
-    {% else %}
-
       {% set sealConditions = [] %}
 
-      <h2 class="govuk-heading-m">Seals</h2>
-
-      {% set sealConditions = (sealConditions.push(
-          {
-            key: {
-              text: "Check seal numbers or marks"
-            },
-            value: {
-              text: "No changes reported"
-            },
-            actions: {
-              items: [
-                {
-                  href: "change-add-seal-numbers",
-                  text: "Change",
-                  visuallyHiddenText: "or add any seal numbers or marks"
-                }
-              ]
-            }
-          }
-        ), sealConditions) %}   
-
-    {% endif %} 
+      <h2 class="govuk-heading-m">Check seals</h2>
 
       <!-- Seal conditions -->
-
 
       {% set sealConditions = (sealConditions.push(
         {
@@ -267,78 +96,111 @@ Check your answers
               ]
             }
           }
-        ), sealConditions) %} 
-
-      
-
-        <!-- What is wrong with seals - text area -->
-        {% if (data['sealsBroken'] == "Yes") or (data['canSealsBeRead'] == "No") %}
-
-          {% set sealConditions = (sealConditions.push(
-            {
-              key: {
-                text: "What is wrong with the seals?"
-              },
-              value: {
-                text: data['sealDamageDetails']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "seal-damage-details",
-                    text: "Change",
-                    visuallyHiddenText: "Seal damage details"
-                  }
-                ]
-              }
-            }
-          ), sealConditions) %} 
-        
-        {% endif %}                 
+        ), sealConditions) %}
 
       {{ govukSummaryList({
            classes: 'govuk-!-margin-bottom-9',
            rows: sealConditions
         }) }}
 
-     <!-- 
-      Seals 
-     -->
+      <!--
+        Large unloading remarks section
+      -->
 
-      {% set itemChanges = [] %}
+      <h2 class="govuk-heading-m">Unloading remarks</h2>
 
-      <h2 class="govuk-heading-m">Declared items</h2>
-
-      {% set itemChanges = (itemChanges.push(
-          {
-            key: {
-              text: "Check items"
-            },
-            value: {
-              text: "No changes reported"
-            },
-            actions: {
-              items: [
-                {
-                  href: "change-add-seal-numbers",
-                  text: "Change",
-                  visuallyHiddenText: "or add any seal numbers or marks"
-                }
-              ]
-            }
-          }
-        ), itemChanges) %}  
-
-      {{ govukSummaryList({
-           classes: 'govuk-!-margin-bottom-9',
-           rows: itemChanges
-        }) }}         
-
+      <dl class="govuk-summary-list govuk-summary-list--no-border">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Seal numbers and marks
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p>Seal_id1</p>
+            <p>Seal_id2</p>
+            <p>Seal_id3</p>
+            <p>Seal_id4</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="unloading-remarks">
+              Change<span class="govuk-visually-hidden">Change total gross mass</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name, registration or reference
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['vehicle-registration'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="changes-to-item">
+              {# Change<span class="govuk-visually-hidden">Change total gross mass</span> #}
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Registered
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['vehicle-country'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="changes-to-item">
+              {# Change<span class="govuk-visually-hidden">Change total gross mass</span> #}
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Total gross mass in kilograms
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['total-gross-mass'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="changes-to-item">
+              {# Change<span class="govuk-visually-hidden">Change total gross mass</span> #}
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Flowers
+          </dt>
+          <dd class="govuk-summary-list__value">
+            2 boxes
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="changes-to-item">
+              {# Change<span class="govuk-visually-hidden">Change flowers</span> #}
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Chocolate
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">2 boxes</p>
+            <p class="govuk-body">2 barrels</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="changes-to-item">
+              {# Change<span class="govuk-visually-hidden">Change chocolate</span> #}
+            </a>
+          </dd>
+        </div>
+      </dl>
+      
       <!-- 
         Anything else to report 
       -->
 
       {% set anythingToReport = [] %}
+
+      <br><br>
 
       <h2 class="govuk-heading-m">Anything else to report</h2>
 
@@ -398,12 +260,11 @@ Check your answers
           to the best of your knowledge.</p>
         <input type="hidden" name="answers-checked" value="true">
 
-        {{ govukButton({
+
+    {{ govukButton({
           text: "Confirm and send",
           href: "confirmation"
           }) }}
-
-
 
     </form>
   </div>
