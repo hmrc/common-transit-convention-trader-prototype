@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Check your declaration data to what has been found
+Check what you found against the transit declaration
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,11 +15,62 @@ Check your declaration data to what has been found
 
     <form class="form" method="post" action="anything-else-to-report">
 
-      <h1 class="govuk-heading-xl">Check what you found against the declaration details</h1>
+      <h1 class="govuk-heading-xl">Check what you found against the transit declaration </h1>
 
       <!-- 
         Seal marks or numbers
       -->
+      <h2 class="govuk-heading-m">Seals</h2>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Seal 1
+          </dt>
+          <dd class="govuk-summary-list__value">
+            seal_id1
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="changes-to-item">
+              Change<span class="govuk-visually-hidden">seal id x</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Seal 2
+          </dt>
+          <dd class="govuk-summary-list__value">
+            seal_id2
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="changes-to-item">
+              Change<span class="govuk-visually-hidden">seal id x</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Seal 3
+          </dt>
+          <dd class="govuk-summary-list__value">
+            seal_id3
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="changes-to-item">
+              Change<span class="govuk-visually-hidden">seal id x</span>
+                </span></a>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <p class="govuk-body"><a href="add-seal-number">Add a new seal number or mark</a></p>
+
+
+<!--
+Ruth ends
+    
 
       <h2 class="govuk-heading-m">Seals</h2>
 
@@ -31,6 +82,8 @@ Check your declaration data to what has been found
         </thead>
         <tbody>
           <tr role="row">
+            <td class="govuk-table-cell" role="gridcell"><span class="govuk-summary-list__key">Seal 1</span>
+              </td>
             <td class="govuk-table__cell" role="gridcell"><span class="hmrc-responsive-table__heading"
                 aria-hidden="true">Original</span>seal_id1</td>
             <td class="govuk-table__cell" role="gridcell"><a href="change-seal-number">Change<span
@@ -58,9 +111,9 @@ Check your declaration data to what has been found
         </tbody>
       </table>
 
-      <p class="govuk-body"><a href="add-seal-number">Add a new seal number or mark</a></p>
+      
 
-      <br><br>
+      <br><br> --> 
 
       <!--
         Transport
