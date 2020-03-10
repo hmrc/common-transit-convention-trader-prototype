@@ -7,17 +7,17 @@ const router = express.Router()
         Anything else and the user is taken to "change unloading permission"
     */
 
-    router.post('/are-any-seals-broken', function (req, res) {
+    // router.post('/are-any-seals-broken', function (req, res) {
 
-        let sealsBroken = req.session.data.sealsBroken;
-        let canSealsBeRead = req.session.data.canSealsBeRead;
+    //     let sealsBroken = req.session.data.sealsBroken;
+    //     let canSealsBeRead = req.session.data.canSealsBeRead;
 
-        if (sealsBroken == ('Yes') || canSealsBeRead == ('No')) {
-            res.redirect('seal-damage-details');
-        } else {
-            res.redirect('unloading-remarks');
-        }
+    //     if (sealsBroken == ('Yes') || canSealsBeRead == ('No')) {
+    //         res.redirect('seal-damage-details');
+    //     } else {
+    //         res.redirect('unloading-remarks');
+    //     }
 
-    })
+    // })
 
 module.exports = router
