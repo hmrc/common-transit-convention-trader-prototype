@@ -214,6 +214,9 @@ Check your answers before sending this arrival notification - Name of service - 
           Simplified procedure - consignee's details
         -->
 
+      {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
+      
+
         {% set consigneeDetails = [] %}
 
         <h2 class="govuk-heading-m">Authorised consignee’s details</h1>
@@ -310,6 +313,8 @@ Check your answers before sending this arrival notification - Name of service - 
                 classes: 'govuk-!-margin-bottom-9',
                 rows: consigneeDetails
                 }) }}
+
+      {% endif %}
 
         <!--
          Place where arrival notification was completed
