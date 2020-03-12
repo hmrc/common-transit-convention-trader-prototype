@@ -363,6 +363,8 @@ Check your answers before sending this arrival notification - Name of service - 
                   {% set events = [] %}
                   <h2 class="govuk-heading-m">Events</h1>
 
+                  {% if (data['where-are-the-goods'] == "BorderForce") %}
+
                   {% set events = (events.push(
                             {
                               key: {
@@ -374,7 +376,7 @@ Check your answers before sending this arrival notification - Name of service - 
                               actions: {
                                 items: [
                                   {
-                                    href: "something-happened",
+                                    href: "event/something-happened",
                                     text: "Change",
                                     visuallyHiddenText: "if something happened on the journey"
                                   }
@@ -383,9 +385,30 @@ Check your answers before sending this arrival notification - Name of service - 
                             }
                             ), events) %}
 
+                  {% else %}
 
+                  {% set events = (events.push(
+                    {
+                      key: {
+                        text: "Has something happened on the route?"
+                      },
+                      value: {
+                        text: data['something-happened']
+                      },
+                      actions: {
+                        items: [
+                          {
+                            href: "event/something-happened-simplified",
+                            text: "Change",
+                            visuallyHiddenText: "if something happened on the journey"
+                          }
+                        ]
+                      }
+                    }
+                    ), events) %}
 
-
+                    {% endif %}
+          
 
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
