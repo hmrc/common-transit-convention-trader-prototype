@@ -15,10 +15,14 @@ Unloading remarks submitted
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {{ govukPanel({
-        titleText: "Sent unloading remarks",
-        html: "for movement reference number <strong>20NL5631291B1A3361</strong>"
-      }) }}
+      <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            Sent unloading remarks
+          </h1>
+          <div class="govuk-panel__body">
+            for movement reference number<br><strong>{{ data['movement-reference'] }}</strong>
+          </div>
+        </div>
 
       <h2 class="govuk-heading-m">What happens next</h2>
 

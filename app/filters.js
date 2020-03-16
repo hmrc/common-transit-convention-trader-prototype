@@ -87,6 +87,17 @@ module.exports = function (env) {
     }
   }
 
+  filters.homepageTest = function (str) {
+    switch(str){
+      case "AuthorisedConsignee":
+        return "Simplified";
+      case "BorderForce":
+        return "Normal";
+      default:
+        return str;
+    }
+  }
+
 
 
   filters.getpage = function (str, dir) {

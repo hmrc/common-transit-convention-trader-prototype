@@ -25,12 +25,14 @@ module.exports = {
 
   "changeSealNumber": "",
 
+  "movement-reference": "20NL5631291B1A3361",
+
   //Unloading remarks default values
 
   "total-gross-mass": "800",
 
   "vehicle-country": "United Kingdom",
 
-  "vehicle-registration": "NG54"
+  "vehicle-registration": "NG54",
 
 }
