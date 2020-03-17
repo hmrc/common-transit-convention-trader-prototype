@@ -1,0 +1,241 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers before sending this arrival notification - Name of service - GOV.UK
+{% endblock %}
+
+
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <form class="form" action="success-screen" method="post">
+
+      <h1 class="govuk-heading-xl">Arrival notification</h1>
+
+      <!-- Movement reference -->
+
+      {% set movementReference = [] %}
+
+      {% set movementReference = (movementReference.push(
+                {
+                    key: {
+                    text: "Movement reference number"
+                    },
+                    value: {
+                    text: "20NL5631291B1A3361"
+                    },
+                    actions: {
+                    items: [
+                        {
+                        }
+                    ]
+                    }
+                }
+                ), movementReference) %}
+
+      {{ govukSummaryList({
+                  classes: 'govuk-!-margin-bottom-9',
+                  rows: movementReference
+          }) }}
+
+      <!-- Goods details -->
+
+      {% set goodsLocation = [] %}
+
+      {% set goodsLocation = (goodsLocation.push(
+                {
+                    key: {
+                    text: "Where are the goods?"
+                    },
+                    value: {
+                    text: "Authorised consignee’s location"
+                    },
+                    actions: {
+                    items: [
+                        {
+                        }
+                    ]
+                    }
+                }, 
+                
+                    { 
+                      key: {
+                      text: "What is the authorised location code?"
+                      },
+                      value: {
+                      text: "ABC123 "
+                      },
+                      actions: {
+                      items: [
+                          {
+                          }
+                      ]
+                      }
+                    }
+                   
+                ), goodsLocation) %}
+
+      <h2 class="govuk-heading-m">Goods location</h1>
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: goodsLocation
+        }) }}
+
+        <!-- Trader details -->
+
+        {% set traderDetails = [] %}
+
+        {% set traderDetails = (traderDetails.push(
+                {
+                    key: {
+                    text: "Name"
+                    },
+                    value: {
+                    text: "BMW (UK) Limited"
+                    },
+                    actions: {
+                    items: [
+                        {
+                        }
+                    ]
+                    }
+                },
+                {
+                  key: {
+                  text: "EORI number"
+                  },
+                  value: {
+                  text: "GB091701974291701498"
+                  },
+                  actions: {
+                  items: [
+                      {
+                      }
+                  ]
+                  }
+                },
+                {
+                    key: {
+                    text: "Address"
+                    },
+                    value: {
+                    html: "1 Market Street" + "<br>" + "London" + "<br>" + "E1 6AN"
+                    },
+                    actions: {
+                    items: [
+                        {
+                        }
+                    ]
+                    }
+                }
+                ), traderDetails) %}
+
+        <h2 class="govuk-heading-m">Trader’s details</h1>
+
+          {{ govukSummaryList({
+                        classes: 'govuk-!-margin-bottom-9',
+                        rows: traderDetails
+                }) }}
+
+                {% set placeNotification = [] %}
+
+      {% set placeNotification = (placeNotification.push(
+                {
+                    key: {
+                    text: "Did you complete the arrival notification at the trader’s address?"
+                    },
+                    value: {
+                    text: "No"
+                    },
+                    actions: {
+                    items: [
+                        {
+                        
+                        }
+                    ]
+                    }
+                },
+                {
+                  key: {
+                  text: "Where are you completing this arrival notification?"
+                  },
+                  value: {
+                  text: "AA1 1AA"
+                  },
+                  actions: {
+                  items: [
+                      {
+                      
+                      }
+                  ]
+                  }
+                }
+                
+                ), placeNotification) %}
+                
+                <h2 class="govuk-heading-m">Place where this was completed</h1>
+
+                  {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: placeNotification
+                }) }}
+
+          <!-- Events -->
+
+          <h2 class="govuk-heading-m">Events</h2>
+
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Did any events happen on the journey?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Yes
+              </dd>
+              <dd class="govuk-summary-list__actions">
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Event 1
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Berlin
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="view-event.html">
+                  View<span class="govuk-visually-hidden">
+                    event that happened in Berlin</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Event 2
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Champs Elysees in Paris
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="view-event.html">
+                  View<span class="govuk-visually-hidden">
+                    event that happened in Champs Elysees in Paris</span>
+                </a>
+              </dd>
+            </div>
+          </dl>
+
+          <p class="govuk-body"><a href="arrivals-history">Go back to arrival notifications</a></p>
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

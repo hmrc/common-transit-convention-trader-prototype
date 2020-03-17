@@ -1,0 +1,274 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+    <h1 class="govuk-heading-xl">Check your answers before sending these unloading remarks</h1>
+    
+    <!-- 
+      Goods questions 
+    -->
+
+      {% set goodsQuestions = [] %}
+
+      {% set goodsQuestions = (goodsQuestions.push(
+          {
+            key: {
+              text: "What date were the goods unloaded?"
+            },
+            value: {
+              html: data['date-goods-unloaded-day'] + " " + data['date-goods-unloaded-month'] + " " + data['date-goods-unloaded-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "date-goods-unloaded",
+                  text: "Change",
+                  visuallyHiddenText: "date goods were unloaded"
+                }
+              ]
+            }
+          }
+        ), goodsQuestions) %} 
+
+      {{ govukSummaryList({
+           classes: 'govuk-!-margin-bottom-9',
+           rows: goodsQuestions
+        }) }}
+
+     <!-- 
+      Seals 
+     -->
+
+      {% set sealConditions = [] %}
+
+      <h2 class="govuk-heading-m">Check seals</h2>
+
+      <!-- Seal conditions -->
+
+      {% set sealConditions = (sealConditions.push(
+        {
+          key: {
+            text: "Can all of the seal numbers or marks be read?"
+          },
+          value: {
+            text: data['canSealsBeRead']
+          },
+          actions: {
+            items: [
+              {
+                href: "can-seals-be-read",
+                text: "Change",
+                visuallyHiddenText: "Can all seal numbers or marks be read"
+              }
+            ]
+          }
+        }
+      ), sealConditions) %}  
+
+      {% set sealConditions = (sealConditions.push(
+          {
+            key: {
+              text: "Are any of the seals broken?"
+            },
+            value: {
+              text: data['sealsBroken']
+            },
+            actions: {
+              items: [
+                {
+                  href: "are-any-seals-broken",
+                  text: "Change",
+                  visuallyHiddenText: "Are any seals broken"
+                }
+              ]
+            }
+          }
+        ), sealConditions) %}
+
+      {{ govukSummaryList({
+           classes: 'govuk-!-margin-bottom-9',
+           rows: sealConditions
+        }) }}
+
+      <!--
+        Large unloading remarks section
+      -->
+
+      <h2 class="govuk-heading-m">What you found when unloading</h2>
+
+      <dl class="govuk-summary-list govuk-summary-list--no-border">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Seal numbers and marks
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p>Seal_id1</p>
+            <p>Seal_id2</p>
+            <p>Seal_id3</p>
+            <p>Seal_id4</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="unloading-remarks">
+              Change<span class="govuk-visually-hidden">Change total gross mass</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name, registration or reference
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['vehicle-registration'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="changes-to-item">
+              {# Change<span class="govuk-visually-hidden">Change total gross mass</span> #}
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Registered
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['vehicle-country'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="changes-to-item">
+              {# Change<span class="govuk-visually-hidden">Change total gross mass</span> #}
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Total gross mass in kilograms
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['total-gross-mass'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="changes-to-item">
+              {# Change<span class="govuk-visually-hidden">Change total gross mass</span> #}
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Flowers
+          </dt>
+          <dd class="govuk-summary-list__value">
+            2 boxes
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="changes-to-item">
+              {# Change<span class="govuk-visually-hidden">Change flowers</span> #}
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Chocolate
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">2 boxes</p>
+            <p class="govuk-body">2 barrels</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="changes-to-item">
+              {# Change<span class="govuk-visually-hidden">Change chocolate</span> #}
+            </a>
+          </dd>
+        </div>
+      </dl>
+      
+      <!-- 
+        Anything else to report 
+      -->
+
+      {% set anythingToReport = [] %}
+
+      <br><br>
+
+      <h2 class="govuk-heading-m">Anything else to report</h2>
+
+      {% set anythingToReport = (anythingToReport.push(
+          {
+            key: {
+              text: "Is there anything else to report?"
+            },
+            value: {
+              text: data['anythingToReport']
+            },
+            actions: {
+              items: [
+                {
+                  href: "anything-else-to-report",
+                  text: "Change",
+                  visuallyHiddenText: "Anything else to report"
+                }
+              ]
+            }
+          }
+        ), anythingToReport) %}       
+
+        <!-- Text area for anything else to report -->
+        {% if (data['anythingToReport'] == "Yes" ) %}
+
+          {% set anythingToReport = (anythingToReport.push(
+            {
+              key: {
+                text: "What do you need to report?"
+              },
+              value: {
+                text: data['changesToReport']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "changes-to-report",
+                    text: "Change",
+                    visuallyHiddenText: "Changes to report"
+                  }
+                ]
+              }
+            }
+          ), anythingToReport) %}      
+
+        {% endif %}   
+
+      {{ govukSummaryList({
+           classes: 'govuk-!-margin-bottom-9',
+           rows: anythingToReport
+        }) }}
+
+        <h2 class="govuk-heading-m">Now send your unloading remarks</h2>
+
+        <p class="govuk-body">By sending this you are confirming that the details you are providing are correct,
+          to the best of your knowledge.</p>
+        <input type="hidden" name="answers-checked" value="true">
+
+
+    {{ govukButton({
+          text: "Confirm and send",
+          href: "confirmation"
+          }) }}
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
