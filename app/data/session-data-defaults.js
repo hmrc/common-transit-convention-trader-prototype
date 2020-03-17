@@ -27,9 +27,7 @@ module.exports = {
 
   "movement-reference": "20NL5631291B1A3361",
 
-  //Unloading remarks default values 
-
-  //test
+  //Unloading remarks default values
 
   "total-gross-mass": "800",
 
