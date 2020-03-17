@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Unloading remarks submitted
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            Sent unloading remarks
+          </h1>
+          <div class="govuk-panel__body">
+            for movement reference number<br><strong>{{ data['movement-reference'] }}</strong>
+          </div>
+        </div>
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+      <p class="govuk-body">You must wait for the goods to be released.</p>
+
+      <p class="govuk-body"><a href="../arrivals-history-after-unloading">Go to arrival notifications</a> to see the latest messages. </p>
+      
+    </div>
+  </div>
+{% endblock %}
+
+
+

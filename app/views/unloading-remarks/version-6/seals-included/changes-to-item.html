@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Tell us about the changes to this item
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="unloading-remarks" method="post">
+
+        <h1 class="govuk-heading-xl">What has changed?</h1>
+        {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+        {{ govukCharacterCount({
+          name: "changesToReport",
+          id: "changesToReport",
+          maxlength: 350,
+          label: {
+            text: "",
+            classes: "govuk-heading-xl"
+          }
+        }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
