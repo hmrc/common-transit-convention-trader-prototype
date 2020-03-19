@@ -42,7 +42,7 @@ Which country is the vehicle registered in?
     {% if (data['where-are-the-goods'] == "Authorised consignee's location") %}
 
     {{ govukButton({
-      text: "Save and continue",
+      text: "Continue",
       attributes: {
         formaction: "check-event-answers"
       }
@@ -53,7 +53,7 @@ Which country is the vehicle registered in?
     {% if (data['where-are-the-goods'] == "BorderForce") or data['where-are-the-goods'] == null %}
 
     {{ govukButton({
-      text: "Save and continue",
+      text: "Continue",
       attributes: {
         formaction: "seals-changed"
       }

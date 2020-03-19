@@ -33,7 +33,7 @@ What happened on the route?
         {% if (data['where-are-the-goods'] == "AuthorisedConsignee") or (data['where-are-the-goods'] == null) %}
 
         {{ govukButton({
-          text: "Save and continue",
+          text: "Continue",
           attributes: {
             formaction: "check-event-answers"
           }
@@ -44,7 +44,7 @@ What happened on the route?
         {% if (data['where-are-the-goods'] == "BorderForce") %}
 
         {{ govukButton({
-          text: "Save and continue",
+          text: "Continue",
           attributes: {
             formaction: "seals-changed"
           }
