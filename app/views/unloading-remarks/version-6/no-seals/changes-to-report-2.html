@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What else do you need to report?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="unloading-remarks" method="post">
+
+        <h1 class="govuk-heading-xl">What do you need to report?</h1>
+
+        {{ govukCharacterCount({
+          name: "changesToReport",
+          id: "changesToReport",
+          maxlength: 350,
+          value: data['changesToReport'],
+          label: {
+            text: "",
+            classes: "govuk-heading-xl"
+          }
+        }) }}
+        
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
