@@ -52,7 +52,7 @@ Check your answers
       Seal numbers
      -->
 
-    {% set sealNumbers = [] %}
+    {# {% set sealNumbers = [] %}
 
     <h2 class="govuk-heading-m">Seals</h2>
      
@@ -127,7 +127,7 @@ Check your answers
       {{ govukSummaryList({
            classes: 'govuk-!-margin-bottom-9',
            rows: sealNumbers
-        }) }}
+        }) }} #}
 
       <!--
         Large unloading remarks section
@@ -136,15 +136,15 @@ Check your answers
       <h2 class="govuk-heading-m">What you found when unloading</h2>
 
       <dl class="govuk-summary-list govuk-summary-list--no-border">
+
+      {% if (data['addSealNumber'] | length != "0" ) %}
+
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Seal numbers and marks
           </dt>
           <dd class="govuk-summary-list__value">
-            <p>Seal_id1</p>
-            <p>Seal_id2</p>
-            <p>Seal_id3</p>
-            <p>Seal_id4</p>
+            <p>{{ data['addSealNumber'] }}</p>
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="unloading-remarks">
@@ -152,6 +152,25 @@ Check your answers
             </a>
           </dd>
         </div>
+
+        {% else %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Seal numbers and marks
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p>There are no seals.</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="unloading-remarks">
+              Change<span class="govuk-visually-hidden">Change total gross mass</span>
+            </a>
+          </dd>
+        </div>
+
+        {% endif %}
+
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Name, registration or reference
@@ -218,13 +237,30 @@ Check your answers
             </a>
           </dd>
         </div>
+
+      {% if (data['changesToReport'] | length != "0" ) %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Comments
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['changesToReport'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="changes-to-item">
+              {# Change<span class="govuk-visually-hidden">Change flowers</span> #}
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
       </dl>
       
       <!-- 
         Anything else to report 
       -->
 
-      {% set anythingToReport = [] %}
+      {# {% set anythingToReport = [] %}
 
       <br><br>
 
@@ -278,7 +314,7 @@ Check your answers
       {{ govukSummaryList({
            classes: 'govuk-!-margin-bottom-9',
            rows: anythingToReport
-        }) }}
+        }) }} #}
 
         <h2 class="govuk-heading-m">Now send your unloading remarks</h2>
 
