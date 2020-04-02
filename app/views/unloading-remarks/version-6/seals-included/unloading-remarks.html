@@ -13,7 +13,7 @@ Check what you found against the transit declaration
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" method="post" action="anything-else-to-report">
+    <form class="form" method="post" action="check-your-answers">
 
       <h1 class="govuk-heading-xl">Check what you found against the transit declaration </h1>
 
@@ -215,24 +215,28 @@ Ruth ends
             </a> #}
           </dd>
         </div>
-        {% if data['changesToReport'] | length != "0" %}
 
+        {% if data['changesToReport'] | length != "0" %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Changes to items
+            Comments
           </dt>
           <dd class="govuk-summary-list__value">
             <p class="govuk-body">{{ data['changesToReport']}}</p>
           </dd>
           <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="changes-to-report">
+              Change<span class="govuk-visually-hidden">Change comments</span>
+            </a>
           </dd>
         </div>
-
         {% endif %}
+
       </dl>
 
-      {# <p><a href="changes-to-report-2">Add or change item</a></p> #}
-      <p><a href="changes-to-report-2">Add comment</a></p>
+      {% if data['changesToReport'] | length == "0" %}
+        <p><a href="changes-to-report">Add comment</a></p>
+      {% endif %}
 
       <br><br>
 

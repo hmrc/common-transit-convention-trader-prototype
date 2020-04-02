@@ -192,13 +192,28 @@ Check your answers
             </a>
           </dd>
         </div>
+        {% if (data['changesToReport'] | length != "0" ) %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Comments
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['changesToReport'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="changes-to-item">
+              {# Change<span class="govuk-visually-hidden">Change flowers</span> #}
+            </a>
+          </dd>
+        </div>
+        {% endif %}
       </dl>
       
       <!-- 
         Anything else to report 
       -->
 
-      {% set anythingToReport = [] %}
+      {# {% set anythingToReport = [] %}
 
       <br><br>
 
@@ -247,7 +262,7 @@ Check your answers
             }
           ), anythingToReport) %}      
 
-        {% endif %}   
+        {% endif %}    #}
 
       {{ govukSummaryList({
            classes: 'govuk-!-margin-bottom-9',
