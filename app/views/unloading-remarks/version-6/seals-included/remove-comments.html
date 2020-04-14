@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Are you sure you want to remove your comments?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post" action="unloading-remarks">
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "removeComments",
+        name: "removeComments",
+        fieldset: {
+          legend: {
+            text: "Are you sure you want to remove your comments?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+        {
+          value: "Yes",
+          text: "Yes"
+        },
+        {
+          value: "No",
+          text: "No"
+        }
+          
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      {# {% if data['removeComments'] == "Yes" %}
+        <input type="hidden" name="changesToReport" value="">
+      {% endif %} #}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Which country did the event happen in?
+{% endblock %}
+
+{% block pageHead %}
+<!--[if gt IE 8]><!-->
+<link href="/public/stylesheets/accessible-autocomplete.css" media="all" rel="stylesheet" type="text/css" />
+<!--<![endif]-->
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<form action="event-place" class="form" method="post">
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Which country were the goods in when the event happened?</h1>
+
+        {{ govukSelect({
+          classes: "govuk-input--width-20 autocomplete-country",
+          label: {
+            text: header,
+            isPageHeading: true,
+            classes: "govuk-label--xl"
+          },
+          id: "event-country",
+          name: "event-country",
+          hint: {
+            text: " "
+          },
+          items: CTCData.countries,
+          value: data['event-country']
+
+        }) }}
+
+
+        {{ govukButton({
+        text: "Continue"
+        }) }}
+      </div>
+    </div>
+  </form>
+
+  {# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
+
+
+  {% endblock %}
+
+  {% block pageScripts %}
+  <script src="/public/javascripts/location-autocomplete.js"></script>
+  {% endblock %}

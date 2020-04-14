@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What happened on the route?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">What happened on the journey?</h1>
+
+    <form class="form" method="post">
+
+        {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+        {{ govukTextarea({
+          name: "what-happened",
+          id: "what-happened",
+          label: {
+            text: ""
+          },
+          hint: {
+            text: ""
+          }
+        }) }}
+
+        {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
+
+        {{ govukButton({
+          text: "Continue",
+          href: "check-event-answers"
+        }) }}
+
+        {% endif %}
+
+        {% if (data['where-are-the-goods'] == "BorderForce") %}
+
+        {{ govukButton({
+          text: "Continue",
+          href: "seals-changed"
+        }) }}
+
+        {% endif %}
+</form>
+{# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
+
+  </div>
+</div>
+
+{% endblock %}
