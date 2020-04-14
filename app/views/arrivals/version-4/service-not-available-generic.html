@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Sorry, there is a problem with the service
+{% endblock %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Sorry, the service is unavailable</h1>
+      <p class="govuk-body">
+        You will be able to use the service later.
+      </p>
+     <!-- <p class="govuk-body">We saved your answers. They will be available for ? days.</p> -->
+      <p class="govuk-body"></p>
+      <p class="govuk-body">
+        You can <a class ="govuk-link" href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries">contact the New Computerised Transit System helpdesk if you need to speak to someone about transit movements (opens in a new window or tab)</a>.
+    </div>
+  </div>
+{% endblock %}

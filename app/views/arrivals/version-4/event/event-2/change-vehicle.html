@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Did the goods move to a different vehicle or container?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+      {% if (data['event-report'] == "No") %}
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            idPrefix: "change-vehicle",
+            name: "change-vehicle",
+            fieldset: {
+              legend: {
+                text: "Were the goods moved to a different vehicle or container?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Yes, redirect(new-transport-type)",
+                text: "Yes"
+              },
+              {
+                value: "No, redirect(incident-information)",
+                text: "No"
+              }
+            ]
+          }) }}
+
+      {% endif %}
+
+      {% if (data['event-report'] == "Yes") %}
+
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+            {{ govukRadios({
+              classes: "govuk-radios--inline",
+              idPrefix: "change-vehicle",
+              name: "change-vehicle",
+              fieldset: {
+                legend: {
+                  text: "Were the goods moved to a different vehicle or container?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--xl"
+                }
+              },
+              hint: {
+                text: ""
+              },
+              items: [
+                {
+                  value: "Yes, redirect(new-transport-type)",
+                  text: "Yes"
+                },
+                {
+                  value: "No, redirect(seals-changed)",
+                  text: "No"
+                }
+              ]
+            }) }}
+
+      {% endif %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+</form>
+{# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
+
+  </div>
+</div>
+
+{% endblock %}

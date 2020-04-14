@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Arrival notification received - Name of service - GOV.UK
+{% endblock %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    {% set mainClasses = "govuk-main-wrapper--l" %}
+
+    {% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+    {% block content %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        {{ govukPanel({
+        titleText: "Sent arrival notification",
+        html: "for movement reference number <strong>19GB00005112345678</strong>"  
+      }) }}
+
+        <p class="govuk-body"></p>
+
+        <h2 class="govuk-heading-m">What happens next</h2>
+
+       <!-- <p class="govuk-body">Send an email to the office where the goods will be presented (also known as the office of destination). Make sure you:</p>
+        
+        <ul class="govuk-list govuk-list--bullet">
+        <li>tell them that you are waiting for goods to be released</li>
+        <li>send copies of any paperwork to show that duties and taxes have been paid or goods have moved out of transit</li>
+        </ul>
+        
+        -->
+      
+        <p class="govuk-body"><a href="../version-3/arrivals-history.html" class="govuk-link">Check the status of arrival notifications</a> and find out when goods are released. </p>
+
+        <p class="govuk-body">If the goods are not released or you have another problem, contact Border Force at Teesport, telephone 01642 440 111.</p> 
+  <!--Or should this link to https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries as ladine/simon!-->
+
+<!--       <p class="govuk-body">Go to 
+          <a href="homepage.html" class="govuk-link">manage transit movements</a>.
+        </p>-->
+      </div>
+    </div>
+
+  <!--  {{ govukButton({
+          text: "Accept and send"
+        }) }}-->
+       
+    </form>
+
+  </div>
+</div>
+{% endblock %}

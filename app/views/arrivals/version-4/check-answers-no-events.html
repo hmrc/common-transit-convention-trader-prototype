@@ -1,0 +1,439 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers before sending this arrival notification - Name of service - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+
+
+
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <form class="form" action="success-screen" method="post">
+
+        <h1 class="govuk-heading-xl">Check your answers before sending this arrival notification</h1>
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: [
+                {
+                    key: {
+                    text: "Movement reference number"
+                    },
+                    value: {
+                    text: data['movement-reference']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "movement-reference",
+                        text: "Change",
+                        visuallyHiddenText: "movement reference number"
+                        }
+                    ]
+                    }
+                }
+                ]
+                }) }}
+
+        {% set goodsLocation = [] %}
+
+        <!--
+          Goods location section
+        -->
+
+        <h2 class="govuk-heading-m">Goods location</h1>
+
+        {% set goodsLocation = (goodsLocation.push(
+                {
+                    key: {
+                    text: "Where are the goods?"
+                    },
+                    value: {
+                    text: data['where-are-the-goods'] | getConsignee
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "where-goods",
+                        text: "Change",
+                        visuallyHiddenText: "where the goods are"
+                        }
+                    ]
+                    }
+                }
+                ), goodsLocation) %}
+
+        {% if (data['where-are-the-goods'] == "BorderForce") %}
+          {% set goodsLocation = (goodsLocation.push(
+                    {
+                    key: {
+                    text: "Which customs sub-place has the goods?"
+                    },
+                    value: {
+                    text: data['customs-facility']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "border-force-office",
+                        text: "Change",
+                        visuallyHiddenText: "customs sub-place or approved location"
+                        }
+                    ]
+                    }
+                },
+                {
+                    key: {
+                    text: "Which Border Force office supervises this place?"
+                    },
+                    value: {
+                    text: data['border-force-office']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "border-force-office",
+                        text: "Change",
+                        visuallyHiddenText: "which Border Force office supervises this place"
+                        }
+                    ]
+                    }
+                }
+                ), goodsLocation) %}
+        {% endif %}
+
+        {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
+          {% set goodsLocation = (goodsLocation.push(
+                {
+                key: {
+                  text: "Authorised location code"
+                },
+                value: {
+                  text: data['authorised-location-code']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "authorised-location-code",
+                      text: "Change",
+                      visuallyHiddenText: "authorised location"
+                    }
+                  ]
+                }
+              }
+                ), goodsLocation) %}
+        {% endif %}
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: goodsLocation
+                }) }}
+
+        <!-- 
+          Normal procedure - trader's details
+        -->
+
+        {% if (data['where-are-the-goods'] == "BorderForce") %}
+
+        <h2 class="govuk-heading-m">Trader’s details</h1>
+
+        {{ govukSummaryList({
+                    classes: 'govuk-!-margin-bottom-9',
+                    rows: [
+                      {
+                        key: {
+                          text: "Name"
+                        },
+                        value: {
+                          text: data['trader-name']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "trader-name",
+                              text: "Change",
+                              visuallyHiddenText: "trader’s name"
+                            }
+                          ]
+                        }
+                      },
+
+                      {
+                        key: {
+                          text: "EORI"
+                        },
+                        value: {
+                          text: data['eori-number']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "trader-eori",
+                              text: "Change",
+                              visuallyHiddenText: "trader’s EORI number"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        key: {
+                          text: "Address"
+                        },
+                        value: {
+                         html: data['address-line-1'] + "<br>" + data['address-town'] + "<br>" + data['address-postcode']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "trader-address",
+                              text: "Change",
+                              visuallyHiddenText: "trader’s address"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }) }}
+
+          {% endif %}
+
+        <!-- 
+          Simplified procedure - consignee's details
+        -->
+
+      {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
+      
+
+        {% set consigneeDetails = [] %}
+
+        <h2 class="govuk-heading-m">Authorised consignee’s details</h1>
+
+        {% set consigneeDetails = (consigneeDetails.push(
+                {
+                    key: {
+                    text: "What is the name of the authorised consignee?"
+                    },
+                    value: {
+                    text: data['consignee-name'] | getConsignee
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "Authorised consignee’s name"
+                        }
+                    ]
+                    }
+                }
+                ), consigneeDetails) %}
+
+          {% set consigneeDetails = (consigneeDetails.push(
+                    {
+                    key: {
+                    html: "Is GB123456789012345 the EORI number for " + data['consignee-name'] + "?"
+                    },
+                    value: {
+                    text: data['consigneeEoriToUse']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "customs sub-place or approved location"
+                        }
+                    ]
+                    }
+                }
+          ), consigneeDetails) %}
+
+        {% if (data['consigneeEoriToUse'] == "No ") %}
+
+          {% set consigneeDetails = (consigneeDetails.push(
+                {
+                    key: {
+                    html: "What is the EORI number for " + data['consignee-name'] + "?"
+                    },
+                    value: {
+                    text: data['consignee-eori-number']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "consignee-eori",
+                        text: "Change",
+                        visuallyHiddenText: "which Border Force office supervises this place"
+                        }
+                    ]
+                    }
+                }
+          ), consigneeDetails) %}
+              
+        {% endif %}
+
+          {% set consigneeDetails = (consigneeDetails.push(
+
+
+                {
+                        key: {
+                          text: "Address"
+                        },
+                        value: {
+                         html: data['consignee-address-line-1'] + "<br>" + data['consignee-address-town'] + "<br>" + data['consignee-address-postcode']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "consignee-address",
+                              text: "Change",
+                              visuallyHiddenText: "consignee’s address"
+                            }
+                          ]
+                        }
+                      }
+
+                
+                ), consigneeDetails) %}
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: consigneeDetails
+                }) }}
+
+      {% endif %}
+
+        <!--
+         Place where arrival notification was completed
+        -->       
+
+        {% if (data['where-are-the-goods'] == "BorderForce") %}
+
+         <h2 class="govuk-heading-m">Place where this was completed</h2>
+
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Did you complete the arrival notification at the trader’s address?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['place-postcode'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="place-of-notification-postcode.html">
+                  Change<span class="govuk-visually-hidden">
+                    need content</span>
+                </a>
+              </dd>
+            </div>
+            {% if (data['place-postcode'] == "No ") %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Where are you completing this arrival notification?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['place-notification'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="place-notification.html">
+                  Change<span class="govuk-visually-hidden">
+                    need content</span>
+                </a>
+              </dd>
+            </div>
+            {% endif %}
+          </dl>
+
+            {% endif %}
+        
+
+                  {% set events = [] %}
+                  <h2 class="govuk-heading-m">Events</h1>
+
+                  {% if (data['where-are-the-goods'] == "BorderForce") %}
+
+                  {% set events = (events.push(
+                            {
+                              key: {
+                                text: "Has something happened on the route?"
+                              },
+                              value: {
+                                text: data['something-happened']
+                              },
+                              actions: {
+                                items: [
+                                  {
+                                    href: "event/something-happened",
+                                    text: "Change",
+                                    visuallyHiddenText: "if something happened on the journey"
+                                  }
+                                ]
+                              }
+                            }
+                            ), events) %}
+
+                  {% else %}
+
+                  {% set events = (events.push(
+                    {
+                      key: {
+                        text: "Has something happened on the route?"
+                      },
+                      value: {
+                        text: data['something-happened']
+                      },
+                      actions: {
+                        items: [
+                          {
+                            href: "event/something-happened-simplified",
+                            text: "Change",
+                            visuallyHiddenText: "if something happened on the journey"
+                          }
+                        ]
+                      }
+                    }
+                    ), events) %}
+
+                    {% endif %}
+          
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: movementReference,
+                rows: goodsLocation,
+                rows: consigneeDetails,
+                rows: events
+        }) }}
+
+
+
+        <h2 class="govuk-heading-m">Now send your arrival notification</h2>
+
+        <p class="govuk-body">By sending this you are confirming that the details you are providing are correct, to the best of your knowledge.</p>
+        <input type="hidden" name="answers-checked" value="true">
+
+        {{ govukButton({
+          text: "Confirm and send",
+          href: "arrival-sent"
+        }) }}
+
+      </form>
+      {# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
+
+    </div>
+  </div>
+
+{% endblock %}

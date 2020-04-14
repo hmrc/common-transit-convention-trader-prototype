@@ -1,0 +1,238 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Continue draft declaration
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <form class="form" method="post">
+
+
+      
+      <h1 class="govuk-heading-xl">Draft arrival notification</h1>
+
+
+      <!-- Movement reference -->
+
+      {% set movementReference = [] %}
+
+    {% set movementReference = (movementReference.push(
+        {
+            key: {
+            text: "Movement reference number"
+            },
+            value: {
+            text: "10GB000060100C06E0"
+            },
+            actions: {
+            items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+            ]
+            }
+        }
+        ), movementReference) %}
+
+   
+
+      {{ govukSummaryList({
+                  classes: 'govuk-!-margin-bottom-9',
+                  rows: movementReference
+          }) }}
+
+
+
+      <!-- Goods details -->
+
+      {% set goodsLocation = [] %}
+
+      {% set goodsLocation = (goodsLocation.push(
+                {
+                    key: {
+                    text: "Where are the goods?"
+                    },
+                    value: {
+                    text: "Border Force location"
+                    },
+                    actions: {
+                    items: [
+                        {
+                          href: "#",
+                          text: "Change",
+                          visuallyHiddenText: "name"
+                        }
+                    ]
+                    }
+                }, 
+                
+                    { 
+                      key: {
+                      text: "Which customs sub-place or approved location has the goods?"
+                      },
+                      value: {
+                      text: "Newcastle Airport"
+                      },
+                      actions: {
+                      items: [
+                          {
+                            href: "#",
+                            text: "Change",
+                            visuallyHiddenText: "name"
+                          }
+                      ]
+                      }
+                    },
+                    { 
+                    key: {
+                    text: "Which Border Force office supervises Newcastle Airport?"
+                    },
+                    value: {
+                    text: "Teesport"
+                    },
+                    actions: {
+                    items: [
+                        {
+                          href: "#",
+                          text: "Change",
+                          visuallyHiddenText: "name"
+                        }
+                    ]
+                    }
+                }
+                ), goodsLocation) %}
+
+      <h2 class="govuk-heading-m">Goods location</h1>
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: goodsLocation
+        }) }}
+
+        <!-- Trader details -->
+
+        {% set traderDetails = [] %}
+
+        {% set traderDetails = (traderDetails.push(
+                {
+                    key: {
+                    text: "Name"
+                    },
+                    value: {
+                    text: "M&S"
+                    },
+                    actions: {
+                    items: [
+                        {
+                          href: "#",
+                          text: "Change",
+                          visuallyHiddenText: "name"
+                        }
+                    ]
+                    }
+                },
+                {
+                  key: {
+                  text: "EORI number"
+                  },
+                  value: {
+                  text: "GB091701974291701498"
+                  },
+                  actions: {
+                  items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "name"
+                      }
+                  ]
+                  }
+                },
+                {
+                    key: {
+                    text: "Address"
+                    },
+                    value: {
+                    html: "1 Market Street" + "<br>" + "London" + "<br>" + "E1 6AN"
+                    },
+                    actions: {
+                    items: [
+                        {
+                          href: "#",
+                          text: "Change",
+                          visuallyHiddenText: "name"
+                        }
+                    ]
+                    }
+                }
+                
+                ), traderDetails) %}
+
+        <h2 class="govuk-heading-m">Trader’s details</h1>
+
+          {{ govukSummaryList({
+                        classes: 'govuk-!-margin-bottom-9',
+                        rows: traderDetails
+                }) }}
+
+
+
+                {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  classes: "govuk-radios--stacked",
+  idPrefix: "changed-name",
+  name: "changed-name",
+  fieldset: {
+    legend: {
+      text: "What do you want to do?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+    {
+      value: "Continue draft arrival notification",
+      text: "Continue draft arrival notification"
+    },
+    {
+      value: "Delete draft arrival notification",
+      text: "Delete draft arrival notification"
+    }
+  ]
+}) }}
+
+
+
+
+
+    
+          {{ govukButton({
+            text: "Continue",
+            href: "place-of-notification-postcode"
+            }) }}
+
+
+
+          <p class="govuk-body"><a href="draft-declarations">Go to drafts</a></p>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

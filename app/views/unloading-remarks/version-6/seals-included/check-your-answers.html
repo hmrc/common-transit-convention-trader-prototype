@@ -192,7 +192,10 @@ Check your answers
             </a>
           </dd>
         </div>
-        {% if (data['changesToReport'] | length != "0" ) %}
+
+        {% if (data['changesToReport'] | length == "0" ) or (data['removeComments'] == "Yes") %}
+        
+        {% else %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Comments
@@ -207,6 +210,7 @@ Check your answers
           </dd>
         </div>
         {% endif %}
+
       </dl>
       
       <!-- 

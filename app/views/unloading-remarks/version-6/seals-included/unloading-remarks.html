@@ -216,27 +216,48 @@ Ruth ends
           </dd>
         </div>
 
-        {% if data['changesToReport'] | length != "0" %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Comments
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <p class="govuk-body">{{ data['changesToReport']}}</p>
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="changes-to-report">
-              Change<span class="govuk-visually-hidden">Change comments</span>
-            </a>
-          </dd>
-        </div>
+        {# (data['changesToReport'] | length != "0")  #}
+
+        
+        {# {% if data['removeComments'] | length != "0" %} #}
+
+        {% if (data['removeComments'] == "") or (data['removeComments'] == "No") %}
+
+          {% if data['changesToReport'] | length != "0" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Comments
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">{{ data['changesToReport']}}</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="changes-to-report">
+                Change<span class="govuk-visually-hidden">Change comments</span>
+              </a>
+              <a class="govuk-link" href="remove-comments">
+                Remove<span class="govuk-visually-hidden">Remove comments</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+          
+        {% elif (data['removeComments'] == "Yes") or (data['removeComments'] | length == "0") %}
+        
+
         {% endif %}
 
       </dl>
 
-      {% if data['changesToReport'] | length == "0" %}
-        <p><a href="changes-to-report">Add comment</a></p>
-      {% endif %}
+        {% if (data['changesToReport'] == "") or (data['removeComments'] == "Yes") %}
+          <p><a href="changes-to-report">Add comment</a></p>
+        {% else %}
+
+        {% endif %}
+
+
+
+   
 
       <br><br>
 
