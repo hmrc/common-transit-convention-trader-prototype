@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block pageTitle %}
-  Check your answers before sending this arrival notification - Name of service - GOV.UK
+  Check your answers before sending this arrival notification {{ data['pageTitleAddOn' ]}} - GOV.UK
 {% endblock %}
 {% block beforeContent %}
 <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
@@ -236,7 +236,7 @@
           {% set consigneeDetails = (consigneeDetails.push(
                 {
                     key: {
-                    html: "What is the EORI number for " + data['consignee-name'] + "?"
+                    html: "What is " + data['consignee-name'] + "’s EORI number?"
                     },
                     value: {
                     text: data['consignee-eori-number']
@@ -290,12 +290,14 @@
          Place where arrival notification was completed
       -->   
 
+      {% if (data['where-are-the-goods'] == "BorderForce") %}
+
       <h2 class="govuk-heading-m">Place where this was completed</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Did you complete the arrival notification at the trader’s address?
+            Are you completing this arrival notification at {{ data['trader-name']}}’s address?
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['place-postcode'] }}
@@ -322,6 +324,9 @@
         </div>
         {% endif %}
       </dl>
+
+      {% endif %}
+
 
       <!-- Events -->
 
