@@ -18,12 +18,9 @@ Which country is the vehicle registered in?
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form class="form" method="post">
+    <form class="form" method="post" action="check-event-answers">
 
-
-
-    <h1 class="govuk-heading-xl">Which country is the vehicle registered in?</h1>
-
+      <h1 class="govuk-heading-xl">Which country is the vehicle registered in?</h1>
 
       {{ govukSelect({
         classes: "govuk-input--width-20 autocomplete-country",
@@ -39,32 +36,30 @@ Which country is the vehicle registered in?
 
       }) }}
 
-    {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
+      {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
 
-    {{ govukButton({
-      text: "Continue",
-      href: "check-event-answers"
-    }) }}
+      {{ govukButton({
+        text: "Continue",
+        href: "check-event-answers"
+      }) }}
 
-    {% endif %}
+      {% endif %}
 
-    {% if (data['where-are-the-goods'] == "BorderForce") %}
+      {% if (data['where-are-the-goods'] == "BorderForce") %}
 
-    {{ govukButton({
-      text: "Continue",
-      href: "seals-changed"
-    }) }}
+      {{ govukButton({
+        text: "Continue",
+        href: "seals-changed"
+      }) }}
 
-    {% endif %}
+      {% endif %}
 
-  </form>
-  {# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
+    </form>
+    {# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
 
 
   </div>
 </div>
-
-
 
 {% endblock %}
 

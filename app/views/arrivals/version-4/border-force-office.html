@@ -25,7 +25,6 @@ Where are the goods located?
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
-
       {{ govukSelect({
         classes: "govuk-input--width-20 autocomplete",
         label: {
@@ -36,7 +35,7 @@ Where are the goods located?
         id: "border-force-office",
         name: "border-force-office",
         hint: {
-          text: "Give the office location or code. For example, Dover or GB000060. "
+          text: "Give the office location or code, like Dover or GB000060."
         },
         errorMessage: form.value.error,
         items: CTCData.officesOfDeparture

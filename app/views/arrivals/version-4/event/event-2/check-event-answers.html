@@ -26,7 +26,6 @@ Check your answers for this event
 
       <!-- First section -->
 
-
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -349,12 +348,12 @@ Check your answers for this event
                     Which country is the vehicle registered in?
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    {{ data['vehicle-country'] }}
+                    {{ data['vehicle-country'] | getCountry }}
                   </dd>
                   <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="vehicle-country">
                       Change<span class="govuk-visually-hidden">
-                        which country the vehicle is registered in</span>
+                        Change - the country where the vehicle was registered</span>
                     </a>
                   </dd>
                 </div>

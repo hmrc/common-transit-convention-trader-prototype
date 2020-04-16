@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the address of the trader at destination? 
+What is the destination trader’s address? {{ data['pageTitleAddOn'] }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,63 +15,52 @@ What is the address of the trader at destination?
 
       <form action="place-of-notification-postcode" class="form" method="post">
 
-    {% from "govuk/components/input/macro.njk" import govukInput %}
-    {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
-    
-    {% call govukFieldset({
-      legend: {
-        text: "What is the address of the trader at destination?",
-        classes: "govuk-fieldset__legend--xl",
-        isPageHeading: true
-      }
-    }) %}
-    
-      {{ govukInput({
-        label: {
-          html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
-        },
-        id: "address-line-1",
-        classes: "govuk-!-width-two-thirds",
-        name: "address-line-1"
+      <h1 class="govuk-heading-xl">What is {{ data['trader-name'] }}’s address?</h1>
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+      
+        {{ govukInput({
+          label: {
+            html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+          },
+          id: "address-line-1",
+          classes: "govuk-!-width-two-thirds",
+          name: "address-line-1"
+        }) }}
+      
+        <!-- {{ govukInput({ 
+          label: {
+            html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+          },
+          id: "address-line-2",
+          name: "address-line-2"
+        }) }}-->
+      
+        {{ govukInput({
+          label: {
+            text: "Town or city"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "address-town",
+          name: "address-town"
+        }) }}
+
+      
+        {{ govukInput({
+          label: {
+            text: "Postcode"
+          },
+          classes: "govuk-input--width-10",
+          id: "address-postcode",
+          name: "address-postcode"
+        }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
       }) }}
-    
-      <!-- {{ govukInput({ 
-        label: {
-          html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
-        },
-        id: "address-line-2",
-        name: "address-line-2"
-      }) }}-->
-    
-      {{ govukInput({
-        label: {
-          text: "Town or city"
-        },
-        classes: "govuk-!-width-two-thirds",
-        id: "address-town",
-        name: "address-town"
-      }) }}
 
-    
-      {{ govukInput({
-        label: {
-          text: "Postcode"
-        },
-        classes: "govuk-input--width-10",
-        id: "address-postcode",
-        name: "address-postcode"
-      }) }}
-    
-    {% endcall %}
-
-
-    {{ govukButton({
-      text: "Continue"
-    }) }}
-
-    {# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
-
-
+      {# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
 
   </div>
 </div>

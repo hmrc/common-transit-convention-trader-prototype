@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the name of the trader at destination?
+What is the authorised consignee’s name? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,7 +13,7 @@ What is the name of the trader at destination?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">What is the name of the authorised consignee?</h1>
+    <h1 class="govuk-heading-xl">What is the authorised consignee’s name?</h1>
 
     <form class="form" action="consignee-eori-to-use" method="post">
 

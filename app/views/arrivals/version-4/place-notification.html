@@ -12,34 +12,34 @@ Where are you completing this arrival notification?
 
 <form action="event/something-happened" class="form" method="post">
 
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Where are you completing this arrival notification?</h1>
 
-    <h1 class="govuk-heading-xl">Where are you completing this arrival notification?</h1>
-   
-
-
-    {{ govukInput({
+      {{ govukInput({
       classes: "govuk-input--width-10",
       hint: {
-        text: "This is also known as the place of notification. Give the postcode."
-      },    
+        html: 
+        '<p class="govuk-body">This is also known as the place of notification.</p>
+        <span id="changed-name-hint" class="govuk-hint">
+          Give the postcode, like AB1 1AB.
+        </span>'
+      },  
       id: "place-notification",
       name: "place-notification",
       value: data['place-notification']
       }) }}
 
-      
 
-    {{ govukButton({
-  text: "Continue"
-}) }}
-</div>
+      {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </div>
   </div>
 </form>
 
 {# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
-
 
 {% endblock %}
