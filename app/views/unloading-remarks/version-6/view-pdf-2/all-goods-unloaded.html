@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+You must unload all of the goods before you send any unloading remarks
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Unload the goods before you send the unloading remarks</h1>
+
+      {# <p class="govuk-body">You can:</p> #}
+      
+      {# <ul class="govuk-list govuk-list--bullet">
+        <li>view and print the unloading permissions accompanying document</li>
+        <li>check that the unloaded goods match the information in the transit declaration for movement reference {{ data['movement-reference'] }}</li>
+      </ul> #}
+
+      <p class="govuk-body">Check that the unloaded goods match the information in the transit declaration for movement reference {{ data['movement-reference'] }}.</p>
+
+      <p class="govuk-body"><a href="/public/documents/Sample_TAD.pdf" target="_blank">Download a PDF of the TAD (43kb)</a></p>
+
+      {{ govukButton({
+        text: "Continue",
+        href: "date-goods-unloaded"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
