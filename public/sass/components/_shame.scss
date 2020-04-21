@@ -1,0 +1,12 @@
+// makes the autocomplete dropdown arrow visible
+.autocomplete__wrapper .autocomplete__dropdown-arrow-down {
+    z-index: 0;
+    pointer-events: none;
+}
+
+// make numbers easier to read
+table,
+input,
+.ctc-format-ref {
+    font-variant-numeric: lining-nums tabular-nums;
+}
