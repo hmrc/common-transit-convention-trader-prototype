@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Has the event been reported to a customs office? {{ data['pageTitleAddOn' ]}}
+Has this event been reported to Customs? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,7 +23,7 @@ Has the event been reported to a customs office? {{ data['pageTitleAddOn' ]}}
       name: "event-report",
       fieldset: {
         legend: {
-          text: "Has this event been reported to customs?",
+          text: "Has this event been reported to Customs?",
           isPageHeading: true,
           classes: "govuk-fieldset__legend--xl"
         }

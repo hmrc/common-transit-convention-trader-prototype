@@ -56,7 +56,7 @@
       {% if (data['where-are-the-goods'] == "BorderForce") %}
         {% set goodsLocation = (goodsLocation.push({
           key: {
-            text: "Which customs sub-place or approved location has the goods?"
+            text: "Customs approved location"
           },
           value: {
             text: data['customs-facility']
@@ -65,13 +65,13 @@
             items: [{
               href: "customs-facility",
               text: "Change",
-              visuallyHiddenText: "which sub-place or approved location has the goods?"
+              visuallyHiddenText: "which Customs approved location has the goods"
             }]
           }
         },
         {
           key: {
-            text: "Which Border Force office supervises Berwick?"
+            text: "Customs supervising office"
           },
           value: {
             text: data['border-force-office'] | getOffice
@@ -80,7 +80,7 @@
             items: [{
               href: "border-force-office",
               text: "Change",
-              visuallyHiddenText: "which Border Force office supervises Berwick"
+              visuallyHiddenText: "Change - Customs supervising office"
             }]
           }
         }
@@ -246,7 +246,7 @@
                         {
                         href: "consignee-eori",
                         text: "Change",
-                        visuallyHiddenText: "which Border Force office supervises this place"
+                        visuallyHiddenText: "Change - what is the authorised consignee’s EORI number"
                         }
                     ]
                     }
