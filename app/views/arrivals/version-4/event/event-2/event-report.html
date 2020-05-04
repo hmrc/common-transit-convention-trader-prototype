@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Has the event been reported to a customs office? {{ data['pageTitleAddOn' ]}}
+Has this event been reported to Customs? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,41 +15,40 @@ Has the event been reported to a customs office? {{ data['pageTitleAddOn' ]}}
 
     <form class="form" method="post">
 
-
     {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-{{ govukRadios({
-  classes: "govuk-radios--inline",
-  idPrefix: "event-report-2",
-  name: "event-report-2",
-  fieldset: {
-    legend: {
-      text: "Has this event been reported to customs?",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--xl"
-    }
-  },
-  hint: {
-    text: ""
-  },
-  items: [
-    {
-      value: "Yes, redirect(change-vehicle)",
-      text: "Yes"
-    },
-    {
-      value: "No, redirect(change-vehicle)",
-      text: "No"
-    }
-  ]
-}) }}
+    {{ govukRadios({
+      classes: "govuk-radios--inline",
+      idPrefix: "event-report-2",
+      name: "event-report-2",
+      fieldset: {
+        legend: {
+          text: "Has this event been reported to Customs?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+        text: ""
+      },
+      items: [
+        {
+          value: "Yes, redirect(change-vehicle)",
+          text: "Yes"
+        },
+        {
+          value: "No, redirect(change-vehicle)",
+          text: "No"
+        }
+      ]
+    }) }}
 
 
-{{ govukButton({
-  text: "Continue"
-}) }}
-</form>
-{# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+    {# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
 
   </div>
 </div>

@@ -80,7 +80,7 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
           {% set goodsLocation = (goodsLocation.push(
                     {
                     key: {
-                    text: "Which customs sub-place has the goods?"
+                    text: "Customs approved location"
                     },
                     value: {
                     text: data['customs-facility']
@@ -90,24 +90,24 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
                         {
                         href: "border-force-office",
                         text: "Change",
-                        visuallyHiddenText: "customs sub-place or approved location"
+                        visuallyHiddenText: "Change - which Customs approved location has the goods"
                         }
                     ]
                     }
                 },
                 {
                     key: {
-                    text: "Which Border Force office supervises this place?"
+                      text: "Customs supervising office"
                     },
                     value: {
-                    text: data['border-force-office']
+                      text: data['border-force-office'] | getOffice
                     },
                     actions: {
                     items: [
                         {
                         href: "border-force-office",
                         text: "Change",
-                        visuallyHiddenText: "which Border Force office supervises this place"
+                        visuallyHiddenText: "Change - Customs supervising office"
                         }
                     ]
                     }
@@ -254,7 +254,7 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
                         {
                         href: "#",
                         text: "Change",
-                        visuallyHiddenText: "customs sub-place or approved location"
+                        visuallyHiddenText: "Change - if this is the EORI number for authorised consignee"
                         }
                     ]
                     }

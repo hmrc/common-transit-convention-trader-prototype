@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Where are the goods located? {{ data['pageTitleAddOn' ]}}
+Which Customs office supervises {{ data['customs-facility'] }}? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block pageHead %}
@@ -21,7 +21,7 @@ Where are the goods located? {{ data['pageTitleAddOn' ]}}
 
     <form class="form" action="trader-name" method="post">
 
-      <h1 class="govuk-heading-xl">Which Border Force office supervises {{ data['customs-facility'] }}?</h1>
+      <h1 class="govuk-heading-xl">Which Customs office supervises {{ data['customs-facility'] }}?</h1>
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
