@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is the trader’s name?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="trader-address" method="post">
+
+        {{ govukInput({
+          label: {
+            text: "What is the trader’s name?",
+            classes: "govuk-label--xl",
+            isPageHeading: true
+          },
+          id: "traderName",
+          name: "traderName"
+        }) }}
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

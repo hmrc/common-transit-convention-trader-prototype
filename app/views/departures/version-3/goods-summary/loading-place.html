@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Where is the loading place? 
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="is-location-code-prelodged" method="post">
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+<h1 class="govuk-heading-xl">Where is the loading place?</h1>
+{{ govukInput({
+  label: {
+    text: ""
+  },
+  hint: {
+    text: "This is where the goods are loaded onto the vehicle that will transport them."
+  },
+  id: "loading-place",
+  classes: "govuk-input--width-20",
+  name: "loading-place"
+}) }}
+            
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Save and continue"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

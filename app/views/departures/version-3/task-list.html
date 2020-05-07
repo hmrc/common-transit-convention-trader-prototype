@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {{ data['local-reference-number']}} declaration {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+       {{ data['local-reference-number']}} declaration
+      </h1>     
+      <ol class="app-task-list">
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number"> </span>Create new declaration
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="overview/declaration-type" aria-describedby="eligibility-completed">
+                  Overview
+                </a>
+              </span>
+
+              {% if (data['add-offices-of-transit'] == "No") or (data['addAnotherOfficeOfTransit'] == "No ") %}
+                <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+              {% endif %}
+
+             </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="trader-details/is-eori-known" aria-describedby="read-declaration-completed">
+                  Trader details
+                </a>
+              </span>
+
+              {% if (data['traderEORINumber'] | length != "0" ) or (data['traderName'] | length != "0") %}
+                <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+              {% endif %}              
+
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="goods-summary/total-number-of-items" aria-describedby="read-declaration-completed">
+                  Goods summary
+                </a>
+              </span>
+
+              {% if (data['do-you-need-seals-info'] == "No ") or (data['add-another-seal'] == "No") %}
+                <strong class="govuk-tag app-task-list__task-completed" id="read-declaration-completed">Completed</strong>
+              {% endif %}              
+
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="guarantee/guarantee-type" aria-describedby="read-declaration-completed">
+                  Guarantee
+                </a>
+              </span>
+
+              {% if (data['access-code'] | length != "0" ) %}
+                <strong class="govuk-tag app-task-list__task-completed" id="read-declaration-completed">Completed</strong>
+              {% endif %} 
+
+            </li>
+          </ul>
+        </li>
+      </ol>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is the representative 's name and capacity? {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="dispatch-country" class="form" method="post">
+
+        {% call govukFieldset({
+          legend: {
+            text: "What is the representative’s name and capacity?",
+            classes: "govuk-fieldset__legend--xl",
+            isPageHeading: true
+          }
+        }) %}
+
+        {{ govukInput({
+          label: {
+            html: 'Representative’s name'
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "representative-name",
+          name: "representative-name"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Representative’s capacity (optional)"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "representative-capacity",
+          name: "representative-capacity"
+        }) }}
+
+        {% endcall %}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

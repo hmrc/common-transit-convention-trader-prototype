@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Which transport details do you need to add?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form method="post">
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "which-transport-details",
+          name: "which-transport-details",
+          fieldset: {
+            legend: {
+              text: "Which transport details do you need to add?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "At the point of departure, redirect(inland-mode)",
+              text: "At the point of departure"
+            },
+            {
+              value: "At the border, redirect(mode-at-border)",
+              text: "At the border"
+            },
+            {
+              value: "Both, redirect(inland-mode)",
+              text: "Both"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+  </div>
+</div>
+
+{% endblock %}

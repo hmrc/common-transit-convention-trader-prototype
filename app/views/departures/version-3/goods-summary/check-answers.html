@@ -1,0 +1,270 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <form class="form" action="../task-list" method="post">
+
+        <h1 class="govuk-heading-xl">Check your answers</h1>
+
+        {%
+          set goodsSummary = [
+            {
+                    key: {
+                    text: "What is the total number of items you are declaring?"
+                    },
+                    value: {
+                    text: data['total-number-of-items']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "total-number-of-items",
+                        text: "Change",
+                        visuallyHiddenText: "total number of items"
+                        }
+                    ]
+                    }
+                }, 
+
+                {
+                    key: {
+                    text: "Do you need to declare any packages?"
+                    },
+                    value: {
+                    text: data['declare-packages']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "declare-packages",
+                        text: "Change",
+                        visuallyHiddenText: "total number of items"
+                        }
+                    ]
+                    }
+                }
+          ]
+        %}
+
+        {% if (data['declare-packages'] == "Yes ") %}
+          {% set goodsSummary = (goodsSummary.push(
+                  {
+                    key: {
+                      text: "What is the total number of packages you are declaring?"
+                    },
+                    value: {
+                      text: data['number-of-packages']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "number-of-packages",
+                          text: "Change",
+                          visuallyHiddenText: "how many packages"
+                        }
+                      ]
+                    }
+                  }
+              ), goodsSummary) %}
+        {% endif %}
+        
+        {% set goodsSummary = (goodsSummary.push(
+            {
+              key: {
+                text: "What is the total gross mass (kg)?"
+              },
+              value: {
+                text: data['total-gross-mass']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "total-gross-mass",
+                    text: "Change",
+                    visuallyHiddenText: "total gross mass"
+                  }
+                ]
+              }
+            }
+        ), goodsSummary) %}
+
+        {% set goodsSummary = (goodsSummary.push( 
+          {
+            key: {
+                  text: "Where is the loading place?"
+                  },
+                  value: {
+                  text: data['loading-place']
+                  },
+                  actions: {
+                  items: [
+                      {
+                      href: "loading-place",
+                      text: "Change",
+                      visuallyHiddenText: "loading place"
+                      }
+                  ]
+                  }
+              }
+         ), goodsSummary) %}
+
+
+          {% set goodsSummary = (goodsSummary.push( 
+            {
+              key: {
+              text: "Is the agreed location code pre-lodged?"
+              },
+              value: {
+              text: data['is-it-prelodged']
+              },
+              actions: {
+              items: [
+                  {
+                  href: "is-it-prelodged",
+                  text: "Change",
+                  visuallyHiddenText: "Is the agreed location code pre-lodged?"
+                  }
+              ]
+              }
+          }
+          ), goodsSummary) %}
+
+
+        {% if (data['is-it-prelodged'] == "Yes ") %}
+          {% set goodsSummary = (goodsSummary.push(
+              {
+                key: {
+                  text: "What is the agreed location of the goods?"
+                },
+                value: {
+                  text: data['agreed-location']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "agreed-location",
+                      text: "Change",
+                      visuallyHiddenText: "agreed location"
+                    }
+                  ]
+                }
+              }
+          ), goodsSummary) %}
+        {% endif %}
+
+        {% set goodsSummary = (goodsSummary.push( 
+          {
+            key: {
+            text: "Do you need to add a customs sub-place?"
+            },
+            value: {
+            text: data['add-customs-sub-place']
+            },
+            actions: {
+            items: [
+                {
+                href: "is-it-prelodged",
+                text: "Change",
+                visuallyHiddenText: "Do you need to add a customs sub-place?"
+                }
+            ]
+            }
+          }
+        ), goodsSummary) %}        
+
+        {% if (data['add-customs-sub-place'] == "Yes ") %}
+          {% set goodsSummary = (goodsSummary.push(
+                    {
+                      key: {
+                        text: "What is the customs sub-place?"
+                      },
+                      value: {
+                        text: data['customs-sub-place']
+                      },
+                      actions: {
+                        items: [
+                          {
+                            href: "customs-sub-place",
+                            text: "Change",
+                            visuallyHiddenText: "customs sub-place"
+                          }
+                        ]
+                      }
+                    }
+                ), goodsSummary) %}
+        {% endif %}
+
+
+        {% set goodsSummary = (goodsSummary.push( 
+          {
+                  key: {
+                  text: "Do you need to add seals information?"
+                  },
+                  value: {
+                  text: data['do-you-need-seals-info']
+                  },
+                  actions: {
+                  items: [
+                      {
+                      href: "do-you-need-seals-info",
+                      text: "Change",
+                      visuallyHiddenText: "do you need seals info"
+                      }
+                  ]
+                  }
+              }
+        ), goodsSummary) %}
+
+
+        {% if (data['do-you-need-seals-info'] == "Yes ") %}
+          {% set goodsSummary = (goodsSummary.push(
+                  {
+                    key: {
+                      text: "Seals information"
+
+                    },
+                    value: {
+                      html: data['seal-id-details'] + "<br>" + data['seal-id-details-2']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "seals-information-2",
+                          text: "Change",
+                          visuallyHiddenText: "seals information"
+                        }
+                      ]
+                    }
+                  }
+              ), goodsSummary) %}
+        {% endif %}
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: goodsSummary
+                }) }}
+
+        {{ govukButton({
+                text: "Save and continue",
+                href: "../task-list"
+                }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
