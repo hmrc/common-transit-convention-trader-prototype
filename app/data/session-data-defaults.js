@@ -41,4 +41,8 @@ module.exports = {
 
   "changesToReport": "",
 
+  //Departures defaults
+
+  "local-reference-number": "OR023NCTSWEB100310930"
+
 }

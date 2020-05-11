@@ -1,0 +1,168 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <form class="form" action="../task-list" method="post">
+
+        <h1 class="govuk-heading-xl">Check your answers</h1>
+
+        {% set guaranteeSummary = [] %}
+
+        {% set guaranteeSummary = (guaranteeSummary.push(
+            {
+                    key: {
+                    text: "What type of guarantee are you using?"
+                    },
+                    value: {
+                    text: data['guarantee-type']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "guarantee-type",
+                        text: "Change",
+                        visuallyHiddenText: "guarantee-type"
+                        }
+                    ]
+                    }
+                }
+                ), guaranteeSummary) %}
+
+      
+        {% if (data['guarantee-type'] == "Comprehensive guarantee ") or (data['guarantee-type'] == "Flat-rate voucher ") or (data['guarantee-type'] == "Guarantee waiver ") or (data['guarantee-type'] == "Individual guarantee ") or (data['guarantee-type'] == "Individual guarantee with multiple usage ") %} 
+          {% set guaranteeSummary = (guaranteeSummary.push(
+                  {
+                    key: {
+                      text: "What is the guarantee reference number?"
+                    },
+                    value: {
+                      text: data['guarantee-reference']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "guarantee-reference",
+                          text: "Change",
+                          visuallyHiddenText: "guarantee reference"
+                        }
+                      ]
+                    }
+                  }
+              ), guaranteeSummary) %}
+
+            {% set guaranteeSummary = (guaranteeSummary.push(
+                              {
+                    key: {
+                      text: "What is the liability amount?"
+                    },
+                    value: {
+                      text: data['liability-amount']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "liability-amount",
+                          text: "Change",
+                          visuallyHiddenText: "liability-amount"
+                        }
+                      ]
+                    }
+                  }
+
+              ), guaranteeSummary) %}
+
+        {% else %}
+
+                  {% set guaranteeSummary = (guaranteeSummary.push(
+                  {
+                    key: {
+                      text: "What is the other reference number?"
+                    },
+                    value: {
+                      text: data['other-reference']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "other-reference",
+                          text: "Change",
+                          visuallyHiddenText: "other reference"
+                        }
+                      ]
+                    }
+                  }
+              ), guaranteeSummary) %}
+
+
+                  {% set guaranteeSummary = (guaranteeSummary.push(
+                  {
+                    key: {
+                      text: "What is the liability amount?"
+                    },
+                    value: {
+                      text: data['liability-amount']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "other-guarantee-reference",
+                          text: "Change",
+                          visuallyHiddenText: "other guarantee reference"
+                        }
+                      ]
+                    }
+                  }
+              ), guaranteeSummary) %}
+
+        {% endif %}
+
+        {%
+          set guaranteeSummary = (guaranteeSummary.push( 
+            {
+                    key: {
+                    text: "What is the access code?"
+                    },
+                    value: {
+                    text: data['access-code']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "access-code",
+                        text: "Change",
+                        visuallyHiddenText: "access-code"
+                        }
+                    ]
+                    }
+                }
+                ), guaranteeSummary) %}
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: guaranteeSummary
+                }) }}
+
+        {{ govukButton({
+                text: "Save and continue",
+                href: ""
+                }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
