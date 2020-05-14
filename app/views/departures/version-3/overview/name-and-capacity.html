@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the representative 's name and capacity? {{ data['pageTitleAddOn']}}
+What is your name and capacity? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,7 +17,7 @@ What is the representative 's name and capacity? {{ data['pageTitleAddOn']}}
 
         {% call govukFieldset({
           legend: {
-            text: "What is the representative’s name and capacity?",
+            text: "What is your name and capacity?",
             classes: "govuk-fieldset__legend--xl",
             isPageHeading: true
           }
@@ -25,7 +25,7 @@ What is the representative 's name and capacity? {{ data['pageTitleAddOn']}}
 
         {{ govukInput({
           label: {
-            html: 'Representative’s name'
+            html: 'Your name'
           },
           classes: "govuk-!-width-two-thirds",
           id: "representative-name",
@@ -34,7 +34,7 @@ What is the representative 's name and capacity? {{ data['pageTitleAddOn']}}
 
         {{ govukInput({
           label: {
-            text: "Representative’s capacity (optional)"
+            text: "Your capacity (optional)"
           },
           classes: "govuk-!-width-two-thirds",
           id: "representative-capacity",

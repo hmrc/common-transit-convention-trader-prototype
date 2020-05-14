@@ -20,36 +20,31 @@ Arrival notification rejected
      
     <p class="govuk-body">It was rejected by Border Force.</p>
 
-   
-  
-{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-
-{{ govukSummaryList({
-  rows: [
-    {
-      key: {
-        html: "Action to be taken"
-      },
-      value: {
-        text: ""
-      }
-    },
-    {
-      key: {
-        text: "Reason for rejection"
-      },
-      value: {
-        text: ""
-      }
-    }
-  ]
-}) }}
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            html: "Action to be taken"
+          },
+          value: {
+            text: ""
+          }
+        },
+        {
+          key: {
+            text: "Reason for rejection"
+          },
+          value: {
+            text: ""
+          }
+        }
+      ]
+    }) }}
 
 
+    <!--<p class="govuk-body">If the movement reference number you have given is correct, you will need to <a href="#">contact the helpdesk (opens in a new window or tab)</a>.</p>-->
 
-<!--<p class="govuk-body">If the movement reference number you have given is correct, you will need to <a href="#">contact the helpdesk (opens in a new window or tab)</a>.</p>-->
-
-<p class="gov-uk-body"><a href="arrivals-history">Go to arrival notifications</a></p>
+    <p class="gov-uk-body"><a href="arrivals-history">Go to arrival notifications</a></p>
 
     </form>
 

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add a country of destination?
+What type of procedure are you using? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,11 +17,11 @@ Do you need to add a country of destination?
 
         {{ govukRadios({
           classes: "govuk-radios--inline",
-          idPrefix: "add-country-of-destination",
-          name: "add-country-of-destination",
+          idPrefix: "departuresProcedureType",
+          name: "departuresProcedureType",
           fieldset: {
             legend: {
-              text: "Do you need to add a country of destination?",
+              text: "What type of procedure are you using?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
@@ -31,12 +31,12 @@ Do you need to add a country of destination?
           },
           items: [
             {
-              value: "Yes, redirect(destination-country)",
-              text: "Yes"
+              value: "Normal, redirect(containers-used)",
+              text: "Normal"
             },
             {
-              value: "No, redirect(destination-office)",
-              text: "No"
+              value: "Simplified, redirect(containers-used)",
+              text: "Simplified"
             }
           ]
         }) }}

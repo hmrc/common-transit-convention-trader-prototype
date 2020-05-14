@@ -19,7 +19,7 @@ What transit office do you want to add? {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">What transit office do you want to add?</h1>
+    <h1 class="govuk-heading-xl">Which transit office do you want to add?</h1>
 
     <form class="form" action="added-transit-offices" method="post">
 
@@ -33,7 +33,7 @@ What transit office do you want to add? {{ data['pageTitleAddOn']}}
         id: "office-of-transit",
         name: "office-of-transit",
         errorMessage: form.value.error,
-        items: CTCData.countries
+        items: CTCData.officeOfTransit
       }) }}
 
       {{ govukButton({
