@@ -79,6 +79,24 @@
 
                 {
                     key: {
+                    text: "Procedure type"
+                    },
+                    value: {
+                    text: data['departuresProcedureType']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "procedure-type",
+                        text: "Change",
+                        visuallyHiddenText: "Change - procedure type"
+                        }
+                    ]
+                    }
+                },
+
+                {
+                    key: {
                     text: "Containers used"
                     },
                     value: {
@@ -267,62 +285,23 @@
 
                   {
                     key: {
-                    text: "Do you need to add offices of transit?"
-                    },
-                    value: {
-                    text: data['add-offices-of-transit']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "add-transit-office",
-                        text: "Change",
-                        visuallyHiddenText: "Change - add offices of transit"
-                        }
-                    ]
-                    }
-                  } 
-                
-              ), routeDetails) %}
-              
-      {% if (data['add-offices-of-transit'] == "Yes") %}
-        {% set routeDetails = (routeDetails.push(
-                  {
-                    key: {
                       text: "Transit office 1"
                     },
                     value: {
-                      html: data['country-of-destination']
+                      html: data['office-of-transit'] | getOfficeOfTransit
                     },
                     actions: {
                       items: [
                         {
-                          href: "add-transit-office",
+                          href: "added-transit-office",
                           text: "Change",
                           visuallyHiddenText: "Change - transit office 1"
                         }
                       ]
                     }
-                  },
-                  {
-                    key: {
-                      text: "Do you need to add another office of transit?"
-                    },
-                    value: {
-                      html: data['addAnotherOfficeOfTransit']
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "added-transit-offices",
-                          text: "Change",
-                          visuallyHiddenText: "country of destination"
-                        }
-                      ]
-                    }
-                  }                  
-        ), routeDetails) %}
-    {% endif %}    
+                  }
+                
+              ), routeDetails) %}
 
     <!-- 
       Route details start

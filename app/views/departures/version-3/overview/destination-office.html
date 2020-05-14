@@ -21,7 +21,7 @@ What is the destination office? {{ data['pageTitleAddOn']}}
 
     <h1 class="govuk-heading-xl">What is the destination office?</h1>
 
-    <form action="add-transit-office" class="form" method="post">
+    <form action="add-another-transit-office" class="form" method="post">
 
       {{ govukSelect({
         classes: "govuk-input--width-20 autocomplete",
@@ -33,7 +33,7 @@ What is the destination office? {{ data['pageTitleAddOn']}}
         id: "office-of-destination",
         name: "office-of-destination",
         errorMessage: form.value.error,
-        items: CTCData.countries
+        items: CTCData.officesOfDeparture
       }) }}
 
       {{ govukButton({

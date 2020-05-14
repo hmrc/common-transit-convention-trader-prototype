@@ -76,12 +76,26 @@ module.exports = function (env) {
     return retVal;
   }
 
+  filters.getOfficeOfTransit = function(code){
+    if(code){
+      var data = getData();
+      var retVal = code;
+      data.officeOfTransit.forEach(function(office){
+        if(office.value.toLowerCase().trim() == code.toLowerCase().trim()){
+          //console.log("-" + office.value.toLowerCase().trim() + "-", "-" + code.toLowerCase().trim() + "-")
+          retVal = office.text;
+        }
+      })
+    }
+    return retVal;
+  }
+
   filters.getConsignee = function (str) {
     switch(str){
       case "AuthorisedConsignee":
         return "Authorised consignee’s location (simplified)";
       case "BorderForce":
-        return "Border Force location (normal)";
+        return "Customs-approved location (normal)";
       default:
         return str;
     }
