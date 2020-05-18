@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add transport details?
+Do you need to add transport details? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,39 +15,51 @@ Do you need to add transport details?
 
       <form method="post">
 
-        <span class="govuk-caption-xl">Transport details</span>
+        <span class="govuk-caption-xl">{{ data['transportDetails'] }}</span>
 
-        {{ govukRadios({
-          classes: "govuk-radios--inline",
-          idPrefix: "add-transport-details",
-          name: "add-transport-details",
-          fieldset: {
-            legend: {
-              text: "Do you need to add transport details?",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--xl"
-            }
-          },
-          hint: {
-            text: ""
-          },
-          items: [
-            {
-              value: "Yes, redirect(transport-details/transport-details)",
-              text: "Yes"
-            },
-            {
-              value: "No, redirect(check-your-answers)",
-              text: "No"
-            }
-          ]
-        }) }}
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="addTransportDetails-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Do you need to add transport details?
+              </h1>
+            </legend>
+
+            <span>
+              <p class="govuk-body">Tell us the transport details for the:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>point of departure</li>
+                <li>border</li>
+                <li>point of departure and border</li>
+              </ul>
+            </span>
+
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="addTransportDetails" name="addTransportDetails" type="radio" value="Yes" {{ checked("addTransportDetails", "Yes")}}>
+                <label class="govuk-label govuk-radios__label" for="addTransportDetails">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="addTransportDetails-2" name="addTransportDetails" type="radio" value="No" {{ checked("addTransportDetails", "No")}}>
+                <label class="govuk-label govuk-radios__label" for="addTransportDetails-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+
 
         {{ govukButton({
           text: "Save and continue"
         }) }}
 
       </form>
+
+      <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a></p>
 
   </div>
 </div>

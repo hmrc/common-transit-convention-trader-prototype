@@ -133,7 +133,7 @@
 
                 {
                     key: {
-                    text: "Creating declaration on behalf of someone else"
+                    text: "Creating on behalf of someone"
                     },
                     value: {
                     text: data['on-behalf-of-someone-else']
@@ -143,7 +143,7 @@
                         {
                         href: "declaration-for-someone-else",
                         text: "Change",
-                        visuallyHiddenText: "Change - are you creating this declaration on behalf of someone else"
+                        visuallyHiddenText: "Change - are you creating this on behalf of someone"
                         }
                       ]
                     }
@@ -156,7 +156,7 @@
         {% set movementDetails = (movementDetails.push(
                   {
                     key: {
-                      text: "Representative’s name and capacity"
+                      text: "Your name and capacity"
                     },
                     value: {
                       html: data['representative-name'] + "<br>" + data['representative-capacity']
@@ -166,7 +166,7 @@
                         {
                           href: "name-and-capacity",
                           text: "Change",
-                          visuallyHiddenText: "Change - representative’s name and capacity"
+                          visuallyHiddenText: "Change - your name and capacity"
                         }
                       ]
                     }
@@ -223,7 +223,7 @@
 
                 {
                     key: {
-                    text: "Do you need to add a country of destination?"
+                    text: "Add destination country?"
                     },
                     value: {
                     text: data['add-country-of-destination']
@@ -233,7 +233,7 @@
                         {
                         href: "add-country-of-destination",
                         text: "Change",
-                        visuallyHiddenText: "add-country-of-destination"
+                        visuallyHiddenText: "Change - add destination country"
                         }
                     ]
                     }
@@ -317,17 +317,17 @@
     {% set transportDetails = (transportDetails.push(
       {
           key: {
-            text: "Do you need to add transport details?"
+            text: "Add transport details?"
           },
           value: {
-            html: data['add-transport-details']
+            html: data['addTransportDetails']
           },
           actions: {
             items: [
               {
                 href: "add-transport-details",
                 text: "Change",
-                visuallyHiddenText: "Add transport details"
+                visuallyHiddenText: "Change - add transport details"
               }
             ]
           }
@@ -335,9 +335,9 @@
       ), transportDetails) %}
 
       <!-- 
-        If add-transport-details = "Yes" 
+        If addTransportDetails = "Yes" 
       --> 
-      {% if (data['add-transport-details'] == "Yes") %}
+      {% if (data['addTransportDetails'] == "Yes") %}
 
         <!-- Which transport details do you need to add? --> 
         {% set transportDetails = (transportDetails.push(
@@ -369,7 +369,7 @@
                     {% set transportDetails = (transportDetails.push(
                     {
                         key: {
-                          text: "Inland mode?"
+                          text: "Inland mode"
                         },
                         value: {
                           html: data['inland-mode']
@@ -452,7 +452,7 @@
                     {% set transportDetails = (transportDetails.push(
                           {
                               key: {
-                                text: "ID at departure"
+                                text: "Name, registration or reference at departure"
                               },
                               value: {
                                 html: data['identity-at-departure']
@@ -503,7 +503,7 @@
               {% set transportDetails = (transportDetails.push(
               {
                   key: {
-                    text: "Mode at the border?"
+                    text: "Mode at the border"
                   },
                   value: {
                     html: data['mode-at-border']
@@ -524,7 +524,7 @@
               {% set transportDetails = (transportDetails.push(
               {
                   key: {
-                    text: "ID crossing the border"
+                    text: "Name, registration or reference crossing the border"
                   },
                   value: {
                     html: data['identity-at-border']
@@ -629,6 +629,8 @@
 
 
       </form>
+
+      <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a></p>
     </div>
   </div>
 

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the inland mode?
+What is the inland mode? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -65,8 +65,8 @@ What is the inland mode?
                 text: "(8) Inland waterway transport"
               },
               {
-                value: "(18) Inlang waterway vessel on sea-going, redirect(nationality-at-departure)",
-                text: "(18) Inlang waterway vessel on sea-going"
+                value: "(18) Inland waterway vessel on sea-going, redirect(nationality-at-departure)",
+                text: "(18) Inland waterway vessel on sea-going"
               },
               {
                 value: "(90) Own propulsion, redirect(nationality-at-departure)",
@@ -175,8 +175,8 @@ What is the inland mode?
                 text: "(8) Inland waterway transport"
               },
               {
-                value: "(18) Inlang waterway vessel on sea-going, redirect(id-at-departure)",
-                text: "(18) Inlang waterway vessel on sea-going"
+                value: "(18) Inland waterway vessel on sea-going, redirect(id-at-departure)",
+                text: "(18) Inland waterway vessel on sea-going"
               },
               {
                 value: "(90) Own propulsion, redirect(id-at-departure)",
@@ -241,6 +241,8 @@ What is the inland mode?
         }) }}
 
       </form>
+
+      <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a></p>
 
   </div>
 </div>
