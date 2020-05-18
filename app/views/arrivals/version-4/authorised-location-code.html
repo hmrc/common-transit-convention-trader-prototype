@@ -17,7 +17,7 @@ What is the authorised location code? {{ data['pageTitleAddOn' ]}}
 
     <form class="form" action="consignee-name" method="post">
 
-      {% from "govuk/components/input/macro.njk" import govukInput %}
+    <p class="govuk-body">The code can be found in the registration documents.</p>
 
       {{ govukInput({
         classes: "govuk-input--width-20",
@@ -34,7 +34,6 @@ What is the authorised location code? {{ data['pageTitleAddOn' ]}}
     </form>
 
     {# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
-
 
   </div>
 </div>
