@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the destination office? {{ data['pageTitleAddOn']}}
+What office in {{ data['country-of-destination'] }} are the goods ending up? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block pageHead %}
@@ -19,7 +19,7 @@ What is the destination office? {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">What is the destination office?</h1>
+    <h1 class="govuk-heading-xl">What office in {{ data['country-of-destination'] }} are the goods ending up?</h1>
 
     <form action="add-another-transit-office" class="form" method="post">
 
@@ -43,8 +43,6 @@ What is the destination office? {{ data['pageTitleAddOn']}}
       <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a>
 
     </form>
-
-    <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a></p>
 
   </div>
 </div>
