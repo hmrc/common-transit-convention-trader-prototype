@@ -15,24 +15,26 @@ What is the total gross mass (kg)?
 
     <form class="form" action="loading-place" method="post">
 
-{% from "govuk/components/input/macro.njk" import govukInput %}
+      {% from "govuk/components/input/macro.njk" import govukInput %}
 
-<h1 class="govuk-heading-xl">What is the total gross mass in kg?</h1>
-{{ govukInput({
-  label: {
-    text: ""
-  },
-  id: "total-gross-mass",
-  classes: "govuk-input--width-10",
-  name: "total-gross-mass"
-}) }}
-            
+      <h1 class="govuk-heading-xl">What is the total gross mass in kg?</h1>
+      {{ govukInput({
+        label: {
+          text: ""
+        },
+        id: "total-gross-mass",
+        classes: "govuk-input--width-10",
+        name: "total-gross-mass"
+      }) }}
+                  
 
-{% from "govuk/components/button/macro.njk" import govukButton %}
+      {% from "govuk/components/button/macro.njk" import govukButton %}
 
-{{ govukButton({
-  text: "Save and continue"
-}) }}
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+      <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a>
 
     </form>
 

@@ -15,24 +15,26 @@ What is the total number of packages you are declaring?
 
     <form class="form" action="total-gross-mass" method="post">
 
-    {% from "govuk/components/input/macro.njk" import govukInput %}
+      {% from "govuk/components/input/macro.njk" import govukInput %}
 
-    <h1 class="govuk-heading-xl">What is the total number of packages you are declaring?</h1>
-    {{ govukInput({
-      label: {
-        text: ""
-      },
-      id: "number-of-packages",
-      classes: "govuk-input--width-10",
-      name: "number-of-packages"
-    }) }}
-            
+      <h1 class="govuk-heading-xl">What is the total number of packages you are declaring?</h1>
+      {{ govukInput({
+        label: {
+          text: ""
+        },
+        id: "number-of-packages",
+        classes: "govuk-input--width-10",
+        name: "number-of-packages"
+      }) }}
+              
 
-    {% from "govuk/components/button/macro.njk" import govukButton %}
+      {% from "govuk/components/button/macro.njk" import govukButton %}
 
-    {{ govukButton({
-      text: "Save and continue"
-    }) }}
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+      <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a>
 
     </form>
 
