@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the mode crossing the border?
+What is the mode crossing the border? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -59,8 +59,8 @@ What is the mode crossing the border?
               text: "(8) Inland waterway transport"
             },
             {
-              value: "(18) Inlang waterway vessel on sea-going, redirect(nationality-crossing-border)",
-              text: "(18) Inlang waterway vessel on sea-going"
+              value: "(18) Inland waterway vessel on sea-going, redirect(nationality-crossing-border)",
+              text: "(18) Inland waterway vessel on sea-going"
             },
             {
               value: "(90) Own propulsion, redirect(nationality-crossing-border)",
@@ -124,6 +124,8 @@ What is the mode crossing the border?
       <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a>
 
       </form>
+
+      <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a></p>
 
   </div>
 </div>

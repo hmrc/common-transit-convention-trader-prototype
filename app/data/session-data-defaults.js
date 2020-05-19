@@ -45,6 +45,16 @@ module.exports = {
 
   //Departures defaults
 
-  "local-reference-number": "OR023NCTSWEB100310930"
+  "local-reference-number": "OR023NCTSWEB100310930",
+
+  "saveAndReturn": "Go back to manage transit movements",
+
+  //Departures - overview section captions
+
+  "movementDetails": "Movement details",
+
+  "routeDetails": "Route details",
+
+  "transportDetails": "Transport details",
 
 }
