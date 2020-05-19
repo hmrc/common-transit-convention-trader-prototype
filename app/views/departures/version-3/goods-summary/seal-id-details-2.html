@@ -15,24 +15,26 @@ Seal ID details
 
     <form class="form" action="seals-information-2" method="post">
 
-{% from "govuk/components/input/macro.njk" import govukInput %}
+      {% from "govuk/components/input/macro.njk" import govukInput %}
 
-<h1 class="govuk-heading-xl">Seal ID details</h1>
-{{ govukInput({
-  label: {
-    text: ""
-  },
-  id: "seal-id-details-2",
-  classes: "govuk-input--width-20",
-  name: "seal-id-details-2"
-}) }}
-            
+      <h1 class="govuk-heading-xl">Seal ID details</h1>
+      {{ govukInput({
+        label: {
+          text: ""
+        },
+        id: "seal-id-details-2",
+        classes: "govuk-input--width-20",
+        name: "seal-id-details-2"
+      }) }}
+                  
 
-{% from "govuk/components/button/macro.njk" import govukButton %}
+      {% from "govuk/components/button/macro.njk" import govukButton %}
 
-{{ govukButton({
-  text: "Save and continue"
-}) }}
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+      <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a>
 
     </form>
 

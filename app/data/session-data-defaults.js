@@ -29,6 +29,8 @@ module.exports = {
 
   "pageTitleAddOn": "– Common Transit Convention for traders – GOV.UK",
 
+  "saveAndReturn": "Back to manage transit movements",
+
   //Unloading remarks default values
 
   "total-gross-mass": "800",

@@ -15,45 +15,41 @@ Do you need to declare any packages?
 
     <form class="form" action="" method="post">
 
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-{{ govukRadios({
-  classes: "govuk-radios--inline",
-  idPrefix: "declare-packages",
-  name: "declare-packages",
-  fieldset: {
-    legend: {
-      text: "Do you need to declare any packages?",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--xl"
-    }
-  },
-  hint: {
-    text: ""
-  },
-  items: [
-    {
-      value: "Yes redirect(number-of-packages)",
-      text: "Yes"
-    },
-    {
-      value: "No redirect(total-gross-mass)",
-      text: "No"
-    }
-  ]
-}) }}
-            
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "declare-packages",
+        name: "declare-packages",
+        fieldset: {
+          legend: {
+            text: "Do you need to declare any packages?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "Yes redirect(number-of-packages)",
+            text: "Yes"
+          },
+          {
+            value: "No redirect(total-gross-mass)",
+            text: "No"
+          }
+        ]
+      }) }}
 
+      {% from "govuk/components/button/macro.njk" import govukButton %}
 
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
 
-
-
-
-{% from "govuk/components/button/macro.njk" import govukButton %}
-
-{{ govukButton({
-  text: "Save and continue"
-}) }}
+      <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a>
 
     </form>
 

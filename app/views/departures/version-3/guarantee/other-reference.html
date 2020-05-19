@@ -15,24 +15,26 @@ What is the other reference number?
 
     <form class="form" action="liability-amount" method="post">
 
-{% from "govuk/components/input/macro.njk" import govukInput %}
+      {% from "govuk/components/input/macro.njk" import govukInput %}
 
-<h1 class="govuk-heading-xl">What is the other reference number?</h1>
-{{ govukInput({
-  label: {
-    text: ""
-  },
-  id: "other-reference",
-  classes: "govuk-input--width-20",
-  name: "other-guarantee-reference"
-}) }}
-            
+      <h1 class="govuk-heading-xl">What is the other reference number?</h1>
+      {{ govukInput({
+        label: {
+          text: ""
+        },
+        id: "other-reference",
+        classes: "govuk-input--width-20",
+        name: "other-guarantee-reference"
+      }) }}
+                  
 
-{% from "govuk/components/button/macro.njk" import govukButton %}
+      {% from "govuk/components/button/macro.njk" import govukButton %}
 
-{{ govukButton({
-  text: "Save and continue"
-}) }}
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+      <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a>
 
     </form>
 
