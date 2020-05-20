@@ -15,6 +15,8 @@ Have you used any containers? {{ data['pageTitleAddOn']}}
 
       <form action="place-of-declaration" class="form" method="post">
 
+      <span class="govuk-caption-xl">{{ data['movementDetails'] }}</span>
+
         {{ govukRadios({
           classes: "govuk-radios--inline",
           idPrefix: "have-you-used-containers",
