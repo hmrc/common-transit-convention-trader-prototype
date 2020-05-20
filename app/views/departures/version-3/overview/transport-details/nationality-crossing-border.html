@@ -21,6 +21,8 @@ What is the nationality crossing the border? {{ data['pageTitleAddOn']}}
 
       <form class="form" action="../check-your-answers" method="post">
 
+        <span class="govuk-caption-xl">{{ data['transportDetails'] }}</span>
+
           {% from "govuk/components/input/macro.njk" import govukInput %}
 
           <h1 class="govuk-heading-xl">What is the nationality crossing the border?</h1>

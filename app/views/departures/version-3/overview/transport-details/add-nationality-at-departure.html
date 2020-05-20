@@ -17,6 +17,8 @@ Do you need to add a nationality at departure? {{ data['pageTitleAddOn']}}
       If the user has selected to enter transport details at departure only they need to be directed to check your answers upon answering "no"
     -->
 
+    <span class="govuk-caption-xl">{{ data['transportDetails'] }}</span>
+
     {% if (data['which-transport-details'] == "At the point of departure") %}
 
       <form method="post">
