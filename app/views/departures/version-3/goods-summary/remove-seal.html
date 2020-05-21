@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you have any packages to declare? {{ data['pageTitleAddOn' ]}}
+Are you sure you want to remove this seal? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,25 +19,22 @@ Do you have any packages to declare? {{ data['pageTitleAddOn' ]}}
 
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        idPrefix: "declare-packages",
-        name: "declare-packages",
+        idPrefix: "do-you-need-seals-info",
+        name: "do-you-need-seals-info",
         fieldset: {
           legend: {
-            text: "Do you have any packages to declare?",
+            text: "Are you sure you want to remove this seal?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
         },
-        hint: {
-          text: ""
-        },
         items: [
           {
-            value: "Yes redirect(declaring-packages)",
+            value: "Yes redirect(seals-information)",
             text: "Yes"
           },
           {
-            value: "No redirect(total-gross-mass)",
+            value: "No redirect(seals-information)",
             text: "No"
           }
         ]

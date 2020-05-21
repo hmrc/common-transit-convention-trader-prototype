@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-You have added 1 seal ID
+You have added 1 seal {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,7 +13,7 @@ You have added 1 seal ID
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">You have added 1 seal ID</h1>
+    <h1 class="govuk-heading-xl">You have added 1 seal</h1>
 
     <form class="form" method="post">
 
@@ -32,14 +32,14 @@ You have added 1 seal ID
               classes: "govuk-!-width-one-third",
               items: [
                 {
-                  href: "",
+                  href: "seal-id-details",
                   text: "Change",
-                  visuallyHiddenText: "name"
+                  visuallyHiddenText: "Change seal 1"
                 },
                 {
-                  href: "#",
+                  href: "remove-seal",
                   text: "Remove",
-                  visuallyHiddenText: ""
+                  visuallyHiddenText: "Remove seal 1"
                 }
               ]
             }
@@ -56,7 +56,7 @@ You have added 1 seal ID
           name: "add-another-seal",
           fieldset: {
             legend: {
-              text: "Do you need to add another seal ID?",
+              text: "Do you need to add another seal?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--m"
             }

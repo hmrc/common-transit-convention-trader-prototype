@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Seal ID details
+What is the seal number? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,7 +17,7 @@ Seal ID details
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
-      <h1 class="govuk-heading-xl">Seal ID details</h1>
+      <h1 class="govuk-heading-xl">What is the seal number?</h1>
       {{ govukInput({
         label: {
           text: ""

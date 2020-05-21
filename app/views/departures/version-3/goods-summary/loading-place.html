@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Where is the loading place? 
+Where will the goods be loaded onto the vehicle that will transport them? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,13 +17,10 @@ Where is the loading place?
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
-      <h1 class="govuk-heading-xl">Where is the loading place?</h1>
+      <h1 class="govuk-heading-xl">Where will the goods be loaded onto the vehicle that will transport them?</h1>
       {{ govukInput({
         label: {
           text: ""
-        },
-        hint: {
-          text: "This is where the goods are loaded onto the vehicle that will transport them."
         },
         id: "loading-place",
         classes: "govuk-input--width-20",

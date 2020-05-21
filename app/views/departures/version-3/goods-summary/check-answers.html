@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Check your answers
+Check your answers {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -24,7 +24,7 @@ Check your answers
           set goodsSummary = [
             {
                     key: {
-                    text: "What is the total number of items you are declaring?"
+                    text: "Total number of items you are declaring"
                     },
                     value: {
                     text: data['total-number-of-items']
@@ -32,9 +32,9 @@ Check your answers
                     actions: {
                     items: [
                         {
-                        href: "total-number-of-items",
+                        href: "items-declaring",
                         text: "Change",
-                        visuallyHiddenText: "total number of items"
+                        visuallyHiddenText: "Change - total number of items"
                         }
                     ]
                     }
@@ -64,7 +64,7 @@ Check your answers
           {% set goodsSummary = (goodsSummary.push(
                   {
                     key: {
-                      text: "What is the total number of packages you are declaring?"
+                      text: "Total number of packages you are declaring"
                     },
                     value: {
                       text: data['number-of-packages']
@@ -72,9 +72,9 @@ Check your answers
                     actions: {
                       items: [
                         {
-                          href: "number-of-packages",
+                          href: "declaring-packages",
                           text: "Change",
-                          visuallyHiddenText: "how many packages"
+                          visuallyHiddenText: "Change - total number of packages"
                         }
                       ]
                     }
@@ -85,7 +85,7 @@ Check your answers
         {% set goodsSummary = (goodsSummary.push(
             {
               key: {
-                text: "What is the total gross mass (kg)?"
+                text: "Total gross mass in kilograms"
               },
               value: {
                 text: data['total-gross-mass']
@@ -95,7 +95,7 @@ Check your answers
                   {
                     href: "total-gross-mass",
                     text: "Change",
-                    visuallyHiddenText: "total gross mass"
+                    visuallyHiddenText: "Change - total gross mass"
                   }
                 ]
               }
@@ -105,7 +105,7 @@ Check your answers
         {% set goodsSummary = (goodsSummary.push( 
           {
             key: {
-                  text: "Where is the loading place?"
+                  text: "Loading place"
                   },
                   value: {
                   text: data['loading-place']
@@ -115,7 +115,7 @@ Check your answers
                       {
                       href: "loading-place",
                       text: "Change",
-                      visuallyHiddenText: "loading place"
+                      visuallyHiddenText: "Change - loading place"
                       }
                   ]
                   }
@@ -136,7 +136,7 @@ Check your answers
                   {
                   href: "is-it-prelodged",
                   text: "Change",
-                  visuallyHiddenText: "Is the agreed location code pre-lodged?"
+                  visuallyHiddenText: "Change - is the agreed location code pre-lodged?"
                   }
               ]
               }
@@ -148,7 +148,7 @@ Check your answers
           {% set goodsSummary = (goodsSummary.push(
               {
                 key: {
-                  text: "What is the agreed location of the goods?"
+                  text: "Agreed location of the goods?"
                 },
                 value: {
                   text: data['agreed-location']
@@ -158,7 +158,7 @@ Check your answers
                     {
                       href: "agreed-location",
                       text: "Change",
-                      visuallyHiddenText: "agreed location"
+                      visuallyHiddenText: "Change - agreed location of the goods"
                     }
                   ]
                 }
@@ -179,7 +179,7 @@ Check your answers
                 {
                 href: "is-it-prelodged",
                 text: "Change",
-                visuallyHiddenText: "Do you need to add a customs sub-place?"
+                visuallyHiddenText: "Change - do you need to add a customs sub-place?"
                 }
             ]
             }
@@ -190,7 +190,7 @@ Check your answers
           {% set goodsSummary = (goodsSummary.push(
                     {
                       key: {
-                        text: "What is the customs sub-place?"
+                        text: "Customs sub-place"
                       },
                       value: {
                         text: data['customs-sub-place']
@@ -200,7 +200,7 @@ Check your answers
                           {
                             href: "customs-sub-place",
                             text: "Change",
-                            visuallyHiddenText: "customs sub-place"
+                            visuallyHiddenText: "Change - customs sub-place"
                           }
                         ]
                       }
@@ -222,7 +222,7 @@ Check your answers
                       {
                       href: "do-you-need-seals-info",
                       text: "Change",
-                      visuallyHiddenText: "do you need seals info"
+                      visuallyHiddenText: "Change - do you need to add seals information"
                       }
                   ]
                   }
@@ -234,7 +234,7 @@ Check your answers
           {% set goodsSummary = (goodsSummary.push(
                   {
                     key: {
-                      text: "Seals information"
+                      text: "Seals"
 
                     },
                     value: {
@@ -245,7 +245,7 @@ Check your answers
                         {
                           href: "seals-information-2",
                           text: "Change",
-                          visuallyHiddenText: "seals information"
+                          visuallyHiddenText: "Change - seals"
                         }
                       ]
                     }

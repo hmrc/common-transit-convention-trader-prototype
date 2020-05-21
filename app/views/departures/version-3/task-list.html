@@ -47,12 +47,12 @@
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="goods-summary/total-number-of-items" aria-describedby="read-declaration-completed">
+                <a href="goods-summary/items-declaring" aria-describedby="read-declaration-completed">
                   Goods summary
                 </a>
               </span>
 
-              {% if (data['do-you-need-seals-info'] == "No ") or (data['add-another-seal'] == "No") %}
+              {% if (data['do-you-need-seals-info'] == "No ") or (data['seal-ID'] == "No ") or (data['add-another-seal'] == "No ") %}
                 <strong class="govuk-tag app-task-list__task-completed" id="read-declaration-completed">Completed</strong>
               {% endif %}              
 

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add a customs sub-place?
+Do you need to add seals? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,31 +13,28 @@ Do you need to add a customs sub-place?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="" method="post">
+    <form class="form" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        idPrefix: "add-customs-sub-place",
-        name: "add-customs-sub-place",
+        idPrefix: "do-you-need-seals-info",
+        name: "do-you-need-seals-info",
         fieldset: {
           legend: {
-            text: "Do you need to add a customs sub-place?",
+            text: "Do you need to add seals?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
         },
-        hint: {
-          text: ""
-        },
         items: [
           {
-            value: "Yes redirect(customs-sub-place)",
+            value: "Yes redirect(seal-id-details)",
             text: "Yes"
           },
           {
-            value: "No redirect(do-you-need-to-add-seals-information)",
+            value: "No redirect(add-seals-later)",
             text: "No"
           }
         ]
@@ -49,9 +46,9 @@ Do you need to add a customs sub-place?
         text: "Save and continue"
       }) }}
 
-    </form>
+      <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a>
 
-    <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a>
+    </form>
 
   </div>
 </div>
