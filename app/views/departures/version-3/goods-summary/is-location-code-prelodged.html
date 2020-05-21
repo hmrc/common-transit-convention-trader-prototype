@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Is the agreed location code pre-lodged?
+Is the agreed location code pre-lodged? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -37,7 +37,7 @@ Is the agreed location code pre-lodged?
           text: "Yes"
         },
         {
-          value: "No redirect(do-you-need-to-add-customs-sub-place)",
+          value: "No redirect(add-customs-sub-place)",
           text: "No"
         }
       ]

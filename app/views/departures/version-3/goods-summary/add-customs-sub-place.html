@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add seals information? 
+Do you need to add a customs sub-place? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,11 +19,11 @@ Do you need to add seals information?
 
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        idPrefix: "do-you-need-seals-info",
-        name: "do-you-need-seals-info",
+        idPrefix: "add-customs-sub-place",
+        name: "add-customs-sub-place",
         fieldset: {
           legend: {
-            text: "Do you need to add seals information?",
+            text: "Do you need to add a customs sub-place?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
@@ -33,11 +33,11 @@ Do you need to add seals information?
         },
         items: [
           {
-            value: "Yes redirect(seal-id-details)",
+            value: "Yes redirect(customs-sub-place)",
             text: "Yes"
           },
           {
-            value: "No redirect(add-seals-information-later)",
+            value: "No redirect(add-seals)",
             text: "No"
           }
         ]
@@ -49,9 +49,9 @@ Do you need to add seals information?
         text: "Save and continue"
       }) }}
 
-      <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a>
-
     </form>
+
+    <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a>
 
   </div>
 </div>

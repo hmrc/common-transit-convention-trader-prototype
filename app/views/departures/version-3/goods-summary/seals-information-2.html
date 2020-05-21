@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-You have added 1 seal ID
+You have added 2 seals {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,7 +13,7 @@ You have added 1 seal ID
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">You have added 2 seal ID's</h1>
+    <h1 class="govuk-heading-xl">You have added 2 seals</h1>
 
     <form class="form" method="post">
 
@@ -32,14 +32,14 @@ You have added 1 seal ID
               classes: "govuk-!-width-one-third",
               items: [
                 {
-                  href: "",
+                  href: "seal-id-details",
                   text: "Change",
-                  visuallyHiddenText: "name"
+                  visuallyHiddenText: "Change seal 1"
                 },
                 {
-                  href: "#",
+                  href: "remove-seal-2",
                   text: "Remove",
-                  visuallyHiddenText: ""
+                  visuallyHiddenText: "Remove seal 1"
                 }
               ]
             }
@@ -57,14 +57,14 @@ You have added 1 seal ID
               classes: "govuk-!-width-one-third",
               items: [
                 {
-                  href: "",
+                  href: "seal-id-details-2",
                   text: "Change",
-                  visuallyHiddenText: "name"
+                  visuallyHiddenText: "Change seal 2"
                 },
                 {
-                  href: "#",
+                  href: "remove-seal-2",
                   text: "Remove",
-                  visuallyHiddenText: ""
+                  visuallyHiddenText: "Remove seal 2"
                 }
               ]
             }
@@ -81,18 +81,18 @@ You have added 1 seal ID
           name: "seal-ID",
           fieldset: {
             legend: {
-              text: "Do you need to add another seal ID?",
+              text: "Do you need to add another seal?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--m"
             }
           },
           items: [
             {
-              value: "yes redirect(seal-id-details-2)",
+              value: "Yes redirect(seal-id-details-2)",
               text: "Yes"
             },
             {
-              value: "no redirect(check-answers)",
+              value: "No redirect(check-answers)",
               text: "No"
             }
           ]

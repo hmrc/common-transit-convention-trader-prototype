@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the customs sub-place?
+Where is the customs sub-place? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,11 +13,11 @@ What is the customs sub-place?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="do-you-need-to-add-seals-information" method="post">
+    <form class="form" action="add-seals" method="post">
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
-      <h1 class="govuk-heading-xl">What is the customs <br> sub-place?</h1>
+      <h1 class="govuk-heading-xl">Where is the customs <br> sub-place?</h1>
       {{ govukInput({
         label: {
           text: ""
@@ -26,7 +26,6 @@ What is the customs sub-place?
         classes: "govuk-input--width-20",
         name: "customs-sub-place"
       }) }}
-                  
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
