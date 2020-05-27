@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you know the traders GB EORI? 
+Do you know the principal’s EORI number?
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,7 +23,7 @@ Do you know the traders GB EORI?
         name: "is-eori-known",
         fieldset: {
           legend: {
-            text: "Do you know the trader’s GB EORI?",
+            text: "Do you know the principal’s EORI number?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
@@ -37,7 +37,7 @@ Do you know the traders GB EORI?
             text: "Yes"
           },
           {
-            value: "No redirect(trader-name)",
+            value: "No redirect(principal-name)",
             text: "No"
           }
         ]

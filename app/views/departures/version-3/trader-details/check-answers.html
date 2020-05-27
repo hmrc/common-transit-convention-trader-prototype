@@ -8,103 +8,96 @@ Check your answers
 <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
 
-  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-  {% from "govuk/components/button/macro.njk" import govukButton %}
-
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <form class="form" action="../task-list" method="post">
+    <form class="form" action="../task-list" method="post">
 
-        <h1 class="govuk-heading-xl">Check your answers</h1>
+      <h1 class="govuk-heading-xl">Check your answers</h1>
 
-        {%
-          set goodsSummary = [
-            {
-                    key: {
-                    text: "Do you know the traders GB EORI?"
-                    },
-                    value: {
-                    text: data['is-eori-known']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "is-eori-known",
-                        text: "Change",
-                        visuallyHiddenText: "total number of items"
-                        }
-                    ]
-                    }
-                }
-          ]
-        %}
-        
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Do you know the principal’s EORI number?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['is-eori-known'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="is-eori-known">
+              Change<span class="govuk-visually-hidden">
+                Change - do you know the principal’s EORI number</span>
+            </a>
+          </dd>
+        </div>
 
         {% if (data['is-eori-known'] == "Yes ") %}
-          {% set goodsSummary = (goodsSummary.push(
-                  {
-                    key: {
-                      text: "What is the trader's EORI number?"
-                    },
-                    value: {
-                      text: data['traderEORINumber']
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "what-is-eori",
-                          text: "Change",
-                          visuallyHiddenText: "what is eori"
-                        }
-                      ]
-                    }
-                  }
-              ), goodsSummary) %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Principal’s EORI number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['traderEORINumber'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-is-eori">
+              Change<span class="govuk-visually-hidden">
+                Change - principal’s EORI number</span>
+            </a>
+          </dd>
+        </div>
 
         {% else %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Principal’s name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['traderName'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="principal-name">
+              Change<span class="govuk-visually-hidden">
+                Change - principal’s name</span>
+            </a>
+          </dd>
+        </div>
 
-                  {% set goodsSummary = (goodsSummary.push(
-                  {
-                    key: {
-                      text: "What are the trader's details?"
-                    },
-                    value: {
-                      html: data['traderName'] + "<br>" + "<br>" + data['number-street'] + "<br>" + data['town'] + "<br>" + data['postcode'] + "<br>" + data['country']
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "number-street",
-                          text: "Change",
-                          visuallyHiddenText: "number-street"
-                        }
-                      ]
-                    }
-                  }
-              ), goodsSummary) %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            {{ data['traderName'] | capitalize }}’s address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['number-street'] }} </br>
+            {{ data['town'] }} </br>
+            {{ data['postcode'] }} <br>
+            {{ data['trader-country'] | getCountry }} <br>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="principal-address">
+              Change<span class="govuk-visually-hidden">
+                Change - {{ data['traderName'] }}’s address</span>
+            </a>
+          </dd>
+        </div>
 
         {% endif %}
 
+      </dl>
 
-        {{ govukSummaryList({
-                classes: 'govuk-!-margin-bottom-9',
-                rows: goodsSummary
-                }) }}
 
-        {{ govukButton({
+      {{ govukButton({
                 text: "Save and continue",
                 href: "../task-list"
                 }) }}
 
-      </form>
+    </form>
 
-      <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a></p>
-      
-    </div>
+    <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a></p>
+
   </div>
+</div>
 
 {% endblock %}

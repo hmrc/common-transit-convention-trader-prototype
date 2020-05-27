@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the trader’s name?
+What is the principal’s name?
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,11 +13,11 @@ What is the trader’s name?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="trader-address" method="post">
+    <form class="form" action="principal-address" method="post">
 
         {{ govukInput({
           label: {
-            text: "What is the trader’s name?",
+            text: "What is the principal’s name?",
             classes: "govuk-label--xl",
             isPageHeading: true
           },
