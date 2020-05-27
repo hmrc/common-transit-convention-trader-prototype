@@ -24,7 +24,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
           set goodsSummary = [
             {
                     key: {
-                    text: "Total number of items you are declaring"
+                    text: "Total items declared"
                     },
                     value: {
                     text: data['total-number-of-items']
@@ -34,7 +34,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                         {
                         href: "items-declaring",
                         text: "Change",
-                        visuallyHiddenText: "Change - total number of items"
+                        visuallyHiddenText: "Change - total items declared"
                         }
                     ]
                     }
@@ -42,7 +42,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
                 {
                     key: {
-                    text: "Do you need to declare any packages?"
+                    text: "Declare any packages?"
                     },
                     value: {
                     text: data['declare-packages']
@@ -52,7 +52,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                         {
                         href: "declare-packages",
                         text: "Change",
-                        visuallyHiddenText: "total number of items"
+                        visuallyHiddenText: "Change - declare any packages"
                         }
                     ]
                     }
@@ -64,7 +64,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
           {% set goodsSummary = (goodsSummary.push(
                   {
                     key: {
-                      text: "Total number of packages you are declaring"
+                      text: "Total packages declared"
                     },
                     value: {
                       text: data['number-of-packages']
@@ -74,7 +74,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                         {
                           href: "declaring-packages",
                           text: "Change",
-                          visuallyHiddenText: "Change - total number of packages"
+                          visuallyHiddenText: "Change - total packages declared"
                         }
                       ]
                     }
@@ -95,7 +95,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                   {
                     href: "total-gross-mass",
                     text: "Change",
-                    visuallyHiddenText: "Change - total gross mass"
+                    visuallyHiddenText: "Change - total gross mass in kilograms"
                   }
                 ]
               }
@@ -123,53 +123,10 @@ Check your answers {{ data['pageTitleAddOn' ]}}
          ), goodsSummary) %}
 
 
-          {% set goodsSummary = (goodsSummary.push( 
-            {
-              key: {
-              text: "Is the agreed location code pre-lodged?"
-              },
-              value: {
-              text: data['is-it-prelodged']
-              },
-              actions: {
-              items: [
-                  {
-                  href: "is-it-prelodged",
-                  text: "Change",
-                  visuallyHiddenText: "Change - is the agreed location code pre-lodged?"
-                  }
-              ]
-              }
-          }
-          ), goodsSummary) %}
-
-
-        {% if (data['is-it-prelodged'] == "Yes ") %}
-          {% set goodsSummary = (goodsSummary.push(
-              {
-                key: {
-                  text: "Agreed location of the goods?"
-                },
-                value: {
-                  text: data['agreed-location']
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "agreed-location",
-                      text: "Change",
-                      visuallyHiddenText: "Change - agreed location of the goods"
-                    }
-                  ]
-                }
-              }
-          ), goodsSummary) %}
-        {% endif %}
-
         {% set goodsSummary = (goodsSummary.push( 
           {
             key: {
-            text: "Do you need to add a customs sub-place?"
+            text: "Add Customs-approved location?"
             },
             value: {
             text: data['add-customs-sub-place']
@@ -177,9 +134,9 @@ Check your answers {{ data['pageTitleAddOn' ]}}
             actions: {
             items: [
                 {
-                href: "is-it-prelodged",
+                href: "add-customs-approved-location",
                 text: "Change",
-                visuallyHiddenText: "Change - do you need to add a customs sub-place?"
+                visuallyHiddenText: "Change - add Customs-approved location"
                 }
             ]
             }
@@ -190,7 +147,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
           {% set goodsSummary = (goodsSummary.push(
                     {
                       key: {
-                        text: "Customs sub-place"
+                        text: "Customs-approved location"
                       },
                       value: {
                         text: data['customs-sub-place']
@@ -198,9 +155,9 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                       actions: {
                         items: [
                           {
-                            href: "customs-sub-place",
+                            href: "customs-approved-location",
                             text: "Change",
-                            visuallyHiddenText: "Change - customs sub-place"
+                            visuallyHiddenText: "Change - Customs=approved location"
                           }
                         ]
                       }
@@ -212,7 +169,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
         {% set goodsSummary = (goodsSummary.push( 
           {
                   key: {
-                  text: "Do you need to add seals information?"
+                  text: "Add seals?"
                   },
                   value: {
                   text: data['do-you-need-seals-info']
@@ -222,13 +179,12 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                       {
                       href: "do-you-need-seals-info",
                       text: "Change",
-                      visuallyHiddenText: "Change - do you need to add seals information"
+                      visuallyHiddenText: "Change - Add seals"
                       }
                   ]
                   }
               }
         ), goodsSummary) %}
-
 
         {% if (data['do-you-need-seals-info'] == "Yes ") %}
           {% set goodsSummary = (goodsSummary.push(

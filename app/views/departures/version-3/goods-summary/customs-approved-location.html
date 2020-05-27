@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Where is the customs sub-place? {{ data['pageTitleAddOn' ]}}
+Where is the Customs-approved location? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,9 +15,9 @@ Where is the customs sub-place? {{ data['pageTitleAddOn' ]}}
 
     <form class="form" action="add-seals" method="post">
 
-      {% from "govuk/components/input/macro.njk" import govukInput %}
+      {# {% from "govuk/components/input/macro.njk" import govukInput %} #}
 
-      <h1 class="govuk-heading-xl">Where is the customs <br> sub-place?</h1>
+      <h1 class="govuk-heading-xl">Where is the Customs-approved location?</h1>
       {{ govukInput({
         label: {
           text: ""
