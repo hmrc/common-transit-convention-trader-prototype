@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the liability amount?
+How much is the liability amount? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,9 +13,16 @@ What is the liability amount?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
+  {% if (data['guarantee-type'] == "Comprehensive guarantee ") or
+          (data['guarantee-type'] == "Flat-rate voucher ") or
+          (data['guarantee-type'] == "Guarantee waiver ") or
+          (data['guarantee-type'] == "Individual guarantee ") or
+          (data['have-you-used-containers'] == "Individual guarantee with multiple usage redirect(guarantee-reference) ")
+    %}
+
     <form class="form" action="access-code" method="post">
 
-      <h1 class="govuk-heading-xl">What is the liability amount?</h1>
+      <h1 class="govuk-heading-xl">How much is the liability amount?</h1>
 
         {{ hmrcInputCurrency({
             name: "liability-amount",
@@ -35,6 +42,35 @@ What is the liability amount?
       <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a>
 
     </form>
+
+    {% else %}
+
+    <form class="form" action="check-answers" method="post">
+
+      <h1 class="govuk-heading-xl">How much is the liability amount?</h1>
+
+        {{ hmrcInputCurrency({
+            name: "liability-amount",
+            id: "liability-amount",
+            classes: "govuk-input--width-10",
+            autocomplete: "off",
+            type: "tel"
+          })
+        }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+      <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a>
+
+    </form>
+
+    {% endif %}
+
+
 
   </div>
 </div>
