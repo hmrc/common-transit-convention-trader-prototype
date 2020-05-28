@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Check your answers
+Check your answers {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -25,7 +25,7 @@ Check your answers
         {% set guaranteeSummary = (guaranteeSummary.push(
             {
                     key: {
-                    text: "What type of guarantee are you using?"
+                    text: "Guarantee type"
                     },
                     value: {
                     text: data['guarantee-type']
@@ -47,7 +47,7 @@ Check your answers
           {% set guaranteeSummary = (guaranteeSummary.push(
                   {
                     key: {
-                      text: "What is the guarantee reference number?"
+                      text: "Guarantee reference number"
                     },
                     value: {
                       text: data['guarantee-reference']
@@ -57,7 +57,7 @@ Check your answers
                         {
                           href: "guarantee-reference",
                           text: "Change",
-                          visuallyHiddenText: "guarantee reference"
+                          visuallyHiddenText: "Change - guarantee reference number"
                         }
                       ]
                     }
@@ -67,7 +67,7 @@ Check your answers
             {% set guaranteeSummary = (guaranteeSummary.push(
                               {
                     key: {
-                      text: "What is the liability amount?"
+                      text: "Liability amount"
                     },
                     value: {
                       text: data['liability-amount']
@@ -77,7 +77,7 @@ Check your answers
                         {
                           href: "liability-amount",
                           text: "Change",
-                          visuallyHiddenText: "liability-amount"
+                          visuallyHiddenText: "Change - liability amount"
                         }
                       ]
                     }
@@ -90,7 +90,7 @@ Check your answers
                   {% set guaranteeSummary = (guaranteeSummary.push(
                   {
                     key: {
-                      text: "What is the other reference number?"
+                      text: "Other reference number"
                     },
                     value: {
                       text: data['other-reference']
@@ -100,7 +100,7 @@ Check your answers
                         {
                           href: "other-reference",
                           text: "Change",
-                          visuallyHiddenText: "other reference"
+                          visuallyHiddenText: "Change - other reference number"
                         }
                       ]
                     }
@@ -111,7 +111,7 @@ Check your answers
                   {% set guaranteeSummary = (guaranteeSummary.push(
                   {
                     key: {
-                      text: "What is the liability amount?"
+                      text: "Liability amount"
                     },
                     value: {
                       text: data['liability-amount']
@@ -121,7 +121,7 @@ Check your answers
                         {
                           href: "other-guarantee-reference",
                           text: "Change",
-                          visuallyHiddenText: "other guarantee reference"
+                          visuallyHiddenText: "Change - liability amount"
                         }
                       ]
                     }
@@ -130,11 +130,13 @@ Check your answers
 
         {% endif %}
 
+        {% if data['access-code'] | length != "0" %}
+
         {%
           set guaranteeSummary = (guaranteeSummary.push( 
             {
                     key: {
-                    text: "What is the access code?"
+                    text: "Access code"
                     },
                     value: {
                     text: data['access-code']
@@ -144,12 +146,15 @@ Check your answers
                         {
                         href: "access-code",
                         text: "Change",
-                        visuallyHiddenText: "access-code"
+                        visuallyHiddenText: "Change - access code"
                         }
                     ]
                     }
                 }
                 ), guaranteeSummary) %}
+
+        {% endif %}
+
 
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',

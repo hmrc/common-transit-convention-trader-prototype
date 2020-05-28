@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What type of guarantee are you using?
+Which type of guarantee is being used? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,7 +23,7 @@ What type of guarantee are you using?
         name: "guarantee-type",
         fieldset: {
           legend: {
-            text: "What type of guarantee are you using?",
+            text: "Which type of guarantee is being used?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
