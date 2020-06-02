@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Declaration summary {{ data['pageTitleAddOn']}}
+Declaration summary {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -10,15 +10,16 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-       {{ data['local-reference-number']}} declaration
-      </h1>     
-      <ol class="app-task-list">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ data['local-reference-number']}} declaration
+    </h1>
+
+    {# <ol class="app-task-list">
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number"> </span>Create new declaration
+            <span class="app-task-list__section-number">Create new declaration
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
@@ -71,9 +72,155 @@
             </li>
           </ul>
         </li>
-      </ol>
+      </ol> #}
 
-    </div>
+      <p class="govuk-body">You can save your movement and come back later. You have 28 days from the first time you save to complete this declaration or your information will be deleted.</p>
+    <!-- 
+        New task list pattern
+      -->
+
+    <ol class="app-task-list">
+
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">Create new declaration
+        </h2>
+
+        <ul class="app-task-list__items">
+
+          <!-- Overview -->
+
+          {% if (data['add-offices-of-transit'] == "No") or (data['addAnotherOfficeOfTransit'] == "No ") %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="overview/declaration-type" aria-describedby="overview-completed">Overview</a>
+            </span>
+            <span class="hmrc-status-tag" id="overview-completed">
+              Completed
+            </span>
+          </li>
+          {% elif data['declaration-type'] | length != "0" %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="overview/declaration-type" aria-describedby="overview-in-progress">Overview</a>
+            </span>
+            <span class="hmrc-status-tag" id="overview-in-progress">
+              In progress
+            </span>
+          </li>
+          {% else %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="overview/declaration-type" aria-describedby="overview-not-started">Overview</a>
+            </span>
+            <span class="hmrc-status-tag" id="overview-not-started">
+              Not started
+            </span>
+          </li>
+          {% endif %}
+
+          <!-- Trader details -->
+
+          {% if (data['traderEORINumber'] | length != "0" ) or (data['traderName'] | length != "0") %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-completed">Trader
+                details</a>
+            </span>
+            <span class="hmrc-status-tag" id="trader-details-completed">
+              Completed
+            </span>
+          </li>
+          {% elif data['is-eori-known'] | length != "0" %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-in-progress">Trader
+                details</a>
+            </span>
+            <span class="hmrc-status-tag" id="trader-details-in-progress">
+              In progress
+            </span>
+          </li>
+          {% else %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-not-started">Trader
+                details</a>
+            </span>
+            <span class="hmrc-status-tag" id="trader-details-not-started">
+              Not started
+            </span>
+          </li>
+          {% endif %}
+
+          <!-- Goods summary -->
+
+          {% if (data['do-you-need-seals-info'] == "No ") or (data['seal-ID'] == "No ") or (data['add-another-seal'] == "No ") %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="goods-summary/items-declaring" aria-describedby="goods-summary-completed">Goods summary</a>
+            </span>
+            <span class="hmrc-status-tag" id="goods-summary-completed">
+              Completed
+            </span>
+          </li>
+          {% elif data['total-number-of-items'] | length != "0" %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="goods-summary/items-declaring" aria-describedby="goods-summary-in-progress">Goods summary</a>
+            </span>
+            <span class="hmrc-status-tag" id="goods-summary-in-progress">
+              In progress
+            </span>
+          </li>
+          {% else %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="goods-summary/items-declaring" aria-describedby="goods-summary-not-started">Goods summary</a>
+            </span>
+            <span class="hmrc-status-tag" id="goods-summary-not-started">
+              Not started
+            </span>
+          </li>
+          {% endif %}
+          
+          <!-- Guarantee -->
+
+          {% if (data['access-code'] | length != "0") or (data['liability-amount'] | length != "0") %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="guarantee/guarantee-type" aria-describedby="guarantee-completed">Guarantee</a>
+            </span>
+            <span class="hmrc-status-tag" id="guarantee-completed">
+              Completed
+            </span>
+          </li>
+          {% elif data['guarantee-type'] | length != "0" %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="guarantee/guarantee-type" aria-describedby="guarantee-in-progress">Guarantee</a>
+            </span>
+            <span class="hmrc-status-tag" id="guarantee-in-progress">
+              In progress
+            </span>
+          </li>
+          {% else %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="guarantee/guarantee-type" aria-describedby="guarantee-not-started">Guarantee</a>
+            </span>
+            <span class="hmrc-status-tag" id="guarantee-not-started">
+              Not started
+            </span>
+          </li>
+          {% endif %}
+
+        </ul>
+      </li>
+    </ol>
+
+
   </div>
+</div>
 
 {% endblock %}
