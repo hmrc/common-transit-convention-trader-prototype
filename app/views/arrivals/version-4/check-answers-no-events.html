@@ -11,21 +11,21 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
 
 
 
-  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-  {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 
 
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <form class="form" action="success-screen" method="post">
+    <form class="form" action="success-screen" method="post">
 
-        <h1 class="govuk-heading-xl">Check your answers before sending this arrival notification</h1>
+      <h1 class="govuk-heading-xl">Check your answers before sending this arrival notification</h1>
 
-        {{ govukSummaryList({
+      {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
                 rows: [
                 {
@@ -48,13 +48,13 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
                 ]
                 }) }}
 
-        {% set goodsLocation = [] %}
+      {% set goodsLocation = [] %}
 
-        <!--
+      <!--
           Goods location section
         -->
 
-        <h2 class="govuk-heading-m">Goods location</h1>
+      <h2 class="govuk-heading-m">Goods location</h1>
 
         {% set goodsLocation = (goodsLocation.push(
                 {
@@ -77,7 +77,7 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
                 ), goodsLocation) %}
 
         {% if (data['where-are-the-goods'] == "BorderForce") %}
-          {% set goodsLocation = (goodsLocation.push(
+        {% set goodsLocation = (goodsLocation.push(
                     {
                     key: {
                     text: "Customs approved location"
@@ -116,7 +116,7 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
         {% endif %}
 
         {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
-          {% set goodsLocation = (goodsLocation.push(
+        {% set goodsLocation = (goodsLocation.push(
                 {
                 key: {
                   text: "Authorised location code"
@@ -150,7 +150,7 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
 
         <h2 class="govuk-heading-m">Trader’s details</h1>
 
-        {{ govukSummaryList({
+          {{ govukSummaryList({
                     classes: 'govuk-!-margin-bottom-9',
                     rows: [
                       {
@@ -210,18 +210,18 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
 
           {% endif %}
 
-        <!-- 
+          <!-- 
           Simplified procedure - consignee's details
         -->
 
-      {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
-      
+          {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
 
-        {% set consigneeDetails = [] %}
 
-        <h2 class="govuk-heading-m">Authorised consignee’s details</h1>
+          {% set consigneeDetails = [] %}
 
-        {% set consigneeDetails = (consigneeDetails.push(
+          <h2 class="govuk-heading-m">Authorised consignee’s details</h1>
+
+            {% set consigneeDetails = (consigneeDetails.push(
                 {
                     key: {
                     text: "What is the name of the authorised consignee?"
@@ -241,7 +241,7 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
                 }
                 ), consigneeDetails) %}
 
-          {% set consigneeDetails = (consigneeDetails.push(
+            {% set consigneeDetails = (consigneeDetails.push(
                     {
                     key: {
                     html: "Is GB123456789012345 the EORI number for " + data['consignee-name'] + "?"
@@ -261,9 +261,9 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
                 }
           ), consigneeDetails) %}
 
-        {% if (data['consigneeEoriToUse'] == "No ") %}
+            {% if (data['consigneeEoriToUse'] == "No ") %}
 
-          {% set consigneeDetails = (consigneeDetails.push(
+            {% set consigneeDetails = (consigneeDetails.push(
                 {
                     key: {
                     html: "What is the EORI number for " + data['consignee-name'] + "?"
@@ -282,12 +282,10 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
                     }
                 }
           ), consigneeDetails) %}
-              
-        {% endif %}
 
-          {% set consigneeDetails = (consigneeDetails.push(
+            {% endif %}
 
-
+            {% set consigneeDetails = (consigneeDetails.push(
                 {
                         key: {
                           text: "Address"
@@ -305,67 +303,86 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
                           ]
                         }
                       }
-
-                
                 ), consigneeDetails) %}
 
-        {{ govukSummaryList({
+            {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
+              {% set consigneeDetails = (consigneeDetails.push(
+
+                  {
+                  key: {
+                    text: "Customs supervising office"
+                  },
+                  value: {
+                    text: data['border-force-office'] | getOffice
+                  },
+                  actions: {
+                    items: [{
+                      href: "border-force-office",
+                      text: "Change",
+                      visuallyHiddenText: "Change - Customs supervising office"
+                    }]
+                  }
+                }
+              ), consigneeDetails) %}
+            {% endif %}
+
+            {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
                 rows: consigneeDetails
                 }) }}
 
-      {% endif %}
+            {% endif %}
 
-        <!--
+            <!--
          Place where arrival notification was completed
-        -->       
+        -->
 
-        {% if (data['where-are-the-goods'] == "BorderForce") %}
+            {% if (data['where-are-the-goods'] == "BorderForce") %}
 
-         <h2 class="govuk-heading-m">Place where this was completed</h2>
+            <h2 class="govuk-heading-m">Place where this was completed</h2>
 
-          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Did you complete the arrival notification at the trader’s address?
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{ data['place-postcode'] }}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="place-of-notification-postcode.html">
-                  Change<span class="govuk-visually-hidden">
-                    need content</span>
-                </a>
-              </dd>
-            </div>
-            {% if (data['place-postcode'] == "No ") %}
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Where are you completing this arrival notification?
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{ data['place-notification'] }}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="place-notification.html">
-                  Change<span class="govuk-visually-hidden">
-                    need content</span>
-                </a>
-              </dd>
-            </div>
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Did you complete the arrival notification at the trader’s address?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['place-postcode'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="place-of-notification-postcode.html">
+                    Change<span class="govuk-visually-hidden">
+                      need content</span>
+                  </a>
+                </dd>
+              </div>
+              {% if (data['place-postcode'] == "No ") %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Where are you completing this arrival notification?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['place-notification'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="place-notification.html">
+                    Change<span class="govuk-visually-hidden">
+                      need content</span>
+                  </a>
+                </dd>
+              </div>
+              {% endif %}
+            </dl>
+
             {% endif %}
-          </dl>
 
-            {% endif %}
-        
 
-                  {% set events = [] %}
-                  <h2 class="govuk-heading-m">Events</h1>
+            {% set events = [] %}
+            <h2 class="govuk-heading-m">Events</h1>
 
-                  {% if (data['where-are-the-goods'] == "BorderForce") %}
+              {% if (data['where-are-the-goods'] == "BorderForce") %}
 
-                  {% set events = (events.push(
+              {% set events = (events.push(
                             {
                               key: {
                                 text: "Has something happened on the route?"
@@ -385,9 +402,9 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
                             }
                             ), events) %}
 
-                  {% else %}
+              {% else %}
 
-                  {% set events = (events.push(
+              {% set events = (events.push(
                     {
                       key: {
                         text: "Has something happened on the route?"
@@ -407,10 +424,10 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
                     }
                     ), events) %}
 
-                    {% endif %}
-          
+              {% endif %}
 
-        {{ govukSummaryList({
+
+              {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
                 rows: movementReference,
                 rows: goodsLocation,
@@ -420,20 +437,21 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
 
 
 
-        <h2 class="govuk-heading-m">Now send your arrival notification</h2>
+              <h2 class="govuk-heading-m">Now send your arrival notification</h2>
 
-        <p class="govuk-body">By sending this you are confirming that the details you are providing are correct, to the best of your knowledge.</p>
-        <input type="hidden" name="answers-checked" value="true">
+              <p class="govuk-body">By sending this you are confirming that the details you are providing are correct,
+                to the best of your knowledge.</p>
+              <input type="hidden" name="answers-checked" value="true">
 
-        {{ govukButton({
+              {{ govukButton({
           text: "Confirm and send",
           href: "arrival-sent"
         }) }}
 
-      </form>
-      {# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
+    </form>
+    {# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
 
-    </div>
   </div>
+</div>
 
 {% endblock %}

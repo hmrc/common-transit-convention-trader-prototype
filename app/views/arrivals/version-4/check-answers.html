@@ -256,8 +256,6 @@
         {% endif %}
 
           {% set consigneeDetails = (consigneeDetails.push(
-
-
                 {
                         key: {
                           text: "Address"
@@ -275,9 +273,29 @@
                           ]
                         }
                       }
-
-                
                 ), consigneeDetails) %}
+
+        {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
+
+              {% set consigneeDetails = (consigneeDetails.push(
+                  {
+                  key: {
+                    text: "Customs supervising office"
+                  },
+                  value: {
+                    text: data['border-force-office'] | getOffice
+                  },
+                  actions: {
+                    items: [{
+                      href: "border-force-office",
+                      text: "Change",
+                      visuallyHiddenText: "Change - Customs supervising office"
+                    }]
+                  }
+                }
+              ), consigneeDetails) %}
+
+            {% endif %}
 
         {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
