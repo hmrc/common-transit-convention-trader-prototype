@@ -191,8 +191,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% if (data['traderEORINumber'] | length != "0" ) or (data['traderName'] | length != "0") %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-completed">Trader
-                details</a>
+              <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-completed">Edit trader’s details</a>
             </span>
             <span class="hmrc-status-tag" id="trader-details-completed">
               Completed
@@ -201,8 +200,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% elif data['is-eori-known'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-in-progress">Trader
-                details</a>
+              <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-in-progress">Add trader’s details</a>
             </span>
             <span class="hmrc-status-tag" id="trader-details-in-progress">
               In progress
@@ -211,8 +209,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% else %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-not-started">Trader
-                details</a>
+              <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-not-started">Add trader’s details</a>
             </span>
             <span class="hmrc-status-tag" id="trader-details-not-started">
               Not started
@@ -225,7 +222,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% if (data['do-you-need-seals-info'] == "No ") or (data['seal-ID'] == "No ") or (data['add-another-seal'] == "No ") %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="goods-summary/items-declaring" aria-describedby="goods-summary-completed">Goods summary</a>
+              <a href="goods-summary/items-declaring" aria-describedby="goods-summary-completed">Edit goods summary</a>
             </span>
             <span class="hmrc-status-tag" id="goods-summary-completed">
               Completed
@@ -234,7 +231,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% elif data['total-number-of-items'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="goods-summary/items-declaring" aria-describedby="goods-summary-in-progress">Goods summary</a>
+              <a href="goods-summary/items-declaring" aria-describedby="goods-summary-in-progress">Add goods summary</a>
             </span>
             <span class="hmrc-status-tag" id="goods-summary-in-progress">
               In progress
@@ -243,7 +240,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% else %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="goods-summary/items-declaring" aria-describedby="goods-summary-not-started">Goods summary</a>
+              <a href="goods-summary/items-declaring" aria-describedby="goods-summary-not-started">Add goods summary</a>
             </span>
             <span class="hmrc-status-tag" id="goods-summary-not-started">
               Not started
@@ -256,7 +253,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% if (data['access-code'] | length != "0") or (data['liability-amount'] | length != "0") %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="guarantee/guarantee-type" aria-describedby="guarantee-completed">Guarantee</a>
+              <a href="guarantee/guarantee-type" aria-describedby="guarantee-completed">Edit guarantee</a>
             </span>
             <span class="hmrc-status-tag" id="guarantee-completed">
               Completed
@@ -265,7 +262,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% elif data['guarantee-type'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="guarantee/guarantee-type" aria-describedby="guarantee-in-progress">Guarantee</a>
+              <a href="guarantee/guarantee-type" aria-describedby="guarantee-in-progress">Add guarantee</a>
             </span>
             <span class="hmrc-status-tag" id="guarantee-in-progress">
               In progress
@@ -274,7 +271,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% else %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="guarantee/guarantee-type" aria-describedby="guarantee-not-started">Guarantee</a>
+              <a href="guarantee/guarantee-type" aria-describedby="guarantee-not-started">Add guarantee</a>
             </span>
             <span class="hmrc-status-tag" id="guarantee-not-started">
               Not started
