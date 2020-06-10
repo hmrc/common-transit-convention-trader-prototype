@@ -12,286 +12,10 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <form class="form" action="../task-list">
+      <form class="form" action="../task-list">       
+      
+    <h1 class="govuk-heading-xl">Check your answers</h1>
 
-      <!-- 
-        Movement details start
-      -->
-
-      {% set movementDetails = [] %}
-
-        <h1 class="govuk-heading-xl">Check your answers</h1>
-
-        {% set movementDetails = (movementDetails.push(
-            {
-                    key: {
-                    text: "Local reference number"
-                    },
-                    value: {
-                    text: data['local-reference-number']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "local-reference-number",
-                        text: "Change",
-                        visuallyHiddenText: "Change - local reference number"
-                        }
-                    ]
-                    }
-                }, 
-
-                {
-                    key: {
-                    text: "Declaration type"
-                    },
-                    value: {
-                    text: data['declaration-type']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "declaration-type",
-                        text: "Change",
-                        visuallyHiddenText: "Change - declaration type"
-                        }
-                    ]
-                    }
-                },
-
-                {
-                    key: {
-                    text: "Security process"
-                    },
-                    value: {
-                    text: data['security-process']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "security",
-                        text: "Change",
-                        visuallyHiddenText: "Change - security process"
-                        }
-                    ]
-                    }
-                },
-
-                {
-                    key: {
-                    text: "Procedure type"
-                    },
-                    value: {
-                    text: data['departuresProcedureType']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "procedure-type",
-                        text: "Change",
-                        visuallyHiddenText: "Change - procedure type"
-                        }
-                    ]
-                    }
-                },
-
-                {
-                    key: {
-                    text: "Containers used"
-                    },
-                    value: {
-                    text: data['have-you-used-containers']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "containers-used",
-                        text: "Change",
-                        visuallyHiddenText: "Change - containers used"
-                        }
-                    ]
-                    }
-                }, 
-
-                {
-                    key: {
-                    text: "Place of declaration"
-                    },
-                    value: {
-                    text: data['place-of-declaration']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "place-of-declaration",
-                        text: "Change",
-                        visuallyHiddenText: "Change - place of declaration"
-                        }
-                    ]
-                    }
-                },
-
-                {
-                    key: {
-                    text: "Creating on behalf of someone"
-                    },
-                    value: {
-                    text: data['on-behalf-of-someone-else']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "declaration-for-someone-else",
-                        text: "Change",
-                        visuallyHiddenText: "Change - are you creating this on behalf of someone"
-                        }
-                      ]
-                    }
-                  }
-                
-              ), movementDetails) %}
-
-
-    {% if (data['on-behalf-of-someone-else'] == "Yes") %}
-        {% set movementDetails = (movementDetails.push(
-                  {
-                    key: {
-                      text: "Your name and capacity"
-                    },
-                    value: {
-                      html: data['representative-name'] + "<br>" + data['representative-capacity']
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "name-and-capacity",
-                          text: "Change",
-                          visuallyHiddenText: "Change - your name and capacity"
-                        }
-                      ]
-                    }
-                  }
-        ), movementDetails) %}
-    {% endif %}
-
-      <!-- 
-        Movement details end
-      -->
-
-      <!-- 
-        Route details start
-      -->
-
-      {% set routeDetails = [] %}
-
-        {% set routeDetails = (routeDetails.push(
-                  {
-                    key: {
-                    text: "Country of dispatch"
-                    },
-                    value: {
-                    text: data['dispatch-country'] | getCountry
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "dispatch-country",
-                        text: "Change",
-                        visuallyHiddenText: "Change - country of dispatch"
-                        }
-                    ]
-                    }
-                },
-
-                {
-                    key: {
-                    text: "Office of departure"
-                    },
-                    value: {
-                    text: data['office-of-departure']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "office-of-departure",
-                        text: "Change",
-                        visuallyHiddenText: "Change - office of departure"
-                        }
-                    ]
-                    }
-                }
-                
-              ), routeDetails) %}
-
-    {% if (data['add-country-of-destination'] == "Yes") %}
-        {% set routeDetails = (routeDetails.push(
-                  {
-                    key: {
-                      text: "Destination country"
-                    },
-                    value: {
-                      html: data['country-of-destination'] | getCountry
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "destination-country",
-                          text: "Change",
-                          visuallyHiddenText: "Change - destination country"
-                        }
-                      ]
-                    }
-                  }
-        ), routeDetails) %}
-    {% endif %}      
-
-      {% set routeDetails = (routeDetails.push(
-
-                  {
-                    key: {
-                    text: "Destination office"
-                    },
-                    value: {
-                    text: data['office-of-destination']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "destination-office",
-                        text: "Change",
-                        visuallyHiddenText: "Change - destination office"
-                        }
-                    ]
-                    }
-                  },
-
-                  {
-                    key: {
-                      text: "Transit office 1"
-                    },
-                    value: {
-                      html: data['office-of-transit'] | getOfficeOfTransit
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "added-transit-office",
-                          text: "Change",
-                          visuallyHiddenText: "Change - transit office 1"
-                        }
-                      ]
-                    }
-                  }
-                
-              ), routeDetails) %}
-
-    <!-- 
-      Route details start
-    -->
-
-    <!--
-      Transport details section start
-    -->   
 
     {% set transportDetails = [] %}
 
@@ -514,7 +238,7 @@
                   actions: {
                     items: [
                       {
-                        href: "identity-at-border",
+                        href: "id-crossing-border",
                         text: "Change",
                         visuallyHiddenText: "Change - ID crossing the border"
                       }
@@ -571,39 +295,16 @@
                         }
                       ), transportDetails) %}    
 
-
                   {% endif %}   
 
           {% endif %}   
 
-      {% endif %}    
-
-
-    <!--
-      Transport details section end
-    -->             
-
-      <h2 class="govuk-heading-m">Movement details</h2>
-
-        {{ govukSummaryList({
-           classes: 'govuk-!-margin-bottom-9',
-           rows: movementDetails
-        }) }}
-
-        <h2 class="govuk-heading-m">Route details</h2>
-
-        {{ govukSummaryList({
-           classes: 'govuk-!-margin-bottom-9',
-           rows: routeDetails
-        }) }}
-
-        <h2 class="govuk-heading-m">Transport details</h2>
+      {% endif %}   
 
         {{ govukSummaryList({
            classes: 'govuk-!-margin-bottom-9',
            rows: transportDetails
         }) }}
-        
 
         {{ govukButton({
           text: "Save and continue"

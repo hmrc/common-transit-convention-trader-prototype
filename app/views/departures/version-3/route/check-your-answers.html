@@ -1,0 +1,173 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <form class="form" action="../task-list">
+
+      <h1 class="govuk-heading-xl">Check your answers</h1>
+
+      {% set routeDetails = [] %}
+
+      {% set routeDetails = (routeDetails.push(
+                  {
+                    key: {
+                    text: "Country of dispatch"
+                    },
+                    value: {
+                    text: data['dispatch-country'] | getCountry
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "dispatch-country",
+                        text: "Change",
+                        visuallyHiddenText: "Change - country of dispatch"
+                        }
+                    ]
+                    }
+                },
+
+                {
+                    key: {
+                    text: "Office of departure"
+                    },
+                    value: {
+                    text: data['office-of-departure']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "office-of-departure",
+                        text: "Change",
+                        visuallyHiddenText: "Change - office of departure"
+                        }
+                    ]
+                    }
+                }
+                
+              ), routeDetails) %}
+
+      {% if (data['add-country-of-destination'] == "Yes") %}
+      {% set routeDetails = (routeDetails.push(
+                  {
+                    key: {
+                      text: "Destination country"
+                    },
+                    value: {
+                      html: data['country-of-destination'] | getCountry
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "destination-country",
+                          text: "Change",
+                          visuallyHiddenText: "Change - destination country"
+                        }
+                      ]
+                    }
+                  }
+        ), routeDetails) %}
+      {% endif %}
+
+      {% set routeDetails = (routeDetails.push(
+
+                  {
+                    key: {
+                    text: "Destination office"
+                    },
+                    value: {
+                    text: data['office-of-destination']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "destination-office",
+                        text: "Change",
+                        visuallyHiddenText: "Change - destination office"
+                        }
+                    ]
+                    }
+                  },
+
+                  {
+                    key: {
+                    text: "Destination country"
+                    },
+                    value: {
+                    text: data['country-of-destination']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "destination-country",
+                        text: "Change",
+                        visuallyHiddenText: "Change - destination country"
+                        }
+                    ]
+                    }
+                  }
+                
+              ), routeDetails) %}
+
+      {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: routeDetails
+              }) }}
+
+      {% set transitOffices = [] %}
+
+      {% set transitOffices = (transitOffices.push(
+              {
+                    key: {
+                      text: "Transit office 1"
+                    },
+                    value: {
+                      html: data['office-of-transit'] | getOfficeOfTransit
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "add-another-transit-office",
+                          text: "Change",
+                          visuallyHiddenText: "Change - transit office 1"
+                        }
+                      ]
+                    }
+                  } 
+
+              ), transitOffices) %}
+
+      <h2 class="govuk-heading-m">Transit offices</h2>
+
+      {{ govukSummaryList({
+           classes: 'govuk-!-margin-bottom-4',
+           rows: transitOffices
+        }) }}
+
+      <p class="govuk-body"><a href="added-transit-offices">Add or remove transit offices</a>
+        <p>
+
+          <br>
+
+          {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+          <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
