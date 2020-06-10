@@ -19,14 +19,14 @@ const router = express.Router()
 //     }
 //   })
 
-  router.post('/overview/add-transport-details', function (req, res) {
+  router.post('/transport/add-transport-details', function (req, res) {
 
     let addTransportDetails = req.session.data.addTransportDetails;
 
     if (addTransportDetails == 'No') {
-        res.redirect('check-your-answers');
+        res.redirect('../task-list');
     } else {
-        res.redirect('transport-details/transport-details');
+        res.redirect('transport-details');
     }
 
 })
