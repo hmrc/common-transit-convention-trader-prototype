@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is your name and capacity? {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="check-your-answers" class="form" method="post">
+
+    <span class="govuk-caption-xl">{{ data['movementDetails'] }}</span>
+
+        {# {% call govukFieldset({
+          legend: {
+            text: "What is your name?",
+            classes: "govuk-fieldset__legend--xl",
+            isPageHeading: true
+          }
+        }) %} #}
+
+        {{ govukRadios({
+        idPrefix: "representative-capacity",
+        name: "representative-capacity",
+        fieldset: {
+          legend: {
+            text: "What is your capacity?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "Direct",
+            text: "Direct"
+            },
+          {
+            value: "Indirect",
+            text: "Indirect"
+          }
+        ]
+      }) }}
+
+
+        {# {{ govukInput({
+          label: {
+            text: "Your capacity (optional)"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "representative-capacity",
+          name: "representative-capacity"
+        }) }} #}
+
+        {# {% endcall %} #}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
