@@ -17,14 +17,6 @@ What is your name and capacity? {{ data['pageTitleAddOn']}}
 
     <span class="govuk-caption-xl">{{ data['movementDetails'] }}</span>
 
-        {# {% call govukFieldset({
-          legend: {
-            text: "What is your name?",
-            classes: "govuk-fieldset__legend--xl",
-            isPageHeading: true
-          }
-        }) %} #}
-
         {{ govukRadios({
         idPrefix: "representative-capacity",
         name: "representative-capacity",
@@ -56,8 +48,6 @@ What is your name and capacity? {{ data['pageTitleAddOn']}}
           id: "representative-capacity",
           name: "representative-capacity"
         }) }} #}
-
-        {# {% endcall %} #}
 
         {{ govukButton({
           text: "Save and continue"
