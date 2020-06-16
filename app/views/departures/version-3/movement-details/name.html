@@ -13,35 +13,36 @@ What is your name and capacity? {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="check-your-answers" class="form" method="post">
+    <form action="capacity" class="form" method="post">
 
     <span class="govuk-caption-xl">{{ data['movementDetails'] }}</span>
 
         {% call govukFieldset({
           legend: {
-            text: "What is your name and capacity?",
+            text: "What is your name?",
             classes: "govuk-fieldset__legend--xl",
             isPageHeading: true
           }
         }) %}
 
-        {{ govukInput({
-          label: {
+        {# label: {
             html: 'Your name'
-          },
+          }, #}
+
+        {{ govukInput({
           classes: "govuk-!-width-two-thirds",
           id: "representative-name",
           name: "representative-name"
         }) }}
 
-        {{ govukInput({
+        {# {{ govukInput({
           label: {
             text: "Your capacity (optional)"
           },
           classes: "govuk-!-width-two-thirds",
           id: "representative-capacity",
           name: "representative-capacity"
-        }) }}
+        }) }} #}
 
         {% endcall %}
 

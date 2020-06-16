@@ -150,24 +150,45 @@
 
     {% if (data['on-behalf-of-someone-else'] == "Yes") %}
         {% set movementDetails = (movementDetails.push(
+
                   {
                     key: {
-                      text: "Your name and capacity"
+                      text: "Name"
                     },
                     value: {
-                      html: data['representative-name'] + "<br>" + data['representative-capacity']
+                      text: data['representative-name']
                     },
                     actions: {
                       items: [
                         {
-                          href: "name-and-capacity",
+                          href: "name",
                           text: "Change",
-                          visuallyHiddenText: "Change - your name and capacity"
+                          visuallyHiddenText: "Change - your name"
+                        }
+                      ]
+                    }
+                  },
+
+                  {
+                    key: {
+                      text: "Capacity"
+                    },
+                    value: {
+                      text: data['representative-capacity']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "capacity",
+                          text: "Change",
+                          visuallyHiddenText: "Change - your capacity"
                         }
                       ]
                     }
                   }
+
         ), movementDetails) %}
+
     {% endif %}
 
     {{ govukSummaryList({

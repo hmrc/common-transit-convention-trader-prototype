@@ -35,9 +35,24 @@ What declaration do you want to create? {{ data['pageTitleAddOn']}}
           {
             value: "T2",
             text: "T2 (goods moving under internal Union Transit procedure)"
+          },
+          {
+            value: "T-",
+            text: "T- (mixed consignment of T1 and T2 goods)"
+          },
+          {
+            value: "T2F",
+            text: "T2 (T2F between different fiscal territories)"
           }
         ]
       }) }}
+
+      <!-- T-, T2F 
+      
+      (T2F) = T2 between diff. fiscal territ.
+      (T-) Mixed Consignment of T1 and T2 good
+      
+      -->
 
       {{ govukButton({
         text: "Save and continue"
