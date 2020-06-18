@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you know the principal’s EORI number? {{ data['pageTitleAddOn']}}
+Do you know the consignee’s EORI number? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,11 +19,11 @@ Do you know the principal’s EORI number? {{ data['pageTitleAddOn']}}
 
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        idPrefix: "is-principal-eori-known",
-        name: "is-principal-eori-known",
+        idPrefix: "is-consignee-eori-known",
+        name: "is-consignee-eori-known",
         fieldset: {
           legend: {
-            text: "Do you know the principal’s EORI number?",
+            text: "Do you know the consignee’s EORI number?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
@@ -33,11 +33,11 @@ Do you know the principal’s EORI number? {{ data['pageTitleAddOn']}}
         },
         items: [
           {
-            value: "Yes redirect(what-is-principal-eori)",
+            value: "Yes redirect(what-is-consignee-eori)",
             text: "Yes"
           },
           {
-            value: "No redirect(principal-name)",
+            value: "No redirect(consignee-name)",
             text: "No"
           }
         ]

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the principal’s EORI number?
+What is the consignee’s EORI number? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,14 +15,14 @@ What is the principal’s EORI number?
 
     <form class="form" action="check-answers" method="post">
 
-        <h1 class="govuk-heading-xl">What is the principal’s EORI number?</h1>
+        <h1 class="govuk-heading-xl">What is the consignee’s EORI number?</h1>
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
         
         {{ govukInput({
           classes: "govuk-input--width-20",
-          id: "what-is-eori",
-          name: "traderEORINumber"
+          id: "what-is-cconsignee-eori",
+          name: "consigneeEORINumber"
         }) }}
 
         {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -33,7 +33,7 @@ What is the principal’s EORI number?
 
     </form>
 
-    <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> --></p>
+    <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
 
   </div>
 </div>
