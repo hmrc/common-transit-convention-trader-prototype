@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add details for a consignee? {{ data['pageTitleAddOn']}}
+Do you need to add a consignee? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,7 +23,7 @@ Do you need to add details for a consignee? {{ data['pageTitleAddOn']}}
         name: "add-consignee",
         fieldset: {
           legend: {
-            text: "Do you need to add details for a consignee?",
+            text: "Do you need to add a consignee?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
