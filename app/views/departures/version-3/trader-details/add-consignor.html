@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add details for a consignor? {{ data['pageTitleAddOn']}}
+Do you need to add a consignor? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,7 +23,7 @@ Do you need to add details for a consignor? {{ data['pageTitleAddOn']}}
         name: "add-consignor",
         fieldset: {
           legend: {
-            text: "Do you need to add details for a consignor?",
+            text: "Do you need to add a consignor?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
