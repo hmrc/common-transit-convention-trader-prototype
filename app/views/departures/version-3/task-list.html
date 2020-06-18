@@ -188,7 +188,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
 
           <!-- Trader details -->
 
-          {% if (data['traderEORINumber'] | length != "0" ) or (data['traderName'] | length != "0") %}
+          {% if data['add-consignee'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-completed">Edit trader’s details</a>
@@ -197,7 +197,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
               Completed
             </span>
           </li>
-          {% elif data['is-eori-known'] | length != "0" %}
+          {% elif data['is-principal-eori-known'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-in-progress">Add trader’s details</a>
