@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the principal’s name? {{ data['pageTitleAddOn']}}
+What is the consignee’s name? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,16 +13,16 @@ What is the principal’s name? {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="principal-address" method="post">
+    <form class="form" action="consignee-address" method="post">
 
         {{ govukInput({
           label: {
-            text: "What is the principal’s name?",
+            text: "What is the consignee’s name?",
             classes: "govuk-label--xl",
             isPageHeading: true
           },
-          id: "traderName",
-          name: "traderName"
+          id: "consigneeName",
+          name: "consigneeName"
         }) }}
 
         {% from "govuk/components/button/macro.njk" import govukButton %}
