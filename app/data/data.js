@@ -6280,6 +6280,118 @@ var data = {
                 "text": "United Kingdom",
                 "selected": false
             }
+        ],
+        'transportMode': [
+            {
+                "value": "",
+                "text": "",   
+                "selected": false
+            },
+            {
+                "value": "(17) (semi) Trailer on sea-going vessel",
+                "text": "(17) (semi) Trailer on sea-going vessel",   
+                "selected": false
+            },
+            {
+                "value": "(4) Air transport",
+                "text": "(4) Air transport",   
+                "selected": false
+            },
+            {
+                "value": "(40) Air transport",
+                "text": "(40) Air transport",   
+                "selected": false
+            },
+            {
+                "value": "(7) Fixed transport installations",
+                "text": "(7) Fixed transport installations",   
+                "selected": false
+            },
+            {
+                "value": "(70) Fixed transport installations",
+                "text": "(70) Fixed transport installations",   
+                "selected": false
+            },
+            {
+                "value": "(80) Inland waterway transport",
+                "text": "(80) Inland waterway transport",   
+                "selected": false
+            },
+            {
+                "value": "(8) Inland waterway transport",
+                "text": "(8) Inland waterway transport",   
+                "selected": false
+            },
+            {
+                "value": "(18) Inland waterway vessel on sea-going",
+                "text": "(18) Inland waterway vessel on sea-going",   
+                "selected": false
+            },,
+            {
+                "value": "(90) Own propulsion",
+                "text": "(90) Own propulsion",   
+                "selected": false
+            },
+            {
+                "value": "(9) Own propulsion",
+                "text": "(9) Own propulsion",   
+                "selected": false
+            },
+            {
+                "value": "(5) Postal Consignment",
+                "text": "(5) Postal Consignment",   
+                "selected": false
+            },
+            {
+                "value": "(50) Postal Consignment",
+                "text": "(50) Postal Consignment",   
+                "selected": false
+            },
+            {
+                "value": "(16) Powered road vehicle on sea-going",
+                "text": "(16) Powered road vehicle on sea-going",   
+                "selected": false
+            },
+            {
+                "value": "(2) Rail transport",
+                "text": "(2) Rail transport",   
+                "selected": false
+            },
+            {
+                "value": "(20) Rail transport",
+                "text": "(20) Rail transport",   
+                "selected": false
+            },
+            {
+                "value": "(12) Railway wagon on sea-going vessel",
+                "text": "(12) Railway wagon on sea-going vessel",   
+                "selected": false
+            },
+            {
+                "value": "(3) Road transport",
+                "text": "(3) Road transport",   
+                "selected": false
+            },
+            {
+                "value": "(30) Road transport",
+                "text": "(30) Road transport",   
+                "selected": false
+            },
+            {
+                "value": "(23) Road vehicle on railwagon",
+                "text": "(23) Road vehicle on railwagon",   
+                "selected": false
+            },
+            {
+                "value": "(1) Sea transport",
+                "text": "(1) Sea transport",   
+                "selected": false
+            },
+            {
+                "value": "(10) Sea transport",
+                "text": "(10) Sea transport",   
+                "selected": false
+            }
         ]
     }
 }
@@ -6287,4 +6399,5 @@ var data = {
 module.exports.officesOfDeparture = data.reference['offices'];
 module.exports.countries = data.reference['countries'];
 module.exports.officeOfTransit = data.reference['officeOfTransit'];
-module.exports.ctcOnlyCountries = data.reference['ctcOnlyCountries']
+module.exports.ctcOnlyCountries = data.reference['ctcOnlyCountries'];
+module.exports.transportMode = data.reference['transportMode']

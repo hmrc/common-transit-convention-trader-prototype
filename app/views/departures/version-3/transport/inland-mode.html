@@ -4,6 +4,12 @@
 What is the inland mode? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
+{% block pageHead %}
+<!--[if gt IE 8]><!-->
+<link href="/public/stylesheets/accessible-autocomplete.css" media="all" rel="stylesheet" type="text/css" />
+<!--<![endif]-->
+{% endblock %}
+
 {% block beforeContent %}
 <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
@@ -16,12 +22,32 @@ What is the inland mode? {{ data['pageTitleAddOn']}}
       <form method="post">
 
         <span class="govuk-caption-xl">{{ data['transportDetails'] }}</span>
+
+        <h1 class="govuk-heading-xl">What is the inland mode?</h1>
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukSelect({
+          classes: "govuk-input--width-20 autocomplete",
+          label: {
+            text: header,
+            isPageHeading: true,
+            classes: "govuk-label--xl"
+          },
+          id: "inlandMode",
+          name: "inlandMode",
+          errorMessage: form.value.error,
+          items: CTCData.transportMode
+        }) }}
+
+
+
         
       <!-- 
-          If the user has selected 'yes' to have-you-used-containers they need to be directed to nationality-at-departure
+          If the user has selected 'yes' to containersUsed they need to be directed to nationality-at-departure
       -->      
 
-      {% if (data['have-you-used-containers'] == "Yes") %}
+      {# {% if (data['containersUsed'] == "Yes") %}
 
           {{ govukRadios({
             classes: "govuk-radios",
@@ -39,8 +65,8 @@ What is the inland mode? {{ data['pageTitleAddOn']}}
             },
             items: [
               {
-                value: "(17) (semi)Trailer on sea-going vessel, redirect(nationality-at-departure)",
-                text: "(17) (semi)Trailer on sea-going vessel"
+                value: "(17) (semi) Trailer on sea-going vessel, redirect(nationality-at-departure)",
+                text: "(17) (semi) Trailer on sea-going vessel"
               },
               {
                 value: "(4) Air transport, redirect(nationality-at-departure)",
@@ -128,7 +154,7 @@ What is the inland mode? {{ data['pageTitleAddOn']}}
         {% else %}
 
         <!-- 
-          If the user has selected 'no' to have-you-used-containers they need to be branched off as normal
+          If the user has selected 'no' to containersUsed they need to be branched off as normal
           (5),(50),(7),(70) go to nationality-at-departure
           (2),(20) go to add-nationality-at-departure
         -->  
@@ -149,8 +175,8 @@ What is the inland mode? {{ data['pageTitleAddOn']}}
             },
             items: [
               {
-                value: "(17) (semi)Trailer on sea-going vessel, redirect(id-at-departure)",
-                text: "(17) (semi)Trailer on sea-going vessel"
+                value: "(17) (semi) Trailer on sea-going vessel, redirect(id-at-departure)",
+                text: "(17) (semi) Trailer on sea-going vessel"
               },
               {
                 value: "(4) Air transport, redirect(id-at-departure)",
@@ -233,9 +259,9 @@ What is the inland mode? {{ data['pageTitleAddOn']}}
                 text: "(10) Sea transport"
               }
             ]
-          }) }} 
+          }) }}  #}
 
-        {% endif %}         
+        {# {% endif %}          #}
 
 
         {{ govukButton({
@@ -249,4 +275,8 @@ What is the inland mode? {{ data['pageTitleAddOn']}}
   </div>
 </div>
 
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/accessible-autocomplete.js"></script>
 {% endblock %}

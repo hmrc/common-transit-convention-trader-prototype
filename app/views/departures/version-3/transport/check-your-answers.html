@@ -78,7 +78,7 @@
                           text: "Inland mode"
                         },
                         value: {
-                          html: data['inland-mode']
+                          html: data['inlandMode']
                         },
                         actions: {
                           items: [
@@ -95,7 +95,7 @@
               <!-- 
                 If inland mode = "2, or 20" 
               --> 
-              {% if (data['inland-mode'] == "(2) Rail transport") or (data['inland-mode'] == "(20) Rail transport") %}
+              {% if (data['inlandMode'] == "(2) Rail transport") or (data['inlandMode'] == "(20) Rail transport") %}
 
                   <!-- Do you need to add nationality at departure? --> 
                     {% set transportDetails = (transportDetails.push(
@@ -123,11 +123,11 @@
               <!-- 
                 If inland mode = 5,50,7,70, containers used = yes, or add nationality at departure = yes 
               --> 
-              {% if (data['inland-mode'] == "(5) Postal Consignment") or
-                    (data['inland-mode'] == "(50) Postal Consignment") or
-                    (data['inland-mode'] == "(7) Fixed transport installations") or
-                    (data['inland-mode'] == "(70) Fixed transport installations") or
-                    (data['have-you-used-containers'] == "Yes") or
+              {% if (data['inlandMode'] == "(5) Postal Consignment") or
+                    (data['inlandMode'] == "(50) Postal Consignment") or
+                    (data['inlandMode'] == "(7) Fixed transport installations") or
+                    (data['inlandMode'] == "(70) Fixed transport installations") or
+                    (data['containersUsed'] == "Yes") or
                     (data['add-nationality-at-departure'] == "Yes")
               %}
 
@@ -212,7 +212,7 @@
                     text: "Mode at the border"
                   },
                   value: {
-                    html: data['mode-at-border']
+                    html: data['modeAtBorder']
                   },
                   actions: {
                     items: [
@@ -254,7 +254,7 @@
                     text: "Mode crossing the border"
                   },
                   value: {
-                    html: data['mode-crossing-border']
+                    html: data['modeCrossingBorder']
                   },
                   actions: {
                     items: [

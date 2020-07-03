@@ -4,6 +4,12 @@
 What is the mode at the border? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
+{% block pageHead %}
+<!--[if gt IE 8]><!-->
+<link href="/public/stylesheets/accessible-autocomplete.css" media="all" rel="stylesheet" type="text/css" />
+<!--<![endif]-->
+{% endblock %}
+
 {% block beforeContent %}
 <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
@@ -17,7 +23,24 @@ What is the mode at the border? {{ data['pageTitleAddOn']}}
 
         <span class="govuk-caption-xl">{{ data['transportDetails'] }}</span>
 
-        {{ govukRadios({
+        <h1 class="govuk-heading-xl">What is the mode at the border?</h1>
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukSelect({
+          classes: "govuk-input--width-20 autocomplete",
+          label: {
+            text: header,
+            isPageHeading: true,
+            classes: "govuk-label--xl"
+          },
+          id: "modeAtBorder",
+          name: "modeAtBorder",
+          errorMessage: form.value.error,
+          items: CTCData.transportMode
+        }) }}
+
+        {# {{ govukRadios({
           classes: "govuk-radios",
           idPrefix: "mode-at-border",
           name: "mode-at-border",
@@ -33,8 +56,8 @@ What is the mode at the border? {{ data['pageTitleAddOn']}}
           },
           items: [
             {
-              value: "(17) (semi)Trailer on sea-going vessel, redirect(id-crossing-border)",
-              text: "(17) (semi)Trailer on sea-going vessel"
+              value: "(17) (semi) Trailer on sea-going vessel, redirect(id-crossing-border)",
+              text: "(17) (semi) Trailer on sea-going vessel"
             },
             {
               value: "(4) Air transport, redirect(id-crossing-border)",
@@ -117,7 +140,7 @@ What is the mode at the border? {{ data['pageTitleAddOn']}}
               text: "(10) Sea transport"
             }
           ]
-        }) }}
+        }) }} #}
 
         {{ govukButton({
           text: "Save and continue"
@@ -130,4 +153,8 @@ What is the mode at the border? {{ data['pageTitleAddOn']}}
   </div>
 </div>
 
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/accessible-autocomplete.js"></script>
 {% endblock %}
