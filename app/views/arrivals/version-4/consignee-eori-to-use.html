@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Is this the EORI number for the authorised consignee? {{ data['pageTitleAddOn'] }} 
+Is this the authorised consignee’s EORI number? {{ data['pageTitleAddOn'] }} 
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,9 +13,9 @@ Is this the EORI number for the authorised consignee? {{ data['pageTitleAddOn'] 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="consignee-address" method="post">
+    <form class="form" action="border-force-office" method="post">
 
-    <h1 class="govuk-heading-xl">Is GB123456789012345 the EORI number for {{ data['consignee-name'] }}?</h1>
+    <h1 class="govuk-heading-xl">Is GB123456789012345 the authorised consignee’s EORI number?</h1>
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
