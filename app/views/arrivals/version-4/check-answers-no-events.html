@@ -221,7 +221,7 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
 
           <h2 class="govuk-heading-m">Authorised consignee’s details</h1>
 
-            {% set consigneeDetails = (consigneeDetails.push(
+            {# {% set consigneeDetails = (consigneeDetails.push(
                 {
                     key: {
                     text: "What is the name of the authorised consignee?"
@@ -239,12 +239,12 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
                     ]
                     }
                 }
-                ), consigneeDetails) %}
+                ), consigneeDetails) %} #}
 
             {% set consigneeDetails = (consigneeDetails.push(
                     {
                     key: {
-                    html: "Is GB123456789012345 the EORI number for " + data['consignee-name'] + "?"
+                    html: "Is GB123456789012345 the EORI number for the authorised consignee?"
                     },
                     value: {
                     text: data['consigneeEoriToUse']
@@ -252,7 +252,7 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
                     actions: {
                     items: [
                         {
-                        href: "#",
+                        href: "consignee-eori-to-use",
                         text: "Change",
                         visuallyHiddenText: "Change - if this is the EORI number for authorised consignee"
                         }
@@ -266,7 +266,7 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
             {% set consigneeDetails = (consigneeDetails.push(
                 {
                     key: {
-                    html: "What is the EORI number for " + data['consignee-name'] + "?"
+                    html: "What is the EORI number for the authorised consignee?"
                     },
                     value: {
                     text: data['consignee-eori-number']
@@ -285,7 +285,7 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
 
             {% endif %}
 
-            {% set consigneeDetails = (consigneeDetails.push(
+            {# {% set consigneeDetails = (consigneeDetails.push(
                 {
                         key: {
                           text: "Address"
@@ -303,7 +303,7 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
                           ]
                         }
                       }
-                ), consigneeDetails) %}
+                ), consigneeDetails) %} #}
 
             {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
               {% set consigneeDetails = (consigneeDetails.push(
