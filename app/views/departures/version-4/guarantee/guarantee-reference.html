@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is the guarantee reference number? {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="liability-amount" method="post">
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      <h1 class="govuk-heading-xl">What is the guarantee reference number?</h1>
+
+      <p class="govuk-body">You must make sure this reference is up to date.</p>
+
+      {{ govukInput({
+        label: {
+          text: ""
+        },
+        id: "guarantee-reference",
+        classes: "govuk-input--width-20",
+        name: "guarantee-reference",
+        value: data[guarantee-reference]
+      }) }}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

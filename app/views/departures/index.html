@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-xl">
+      Departures journeys
+    </h1>
+
+    <!--
+      Homepage
+    -->
+
+    {# <h2 class="govuk-heading-m">NCTS Arrivals</h2> #}
+
+    {# <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Date</th>
+          <th scope="col" class="govuk-table__header">Comments</th>
+          <th scope="col" class="govuk-table__header">Link</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">17/03/2020</td>
+          <td class="govuk-table__cell">Arrivals journeys </td>
+          <td class="govuk-table__cell"><a href="/arrivals/version-4/homepage">Start</a></td></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">17/03/2020</td>
+          <td class="govuk-table__cell">Departures journeys</td>
+          <td class="govuk-table__cell"><a href="/departures/version-4/index">Start</a></td></td>
+        </tr>
+      </tbody>
+    </table> #}
+
+    <h2 class="govuk-heading-m">Standard journey</h2>
+
+    <p class="govuk-body"><a href="version-4/local-reference-number">Start</a></p>
+
+    <h2 class="govuk-heading-m">Static journey</h2>
+
+    <p class="govuk-body"><a href="#">Start</a></p>
+
+    <p class="govuk-body">Task list already fully completed to demonstrate end to end journey without needing to complete all sections.</p>
+
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,228 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <form class="form" action="../task-list" method="post">
+
+        <h1 class="govuk-heading-xl">Check your answers</h1>
+
+        {%
+          set goodsSummary = [
+            {
+                    key: {
+                    text: "Total items declared"
+                    },
+                    value: {
+                    text: data['total-number-of-items']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "items-declaring",
+                        text: "Change",
+                        visuallyHiddenText: "Change - total items declared"
+                        }
+                    ]
+                    }
+                }, 
+
+                {
+                    key: {
+                    text: "Declare any packages?"
+                    },
+                    value: {
+                    text: data['declare-packages']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "declare-packages",
+                        text: "Change",
+                        visuallyHiddenText: "Change - declare any packages"
+                        }
+                    ]
+                    }
+                }
+          ]
+        %}
+
+        {% if (data['declare-packages'] == "Yes ") %}
+          {% set goodsSummary = (goodsSummary.push(
+                  {
+                    key: {
+                      text: "Total packages declared"
+                    },
+                    value: {
+                      text: data['number-of-packages']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "declaring-packages",
+                          text: "Change",
+                          visuallyHiddenText: "Change - total packages declared"
+                        }
+                      ]
+                    }
+                  }
+              ), goodsSummary) %}
+        {% endif %}
+        
+        {% set goodsSummary = (goodsSummary.push(
+            {
+              key: {
+                text: "Total gross mass in kilograms"
+              },
+              value: {
+                text: data['total-gross-mass']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "total-gross-mass",
+                    text: "Change",
+                    visuallyHiddenText: "Change - total gross mass in kilograms"
+                  }
+                ]
+              }
+            }
+        ), goodsSummary) %}
+
+        {% set goodsSummary = (goodsSummary.push( 
+          {
+            key: {
+                  text: "Loading place"
+                  },
+                  value: {
+                  text: data['loading-place']
+                  },
+                  actions: {
+                  items: [
+                      {
+                      href: "loading-place",
+                      text: "Change",
+                      visuallyHiddenText: "Change - loading place"
+                      }
+                  ]
+                  }
+              }
+         ), goodsSummary) %}
+
+
+        {% set goodsSummary = (goodsSummary.push( 
+          {
+            key: {
+            text: "Add Customs-approved location?"
+            },
+            value: {
+            text: data['add-customs-sub-place']
+            },
+            actions: {
+            items: [
+                {
+                href: "add-customs-approved-location",
+                text: "Change",
+                visuallyHiddenText: "Change - add Customs-approved location"
+                }
+            ]
+            }
+          }
+        ), goodsSummary) %}        
+
+        {% if (data['add-customs-sub-place'] == "Yes ") %}
+          {% set goodsSummary = (goodsSummary.push(
+                    {
+                      key: {
+                        text: "Customs-approved location"
+                      },
+                      value: {
+                        text: data['customs-sub-place']
+                      },
+                      actions: {
+                        items: [
+                          {
+                            href: "customs-approved-location",
+                            text: "Change",
+                            visuallyHiddenText: "Change - Customs=approved location"
+                          }
+                        ]
+                      }
+                    }
+                ), goodsSummary) %}
+        {% endif %}
+
+
+        {% set goodsSummary = (goodsSummary.push( 
+          {
+                  key: {
+                  text: "Add seals?"
+                  },
+                  value: {
+                  text: data['do-you-need-seals-info']
+                  },
+                  actions: {
+                  items: [
+                      {
+                      href: "do-you-need-seals-info",
+                      text: "Change",
+                      visuallyHiddenText: "Change - Add seals"
+                      }
+                  ]
+                  }
+              }
+        ), goodsSummary) %}
+
+        {% if (data['do-you-need-seals-info'] == "Yes ") %}
+          {% set goodsSummary = (goodsSummary.push(
+                  {
+                    key: {
+                      text: "Seals"
+
+                    },
+                    value: {
+                      html: data['seal-id-details'] + "<br>" + data['seal-id-details-2']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "seals-information-2",
+                          text: "Change",
+                          visuallyHiddenText: "Change - seals"
+                        }
+                      ]
+                    }
+                  }
+              ), goodsSummary) %}
+        {% endif %}
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: goodsSummary
+                }) }}
+
+        {{ govukButton({
+                text: "Save and continue",
+                href: "../task-list"
+                }) }}
+
+      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+      
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

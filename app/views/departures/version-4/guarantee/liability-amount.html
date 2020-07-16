@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+How much is the liability amount? {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+  {% if (data['guarantee-type'] == "Comprehensive guarantee ") or
+          (data['guarantee-type'] == "Flat-rate voucher ") or
+          (data['guarantee-type'] == "Guarantee waiver ") or
+          (data['guarantee-type'] == "Individual guarantee ") or
+          (data['containersUsed'] == "Individual guarantee with multiple usage redirect(guarantee-reference) ")
+    %}
+
+    <form class="form" action="access-code" method="post">
+
+      <h1 class="govuk-heading-xl">How much is the liability amount?</h1>
+
+        {{ hmrcInputCurrency({
+            name: "liability-amount",
+            id: "liability-amount",
+            classes: "govuk-input--width-10",
+            autocomplete: "off",
+            type: "tel"
+          })
+        }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+    </form>
+
+    {% else %}
+
+    <form class="form" action="check-answers" method="post">
+
+      <h1 class="govuk-heading-xl">How much is the liability amount?</h1>
+
+        {{ hmrcInputCurrency({
+            name: "liability-amount",
+            id: "liability-amount",
+            classes: "govuk-input--width-10",
+            autocomplete: "off",
+            type: "tel"
+          })
+        }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+    </form>
+
+    {% endif %}
+
+
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is the nationality crossing the border? {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block pageHead %}
+<!--[if gt IE 8]><!-->
+<link href="/public/stylesheets/accessible-autocomplete.css" media="all" rel="stylesheet" type="text/css" />
+<!--<![endif]-->
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="check-your-answers" method="post">
+
+        <span class="govuk-caption-xl">{{ data['transportDetails'] }}</span>
+
+          {% from "govuk/components/input/macro.njk" import govukInput %}
+
+          <h1 class="govuk-heading-xl">What is the nationality crossing the border?</h1>
+
+          {{ govukSelect({
+            classes: "govuk-input--width-20 autocomplete",
+            label: {
+              text: header,
+              isPageHeading: true,
+              classes: "govuk-label--xl"
+            },
+            id: "nationality-crossing-border",
+            name: "nationality-crossing-border",
+            errorMessage: form.value.error,
+            items: CTCData.countries
+          }) }}
+
+          {{ govukButton({
+          text: "Save and continue"
+          }) }}
+
+      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+      </form>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/accessible-autocomplete.js"></script>
+{% endblock %}
