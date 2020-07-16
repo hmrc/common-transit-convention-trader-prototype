@@ -37,6 +37,14 @@ module.exports = {
 
   "tableTwoDate": "15 July 2020",
 
+  "arrivalSentTime": "11:30am",
+
+  "unloadingPermissionTime": "11:45am",
+
+  "unloadingRemarksSentTime": "11:47am",
+
+  "goodsReleasedTime": "11:49am",
+
   //Unloading remarks default values
 
   "total-gross-mass": "800",

@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Departure declaration sent {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    {% set mainClasses = "govuk-main-wrapper--l" %}
+
+    {% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+    {% block content %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            Departure declaration sent
+          </h1>
+          <div class="govuk-panel__body">
+            for local reference number<br><strong>{{ data['local-reference-number'] }}</strong>
+          </div>
+        </div>
+
+        <p class="govuk-body"></p>
+
+        <h2 class="govuk-heading-m">What happens next</h2>
+      
+        <p class="govuk-body"><a href="#" class="govuk-link">Check the status of departure declarations</a> and find out when goods are released. </p>
+
+        <p class="govuk-body">If the goods are not released or you have another problem, contact Customs at Teesport, telephone 01642 440 111.</p> 
+
+        <p class="govuk-body"><a href="local-reference-number" class="govuk-link">Make another departure declaration</a></p>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -70,7 +70,7 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
 
         {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
           <tr role="row">
-            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Updated</span>11:30am</td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Updated</span>{{ data['unloadingRemarksSentTime'] }}</td>
             <td class="govuk-table__cell u--w-15" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Movement reference number</span>{{ data['movement-reference'] }}</td>
             {# <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Trader name</span>{{ data['consignee-name'] }}</td>
             <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Location</span><span class="hmrc-responsive-table__value">{{ data['authorised-location-code'] }}</span></td>
