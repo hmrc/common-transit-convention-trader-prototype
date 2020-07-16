@@ -21,62 +21,47 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
         {
           "updated": "11:03am",
           "mrn": "20GB000060100C06E0",
-          "trader": "Caterpillar",
-          "office": "Teesport	(GB000219)",
-          "procedure": "Normal",
           "status": "Goods released",
-          "actions": ["history"]
+          "actions": ["historyReleased"]
         },
         {
           "updated": "10:50am",
           "mrn": "20IT02130010005402",
-          "trader": "Marks and Spencers",
-          "office": "Liverpool (GB000080)",
-          "procedure": "Normal",
           "status": "Arrival notification rejected",
           "actions": ["mrnDuplicate", "history"]
         },
         {
           "updated": "10:35am",
           "mrn": "20IT02130010005402",
-          "trader": "Marks and Spencers",
-          "office": "Liverpool (GB000080)",
-          "procedure": "Normal",
           "status": "Arrival notification rejected",
           "actions": ["mrnInvalid", "history"]
         },
         {
           "updated": "8:30am",
           "mrn": "20IT02130010005402",
-          "trader": "Marks and Spencers",
-          "office": "Liverpool (GB000080)",
-          "procedure": "Normal",
           "status": "Arrival notification rejected",
           "actions": ["mrnUnknown", "history"]
         },
         {
           "updated": "7:19am",
           "mrn": "20IT02130010005402",
-          "trader": "Marks and Spencers",
-          "office": "Liverpool (GB000080)",
-          "procedure": "Normal",
           "status": "Arrival notification rejected",
           "actions": ["outOfSequence", "history"]
         }
       ]
     %}
 
-    <h2 class="govuk-heading-m">17 March 2020</h2>
+    <h2 class="govuk-heading-m">{{ data['tableOneDate'] }}</h2>
 
     <table class="govuk-table hmrc-responsive-table" role="table">
-      <caption class="govuk-visually-hidden">17 March 2020</caption>
+      <caption class="govuk-visually-hidden">{{ data['tableOneDate'] }}</caption>
       <thead role="rowgroup">
         <tr role="row">
           <th class="govuk-table__header" scope="col" role="columnheader">Updated</th>
           <th class="govuk-table__header u--w-15" scope="col" role="columnheader">Movement reference number</th>
-          <th class="govuk-table__header" scope="col" role="columnheader">Trader name</th>
+          {# <th class="govuk-table__header" scope="col" role="columnheader">Trader name</th>
           <th class="govuk-table__header" scope="col" role="columnheader">Location</th>
-          <th class="govuk-table__header" scope="col" role="columnheader">Procedure</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Procedure</th> #}
           <th class="govuk-table__header" scope="col" role="columnheader">Status</th>
           <th class="govuk-table__header u--w-10" scope="col" role="columnheader">Action</th>
         </tr>
@@ -87,15 +72,15 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
           <tr role="row">
             <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Updated</span>11:30am</td>
             <td class="govuk-table__cell u--w-15" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Movement reference number</span>{{ data['movement-reference'] }}</td>
-            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Trader name</span>{{ data['consignee-name'] }}</td>
+            {# <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Trader name</span>{{ data['consignee-name'] }}</td>
             <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Location</span><span class="hmrc-responsive-table__value">{{ data['authorised-location-code'] }}</span></td>
-            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Procedure</span>Simplified</td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Procedure</span>Simplified</td> #}
             <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Status</span>Goods released</td>
             <td class="govuk-table__cell" role="cell">
               <span class="hmrc-responsive-table__heading" aria-hidden="true">Action</span>
                 <ul class="govuk-list">
                   <li>
-                    <a href="view-history.html">View history<span class="govuk-visually-hidden"> for {{ data['movement-reference'] }}</span> </a>
+                    <a href="../../arrivals/version-4/history/view-history-goods-released">View history<span class="govuk-visually-hidden"> for {{ data['movement-reference'] }}</span> </a>
                   </li>
                 </ul>
             </td>
@@ -106,9 +91,9 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
           <tr role="row">
             <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Updated</span>{{ notice.updated }}</td>
             <td class="govuk-table__cell u--w-15" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Movement reference number</span><span class="hmrc-responsive-table__value">{{ notice.mrn }}</span></td>
-            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Trader name</span>{{ notice.trader | safe }}</td>
+            {# <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Trader name</span>{{ notice.trader | safe }}</td>
             <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Location</span><span class="hmrc-responsive-table__value">{{ notice.office }}</span></td>
-            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Procedure</span>{{ notice.procedure }}</td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Procedure</span>{{ notice.procedure }}</td> #}
             <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Status</span>{{ notice.status }}</td>
             <td class="govuk-table__cell u--w-10" role="cell">
               <span class="hmrc-responsive-table__heading" aria-hidden="true">Action</span>
@@ -121,22 +106,25 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
               {% for action in notice.actions %}
                 {% if notice.actions.length > 0 %}<li>{% endif %}
                 {% if action == "mrnDuplicate" %}
-                  <a href="../../arrivals/version-3/rejected-arrivals/mrn-duplicate">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                  <a href="../../arrivals/version-4/rejected-arrivals/mrn-duplicate">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
                 {% endif %}
                 {% if action == "mrnInvalid" %}
-                  <a href="../../arrivals/version-3/rejected-arrivals/mrn-invalid">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                  <a href="../../arrivals/version-4/rejected-arrivals/mrn-invalid">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
                 {% endif %}
                 {% if action == "mrnUnknown" %}
-                  <a href="../../arrivals/version-3/rejected-arrivals/mrn-unknown">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                  <a href="../../arrivals/version-4/rejected-arrivals/mrn-unknown">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
                 {% endif %}
                 {% if action == "history" %}
-                  <a href="../../arrivals/version-3/history/view-history-goods-released">View history<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span> </a>
+                  <a href="../../arrivals/version-4/history/view-history-rejected.html">View history<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span> </a>
+                {% endif %}
+                {% if action == "historyReleased" %}
+                  <a href="../../arrivals/version-4/history/view-history-released.html">View history<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span> </a>
                 {% endif %}
                 {% if action == "unloading" %}
-                  <a href="../../unloading-remarks/version-6/seals-included/all-goods-unloaded">Make unloading remarks<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                  <a href="../../unloading-remarks/version-5/seals-included/all-goods-unloaded">Make unloading remarks<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
                 {% endif %}
                 {% if action == "outOfSequence" %}
-                  <a href="../../arrivals/version-3/rejected-arrivals/message-out-of-sequence">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                  <a href="../../arrivals/version-4/rejected-arrivals/message-out-of-sequence">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
                 {% endif %}
                 {% if notice.actions.length > 0 %}</li>{% endif %}
               {% endfor %}
@@ -153,25 +141,19 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
     </table>
 
 
-    <h2 class="govuk-heading-m govuk-!-margin-top-6">8 March 2020</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-6">{{ data['tableTwoDate'] }}</h2>
 
     {%
       set feb18 = [
         {
           "updated": "5.39pm",
           "mrn": "20DK0004601366B740",
-          "trader": "Unilever",
-          "office": "Ramsgate	(GB000047)",
-          "procedure": "Normal",
           "status": "Arrival notification rejected",
           "actions": ["errors","history"]
         },
         {
           "updated": "12:39pm",
           "mrn": "20IT02130010005433",
-          "trader": "British Airways",
-          "office": "Felixstowe	(GB000051)",
-          "procedure": "Normal",
           "status": "Arrival notification rejected",
           "actions": ["errors","history"]
         }
@@ -180,14 +162,14 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
 
 
     <table class="govuk-table hmrc-responsive-table" role="table">
-      <caption class="govuk-visually-hidden">18 February 2020</caption>
+      <caption class="govuk-visually-hidden">{{ data['tableTwoDate'] }}</caption>
       <thead role="rowgroup">
         <tr role="row">
           <th class="govuk-table__header" scope="col" role="columnheader">Updated</th>
           <th class="govuk-table__header" scope="col" role="columnheader">Movement reference number</th>
-          <th class="govuk-table__header" scope="col" role="columnheader">Trader name</th>
+          {# <th class="govuk-table__header" scope="col" role="columnheader">Trader name</th>
           <th class="govuk-table__header" scope="col" role="columnheader">Location</th>
-          <th class="govuk-table__header" scope="col" role="columnheader">Procedure</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Procedure</th> #}
           <th class="govuk-table__header" scope="col" role="columnheader">Status</th>
           <th class="govuk-table__header u--w-10" scope="col" role="columnheader">Action</th>
         </tr>
@@ -197,9 +179,9 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
           <tr role="row">
             <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Updated</span>{{ notice.updated }}</td>
             <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Movement reference number</span><span class="hmrc-responsive-table__value">{{ notice.mrn }}</span></td>
-            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Trader name</span>{{ notice.trader | safe }}</td>
+            {# <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Trader name</span>{{ notice.trader | safe }}</td>
             <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Location</span><span class="hmrc-responsive-table__value">{{ notice.office }}</span></td>
-            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Procedure</span>{{ notice.procedure }}</td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Procedure</span>{{ notice.procedure }}</td> #}
             <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Status</span>{{ notice.status }}</td>
             <td class="govuk-table__cell u--w-10" role="cell">
               <span class="hmrc-responsive-table__heading" aria-hidden="true">Action</span>

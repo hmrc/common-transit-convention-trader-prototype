@@ -11,13 +11,18 @@ You must unload all of the goods before you send any unloading remarks
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">{{ data['movement-reference'] }}</span>
       <h1 class="govuk-heading-xl">Unload the goods before you send the unloading remarks</h1>
-      <p class="govuk-body">You can:</p>
+      {# <p class="govuk-body">You can:</p>
       
       <ul class="govuk-list govuk-list--bullet">
         <li>view and print the unloading permissions accompanying document</li>
         <li>check that the unloaded goods match the information in the transit declaration for movement reference {{ data['movement-reference'] }}</li>
-      </ul>
+      </ul> #}
+
+      <p class="govuk-body">Check that the unloaded goods match the information in the transit declaration for movement reference {{ data['movement-reference'] }}.</p>
+
+      <p class="govuk-body"><a href="/public/downloaddocs/Sample_UP.pdf" target="_blank">Download a PDF of the TAD (43KB)</a></p>
 
       {{ govukButton({
         text: "Continue",
@@ -26,6 +31,5 @@ You must unload all of the goods before you send any unloading remarks
 
     </div>
   </div>
-
 
 {% endblock %}

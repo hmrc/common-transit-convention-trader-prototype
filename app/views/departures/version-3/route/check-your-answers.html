@@ -80,6 +80,24 @@ Check your answers {{ data['pageTitleAddOn' ]}}
       {% endif %}
 
       {% set routeDetails = (routeDetails.push(
+        
+                  {
+                    key: {
+                    text: "Destination country"
+                    },
+                    value: {
+                    text: data['country-of-destination']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "destination-country",
+                        text: "Change",
+                        visuallyHiddenText: "Change - destination country"
+                        }
+                    ]
+                    }
+                  },
 
                   {
                     key: {
@@ -94,24 +112,6 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                         href: "destination-office",
                         text: "Change",
                         visuallyHiddenText: "Change - destination office"
-                        }
-                    ]
-                    }
-                  },
-
-                  {
-                    key: {
-                    text: "Destination country"
-                    },
-                    value: {
-                    text: data['country-of-destination']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "destination-country",
-                        text: "Change",
-                        visuallyHiddenText: "Change - destination country"
                         }
                     ]
                     }
