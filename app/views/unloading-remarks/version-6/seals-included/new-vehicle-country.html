@@ -20,9 +20,11 @@
   <div class="govuk-grid-column-two-thirds">
     <form class="form" action="unloading-remarks" method="post">
 
+    <span class="govuk-caption-xl">{{ data['movement-reference'] }}</span>
+
     <h1 class="govuk-heading-xl">Which country is the vehicle registered in?</h1>
 
-      {{ govukSelect({
+      {# {{ govukSelect({
         classes: "govuk-input--width-20 autocomplete-country",
         label: {
           text: header,
@@ -34,6 +36,19 @@
         items: CTCData.countries,
         value: data['vehicle-country']
 
+      }) }} #}
+
+      {{ govukSelect({
+        classes: "govuk-input--width-20 autocomplete",
+        label: {
+          text: header,
+          isPageHeading: true,
+          classes: "govuk-label--xl"
+        },
+        id: "vehicle-country",
+        name: "vehicle-country",
+        errorMessage: form.value.error,
+        items: CTCData.countries
       }) }}
 
     {{ govukButton({
@@ -48,5 +63,5 @@
 {% endblock %}
 
 {% block pageScripts %}
-<script src="/public/javascripts/location-autocomplete.js"></script>
+<script src="/public/javascripts/accessible-autocomplete.js"></script>
 {% endblock %}

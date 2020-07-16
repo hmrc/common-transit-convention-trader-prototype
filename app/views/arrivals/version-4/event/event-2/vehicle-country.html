@@ -20,12 +20,9 @@ Which country is the vehicle registered in? {{ data['pageTitleAddOn' ]}}
   <div class="govuk-grid-column-two-thirds">
     <form class="form" method="post">
 
-
-
       <h1 class="govuk-heading-xl">Which country is the vehicle registered in?</h1>
 
-
-      {{ govukSelect({
+      {# {{ govukSelect({
         classes: "govuk-input--width-20 autocomplete-country",
         label: {
           text: header,
@@ -36,7 +33,19 @@ Which country is the vehicle registered in? {{ data['pageTitleAddOn' ]}}
         name: "vehicle-country-2",
         items: CTCData.countries,
         value: data['vehicle-country-2']
+      }) }} #}
 
+      {{ govukSelect({
+        classes: "govuk-input--width-20 autocomplete",
+        label: {
+          text: header,
+          isPageHeading: true,
+          classes: "govuk-label--xl"
+        },
+        id: "vehicle-country-2",
+        name: "vehicle-country-2",
+        errorMessage: form.value.error,
+        items: CTCData.countries
       }) }}
 
       {% if (data['where-are-the-goods'] == "Authorised consignee's location") %}
@@ -72,5 +81,5 @@ Which country is the vehicle registered in? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block pageScripts %}
-<script src="/public/javascripts/location-autocomplete.js"></script>
+<script src="/public/javascripts/accessible-autocomplete.js"></script>
 {% endblock %}

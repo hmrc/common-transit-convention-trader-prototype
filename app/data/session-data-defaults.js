@@ -31,6 +31,12 @@ module.exports = {
 
   "saveAndReturn": "Back to manage transit movements",
 
+  //Arrival notifications pages dates & times
+
+  "tableOneDate": "17 July 2020",
+
+  "tableTwoDate": "15 July 2020",
+
   //Unloading remarks default values
 
   "total-gross-mass": "800",

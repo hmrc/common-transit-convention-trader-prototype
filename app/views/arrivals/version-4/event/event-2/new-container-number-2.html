@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the new container number of the vehicle? {{ data['pageTitleAddOn' ]}}
+What is the new container number? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,14 +21,13 @@ What is the new container number of the vehicle? {{ data['pageTitleAddOn' ]}}
 
       {{ govukInput({
         classes: "govuk-input--width-20",
-    id: "event-2-new-container-number-2",
-    name: "new-container-number-2"
-  }) }}
-
+        id: "event-2-new-container-number-2",
+        name: "new-container-number-2"
+      }) }}
 
       {{ govukButton({
-    text: "Continue"
-  }) }}
+        text: "Continue"
+      }) }}
 
     </form>
     {# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
