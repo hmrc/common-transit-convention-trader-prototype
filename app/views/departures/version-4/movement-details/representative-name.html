@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is your name and capacity? {{ data['pageTitleAddOn']}}
+What is your company’s name? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,30 +19,17 @@ What is your name and capacity? {{ data['pageTitleAddOn']}}
 
         {% call govukFieldset({
           legend: {
-            text: "What is your name?",
+            text: "What is your company’s name?",
             classes: "govuk-fieldset__legend--xl",
             isPageHeading: true
           }
         }) %}
-
-        {# label: {
-            html: 'Your name'
-          }, #}
 
         {{ govukInput({
           classes: "govuk-!-width-two-thirds",
           id: "representative-name",
           name: "representative-name"
         }) }}
-
-        {# {{ govukInput({
-          label: {
-            text: "Your capacity (optional)"
-          },
-          classes: "govuk-!-width-two-thirds",
-          id: "representative-capacity",
-          name: "representative-capacity"
-        }) }} #}
 
         {% endcall %}
 

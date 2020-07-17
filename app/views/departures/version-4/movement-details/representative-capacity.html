@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is your name and capacity? {{ data['pageTitleAddOn']}}
+What is your capacity? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -29,12 +29,12 @@ What is your name and capacity? {{ data['pageTitleAddOn']}}
         },
         items: [
           {
-            value: "Direct",
-            text: "Direct"
+            value: "Direct (principal solely liable)",
+            text: "Direct (principal solely liable)"
             },
           {
-            value: "Indirect",
-            text: "Indirect"
+            value: "Indirect (principal and agent jointly liable)",
+            text: "Indirect (principal and agent jointly liable)"
           }
         ]
       }) }}

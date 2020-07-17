@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What country are the goods ending up in? {{ data['pageTitleAddOn']}}
+What is the destination country? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,7 +21,9 @@ What country are the goods ending up in? {{ data['pageTitleAddOn']}}
 
     <span class="govuk-caption-xl">{{ data['routeDetails'] }}</span>
 
-    <h1 class="govuk-heading-xl">What country are the goods ending up in?</h1>
+    <h1 class="govuk-heading-xl">What is the destination country?</h1>
+
+    <p class="govuk-body">This is the country where the transit movement is ending.</p>
 
     <form action="destination-office" class="form" method="post">
 
