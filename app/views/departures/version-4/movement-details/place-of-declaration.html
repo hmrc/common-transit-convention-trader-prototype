@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Where are you making this declaration? {{ data['pageTitleAddOn']}}
+What is the postcode for the place of declaration? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,32 +13,30 @@ Where are you making this declaration? {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <span class="govuk-caption-xl">{{ data['movementDetails'] }}</span>
-
-    <h1 class="govuk-heading-xl">Where are you making this declaration?</h1>
-
-    <p class="govuk-body"><p>Do not include:</p>
-
-    <ul class="govuk-list govuk-list--bullet">
-      <li>the office of dispatch</li>
-      <li>any offices of transit</li>
-      <li>the office of destination</li>
-    </ul>
-
     <form action="declaration-for-someone-else" class="form" method="post">
 
-      {{ govukInput({
-        classes: "govuk-input--width-20",
-        id: "place-of-declaration",
-        name: "place-of-declaration"
-      }) }}
+      <span class="govuk-caption-xl">{{ data['movementDetails'] }}</span>
 
-      {{ govukButton({
-        text: "Save and continue"
-      }) }}
+      <h1 class="govuk-heading-xl">What is the postcode for the place of declaration?</h1>
 
-      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
-     
+        <p class="govuk-body">This is where you are making the declaration.</p>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label" for="place-of-declaration">
+            Postcode
+          </label>
+          <span id="account-number-hint" class="govuk-hint">
+            Like, AB1 1AB.
+          </span>
+          <input class="govuk-input govuk-input--width-20" id="place-of-declaration" name="place-of-declaration" type="text">
+        </div>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
     </form>
 
   </div>

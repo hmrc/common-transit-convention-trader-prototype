@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Which country did the goods start from? {{ data['pageTitleAddOn']}}
+What is the country of dispatch? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block pageHead %}
@@ -21,7 +21,9 @@ Which country did the goods start from? {{ data['pageTitleAddOn']}}
   
     <span class="govuk-caption-xl">{{ data['routeDetails'] }}</span>
 
-    <h1 class="govuk-heading-xl">Which country did the goods start from?</h1>
+    <h1 class="govuk-heading-xl">What is the country of dispatch?</h1>
+
+    <p class="govuk-body">This is the country where the goods started.</p>
 
     <form action="office-of-departure" class="form" method="post">
 
