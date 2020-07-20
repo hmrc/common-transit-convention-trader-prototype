@@ -16,6 +16,13 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
 
     <p class="govuk-body"><a href="movement-reference">Make an arrival notification</a></p>
 
+    {# {
+          "updated": "10:50am",
+          "mrn": data['movementReferenceReject'],
+          "status": "Arrival notification rejected",
+          "actions": ["mrnDuplicate", "history"]
+        }, #}
+
     {%
       set feb19 = [
         {
@@ -24,12 +31,7 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
           "status": "Goods released",
           "actions": ["historyReleased"]
         },
-        {
-          "updated": "10:50am",
-          "mrn": "20IT02130010005402",
-          "status": "Arrival notification rejected",
-          "actions": ["mrnDuplicate", "history"]
-        },
+        
         {
           "updated": "10:35am",
           "mrn": "20IT02130010005402",

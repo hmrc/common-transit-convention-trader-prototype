@@ -25,12 +25,6 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
           "actions": ["historyReleased"]
         },
         {
-          "updated": "10:50am",
-          "mrn": "20IT02130010005402",
-          "status": "Arrival notification rejected",
-          "actions": ["mrnDuplicate", "history"]
-        },
-        {
           "updated": "10:35am",
           "mrn": "20IT02130010005402",
           "status": "Arrival notification rejected",
@@ -85,6 +79,42 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
                 </ul>
             </td>
           </tr>
+        {% endif %}
+
+        <!-- If MRN is default display rejected message-->
+        {% if data['movementReferenceReject'] == "20GB000060100C06E0" %}
+          <tr role="row">
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Updated</span>10:50am</td>
+            <td class="govuk-table__cell u--w-15" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Movement reference number</span>{{ data['movementReferenceReject'] }}</td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Status</span>Arrival notification rejected</td>
+            <td class="govuk-table__cell" role="cell">
+              <span class="hmrc-responsive-table__heading" aria-hidden="true">Action</span>
+                <ul class="govuk-list">
+                  <li>
+                    <a href="../../arrivals/version-4/rejected-arrivals/mrn-duplicate">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                  </li>
+                  <li>
+                    <a href="../../arrivals/version-4/history/view-history-notification-sent">View history<span class="govuk-visually-hidden"> for {{ data['movement-reference'] }}</span> </a>
+                  </li>
+                </ul>
+            </td>
+          </tr>
+        <!-- If MRN is changed display sent message-->
+        {% else %}
+        <tr role="row">
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Updated</span>10:50am</td>
+            <td class="govuk-table__cell u--w-15" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Movement reference number</span>{{ data['movementReferenceReject'] }}</td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Status</span>Arrival notification sent</td>
+            <td class="govuk-table__cell" role="cell">
+              <span class="hmrc-responsive-table__heading" aria-hidden="true">Action</span>
+                <ul class="govuk-list">
+                  <li>
+                    <a href="../../arrivals/version-4/history/view-history-changed">View history<span class="govuk-visually-hidden"> for {{ data['movement-reference'] }}</span> </a>
+                  </li>
+                </ul>
+            </td>
+          </tr>
+        
         {% endif %}
 
         {% for notice in feb19 %}

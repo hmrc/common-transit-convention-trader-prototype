@@ -33,9 +33,9 @@ module.exports = {
 
   //Arrival notifications pages dates & times
 
-  "tableOneDate": "17 July 2020",
+  "tableOneDate": "17 July",
 
-  "tableTwoDate": "15 July 2020",
+  "tableTwoDate": "15 July",
 
   "arrivalSentTime": "11:30am",
 
@@ -44,6 +44,8 @@ module.exports = {
   "unloadingRemarksSentTime": "11:47am",
 
   "goodsReleasedTime": "11:49am",
+
+  "movementReferenceReject": "20GB000060100C06E0",
 
   //Unloading remarks default values
 
