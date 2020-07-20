@@ -12,6 +12,26 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
+    {# Safety and security row for check your answers if it's needed again 
+
+    {
+                    key: {
+                    text: "Security process"
+                    },
+                    value: {
+                    text: data['security-process']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "security",
+                        text: "Change",
+                        visuallyHiddenText: "Change - security process"
+                        }
+                    ]
+                    }
+                }, #}
+
       <form class="form" action="../task-list">
 
       {% set movementDetails = [] %}
@@ -50,24 +70,6 @@
                         href: "declaration-type",
                         text: "Change",
                         visuallyHiddenText: "Change - declaration type"
-                        }
-                    ]
-                    }
-                },
-
-                {
-                    key: {
-                    text: "Security process"
-                    },
-                    value: {
-                    text: data['security-process']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "security",
-                        text: "Change",
-                        visuallyHiddenText: "Change - security process"
                         }
                     ]
                     }
