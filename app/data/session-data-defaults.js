@@ -63,6 +63,10 @@ module.exports = {
 
   "local-reference-number": "OR023NCTSWEB100310930",
 
+  "totalPackages": "50",
+
+  "totalGrossMass": "850",
+
   //Departures - overview section captions
 
   "movementDetails": "Movement details",

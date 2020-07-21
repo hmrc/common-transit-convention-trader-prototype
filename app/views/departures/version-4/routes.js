@@ -94,6 +94,34 @@ router.post('/transport/mode-crossing-border', function (req, res) {
 
 })
 
+/* 
+    Goods summary routes
+*/
+
+//Goods summary to loading place
+router.post('/goods-summary/goods-summary', function(req, res) {
+    res.redirect('loading-place');
+  });
+
+/*
+    Mode crossing the border
+    If the user selects normal procedure type, take them to "Do you want to add a customs approved location?"
+    If the user selects simplified procedure type, take them to "Authorised location code"
+*/
+
+router.post('/goods-summary/loading-place', function (req, res) {
+
+    let departuresProcedureType = req.session.data.departuresProcedureType;
+
+    if (departuresProcedureType == 'Normal') {
+        res.redirect('add-customs-approved-location');
+    } else {
+        res.redirect('authorised-location-code');
+    }
+
+})
+
+
 
 
 

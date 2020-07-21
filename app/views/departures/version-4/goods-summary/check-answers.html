@@ -20,75 +20,43 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
         <h1 class="govuk-heading-xl">Check your answers</h1>
 
-        {%
-          set goodsSummary = [
-            {
-                    key: {
-                    text: "Total items declared"
-                    },
-                    value: {
-                    text: data['total-number-of-items']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "items-declaring",
-                        text: "Change",
-                        visuallyHiddenText: "Change - total items declared"
-                        }
-                    ]
-                    }
-                }, 
+        <!-- 
+          packages
+          total gross mass
+          loading place
 
-                {
-                    key: {
-                    text: "Declare any packages?"
-                    },
-                    value: {
-                    text: data['declare-packages']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "declare-packages",
-                        text: "Change",
-                        visuallyHiddenText: "Change - declare any packages"
-                        }
-                    ]
-                    }
-                }
-          ]
-        %}
+          normal/simplified divide 
+          = (goodsSummary.push(
+        -->
 
-        {% if (data['declare-packages'] == "Yes ") %}
+        {% set goodsSummary = [] %}
+
           {% set goodsSummary = (goodsSummary.push(
+
+            {
+              key: {
+                text: "Total packages declared"
+              },
+              value: {
+                text: data['totalPackages']
+              },
+              actions: {
+                items: [
                   {
-                    key: {
-                      text: "Total packages declared"
-                    },
-                    value: {
-                      text: data['number-of-packages']
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "declaring-packages",
-                          text: "Change",
-                          visuallyHiddenText: "Change - total packages declared"
-                        }
-                      ]
-                    }
+                    href: "declaring-packages",
+                    text: "Change",
+                    visuallyHiddenText: "Change - total packages declared"
                   }
-              ), goodsSummary) %}
-        {% endif %}
-        
-        {% set goodsSummary = (goodsSummary.push(
+                ]
+              }
+            },
+
             {
               key: {
                 text: "Total gross mass in kilograms"
               },
               value: {
-                text: data['total-gross-mass']
+                text: data['totalGrossMass']
               },
               actions: {
                 items: [
@@ -99,16 +67,14 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                   }
                 ]
               }
-            }
-        ), goodsSummary) %}
+            },
 
-        {% set goodsSummary = (goodsSummary.push( 
-          {
+            {
             key: {
                   text: "Loading place"
                   },
                   value: {
-                  text: data['loading-place']
+                  text: data['loadingPlace']
                   },
                   actions: {
                   items: [
@@ -120,50 +86,81 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                   ]
                   }
               }
-         ), goodsSummary) %}
 
+        ), goodsSummary) %}
 
-        {% set goodsSummary = (goodsSummary.push( 
-          {
-            key: {
-            text: "Add Customs-approved location?"
-            },
-            value: {
-            text: data['add-customs-sub-place']
-            },
-            actions: {
-            items: [
-                {
-                href: "add-customs-approved-location",
-                text: "Change",
-                visuallyHiddenText: "Change - add Customs-approved location"
-                }
-            ]
-            }
-          }
-        ), goodsSummary) %}        
+        {% if (data['departuresProcedureType'] == "Normal") %}
 
-        {% if (data['add-customs-sub-place'] == "Yes ") %}
           {% set goodsSummary = (goodsSummary.push(
-                    {
-                      key: {
-                        text: "Customs-approved location"
-                      },
-                      value: {
-                        text: data['customs-sub-place']
-                      },
-                      actions: {
-                        items: [
-                          {
-                            href: "customs-approved-location",
-                            text: "Change",
-                            visuallyHiddenText: "Change - Customs=approved location"
-                          }
-                        ]
+              {
+                key: {
+                  text: "Add Customs-approved location?"
+                },
+                value: {
+                  text: data['add-customs-sub-place']
+                },
+                actions: {
+                  items: [
+                      {
+                      href: "add-customs-approved-location",
+                      text: "Change",
+                      visuallyHiddenText: "Change - add Customs-approved location"
                       }
-                    }
-                ), goodsSummary) %}
+                  ]
+                }
+              }
+          ), goodsSummary) %}
+
+              {% if (data['add-customs-sub-place'] == "Yes ") %}
+                {% set goodsSummary = (goodsSummary.push(
+                          {
+                            key: {
+                              text: "Customs-approved location"
+                            },
+                            value: {
+                              text: data['customs-sub-place']
+                            },
+                            actions: {
+                              items: [
+                                {
+                                  href: "customs-approved-location",
+                                  text: "Change",
+                                  visuallyHiddenText: "Change - Customs approved location"
+                                }
+                              ]
+                            }
+                          }
+                      ), goodsSummary) %}
+              {% endif %}
+
+        {% else %}
+
+          {% set goodsSummary = (goodsSummary.push(
+
+              {
+                key: {
+                  text: "Authorised Location Code"
+                },
+                value: {
+                  text: data['authorisedLocationCode']
+                },
+                actions: {
+                  items: [
+                      {
+                      href: "authorised-location-code",
+                      text: "Change",
+                      visuallyHiddenText: "Change - Authorised location code"
+                      }
+                  ]
+                }
+              }
+          ), goodsSummary) %}
+
         {% endif %}
+      
+
+
+
 
 
         {% set goodsSummary = (goodsSummary.push( 
