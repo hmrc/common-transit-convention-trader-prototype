@@ -34,6 +34,28 @@ Check your answers {{ data['pageTitleAddOn' ]}}
           {% set goodsSummary = (goodsSummary.push(
 
             {
+                key: {
+                text: "Declare any packages?"
+                },
+                value: {
+                text: data['declare-packages']
+                },
+                actions: {
+                items: [
+                    {
+                    href: "declare-packages",
+                    text: "Change",
+                    visuallyHiddenText: "Change - declare any packages"
+                    }
+                ]
+                }
+            }
+          ), goodsSummary) %}
+
+        {% if (data['declare-packages'] == "Yes ") %}
+
+          {% set goodsSummary = (goodsSummary.push(
+            {
               key: {
                 text: "Total packages declared"
               },
@@ -49,7 +71,12 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                   }
                 ]
               }
-            },
+            }
+          ), goodsSummary) %}
+          
+        {% endif %}
+
+        {% set goodsSummary = (goodsSummary.push(   
 
             {
               key: {
