@@ -94,10 +94,15 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                   }
                 ]
               }
-            },
+            }
+          ), goodsSummary) %}
 
-            {
-            key: {
+
+        {% if (data['securityProcess'] == "Yes") %}
+
+          {% set goodsSummary = (goodsSummary.push(
+              {
+                key: {
                   text: "Loading place"
                   },
                   value: {
@@ -113,8 +118,8 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                   ]
                   }
               }
-
-        ), goodsSummary) %}
+          ), goodsSummary) %}  
+        {% endif %}  
 
         {% if (data['departuresProcedureType'] == "Normal") %}
 
@@ -185,11 +190,6 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
         {% endif %}
       
-
-
-
-
-
         {% set goodsSummary = (goodsSummary.push( 
           {
                   key: {
@@ -218,7 +218,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
                     },
                     value: {
-                      html: data['seal-id-details'] + "<br>" + data['seal-id-details-2']
+                      html: data['seal-id-details'] + "<br>" + data['seal-id-details-2']|default("", true)
                     },
                     actions: {
                       items: [
