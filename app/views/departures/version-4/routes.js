@@ -98,10 +98,36 @@ router.post('/transport/mode-crossing-border', function (req, res) {
     Goods summary routes
 */
 
-//Goods summary to loading place
-router.post('/goods-summary/goods-summary', function(req, res) {
-    res.redirect('loading-place');
-  });
+
+
+/*
+    Total gross mass
+    If the user selects Yes for "safety and security details", take them to "loading place"
+    Else take them to "add customs sub place" (normal) or "authorised location code simplified"
+        If the user has selected "normal procedure" take them to "add customs sub place"
+        If the user has selected "simplified procedure" take them to "authorised location code"
+*/
+
+router.post('/goods-summary/total-gross-mass', function (req, res) {
+
+    let securityProcess = req.session.data.securityProcess;
+    let departuresProcedureType = req.session.data.departuresProcedureType;
+
+    if (securityProcess == 'Yes') {
+        res.redirect('loading-place');
+    } else {
+
+        if (departuresProcedureType == 'Normal') {
+            res.redirect('add-customs-approved-location');
+        } else {
+            res.redirect('authorised-location-code');
+
+        }
+    }
+
+})
+
+
 
 /*
     Mode crossing the border

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the total gross mass in kilograms? {{ data['pageTitleAddOn' ]}}
+How many packages are you declaring? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,20 +13,20 @@ What is the total gross mass in kilograms? {{ data['pageTitleAddOn' ]}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" method="post">
+    <form class="form" action="total-gross-mass" method="post">
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
-      <h1 class="govuk-heading-xl">What is the total gross mass in kilograms?</h1>
+      <h1 class="govuk-heading-xl">How many packages are you declaring?</h1>
       {{ govukInput({
         label: {
           text: ""
         },
-        id: "totalGrossMass",
+        id: "totalPackages",
         classes: "govuk-input--width-10",
-        name: "totalGrossMass"
+        name: "totalPackages"
       }) }}
-                  
+              
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
