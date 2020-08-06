@@ -49,7 +49,7 @@ module.exports = {
 
   //Unloading remarks default values
 
-  "total-gross-mass": "800",
+  "total-gross-mass": "800.125",
 
   "vehicle-country": "United Kingdom",
 
