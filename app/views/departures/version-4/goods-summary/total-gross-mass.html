@@ -18,6 +18,11 @@ What is the total gross mass in kilograms? {{ data['pageTitleAddOn' ]}}
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
       <h1 class="govuk-heading-xl">What is the total gross mass in kilograms?</h1>
+
+      <span id="changed-name-hint" class="govuk-hint">
+        Amount must have 3 decimal place, like 1000.985.
+      </span>
+
       {{ govukInput({
         label: {
           text: ""
