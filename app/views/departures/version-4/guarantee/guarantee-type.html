@@ -32,19 +32,25 @@ Which type of guarantee is being used? {{ data['pageTitleAddOn' ]}}
           text: ""
         },
         items: [
+        {
+          value: "Guarantee waiver redirect(guarantee-reference)",
+          text: "(0) Guarantee waiver"
+      },
+        {
+          value: "Comprehensive guarantee redirect(guarantee-reference)",
+          text: "(1) Comprehensive guarantee"
+        },
+        {
+          value: "Individual guarantee redirect(guarantee-reference)",
+          text: "(2) Individual guarantee"
+        }, 
+        {
+          value: "Flat-rate voucher redirect(guarantee-reference)",
+          text: "(4) Flat-rate voucher"
+        },
           {
             value: "Cash deposit guarantee redirect(other-reference)",
             text: "(3) Cash deposit guarantee"
-          },
-
-              {
-            value: "Comprehensive guarantee redirect(guarantee-reference)",
-            text: "(1) Comprehensive guarantee"
-          },
-
-              {
-            value: "Flat-rate voucher redirect(guarantee-reference)",
-            text: "(4) Flat-rate voucher"
           },
 
               {
@@ -62,10 +68,7 @@ Which type of guarantee is being used? {{ data['pageTitleAddOn' ]}}
             text: "(6) Guarantee waived redirect"
           },
 
-              {
-            value: "Guarantee waiver redirect(guarantee-reference)",
-            text: "(0) Guarantee waiver"
-          },
+              
 
               {
             value: "Guarantee waiver by agreement redirect(other-reference)",
@@ -77,22 +80,13 @@ Which type of guarantee is being used? {{ data['pageTitleAddOn' ]}}
             text: "(5) Guarantee waiver, secured amount not greater than 500 Euros"
           },
 
-              {
-            value: "Individual guarantee redirect(guarantee-reference)",
-            text: "(2) Individual guarantee"
-          }, 
-
                 {
             value: "Individual guarantee with multiple usage redirect(guarantee-reference)",
             text: "(9) Individual guarantee with multiple usage"
-          },
-          {
-            value: "(B) TIR redirect(other-reference)",
-            text: "(B) TIR"
           }
         ]
       }) }}
-              
+
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
