@@ -16,7 +16,7 @@ Are you sure you want to cancel this declaration? {{ data['pageTitleAddOn']}}
     <form class="form" method="post">
 
       <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="cancelDeparture-hint">
+          <fieldset class="govuk-fieldset" aria-describedby="cancelDepartureStatic-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
               <h1 class="govuk-fieldset__heading">
                 Are you sure you want to cancel this declaration?
@@ -36,14 +36,14 @@ Are you sure you want to cancel this declaration? {{ data['pageTitleAddOn']}}
 
             <div class="govuk-radios govuk-radios--inline">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="cancelDeparture" name="cancelDeparture" type="radio" value="Yes" {{ checked("cancelDeparture", "Yes")}}>
-                <label class="govuk-label govuk-radios__label" for="cancelDeparture">
+                <input class="govuk-radios__input" id="cancelDepartureStatic" name="cancelDepartureStatic" type="radio" value="Yes" {{ checked("cancelDepartureStatic", "Yes")}}>
+                <label class="govuk-label govuk-radios__label" for="cancelDepartureStatic">
                   Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="cancelDeparture-2" name="cancelDeparture" type="radio" value="No" {{ checked("cancelDeparture", "No")}}>
-                <label class="govuk-label govuk-radios__label" for="cancelDeparture-2">
+                <input class="govuk-radios__input" id="cancelDepartureStatic-2" name="cancelDepartureStatic" type="radio" value="No" {{ checked("cancelDepartureStatic", "No")}}>
+                <label class="govuk-label govuk-radios__label" for="cancelDepartureStatic-2">
                   No
                 </label>
               </div>

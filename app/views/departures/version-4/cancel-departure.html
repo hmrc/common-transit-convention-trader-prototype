@@ -14,8 +14,6 @@ Are you sure you want to cancel this declaration? {{ data['pageTitleAddOn']}}
   <div class="govuk-grid-column-two-thirds">
 
     <form class="form" method="post">
-    
-      <span class="govuk-caption-xl">{{ data['local-reference-number'] }}</span>
 
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" aria-describedby="cancelDeparture-hint">
@@ -38,13 +36,13 @@ Are you sure you want to cancel this declaration? {{ data['pageTitleAddOn']}}
 
           <div class="govuk-radios govuk-radios--inline">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="cancelDeparture" name="cancelDeparture" type="radio" value="Yes" {{ checked("cancelDeparture", "Yes")}}>
+              <input class="govuk-radios__input" id="cancelDeparture" name="cancelDeparture" type="radio" value="Yes">
               <label class="govuk-label govuk-radios__label" for="cancelDeparture">
                 Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="cancelDeparture-2" name="cancelDeparture" type="radio" value="No" {{ checked("cancelDeparture", "No")}}>
+              <input class="govuk-radios__input" id="cancelDeparture-2" name="cancelDeparture" type="radio" value="No">
               <label class="govuk-label govuk-radios__label" for="cancelDeparture-2">
                 No
               </label>

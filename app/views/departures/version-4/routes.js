@@ -4,6 +4,25 @@ const router = express.Router()
 // Add your routes here - above the module.exports line
 
 
+/*
+    Cancel departure
+    If the user selects "yes" to cancel departure, take them to "departure cancelled confirmation"
+    If the user selects "no" to cancel departure, take them to "departures drafts"
+*/
+
+router.post('/cancel-departure', function (req, res) {
+
+    let cancelDeparture = req.session.data.cancelDeparture;
+
+    if (cancelDeparture == 'Yes') {
+        res.redirect('cancel-departure-confirmation');
+    } else {
+        res.redirect('departures-drafts');
+    }
+
+})
+
+
 
 // router.post('add-transport-details', function(req, res, next) {
 
