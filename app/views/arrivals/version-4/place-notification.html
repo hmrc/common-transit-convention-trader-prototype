@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Where are you completing this arrival notification? {{ data['pageTitleAddOn' ]}}
+What is the postcode for the place of notification?  {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,13 +15,13 @@ Where are you completing this arrival notification? {{ data['pageTitleAddOn' ]}}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">Where are you completing this arrival notification?</h1>
+      <h1 class="govuk-heading-xl">What is the postcode for the place of notification?</h1>
 
       {{ govukInput({
       classes: "govuk-input--width-10",
       hint: {
         html: 
-        '<p class="govuk-body">This is also known as the place of notification.</p>
+        '<p class="govuk-body">This is where you are completing the arrival notification.</p>
         <span id="changed-name-hint" class="govuk-hint">
           Give the postcode, like AB1 1AB.
         </span>'
