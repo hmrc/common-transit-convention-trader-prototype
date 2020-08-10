@@ -19,3 +19,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import 'components/input-currency';
 @import 'components/hmrc-responsive-tables';
 @import 'components/shame';
+
+.app-task-list__item-indentation {
+    padding-left: 0;
+}
