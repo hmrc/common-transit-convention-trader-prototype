@@ -1,0 +1,188 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Draft departure declarations {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl">
+      Draft departure declarations
+    </h1>
+
+    <p class="govuk-body"><a href="movement-reference">Make a departure declaration</a></p>
+
+    {%
+      set feb19 = [
+        {
+          "updated": "11:03am",
+          "created": "16 July 11:10am",
+          "lrn": "20GB000060100C06E0",
+          "actions": ["continueDeparture", "cancelDeparture", "history"]
+        },
+        
+        {
+          "updated": "10:35am",
+          "created": "16 July 9:00am",
+          "lrn": "20IT02130010005402",
+          "actions": ["continueDeparture", "cancelDeparture", "history"]
+        },
+        {
+          "updated": "8:30am",
+          "created": "17 July 11:10am",
+          "lrn": "20IT02130010005402",
+          "actions": ["continueDeparture", "cancelDeparture", "history"]
+        },
+        {
+          "updated": "7:19am",
+          "created": "17 July 11:10am",
+          "lrn": "20IT02130010005402",
+          "actions": ["continueDeparture", "cancelDeparture", "history"]
+        }
+      ]
+    %}
+
+    <h2 class="govuk-heading-m">{{ data['tableOneDate'] }}</h2>
+
+    <table class="govuk-table hmrc-responsive-table" role="table">
+      <caption class="govuk-visually-hidden">{{ data['tableOneDate'] }}</caption>
+      <thead role="rowgroup">
+        <tr role="row">
+          <th class="govuk-table__header" scope="col" role="columnheader">Updated</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Created</th>
+          <th class="govuk-table__header u--w-30" scope="col" role="columnheader">Local reference number</th>
+          <th class="govuk-table__header u--w-30" scope="col" role="columnheader">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for notice in feb19 %}
+          <tr role="row">
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Updated</span>{{ notice.updated }}</td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Created</span>{{ notice.created }}</td>
+            <td class="govuk-table__cell u--w-15" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Local reference number</span><span class="hmrc-responsive-table__value">{{ notice.lrn }}</span></td>
+            <td class="govuk-table__cell u--w-10" role="cell">
+              <span class="hmrc-responsive-table__heading" aria-hidden="true">Action</span>
+              {% if notice.actions.length > 0 %}
+                <ul class="govuk-list">
+              {% else %}
+                <div>
+              {% endif %}
+
+              {% for action in notice.actions %}
+                {% if notice.actions.length > 0 %}<li>{% endif %}
+                {% if action == "continueDeparture" %}
+                  <a href="task-list">Continue declaration<span class="govuk-visually-hidden"> for {{ notice.lrn }}</span></a>
+                {% endif %}
+                {% if action == "cancelDeparture" %}
+                  <a href="cancel-departure">Cancel declaration<span class="govuk-visually-hidden"> for {{ notice.lrn }}</span></a>
+                {% endif %}
+                {% if notice.actions.length > 0 %}</li>{% endif %}
+              {% endfor %}
+
+              {% if notice.actions | length > 0 %}
+                </ul>
+              {% else %}
+                </div>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-6">{{ data['tableTwoDate'] }}</h2>
+
+    {%
+      set feb19 = [
+        {
+          "updated": "5:30pm",
+          "created": "15 July 11:10am",
+          "lrn": "20GB0000601005968",
+          "actions": ["continueDeparture", "cancelDeparture", "history"]
+        },
+        
+        {
+          "updated": "4:10pm",
+          "created": "15 July 11:15am",
+          "lrn": "20IT02130010002034",
+          "actions": ["continueDeparture", "cancelDeparture", "history"]
+        },
+        {
+          "updated": "3:15pm",
+          "created": "15 July 11:20am",
+          "lrn": "20IT02130010004578",
+          "actions": ["continueDeparture", "cancelDeparture", "history"]
+        },
+        {
+          "updated": "7:30am",
+          "created": "14 July 11:30am",
+          "lrn": "20IT02130010006678",
+          "actions": ["continueDeparture", "cancelDeparture", "history"]
+        }
+      ]
+    %}
+
+    <table class="govuk-table hmrc-responsive-table" role="table">
+      <caption class="govuk-visually-hidden">{{ data['tableOneDate'] }}</caption>
+      <thead role="rowgroup">
+        <tr role="row">
+          <th class="govuk-table__header" scope="col" role="columnheader">Updated</th>
+          <th class="govuk-table__header" scope="col" role="columnheader">Created</th>
+          <th class="govuk-table__header u--w-30" scope="col" role="columnheader">Local reference number</th>
+          <th class="govuk-table__header u--w-30" scope="col" role="columnheader">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for notice in feb19 %}
+          <tr role="row">
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Updated</span>{{ notice.updated }}</td><td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Created</span>{{ notice.created }}</td>
+            <td class="govuk-table__cell u--w-15" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Local reference number</span><span class="hmrc-responsive-table__value">{{ notice.lrn }}</span></td>
+            <td class="govuk-table__cell u--w-10" role="cell">
+              <span class="hmrc-responsive-table__heading" aria-hidden="true">Action</span>
+              {% if notice.actions.length > 0 %}
+                <ul class="govuk-list">
+              {% else %}
+                <div>
+              {% endif %}
+
+              {% for action in notice.actions %}
+                {% if notice.actions.length > 0 %}<li>{% endif %}
+                {% if action == "continueDeparture" %}
+                  <a href="task-list">Continue declaration<span class="govuk-visually-hidden"> for {{ notice.lrn }}</span></a>
+                {% endif %}
+                {% if action == "cancelDeparture" %}
+                  <a href="cancel-departure">Cancel declaration<span class="govuk-visually-hidden"> for {{ notice.lrn }}</span></a>
+                {% endif %}
+                {% if notice.actions.length > 0 %}</li>{% endif %}
+              {% endfor %}
+
+              {% if notice.actions | length > 0 %}
+                </ul>
+              {% else %}
+                </div>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <p class="govuk-body govuk-!-margin-top-3"><a href="homepage">Go to manage transit movements</a></p>
+
+    <br><br>
+
+    {# <p class="govuk-body govuk-!-margin-top-3"><a href="arrivals-history-2">Usability testing scenario</a></p> #}
+
+  </div>
+</div>
+
+
+
+{% endblock %}
