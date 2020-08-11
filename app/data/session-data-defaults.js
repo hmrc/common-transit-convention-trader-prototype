@@ -74,5 +74,11 @@ module.exports = {
   "routeDetails": "Route details",
 
   "transportDetails": "Transport details",
+  
+  "goodsSummary" : "Goods Summary",
+
+  "guaranteeSummary" : "Guarantee Summary",
+
+  "traderDetails" : "Trader Details"
 
 }
