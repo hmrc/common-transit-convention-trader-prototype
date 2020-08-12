@@ -79,7 +79,7 @@ module.exports = {
 
   "guaranteeSummary" : "Guarantee details",
 
-  "traderDetails" : "Trader's details",
+  "traderDetails" : "Trader’s details",
 
   "itemDetails" : "Item details",
 
