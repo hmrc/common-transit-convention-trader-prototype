@@ -75,10 +75,13 @@ module.exports = {
 
   "transportDetails": "Transport details",
   
-  "goodsSummary" : "Goods Summary",
+  "goodsSummary" : "Goods summary",
 
-  "guaranteeSummary" : "Guarantee Summary",
+  "guaranteeSummary" : "Guarantee details",
 
-  "traderDetails" : "Trader Details"
+  "traderDetails" : "Trader's details",
 
+  "itemDetails" : "Item details",
+
+  "safetySecurity" : "Safety and security details"
 }
