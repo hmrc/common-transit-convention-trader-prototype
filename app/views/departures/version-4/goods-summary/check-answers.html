@@ -189,6 +189,26 @@ Check your answers {{ data['pageTitleAddOn' ]}}
           ), goodsSummary) %}
 
         {% endif %}
+
+        {% set goodsSummary = (goodsSummary.push( 
+          {
+                  key: {
+                  text: "Control result date limit"
+                  },
+                  value: {
+                  text: data['controlDateDay'] +' '+data['controlDateMonth']+' '+data['controlDateYear']
+                  },
+                  actions: {
+                  items: [
+                      {
+                      href: "control-result-date-limit",
+                      text: "Change",
+                      visuallyHiddenText: "Control result date limit"
+                      }
+                  ]
+                  }
+              }
+        ), goodsSummary) %}
       
         {% set goodsSummary = (goodsSummary.push( 
           {
