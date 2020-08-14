@@ -49,7 +49,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
       {% set transportDetails = (transportDetails.push(
             {
                 key: {
-                  text: "Add ID at departure?"
+                  text: "Add name, registration or reference or the vehicle at departure?"
                 },
                 value: {
                   html: data['addIDAtDeparture']
@@ -125,7 +125,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
           {% set transportDetails = (transportDetails.push(
             {
                 key: {
-                  text: "Change at border?"
+                  text: "Details change at border?"
                 },
                 value: {
                   html: data['changeAtBorder']
