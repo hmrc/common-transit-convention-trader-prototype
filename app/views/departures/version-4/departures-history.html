@@ -41,6 +41,14 @@ Departure declarations {{ data['pageTitleAddOn' ]}}
       set feb19 = [
         {
           "updated": "11:03am",
+          "lrn": data['local-reference-number'],
+          "officeOfDeparture": data['office-of-departure'] | getOffice,
+          "status": "Departure declaration sent",
+          "actions": ["history"]
+        },
+
+        {
+          "updated": "11:03am",
           "lrn": "20GB000060100C06E0",
           "officeOfDeparture": "Dover (OTS) Freight Clearance (GB000040)",
           "status": "Movement accepted by core",
@@ -85,6 +93,22 @@ Departure declarations {{ data['pageTitleAddOn' ]}}
         </tr>
       </thead>
       <tbody>
+
+      {# {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
+          <tr role="row">
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Updated</span>{{ data['arrivalSentTime']}}</td>
+            <td class="govuk-table__cell u--w-15" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Movement reference number</span>{{ data['movement-reference'] }}</td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Status</span>Arrival notification sent</td>
+            <td class="govuk-table__cell" role="cell">
+              <span class="hmrc-responsive-table__heading" aria-hidden="true">Action</span>
+                <ul class="govuk-list">
+                  <li>
+                    <a href="history/view-history-notification-sent">View history<span class="govuk-visually-hidden"> for {{ data['movement-reference'] }}</span> </a>
+                  </li>
+                </ul>
+            </td>
+          </tr>
+        {% endif %} #}
 
         {% for notice in feb19 %}
           <tr role="row">
