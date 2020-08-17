@@ -141,7 +141,10 @@ router.post('/transport/mode-crossing-border', function (req, res) {
     Goods summary routes
 */
 
-
+//Total packages to total gross mass
+router.post('/goods-summary/total-packages', function(req, res) {
+    res.redirect('total-gross-mass');
+  });
 
 /*
     Total gross mass
