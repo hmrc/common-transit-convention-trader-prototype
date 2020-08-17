@@ -285,6 +285,66 @@ Declaration summary {{ data['pageTitleAddOn']}}
       </li>
     </ol>
 
+
+    <!--
+      Check all sections are complete and process = NORMAL, then display pre-lodged and submit
+      Check all sections are complete and process = SIMPLIFIED, then only display submit
+    -->
+
+    <!--
+      Movement details - claiming on behalf of someone
+      Route details - added-transit-offices 
+      Transport - will details change at the border
+      Trader's add consignee
+
+      Goods summary -  do you need to add seal numbers
+      Guarantee - liability amount
+    -->
+
+    {% if (data['on-behalf-of-someone-else'] | length != "0") 
+        and (data['addAnotherOfficeOfTransit'] | length != "0")
+        and (data['changeAtBorder'] | length != "0")
+        and (data['add-consignee'] | length != "0")
+        and (data['liability-amount'] | length != "0")
+        and (data['departuresProcedureType'] == "Normal")
+          %}
+
+        <h2 class="govuk-heading-m">Now send your departure declaration</h2>
+
+        <p class="govuk-body">
+          By sending this you are confirming that the details you are providing
+          are correct, to the best of your knowledge.
+        </p>
+
+      {{ govukButton({ text: "Confirm and send", href: "confirmation" }) }}
+
+      <br>
+      
+      {{ govukButton({
+        text: "Pre-lodge declaration",
+        classes: "govuk-button--secondary",
+        href: "goods-agreed-location"
+      }) }}
+
+    {% elif (data['on-behalf-of-someone-else'] | length != "0") 
+        and (data['addAnotherOfficeOfTransit'] | length != "0")
+        and (data['changeAtBorder'] | length != "0")
+        and (data['add-consignee'] | length != "0")
+        and (data['liability-amount'] | length != "0")
+        and (data['departuresProcedureType'] == "Simplified")
+          %}
+
+      <h2 class="govuk-heading-m">Now send your departure declaration</h2>
+
+      <p class="govuk-body">
+        By sending this you are confirming that the details you are providing
+        are correct, to the best of your knowledge.
+      </p>
+
+      {{ govukButton({ text: "Confirm and send", href: "confirmation" }) }}
+
+    {% endif %}
+
     <p class="govuk-body"><a href="homepage">Back to transit movements</a></p>
 
   </div>
