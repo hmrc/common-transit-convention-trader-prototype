@@ -43,7 +43,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     text: "Office of departure"
                     },
                     value: {
-                    text: data['office-of-departure']
+                    text: data['office-of-departure'] | getOffice
                     },
                     actions: {
                     items: [
@@ -105,7 +105,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     text: "Destination office"
                     },
                     value: {
-                    text: data['office-of-destination']
+                    text: data['office-of-destination'] | getOffice
                     },
                     actions: {
                     items: [
