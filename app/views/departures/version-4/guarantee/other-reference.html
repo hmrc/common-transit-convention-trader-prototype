@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the other reference number? {{ data['pageTitleAddOn' ]}}
+What is the reference for the guarantee? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,12 +12,12 @@ What is the other reference number? {{ data['pageTitleAddOn' ]}}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
+    <span class="govuk-caption-xl">{{ data['guaranteeSummary'] }}</span>
     <form class="form" action="liability-amount" method="post">
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
-      <h1 class="govuk-heading-xl">What is the other reference number?</h1>
+      <h1 class="govuk-heading-xl">What is the reference for the guarantee?</h1>
 
       <p class="govuk-body">You must make sure this reference is up to date.</p>
       

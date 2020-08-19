@@ -65,7 +65,7 @@ module.exports = {
 
   "totalPackages": "50",
 
-  "totalGrossMass": "850",
+  "totalGrossMass": "850.125",
 
   //Departures - overview section captions
 
@@ -74,5 +74,14 @@ module.exports = {
   "routeDetails": "Route details",
 
   "transportDetails": "Transport details",
+  
+  "goodsSummary" : "Goods summary",
 
+  "guaranteeSummary" : "Guarantee details",
+
+  "traderDetails" : "Trader’s details",
+
+  "itemDetails" : "Item details",
+
+  "safetySecurity" : "Safety and security details"
 }

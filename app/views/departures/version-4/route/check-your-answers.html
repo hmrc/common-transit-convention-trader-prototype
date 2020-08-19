@@ -13,6 +13,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
   <div class="govuk-grid-column-two-thirds-from-desktop">
 
     <form class="form" action="../task-list">
+      <span class="govuk-caption-xl">{{ data['routeDetails'] }}</span>
 
       <h1 class="govuk-heading-xl">Check your answers</h1>
 
@@ -42,7 +43,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     text: "Office of departure"
                     },
                     value: {
-                    text: data['office-of-departure']
+                    text: data['office-of-departure'] | getOffice
                     },
                     actions: {
                     items: [
@@ -104,7 +105,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     text: "Destination office"
                     },
                     value: {
-                    text: data['office-of-destination']
+                    text: data['office-of-destination'] | getOffice
                     },
                     actions: {
                     items: [

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Custom seals may be added later {{ data['pageTitleAddOn' ]}}
+Name, registration or reference of the vehicle at departure must be added later {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,10 +12,14 @@ Custom seals may be added later {{ data['pageTitleAddOn' ]}}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <span class="govuk-caption-xl">{{ data['goodsSummary'] }}</span>
-    <h1 class="govuk-heading-xl">Custom seals may be added later</h1>
 
-    <form class="form" method="post" action="check-answers">
+    <span class="govuk-caption-xl">{{ data['transportDetails'] }}</span>
+
+    <h1 class="govuk-heading-xl">Name, registration or reference of the vehicle at departure must be added later</h1>
+
+    <p class="govuk-body">This must be manually recorded on the transit accompanying document (TAD) box 55.</p>
+
+    <form class="form" method="post">
 
         {{ govukButton({
           text: "Save and continue"

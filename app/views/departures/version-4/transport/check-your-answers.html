@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Check your answers {{ data['pageTitleAddOn' ]}}
+Check your answers {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -9,201 +9,143 @@
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <form class="form" action="../task-list">       
-      
-    <h1 class="govuk-heading-xl">Check your answers</h1>
+      <form class="form" action="../task-list">      
+        
+      <span class="govuk-caption-xl">{{ data['transportDetails'] }}</span>
+        
+      <h1 class="govuk-heading-xl">Check your answers</h1>
 
+      {% set transportDetails = [] %}
 
-    {% set transportDetails = [] %}
+      <!-- Inland mode -->
 
-    <!-- Do you need to add transport details? --> 
-    {% set transportDetails = (transportDetails.push(
-      {
-          key: {
-            text: "Add transport details?"
-          },
-          value: {
-            html: data['addTransportDetails']
-          },
-          actions: {
-            items: [
-              {
-                href: "add-transport-details",
-                text: "Change",
-                visuallyHiddenText: "add transport details"
-              }
-            ]
-          }
-        }
-      ), transportDetails) %}
-
-      <!-- 
-        If addTransportDetails = "Yes" 
-      --> 
-      {% if (data['addTransportDetails'] == "Yes") %}
-
-        <!-- Which transport details do you need to add? --> 
-        {% set transportDetails = (transportDetails.push(
-        {
-            key: {
-              text: "Which transport details do you need to add?"
-            },
-            value: {
-              html: data['which-transport-details']
-            },
-            actions: {
-              items: [
-                {
-                  href: "transport-details",
-                  text: "Change",
-                  visuallyHiddenText: "Which transport details"
+      {% set transportDetails = (transportDetails.push(
+            {
+                key: {
+                  text: "Inland mode"
+                },
+                value: {
+                  html: data['inlandMode']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "inland-mode",
+                      text: "Change",
+                      visuallyHiddenText: "inland mode"
+                    }
+                  ]
                 }
-              ]
+              }
+            ), transportDetails) %}
+
+      <!-- Add ID at departure -->
+
+      {% if data['addIDAtDeparture'] | length != "0" %}
+
+      {% set transportDetails = (transportDetails.push(
+            {
+                key: {
+                  text: "Add name, registration or reference or the vehicle at departure?"
+                },
+                value: {
+                  html: data['addIDAtDeparture']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "add-id-at-departure",
+                      text: "Change",
+                      visuallyHiddenText: "add ID at departure"
+                    }
+                  ]
+                }
+              }
+            ), transportDetails) %}
+
+      {% endif %}
+
+      <!-- ID at departure -->
+      {% if data['identity-at-departure'] | length != "0" %}
+
+        {% set transportDetails = (transportDetails.push(
+          {
+              key: {
+                text: "Name, registration or reference at departure"
+              },
+              value: {
+                html: data['identity-at-departure']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "id-at-departure",
+                    text: "Change",
+                    visuallyHiddenText: "ID at departure"
+                  }
+                ]
+              }
             }
-          }
-        ), transportDetails) %}
+          ), transportDetails) %}
 
-          <!-- 
-            If which-transport-details = "at departure or both" 
-          --> 
-          {% if (data['which-transport-details'] == "At the point of departure") or (data['which-transport-details'] == "Both") %}
+      {% endif %}
 
-                    <!-- What is the inland mode? --> 
-                    {% set transportDetails = (transportDetails.push(
+      <!-- Nationality at departure -->
+
+      {% if data['nationality-at-departure'] | length != "0" %}
+
+        {% set transportDetails = (transportDetails.push(
+          {
+              key: {
+                text: "Nationality at departure"
+              },
+              value: {
+                html: data['nationality-at-departure'] | getCountry
+              },
+              actions: {
+                items: [
+                  {
+                    href: "nationality-at-departure",
+                    text: "Change",
+                    visuallyHiddenText: "nationality at departure"
+                  }
+                ]
+              }
+            }
+          ), transportDetails) %}
+
+      {% endif %}
+
+
+      <!-- Change at border -->
+
+          {% set transportDetails = (transportDetails.push(
+            {
+                key: {
+                  text: "Details change at border?"
+                },
+                value: {
+                  html: data['changeAtBorder']
+                },
+                actions: {
+                  items: [
                     {
-                        key: {
-                          text: "Inland mode"
-                        },
-                        value: {
-                          html: data['inlandMode']
-                        },
-                        actions: {
-                          items: [
-                            {
-                              href: "inland-mode",
-                              text: "Change",
-                              visuallyHiddenText: "inland mode"
-                            }
-                          ]
-                        }
-                      }
-                    ), transportDetails) %}
+                      href: "change-at-border",
+                      text: "Change",
+                      visuallyHiddenText: "change at border"
+                    }
+                  ]
+                }
+              }
+            ), transportDetails) %}
 
-              <!-- 
-                If inland mode = "2, or 20" 
-              --> 
-              {% if (data['inlandMode'] == "(2) Rail transport") or (data['inlandMode'] == "(20) Rail transport") %}
 
-                  <!-- Do you need to add nationality at departure? --> 
-                    {% set transportDetails = (transportDetails.push(
-                    {
-                        key: {
-                          text: "Do you need to add a nationality at departure?"
-                        },
-                        value: {
-                          html: data['add-nationality-at-departure']
-                        },
-                        actions: {
-                          items: [
-                            {
-                              href: "add-nationality-at-departure",
-                              text: "Change",
-                              visuallyHiddenText: "do you need to add a nationality at departure"
-                            }
-                          ]
-                        }
-                      }
-                    ), transportDetails) %}
-                    
-              {% endif %}
 
-              <!-- 
-                If inland mode = 5,50,7,70, containers used = yes, or add nationality at departure = yes 
-              --> 
-              {% if (data['inlandMode'] == "(5) Postal Consignment") or
-                    (data['inlandMode'] == "(50) Postal Consignment") or
-                    (data['inlandMode'] == "(7) Fixed transport installations") or
-                    (data['inlandMode'] == "(70) Fixed transport installations") or
-                    (data['containersUsed'] == "Yes") or
-                    (data['add-nationality-at-departure'] == "Yes")
-              %}
+      {% if data['changeAtBorder'] == "Yes" %}
 
-                    <!-- What is the nationality at departure? --> 
-                    {% set transportDetails = (transportDetails.push(
-                    {
-                        key: {
-                          text: "Nationality at departure"
-                        },
-                        value: {
-                          html: data['nationality-at-departure'] | getCountry
-                        },
-                        actions: {
-                          items: [
-                            {
-                              href: "nationality-at-departure",
-                              text: "Change",
-                              visuallyHiddenText: "nationality at departure"
-                            }
-                          ]
-                        }
-                      }
-                    ), transportDetails) %}
-
-              {% else %}
-
-                    <!-- What is the ID at departure? -->
-                    {% set transportDetails = (transportDetails.push(
-                          {
-                              key: {
-                                text: "Name, registration or reference at departure"
-                              },
-                              value: {
-                                html: data['identity-at-departure']
-                              },
-                              actions: {
-                                items: [
-                                  {
-                                    href: "id-at-departure",
-                                    text: "Change",
-                                    visuallyHiddenText: "ID at departure"
-                                  }
-                                ]
-                              }
-                            }
-                          ), transportDetails) %}
-
-                    <!-- What is the nationality at departure? --> 
-                    {% set transportDetails = (transportDetails.push(
-                    {
-                        key: {
-                          text: "Nationality at departure"
-                        },
-                        value: {
-                          html: data['nationality-at-departure'] | getCountry
-                        },
-                        actions: {
-                          items: [
-                            {
-                              href: "nationality-at-departure",
-                              text: "Change",
-                              visuallyHiddenText: "nationality at departure"
-                            }
-                          ]
-                        }
-                      }
-                    ), transportDetails) %}                  
-
-              {% endif %}
-
-          {% endif %}   
-
-          <!-- 
-            If which-transport-details = "at border or both" 
-          --> 
-          {% if (data['which-transport-details'] == "At the border") or (data['which-transport-details'] == "Both") %}
 
             <!-- What is the mode at the border? --> 
               {% set transportDetails = (transportDetails.push(
@@ -226,7 +168,7 @@
                 }
               ), transportDetails) %}
 
-              <!-- What is the ID crossing the border? --> 
+              <!-- ID crossing the border --> 
               {% set transportDetails = (transportDetails.push(
               {
                   key: {
@@ -245,9 +187,9 @@
                     ]
                   }
                 }
-              ), transportDetails) %} 
+              ), transportDetails) %}
 
-              <!-- What is the mode crossing the border? --> 
+               <!-- Mode crossing the border --> 
               {% set transportDetails = (transportDetails.push(
               {
                   key: {
@@ -266,56 +208,51 @@
                     ]
                   }
                 }
-              ), transportDetails) %}     
+              ), transportDetails) %}   
 
-                  <!--
-                    If nationality crossing the border is NOT empty
-                  -->
+              <!-- Nationality crossing the border -->
 
-                  {% if (data['nationality-crossing-border'] | length != "0" ) %}
+              {% if data['nationality-crossing-border'] | length != "0" %}
 
-                      <!-- What is the nationality crossing the border? -->
-                      {% set transportDetails = (transportDetails.push(
-                      {
-                          key: {
-                            text: "Nationality crossing the border"
-                          },
-                          value: {
-                            html: data['nationality-crossing-border'] | getCountry
-                          },
-                          actions: {
-                            items: [
-                              {
-                                href: "nationality-crossing-border",
-                                text: "Change",
-                                visuallyHiddenText: "nationality crossing the border"
-                              }
-                            ]
-                          }
+              <!-- What is the nationality crossing the border? -->
+                {% set transportDetails = (transportDetails.push(
+                {
+                    key: {
+                      text: "Nationality crossing the border"
+                    },
+                    value: {
+                      html: data['nationality-crossing-border'] | getCountry
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "nationality-crossing-border",
+                          text: "Change",
+                          visuallyHiddenText: "nationality crossing the border"
                         }
-                      ), transportDetails) %}    
+                      ]
+                    }
+                  }
+                ), transportDetails) %}    
 
-                  {% endif %}   
+              {% endif %}
 
-          {% endif %}   
+      {% endif %}
 
-      {% endif %}   
-
-        {{ govukSummaryList({
+      {{ govukSummaryList({
            classes: 'govuk-!-margin-bottom-9',
            rows: transportDetails
         }) }}
 
-        {{ govukButton({
+      {{ govukButton({
           text: "Save and continue"
         }) }}
 
       <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
 
-      </form>
+    </form>
 
-    </div>
   </div>
+</div>
 
 {% endblock %}
-

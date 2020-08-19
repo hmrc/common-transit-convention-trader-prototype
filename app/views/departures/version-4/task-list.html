@@ -86,7 +86,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
 
       <li>
         <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">Departure details
+          Departure details
         </h2>
 
         <ul class="app-task-list__items">
@@ -162,7 +162,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="transport/add-transport-details" aria-describedby="transport-completed">Edit transport</a>
+              <a href="transport/inland-mode" aria-describedby="transport-completed">Edit transport</a>
             </span>
             <span class="hmrc-status-tag" id="transport-completed">
               Completed
@@ -171,7 +171,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% elif data['addTransportDetails'] == "Yes" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="transport/add-transport-details" aria-describedby="transport-in-progress">Add transport</a>
+              <a href="transport/inland-mode" aria-describedby="transport-in-progress">Add transport</a>
             </span>
             <span class="hmrc-status-tag" id="transport-in-progress">
               In progress
@@ -180,7 +180,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% else %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="transport/add-transport-details" aria-describedby="transport-not-started">Add transport</a>
+              <a href="transport/inland-mode" aria-describedby="transport-not-started">Add transport</a>
             </span>
             <span class="hmrc-status-tag" id="transport-not-started">
               Not started
@@ -285,7 +285,67 @@ Declaration summary {{ data['pageTitleAddOn']}}
       </li>
     </ol>
 
-    <p class="govuk-body"><a href="#">Back to transit movements</a></p>
+
+    <!--
+      Check all sections are complete and process = NORMAL, then display pre-lodged and submit
+      Check all sections are complete and process = SIMPLIFIED, then only display submit
+    -->
+
+    <!--
+      Movement details - claiming on behalf of someone
+      Route details - added-transit-offices 
+      Transport - will details change at the border
+      Trader's add consignee
+
+      Goods summary -  do you need to add seal numbers
+      Guarantee - liability amount
+    -->
+
+    {% if (data['on-behalf-of-someone-else'] | length != "0") 
+        and (data['addAnotherOfficeOfTransit'] | length != "0")
+        and (data['changeAtBorder'] | length != "0")
+        and (data['add-consignee'] | length != "0")
+        and (data['liability-amount'] | length != "0")
+        and (data['departuresProcedureType'] == "Normal")
+          %}
+
+        <h2 class="govuk-heading-m">Now send your departure declaration</h2>
+
+        <p class="govuk-body">
+          By sending this you are confirming that the details you are providing
+          are correct, to the best of your knowledge.
+        </p>
+
+      {{ govukButton({ text: "Confirm and send", href: "confirmation" }) }}
+
+      <br>
+      
+      {{ govukButton({
+        text: "Pre-lodge declaration",
+        classes: "govuk-button--secondary",
+        href: "goods-agreed-location"
+      }) }}
+
+    {% elif (data['on-behalf-of-someone-else'] | length != "0") 
+        and (data['addAnotherOfficeOfTransit'] | length != "0")
+        and (data['changeAtBorder'] | length != "0")
+        and (data['add-consignee'] | length != "0")
+        and (data['liability-amount'] | length != "0")
+        and (data['departuresProcedureType'] == "Simplified")
+          %}
+
+      <h2 class="govuk-heading-m">Now send your departure declaration</h2>
+
+      <p class="govuk-body">
+        By sending this you are confirming that the details you are providing
+        are correct, to the best of your knowledge.
+      </p>
+
+      {{ govukButton({ text: "Confirm and send", href: "confirmation" }) }}
+
+    {% endif %}
+
+    <p class="govuk-body"><a href="homepage">Back to transit movements</a></p>
 
   </div>
 </div>

@@ -4,35 +4,27 @@ const router = express.Router()
 // Add your routes here - above the module.exports line
 
 
+/*
+    Cancel departure
+    If the user selects "yes" to cancel departure, take them to "departure cancelled confirmation"
+    If the user selects "no" to cancel departure, take them to "departures drafts"
+*/
 
-// router.post('add-transport-details', function(req, res, next) {
+router.post('/cancel-departure', function (req, res) {
 
-//     if (req.body.addTransportDetails) {
-//       var temp = req.body.addTransportDetails;
-//       if (temp === "No ") {
-//         return res.redirect("check-your-answers");
-//       } else {
-//         return res.redirect("transport-details/transport-details");
-//       }
-//     } else {
-//       next();
-//     }
-//   })
+    let cancelDeparture = req.session.data.cancelDeparture;
 
-router.post('/transport/add-transport-details', function (req, res) {
-
-    let addTransportDetails = req.session.data.addTransportDetails;
-
-    if (addTransportDetails == 'No') {
-        res.redirect('../task-list');
+    if (cancelDeparture == 'Yes') {
+        res.redirect('cancel-departure-confirmation');
     } else {
-        res.redirect('transport-details');
+        res.redirect('departures-drafts');
     }
 
 })
 
 
-/* 
+
+/*
     Inland mode
     If the user selects 5,50,7,70 or has answered yes to "have you used containers?", take them to nationality at departure
     If the user selects 2,20 take them to "add nationality at departure?"
@@ -53,9 +45,60 @@ router.post('/transport/inland-mode', function (req, res) {
     } else if ((inlandMode == '(2) Rail transport' ||
             inlandMode == '(20) Rail transport'
         )) {
-        res.redirect('add-nationality-at-departure');
+        res.redirect('change-at-border');
     } else {
-        res.redirect('id-at-departure')
+        res.redirect('add-id-at-departure')
+    }
+
+})
+
+/*
+    Add ID at departure
+    If the user selects "Yes" to "Add ID at departure?", take them to "What is the ID at departure?"
+    If the user selects "No" to "Add ID at departure?", take them to "Add ID at departure later"
+*/
+
+router.post('/transport/add-id-at-departure', function (req, res) {
+
+    let addIDAtDeparture = req.session.data.addIDAtDeparture;
+
+    if (addIDAtDeparture == 'Yes') {
+        res.redirect('id-at-departure');
+    } else {
+        res.redirect('add-id-at-departure-later');
+    }
+
+})
+
+//ID at departure to change at border
+router.post('/transport/id-at-departure', function(req, res) {
+    res.redirect('nationality-at-departure');
+  });
+
+//Add ID at departure later to change at border
+router.post('/transport/add-id-at-departure-later', function(req, res) {
+    res.redirect('nationality-at-departure');
+  });
+
+//Nationality at departure to change at border
+router.post('/transport/nationality-at-departure', function(req, res) {
+    res.redirect('change-at-border');
+  });
+
+/*
+    Change at border
+    If the user selects "Yes" to "Do these details change at the border?", take them to "mode at border"
+    If the user selects "No" to "Do these details change at the border?", take them to "check your answers"
+*/
+
+router.post('/transport/change-at-border', function (req, res) {
+
+    let changeAtBorder = req.session.data.changeAtBorder;
+
+    if (changeAtBorder == 'No') {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('mode-at-border');
     }
 
 })
@@ -98,7 +141,10 @@ router.post('/transport/mode-crossing-border', function (req, res) {
     Goods summary routes
 */
 
-
+//Total packages to total gross mass
+router.post('/goods-summary/total-packages', function(req, res) {
+    res.redirect('total-gross-mass');
+  });
 
 /*
     Total gross mass

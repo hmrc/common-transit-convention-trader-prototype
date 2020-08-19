@@ -19,6 +19,10 @@ What is the new total gross mass in kilograms? {{ data['pageTitleAddOn' ]}}
 
         <h1 class="govuk-heading-xl">What is the new total gross mass in kilograms?</h1>
 
+        <span id="changed-name-hint" class="govuk-hint">
+            Amount must have 3 decimal places, like 1000.985.
+          </span>
+
         {{ govukInput({
         classes: "govuk-input--width-20",
         id: "total-gross-mass",

@@ -112,7 +112,15 @@ Declaration summary {{ data['pageTitleAddOn']}}
 
       {{ govukButton({ text: "Confirm and send", href: "confirmation" }) }}
 
-    <p class="govuk-body"><a href="#">Back to transit movements</a></p>
+      <br>
+      
+      {{ govukButton({
+        text: "Pre-lodge declaration",
+        classes: "govuk-button--secondary",
+        href: "goods-agreed-location"
+      }) }}
+
+    <p class="govuk-body"><a href="homepage">Back to transit movements</a></p>
 
   </div>
 </div>

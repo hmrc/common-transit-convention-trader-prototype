@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the seal number? {{ data['pageTitleAddOn' ]}}
+What is the Customs seal number? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,12 +12,12 @@ What is the seal number? {{ data['pageTitleAddOn' ]}}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
+    <span class="govuk-caption-xl">{{ data['goodsSummary'] }}</span>
     <form class="form" action="seals-information" method="post">
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
-      <h1 class="govuk-heading-xl">What is the seal number?</h1>
+      <h1 class="govuk-heading-xl">What is the Customs seal number?</h1>
       {{ govukInput({
         label: {
           text: ""

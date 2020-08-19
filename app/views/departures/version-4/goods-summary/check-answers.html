@@ -15,7 +15,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-
+      <span class="govuk-caption-xl">{{ data['goodsSummary'] }}</span>
       <form class="form" action="../task-list" method="post">
 
         <h1 class="govuk-heading-xl">Check your answers</h1>
@@ -171,7 +171,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
               {
                 key: {
-                  text: "Authorised Location Code"
+                  text: "Authorised location code"
                 },
                 value: {
                   text: data['authorisedLocationCode']
@@ -189,11 +189,31 @@ Check your answers {{ data['pageTitleAddOn' ]}}
           ), goodsSummary) %}
 
         {% endif %}
+
+        {% set goodsSummary = (goodsSummary.push( 
+          {
+                  key: {
+                  text: "Control result date limit"
+                  },
+                  value: {
+                  text: data['controlDateDay'] +' '+data['controlDateMonth']+' '+data['controlDateYear']
+                  },
+                  actions: {
+                  items: [
+                      {
+                      href: "control-result-date-limit",
+                      text: "Change",
+                      visuallyHiddenText: "Control result date limit"
+                      }
+                  ]
+                  }
+              }
+        ), goodsSummary) %}
       
         {% set goodsSummary = (goodsSummary.push( 
           {
                   key: {
-                  text: "Add seals?"
+                  text: "Add Customs seals numbers?"
                   },
                   value: {
                   text: data['do-you-need-seals-info']
@@ -214,7 +234,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
           {% set goodsSummary = (goodsSummary.push(
                   {
                     key: {
-                      text: "Seals"
+                      text: "Customs seals numbers"
 
                     },
                     value: {
