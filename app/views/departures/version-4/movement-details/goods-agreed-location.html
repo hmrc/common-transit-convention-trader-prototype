@@ -17,6 +17,8 @@ What is the agreed location of the goods? {{ data['pageTitleAddOn' ]}}
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
+      <span class="govuk-caption-xl">{{ data['movementDetails'] }}</span>
+
       <h1 class="govuk-heading-xl">What is the agreed location of the goods?</h1>
 
       {{ govukInput({
