@@ -13,7 +13,7 @@ What is the agreed location of the goods? {{ data['pageTitleAddOn' ]}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" method="post" action="pre-lodged-confirmation">
+    <form class="form" method="post" action="containers-used">
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
@@ -23,11 +23,11 @@ What is the agreed location of the goods? {{ data['pageTitleAddOn' ]}}
         label: {
           text: ""
         },
-        id: "loadingPlace",
+        id: "agreedLocationGoods",
         classes: "govuk-input",
-        name: "loadingPlace"
+        name: "agreedLocationGoods"
       }) }}
-                  
+      
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
