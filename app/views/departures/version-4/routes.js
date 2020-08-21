@@ -22,6 +22,10 @@ router.post('/cancel-departure', function (req, res) {
 
 })
 
+/*
+    Movement details routing
+*/
+
 
 
 /*
