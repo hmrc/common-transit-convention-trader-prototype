@@ -50,17 +50,6 @@ What is the principal’s address? {{ data['pageTitleAddOn']}}
           name: "postcode"
         }) }} 
 
-        {{ govukSelect({
-          classes: "govuk-input--width-20 autocomplete",
-          label: {
-            text: "Country"
-          },
-          id: "trader-country",
-          name: "trader-country",
-          errorMessage: form.value.error,
-          items: CTCData.countries
-        }) }}
-
         {{ govukButton({
           text: "Save and continue"
         }) }}
