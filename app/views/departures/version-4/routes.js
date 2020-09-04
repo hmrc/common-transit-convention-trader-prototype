@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const session = require('express-session');
 const router = express.Router()
 
 // Add your routes here - above the module.exports line
@@ -20,6 +21,20 @@ router.post('/cancel-departure', function (req, res) {
         res.redirect('departures-drafts');
     }
 
+})
+
+/*
+    If Adding safety and security details is needed
+    transite arrival date of transit office will be added
+*/
+
+router.post('/route/added-transit-offices-route', function (req, res) {
+    let securityVal = req.session.data.securityProcess;
+    if (securityVal == 'Yes') {
+        res.redirect('arrival-times-at-office-of-transit');
+    } else {
+        res.redirect('added-transit-offices');
+    }
 })
 
 /*
