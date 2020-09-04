@@ -13,11 +13,11 @@ How much is the liability amount? {{ data['pageTitleAddOn' ]}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-xl">{{ data['guaranteeSummary'] }}</span>
-  {% if (data['guarantee-type'] == "Comprehensive guarantee ") or
-          (data['guarantee-type'] == "Flat-rate voucher ") or
-          (data['guarantee-type'] == "Guarantee waiver ") or
-          (data['guarantee-type'] == "Individual guarantee ") or
-          (data['containersUsed'] == "Individual guarantee with multiple usage redirect(guarantee-reference) ")
+  {% if (data['guarantee-type'] == "(1) Comprehensive guarantee ") or
+          (data['guarantee-type'] == "(4) Flat-rate voucher ") or
+          (data['guarantee-type'] == "(0) Guarantee waiver ") or
+          (data['guarantee-type'] == "(2) Individual guarantee ") or
+          (data['containersUsed'] == "(9) Individual guarantee with multiple usage redirect(guarantee-reference) ")
     %}
 
     <form class="form" action="access-code" method="post">

@@ -43,7 +43,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                 ), guaranteeSummary) %}
 
       
-        {% if (data['guarantee-type'] == "Comprehensive guarantee ") or (data['guarantee-type'] == "Flat-rate voucher ") or (data['guarantee-type'] == "Guarantee waiver ") or (data['guarantee-type'] == "Individual guarantee ") or (data['guarantee-type'] == "Individual guarantee with multiple usage ") %} 
+        {% if (data['guarantee-type'] == "(1) Comprehensive guarantee ") or (data['guarantee-type'] == "(4) Flat-rate voucher ") or (data['guarantee-type'] == "(0) Guarantee waiver ") or (data['guarantee-type'] == "(2) Individual guarantee ") or (data['guarantee-type'] == "(9) Individual guarantee with multiple usage ") %} 
           {% set guaranteeSummary = (guaranteeSummary.push(
                   {
                     key: {
