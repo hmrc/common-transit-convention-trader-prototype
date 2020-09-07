@@ -19,7 +19,7 @@ When do you expect the transit to arrive at the office of transit? {{ data['page
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <span class="govuk-capation-xl">{{ data['routeDetails'] }}</span>
+    <span class="govuk-caption-xl">{{ data['routeDetails'] }}</span>
 
     
 
@@ -28,7 +28,7 @@ When do you expect the transit to arrive at the office of transit? {{ data['page
       <h1 class="govuk-heading-xl">When do you expect the transit to arrive at the office of transit?</h1>
 
     <span id="controlDate-hint" class="govuk-hint">
-      For example, 14 1 2020 12 59.
+      For example, 14 1 2020 12:59am.
     </span>
 
       <div class="govuk-date-input" id="controlDate">
@@ -78,6 +78,17 @@ When do you expect the transit to arrive at the office of transit? {{ data['page
               name="controlDateMin" value="{{data['controlDateMin']}}" type="text" pattern="[0-9]*" inputmode="numeric">
           </div>
         </div>
+        <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="sort">
+            am or pm
+          </label>
+          <select class="govuk-select" id="controlDateAmPm" name="controlDateAmPm">
+            <option value="am"selected>am</option>
+            <option value="pm">pm</option>
+          </select>
+        </div>
+      </div>
       </div>
 
       

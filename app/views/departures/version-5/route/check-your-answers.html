@@ -149,12 +149,12 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                       text: "Transit office 1 arrival time"
                     },
                     value: {
-                      html: data['controlDateDay']+" "+data['controlDateMonth']+" "+data['controlDateYear']+" "+data['controlDateHour']+":"+data['controlDateMin']
+                      html: data['controlDateDay']+" "+data['controlDateMonth']+" "+data['controlDateYear']+" "+data['controlDateHour']+":"+data['controlDateMin']+" "+data['controlDateAmPm']
                     },
                     actions: {
                       items: [
                         {
-                          href: "add-another-transit-office",
+                          href: "arrival-times-at-office-of-transit",
                           text: "Change",
                           visuallyHiddenText: "transit office 1"
                         }
