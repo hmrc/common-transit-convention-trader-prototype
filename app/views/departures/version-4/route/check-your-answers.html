@@ -126,7 +126,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
               }) }}
 
       {% set transitOffices = [] %}
-
+      {% if data['securityProcess'] == "Yes" %}
       {% set transitOffices = (transitOffices.push(
               {
                     key: {
@@ -144,9 +144,48 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                         }
                       ]
                     }
-                  } 
+                  },{
+                    key: {
+                      text: "Transit office 1 arrival time"
+                    },
+                    value: {
+                      html: data['controlDateDay']+" "+data['controlDateMonth']+" "+data['controlDateYear']+" "+data['controlDateHour']+":"+data['controlDateMin']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "add-another-transit-office",
+                          text: "Change",
+                          visuallyHiddenText: "transit office 1"
+                        }
+                      ]
+                    }
+                  }  
 
               ), transitOffices) %}
+              {% endif %}
+              {% if data['securityProcess'] == "No" %}
+      {% set transitOffices = (transitOffices.push(
+              {
+                    key: {
+                      text: "Transit office 1"
+                    },
+                    value: {
+                      html: data['office-of-transit'] | getOfficeOfTransit
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "add-another-transit-office",
+                          text: "Change",
+                          visuallyHiddenText: "transit office 1"
+                        }
+                      ]
+                    }
+                  }
+              ), transitOffices) %}
+              {% endif %}
+
 
       <h2 class="govuk-heading-m">Transit offices</h2>
 
