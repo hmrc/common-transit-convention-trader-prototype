@@ -1,0 +1,270 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    {# Safety and security row for check your answers if it's needed again 
+
+    {
+                    key: {
+                    text: "Security process"
+                    },
+                    value: {
+                    text: data['securityProcess']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "security",
+                        text: "Change",
+                        visuallyHiddenText: "security process"
+                        }
+                    ]
+                    }
+                }, #}
+
+      <form class="form" action="../task-list">
+        <span class="govuk-caption-xl">{{ data['movementDetails'] }}</span>
+
+      {% set movementDetails = [] %}
+
+        <h1 class="govuk-heading-xl">Check your answers</h1>
+
+        {% set movementDetails = (movementDetails.push(
+            {
+                    key: {
+                    text: "Local reference number"
+                    },
+                    value: {
+                    text: data['local-reference-number']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "local-reference-number",
+                        text: "Change",
+                        visuallyHiddenText: "local reference number"
+                        }
+                    ]
+                    }
+                }, 
+
+                {
+                    key: {
+                    text: "Declaration type"
+                    },
+                    value: {
+                    text: data['declaration-type']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "declaration-type",
+                        text: "Change",
+                        visuallyHiddenText: "declaration type"
+                        }
+                    ]
+                    }
+                },
+
+                {
+                    key: {
+                    text: "Procedure type"
+                    },
+                    value: {
+                    text: data['departuresProcedureType']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "procedure-type",
+                        text: "Change",
+                        visuallyHiddenText: "procedure type"
+                        }
+                    ]
+                    }
+                }
+              ), movementDetails) %}
+
+
+
+
+    {% if (data['departuresProcedureType'] == "Normal") %}
+
+        {% set movementDetails = (movementDetails.push(
+
+                {
+                    key: {
+                    text: "Pre-lodging?"
+                    },
+                    value: {
+                    text: data['departuresPreLodge']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "will-you-be-pre-lodging",
+                        text: "Change",
+                        visuallyHiddenText: "pre-lodge declaration"
+                        }
+                    ]
+                    }
+                }
+              ), movementDetails) %}
+
+          {% if (data['agreedLocationGoods'] | length != "0") %}
+
+            {% set movementDetails = (movementDetails.push(
+
+                {
+                    key: {
+                    text: "Agreed location of goods"
+                    },
+                    value: {
+                    text: data['agreedLocationGoods']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "goods-agreed-location",
+                        text: "Change",
+                        visuallyHiddenText: "agreed location of goods"
+                        }
+                    ]
+                    }
+                }
+              ), movementDetails) %}
+
+            {% endif %}
+
+          {% endif %}
+
+
+
+        {% set movementDetails = (movementDetails.push(
+
+
+                {
+                    key: {
+                    text: "Containers used?"
+                    },
+                    value: {
+                    text: data['containersUsed']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "containers-used",
+                        text: "Change",
+                        visuallyHiddenText: "containers used"
+                        }
+                    ]
+                    }
+                }, 
+
+                {
+                    key: {
+                    text: "Place of declaration"
+                    },
+                    value: {
+                    text: data['place-of-declaration']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "place-of-declaration",
+                        text: "Change",
+                        visuallyHiddenText: "place of declaration"
+                        }
+                    ]
+                    }
+                },
+
+                {
+                    key: {
+                    text: "Creating on behalf of someone?"
+                    },
+                    value: {
+                    text: data['on-behalf-of-someone-else']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "declaration-for-someone-else",
+                        text: "Change",
+                        visuallyHiddenText: "are you creating this on behalf of someone"
+                        }
+                      ]
+                    }
+                  }
+                
+              ), movementDetails) %}
+
+
+    {% if (data['on-behalf-of-someone-else'] == "Yes") %}
+        {% set movementDetails = (movementDetails.push(
+
+                  {
+                    key: {
+                      text: "Representative name"
+                    },
+                    value: {
+                      text: data['representative-name']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "representative-name",
+                          text: "Change",
+                          visuallyHiddenText: "representative name"
+                        }
+                      ]
+                    }
+                  },
+
+                  {
+                    key: {
+                      text: "Representative capacity"
+                    },
+                    value: {
+                      text: data['representative-capacity']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "representative-capacity",
+                          text: "Change",
+                          visuallyHiddenText: "representative capacity"
+                        }
+                      ]
+                    }
+                  }
+
+        ), movementDetails) %}
+
+    {% endif %}
+
+    {{ govukSummaryList({
+           classes: 'govuk-!-margin-bottom-9',
+           rows: movementDetails
+        }) }}
+
+    {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
