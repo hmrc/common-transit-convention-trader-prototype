@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+How much is the liability amount? {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">{{ data['guaranteeSummary'] }}</span>
+  {% if (data['guarantee-type'] == "(1) Comprehensive guarantee ") or
+          (data['guarantee-type'] == "(4) Flat-rate voucher ") or
+          (data['guarantee-type'] == "(0) Guarantee waiver ") or
+          (data['guarantee-type'] == "(2) Individual guarantee ") or
+          (data['containersUsed'] == "(9) Individual guarantee with multiple usage redirect(guarantee-reference) ")
+    %}
+
+    <form class="form" action="access-code" method="post">
+
+      <h1 class="govuk-heading-xl">How much is the liability amount?</h1>
+      
+      <span id="changed-name-hint" class="govuk-hint">
+        Amount must include a decimal place, like 230.00. Enter 0 to use the default amount of EUR 10,000.
+      </span>
+
+        {{ hmrcInputCurrency({
+            name: "liability-amount",
+            id: "liability-amount",
+            classes: "govuk-input--width-10",
+            autocomplete: "off",
+            type: "tel"
+          })
+        }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+    </form>
+
+    {% else %}
+
+    <form class="form" action="check-answers" method="post">
+
+      <h1 class="govuk-heading-xl">How much is the liability amount?</h1>
+
+      <span id="changed-name-hint" class="govuk-hint">
+        Amount must include a decimal place, like 230.00. Enter 0 to use the default amount of EUR 10,000.
+      </span>
+
+        {{ hmrcInputCurrency({
+            name: "liability-amount",
+            id: "liability-amount",
+            classes: "govuk-input--width-10",
+            autocomplete: "off",
+            type: "tel"
+          })
+        }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+    </form>
+
+    {% endif %}
+
+
+
+  </div>
+</div>
+
+{% endblock %}

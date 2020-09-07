@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What declaration do you want to create? {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="procedure-type" class="form" method="post">
+      
+      <span class="govuk-caption-xl">{{ data['movementDetails'] }}</span>
+
+      {{ govukRadios({
+        idPrefix: "declaration-type",
+        name: "declaration-type",
+        fieldset: {
+          legend: {
+            text: "What declaration do you want to create?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "T1",
+            text: "T1 (goods moving under external Union Transit procedure)"
+            },
+          {
+            value: "T2",
+            text: "T2 (goods moving under internal Union Transit procedure)"
+          },
+          {
+            value: "T-",
+            text: "T- (mixed consignment of T1 and T2 goods)"
+          },
+          {
+            value: "T2F",
+            text: "T2 (T2F between different fiscal territories)"
+          }
+        ]
+      }) }}
+
+      <!-- T-, T2F 
+      
+      (T2F) = T2 between diff. fiscal territ.
+      (T-) Mixed Consignment of T1 and T2 good
+      
+      -->
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> --></p>
+
+    </form>
+
+  </div>
+</div>
+
+
+{% endblock %}
