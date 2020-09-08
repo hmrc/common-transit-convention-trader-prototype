@@ -121,31 +121,6 @@
                 }
               ), movementDetails) %}
 
-          {% if (data['agreedLocationGoods'] | length != "0") %}
-
-            {% set movementDetails = (movementDetails.push(
-
-                {
-                    key: {
-                    text: "Agreed location of goods"
-                    },
-                    value: {
-                    text: data['agreedLocationGoods']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "goods-agreed-location",
-                        text: "Change",
-                        visuallyHiddenText: "agreed location of goods"
-                        }
-                    ]
-                    }
-                }
-              ), movementDetails) %}
-
-            {% endif %}
-
           {% endif %}
 
 
