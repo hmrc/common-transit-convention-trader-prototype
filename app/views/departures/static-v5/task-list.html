@@ -103,22 +103,13 @@ Declaration summary {{ data['pageTitleAddOn']}}
       </li>
     </ol>
 
-    <h2 class="govuk-heading-m">Now send your departure declaration</h2>
+    <h2 class="govuk-heading-m">Now pre-lodge your departure declaration</h2>
 
       <p class="govuk-body">
-        By sending this you are confirming that the details you are providing
-        are correct, to the best of your knowledge.
+        By sending this you are confirming that the details you are providing are correct, to the best of your knowledge.
       </p>
 
-      {{ govukButton({ text: "Confirm and send", href: "confirmation" }) }}
-
-      <br>
-      
-      {{ govukButton({
-        text: "Pre-lodge declaration",
-        classes: "govuk-button--secondary",
-        href: "goods-agreed-location"
-      }) }}
+      {{ govukButton({ text: "Pre-lodge declaration", href: "pre-lodged-confirmation" }) }}
 
     <p class="govuk-body"><a href="homepage">Back to transit movements</a></p>
 
