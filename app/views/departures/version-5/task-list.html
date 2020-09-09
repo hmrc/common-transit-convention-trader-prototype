@@ -219,6 +219,17 @@ Declaration summary {{ data['pageTitleAddOn']}}
           </li>
           {% endif %}
 
+          <!-- Add items -->
+
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="add-items/all-items-belong-to-trader" aria-describedby="add-items-not-started">Add items</a>
+            </span>
+            <span class="hmrc-status-tag" id="goods-summary-not-started">
+              Not started
+            </span>
+          </li>
+
           <!-- Goods summary -->
 
           {% if (data['do-you-need-seals-info'] == "No ") or (data['seal-ID'] == "No ") or (data['add-another-seal'] == "No ") %}
