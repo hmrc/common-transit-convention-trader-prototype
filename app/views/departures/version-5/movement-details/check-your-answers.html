@@ -40,23 +40,6 @@
         <h1 class="govuk-heading-xl">Check your answers</h1>
 
         {% set movementDetails = (movementDetails.push(
-            {
-                    key: {
-                    text: "Local reference number"
-                    },
-                    value: {
-                    text: data['local-reference-number']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "local-reference-number",
-                        text: "Change",
-                        visuallyHiddenText: "local reference number"
-                        }
-                    ]
-                    }
-                }, 
 
                 {
                     key: {
