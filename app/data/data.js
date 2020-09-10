@@ -6392,12 +6392,2038 @@ var data = {
                 "text": "(10) Sea transport",   
                 "selected": false
             }
-        ]
+        ],
+    'packages': [
+        {
+            "value": "",
+            "text": "",   
+            "selected": false
+          },
+          {
+            "value": "Aerosol (AE)",
+            "text": "Aerosol (AE)",
+            "selected": false
+          },
+          {
+            "value": "Ampoule, non-protected (AM)",
+            "text": "Ampoule, non-protected (AM)",
+            "selected": false
+          },
+          {
+            "value": "Ampoule, protected (AP)",
+            "text": "Ampoule, protected (AP)",
+            "selected": false
+          },
+          {
+            "value": "Atomizer (AT)",
+            "text": "Atomizer (AT)",
+            "selected": false
+          },
+          {
+            "value": "Bag (BG)",
+            "text": "Bag (BG)",
+            "selected": false
+          },
+          {
+            "value": "Bag, flexible container (FX)",
+            "text": "Bag, flexible container (FX)",
+            "selected": false
+          },
+          {
+            "value": "Bag, large (ZB)",
+            "text": "Bag, large (ZB)",
+            "selected": false
+          },
+          {
+            "value": "Bag, multiply (MB)",
+            "text": "Bag, multiply (MB)",
+            "selected": false
+          },
+          {
+            "value": "Bag, paper (5M)",
+            "text": "Bag, paper (5M)",
+            "selected": false
+          },
+          {
+            "value": "Bag, paper, multi-wall (XJ)",
+            "text": "Bag, paper, multi-wall (XJ)",
+            "selected": false
+          },
+          {
+            "value": "Bag, paper, multi-wall, water resis (XK)",
+            "text": "Bag, paper, multi-wall, water resis (XK)",
+            "selected": false
+          },
+          {
+            "value": "Bag, plastic (EC)",
+            "text": "Bag, plastic (EC)",
+            "selected": false
+          },
+          {
+            "value": "Bag, plastics film (XD)",
+            "text": "Bag, plastics film (XD)",
+            "selected": false
+          },
+          {
+            "value": "Bag, super bulk (43)",
+            "text": "Bag, super bulk (43)",
+            "selected": false
+          },
+          {
+            "value": "Bag, textile (5L)",
+            "text": "Bag, textile (5L)",
+            "selected": false
+          },
+          {
+            "value": "Bag, textile, sift proof (XG)",
+            "text": "Bag, textile, sift proof (XG)",
+            "selected": false
+          },
+          {
+            "value": "Bag, textile, water resistant (XH)",
+            "text": "Bag, textile, water resistant (XH)",
+            "selected": false
+          },
+          {
+            "value": "Bag, textile, without inner coat/li (XF)",
+            "text": "Bag, textile, without inner coat/li (XF)",
+            "selected": false
+          },
+          {
+            "value": "Bag, woven plastic (5H)",
+            "text": "Bag, woven plastic (5H)",
+            "selected": false
+          },
+          {
+            "value": "Bag, woven plastic, sift proof (XB)",
+            "text": "Bag, woven plastic, sift proof (XB)",
+            "selected": false
+          },
+          {
+            "value": "Bag, woven plastic, water resistant (XC)",
+            "text": "Bag, woven plastic, water resistant (XC)",
+            "selected": false
+          },
+          {
+            "value": "Bag, woven plastic, without inner c (XA)",
+            "text": "Bag, woven plastic, without inner c (XA)",
+            "selected": false
+          },
+          {
+            "value": "Bale, compressed (BL)",
+            "text": "Bale, compressed (BL)",
+            "selected": false
+          },
+          {
+            "value": "Bale, non-compressed (BN)",
+            "text": "Bale, non-compressed (BN)",
+            "selected": false
+          },
+          {
+            "value": "Balloon, non-protected (BF)",
+            "text": "Balloon, non-protected (BF)",
+            "selected": false
+          },
+          {
+            "value": "Balloon, protected (BP)",
+            "text": "Balloon, protected (BP)",
+            "selected": false
+          },
+          {
+            "value": "Bar (BR)",
+            "text": "Bar (BR)",
+            "selected": false
+          },
+          {
+            "value": "Barrel (BA)",
+            "text": "Barrel (BA)",
+            "selected": false
+          },
+          {
+            "value": "Barrel, wooden (2C)",
+            "text": "Barrel, wooden (2C)",
+            "selected": false
+          },
+          {
+            "value": "Barrel, wooden, bung type (QH)",
+            "text": "Barrel, wooden, bung type (QH)",
+            "selected": false
+          },
+          {
+            "value": "Barrel, wooden, removable head (QJ)",
+            "text": "Barrel, wooden, removable head (QJ)",
+            "selected": false
+          },
+          {
+            "value": "Bars, in bundle/bunch/truss (BZ)",
+            "text": "Bars, in bundle/bunch/truss (BZ)",
+            "selected": false
+          },
+          {
+            "value": "Basin (BM)",
+            "text": "Basin (BM)",
+            "selected": false
+          },
+          {
+            "value": "Basket (BK)",
+            "text": "Basket (BK)",
+            "selected": false
+          },
+          {
+            "value": "Basket, with handle, cardboard (HC)",
+            "text": "Basket, with handle, cardboard (HC)",
+            "selected": false
+          },
+          {
+            "value": "Basket, with handle, plastic (HA)",
+            "text": "Basket, with handle, plastic (HA)",
+            "selected": false
+          },
+          {
+            "value": "Basket, with handle, wooden (HB)",
+            "text": "Basket, with handle, wooden (HB)",
+            "selected": false
+          },
+          {
+            "value": "Bin (BI)",
+            "text": "Bin (BI)",
+            "selected": false
+          },
+          {
+            "value": "Board (BD)",
+            "text": "Board (BD)",
+            "selected": false
+          },
+          {
+            "value": "Board, in bundle/bunch/truss (BY)",
+            "text": "Board, in bundle/bunch/truss (BY)",
+            "selected": false
+          },
+          {
+            "value": "Bobbin (BB)",
+            "text": "Bobbin (BB)",
+            "selected": false
+          },
+          {
+            "value": "Bolt (BT)",
+            "text": "Bolt (BT)",
+            "selected": false
+          },
+          {
+            "value": "Bottle, gas (GB)",
+            "text": "Bottle, gas (GB)",
+            "selected": false
+          },
+          {
+            "value": "Bottle, non-protected, bulbous (BS)",
+            "text": "Bottle, non-protected, bulbous (BS)",
+            "selected": false
+          },
+          {
+            "value": "Bottle, non-protected, cylindrical (BO)",
+            "text": "Bottle, non-protected, cylindrical (BO)",
+            "selected": false
+          },
+          {
+            "value": "Bottle, protected bulbous (BV)",
+            "text": "Bottle, protected bulbous (BV)",
+            "selected": false
+          },
+          {
+            "value": "Bottle, protected cylindrical (BQ)",
+            "text": "Bottle, protected cylindrical (BQ)",
+            "selected": false
+          },
+          {
+            "value": "Bottlecrate / bottlerack (BC)",
+            "text": "Bottlecrate / bottlerack (BC)",
+            "selected": false
+          },
+          {
+            "value": "Box (BX)",
+            "text": "Box (BX)",
+            "selected": false
+          },
+          {
+            "value": "Box, Commonwealth Handling Equipmen (DH)",
+            "text": "Box, Commonwealth Handling Equipmen (DH)",
+            "selected": false
+          },
+          {
+            "value": "Box, aluminium (4B)",
+            "text": "Box, aluminium (4B)",
+            "selected": false
+          },
+          {
+            "value": "Box, fibreboard (4G)",
+            "text": "Box, fibreboard (4G)",
+            "selected": false
+          },
+          {
+            "value": "Box, for liquids (BW)",
+            "text": "Box, for liquids (BW)",
+            "selected": false
+          },
+          {
+            "value": "Box, natural wood (4C)",
+            "text": "Box, natural wood (4C)",
+            "selected": false
+          },
+          {
+            "value": "Box, plastic (4H)",
+            "text": "Box, plastic (4H)",
+            "selected": false
+          },
+          {
+            "value": "Box, plastic, expanded (QR)",
+            "text": "Box, plastic, expanded (QR)",
+            "selected": false
+          },
+          {
+            "value": "Box, plastic, solid (QS)",
+            "text": "Box, plastic, solid (QS)",
+            "selected": false
+          },
+          {
+            "value": "Box, plywood (4D)",
+            "text": "Box, plywood (4D)",
+            "selected": false
+          },
+          {
+            "value": "Box, reconstituted wood (4F)",
+            "text": "Box, reconstituted wood (4F)",
+            "selected": false
+          },
+          {
+            "value": "Box, steel (4A)",
+            "text": "Box, steel (4A)",
+            "selected": false
+          },
+          {
+            "value": "Box, wooden, natural wood, ordinary (QP)",
+            "text": "Box, wooden, natural wood, ordinary (QP)",
+            "selected": false
+          },
+          {
+            "value": "Box, wooden, natural wood, with sif (QQ)",
+            "text": "Box, wooden, natural wood, with sif (QQ)",
+            "selected": false
+          },
+          {
+            "value": "Bucket (BJ)",
+            "text": "Bucket (BJ)",
+            "selected": false
+          },
+          {
+            "value": "Bulk, gas (at 1031 mbar and 15øC) (VG)",
+            "text": "Bulk, gas (at 1031 mbar and 15øC) (VG)",
+            "selected": false
+          },
+          {
+            "value": "Bulk, liquefied gas (at abnormal te (VQ)",
+            "text": "Bulk, liquefied gas (at abnormal te (VQ)",
+            "selected": false
+          },
+          {
+            "value": "Bulk, liquid (VL)",
+            "text": "Bulk, liquid (VL)",
+            "selected": false
+          },
+          {
+            "value": "Bulk, solid, fine particles (“pow (VY)",
+            "text": "Bulk, solid, fine particles (“pow (VY)",
+            "selected": false
+          },
+          {
+            "value": "Bulk, solid, granular particles (VR)",
+            "text": "Bulk, solid, granular particles (VR)",
+            "selected": false
+          },
+          {
+            "value": "Bulk, solid, large particles (“no (VO)",
+            "text": "Bulk, solid, large particles (“no (VO)",
+            "selected": false
+          },
+          {
+            "value": "Bunch (BH)",
+            "text": "Bunch (BH)",
+            "selected": false
+          },
+          {
+            "value": "Bundle (BE)",
+            "text": "Bundle (BE)",
+            "selected": false
+          },
+          {
+            "value": "Butt (BU)",
+            "text": "Butt (BU)",
+            "selected": false
+          },
+          {
+            "value": "Cage (CG)",
+            "text": "Cage (CG)",
+            "selected": false
+          },
+          {
+            "value": "Cage, Commonwealth Handling Equipme (DG)",
+            "text": "Cage, Commonwealth Handling Equipme (DG)",
+            "selected": false
+          },
+          {
+            "value": "Cage, roll (CW)",
+            "text": "Cage, roll (CW)",
+            "selected": false
+          },
+          {
+            "value": "Can, cylindrical (CX)",
+            "text": "Can, cylindrical (CX)",
+            "selected": false
+          },
+          {
+            "value": "Can, rectangular (CA)",
+            "text": "Can, rectangular (CA)",
+            "selected": false
+          },
+          {
+            "value": "Can, with handle and spout (CD)",
+            "text": "Can, with handle and spout (CD)",
+            "selected": false
+          },
+          {
+            "value": "Canister (CI)",
+            "text": "Canister (CI)",
+            "selected": false
+          },
+          {
+            "value": "Canvas (CZ)",
+            "text": "Canvas (CZ)",
+            "selected": false
+          },
+          {
+            "value": "Capsule (AV)",
+            "text": "Capsule (AV)",
+            "selected": false
+          },
+          {
+            "value": "Carboy, non-protected (CO)",
+            "text": "Carboy, non-protected (CO)",
+            "selected": false
+          },
+          {
+            "value": "Carboy, protected (CP)",
+            "text": "Carboy, protected (CP)",
+            "selected": false
+          },
+          {
+            "value": "Card (CM)",
+            "text": "Card (CM)",
+            "selected": false
+          },
+          {
+            "value": "Carton (CT)",
+            "text": "Carton (CT)",
+            "selected": false
+          },
+          {
+            "value": "Cartridge (CQ)",
+            "text": "Cartridge (CQ)",
+            "selected": false
+          },
+          {
+            "value": "Case (CS)",
+            "text": "Case (CS)",
+            "selected": false
+          },
+          {
+            "value": "Case, isothermic (EI)",
+            "text": "Case, isothermic (EI)",
+            "selected": false
+          },
+          {
+            "value": "Case, skeleton (SK)",
+            "text": "Case, skeleton (SK)",
+            "selected": false
+          },
+          {
+            "value": "Case, steel (SS)",
+            "text": "Case, steel (SS)",
+            "selected": false
+          },
+          {
+            "value": "Case, with pallet base (ED)",
+            "text": "Case, with pallet base (ED)",
+            "selected": false
+          },
+          {
+            "value": "Case, with pallet base, cardboard (EF)",
+            "text": "Case, with pallet base, cardboard (EF)",
+            "selected": false
+          },
+          {
+            "value": "Case, with pallet base, metal (EH)",
+            "text": "Case, with pallet base, metal (EH)",
+            "selected": false
+          },
+          {
+            "value": "Case, with pallet base, plastic (EG)",
+            "text": "Case, with pallet base, plastic (EG)",
+            "selected": false
+          },
+          {
+            "value": "Case, with pallet base, wooden (EE)",
+            "text": "Case, with pallet base, wooden (EE)",
+            "selected": false
+          },
+          {
+            "value": "Cask (CK)",
+            "text": "Cask (CK)",
+            "selected": false
+          },
+          {
+            "value": "Chest (CH)",
+            "text": "Chest (CH)",
+            "selected": false
+          },
+          {
+            "value": "Churn (CC)",
+            "text": "Churn (CC)",
+            "selected": false
+          },
+          {
+            "value": "Clamshell (AI)",
+            "text": "Clamshell (AI)",
+            "selected": false
+          },
+          {
+            "value": "Coffer (CF)",
+            "text": "Coffer (CF)",
+            "selected": false
+          },
+          {
+            "value": "Coffin (CJ)",
+            "text": "Coffin (CJ)",
+            "selected": false
+          },
+          {
+            "value": "Coil (CL)",
+            "text": "Coil (CL)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, glass receptac (YT)",
+            "text": "Composite packaging, glass receptac (YT)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, glass receptac (YS)",
+            "text": "Composite packaging, glass receptac (YS)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, glass receptac (YZ)",
+            "text": "Composite packaging, glass receptac (YZ)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, glass receptac (YR)",
+            "text": "Composite packaging, glass receptac (YR)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, glass receptac (YY)",
+            "text": "Composite packaging, glass receptac (YY)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, glass receptac (YV)",
+            "text": "Composite packaging, glass receptac (YV)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, glass receptac (YX)",
+            "text": "Composite packaging, glass receptac (YX)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, glass receptac (YW)",
+            "text": "Composite packaging, glass receptac (YW)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, glass receptac (6P)",
+            "text": "Composite packaging, glass receptac (6P)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, glass receptac (YN)",
+            "text": "Composite packaging, glass receptac (YN)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, glass receptac (YP)",
+            "text": "Composite packaging, glass receptac (YP)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, glass receptac (YQ)",
+            "text": "Composite packaging, glass receptac (YQ)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, plastic recept (YH)",
+            "text": "Composite packaging, plastic recept (YH)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, plastic recept (YF)",
+            "text": "Composite packaging, plastic recept (YF)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, plastic recept (YD)",
+            "text": "Composite packaging, plastic recept (YD)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, plastic recept (YG)",
+            "text": "Composite packaging, plastic recept (YG)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, plastic recept (YC)",
+            "text": "Composite packaging, plastic recept (YC)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, plastic recept (YM)",
+            "text": "Composite packaging, plastic recept (YM)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, plastic recept (YB)",
+            "text": "Composite packaging, plastic recept (YB)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, plastic recept (YK)",
+            "text": "Composite packaging, plastic recept (YK)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, plastic recept (YL)",
+            "text": "Composite packaging, plastic recept (YL)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, plastic recept (YJ)",
+            "text": "Composite packaging, plastic recept (YJ)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, plastic recept (6H)",
+            "text": "Composite packaging, plastic recept (6H)",
+            "selected": false
+          },
+          {
+            "value": "Composite packaging, plastic recept (YA)",
+            "text": "Composite packaging, plastic recept (YA)",
+            "selected": false
+          },
+          {
+            "value": "Cone (AJ)",
+            "text": "Cone (AJ)",
+            "selected": false
+          },
+          {
+            "value": "Container, not otherwise specified (CN)",
+            "text": "Container, not otherwise specified (CN)",
+            "selected": false
+          },
+          {
+            "value": "Cover (CV)",
+            "text": "Cover (CV)",
+            "selected": false
+          },
+          {
+            "value": "Crate (CR)",
+            "text": "Crate (CR)",
+            "selected": false
+          },
+          {
+            "value": "Crate, beer (CB)",
+            "text": "Crate, beer (CB)",
+            "selected": false
+          },
+          {
+            "value": "Crate, bulk, cardboard (DK)",
+            "text": "Crate, bulk, cardboard (DK)",
+            "selected": false
+          },
+          {
+            "value": "Crate, bulk, plastic (DL)",
+            "text": "Crate, bulk, plastic (DL)",
+            "selected": false
+          },
+          {
+            "value": "Crate, bulk, wooden (DM)",
+            "text": "Crate, bulk, wooden (DM)",
+            "selected": false
+          },
+          {
+            "value": "Crate, framed (FD)",
+            "text": "Crate, framed (FD)",
+            "selected": false
+          },
+          {
+            "value": "Crate, fruit (FC)",
+            "text": "Crate, fruit (FC)",
+            "selected": false
+          },
+          {
+            "value": "Crate, milk (MC)",
+            "text": "Crate, milk (MC)",
+            "selected": false
+          },
+          {
+            "value": "Crate, multiple layer, cardboard (DC)",
+            "text": "Crate, multiple layer, cardboard (DC)",
+            "selected": false
+          },
+          {
+            "value": "Crate, multiple layer, plastic (DA)",
+            "text": "Crate, multiple layer, plastic (DA)",
+            "selected": false
+          },
+          {
+            "value": "Crate, multiple layer, wooden (DB)",
+            "text": "Crate, multiple layer, wooden (DB)",
+            "selected": false
+          },
+          {
+            "value": "Crate, shallow (SC)",
+            "text": "Crate, shallow (SC)",
+            "selected": false
+          },
+          {
+            "value": "Creel (CE)",
+            "text": "Creel (CE)",
+            "selected": false
+          },
+          {
+            "value": "Cup (CU)",
+            "text": "Cup (CU)",
+            "selected": false
+          },
+          {
+            "value": "Cylinder (CY)",
+            "text": "Cylinder (CY)",
+            "selected": false
+          },
+          {
+            "value": "Demijohn, non-protected (DJ)",
+            "text": "Demijohn, non-protected (DJ)",
+            "selected": false
+          },
+          {
+            "value": "Demijohn, protected (DP)",
+            "text": "Demijohn, protected (DP)",
+            "selected": false
+          },
+          {
+            "value": "Dispenser (DN)",
+            "text": "Dispenser (DN)",
+            "selected": false
+          },
+          {
+            "value": "Drum (DR)",
+            "text": "Drum (DR)",
+            "selected": false
+          },
+          {
+            "value": "Drum, aluminium (1B)",
+            "text": "Drum, aluminium (1B)",
+            "selected": false
+          },
+          {
+            "value": "Drum, aluminium, non-removable head (QC)",
+            "text": "Drum, aluminium, non-removable head (QC)",
+            "selected": false
+          },
+          {
+            "value": "Drum, aluminium, removable head (QD)",
+            "text": "Drum, aluminium, removable head (QD)",
+            "selected": false
+          },
+          {
+            "value": "Drum, fibre (1G)",
+            "text": "Drum, fibre (1G)",
+            "selected": false
+          },
+          {
+            "value": "Drum, iron (DI)",
+            "text": "Drum, iron (DI)",
+            "selected": false
+          },
+          {
+            "value": "Drum, plastic (IH)",
+            "text": "Drum, plastic (IH)",
+            "selected": false
+          },
+          {
+            "value": "Drum, plastic, non-removable head (QF)",
+            "text": "Drum, plastic, non-removable head (QF)",
+            "selected": false
+          },
+          {
+            "value": "Drum, plastic, removable head (QG)",
+            "text": "Drum, plastic, removable head (QG)",
+            "selected": false
+          },
+          {
+            "value": "Drum, plywood (1D)",
+            "text": "Drum, plywood (1D)",
+            "selected": false
+          },
+          {
+            "value": "Drum, steel (1A)",
+            "text": "Drum, steel (1A)",
+            "selected": false
+          },
+          {
+            "value": "Drum, steel, non-removable head (QA)",
+            "text": "Drum, steel, non-removable head (QA)",
+            "selected": false
+          },
+          {
+            "value": "Drum, steel, removable head (QB)",
+            "text": "Drum, steel, removable head (QB)",
+            "selected": false
+          },
+          {
+            "value": "Drum, wooden (1W)",
+            "text": "Drum, wooden (1W)",
+            "selected": false
+          },
+          {
+            "value": "Envelope (EN)",
+            "text": "Envelope (EN)",
+            "selected": false
+          },
+          {
+            "value": "Envelope, steel (SV)",
+            "text": "Envelope, steel (SV)",
+            "selected": false
+          },
+          {
+            "value": "Filmpack (FP)",
+            "text": "Filmpack (FP)",
+            "selected": false
+          },
+          {
+            "value": "Firkin (FI)",
+            "text": "Firkin (FI)",
+            "selected": false
+          },
+          {
+            "value": "Flask (FL)",
+            "text": "Flask (FL)",
+            "selected": false
+          },
+          {
+            "value": "Foodtainer (FT)",
+            "text": "Foodtainer (FT)",
+            "selected": false
+          },
+          {
+            "value": "Footlocker (FO)",
+            "text": "Footlocker (FO)",
+            "selected": false
+          },
+          {
+            "value": "Frame (FR)",
+            "text": "Frame (FR)",
+            "selected": false
+          },
+          {
+            "value": "Girder (GI)",
+            "text": "Girder (GI)",
+            "selected": false
+          },
+          {
+            "value": "Girders, in bundle/bunch/truss (GZ)",
+            "text": "Girders, in bundle/bunch/truss (GZ)",
+            "selected": false
+          },
+          {
+            "value": "Hamper (HR)",
+            "text": "Hamper (HR)",
+            "selected": false
+          },
+          {
+            "value": "Hogshead (HG)",
+            "text": "Hogshead (HG)",
+            "selected": false
+          },
+          {
+            "value": "Ingot (IN)",
+            "text": "Ingot (IN)",
+            "selected": false
+          },
+          {
+            "value": "Ingots, in bundle/bunch/truss (IZ)",
+            "text": "Ingots, in bundle/bunch/truss (IZ)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container (WA)",
+            "text": "Intermediate bulk container (WA)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, alumin (WH)",
+            "text": "Intermediate bulk container, alumin (WH)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, alumin (WL)",
+            "text": "Intermediate bulk container, alumin (WL)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, alumin (WD)",
+            "text": "Intermediate bulk container, alumin (WD)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, compos (ZL)",
+            "text": "Intermediate bulk container, compos (ZL)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, compos (ZN)",
+            "text": "Intermediate bulk container, compos (ZN)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, compos (ZP)",
+            "text": "Intermediate bulk container, compos (ZP)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, compos (ZM)",
+            "text": "Intermediate bulk container, compos (ZM)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, compos (ZQ)",
+            "text": "Intermediate bulk container, compos (ZQ)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, compos (ZR)",
+            "text": "Intermediate bulk container, compos (ZR)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, compos (ZS)",
+            "text": "Intermediate bulk container, compos (ZS)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, fibreb (ZT)",
+            "text": "Intermediate bulk container, fibreb (ZT)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, flexib (ZU)",
+            "text": "Intermediate bulk container, flexib (ZU)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, metal (WF)",
+            "text": "Intermediate bulk container, metal (WF)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, metal, (WJ)",
+            "text": "Intermediate bulk container, metal, (WJ)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, metal, (WM)",
+            "text": "Intermediate bulk container, metal, (WM)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, metal, (ZV)",
+            "text": "Intermediate bulk container, metal, (ZV)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, natura (WU)",
+            "text": "Intermediate bulk container, natura (WU)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, natura (ZW)",
+            "text": "Intermediate bulk container, natura (ZW)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, paper, (ZA)",
+            "text": "Intermediate bulk container, paper, (ZA)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, paper, (ZC)",
+            "text": "Intermediate bulk container, paper, (ZC)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, plasti (WS)",
+            "text": "Intermediate bulk container, plasti (WS)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, plywoo (WY)",
+            "text": "Intermediate bulk container, plywoo (WY)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, plywoo (ZX)",
+            "text": "Intermediate bulk container, plywoo (ZX)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, recons (WZ)",
+            "text": "Intermediate bulk container, recons (WZ)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, recons (ZY)",
+            "text": "Intermediate bulk container, recons (ZY)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, rigid (ZJ)",
+            "text": "Intermediate bulk container, rigid (ZJ)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, rigid (ZH)",
+            "text": "Intermediate bulk container, rigid (ZH)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, rigid (ZG)",
+            "text": "Intermediate bulk container, rigid (ZG)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, rigid (ZD)",
+            "text": "Intermediate bulk container, rigid (ZD)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, rigid (ZF)",
+            "text": "Intermediate bulk container, rigid (ZF)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, rigid (AA)",
+            "text": "Intermediate bulk container, rigid (AA)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, rigid (ZK)",
+            "text": "Intermediate bulk container, rigid (ZK)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, steel (WC)",
+            "text": "Intermediate bulk container, steel (WC)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, steel, (WK)",
+            "text": "Intermediate bulk container, steel, (WK)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, steel, (WG)",
+            "text": "Intermediate bulk container, steel, (WG)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, textil (WT)",
+            "text": "Intermediate bulk container, textil (WT)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, textil (WV)",
+            "text": "Intermediate bulk container, textil (WV)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, textil (WW)",
+            "text": "Intermediate bulk container, textil (WW)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, textil (WX)",
+            "text": "Intermediate bulk container, textil (WX)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, woven (WR)",
+            "text": "Intermediate bulk container, woven (WR)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, woven (WN)",
+            "text": "Intermediate bulk container, woven (WN)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, woven (WP)",
+            "text": "Intermediate bulk container, woven (WP)",
+            "selected": false
+          },
+          {
+            "value": "Intermediate bulk container, woven (WQ)",
+            "text": "Intermediate bulk container, woven (WQ)",
+            "selected": false
+          },
+          {
+            "value": "Jar (JR)",
+            "text": "Jar (JR)",
+            "selected": false
+          },
+          {
+            "value": "Jerrycan, cylindrical (JY)",
+            "text": "Jerrycan, cylindrical (JY)",
+            "selected": false
+          },
+          {
+            "value": "Jerrycan, plastic (3H)",
+            "text": "Jerrycan, plastic (3H)",
+            "selected": false
+          },
+          {
+            "value": "Jerrycan, plastic, non-removable he (QM)",
+            "text": "Jerrycan, plastic, non-removable he (QM)",
+            "selected": false
+          },
+          {
+            "value": "Jerrycan, plastic, removable head (QN)",
+            "text": "Jerrycan, plastic, removable head (QN)",
+            "selected": false
+          },
+          {
+            "value": "Jerrycan, rectangular (JC)",
+            "text": "Jerrycan, rectangular (JC)",
+            "selected": false
+          },
+          {
+            "value": "Jerrycan, steel (3A)",
+            "text": "Jerrycan, steel (3A)",
+            "selected": false
+          },
+          {
+            "value": "Jerrycan, steel, non-removable head (QK)",
+            "text": "Jerrycan, steel, non-removable head (QK)",
+            "selected": false
+          },
+          {
+            "value": "Jerrycan, steel, removable head (QL)",
+            "text": "Jerrycan, steel, removable head (QL)",
+            "selected": false
+          },
+          {
+            "value": "Jug (JG)",
+            "text": "Jug (JG)",
+            "selected": false
+          },
+          {
+            "value": "Jutebag (JT)",
+            "text": "Jutebag (JT)",
+            "selected": false
+          },
+          {
+            "value": "Keg (KG)",
+            "text": "Keg (KG)",
+            "selected": false
+          },
+          {
+            "value": "Liftvan (LV)",
+            "text": "Liftvan (LV)",
+            "selected": false
+          },
+          {
+            "value": "Log (LG)",
+            "text": "Log (LG)",
+            "selected": false
+          },
+          {
+            "value": "Logs, in bundle/bunch/truss (LZ)",
+            "text": "Logs, in bundle/bunch/truss (LZ)",
+            "selected": false
+          },
+          {
+            "value": "Lot (LT)",
+            "text": "Lot (LT)",
+            "selected": false
+          },
+          {
+            "value": "Mat (MT)",
+            "text": "Mat (MT)",
+            "selected": false
+          },
+          {
+            "value": "Matchbox (MX)",
+            "text": "Matchbox (MX)",
+            "selected": false
+          },
+          {
+            "value": "Mutually defined (ZZ)",
+            "text": "Mutually defined (ZZ)",
+            "selected": false
+          },
+          {
+            "value": "Nest (NS)",
+            "text": "Nest (NS)",
+            "selected": false
+          },
+          {
+            "value": "Net (NT)",
+            "text": "Net (NT)",
+            "selected": false
+          },
+          {
+            "value": "Net, tube, plastic (NU)",
+            "text": "Net, tube, plastic (NU)",
+            "selected": false
+          },
+          {
+            "value": "Net, tube, textile (NV)",
+            "text": "Net, tube, textile (NV)",
+            "selected": false
+          },
+          {
+            "value": "Not available (NA)",
+            "text": "Not available (NA)",
+            "selected": false
+          },
+          {
+            "value": "Package (PK)",
+            "text": "Package (PK)",
+            "selected": false
+          },
+          {
+            "value": "Package, cardboard, with bottle gri (IK)",
+            "text": "Package, cardboard, with bottle gri (IK)",
+            "selected": false
+          },
+          {
+            "value": "Package, display, cardboard (IB)",
+            "text": "Package, display, cardboard (IB)",
+            "selected": false
+          },
+          {
+            "value": "Package, display, metal (ID)",
+            "text": "Package, display, metal (ID)",
+            "selected": false
+          },
+          {
+            "value": "Package, display, plastic (IC)",
+            "text": "Package, display, plastic (IC)",
+            "selected": false
+          },
+          {
+            "value": "Package, display, wooden (IA)",
+            "text": "Package, display, wooden (IA)",
+            "selected": false
+          },
+          {
+            "value": "Package, flow (IF)",
+            "text": "Package, flow (IF)",
+            "selected": false
+          },
+          {
+            "value": "Package, paper wrapped (IG)",
+            "text": "Package, paper wrapped (IG)",
+            "selected": false
+          },
+          {
+            "value": "Package, show (IE)",
+            "text": "Package, show (IE)",
+            "selected": false
+          },
+          {
+            "value": "Packet (PA)",
+            "text": "Packet (PA)",
+            "selected": false
+          },
+          {
+            "value": "Pail (PL)",
+            "text": "Pail (PL)",
+            "selected": false
+          },
+          {
+            "value": "Pallet (PX)",
+            "text": "Pallet (PX)",
+            "selected": false
+          },
+          {
+            "value": "Pallet, 100cms * 110cms (AH)",
+            "text": "Pallet, 100cms * 110cms (AH)",
+            "selected": false
+          },
+          {
+            "value": "Pallet, box (PB)",
+            "text": "Pallet, box (PB)",
+            "selected": false
+          },
+          {
+            "value": "Pallet, modular, collars 80cms * 10 (PD)",
+            "text": "Pallet, modular, collars 80cms * 10 (PD)",
+            "selected": false
+          },
+          {
+            "value": "Pallet, modular, collars 80cms * 12 (PE)",
+            "text": "Pallet, modular, collars 80cms * 12 (PE)",
+            "selected": false
+          },
+          {
+            "value": "Pallet, modular, collars 80cms * 60 (AF)",
+            "text": "Pallet, modular, collars 80cms * 60 (AF)",
+            "selected": false
+          },
+          {
+            "value": "Pallet, shrinkwrapped (AG)",
+            "text": "Pallet, shrinkwrapped (AG)",
+            "selected": false
+          },
+          {
+            "value": "Parcel (PC)",
+            "text": "Parcel (PC)",
+            "selected": false
+          },
+          {
+            "value": "Pen (PF)",
+            "text": "Pen (PF)",
+            "selected": false
+          },
+          {
+            "value": "Pipe (PI)",
+            "text": "Pipe (PI)",
+            "selected": false
+          },
+          {
+            "value": "Pipes, in bundle/bunch/truss (PV)",
+            "text": "Pipes, in bundle/bunch/truss (PV)",
+            "selected": false
+          },
+          {
+            "value": "Pitcher (PH)",
+            "text": "Pitcher (PH)",
+            "selected": false
+          },
+          {
+            "value": "Plank (PN)",
+            "text": "Plank (PN)",
+            "selected": false
+          },
+          {
+            "value": "Planks, in bundle/bunch/truss (PZ)",
+            "text": "Planks, in bundle/bunch/truss (PZ)",
+            "selected": false
+          },
+          {
+            "value": "Plate (PG)",
+            "text": "Plate (PG)",
+            "selected": false
+          },
+          {
+            "value": "Plates, in bundle/bunch/truss (PY)",
+            "text": "Plates, in bundle/bunch/truss (PY)",
+            "selected": false
+          },
+          {
+            "value": "Pot (PT)",
+            "text": "Pot (PT)",
+            "selected": false
+          },
+          {
+            "value": "Pouch (PO)",
+            "text": "Pouch (PO)",
+            "selected": false
+          },
+          {
+            "value": "Punnet (PJ)",
+            "text": "Punnet (PJ)",
+            "selected": false
+          },
+          {
+            "value": "Rack (RK)",
+            "text": "Rack (RK)",
+            "selected": false
+          },
+          {
+            "value": "Rack, clothing hanger (RJ)",
+            "text": "Rack, clothing hanger (RJ)",
+            "selected": false
+          },
+          {
+            "value": "Receptacle, fibre (AB)",
+            "text": "Receptacle, fibre (AB)",
+            "selected": false
+          },
+          {
+            "value": "Receptacle, glass (GR)",
+            "text": "Receptacle, glass (GR)",
+            "selected": false
+          },
+          {
+            "value": "Receptacle, metal (MR)",
+            "text": "Receptacle, metal (MR)",
+            "selected": false
+          },
+          {
+            "value": "Receptacle, paper (AC)",
+            "text": "Receptacle, paper (AC)",
+            "selected": false
+          },
+          {
+            "value": "Receptacle, plastic (PR)",
+            "text": "Receptacle, plastic (PR)",
+            "selected": false
+          },
+          {
+            "value": "Receptacle, plastic wrapped (MW)",
+            "text": "Receptacle, plastic wrapped (MW)",
+            "selected": false
+          },
+          {
+            "value": "Receptacle, wooden (AD)",
+            "text": "Receptacle, wooden (AD)",
+            "selected": false
+          },
+          {
+            "value": "Rednet (RT)",
+            "text": "Rednet (RT)",
+            "selected": false
+          },
+          {
+            "value": "Reel (RL)",
+            "text": "Reel (RL)",
+            "selected": false
+          },
+          {
+            "value": "Ring (RG)",
+            "text": "Ring (RG)",
+            "selected": false
+          },
+          {
+            "value": "Rod (RD)",
+            "text": "Rod (RD)",
+            "selected": false
+          },
+          {
+            "value": "Rods, in bundle/bunch/truss (RZ)",
+            "text": "Rods, in bundle/bunch/truss (RZ)",
+            "selected": false
+          },
+          {
+            "value": "Roll (RO)",
+            "text": "Roll (RO)",
+            "selected": false
+          },
+          {
+            "value": "Sachet (SH)",
+            "text": "Sachet (SH)",
+            "selected": false
+          },
+          {
+            "value": "Sack (SA)",
+            "text": "Sack (SA)",
+            "selected": false
+          },
+          {
+            "value": "Sack, multi-wall (MS)",
+            "text": "Sack, multi-wall (MS)",
+            "selected": false
+          },
+          {
+            "value": "Sea-chest (SE)",
+            "text": "Sea-chest (SE)",
+            "selected": false
+          },
+          {
+            "value": "Set (SX)",
+            "text": "Set (SX)",
+            "selected": false
+          },
+          {
+            "value": "Sheet (ST)",
+            "text": "Sheet (ST)",
+            "selected": false
+          },
+          {
+            "value": "Sheet, plastic wrapping (SP)",
+            "text": "Sheet, plastic wrapping (SP)",
+            "selected": false
+          },
+          {
+            "value": "Sheetmetal (SM)",
+            "text": "Sheetmetal (SM)",
+            "selected": false
+          },
+          {
+            "value": "Sheets, in bundle/bunch/truss (SZ)",
+            "text": "Sheets, in bundle/bunch/truss (SZ)",
+            "selected": false
+          },
+          {
+            "value": "Shrinkwrapped (SW)",
+            "text": "Shrinkwrapped (SW)",
+            "selected": false
+          },
+          {
+            "value": "Skid (SI)",
+            "text": "Skid (SI)",
+            "selected": false
+          },
+          {
+            "value": "Slab (SB)",
+            "text": "Slab (SB)",
+            "selected": false
+          },
+          {
+            "value": "Sleeve (SY)",
+            "text": "Sleeve (SY)",
+            "selected": false
+          },
+          {
+            "value": "Slipsheet (SL)",
+            "text": "Slipsheet (SL)",
+            "selected": false
+          },
+          {
+            "value": "Spindle (SD)",
+            "text": "Spindle (SD)",
+            "selected": false
+          },
+          {
+            "value": "Spool (SO)",
+            "text": "Spool (SO)",
+            "selected": false
+          },
+          {
+            "value": "Suitcase (SU)",
+            "text": "Suitcase (SU)",
+            "selected": false
+          },
+          {
+            "value": "Tank, cylindrical (TY)",
+            "text": "Tank, cylindrical (TY)",
+            "selected": false
+          },
+          {
+            "value": "Tank, rectangular (TK)",
+            "text": "Tank, rectangular (TK)",
+            "selected": false
+          },
+          {
+            "value": "Tea-chest (TC)",
+            "text": "Tea-chest (TC)",
+            "selected": false
+          },
+          {
+            "value": "Tierce (TI)",
+            "text": "Tierce (TI)",
+            "selected": false
+          },
+          {
+            "value": "Tin (TN)",
+            "text": "Tin (TN)",
+            "selected": false
+          },
+          {
+            "value": "Tray (PU)",
+            "text": "Tray (PU)",
+            "selected": false
+          },
+          {
+            "value": "Tray, one layer no cover, cardboard (DV)",
+            "text": "Tray, one layer no cover, cardboard (DV)",
+            "selected": false
+          },
+          {
+            "value": "Tray, one layer no cover, plastic (DS)",
+            "text": "Tray, one layer no cover, plastic (DS)",
+            "selected": false
+          },
+          {
+            "value": "Tray, one layer no cover, polystyre (DU)",
+            "text": "Tray, one layer no cover, polystyre (DU)",
+            "selected": false
+          },
+          {
+            "value": "Tray, one layer no cover, wooden (DT)",
+            "text": "Tray, one layer no cover, wooden (DT)",
+            "selected": false
+          },
+          {
+            "value": "Tray, two layers no cover, cardboar (DY)",
+            "text": "Tray, two layers no cover, cardboar (DY)",
+            "selected": false
+          },
+          {
+            "value": "Tray, two layers no cover, plastic (DW)",
+            "text": "Tray, two layers no cover, plastic (DW)",
+            "selected": false
+          },
+          {
+            "value": "Tray, two layers no cover, wooden (DX)",
+            "text": "Tray, two layers no cover, wooden (DX)",
+            "selected": false
+          },
+          {
+            "value": "Trunk (TR)",
+            "text": "Trunk (TR)",
+            "selected": false
+          },
+          {
+            "value": "Truss (TS)",
+            "text": "Truss (TS)",
+            "selected": false
+          },
+          {
+            "value": "Tub (TB)",
+            "text": "Tub (TB)",
+            "selected": false
+          },
+          {
+            "value": "Tub, with lid (TL)",
+            "text": "Tub, with lid (TL)",
+            "selected": false
+          },
+          {
+            "value": "Tube (TU)",
+            "text": "Tube (TU)",
+            "selected": false
+          },
+          {
+            "value": "Tube, collapsible (TD)",
+            "text": "Tube, collapsible (TD)",
+            "selected": false
+          },
+          {
+            "value": "Tube, with nozzle (TV)",
+            "text": "Tube, with nozzle (TV)",
+            "selected": false
+          },
+          {
+            "value": "Tubes, in bundle/bunch/truss (TZ)",
+            "text": "Tubes, in bundle/bunch/truss (TZ)",
+            "selected": false
+          },
+          {
+            "value": "Tun (TO)",
+            "text": "Tun (TO)",
+            "selected": false
+          },
+          {
+            "value": "Uncaged (UC)",
+            "text": "Uncaged (UC)",
+            "selected": false
+          },
+          {
+            "value": "Unpacked or unpackaged (NE)",
+            "text": "Unpacked or unpackaged (NE)",
+            "selected": false
+          },
+          {
+            "value": "Unpacked or unpackaged, multiple un (NG)",
+            "text": "Unpacked or unpackaged, multiple un (NG)",
+            "selected": false
+          },
+          {
+            "value": "Unpacked or unpackaged, single unit (NF)",
+            "text": "Unpacked or unpackaged, single unit (NF)",
+            "selected": false
+          },
+          {
+            "value": "Vacuum-packed (VP)",
+            "text": "Vacuum-packed (VP)",
+            "selected": false
+          },
+          {
+            "value": "Vanpack (VK)",
+            "text": "Vanpack (VK)",
+            "selected": false
+          },
+          {
+            "value": "Vat (VA)",
+            "text": "Vat (VA)",
+            "selected": false
+          },
+          {
+            "value": "Vial (VI)",
+            "text": "Vial (VI)",
+            "selected": false
+          },
+          {
+            "value": "Wickerbottle (WB)",
+            "text": "Wickerbottle (WB)",
+            "selected": false
+          }
+
+        ],
+
+        'documents': [
+                {
+                  "value": "",
+                  "text": "",   
+                  "selected": false
+                },
+                {
+                  "value": "(955) ATA carnet",
+                  "text": "(955) ATA carnet",
+                  "selected": false
+                },
+                {
+                  "value": "(740) Air waybill",
+                  "text": "(740) Air waybill",
+                  "selected": false
+                },
+                {
+                  "value": "(705) Bill of lading",
+                  "text": "(705) Bill of lading",
+                  "selected": false
+                },
+                {
+                  "value": "(787) Bordereau",
+                  "text": "(787) Bordereau",
+                  "selected": false
+                },
+                {
+                  "value": "(720) CIM consignment note (rail)",
+                  "text": "(720) CIM consignment note (rail)",
+                  "selected": false
+                },
+                {
+                  "value": "(933) Cargo declaration (arrival)",
+                  "text": "(933) Cargo declaration (arrival)",
+                  "selected": false
+                },
+                {
+                  "value": "(785) Cargo manifest",
+                  "text": "(785) Cargo manifest",
+                  "selected": false
+                },
+                {
+                  "value": "(Y028) Carrier (AEO certificate number)",
+                  "text": "(Y028) Carrier (AEO certificate number)",
+                  "selected": false
+                },
+                {
+                  "value": "(2) Certificate of conformity",
+                  "text": "(2) Certificate of conformity",
+                  "selected": false
+                },
+                {
+                  "value": "(861) Certificate of origin",
+                  "text": "(861) Certificate of origin",
+                  "selected": false
+                },
+                {
+                  "value": "(865) Certificate of origin form GSP",
+                  "text": "(865) Certificate of origin form GSP",
+                  "selected": false
+                },
+                {
+                  "value": "(3) Certificate of quality",
+                  "text": "(3) Certificate of quality",
+                  "selected": false
+                },
+                {
+                  "value": "(380) Commercial invoice",
+                  "text": "(380) Commercial invoice",
+                  "selected": false
+                },
+                {
+                  "value": "(Y023) Consignee (AEO certificate number)",
+                  "text": "(Y023) Consignee (AEO certificate number)",
+                  "selected": false
+                },
+                {
+                  "value": "(Y022) Consignor / exporter (AEO)",
+                  "text": "(Y022) Consignor / exporter (AEO)",
+                  "selected": false
+                },
+                {
+                  "value": "(235) Container list",
+                  "text": "(235) Container list",
+                  "selected": false
+                },
+                {
+                  "value": "(823) Control document T5",
+                  "text": "(823) Control document T5",
+                  "selected": false
+                },
+                {
+                  "value": "(Y024) Declarant (AEO certificate number)",
+                  "text": "(Y024) Declarant (AEO certificate number)",
+                  "selected": false
+                },
+                {
+                  "value": "(862) Declaration of origin",
+                  "text": "(862) Declaration of origin",
+                  "selected": false
+                },
+                {
+                  "value": "(750) Despatch note (post parcels)",
+                  "text": "(750) Despatch note (post parcels)",
+                  "selected": false
+                },
+                {
+                  "value": "(820) Despatch note model T",
+                  "text": "(820) Despatch note model T",
+                  "selected": false
+                },
+                {
+                  "value": "(821) Despatch note model T1",
+                  "text": "(821) Despatch note model T1",
+                  "selected": false
+                },
+                {
+                  "value": "(822) Despatch note model T2",
+                  "text": "(822) Despatch note model T2",
+                  "selected": false
+                },
+                {
+                  "value": "(825) Despatch note model T2L",
+                  "text": "(825) Despatch note model T2L",
+                  "selected": false
+                },
+                {
+                  "value": "(954) EUR 1 certificate of origin",
+                  "text": "(954) EUR 1 certificate of origin",
+                  "selected": false
+                },
+                {
+                  "value": "(941) Embargo permit",
+                  "text": "(941) Embargo permit",
+                  "selected": false
+                },
+                {
+                  "value": "(830) Goods declaration for exportation",
+                  "text": "(830) Goods declaration for exportation",
+                  "selected": false
+                },
+                {
+                  "value": "(714) House bill of lading",
+                  "text": "(714) House bill of lading",
+                  "selected": false
+                },
+                {
+                  "value": "(703) House waybill",
+                  "text": "(703) House waybill",
+                  "selected": false
+                },
+                {
+                  "value": "(911) Import licence",
+                  "text": "(911) Import licence",
+                  "selected": false
+                },
+                {
+                  "value": "(741) Master air waybill",
+                  "text": "(741) Master air waybill",
+                  "selected": false
+                },
+                {
+                  "value": "(704) Master bill of lading",
+                  "text": "(704) Master bill of lading",
+                  "selected": false
+                },
+                {
+                  "value": "(18) Movement certificate A.TR.1",
+                  "text": "(18) Movement certificate A.TR.1",
+                  "selected": false
+                },
+                {
+                  "value": "(760) Multimodal/combined transport doc.",
+                  "text": "(760) Multimodal/combined transport doc.",
+                  "selected": false
+                },
+                {
+                  "value": "(Y029) Other authorised economic operator",
+                  "text": "(Y029) Other authorised economic operator",
+                  "selected": false
+                },
+                {
+                  "value": "(271) Packing list",
+                  "text": "(271) Packing list",
+                  "selected": false
+                },
+                {
+                  "value": "(851) Phytosanitary certificate",
+                  "text": "(851) Phytosanitary certificate",
+                  "selected": false
+                },
+                {
+                  "value": "(864) Preference certificate of origin",
+                  "text": "(864) Preference certificate of origin",
+                  "selected": false
+                },
+                {
+                  "value": "(Y026) Principal (AEO certificate number)",
+                  "text": "(Y026) Principal (AEO certificate number)",
+                  "selected": false
+                },
+                {
+                  "value": "(325) Proforma invoice",
+                  "text": "(325) Proforma invoice",
+                  "selected": false
+                },
+                {
+                  "value": "(Y025) Representative  (AEO)",
+                  "text": "(Y025) Representative  (AEO)",
+                  "selected": false
+                },
+                {
+                  "value": "(730) Road consignment note",
+                  "text": "(730) Road consignment note",
+                  "selected": false
+                },
+                {
+                  "value": "(722) Road list-SMGS",
+                  "text": "(722) Road list-SMGS",
+                  "selected": false
+                },
+                {
+                  "value": "(852) Sanitary certificate",
+                  "text": "(852) Sanitary certificate",
+                  "selected": false
+                },
+                {
+                  "value": "(951) TIF form",
+                  "text": "(951) TIF form",
+                  "selected": false
+                },
+                {
+                  "value": "(952) TIR carnet",
+                  "text": "(952) TIR carnet",
+                  "selected": false
+                },
+                {
+                  "value": "(853) Veterinary certificate",
+                  "text": "(853) Veterinary certificate",
+                  "selected": false
+                },
+                {
+                  "value": "(Y027) Warehousekeeper (AEO)",
+                  "text": "(Y027) Warehousekeeper (AEO)",
+                  "selected": false
+                }
+        ],
+        'adminReference': [
+            {
+                "value": "",
+                "text": "",
+                "selected": false
+            },
+            {
+              "value": "(T1) Document T1",
+              "text": "(T1) Document T1",
+              "selected": false
+            },
+            {
+              "value": "(T2F) Internal Community transit Declaration",
+              "text": "(T2F) Internal Community transit Declaration",
+              "selected": false
+            },
+            {
+              "value": "(CO) SAD - Community goods subject",
+              "text": "(CO) SAD - Community goods subject",
+              "selected": false
+            },
+            {
+              "value": "(IM) Single Administrative Document",
+              "text": "(IM) Single Administrative Document",
+              "selected": false
+            },
+            {
+              "value": "(EU) Single Administrative Document",
+              "text": "(EU) Single Administrative Document",
+              "selected": false
+            },
+            {
+              "value": "(EX) Single Administrative Document",
+              "text": "(EX) Single Administrative Document",
+              "selected": false
+            },
+            {
+              "value": "(T2) T2",
+              "text": "(T2) T2",
+              "selected": false
+            },
+            {
+              "value": "(T2ATA) T2ATA",
+              "text": "(T2ATA) T2ATA",
+              "selected": false
+            },
+            {
+              "value": "(T2CIM) T2CIM",
+              "text": "(T2CIM) T2CIM",
+              "selected": false
+            },
+            {
+              "value": "(T2L) T2L",
+              "text": "(T2L) T2L",
+              "selected": false
+            },
+            {
+              "value": "(T2LF) T2LF",
+              "text": "(T2LF) T2LF",
+              "selected": false
+            },
+            {
+              "value": "(T2SM) T2SM",
+              "text": "(T2SM) T2SM",
+              "selected": false
+            },
+            {
+              "value": "(T2TIR) T2TIR",
+              "text": "(T2TIR) T2TIR",
+              "selected": false
+            },
+            {
+              "value": "(Test) Test Description",
+              "text": "(Test) Test Description",
+              "selected": false
+            },
+            {
+              "value": "(Test2) Test2 Description",
+              "text": "(Test2) Test2 Description",
+              "selected": false
+            }
+           ]
+
+
+
     }
 }
+
+
 
 module.exports.officesOfDeparture = data.reference['offices'];
 module.exports.countries = data.reference['countries'];
 module.exports.officeOfTransit = data.reference['officeOfTransit'];
 module.exports.ctcOnlyCountries = data.reference['ctcOnlyCountries'];
-module.exports.transportMode = data.reference['transportMode']
+module.exports.transportMode = data.reference['transportMode'];
+module.exports.packages = data.reference['packages'];
+module.exports.documents = data.reference['documents'];
+module.exports.adminReference = data.reference['adminReference'];
