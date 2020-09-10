@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the postcode for the place of declaration? {{ data['pageTitleAddOn']}}
+What is the commodity code? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,15 +15,17 @@ What is the postcode for the place of declaration? {{ data['pageTitleAddOn']}}
 
     <form action="save-item" class="form" method="post">
 
-      <span class="govuk-caption-xl">{{ data['movementDetails'] }}</span>
+      <span class="govuk-caption-xl">{{ data['itemDetails'] }}</span>
 
-      <h1 class="govuk-heading-xl">What is the commodity code of the item?</h1>
+      <h1 class="govuk-heading-xl">What is the commodity code?</h1>
 
-        
-
-        <div class="govuk-form-group">
-          <input class="govuk-input govuk-input--width-20" id="itemcode" name="itemcode" type="text">
+      <div class="govuk-form-group">
+        <div id="code-hint" class="govuk-hint">
+          For example, XXXXXXXXXXXXXXXXXX
         </div>
+        <input class="govuk-input govuk-input--width-20" id="itemcode" name="itemcode" type="text"
+          spellcheck="false" aria-describedby="code-hint">
+      </div>
 
         {{ govukButton({
           text: "Save and continue"

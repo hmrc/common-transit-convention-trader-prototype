@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the postcode for the place of declaration? {{ data['pageTitleAddOn']}}
+What is the description of item {{ data['itemNumber']}} {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,16 +13,14 @@ What is the postcode for the place of declaration? {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="new-item-weight" class="form" method="post">
+    <form action="add-total-gross-mass" class="form" method="post">
 
-      <span class="govuk-caption-xl">{{ data['movementDetails'] }}</span>
+      <span class="govuk-caption-xl">{{ data['itemDetails'] }}</span>
 
-      <h1 class="govuk-heading-xl">What is the description of the item ?</h1>
-
-        
+      <h1 class="govuk-heading-xl">What is the description of item {{ data['itemNumber']}}</h1>
 
         <div class="govuk-form-group">
-          <input class="govuk-input govuk-input--width-20" id="itemdescription" name="itemdescription" type="text">
+          <textarea class="govuk-textarea" id="itemdescription" name="itemdescription" rows="5" aria-describedby="more-detail-hint"></textarea>
         </div>
 
         {{ govukButton({

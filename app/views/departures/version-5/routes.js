@@ -42,21 +42,56 @@ router.post('/route/added-transit-offices-route', function (req, res) {
     adding item
 */
 
+router.post('/add-items/add-gross-mass', function (req, res) {
+    var sessionData=req.session.data;
+    let grossMassResponse = sessionData.grossMassResponse;
+    if (grossMassResponse == 'Yes') {
+        res.redirect('total-gross-mass');
+    } else {
+        sessionData.grossMass='';
+        res.redirect('add-total-net-mass');
+    }
+})
+
+router.post('/add-items/add-net-mass', function (req, res) {
+    var sessionData=req.session.data;
+    let netMassResponse = sessionData.netMassResponse;
+    if (netMassResponse == 'Yes') {
+        res.redirect('total-net-mass');
+    } else {
+        sessionData.netMass='';
+        res.redirect('item-given-commodity-code');
+    }
+})
+
+router.post('/add-items/add-commodity-code', function (req, res) {
+    var sessionData=req.session.data;
+    let commodityCodeResponse = sessionData.commodityCodeResponse;
+    if (commodityCodeResponse == 'Yes') {
+        res.redirect('commodity-code');
+    } else {
+        sessionData.itemcode='';
+        req.url='/add-items/save-item';
+        return router.handle(req, res)
+    }
+})
+
 router.post('/add-items/save-item', function (req, res){
     var sessionData=req.session.data;
     var items=sessionData.items || [];
-    
     item =sessionData.itemdescription;
     var item = {
         "id":items.length,
         "desciption":sessionData.itemdescription,
-        "weight":sessionData.itemweight,
+        "grossMass":sessionData.grossMass,
+        "netMass":sessionData.netMass,
         "code":sessionData.itemcode
     }
     items.push(item);
     sessionData.items=items;
     sessionData.itemsize = items.length;
-    res.redirect('all-items-belong-to-trader');
+    sessionData.itemNumber = items.length+1;
+    res.redirect('add-items');
 })
 
 

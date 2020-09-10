@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Items added to list {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post" action="item-description">
+      <span class="govuk-caption-xl">{{ data['itemDetails'] }}</span>
+      <h1 class="govuk-heading-xl">
+        Items added to list
+      </h1>
+      <div class="govuk-form-group">
+          <!-- {% if (data['itemsize'] == null) %}
+          
+          <h1 class="govuk-heading-m">
+            We have 0 items.
+          </h1>
+        
+          {% else %}
+          
+            <h1 class="govuk-heading-m">
+              We have {{ data['itemsize'] }} items.
+            </h1> -->
+          
+          <table class="govuk-table hmrc-responsive-table" role="table">
+            <caption class="govuk-visually-hidden">items</caption>
+            <thead role="rowgroup">
+              <tr role="row">
+                <th class="govuk-table__header u--w-15" scope="col" role="columnheader">description</th>
+                <th class="govuk-table__header u--w-5" scope="col" role="columnheader">gross mass</th>
+                <th class="govuk-table__header u--w-5" scope="col" role="columnheader">net mass</th>
+                <th class="govuk-table__header u--w-10" scope="col" role="columnheader">commodity code</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in data['items'] %}
+              <tr role="row">
+                <td class="govuk-table__cell u--w-15" role="cell"><span
+                  class="hmrc-responsive-table__value">{{ item.desciption }}</span></td>
+
+                <td class="govuk-table__cell u--w-5" role="cell"><span
+                    class="hmrc-responsive-table__value">{{ item.grossMass }}</span></td>
+
+                <td class="govuk-table__cell u--w-5" role="cell"><span
+                    class="hmrc-responsive-table__value">{{ item.netMass }}</span></td>
+
+                <td class="govuk-table__cell u--w-10" role="cell"><span
+                  class="hmrc-responsive-table__value">{{ item.code }}</span></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          <!-- {% endif %} -->
+
+
+
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          {{ govukButton({
+        text: "Add Item"
+      }) }}
+
+    </form>
+
+    <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+  </div>
+</div>
+
+{% endblock %}
