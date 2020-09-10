@@ -13,20 +13,57 @@ Do all items you're declaring belong to the trader? {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" method="post">
+    <form class="form" method="post" action="new-item-description">
 
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" aria-describedby="cancelDeparture-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            {% if (data['itemsize'] == null) %}
             <h1 class="govuk-fieldset__heading">
-              Do all items you're declaring belong to the trader?
+              We have 0 items.
             </h1>
+
+            {% else %}
+            <h1 class="govuk-fieldset__heading">
+              We have {{ data['itemsize'] }} items. They are {{data['itemdescription']}}
+            </h1>
+            {% endif %}
+
           </legend>
 
-      {% from "govuk/components/button/macro.njk" import govukButton %}
+          <table class="govuk-table hmrc-responsive-table" role="table">
+            <caption class="govuk-visually-hidden">items</caption>
+            <thead role="rowgroup">
+              <tr role="row">
+                <th class="govuk-table__header" scope="col" role="columnheader">item id</th>
+                <th class="govuk-table__header u--w-15" scope="col" role="columnheader">item description</th>
+                <th class="govuk-table__header u--w-15" scope="col" role="columnheader">item weight</th>
+                <th class="govuk-table__header" scope="col" role="columnheader">item code</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in data['items'] %}
+              <tr role="row">
+                <td class="govuk-table__cell" role="cell">{{ item.id }}</td>
+                <td class="govuk-table__cell u--w-15" role="cell"><span class="hmrc-responsive-table__heading"
+                    aria-hidden="true">item description</span><span
+                    class="hmrc-responsive-table__value">{{ item.desciption }}</span></td>
 
-      {{ govukButton({
-        text: "Save and continue"
+                <td class="govuk-table__cell u--w-15" role="cell"><span class="hmrc-responsive-table__heading"
+                    aria-hidden="true">item weight</span><span
+                    class="hmrc-responsive-table__value">{{ item.weight }}</span></td>
+
+                <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading"
+                    aria-hidden="true">item code</span>{{ item.code }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          {{ govukButton({
+        text: "Add Item"
       }) }}
 
     </form>

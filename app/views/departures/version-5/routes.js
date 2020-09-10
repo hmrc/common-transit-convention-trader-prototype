@@ -37,6 +37,32 @@ router.post('/route/added-transit-offices-route', function (req, res) {
     }
 })
 
+
+/*
+    adding item
+*/
+
+router.post('/add-items/save-item', function (req, res){
+    var sessionData=req.session.data;
+    var items=sessionData.items || [];
+    
+    item =sessionData.itemdescription;
+    var item = {
+        "id":items.length,
+        "desciption":sessionData.itemdescription,
+        "weight":sessionData.itemweight,
+        "code":sessionData.itemcode
+    }
+    items.push(item);
+    sessionData.items=items;
+    sessionData.itemsize = items.length;
+    res.redirect('all-items-belong-to-trader');
+})
+
+
+
+
+
 /*
     Movement details routing
 */
