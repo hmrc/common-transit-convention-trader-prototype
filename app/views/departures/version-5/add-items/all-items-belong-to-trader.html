@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do all items you're declaring belong to the trader? {{ data['pageTitleAddOn']}}
+Do all the declared items belong to this trader? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,7 +12,7 @@ Do all items you're declaring belong to the trader? {{ data['pageTitleAddOn']}}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <span class="govuk-caption-xl">{{ data['itemDetails'] }}</span>
+    <span class="govuk-caption-xl">{{ data['items'] }}</span>
     <form class="form" method="post" action="add-items">
 
       {{ govukRadios({
@@ -21,7 +21,7 @@ Do all items you're declaring belong to the trader? {{ data['pageTitleAddOn']}}
         name: "belongToTrader",
         fieldset: {
           legend: {
-            text: "Do all items you're declaring belong to the trader?",
+            text: " Do all the declared items belong to this trader?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }

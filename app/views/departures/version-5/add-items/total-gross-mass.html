@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the total gross mass of the item in kilograms? {{ data['pageTitleAddOn']}}
+What is the total gross mass for item {{ data['itemNumber']}} in kilograms? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,12 +15,12 @@ What is the total gross mass of the item in kilograms? {{ data['pageTitleAddOn']
 
     <form action="add-total-net-mass" class="form" method="post">
 
-      <span class="govuk-caption-xl">{{ data['itemDetails'] }}</span>
+      <span class="govuk-caption-xl">{{ data['items'] }}</span>
 
-      <h1 class="govuk-heading-xl">What is the total gross mass of the item in kilograms?</h1>
+      <h1 class="govuk-heading-xl">What is the total gross mass for item {{ data['itemNumber']}} in kilograms?</h1>
       <div class="govuk-form-group">
         <div id="weight-hint" class="govuk-hint">
-          For example, 12.75
+          Amount can have up to 3 decimal places
         </div>
         <input class="govuk-input govuk-input--width-10" id="grossMass" name="grossMass" type="text"
           spellcheck="false" aria-describedby="weight-hint">

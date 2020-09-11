@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the commodity code? {{ data['pageTitleAddOn']}}
+What is the commodity code for item {{ data['itemNumber']}}? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,9 +15,9 @@ What is the commodity code? {{ data['pageTitleAddOn']}}
 
     <form action="save-item" class="form" method="post">
 
-      <span class="govuk-caption-xl">{{ data['itemDetails'] }}</span>
+      <span class="govuk-caption-xl">{{ data['items'] }}</span>
 
-      <h1 class="govuk-heading-xl">What is the commodity code?</h1>
+      <h1 class="govuk-heading-xl">What is the commodity code for item {{ data['itemNumber']}}?</h1>
 
       <div class="govuk-form-group">
         <div id="code-hint" class="govuk-hint">

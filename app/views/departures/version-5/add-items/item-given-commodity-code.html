@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Has this item been given a commodity code on a different customs declaration? {{ data['pageTitleAddOn']}}
+Does item {{ data['itemNumber']}} have a commodity code? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,7 +12,7 @@ Has this item been given a commodity code on a different customs declaration? {{
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <span class="govuk-caption-xl">{{ data['itemDetails'] }}</span>
+    <span class="govuk-caption-xl">{{ data['items'] }}</span>
     <form class="form" method="post" action="add-commodity-code">
 
       {{ govukRadios({
@@ -21,7 +21,7 @@ Has this item been given a commodity code on a different customs declaration? {{
         name: "commodityCodeResponse",
         fieldset: {
           legend: {
-            text: "Has this item been given a commodity code on a different customs declaration?",
+            text: "Does item "+data['itemNumber']+" have a commodity code?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }

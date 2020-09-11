@@ -71,7 +71,7 @@ module.exports = {
 
   "movementDetails": "Movement details",
 
-  "itemDetails": "Items",
+  "items": "Items",
 
   "itemNumber": 1,
 
