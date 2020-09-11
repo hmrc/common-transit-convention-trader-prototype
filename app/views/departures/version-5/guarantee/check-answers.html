@@ -65,15 +65,15 @@ Check your answers {{ data['pageTitleAddOn' ]}}
               ), guaranteeSummary) %}
 
 
-          {% if data['liability-amount'] == "0" %}
+          {% if data['liabilityDefaultAmount'] == "Yes " %}
 
               {% set guaranteeSummary = (guaranteeSummary.push(
                                 {
                       key: {
-                        text: "Liability amount"
+                        text: "liability amount"
                       },
                       value: {
-                        text: "EUR 10,000"
+                        text: "EUR10,000"
                       },
                       actions: {
                         items: [
@@ -87,16 +87,36 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     }
 
                 ), guaranteeSummary) %}
+                {% set guaranteeSummary = (guaranteeSummary.push(
+                                  {
+                        key: {
+                          text: "use the default amount of EUR10,000"
+                        },
+                        value: {
+                          text: data['liabilityDefaultAmount']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "default-amount",
+                              text: "Change",
+                              visuallyHiddenText: "change default amount answer"
+                            }
+                          ]
+                        }
+                      }
+
+                  ), guaranteeSummary) %}
 
           {% else %}
 
                 {% set guaranteeSummary = (guaranteeSummary.push(
                                 {
                       key: {
-                        text: "Liability amount"
+                        text: "liability amount"
                       },
                       value: {
-                        text: data['liability-amount']
+                        text: data['liabilityAmount']
                       },
                       actions: {
                         items: [
@@ -112,7 +132,6 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                 ), guaranteeSummary) %}
 
           {% endif %}
-
 
         {% else %}
 
