@@ -93,6 +93,19 @@ router.post('/add-items/save-item', function (req, res){
     res.redirect('add-items');
 })
 
+router.post('/add-items/delete-item', function (req, res){
+    var sessionData=req.session.data;
+    let removeItemResponse = sessionData.removeItemResponse;
+    var itemsArray=sessionData.itemsArray;
+    if(removeItemResponse == 'Yes')
+        itemsArray.length= itemsArray.length-1
+    sessionData.itemsArray=itemsArray;
+    sessionData.itemsize = itemsArray.length;
+    sessionData.itemNumber = itemsArray.length+1;
+    res.redirect('add-items');
+})
+
+
 
 
 

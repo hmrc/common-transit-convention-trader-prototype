@@ -33,32 +33,17 @@ Items added to list {{ data['pageTitleAddOn']}}
           
           <table class="govuk-table hmrc-responsive-table" role="table">
             <caption class="govuk-visually-hidden">items</caption>
-            <thead role="rowgroup">
-              <tr role="row">
-                <th class="govuk-table__header u--w-15" scope="col" role="columnheader">description</th>
-                <th class="govuk-table__header u--w-5" scope="col" role="columnheader">gross mass</th>
-                <th class="govuk-table__header u--w-5" scope="col" role="columnheader">net mass</th>
-                <th class="govuk-table__header u--w-10" scope="col" role="columnheader">commodity code</th>
-              </tr>
-            </thead>
             <tbody>
               {% for item in data['itemsArray'] %}
-              <tr role="row">
-                <td class="govuk-table__cell u--w-15" role="cell"><span
-                  class="hmrc-responsive-table__value">{{ item.desciption }}</span></td>
-
-                <td class="govuk-table__cell u--w-5" role="cell"><span
-                    class="hmrc-responsive-table__value">{{ item.grossMass }}</span></td>
-
-                <td class="govuk-table__cell u--w-5" role="cell"><span
-                    class="hmrc-responsive-table__value">{{ item.netMass }}</span></td>
-
-                <td class="govuk-table__cell u--w-10" role="cell"><span
-                  class="hmrc-responsive-table__value">{{ item.code }}</span></td>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">{{ item.desciption }}</td>
+                <td class="govuk-table__cell govuk-table__cell--action"><a href="item-description">Change</a>  |  <a href="remove-item" >Remove</a></td>
               </tr>
               {% endfor %}
             </tbody>
           </table>
+
+      
 
           <!-- {% endif %} -->
 
