@@ -238,6 +238,19 @@ router.post('/goods-summary/loading-place', function (req, res) {
 
 })
 
+/**
+ * Liability Amount
+ */
+router.post('/guarantee/check-libaility-amount', function (req, res) {
+    var sessionData=req.session.data;
+    let liabilityAmount = sessionData.liabilityAmount;
+    if (String(liabilityAmount).length > 0) {
+        sessionData.liabilityDefaultAmount="";
+        res.redirect('access-code');
+    } else {
+        res.redirect('default-amount');
+    }
+})
 
 
 
