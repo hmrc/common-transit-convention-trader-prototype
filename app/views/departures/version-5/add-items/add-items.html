@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Items added to list {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post" action="item-description">
+      <span class="govuk-caption-xl">{{ data['items'] }}</span>
+      <h1 class="govuk-heading-xl">
+        Items added to list
+      </h1>
+      <div class="govuk-form-group">
+          <!-- {% if (data['itemsize'] == null) %}
+          
+          <h1 class="govuk-heading-m">
+            We have 0 items.
+          </h1>
+        
+          {% else %}
+          
+            <h1 class="govuk-heading-m">
+              We have {{ data['itemsize'] }} items.
+            </h1> -->
+          
+          <table class="govuk-table hmrc-responsive-table" role="table">
+            <caption class="govuk-visually-hidden">items</caption>
+            <tbody>
+              {% for item in data['itemsArray'] %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">{{ item.desciption }}</td>
+                <td class="govuk-table__cell govuk-table__cell--action"><a href="item-description">Change</a>  |  <a href="remove-item" >Remove</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+      
+
+          <!-- {% endif %} -->
+
+
+
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          {{ govukButton({
+        text: "Add Item"
+      }) }}
+
+    </form>
+
+    <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+  </div>
+</div>
+
+{% endblock %}
