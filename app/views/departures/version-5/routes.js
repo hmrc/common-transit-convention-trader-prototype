@@ -78,19 +78,18 @@ router.post('/add-items/add-commodity-code', function (req, res) {
 
 router.post('/add-items/save-item', function (req, res){
     var sessionData=req.session.data;
-    var items=sessionData.items || [];
-    item =sessionData.itemdescription;
+    var itemsArray=sessionData.itemsArray || [];
     var item = {
-        "id":items.length,
+        "id":itemsArray.length,
         "desciption":sessionData.itemdescription,
         "grossMass":sessionData.grossMass,
         "netMass":sessionData.netMass,
         "code":sessionData.itemcode
     }
-    items.push(item);
-    sessionData.items=items;
-    sessionData.itemsize = items.length;
-    sessionData.itemNumber = items.length+1;
+    itemsArray.push(item);
+    sessionData.itemsArray=itemsArray;
+    sessionData.itemsize = itemsArray.length;
+    sessionData.itemNumber = itemsArray.length+1;
     res.redirect('add-items');
 })
 
