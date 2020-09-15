@@ -13,7 +13,7 @@ Items added to list {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" method="post" action="item-description">
+    <form class="form" method="post" action="item-details/item-description">
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
       <h1 class="govuk-heading-xl">
         Items added to list
@@ -37,7 +37,7 @@ Items added to list {{ data['pageTitleAddOn']}}
               {% for item in data['itemsArray'] %}
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">{{ item.desciption }}</td>
-                <td class="govuk-table__cell govuk-table__cell--action"><a href="item-description">Change</a>  |  <a href="remove-item" >Remove</a></td>
+                <td class="govuk-table__cell govuk-table__cell--action"><a href="item-details/item-description">Change</a>  |  <a href="item-details/remove-item" >Remove</a></td>
               </tr>
               {% endfor %}
             </tbody>
