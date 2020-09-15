@@ -70,7 +70,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
               {% set guaranteeSummary = (guaranteeSummary.push(
                                 {
                       key: {
-                        text: "liability amount"
+                        text: "Liability amount"
                       },
                       value: {
                         text: "EUR10,000"
@@ -85,7 +85,6 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                         ]
                       }
                     }
-
                 ), guaranteeSummary) %}
                 {% set guaranteeSummary = (guaranteeSummary.push(
                                   {
@@ -113,7 +112,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                 {% set guaranteeSummary = (guaranteeSummary.push(
                                 {
                       key: {
-                        text: "liability amount"
+                        text: "Liability amount"
                       },
                       value: {
                         text: data['liabilityAmount']
@@ -134,6 +133,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
           {% endif %}
 
         {% else %}
+                  
 
                   {% set guaranteeSummary = (guaranteeSummary.push(
                   {
@@ -155,26 +155,25 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                   }
               ), guaranteeSummary) %}
 
-
-                  {% set guaranteeSummary = (guaranteeSummary.push(
-                  {
-                    key: {
-                      text: "Liability amount"
-                    },
-                    value: {
-                      text: data['liability-amount']
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "other-guarantee-reference",
-                          text: "Change",
-                          visuallyHiddenText: "change liability amount"
-                        }
-                      ]
+              {% set guaranteeSummary = (guaranteeSummary.push(
+                                {
+                      key: {
+                        text: "Liability amount"
+                      },
+                      value: {
+                        text: data['liabilityAmount']
+                      },
+                      actions: {
+                        items: [
+                          {
+                            href: "liability-amount",
+                            text: "Change",
+                            visuallyHiddenText: "change liability amount"
+                          }
+                        ]
+                      }
                     }
-                  }
-              ), guaranteeSummary) %}
+                ), guaranteeSummary) %}
 
         {% endif %}
 
