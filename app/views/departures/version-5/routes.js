@@ -107,8 +107,91 @@ router.post('/add-items/delete-item', function (req, res){
 
 
 
+/**
+ * Item Packages Routing
+ */
+
+router.post('/add-items/packages/package-type-route', function (req, res) {
+    var sessionData=req.session.data;
+    let packageTypeResponse = sessionData.packageTypeResponse;
+    if (packageTypeResponse == 'Other') {
+        res.redirect('total-packages');
+    } else {
+        res.redirect('declare-number-of-package');
+    }
+})
 
 
+router.post('/add-items/packages/package-type-number-route', function (req, res) {
+    var sessionData=req.session.data;
+    let packageTypeResponse = sessionData.packageTypeResponse;
+    let packageTypeNumberResponse = sessionData.packageTypeNumberResponse; 
+    if (packageTypeNumberResponse == 'Yes') {
+        res.redirect('total-packages');
+    } else {
+        if(packageTypeResponse == "Unpacked")
+            res.redirect('total-pieces');
+        else   
+            res.redirect('add-mark');
+    }
+})
+
+
+router.post('/add-items/packages/total-packages-route', function (req, res) {
+    var sessionData=req.session.data;
+    let packageTypeResponse = sessionData.packageTypeResponse;
+    switch(packageTypeResponse){
+        case 'Other':
+            res.redirect('declare-mark');
+            break;
+        case 'Bulk':
+            res.redirect('add-mark');
+            break;
+        case 'Unpacked':
+            res.redirect('total-pieces');
+            break;
+    }
+})
+
+router.post('/add-items/packages/add-mark-route', function (req, res) {
+    var sessionData=req.session.data;
+    let addMarkResponse = sessionData.addMarkResponse;
+    if (addMarkResponse == 'Yes') {
+        res.redirect('declare-mark');
+    } else {  
+        req.url='/add-items/packages/add-package';
+        return router.handle(req, res)
+    }
+})
+
+router.post('/add-items/packages/add-package', function (req, res){
+    var sessionData=req.session.data;
+    var packagesArray=sessionData.packagesArray || [];
+    var package = {
+        "id":packagesArray.length,
+        "type":sessionData.packageTypeResponse,
+        "packageNumbers":sessionData.packageNumbers,
+        "itemPieces":sessionData.itemPieces,
+        "mark":sessionData.itemMark
+    }
+    packagesArray.push(package);
+    sessionData.packagesArray=packagesArray;
+    // sessionData.itemsize = itemsArray.length;
+    // sessionData.itemNumber = itemsArray.length+1;
+    res.redirect('add-another-package');
+})
+
+router.post('/add-items/packages/delete-package', function (req, res){
+    var sessionData=req.session.data;
+    let removePackageResponse = sessionData.removePackageResponse;
+    var packagesArray=sessionData.packagesArray;
+    if(removePackageResponse == 'Yes')
+        packagesArray.length= packagesArray.length-1
+    sessionData.packagesArray=packagesArray;
+    // sessionData.itemsize = itemsArray.length;
+    // sessionData.itemNumber = itemsArray.length+1;
+    res.redirect('add-another-package');
+})
 
 /*
     Movement details routing
