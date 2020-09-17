@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What type of package has been used? {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">{{ data['items'] }}</span>
+    <form class="form" method="post" action="package-type-route">
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "packageTypeResponse",
+        name: "packageTypeResponse",
+        fieldset: {
+          legend: {
+            text: "What type of package has been used?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "Bulk",
+            text: "Bulk"
+          },
+          {
+            value: "Unpacked",
+            text: "Unpacked"
+          },
+          {
+            value: "Other",
+            text: "Other",
+            checked: true
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+
+    <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+  </div>
+</div>
+
+{% endblock %}
