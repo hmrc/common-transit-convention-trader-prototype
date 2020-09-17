@@ -39,7 +39,9 @@ router.post('/route/added-transit-offices-route', function (req, res) {
 
 
 /*
-    adding item
+    Add items
+
+    item details
 */
 
 router.post('/add-items/item-details/add-gross-mass', function (req, res) {
@@ -104,6 +106,62 @@ router.post('/add-items/delete-item', function (req, res){
     sessionData.itemNumber = itemsArray.length+1;
     res.redirect('add-items');
 })
+
+/*
+    Add items
+
+    Special mentions
+*/
+
+router.post('/add-items/special-mentions/add-special-mention', function (req, res) {
+    var sessionData=req.session.data;
+    let addSpecialMention = sessionData.addSpecialMention;
+    if (addSpecialMention == 'Yes') {
+        res.redirect('special-mention-type');
+    } else {
+        sessionData.netMass='';
+        res.redirect('add-documents');
+    }
+})
+
+router.post('/add-items/special-mentions/special-mention-type', function(req, res) {
+    res.redirect('add-additional-information');
+  });
+
+router.post('/add-items/special-mentions/add-additional-information', function (req, res) {
+    var sessionData=req.session.data;
+    let addAdditionalInformation = sessionData.addAdditionalInformation;
+    let specialMentionType = sessionData.specialMentionType;
+
+    if (addAdditionalInformation == 'Yes') {
+        res.redirect('additional-information');
+    } else {
+
+        if ((specialMentionType == '(DG1) Export subject to duties' || specialMentionType == '(DG0) Export subjection to restriction')) {
+        res.redirect('export-country');
+        } else {
+            sessionData.netMass='';
+            res.redirect('added-special-mentions');
+        }
+
+
+    }
+})
+
+router.post('/add-items/special-mentions/additional-information', function (req, res) {
+    var sessionData=req.session.data;
+    let specialMentionType = sessionData.specialMentionType;
+    if ((specialMentionType == '(DG1) Export subject to duties' || specialMentionType == '(DG0) Export subjection to restriction')) {
+        res.redirect('export-country');
+    } else {
+        sessionData.netMass='';
+        res.redirect('added-special-mentions');
+    }
+})
+
+router.post('/add-items/special-mentions/export-country', function(req, res) {
+    res.redirect('added-special-mentions');
+  });
 
 
 

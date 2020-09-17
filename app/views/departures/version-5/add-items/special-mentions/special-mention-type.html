@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What type of special mention does item {{ data['itemNumber']}} require? {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">{{ data['items'] }}</span>
+    <form class="form" method="post">
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "specialMentionType",
+        name: "specialMentionType",
+        fieldset: {
+          legend: {
+            text: "What type of special mention does item "+data['itemNumber']+" require?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "(DG2) Export",
+            text: "(DG2) Export"
+          },
+          {
+            value: "(DG1) Export subject to duties",
+            text: "(DG1) Export subject to duties"
+          },
+          {
+            value: "(DG0) Export subjection to restriction",
+            text: "(DG0) Export subjection to restriction"
+          },
+          {
+            value: "(10600) Negotiable Bill of lading to order blank endorsed",
+            text: "(10600) Negotiable Bill of lading to order blank endorsed"
+          },
+          {
+            value: "(CAL) Test Liability",
+            text: "(CAL) Test Liability"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+
+    <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+  </div>
+</div>
+
+{% endblock %}

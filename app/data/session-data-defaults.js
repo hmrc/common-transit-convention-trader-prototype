@@ -87,5 +87,7 @@ module.exports = {
 
   "itemDetails" : "Item details",
 
-  "safetySecurity" : "Safety and security details"
+  "specialMentionType" : "",
+
+  "specialMentionType" : ""
 }
