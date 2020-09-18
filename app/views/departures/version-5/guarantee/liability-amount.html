@@ -20,17 +20,17 @@ How much is the liability amount? {{ data['pageTitleAddOn' ]}}
           (data['containersUsed'] == "(9) Individual guarantee with multiple usage redirect(guarantee-reference) ")
     %}
 
-    <form class="form" action="access-code" method="post">
+    <form class="form" action="check-libaility-amount" method="post">
 
       <h1 class="govuk-heading-xl">How much is the liability amount?</h1>
       
       <span id="changed-name-hint" class="govuk-hint">
-        Amount must include a decimal place, like 230.00. Enter 0 to use the default amount of EUR 10,000.
+        Amount must include a decimal place, like 230.00.
       </span>
 
         {{ hmrcInputCurrency({
-            name: "liability-amount",
-            id: "liability-amount",
+            name: "liabilityAmount",
+            id: "liabilityAmount",
             classes: "govuk-input--width-10",
             autocomplete: "off",
             type: "tel"
@@ -54,17 +54,18 @@ How much is the liability amount? {{ data['pageTitleAddOn' ]}}
       <h1 class="govuk-heading-xl">How much is the liability amount?</h1>
 
       <span id="changed-name-hint" class="govuk-hint">
-        Amount must include a decimal place, like 230.00. Enter 0 to use the default amount of EUR 10,000.
+        Amount must include a decimal place, like 230.00.
       </span>
+      
+      <div class="govuk-form-group">
+        <div class="hmrc-currency-input__wrapper">
+            <span class="hmrc-currency-input__unit" aria-hidden="true">£</span>
+            
+            <input class="govuk-input govuk-input--width-10" id="liabilityAmount" name="liabilityAmount" type="text" autocomplete="off">
+    
+        </div>
+    </div>
 
-        {{ hmrcInputCurrency({
-            name: "liability-amount",
-            id: "liability-amount",
-            classes: "govuk-input--width-10",
-            autocomplete: "off",
-            type: "tel"
-          })
-        }}
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
 

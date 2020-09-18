@@ -65,7 +65,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
               ), guaranteeSummary) %}
 
 
-          {% if data['liability-amount'] == "0" %}
+          {% if data['liabilityDefaultAmount'] == "Yes " %}
 
               {% set guaranteeSummary = (guaranteeSummary.push(
                                 {
@@ -73,7 +73,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                         text: "Liability amount"
                       },
                       value: {
-                        text: "EUR 10,000"
+                        text: "EUR10,000"
                       },
                       actions: {
                         items: [
@@ -85,8 +85,27 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                         ]
                       }
                     }
-
                 ), guaranteeSummary) %}
+                {% set guaranteeSummary = (guaranteeSummary.push(
+                                  {
+                        key: {
+                          text: "Use the default amount of EUR10,000"
+                        },
+                        value: {
+                          text: data['liabilityDefaultAmount']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "default-amount",
+                              text: "Change",
+                              visuallyHiddenText: "change using the default amount of EUR10,000"
+                            }
+                          ]
+                        }
+                      }
+
+                  ), guaranteeSummary) %}
 
           {% else %}
 
@@ -96,7 +115,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                         text: "Liability amount"
                       },
                       value: {
-                        text: data['liability-amount']
+                        text: data['liabilityAmount']
                       },
                       actions: {
                         items: [
@@ -113,8 +132,8 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
           {% endif %}
 
-
         {% else %}
+                  
 
                   {% set guaranteeSummary = (guaranteeSummary.push(
                   {
@@ -136,26 +155,25 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                   }
               ), guaranteeSummary) %}
 
-
-                  {% set guaranteeSummary = (guaranteeSummary.push(
-                  {
-                    key: {
-                      text: "Liability amount"
-                    },
-                    value: {
-                      text: data['liability-amount']
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "other-guarantee-reference",
-                          text: "Change",
-                          visuallyHiddenText: "change liability amount"
-                        }
-                      ]
+              {% set guaranteeSummary = (guaranteeSummary.push(
+                                {
+                      key: {
+                        text: "Liability amount"
+                      },
+                      value: {
+                        text: data['liabilityAmount']
+                      },
+                      actions: {
+                        items: [
+                          {
+                            href: "liability-amount",
+                            text: "Change",
+                            visuallyHiddenText: "change liability amount"
+                          }
+                        ]
+                      }
                     }
-                  }
-              ), guaranteeSummary) %}
+                ), guaranteeSummary) %}
 
         {% endif %}
 
