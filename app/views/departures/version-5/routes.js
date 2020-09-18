@@ -43,65 +43,65 @@ router.post('/route/added-transit-offices-route', function (req, res) {
 */
 
 router.post('/add-items/item-details/add-gross-mass', function (req, res) {
-    var sessionData=req.session.data;
+    var sessionData = req.session.data;
     let grossMassResponse = sessionData.grossMassResponse;
     if (grossMassResponse == 'Yes') {
         res.redirect('total-gross-mass');
     } else {
-        sessionData.grossMass='';
+        sessionData.grossMass = '';
         res.redirect('add-total-net-mass');
     }
 })
 
 router.post('/add-items/item-details/add-net-mass', function (req, res) {
-    var sessionData=req.session.data;
+    var sessionData = req.session.data;
     let netMassResponse = sessionData.netMassResponse;
     if (netMassResponse == 'Yes') {
         res.redirect('total-net-mass');
     } else {
-        sessionData.netMass='';
+        sessionData.netMass = '';
         res.redirect('item-given-commodity-code');
     }
 })
 
 router.post('/add-items/item-details/add-commodity-code', function (req, res) {
-    var sessionData=req.session.data;
+    var sessionData = req.session.data;
     let commodityCodeResponse = sessionData.commodityCodeResponse;
     if (commodityCodeResponse == 'Yes') {
         res.redirect('commodity-code');
     } else {
-        sessionData.itemcode='';
-        req.url='/add-items/item-details/save-item';
+        sessionData.itemcode = '';
+        req.url = '/add-items/item-details/save-item';
         return router.handle(req, res)
     }
 })
 
-router.post('/add-items/item-details/save-item', function (req, res){
-    var sessionData=req.session.data;
-    var itemsArray=sessionData.itemsArray || [];
+router.post('/add-items/item-details/save-item', function (req, res) {
+    var sessionData = req.session.data;
+    var itemsArray = sessionData.itemsArray || [];
     var item = {
-        "id":itemsArray.length,
-        "desciption":sessionData.itemdescription,
-        "grossMass":sessionData.grossMass,
-        "netMass":sessionData.netMass,
-        "code":sessionData.itemcode
+        "id": itemsArray.length,
+        "desciption": sessionData.itemdescription,
+        "grossMass": sessionData.grossMass,
+        "netMass": sessionData.netMass,
+        "code": sessionData.itemcode
     }
     itemsArray.push(item);
-    sessionData.itemsArray=itemsArray;
+    sessionData.itemsArray = itemsArray;
     sessionData.itemsize = itemsArray.length;
-    sessionData.itemNumber = itemsArray.length+1;
+    sessionData.itemNumber = itemsArray.length + 1;
     res.redirect('../add-items');
 })
 
-router.post('/add-items/delete-item', function (req, res){
-    var sessionData=req.session.data;
+router.post('/add-items/delete-item', function (req, res) {
+    var sessionData = req.session.data;
     let removeItemResponse = sessionData.removeItemResponse;
-    var itemsArray=sessionData.itemsArray;
-    if(removeItemResponse == 'Yes')
-        itemsArray.length= itemsArray.length-1
-    sessionData.itemsArray=itemsArray;
+    var itemsArray = sessionData.itemsArray;
+    if (removeItemResponse == 'Yes')
+        itemsArray.length = itemsArray.length - 1
+    sessionData.itemsArray = itemsArray;
     sessionData.itemsize = itemsArray.length;
-    sessionData.itemNumber = itemsArray.length+1;
+    sessionData.itemNumber = itemsArray.length + 1;
     res.redirect('add-items');
 })
 
@@ -112,84 +112,77 @@ router.post('/add-items/delete-item', function (req, res){
  */
 
 router.post('/add-items/packages/package-type-route', function (req, res) {
-    var sessionData=req.session.data;
+    var sessionData = req.session.data;
     let packageTypeResponse = sessionData.packageTypeResponse;
-    if (packageTypeResponse == 'Other') {
-        res.redirect('total-packages');
-    } else {
+    if (packageTypeResponse.toLowerCase().includes("bulk") || packageTypeResponse.toLowerCase().includes("unpacked")) {
         res.redirect('declare-number-of-package');
+    } else {
+        res.redirect('total-packages');
     }
 })
 
 
 router.post('/add-items/packages/package-type-number-route', function (req, res) {
-    var sessionData=req.session.data;
+    var sessionData = req.session.data;
     let packageTypeResponse = sessionData.packageTypeResponse;
-    let packageTypeNumberResponse = sessionData.packageTypeNumberResponse; 
+    let packageTypeNumberResponse = sessionData.packageTypeNumberResponse;
     if (packageTypeNumberResponse == 'Yes') {
         res.redirect('total-packages');
     } else {
-        if(packageTypeResponse == "Unpacked")
+        if (packageTypeResponse.toLowerCase().includes("unpacked"))
             res.redirect('total-pieces');
-        else   
+        else
             res.redirect('add-mark');
     }
 })
 
 
 router.post('/add-items/packages/total-packages-route', function (req, res) {
-    var sessionData=req.session.data;
+    var sessionData = req.session.data;
     let packageTypeResponse = sessionData.packageTypeResponse;
-    switch(packageTypeResponse){
-        case 'Other':
-            res.redirect('declare-mark');
-            break;
-        case 'Bulk':
-            res.redirect('add-mark');
-            break;
-        case 'Unpacked':
-            res.redirect('total-pieces');
-            break;
-    }
+
+    if (packageTypeResponse.toLowerCase().includes("unpacked"))
+        res.redirect('total-pieces');
+    else if (packageTypeResponse.toLowerCase().includes("bulk"))
+        res.redirect('add-mark');
+    else
+        res.redirect('declare-mark');
+
 })
 
 router.post('/add-items/packages/add-mark-route', function (req, res) {
-    var sessionData=req.session.data;
+    var sessionData = req.session.data;
     let addMarkResponse = sessionData.addMarkResponse;
     if (addMarkResponse == 'Yes') {
         res.redirect('declare-mark');
-    } else {  
-        req.url='/add-items/packages/add-package';
+    } else {
+        req.url = '/add-items/packages/add-package';
         return router.handle(req, res)
     }
 })
 
-router.post('/add-items/packages/add-package', function (req, res){
-    var sessionData=req.session.data;
-    var packagesArray=sessionData.packagesArray || [];
+router.post('/add-items/packages/add-package', function (req, res) {
+    var sessionData = req.session.data;
+    var packagesArray = sessionData.packagesArray || [];
     var package = {
-        "id":packagesArray.length,
-        "type":sessionData.packageTypeResponse,
-        "packageNumbers":sessionData.packageNumbers,
-        "itemPieces":sessionData.itemPieces,
-        "mark":sessionData.itemMark
+        "id": packagesArray.length,
+        "type": sessionData.packageTypeResponse,
+        "packageNumbers": sessionData.packageNumbers,
+        "itemPieces": sessionData.itemPieces,
+        "mark": sessionData.itemMark
     }
     packagesArray.push(package);
-    sessionData.packagesArray=packagesArray;
-    // sessionData.itemsize = itemsArray.length;
-    // sessionData.itemNumber = itemsArray.length+1;
+    sessionData.packagesArray = packagesArray;
     res.redirect('add-another-package');
 })
 
-router.post('/add-items/packages/delete-package', function (req, res){
-    var sessionData=req.session.data;
+router.post('/add-items/packages/delete-package', function (req, res) {
+    var sessionData = req.session.data;
     let removePackageResponse = sessionData.removePackageResponse;
-    var packagesArray=sessionData.packagesArray;
-    if(removePackageResponse == 'Yes')
-        packagesArray.length= packagesArray.length-1
-    sessionData.packagesArray=packagesArray;
-    // sessionData.itemsize = itemsArray.length;
-    // sessionData.itemNumber = itemsArray.length+1;
+    var packagesArray = sessionData.packagesArray;
+    if (removePackageResponse == 'Yes')
+        packagesArray.length = packagesArray.length - 1
+    sessionData.packagesArray = packagesArray;
     res.redirect('add-another-package');
 })
 
@@ -199,11 +192,11 @@ router.post('/add-items/packages/delete-package', function (req, res){
  */
 
 router.post('/add-items/documents/add-documents-route', function (req, res) {
-    var sessionData=req.session.data;
+    var sessionData = req.session.data;
     let addDocumentsResponse = sessionData.addDocumentsResponse;
     if (addDocumentsResponse == 'Yes') {
         res.redirect('document-type');
-    } else {  
+    } else {
         res.redirect('../previous-references/sample');
     }
 })
@@ -214,6 +207,46 @@ router.post('/add-items/documents/document-type-route', function (req, res) {
 
 router.post('/add-items/documents/document-reference-route', function (req, res) {
     res.redirect('add-extra-information');
+})
+
+router.post('/add-items/documents/add-extra-info-route', function (req, res) {
+    var sessionData = req.session.data;
+    let addExtraInfoResponse = sessionData.addExtraInfoResponse;
+    if (addExtraInfoResponse == 'Yes') {
+        res.redirect('extra-information');
+    } else {
+        req.url = '/add-items/documents/add-document-info';
+        return router.handle(req, res);
+    }
+})
+
+router.post('/add-items/documents/extra-information-route', function (req, res) {
+    req.url = '/add-items/documents/add-document-info';
+    return router.handle(req, res);
+})
+
+router.post('/add-items/documents/add-document-info', function (req, res) {
+    var sessionData = req.session.data;
+    var documentsArray = sessionData.documentsArray || [];
+    var document = {
+        "id": documentsArray.length,
+        "type": sessionData.documentTypeResponse,
+        "reference": sessionData.documentReference,
+        "extraInfo": sessionData.extraInformation
+    }
+    documentsArray.push(document);
+    sessionData.documentsArray = documentsArray;
+    res.redirect('add-another-document');
+})
+
+router.post('/add-items/documents/delete-document', function (req, res) {
+    var sessionData = req.session.data;
+    let removeDocumentResponse = sessionData.removeDocumentResponse;
+    var documentsArray = sessionData.documentsArray;
+    if (removeDocumentResponse == 'Yes')
+        documentsArray.length = documentsArray.length - 1
+    sessionData.documentsArray = documentsArray;
+    res.redirect('add-another-document');
 })
 
 /*
@@ -234,15 +267,15 @@ router.post('/transport/inland-mode', function (req, res) {
     let containersUsed = req.session.data.containersUsed;
 
     if ((inlandMode == '(5) Postal Consignment' ||
-            inlandMode == '(50) Postal Consignment' ||
-            inlandMode == '(7) Fixed transport installations' ||
-            inlandMode == '(70) Fixed transport installations' ||
-            (containersUsed == 'Yes ')
-        )) {
+        inlandMode == '(50) Postal Consignment' ||
+        inlandMode == '(7) Fixed transport installations' ||
+        inlandMode == '(70) Fixed transport installations' ||
+        (containersUsed == 'Yes ')
+    )) {
         res.redirect('nationality-at-departure');
     } else if ((inlandMode == '(2) Rail transport' ||
-            inlandMode == '(20) Rail transport'
-        )) {
+        inlandMode == '(20) Rail transport'
+    )) {
         res.redirect('change-at-border');
     } else {
         res.redirect('add-id-at-departure')
@@ -269,19 +302,19 @@ router.post('/transport/add-id-at-departure', function (req, res) {
 })
 
 //ID at departure to change at border
-router.post('/transport/id-at-departure', function(req, res) {
+router.post('/transport/id-at-departure', function (req, res) {
     res.redirect('nationality-at-departure');
-  });
+});
 
 //Add ID at departure later to change at border
-router.post('/transport/add-id-at-departure-later', function(req, res) {
+router.post('/transport/add-id-at-departure-later', function (req, res) {
     res.redirect('nationality-at-departure');
-  });
+});
 
 //Nationality at departure to change at border
-router.post('/transport/nationality-at-departure', function(req, res) {
+router.post('/transport/nationality-at-departure', function (req, res) {
     res.redirect('change-at-border');
-  });
+});
 
 /*
     Change at border
@@ -302,14 +335,14 @@ router.post('/transport/change-at-border', function (req, res) {
 })
 
 //Check your answers to confirm your employer
-router.post('/transport/mode-at-border', function(req, res) {
+router.post('/transport/mode-at-border', function (req, res) {
     res.redirect('id-crossing-border');
-  });
+});
 
 //Check your answers to confirm your employer
-router.post('/transport/id-crossing-border', function(req, res) {
+router.post('/transport/id-crossing-border', function (req, res) {
     res.redirect('mode-crossing-border');
-  });
+});
 
 /* 
     Mode crossing the border
@@ -322,12 +355,12 @@ router.post('/transport/mode-crossing-border', function (req, res) {
     let modeCrossingBorder = req.session.data.modeCrossingBorder;
 
     if ((modeCrossingBorder == '(5) Postal Consignment' ||
-            modeCrossingBorder == '(50) Postal Consignment' ||
-            modeCrossingBorder == '(7) Fixed transport installations' ||
-            modeCrossingBorder == '(70) Fixed transport installations' ||
-            modeCrossingBorder == '(2) Rail transport' ||
-            modeCrossingBorder == '(20) Rail transport'
-        )) {
+        modeCrossingBorder == '(50) Postal Consignment' ||
+        modeCrossingBorder == '(7) Fixed transport installations' ||
+        modeCrossingBorder == '(70) Fixed transport installations' ||
+        modeCrossingBorder == '(2) Rail transport' ||
+        modeCrossingBorder == '(20) Rail transport'
+    )) {
         res.redirect('check-your-answers');
     } else {
         res.redirect('nationality-crossing-border')
@@ -340,9 +373,9 @@ router.post('/transport/mode-crossing-border', function (req, res) {
 */
 
 //Total packages to total gross mass
-router.post('/goods-summary/total-packages', function(req, res) {
+router.post('/goods-summary/total-packages', function (req, res) {
     res.redirect('total-gross-mass');
-  });
+});
 
 /*
     Total gross mass
@@ -395,10 +428,10 @@ router.post('/goods-summary/loading-place', function (req, res) {
  * Liability Amount
  */
 router.post('/guarantee/check-libaility-amount', function (req, res) {
-    var sessionData=req.session.data;
+    var sessionData = req.session.data;
     let liabilityAmount = sessionData.liabilityAmount;
     if (String(liabilityAmount).length > 0) {
-        sessionData.liabilityDefaultAmount="";
+        sessionData.liabilityDefaultAmount = "";
         res.redirect('access-code');
     } else {
         res.redirect('default-amount');

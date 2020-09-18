@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the document reference? {{ data['pageTitleAddOn']}}
+Enter the extra information {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,15 +13,15 @@ What is the document reference? {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="document-reference-route" class="form" method="post">
+    <form action="extra-information-route" class="form" method="post">
 
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
 
-      <h1 class="govuk-heading-xl">What is the document reference?</h1>
+      <h1 class="govuk-heading-xl">Enter the extra information</h1>
       <div class="govuk-form-group">
         
-        <input class="govuk-input govuk-input--width-35" id="documentReference" name="documentReference" type="text"
-          spellcheck="false" maxlength="35">
+        <input class="govuk-input govuk-input--width-25" id="extraInformation" name="extraInformation" type="text"
+          spellcheck="false" maxlength="26">
       </div>
 
       {{ govukButton({

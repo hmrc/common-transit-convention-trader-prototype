@@ -13,12 +13,12 @@ Do you need to add any extra information for this document? {{ data['pageTitleAd
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-xl">{{ data['items'] }}</span>
-    <form class="form" method="post" action="add-documents-route">
+    <form class="form" method="post" action="add-extra-info-route">
 
       {{ govukRadios({
         classes: "govuk-radios",
-        idPrefix: "addDocumentsResponse",
-        name: "addDocumentsResponse",
+        idPrefix: "addExtraInfoResponse",
+        name: "addExtraInfoResponse",
         fieldset: {
           legend: {
             text: "Do you need to add any extra information for this document?",
@@ -36,8 +36,7 @@ Do you need to add any extra information for this document? {{ data['pageTitleAd
           },
           {
             value: "No",
-            text: "No",
-            checked: true
+            text: "No"
           }
         ]
       }) }}

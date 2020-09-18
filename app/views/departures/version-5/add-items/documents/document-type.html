@@ -18,13 +18,21 @@ What type of document? {{ data['pageTitleAddOn']}}
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
 
       <h1 class="govuk-heading-xl">What type of document?</h1>
-      <div class="govuk-form-group">
         
-        <input class="govuk-input govuk-input--width-15" id="documentType" name="documentType" type="text"
-          spellcheck="false" aria-describedby="weight-hint">
-      </div>
-
-      {{ govukButton({
+        {{ govukSelect({
+          classes: "govuk-input--width-20 autocomplete",
+          label: {
+            text: header,
+            isPageHeading: true,
+            classes: "govuk-label--xl"
+          },
+          id: "documentTypeResponse",
+          name: "documentTypeResponse",
+          errorMessage: form.value.error,
+          items: CTCData.documents
+        }) }}
+  
+        {{ govukButton({
           text: "Save and continue"
         }) }}
 
