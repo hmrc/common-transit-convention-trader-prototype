@@ -193,6 +193,29 @@ router.post('/add-items/packages/delete-package', function (req, res){
     res.redirect('add-another-package');
 })
 
+
+/**
+ * Item Documents Routing
+ */
+
+router.post('/add-items/documents/add-documents-route', function (req, res) {
+    var sessionData=req.session.data;
+    let addDocumentsResponse = sessionData.addDocumentsResponse;
+    if (addDocumentsResponse == 'Yes') {
+        res.redirect('document-type');
+    } else {  
+        res.redirect('../previous-references/sample');
+    }
+})
+
+router.post('/add-items/documents/document-type-route', function (req, res) {
+    res.redirect('document-reference');
+})
+
+router.post('/add-items/documents/document-reference-route', function (req, res) {
+    res.redirect('add-extra-information');
+})
+
 /*
     Movement details routing
 */
