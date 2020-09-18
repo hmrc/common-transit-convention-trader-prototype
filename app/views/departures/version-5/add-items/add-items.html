@@ -47,14 +47,66 @@ Items added to list {{ data['pageTitleAddOn']}}
 
           <!-- {% endif %} -->
 
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
+        {# {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "addAnotherItem",
+          name: "addAnotherItem",
+          fieldset: {
+            legend: {
+              text: "Do you need to add another item?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes redirect(item-description)",
+              text: "Yes"
+            },
+            {
+              value: "no redirect(../../task-list)",
+              text: "No"
+            }
+          ]
+        }) }}
 
+        {{ govukButton({
+          text: "Continue"
+        }) }} #}
 
-          {% from "govuk/components/button/macro.njk" import govukButton %}
+        <br><br>
 
-          {{ govukButton({
-        text: "Add Item"
-      }) }}
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "add-another-item",
+          name: "addAnotherItem",
+          fieldset: {
+            legend: {
+              text: "Do you need to add another item?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes redirect(item-description)",
+              text: "Yes"
+            },
+            {
+              value: "No redirect(../../task-list)",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        <br>
+        <br>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
 
     </form>
 

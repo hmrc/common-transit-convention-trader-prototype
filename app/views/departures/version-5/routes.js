@@ -44,6 +44,10 @@ router.post('/route/added-transit-offices-route', function (req, res) {
     item details
 */
 
+router.post('/add-items/all-items-belong-to-trader', function(req, res) {
+    res.redirect('item-details/item-description');
+  });
+
 router.post('/add-items/item-details/add-gross-mass', function (req, res) {
     var sessionData=req.session.data;
     let grossMassResponse = sessionData.grossMassResponse;
@@ -73,7 +77,30 @@ router.post('/add-items/item-details/add-commodity-code', function (req, res) {
         res.redirect('commodity-code');
     } else {
         sessionData.itemcode='';
-        req.url='/add-items/item-details/save-item';
+        req.url='/add-items/item-details/check-answers';
+        return router.handle(req, res)
+    }
+})
+
+//req.url='/add-items/item-details/save-item';
+
+router.post('/add-items/item-details/commodity-code', function(req, res) {
+    res.redirect('check-answers');
+  });
+
+/*
+    If all items belong to trader = yes, go to type of package
+    If all items belong to trader = no, go to add consignee
+*/
+
+router.post('/add-items/item-details/check-answers', function (req, res) {
+    var sessionData=req.session.data;
+    let belongToTrader = sessionData.belongToTrader;
+    if (belongToTrader == 'Yes') {
+        res.redirect('../packages/package-type');
+    } else {
+        sessionData.itemcode='';
+        req.url='/add-items/item-details/add-consignee';
         return router.handle(req, res)
     }
 })
