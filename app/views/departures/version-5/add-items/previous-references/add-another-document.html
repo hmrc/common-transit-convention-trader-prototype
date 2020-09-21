@@ -13,7 +13,7 @@ Do you need to add another document or certificate? {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" method="post" action="package-type">
+    <form class="form" method="post" action="reference-type">
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
       <h1 class="govuk-heading-xl">
         Do you need to add another document or certificate?
@@ -23,10 +23,10 @@ Do you need to add another document or certificate? {{ data['pageTitleAddOn']}}
           <table class="govuk-table hmrc-responsive-table" role="table">
             <caption class="govuk-visually-hidden">Packages</caption>
             <tbody>
-              {% for document in data['documentsArray'] %}
+              {% for document in data['previousDocumentsArray'] %}
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">{{ document.type }}</td>
-                <td class="govuk-table__cell govuk-table__cell--action"><a href="document-type">Change</a>  |  <a href="remove-docuement" >Remove</a></td>
+                <td class="govuk-table__cell govuk-table__cell--action"><a href="reference-type">Change</a>  |  <a href="remove-document" >Remove</a></td>
               </tr>
               {% endfor %}
             </tbody>
@@ -34,7 +34,7 @@ Do you need to add another document or certificate? {{ data['pageTitleAddOn']}}
           {% from "govuk/components/button/macro.njk" import govukButton %}
 
           {{ govukButton({
-        text: "Add Docuemnt Type"
+        text: "Add Docuemnt"
       }) }}
 
     </form>

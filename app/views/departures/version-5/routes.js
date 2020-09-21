@@ -249,6 +249,70 @@ router.post('/add-items/documents/delete-document', function (req, res) {
     res.redirect('add-another-document');
 })
 
+
+/**
+ * admin reference routing
+ */
+
+router.post('/add-items/previous-references/add-admin-reference-route', function (req, res) {
+    var sessionData = req.session.data;
+    let adminRefResponse = sessionData.adminRefResponse;
+    if (adminRefResponse == 'Yes') {
+        res.redirect('reference-type');
+    } else {
+        res.redirect('../security/sample');
+    }
+})
+
+router.post('/add-items/previous-references/previous-document-type-route', function (req, res) {
+    res.redirect('previous-reference');
+})
+
+router.post('/add-items/previous-references/previous-document-reference-route', function (req, res) {
+    res.redirect('add-extra-information');
+})
+
+router.post('/add-items/previous-references/add-extra-info-route', function (req, res) {
+    var sessionData = req.session.data;
+    let addPreviousExtraInfoResponse = sessionData.addPreviousExtraInfoResponse;
+    if (addPreviousExtraInfoResponse == 'Yes') {
+        res.redirect('extra-information');
+    } else {
+        req.url = '/add-items/previous-references/add-document-info';
+        return router.handle(req, res);
+    }
+})
+
+router.post('/add-items/previous-references/extra-information-route', function (req, res) {
+    req.url = '/add-items/previous-references/add-document-info';
+    return router.handle(req, res);
+})
+
+router.post('/add-items/previous-references/add-document-info', function (req, res) {
+    var sessionData = req.session.data;
+    var previousDocumentsArray = sessionData.previousDocumentsArray || [];
+    var document = {
+        "id": previousDocumentsArray.length,
+        "type": sessionData.referenceTypeResponse,
+        "reference": sessionData.previousDocumentReference,
+        "extraInfo": sessionData.previousExtraInformation
+    }
+    previousDocumentsArray.push(document);
+    sessionData.previousDocumentsArray = previousDocumentsArray;
+    res.redirect('add-another-document');
+})
+
+router.post('/add-items/previous-references/delete-document', function (req, res) {
+    var sessionData = req.session.data;
+    let previousRemoveDocumentResponse = sessionData.previousRemoveDocumentResponse;
+    var previousDocumentsArray = sessionData.previousDocumentsArray;
+    if (previousRemoveDocumentResponse == 'Yes')
+        previousDocumentsArray.length = previousDocumentsArray.length - 1
+    sessionData.previousDocumentsArray = previousDocumentsArray;
+    res.redirect('add-another-document');
+})
+
+
 /*
     Movement details routing
 */
