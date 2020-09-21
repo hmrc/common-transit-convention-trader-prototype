@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+You have added 1 special mention {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-xl">{{ data['routeDetails'] }}</span>
+
+    <h1 class="govuk-heading-xl">You have added 1 special mention</h1>
+
+    <form class="form" method="post">
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: [
+            {
+              key: {
+                text: data['specialMentionType'],
+                classes: "govuk-!-width-one-half"
+              },
+              
+              actions: {
+                classes: "govuk-!-width-one-half",
+                items: [
+                  {
+                    href: "special-mention-type",
+                    text: "Change",
+                    visuallyHiddenText: "special mention type"
+                  },
+                  {
+                    href: "#",
+                    text: "Remove",
+                    visuallyHiddenText: "special mention type"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "addAnotherOfficeOfTransit",
+          name: "addAnotherOfficeOfTransit",
+          fieldset: {
+            legend: {
+              text: "Do you need to add another special mention?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes redirect(special-mention-type)",
+              text: "Yes"
+            },
+            {
+              value: "No redirect(add-documents)",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+    </form>
+    
+  </div>
+</div>
+
+{% endblock %}

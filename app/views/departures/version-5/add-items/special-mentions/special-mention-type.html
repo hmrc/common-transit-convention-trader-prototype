@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do all the declared items belong to this trader? {{ data['pageTitleAddOn']}}
+What type of special mention does item {{ data['itemNumber']}} require? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,11 +17,11 @@ Do all the declared items belong to this trader? {{ data['pageTitleAddOn']}}
 
       {{ govukRadios({
         classes: "govuk-radios",
-        idPrefix: "belongToTrader",
-        name: "belongToTrader",
+        idPrefix: "specialMentionType",
+        name: "specialMentionType",
         fieldset: {
           legend: {
-            text: " Do all the declared items belong to this trader?",
+            text: "What type of special mention does item "+data['itemNumber']+" require?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
@@ -31,12 +31,24 @@ Do all the declared items belong to this trader? {{ data['pageTitleAddOn']}}
         },
         items: [
           {
-            value: "Yes",
-            text: "Yes"
+            value: "(DG2) Export",
+            text: "(DG2) Export"
           },
           {
-            value: "No",
-            text: "No"
+            value: "(DG1) Export subject to duties",
+            text: "(DG1) Export subject to duties"
+          },
+          {
+            value: "(DG0) Export subjection to restriction",
+            text: "(DG0) Export subjection to restriction"
+          },
+          {
+            value: "(10600) Negotiable Bill of lading to order blank endorsed",
+            text: "(10600) Negotiable Bill of lading to order blank endorsed"
+          },
+          {
+            value: "(CAL) Test Liability",
+            text: "(CAL) Test Liability"
           }
         ]
       }) }}

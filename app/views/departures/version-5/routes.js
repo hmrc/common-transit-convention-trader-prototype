@@ -39,8 +39,14 @@ router.post('/route/added-transit-offices-route', function (req, res) {
 
 
 /*
-    adding item
+    Add items
+
+    item details
 */
+
+router.post('/add-items/all-items-belong-to-trader', function(req, res) {
+    res.redirect('item-details/item-description');
+  });
 
 router.post('/add-items/item-details/add-gross-mass', function (req, res) {
     var sessionData = req.session.data;
@@ -70,8 +76,31 @@ router.post('/add-items/item-details/add-commodity-code', function (req, res) {
     if (commodityCodeResponse == 'Yes') {
         res.redirect('commodity-code');
     } else {
-        sessionData.itemcode = '';
-        req.url = '/add-items/item-details/save-item';
+        sessionData.itemcode='';
+        req.url='/add-items/item-details/check-answers';
+        return router.handle(req, res)
+    }
+})
+
+//req.url='/add-items/item-details/save-item';
+
+router.post('/add-items/item-details/commodity-code', function(req, res) {
+    res.redirect('check-answers');
+  });
+
+/*
+    If all items belong to trader = yes, go to type of package
+    If all items belong to trader = no, go to add consignee
+*/
+
+router.post('/add-items/item-details/check-answers', function (req, res) {
+    var sessionData=req.session.data;
+    let belongToTrader = sessionData.belongToTrader;
+    if (belongToTrader == 'Yes') {
+        res.redirect('../packages/package-type');
+    } else {
+        sessionData.itemcode='';
+        req.url='/add-items/item-details/add-consignee';
         return router.handle(req, res)
     }
 })
@@ -104,6 +133,62 @@ router.post('/add-items/delete-item', function (req, res) {
     sessionData.itemNumber = itemsArray.length + 1;
     res.redirect('add-items');
 })
+
+/*
+    Add items
+
+    Special mentions
+*/
+
+router.post('/add-items/special-mentions/add-special-mention', function (req, res) {
+    var sessionData=req.session.data;
+    let addSpecialMention = sessionData.addSpecialMention;
+    if (addSpecialMention == 'Yes') {
+        res.redirect('special-mention-type');
+    } else {
+        sessionData.netMass='';
+        res.redirect('add-documents');
+    }
+})
+
+router.post('/add-items/special-mentions/special-mention-type', function(req, res) {
+    res.redirect('add-additional-information');
+  });
+
+router.post('/add-items/special-mentions/add-additional-information', function (req, res) {
+    var sessionData=req.session.data;
+    let addAdditionalInformation = sessionData.addAdditionalInformation;
+    let specialMentionType = sessionData.specialMentionType;
+
+    if (addAdditionalInformation == 'Yes') {
+        res.redirect('additional-information');
+    } else {
+
+        if ((specialMentionType == '(DG1) Export subject to duties' || specialMentionType == '(DG0) Export subjection to restriction')) {
+        res.redirect('export-country');
+        } else {
+            sessionData.netMass='';
+            res.redirect('added-special-mentions');
+        }
+
+
+    }
+})
+
+router.post('/add-items/special-mentions/additional-information', function (req, res) {
+    var sessionData=req.session.data;
+    let specialMentionType = sessionData.specialMentionType;
+    if ((specialMentionType == '(DG1) Export subject to duties' || specialMentionType == '(DG0) Export subjection to restriction')) {
+        res.redirect('export-country');
+    } else {
+        sessionData.netMass='';
+        res.redirect('added-special-mentions');
+    }
+})
+
+router.post('/add-items/special-mentions/export-country', function(req, res) {
+    res.redirect('added-special-mentions');
+  });
 
 
 

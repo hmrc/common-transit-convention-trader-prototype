@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add/declare a total net mass for this item {{ data['itemNumber']}}? {{ data['pageTitleAddOn']}}
+Do you need to provide additional information for this special mention? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,15 +13,15 @@ Do you need to add/declare a total net mass for this item {{ data['itemNumber']}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-xl">{{ data['items'] }}</span>
-    <form class="form" method="post" action="add-net-mass">
+    <form class="form" method="post">
 
       {{ govukRadios({
         classes: "govuk-radios",
-        idPrefix: "netMassResponse",
-        name: "netMassResponse",
+        idPrefix: "addAdditionalInformation",
+        name: "addAdditionalInformation",
         fieldset: {
           legend: {
-            text: "Do you need to declare the total net mass for item "+data['itemNumber']+"?",
+            text: "Do you need to provide additional information for this special mention?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
