@@ -13,36 +13,20 @@ What type of package has been used? {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-xl">{{ data['items'] }}</span>
+    <h1 class="govuk-heading-xl">What type of package has been used?</h1>
     <form class="form" method="post" action="package-type-route">
 
-      {{ govukRadios({
-        classes: "govuk-radios",
-        idPrefix: "packageTypeResponse",
+      {{ govukSelect({
+        classes: "govuk-input--width-20 autocomplete",
+        label: {
+          text: header,
+          isPageHeading: true,
+          classes: "govuk-label--xl"
+        },
+        id: "packageTypeResponse",
         name: "packageTypeResponse",
-        fieldset: {
-          legend: {
-            text: "What type of package has been used?",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--xl"
-          }
-        },
-        hint: {
-          text: ""
-        },
-        items: [
-          {
-            value: "Bulk",
-            text: "Bulk"
-          },
-          {
-            value: "Unpacked",
-            text: "Unpacked"
-          },
-          {
-            value: "Other",
-            text: "Other"
-          }
-        ]
+        errorMessage: form.value.error,
+        items: CTCData.packages
       }) }}
 
       {{ govukButton({
