@@ -70,13 +70,14 @@ router.post('/add-items/item-details/add-net-mass', function (req, res) {
     }
 })
 
-router.post('/add-items/item-details/add-commodity-code', function (req, res) {
+router.post('/add-items/item-details/item-given-commodity-code', function (req, res) {
     var sessionData = req.session.data;
     let commodityCodeResponse = sessionData.commodityCodeResponse;
     if (commodityCodeResponse == 'Yes') {
         res.redirect('commodity-code');
     } else {
-        sessionData.itemcode='';
+        sessionData.commodityCodeResponse='';
+        // res.redirect('check-answers');
         req.url='/add-items/item-details/check-answers';
         return router.handle(req, res)
     }
@@ -93,15 +94,25 @@ router.post('/add-items/item-details/commodity-code', function(req, res) {
     If all items belong to trader = no, go to add consignee
 */
 
+router.post('/add-items/item-details/add-net-mass', function (req, res) {
+    var sessionData = req.session.data;
+    let netMassResponse = sessionData.netMassResponse;
+    if (netMassResponse == 'Yes') {
+        res.redirect('total-net-mass');
+    } else {
+        sessionData.netMass = '';
+        res.redirect('item-given-commodity-code');
+    }
+})
+
 router.post('/add-items/item-details/check-answers', function (req, res) {
     var sessionData=req.session.data;
     let belongToTrader = sessionData.belongToTrader;
     if (belongToTrader == 'Yes') {
         res.redirect('../packages/package-type');
     } else {
-        sessionData.itemcode='';
-        req.url='/add-items/item-details/add-consignee';
-        return router.handle(req, res)
+        // req.url='/add-items/item-details/add-consignee';
+        res.redirect('../trader-details/add-consignee');
     }
 })
 
@@ -147,7 +158,7 @@ router.post('/add-items/special-mentions/add-special-mention', function (req, re
         res.redirect('special-mention-type');
     } else {
         sessionData.netMass='';
-        res.redirect('add-documents');
+        res.redirect('../documents/add-documents');
     }
 })
 
@@ -170,7 +181,6 @@ router.post('/add-items/special-mentions/add-additional-information', function (
             sessionData.netMass='';
             res.redirect('added-special-mentions');
         }
-
 
     }
 })
@@ -261,6 +271,28 @@ router.post('/add-items/packages/add-package', function (req, res) {
     res.redirect('add-another-package');
 })
 
+router.post('/add-items/packages/add-another-package', function (req, res) {
+    var sessionData=req.session.data;
+    let addAnotherPackage = sessionData.addAnotherPackage;
+    let containersUsed = sessionData.containersUsed;
+
+    if (addAnotherPackage == 'Yes') {
+        res.redirect('package-type');
+    } else {
+
+        if (containersUsed == 'Yes') {
+            res.redirect('../containers/container-number');
+            } else {
+                sessionData.netMass='';
+                res.redirect('../special-mentions/add-special-mention');
+            }
+
+    }
+})
+
+
+
+
 router.post('/add-items/packages/delete-package', function (req, res) {
     var sessionData = req.session.data;
     let removePackageResponse = sessionData.removePackageResponse;
@@ -282,7 +314,7 @@ router.post('/add-items/documents/add-documents-route', function (req, res) {
     if (addDocumentsResponse == 'Yes') {
         res.redirect('document-type');
     } else {
-        res.redirect('../previous-references/sample');
+        res.redirect('../previous-references/add-administrative-reference');
     }
 })
 
@@ -332,6 +364,16 @@ router.post('/add-items/documents/delete-document', function (req, res) {
         documentsArray.length = documentsArray.length - 1
     sessionData.documentsArray = documentsArray;
     res.redirect('add-another-document');
+})
+
+router.post('/add-items/documents/add-another-document', function (req, res) {
+    var sessionData = req.session.data;
+    let addAnotherDocument = sessionData.addAnotherDocument;
+    if (addAnotherDocument == 'Yes') {
+        res.redirect('document-type');
+    } else {
+        res.redirect('../add-items');
+    }
 })
 
 

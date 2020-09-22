@@ -8,6 +8,12 @@ What type of document? {{ data['pageTitleAddOn']}}
 <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
 
+{% block pageHead %}
+<!--[if gt IE 8]><!-->
+<link href="/public/stylesheets/accessible-autocomplete.css" media="all" rel="stylesheet" type="text/css" />
+<!--<![endif]-->
+{% endblock %}
+
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -43,4 +49,8 @@ What type of document? {{ data['pageTitleAddOn']}}
   </div>
 </div>
 
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/accessible-autocomplete.js"></script>
 {% endblock %}
