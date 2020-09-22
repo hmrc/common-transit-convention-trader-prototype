@@ -13,7 +13,7 @@ Items added to list {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" method="post" action="item-details/item-description">
+    <form class="form" method="post" action="item-description-route">
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
       <h1 class="govuk-heading-xl">
         Items added to list
@@ -91,11 +91,11 @@ Items added to list {{ data['pageTitleAddOn']}}
           },
           items: [
             {
-              value: "Yes redirect(item-description)",
+              value: "Yes redirect(item-details/item-description)",
               text: "Yes"
             },
             {
-              value: "No redirect(../../task-list)",
+              value: "No redirect(../task-list)",
               text: "No"
             }
           ]
