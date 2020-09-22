@@ -12,7 +12,7 @@ Check your answers {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
     <span class="govuk-caption-xl">{{ data['items'] }}</span>
-    <form class="form" action="../task-list" method="post">
+    <form class="form" action="../packages/package-type" method="post">
 
       <h1 class="govuk-heading-xl">Check your answers</h1>
 
@@ -291,9 +291,8 @@ Check your answers {{ data['pageTitleAddOn']}}
 
 
       {{ govukButton({
-                text: "Save and continue",
-                href: "../task-list"
-                }) }}
+        text: "Save and continue"
+      }) }}
 
     </form>
 
