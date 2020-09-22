@@ -44,9 +44,18 @@ router.post('/route/added-transit-offices-route', function (req, res) {
     item details
 */
 
-router.post('/add-items/all-items-belong-to-trader', function(req, res) {
+router.post('/add-items/all-items-belong-to-trader', function (req, res) {
     res.redirect('item-details/item-description');
-  });
+});
+
+router.post('/add-items/item-description-route', function (req, res) {
+    res.redirect('item-details/item-description');
+});
+
+router.post('/add-items/item-details/add-total-gross-mass-route', function (req, res) {
+    res.redirect('add-total-gross-mass');
+});
+
 
 router.post('/add-items/item-details/add-gross-mass', function (req, res) {
     var sessionData = req.session.data;
@@ -59,6 +68,10 @@ router.post('/add-items/item-details/add-gross-mass', function (req, res) {
     }
 })
 
+router.post('/add-items/item-details/add-total-net-mass-route', function (req, res) {
+    res.redirect('item-details/add-total-net-mass');
+});
+
 router.post('/add-items/item-details/add-net-mass', function (req, res) {
     var sessionData = req.session.data;
     let netMassResponse = sessionData.netMassResponse;
@@ -70,24 +83,26 @@ router.post('/add-items/item-details/add-net-mass', function (req, res) {
     }
 })
 
+router.post('/add-items/item-details/item-given-commodity-code-route', function (req, res) {
+    res.redirect('item-given-commodity-code');
+});
+
 router.post('/add-items/item-details/item-given-commodity-code', function (req, res) {
     var sessionData = req.session.data;
     let commodityCodeResponse = sessionData.commodityCodeResponse;
     if (commodityCodeResponse == 'Yes') {
         res.redirect('commodity-code');
     } else {
-        sessionData.commodityCodeResponse='';
-        // res.redirect('check-answers');
-        req.url='/add-items/item-details/check-answers';
-        return router.handle(req, res)
+        sessionData.commodityCodeResponse = '';
+        res.redirect('check-answers');
     }
 })
 
 //req.url='/add-items/item-details/save-item';
 
-router.post('/add-items/item-details/commodity-code', function(req, res) {
+router.post('/add-items/item-details/commodity-code', function (req, res) {
     res.redirect('check-answers');
-  });
+});
 
 /*
     If all items belong to trader = yes, go to type of package
@@ -105,8 +120,8 @@ router.post('/add-items/item-details/add-net-mass', function (req, res) {
     }
 })
 
-router.post('/add-items/item-details/check-answers', function (req, res) {
-    var sessionData=req.session.data;
+router.post('/add-items/item-details/check-answers-route', function (req, res) {
+    var sessionData = req.session.data;
     let belongToTrader = sessionData.belongToTrader;
     if (belongToTrader == 'Yes') {
         res.redirect('../packages/package-type');
@@ -152,22 +167,22 @@ router.post('/add-items/delete-item', function (req, res) {
 */
 
 router.post('/add-items/special-mentions/add-special-mention', function (req, res) {
-    var sessionData=req.session.data;
+    var sessionData = req.session.data;
     let addSpecialMention = sessionData.addSpecialMention;
     if (addSpecialMention == 'Yes') {
         res.redirect('special-mention-type');
     } else {
-        sessionData.netMass='';
+        sessionData.netMass = '';
         res.redirect('../documents/add-documents');
     }
 })
 
-router.post('/add-items/special-mentions/special-mention-type', function(req, res) {
+router.post('/add-items/special-mentions/special-mention-type', function (req, res) {
     res.redirect('add-additional-information');
-  });
+});
 
 router.post('/add-items/special-mentions/add-additional-information', function (req, res) {
-    var sessionData=req.session.data;
+    var sessionData = req.session.data;
     let addAdditionalInformation = sessionData.addAdditionalInformation;
     let specialMentionType = sessionData.specialMentionType;
 
@@ -176,9 +191,9 @@ router.post('/add-items/special-mentions/add-additional-information', function (
     } else {
 
         if ((specialMentionType == '(DG1) Export subject to duties' || specialMentionType == '(DG0) Export subjection to restriction')) {
-        res.redirect('export-country');
+            res.redirect('export-country');
         } else {
-            sessionData.netMass='';
+            sessionData.netMass = '';
             res.redirect('added-special-mentions');
         }
 
@@ -186,19 +201,19 @@ router.post('/add-items/special-mentions/add-additional-information', function (
 })
 
 router.post('/add-items/special-mentions/additional-information', function (req, res) {
-    var sessionData=req.session.data;
+    var sessionData = req.session.data;
     let specialMentionType = sessionData.specialMentionType;
     if ((specialMentionType == '(DG1) Export subject to duties' || specialMentionType == '(DG0) Export subjection to restriction')) {
         res.redirect('export-country');
     } else {
-        sessionData.netMass='';
+        sessionData.netMass = '';
         res.redirect('added-special-mentions');
     }
 })
 
-router.post('/add-items/special-mentions/export-country', function(req, res) {
+router.post('/add-items/special-mentions/export-country', function (req, res) {
     res.redirect('added-special-mentions');
-  });
+});
 
 
 
@@ -272,7 +287,7 @@ router.post('/add-items/packages/add-package', function (req, res) {
 })
 
 router.post('/add-items/packages/add-another-package', function (req, res) {
-    var sessionData=req.session.data;
+    var sessionData = req.session.data;
     let addAnotherPackage = sessionData.addAnotherPackage;
     let containersUsed = sessionData.containersUsed;
 
@@ -282,10 +297,10 @@ router.post('/add-items/packages/add-another-package', function (req, res) {
 
         if (containersUsed == 'Yes') {
             res.redirect('../containers/container-number');
-            } else {
-                sessionData.netMass='';
-                res.redirect('../special-mentions/add-special-mention');
-            }
+        } else {
+            sessionData.netMass = '';
+            res.redirect('../special-mentions/add-special-mention');
+        }
 
     }
 })
