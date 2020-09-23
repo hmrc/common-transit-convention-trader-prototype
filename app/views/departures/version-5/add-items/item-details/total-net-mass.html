@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the total net mass for {{ data['items']}} item in kilograms? {{ data['pageTitleAddOn']}}
+What is the total net mass for item {{ data['itemNumber']}} in kilograms? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,19 +13,15 @@ What is the total net mass for {{ data['items']}} item in kilograms? {{ data['pa
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-<<<<<<< HEAD
-    <form class="form" method="post">
-=======
     <form action="item-given-commodity-code-route" class="form" method="post">
->>>>>>> eefc3d88a207117cd60933b5d1901917d9cb7bfa
 
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
 
-      <h1 class="govuk-heading-xl">What is the total net mass for {{ data['itemNumber']}} item in kilograms?</h1>
+      <h1 class="govuk-heading-xl">What is the total net mass for item {{ data['itemNumber']}} in kilograms?</h1>
 
       <div class="govuk-form-group">
         <div id="weight-hint" class="govuk-hint">
-          Amount can have up to 3 decimal places
+          Amount can have up to 3 decimal places.
         </div>
         <input class="govuk-input govuk-input--width-10" id="netMass" name="netMass" type="text"
           spellcheck="false" aria-describedby="weight-hint">

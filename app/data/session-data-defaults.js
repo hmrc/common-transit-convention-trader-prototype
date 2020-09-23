@@ -89,5 +89,10 @@ module.exports = {
 
   "specialMentionType" : "",
 
-  "specialMentionType" : ""
+  "specialMentionType" : "",
+
+
+  // "allItemsBelongToConsignee" : "No",
+  // "allItemsBelongToConsignor" : "Yes"
+
 }

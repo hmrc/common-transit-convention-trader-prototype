@@ -16,7 +16,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
-      <form class="form" method="post" action="check-answers-route">
+      <form class="form" method="post" action="trader-details-route">
 
         <h1 class="govuk-heading-xl">Check your answers</h1>
 
@@ -27,7 +27,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
             <!-- Item description -->
 
               <dt class="govuk-summary-list__key">
-                Item {{ data['itemNumber']}} description
+                Description of item {{ data['itemNumber']}}
               </dt>
               <dd class="govuk-summary-list__value">
                 {{ data['itemDescription'] }}
@@ -35,7 +35,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="item-description">
                   Change<span class="govuk-visually-hidden">
-                    item description</span>
+                    description of item {{ data['itemNumber']}}</span>
                 </a>
               </dd>
           </div>
@@ -44,7 +44,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  Total gross mass in kilograms
+                  Total gross mass for item {{ data['itemNumber']}}
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {{ data['grossMass'] }}
@@ -52,7 +52,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                 <dd class="govuk-summary-list__actions">
                   <a class="govuk-link" href="total-net-mass">
                     Change<span class="govuk-visually-hidden">
-                      total gross mass</span>
+                      total gross mass for item {{ data['itemNumber']}}</span>
                   </a>
                 </dd>
               </div>
@@ -61,7 +61,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Add total net mass?
+                Declare total net mass for item {{ data['itemNumber']}}?
               </dt>
               <dd class="govuk-summary-list__value">
                 {{ data['netMassResponse'] }}
@@ -69,7 +69,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="add-total-net-mass">
                   Change<span class="govuk-visually-hidden">
-                    do you want to add a total net mass</span>
+                    declare total net mass for item {{ data['itemNumber']}}</span>
                 </a>
               </dd>
             </div>
@@ -78,15 +78,15 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  Total net mass in kilograms
+                  Total net mass for item {{ data['itemNumber']}}
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  {{ data['grossMass'] }}
+                  {{ data['netMass'] }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
                   <a class="govuk-link" href="total-net-mass">
                     Change<span class="govuk-visually-hidden">
-                      total net mass</span>
+                      total net mass for item {{ data['itemNumber']}}</span>
                   </a>
                 </dd>
               </div>
@@ -105,7 +105,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="item-given-commodity-code">
                   Change<span class="govuk-visually-hidden">
-                    does item {{ data['itemNumber']}} have a commodity code</span>
+                    if item {{ data['itemNumber']}} has a commodity code</span>
                 </a>
               </dd>
             </div>
@@ -114,7 +114,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  Commodity code
+                  Commodity code for item {{ data['itemNumber']}}
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {{ data['itemCode'] }}
@@ -122,7 +122,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                 <dd class="govuk-summary-list__actions">
                   <a class="govuk-link" href="commodity-code">
                     Change<span class="govuk-visually-hidden">
-                      commodity code</span>
+                      commodity code for item {{ data['itemNumber']}}</span>
                   </a>
                 </dd>
               </div>
