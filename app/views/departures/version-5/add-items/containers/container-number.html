@@ -16,14 +16,14 @@ What is the number of the container item {{ data['itemNumber']}} is in? {{ data[
     <span class="govuk-caption-xl">{{ data['items'] }}</span>
     <h1 class="govuk-heading-xl">What is the number of the container item {{ data['itemNumber']}} is in?</h1>
 
-    <form class="form" action="container-information" method="post">
+    <form class="form" action="container-information-route" method="post">
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
       {{ govukInput({
         classes: "govuk-input--width-20",
-        id: "item-container-number",
-        name: "item-container-number"
+        id: "containerNumber",
+        name: "containerNumber"
       }) }}
 
       {{ govukButton({
