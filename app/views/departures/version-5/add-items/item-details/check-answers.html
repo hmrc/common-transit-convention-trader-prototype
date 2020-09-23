@@ -20,14 +20,120 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
         <h1 class="govuk-heading-xl">Check your answers</h1>
 
-        {# {{ govukSummaryList({
-                classes: 'govuk-!-margin-bottom-9',
-                rows: goodsSummary
-                }) }} #}
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+          <div class="govuk-summary-list__row">
+
+            <!-- Item description -->
+
+              <dt class="govuk-summary-list__key">
+                Item {{ data['itemNumber']}} description
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['itemDescription'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="item-description">
+                  Change<span class="govuk-visually-hidden">
+                    item description</span>
+                </a>
+              </dd>
+          </div>
+
+          <!-- Total gross mass -->
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total gross mass in kilograms
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['grossMass'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="total-net-mass">
+                    Change<span class="govuk-visually-hidden">
+                      total gross mass</span>
+                  </a>
+                </dd>
+              </div>
+
+            <!-- Total net mass -->
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Add total net mass?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['netMassResponse'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="add-total-net-mass">
+                  Change<span class="govuk-visually-hidden">
+                    do you want to add a total net mass</span>
+                </a>
+              </dd>
+            </div>
+
+            {% if (data['netMassResponse'] == "Yes ") %}
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total net mass in kilograms
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['grossMass'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="total-net-mass">
+                    Change<span class="govuk-visually-hidden">
+                      total net mass</span>
+                  </a>
+                </dd>
+              </div>
+
+            {% endif %}
+
+            <!-- Commodity code -->
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Does item {{ data['itemNumber']}} have a commodity code?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['commodityCodeResponse'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="item-given-commodity-code">
+                  Change<span class="govuk-visually-hidden">
+                    does item {{ data['itemNumber']}} have a commodity code</span>
+                </a>
+              </dd>
+            </div>
+
+            {% if (data['commodityCodeResponse'] == "Yes") %}
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Commodity code
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['itemCode'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="commodity-code">
+                    Change<span class="govuk-visually-hidden">
+                      commodity code</span>
+                  </a>
+                </dd>
+              </div>
+
+            {% endif %}
+
+        </dl>
 
         {{ govukButton({
-                text: "Save and continue"
-                }) }}
+          text: "Save and continue"
+        }) }}
 
       <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
       

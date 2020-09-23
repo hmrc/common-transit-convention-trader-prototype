@@ -70,20 +70,20 @@ router.post('/add-items/item-details/add-net-mass', function (req, res) {
     }
 })
 
-router.post('/add-items/item-details/item-given-commodity-code', function (req, res) {
+router.post('/add-items/item-details/total-net-mass', function(req, res) {
+    res.redirect('item-given-commodity-code');
+  });
+
+router.post('/add-items/item-details/item-commodity-code', function (req, res) {
     var sessionData = req.session.data;
     let commodityCodeResponse = sessionData.commodityCodeResponse;
     if (commodityCodeResponse == 'Yes') {
         res.redirect('commodity-code');
     } else {
-        sessionData.commodityCodeResponse='';
-        // res.redirect('check-answers');
-        req.url='/add-items/item-details/check-answers';
-        return router.handle(req, res)
+        // sessionData.commodityCodeResponse = '';
+        res.redirect('check-answers');
     }
 })
-
-//req.url='/add-items/item-details/save-item';
 
 router.post('/add-items/item-details/commodity-code', function(req, res) {
     res.redirect('check-answers');
@@ -111,8 +111,8 @@ router.post('/add-items/item-details/check-answers', function (req, res) {
     if (belongToTrader == 'Yes') {
         res.redirect('../packages/package-type');
     } else {
-        // req.url='/add-items/item-details/add-consignee';
-        res.redirect('../trader-details/add-consignee');
+        req.url='/add-items/item-details/add-consignee';
+        // res.redirect('../trader-details/add-consignee');
     }
 })
 
@@ -121,10 +121,10 @@ router.post('/add-items/item-details/save-item', function (req, res) {
     var itemsArray = sessionData.itemsArray || [];
     var item = {
         "id": itemsArray.length,
-        "desciption": sessionData.itemdescription,
+        "desciption": sessionData.itemDescription,
         "grossMass": sessionData.grossMass,
         "netMass": sessionData.netMass,
-        "code": sessionData.itemcode
+        "code": sessionData.itemCode
     }
     itemsArray.push(item);
     sessionData.itemsArray = itemsArray;
