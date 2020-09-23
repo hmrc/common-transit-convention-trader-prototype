@@ -305,9 +305,6 @@ router.post('/add-items/packages/add-another-package', function (req, res) {
     }
 })
 
-
-
-
 router.post('/add-items/packages/delete-package', function (req, res) {
     var sessionData = req.session.data;
     let removePackageResponse = sessionData.removePackageResponse;
@@ -316,6 +313,41 @@ router.post('/add-items/packages/delete-package', function (req, res) {
         packagesArray.length = packagesArray.length - 1
     sessionData.packagesArray = packagesArray;
     res.redirect('add-another-package');
+})
+
+/**
+ * Item Container Routing
+ */
+
+router.post('/add-items/containers/container-information-route', function (req, res) {
+    var sessionData = req.session.data;
+    var containersArray = sessionData.containersArray || [];
+    var container = {
+        "id": containersArray.length,
+        "number": sessionData.containerNumber,
+    }
+    containersArray.push(container);
+    sessionData.containersArray = containersArray;
+    res.redirect('container-information');
+})
+
+router.post('/add-items/containers/delete-container', function (req, res) {
+    var sessionData = req.session.data;
+    let removeContainerResponse = sessionData.removeContainerResponse;
+    var containersArray = sessionData.containersArray;
+    if (removeContainerResponse == 'Yes')
+        containersArray.length = containersArray.length - 1
+    sessionData.containersArray = containersArray;
+    res.redirect('container-information');
+})
+
+router.post('/add-items/containers/add-another-container-route', function (req, res) {
+    var sessionData = req.session.data;
+    let addAnotherContainer = sessionData.addAnotherContainer;
+    if (addAnotherContainer == 'Yes')
+        res.redirect('container-number');
+    else
+        res.redirect('../special-mentions/add-special-mention');
 })
 
 
