@@ -19,9 +19,11 @@ What is the commodity code for item {{ data['itemNumber']}}? {{ data['pageTitleA
 
       <h1 class="govuk-heading-xl">What is the commodity code for item {{ data['itemNumber']}}?</h1>
 
+      <p class="govuk-body">If you do not know what it is, you can <a href="https://www.trade-tariff.service.gov.uk/sections" target="blank">look up the commodity code (opens in a new  tab)</a>.</p>
+
       <div class="govuk-form-group">
         <div id="code-hint" class="govuk-hint">
-          For example, XXXXXXXXXXXXXXXXXX
+          Commodity codes are 6, 8 or 10 numbers.
         </div>
         <input class="govuk-input govuk-input--width-20" id="itemCode" name="itemCode" type="text"
           spellcheck="false" aria-describedby="code-hint">

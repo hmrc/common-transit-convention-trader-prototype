@@ -44,16 +44,20 @@ router.post('/route/added-transit-offices-route', function (req, res) {
     item details
 */
 
-router.post('/add-items/all-items-belong-to-trader', function (req, res) {
-    res.redirect('item-details/item-description');
+// router.post('/add-items/all-items-belong-to-trader', function (req, res) {
+//     res.redirect('item-details/item-description');
+// });
+
+router.post('/add-items/items-belong-to-trader/check-answers', function (req, res) {
+    res.redirect('../item-details/item-description');
 });
 
 router.post('/add-items/item-description-route', function (req, res) {
     res.redirect('item-details/item-description');
 });
 
-router.post('/add-items/item-details/add-total-gross-mass-route', function (req, res) {
-    res.redirect('add-total-gross-mass');
+router.post('/add-items/item-details/total-gross-mass-route', function (req, res) {
+    res.redirect('total-gross-mass');
 });
 
 
@@ -69,7 +73,7 @@ router.post('/add-items/item-details/add-gross-mass', function (req, res) {
 })
 
 router.post('/add-items/item-details/add-total-net-mass-route', function (req, res) {
-    res.redirect('item-details/add-total-net-mass');
+    res.redirect('add-total-net-mass');
 });
 
 router.post('/add-items/item-details/add-net-mass', function (req, res) {
@@ -80,6 +84,17 @@ router.post('/add-items/item-details/add-net-mass', function (req, res) {
     } else {
         sessionData.netMass = '';
         res.redirect('item-given-commodity-code');
+    }
+})
+
+router.post('/add-items/item-details/check-answers-route', function (req, res) {
+    var sessionData = req.session.data;
+    let commodityCodeResponse = sessionData.commodityCodeResponse;
+    if (commodityCodeResponse == 'Yes') {
+        res.redirect('commodity-code');
+    } else {
+        sessionData.netMass = '';
+        res.redirect('check-answers');
     }
 })
 
@@ -98,16 +113,9 @@ router.post('/add-items/item-details/item-given-commodity-code', function (req, 
     }
 })
 
-//req.url='/add-items/item-details/save-item';
-
 router.post('/add-items/item-details/commodity-code', function (req, res) {
     res.redirect('check-answers');
 });
-
-/*
-    If all items belong to trader = yes, go to type of package
-    If all items belong to trader = no, go to add consignee
-*/
 
 router.post('/add-items/item-details/add-net-mass', function (req, res) {
     var sessionData = req.session.data;
@@ -128,6 +136,25 @@ router.post('/add-items/item-details/check-answers-route', function (req, res) {
     } else {
         req.url='/add-items/item-details/add-consignee';
         // res.redirect('../trader-details/add-consignee');
+    }
+})
+//If all items belong to consignee & all items belong to consignor, go to type of package
+//Else go to 
+router.post('/add-items/item-details/trader-details-route', function (req, res) {
+    var sessionData = req.session.data;
+    let allItemsBelongToConsignee = sessionData.allItemsBelongToConsignee;
+    let allItemsBelongToConsignor = sessionData.allItemsBelongToConsignor;
+
+    if (allItemsBelongToConsignor == 'Yes') {
+
+        if (allItemsBelongToConsignee == 'Yes') {
+            res.redirect('../packages/package-type');
+        } else {
+            res.redirect('../trader-details/add-consignee');
+        }
+
+    } else {
+        res.redirect('../trader-details/add-consignor');
     }
 })
 
