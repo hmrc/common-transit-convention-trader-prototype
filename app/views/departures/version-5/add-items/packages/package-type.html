@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What type of package has been used? {{ data['pageTitleAddOn']}}
+What package type has been used? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,7 +19,7 @@ What type of package has been used? {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-xl">{{ data['items'] }}</span>
-    <h1 class="govuk-heading-xl">What type of package has been used?</h1>
+    <h1 class="govuk-heading-xl">What package type has been used?</h1>
     <form class="form" method="post" action="package-type-route">
 
       {{ govukSelect({

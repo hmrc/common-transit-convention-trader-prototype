@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Does item 1 have a consignee? {{ data['pageTitleAddOn']}}
+Does item {{ data['itemNumber']}} have a consignee? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -24,7 +24,7 @@ Does item 1 have a consignee? {{ data['pageTitleAddOn']}}
         name: "add-item-consignee",
         fieldset: {
           legend: {
-            text: "Does item 1 have a consignee?",
+            text: "Does item " + data['itemNumber'] + " have a consignee?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }

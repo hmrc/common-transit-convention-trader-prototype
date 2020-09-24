@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add any produced documents or work certificates for this item? {{ data['pageTitleAddOn']}}
+Do you need to add any produced documents or work certificates for item {{ data['itemNumber']}}? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,7 +21,7 @@ Do you need to add any produced documents or work certificates for this item? {{
         name: "addDocumentsResponse",
         fieldset: {
           legend: {
-            text: "Do you need to add any produced documents or work certificates for this item?",
+            text: "Do you need to add any produced documents or work certificates for item "+data['itemNumber']+"?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }

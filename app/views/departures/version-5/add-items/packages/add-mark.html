@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add a mark or number for this package type? {{ data['pageTitleAddOn']}}
+Do you need to add a mark or number for package {{ data['packageNumber'] }}? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,7 +21,7 @@ Do you need to add a mark or number for this package type? {{ data['pageTitleAdd
         name: "addMarkResponse",
         fieldset: {
           legend: {
-            text: "Do you need to add a mark or number for this package type?",
+            text: "Do you need to add a mark or number for package " + data['packageNumber']  + "?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }

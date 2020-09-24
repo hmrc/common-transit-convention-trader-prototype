@@ -1,7 +1,13 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add another document or certificate? {{ data['pageTitleAddOn']}}
+
+  {% if (data['containerNumber'] == "1") %}
+      You have added {{ data['containerNumber'] }} container {{ data['pageTitleAddOn']}}
+  {% else %}
+      You have added {{ data['containerNumber'] }} containers {{ data['pageTitleAddOn']}}
+  {% endif %}
+
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,13 +21,21 @@ Do you need to add another document or certificate? {{ data['pageTitleAddOn']}}
 
     <form class="form" method="post" action="add-another-container-route">
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
-      <h1 class="govuk-heading-xl">
-        Do you need to add another container number?
-      </h1>
+
+      {% if (data['containerNumber'] == "1") %}
+        <h1 class="govuk-heading-xl">
+          You have added {{ data['containerNumber'] }} container
+        </h1>
+      {% else %}
+        <h1 class="govuk-heading-xl">
+          You have added {{ data['containerNumber'] }} containers
+        </h1>
+      {% endif %}
+
       <div class="govuk-form-group">
           
           <table class="govuk-table hmrc-responsive-table" role="table">
-            <caption class="govuk-visually-hidden">Packages</caption>
+            <caption class="govuk-visually-hidden">containers</caption>
             <tbody>
               {% for container in data['containersArray'] %}
               <tr class="govuk-table__row">
@@ -39,7 +53,7 @@ Do you need to add another document or certificate? {{ data['pageTitleAddOn']}}
           name: "addAnotherContainer",
           fieldset: {
             legend: {
-              text: "Do you need to add another container number?",
+              text: "Do you need to add another container?",
               isPageHeading: false,
               classes: "govuk-fieldset__legend--m"
             }

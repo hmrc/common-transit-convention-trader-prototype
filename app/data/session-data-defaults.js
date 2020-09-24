@@ -75,6 +75,8 @@ module.exports = {
 
   "itemNumber": 1,
 
+  "packageNumber": 1,
+
   "routeDetails": "Route details",
 
   "transportDetails": "Transport details",
