@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-How many pieces have been used for this item? {{ data['pageTitleAddOn']}}
+How many pieces have been used for item {{ data['itemNumber']}}? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,9 +17,9 @@ How many pieces have been used for this item? {{ data['pageTitleAddOn']}}
 
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
 
-      <h1 class="govuk-heading-xl">How many pieces have been used for this item?</h1>
+      <h1 class="govuk-heading-xl">How many pieces have been used for item {{ data['itemNumber']}}?</h1>
+
       <div class="govuk-form-group">
-        
         <input class="govuk-input govuk-input--width-10" id="itemPieces" name="itemPieces" type="text"
           spellcheck="false" aria-describedby="weight-hint">
       </div>

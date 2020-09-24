@@ -1,7 +1,13 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Packages added to list {{ data['pageTitleAddOn']}}
+
+  {% if (data['packageNumbers'] == "1") %}
+      You have added {{ data['packageNumbers'] }} package {{ data['pageTitleAddOn']}}
+  {% else %}
+      You have added {{ data['packageNumbers'] }} packages {{ data['pageTitleAddOn']}}
+  {% endif %}
+
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,10 +20,19 @@ Packages added to list {{ data['pageTitleAddOn']}}
   <div class="govuk-grid-column-two-thirds">
 
     <form class="form" method="post">
+
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
-      <h1 class="govuk-heading-xl">
-        Packages added to list
-      </h1>
+      
+      {% if (data['packageNumbers'] == "1") %}
+        <h1 class="govuk-heading-xl">
+          You have added {{ data['packageNumbers'] }} package
+        </h1>
+      {% else %}
+        <h1 class="govuk-heading-xl">
+          You have added {{ data['packageNumbers'] }} packages
+        </h1>
+      {% endif %}
+
       <div class="govuk-form-group">
           
           <table class="govuk-table hmrc-responsive-table" role="table">
@@ -32,8 +47,6 @@ Packages added to list {{ data['pageTitleAddOn']}}
             </tbody>
           </table>
           {% from "govuk/components/button/macro.njk" import govukButton %}
-
-          
 
       {{ govukRadios({
           classes: "govuk-radios--inline",

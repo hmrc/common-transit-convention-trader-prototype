@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-You have added 1 special mention {{ data['pageTitleAddOn']}}
+You have added 1 special mention for item {{ data['itemNumber']}} {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,7 +15,7 @@ You have added 1 special mention {{ data['pageTitleAddOn']}}
 
     <span class="govuk-caption-xl">{{ data['routeDetails'] }}</span>
 
-    <h1 class="govuk-heading-xl">You have added 1 special mention</h1>
+    <h1 class="govuk-heading-xl">You have added 1 special mention for item {{ data['itemNumber']}}</h1>
 
     <form class="form" method="post">
 
@@ -53,7 +53,7 @@ You have added 1 special mention {{ data['pageTitleAddOn']}}
           name: "addAnotherOfficeOfTransit",
           fieldset: {
             legend: {
-              text: "Do you need to add another special mention?",
+              text: "Do you need to add another special mention for item "+data['itemNumber']+"?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--m"
             }

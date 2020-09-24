@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the mark or number for this package type? {{ data['pageTitleAddOn']}}
+What is the mark or number for package {{ data['packageNumber'] }}? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,16 +17,16 @@ What is the mark or number for this package type? {{ data['pageTitleAddOn']}}
 
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
 
-      <h1 class="govuk-heading-xl">What is the mark or number for this package type?</h1>
+      <h1 class="govuk-heading-xl">What is the mark or number for package {{ data['packageNumber'] }}?</h1>
+      
       <div class="govuk-form-group">
-        
         <input class="govuk-input govuk-input--width-10" id="itemMark" name="itemMark" type="text"
           spellcheck="false" aria-describedby="weight-hint">
       </div>
 
       {{ govukButton({
           text: "Save and continue"
-        }) }}
+      }) }}
 
       <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
 

@@ -48,6 +48,10 @@ router.post('/route/added-transit-offices-route', function (req, res) {
 //     res.redirect('item-details/item-description');
 // });
 
+router.post('/add-items/items-belong-to-trader/check-answers-route', function (req, res) {
+    res.redirect('check-answers');
+});
+
 router.post('/add-items/items-belong-to-trader/check-answers', function (req, res) {
     res.redirect('../item-details/item-description');
 });
@@ -310,6 +314,7 @@ router.post('/add-items/packages/add-package', function (req, res) {
     }
     packagesArray.push(package);
     sessionData.packagesArray = packagesArray;
+    sessionData.packageNumbers = packagesArray.length + 1;
     res.redirect('add-another-package');
 })
 
@@ -346,7 +351,7 @@ router.post('/add-items/packages/delete-package', function (req, res) {
  * Item Container Routing
  */
 
-router.post('/add-items/containers/container-information-route', function (req, res) {
+router.post('/add-items/containers/add-another-container-route', function (req, res) {
     var sessionData = req.session.data;
     var containersArray = sessionData.containersArray || [];
     var container = {
@@ -355,7 +360,7 @@ router.post('/add-items/containers/container-information-route', function (req, 
     }
     containersArray.push(container);
     sessionData.containersArray = containersArray;
-    res.redirect('container-information');
+    res.redirect('add-another-container');
 })
 
 router.post('/add-items/containers/delete-container', function (req, res) {
@@ -365,7 +370,7 @@ router.post('/add-items/containers/delete-container', function (req, res) {
     if (removeContainerResponse == 'Yes')
         containersArray.length = containersArray.length - 1
     sessionData.containersArray = containersArray;
-    res.redirect('container-information');
+    res.redirect('add-another-container');
 })
 
 router.post('/add-items/containers/add-another-container-route', function (req, res) {

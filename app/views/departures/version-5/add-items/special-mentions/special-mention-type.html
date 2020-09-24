@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What type of special mention does item {{ data['itemNumber']}} require? {{ data['pageTitleAddOn']}}
+What type of special mention do you want to add for item {{ data['itemNumber']}}? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,7 +21,7 @@ What type of special mention does item {{ data['itemNumber']}} require? {{ data[
         name: "specialMentionType",
         fieldset: {
           legend: {
-            text: "What type of special mention does item "+data['itemNumber']+" require?",
+            text: "What type of special mention do you want to add for item "+data['itemNumber']+"?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
