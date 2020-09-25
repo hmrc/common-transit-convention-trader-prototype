@@ -472,6 +472,7 @@ router.post('/add-items/documents/add-another-document-route', function (req, re
             res.redirect('../previous-references/add-administrative-reference');
         else
             res.redirect('../previous-references/reference-type');
+            
     }
 })
 
