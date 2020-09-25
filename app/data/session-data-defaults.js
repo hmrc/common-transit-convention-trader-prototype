@@ -91,7 +91,13 @@ module.exports = {
 
   "specialMentionType" : "",
 
-  "specialMentionType" : "",
+  "nonEuCtcCountries" :["Andorra","Iceland", "Liechtenstein", "Norway", "San Marino", "Svalbard and Jan Mayen Islands", "Switzerland"],
+
+  "containersUsed" : "Yes",
+
+  "declarationType" : "T2",
+
+  "dispatchCountry" : "Norway"
 
 
   // "allItemsBelongToConsignee" : "No",

@@ -97,7 +97,6 @@ router.post('/add-items/item-details/check-answers-route', function (req, res) {
     if (commodityCodeResponse == 'Yes') {
         res.redirect('commodity-code');
     } else {
-        sessionData.netMass = '';
         res.redirect('check-answers');
     }
 })
@@ -121,16 +120,7 @@ router.post('/add-items/item-details/commodity-code', function (req, res) {
     res.redirect('check-answers');
 });
 
-router.post('/add-items/item-details/add-net-mass', function (req, res) {
-    var sessionData = req.session.data;
-    let netMassResponse = sessionData.netMassResponse;
-    if (netMassResponse == 'Yes') {
-        res.redirect('total-net-mass');
-    } else {
-        sessionData.netMass = '';
-        res.redirect('item-given-commodity-code');
-    }
-})
+
 
 router.post('/add-items/item-details/check-answers-route', function (req, res) {
     var sessionData = req.session.data;
@@ -138,8 +128,7 @@ router.post('/add-items/item-details/check-answers-route', function (req, res) {
     if (belongToTrader == 'Yes') {
         res.redirect('../packages/package-type');
     } else {
-        req.url='/add-items/item-details/add-consignee';
-        // res.redirect('../trader-details/add-consignee');
+        res.redirect('../trader-details/add-consignor');
     }
 })
 //If all items belong to consignee & all items belong to consignor, go to type of package
@@ -176,6 +165,25 @@ router.post('/add-items/item-details/save-item', function (req, res) {
     sessionData.itemsArray = itemsArray;
     sessionData.itemsize = itemsArray.length;
     sessionData.itemNumber = itemsArray.length + 1;
+
+    //arrays of package/containers etc need to be erased from session for next item
+    var packagesArray = sessionData.packagesArray;
+    packagesArray=[];
+    sessionData.packagesArray=packagesArray;
+
+    var containersArray = sessionData.containersArray;
+    containersArray.length=[];
+    sessionData.containersArray=containersArray;
+
+    var documentsArray = sessionData.documentsArray;
+    documentsArray.length=[];
+    sessionData.documentsArray=documentsArray;
+
+    var previousDocumentsArray = sessionData.previousDocumentsArray;
+    previousDocumentsArray.length=[];
+    sessionData.previousDocumentsArray=previousDocumentsArray;
+
+
     res.redirect('../add-items');
 })
 
@@ -190,63 +198,6 @@ router.post('/add-items/delete-item', function (req, res) {
     sessionData.itemNumber = itemsArray.length + 1;
     res.redirect('add-items');
 })
-
-/*
-    Add items
-
-    Special mentions
-*/
-
-router.post('/add-items/special-mentions/add-special-mention', function (req, res) {
-    var sessionData = req.session.data;
-    let addSpecialMention = sessionData.addSpecialMention;
-    if (addSpecialMention == 'Yes') {
-        res.redirect('special-mention-type');
-    } else {
-        sessionData.netMass = '';
-        res.redirect('../documents/add-documents');
-    }
-})
-
-router.post('/add-items/special-mentions/special-mention-type', function (req, res) {
-    res.redirect('add-additional-information');
-});
-
-router.post('/add-items/special-mentions/add-additional-information', function (req, res) {
-    var sessionData = req.session.data;
-    let addAdditionalInformation = sessionData.addAdditionalInformation;
-    let specialMentionType = sessionData.specialMentionType;
-
-    if (addAdditionalInformation == 'Yes') {
-        res.redirect('additional-information');
-    } else {
-
-        if ((specialMentionType == '(DG1) Export subject to duties' || specialMentionType == '(DG0) Export subjection to restriction')) {
-            res.redirect('export-country');
-        } else {
-            sessionData.netMass = '';
-            res.redirect('added-special-mentions');
-        }
-
-    }
-})
-
-router.post('/add-items/special-mentions/additional-information', function (req, res) {
-    var sessionData = req.session.data;
-    let specialMentionType = sessionData.specialMentionType;
-    if ((specialMentionType == '(DG1) Export subject to duties' || specialMentionType == '(DG0) Export subjection to restriction')) {
-        res.redirect('export-country');
-    } else {
-        sessionData.netMass = '';
-        res.redirect('added-special-mentions');
-    }
-})
-
-router.post('/add-items/special-mentions/export-country', function (req, res) {
-    res.redirect('added-special-mentions');
-});
-
-
 
 /**
  * Item Packages Routing
@@ -330,7 +281,6 @@ router.post('/add-items/packages/add-another-package', function (req, res) {
         if (containersUsed == 'Yes') {
             res.redirect('../containers/container-number');
         } else {
-            sessionData.netMass = '';
             res.redirect('../special-mentions/add-special-mention');
         }
 
@@ -348,7 +298,7 @@ router.post('/add-items/packages/delete-package', function (req, res) {
 })
 
 /**
- * Item Container Routing
+ * Add Item Container Routing
  */
 
 router.post('/add-items/containers/add-another-container-route', function (req, res) {
@@ -382,9 +332,72 @@ router.post('/add-items/containers/add-another-container-route', function (req, 
         res.redirect('../special-mentions/add-special-mention');
 })
 
+/*
+    Add items
+
+    Special mentions
+*/
+
+router.post('/add-items/special-mentions/add-special-mention', function (req, res) {
+    var sessionData = req.session.data;
+    let addSpecialMention = sessionData.addSpecialMention;
+    if (addSpecialMention == 'Yes') {
+        res.redirect('special-mention-type');
+    } else {
+        res.redirect('../documents/add-documents');
+    }
+})
+
+router.post('/add-items/special-mentions/special-mention-type', function (req, res) {
+    res.redirect('add-additional-information');
+});
+
+router.post('/add-items/special-mentions/add-additional-information', function (req, res) {
+    var sessionData = req.session.data;
+    let addAdditionalInformation = sessionData.addAdditionalInformation;
+    let specialMentionType = sessionData.specialMentionType;
+
+    if (addAdditionalInformation == 'Yes') {
+        res.redirect('additional-information');
+    } else {
+
+        if ((specialMentionType == '(DG1) Export subject to duties' || specialMentionType == '(DG0) Export subjection to restriction')) {
+            res.redirect('export-country');
+        } else {
+            res.redirect('added-special-mentions');
+        }
+
+    }
+})
+
+router.post('/add-items/special-mentions/additional-information', function (req, res) {
+    var sessionData = req.session.data;
+    let specialMentionType = sessionData.specialMentionType;
+    if ((specialMentionType == '(DG1) Export subject to duties' || specialMentionType == '(DG0) Export subjection to restriction')) {
+        res.redirect('export-country');
+    } else {
+        res.redirect('added-special-mentions');
+    }
+})
+
+router.post('/add-items/special-mentions/export-country', function (req, res) {
+    res.redirect('added-special-mentions');
+});
+
+router.post('/add-items/special-mentions/added-special-mentions-route', function (req, res) {
+    var sessionData = req.session.data;
+    let addedSpecialMentionsResponse = sessionData.addedSpecialMentionsResponse;
+    if (addedSpecialMentionsResponse == 'Yes') {
+        res.redirect('special-mention-type');
+    } else {
+        res.redirect('../documents/add-documents');
+    }
+})
+
+
 
 /**
- * Item Documents Routing
+ * Add Items Documents Routing
  */
 
 router.post('/add-items/documents/add-documents-route', function (req, res) {
@@ -393,7 +406,13 @@ router.post('/add-items/documents/add-documents-route', function (req, res) {
     if (addDocumentsResponse == 'Yes') {
         res.redirect('document-type');
     } else {
-        res.redirect('../previous-references/add-administrative-reference');
+        var nonEuCtcCountries= sessionData.nonEuCtcCountries || [];
+        var declarationType= sessionData.declarationType;
+        var dispatchCountry= sessionData.dispatchCountry;
+        if(nonEuCtcCountries.includes(dispatchCountry) && (declarationType=='T2' || declarationType=='T2F'))
+            res.redirect('../previous-references/add-administrative-reference');
+        else
+            res.redirect('../previous-references/reference-type');
     }
 })
 
@@ -445,13 +464,20 @@ router.post('/add-items/documents/delete-document', function (req, res) {
     res.redirect('add-another-document');
 })
 
-router.post('/add-items/documents/add-another-document', function (req, res) {
+router.post('/add-items/documents/add-another-document-route', function (req, res) {
     var sessionData = req.session.data;
     let addAnotherDocument = sessionData.addAnotherDocument;
     if (addAnotherDocument == 'Yes') {
         res.redirect('document-type');
     } else {
-        res.redirect('../add-items');
+        var nonEuCtcCountries= sessionData.nonEuCtcCountries || [];
+        var declarationType= sessionData.declarationType;
+        var dispatchCountry= sessionData.dispatchCountry;
+        if(nonEuCtcCountries.includes(dispatchCountry) && (declarationType=='T2' || declarationType=='T2F'))
+            res.redirect('../previous-references/add-administrative-reference');
+        else
+            res.redirect('../previous-references/reference-type');
+            
     }
 })
 
@@ -460,13 +486,16 @@ router.post('/add-items/documents/add-another-document', function (req, res) {
  * admin reference routing
  */
 
+
+
 router.post('/add-items/previous-references/add-admin-reference-route', function (req, res) {
     var sessionData = req.session.data;
     let adminRefResponse = sessionData.adminRefResponse;
     if (adminRefResponse == 'Yes') {
         res.redirect('reference-type');
     } else {
-        res.redirect('../security/sample');
+        req.url='/add-items/item-details/save-item';
+        return router.handle(req, res);
     }
 })
 
@@ -518,6 +547,16 @@ router.post('/add-items/previous-references/delete-document', function (req, res
     res.redirect('add-another-document');
 })
 
+router.post('/add-items/previous-references/add-another-document-route', function (req, res) {
+    var sessionData = req.session.data;
+    let addAnotherDocument = sessionData.addAnotherDocument;
+    if (addAnotherDocument == 'Yes') {
+        res.redirect('reference-type');
+    } else {
+        req.url='/add-items/item-details/save-item';
+        return router.handle(req, res);
+    }
+})
 
 /*
     Movement details routing

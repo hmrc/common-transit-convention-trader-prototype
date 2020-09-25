@@ -17,7 +17,7 @@ You have added 1 special mention for item {{ data['itemNumber']}} {{ data['pageT
 
     <h1 class="govuk-heading-xl">You have added 1 special mention for item {{ data['itemNumber']}}</h1>
 
-    <form class="form" method="post">
+    <form class="form" method="post" action="added-special-mentions-route">
 
         {{ govukSummaryList({
           classes: 'govuk-!-margin-bottom-9',
@@ -49,8 +49,8 @@ You have added 1 special mention for item {{ data['itemNumber']}} {{ data['pageT
 
         {{ govukRadios({
           classes: "govuk-radios--inline",
-          idPrefix: "addAnotherOfficeOfTransit",
-          name: "addAnotherOfficeOfTransit",
+          idPrefix: "addedSpecialMentionsResponse",
+          name: "addedSpecialMentionsResponse",
           fieldset: {
             legend: {
               text: "Do you need to add another special mention for item "+data['itemNumber']+"?",
@@ -60,11 +60,11 @@ You have added 1 special mention for item {{ data['itemNumber']}} {{ data['pageT
           },
           items: [
             {
-              value: "Yes redirect(special-mention-type)",
+              value: "Yes",
               text: "Yes"
             },
             {
-              value: "No redirect(add-documents)",
+              value: "No",
               text: "No"
             }
           ]

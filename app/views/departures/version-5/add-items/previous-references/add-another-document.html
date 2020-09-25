@@ -13,7 +13,7 @@ Do you need to add another document or certificate? {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" method="post" action="reference-type">
+    <form class="form" method="post" action="add-another-document-route">
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
       <h1 class="govuk-heading-xl">
         Do you need to add another document or certificate?
@@ -32,6 +32,31 @@ Do you need to add another document or certificate? {{ data['pageTitleAddOn']}}
             </tbody>
           </table>
           {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "addAnotherDocument",
+          name: "addAnotherDocument",
+          fieldset: {
+            legend: {
+              text: "Do you need to add another docuement or certificate?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        <br><br>
 
           {{ govukButton({
         text: "Add Docuemnt"
