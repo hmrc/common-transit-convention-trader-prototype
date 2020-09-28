@@ -265,7 +265,7 @@ router.post('/add-items/packages/add-package', function (req, res) {
     }
     packagesArray.push(package);
     sessionData.packagesArray = packagesArray;
-    sessionData.packageNumbers = packagesArray.length + 1;
+    sessionData.packageNumber = packagesArray.length + 1;
     res.redirect('add-another-package');
 })
 
@@ -323,7 +323,7 @@ router.post('/add-items/containers/delete-container', function (req, res) {
     res.redirect('add-another-container');
 })
 
-router.post('/add-items/containers/add-another-container-route', function (req, res) {
+router.post('/add-items/containers/add-another-container', function (req, res) {
     var sessionData = req.session.data;
     let addAnotherContainer = sessionData.addAnotherContainer;
     if (addAnotherContainer == 'Yes')
@@ -384,7 +384,9 @@ router.post('/add-items/special-mentions/export-country', function (req, res) {
     res.redirect('added-special-mentions');
 });
 
-router.post('/add-items/special-mentions/added-special-mentions-route', function (req, res) {
+
+
+router.post('/add-items/special-mentions/add-special-mention-route', function (req, res) {
     var sessionData = req.session.data;
     let addedSpecialMentionsResponse = sessionData.addedSpecialMentionsResponse;
     if (addedSpecialMentionsResponse == 'Yes') {
@@ -392,6 +394,33 @@ router.post('/add-items/special-mentions/added-special-mentions-route', function
     } else {
         res.redirect('../documents/add-documents');
     }
+})
+
+router.post('/add-items/special-mentions/added-special-mentions-route', function (req, res) {
+    var sessionData = req.session.data;
+    var mentionsArray = sessionData.mentionsArray || [];
+    var mention = {
+        "id": mentionsArray.length,
+        "type": sessionData.specialMentionType,
+        "additionalInfo": sessionData.addAdditionalInformation,
+        "exportCountry": sessionData.exportCountry
+    }
+    mentionsArray.push(mention);
+    sessionData.mentionsArray = mentionsArray;
+    sessionData.mentionCount = mentionsArray.length;
+    res.redirect('added-special-mentions');
+})
+
+
+router.post('/add-items/special-mentions/delete-special-mention', function (req, res) {
+    var sessionData = req.session.data;
+    let removeMentionResponse = sessionData.removeMentionResponse;
+    var mentionsArray = sessionData.mentionsArray;
+    if (removeMentionResponse == 'Yes')
+        mentionsArray.length = mentionsArray.length - 1
+    sessionData.mentionsArray = mentionsArray;
+    sessionData.mentionCount = mentionsArray.length;
+    res.redirect('added-special-mentions');
 })
 
 

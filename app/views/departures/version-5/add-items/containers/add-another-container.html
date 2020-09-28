@@ -19,18 +19,13 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" method="post" action="add-another-container-route">
+    <form class="form" method="post" action="add-another-container">
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
 
-      {% if (data['containerNumber'] == "1") %}
-        <h1 class="govuk-heading-xl">
-          You have added {{ data['containerNumber'] }} container
-        </h1>
-      {% else %}
+      
         <h1 class="govuk-heading-xl">
           You have added {{ data['containerNumber'] }} containers
         </h1>
-      {% endif %}
 
       <div class="govuk-form-group">
           

@@ -23,15 +23,10 @@
 
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
       
-      {% if (data['packageNumbers'] == "1") %}
+      
         <h1 class="govuk-heading-xl">
-          You have added {{ data['packageNumbers'] }} package
+          You have added {{ data['packageNumber']-1 }} package
         </h1>
-      {% else %}
-        <h1 class="govuk-heading-xl">
-          You have added {{ data['packageNumbers'] }} packages
-        </h1>
-      {% endif %}
 
       <div class="govuk-form-group">
           
