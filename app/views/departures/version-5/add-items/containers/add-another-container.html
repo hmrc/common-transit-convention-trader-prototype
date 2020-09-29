@@ -1,13 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-
-  {% if (data['containerNumber'] == "1") %}
-      You have added {{ data['containerNumber'] }} container {{ data['pageTitleAddOn']}}
+  {% if (data['containerCount'] == "1") %}
+      You have added {{ data['containerCount'] }} container {{ data['pageTitleAddOn']}}
   {% else %}
-      You have added {{ data['containerNumber'] }} containers {{ data['pageTitleAddOn']}}
+      You have added {{ data['containerCount'] }} containers {{ data['pageTitleAddOn']}}
   {% endif %}
-
 {% endblock %}
 
 {% block beforeContent %}
@@ -22,9 +20,12 @@
     <form class="form" method="post" action="add-another-container">
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
 
-      
         <h1 class="govuk-heading-xl">
-          You have added {{ data['containerCount'] }} containers
+          {% if (data['containerCount'] == "1") %}
+            You have added {{ data['containerCount']}} container
+          {% else %}
+            You have added {{ data['containerCount']}} containers
+          {% endif %}
         </h1>
 
       <div class="govuk-form-group">
