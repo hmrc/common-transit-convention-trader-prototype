@@ -16,7 +16,7 @@ Do you need to add another document or certificate? {{ data['pageTitleAddOn']}}
     <form class="form" method="post" action="add-another-document-route">
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
       <h1 class="govuk-heading-xl">
-        Do you need to add another document or certificate?
+        You have added {{ data['prevDocCount']}} document or certificate
       </h1>
       <div class="govuk-form-group">
           
@@ -39,7 +39,7 @@ Do you need to add another document or certificate? {{ data['pageTitleAddOn']}}
           name: "addAnotherDocument",
           fieldset: {
             legend: {
-              text: "Do you need to add another docuement or certificate?",
+              text: "Do you need to add another document or certificate?",
               isPageHeading: false,
               classes: "govuk-fieldset__legend--m"
             }
