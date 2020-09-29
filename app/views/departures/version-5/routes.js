@@ -367,7 +367,8 @@ router.post('/add-items/special-mentions/add-additional-information', function (
         if ((specialMentionType == '(DG1) Export subject to duties' || specialMentionType == '(DG0) Export subjection to restriction')) {
             res.redirect('export-country');
         } else {
-            res.redirect('added-special-mentions');
+            req.url = '/add-items/special-mentions/added-special-mentions-route';
+            return router.handle(req, res);
         }
 
     }
@@ -379,7 +380,8 @@ router.post('/add-items/special-mentions/additional-information', function (req,
     if ((specialMentionType == '(DG1) Export subject to duties' || specialMentionType == '(DG0) Export subjection to restriction')) {
         res.redirect('export-country');
     } else {
-        res.redirect('added-special-mentions');
+        req.url = '/add-items/special-mentions/added-special-mentions-route';
+        return router.handle(req, res);
     }
 })
 
