@@ -13,48 +13,38 @@ You have added 1 special mention for item {{ data['itemNumber']}} {{ data['pageT
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <span class="govuk-caption-xl">{{ data['routeDetails'] }}</span>
+    <form class="form" method="post" action="add-special-mention-route">
 
-    <h1 class="govuk-heading-xl">You have added 1 special mention for item {{ data['itemNumber']}}</h1>
+      <span class="govuk-caption-xl">{{ data['items'] }}</span>
+      
+      
+        <h1 class="govuk-heading-xl">
+          You have added {{ data['mentionCount'] }} special mentions for item {{ data['itemNumber'] }}
+        </h1>
 
-    <form class="form" method="post" action="added-special-mentions-route">
+      <div class="govuk-form-group">
+          
+          <table class="govuk-table hmrc-responsive-table" role="table">
+            <caption class="govuk-visually-hidden">Special Mentions</caption>
+            <tbody>
+              {% for mention in data['mentionsArray'] %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">{{ mention.type }}</td>
+                <td class="govuk-table__cell govuk-table__cell--action"><a href="special-mention-type">Change</a>  |  <a href="remove-special-mention" >Remove</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% from "govuk/components/button/macro.njk" import govukButton %}
 
-        {{ govukSummaryList({
-          classes: 'govuk-!-margin-bottom-9',
-          rows: [
-            {
-              key: {
-                text: data['specialMentionType'],
-                classes: "govuk-!-width-one-half"
-              },
-              
-              actions: {
-                classes: "govuk-!-width-one-half",
-                items: [
-                  {
-                    href: "special-mention-type",
-                    text: "Change",
-                    visuallyHiddenText: "special mention type"
-                  },
-                  {
-                    href: "#",
-                    text: "Remove",
-                    visuallyHiddenText: "special mention type"
-                  }
-                ]
-              }
-            }
-          ]
-        }) }}
-
-        {{ govukRadios({
+      {{ govukRadios({
           classes: "govuk-radios--inline",
           idPrefix: "addedSpecialMentionsResponse",
           name: "addedSpecialMentionsResponse",
           fieldset: {
             legend: {
-              text: "Do you need to add another special mention for item "+data['itemNumber']+"?",
-              isPageHeading: true,
+              text: "Do you need to add another special mention?",
+              isPageHeading: false,
               classes: "govuk-fieldset__legend--m"
             }
           },
@@ -70,11 +60,11 @@ You have added 1 special mention for item {{ data['itemNumber']}} {{ data['pageT
           ]
         }) }}
 
-        {{ govukButton({
-          text: "Save and continue"
-        }) }}
+        <br><br>
 
-      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+        {{ govukButton({
+          text: "Continue"
+        }) }}
 
     </form>
     

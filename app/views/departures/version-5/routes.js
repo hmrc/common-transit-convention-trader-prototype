@@ -168,20 +168,20 @@ router.post('/add-items/item-details/save-item', function (req, res) {
 
     //arrays of package/containers etc need to be erased from session for next item
     var packagesArray = sessionData.packagesArray;
-    packagesArray=[];
-    sessionData.packagesArray=packagesArray;
+    packagesArray = [];
+    sessionData.packagesArray = packagesArray;
 
     var containersArray = sessionData.containersArray;
-    containersArray.length=[];
-    sessionData.containersArray=containersArray;
+    containersArray = [];
+    sessionData.containersArray = containersArray;
 
     var documentsArray = sessionData.documentsArray;
-    documentsArray.length=[];
-    sessionData.documentsArray=documentsArray;
+    documentsArray = [];
+    sessionData.documentsArray = documentsArray;
 
     var previousDocumentsArray = sessionData.previousDocumentsArray;
-    previousDocumentsArray.length=[];
-    sessionData.previousDocumentsArray=previousDocumentsArray;
+    previousDocumentsArray = [];
+    sessionData.previousDocumentsArray = previousDocumentsArray;
 
 
     res.redirect('../add-items');
@@ -265,7 +265,7 @@ router.post('/add-items/packages/add-package', function (req, res) {
     }
     packagesArray.push(package);
     sessionData.packagesArray = packagesArray;
-    sessionData.packageNumbers = packagesArray.length + 1;
+    sessionData.packageNumber = packagesArray.length + 1;
     res.redirect('add-another-package');
 })
 
@@ -294,6 +294,7 @@ router.post('/add-items/packages/delete-package', function (req, res) {
     if (removePackageResponse == 'Yes')
         packagesArray.length = packagesArray.length - 1
     sessionData.packagesArray = packagesArray;
+    sessionData.packageNumber = packagesArray.length + 1;
     res.redirect('add-another-package');
 })
 
@@ -310,6 +311,7 @@ router.post('/add-items/containers/add-another-container-route', function (req, 
     }
     containersArray.push(container);
     sessionData.containersArray = containersArray;
+    sessionData.containerCount = containersArray.length;
     res.redirect('add-another-container');
 })
 
@@ -320,10 +322,11 @@ router.post('/add-items/containers/delete-container', function (req, res) {
     if (removeContainerResponse == 'Yes')
         containersArray.length = containersArray.length - 1
     sessionData.containersArray = containersArray;
+    sessionData.containerCount = containersArray.length;
     res.redirect('add-another-container');
 })
 
-router.post('/add-items/containers/add-another-container-route', function (req, res) {
+router.post('/add-items/containers/add-another-container', function (req, res) {
     var sessionData = req.session.data;
     let addAnotherContainer = sessionData.addAnotherContainer;
     if (addAnotherContainer == 'Yes')
@@ -384,7 +387,9 @@ router.post('/add-items/special-mentions/export-country', function (req, res) {
     res.redirect('added-special-mentions');
 });
 
-router.post('/add-items/special-mentions/added-special-mentions-route', function (req, res) {
+
+
+router.post('/add-items/special-mentions/add-special-mention-route', function (req, res) {
     var sessionData = req.session.data;
     let addedSpecialMentionsResponse = sessionData.addedSpecialMentionsResponse;
     if (addedSpecialMentionsResponse == 'Yes') {
@@ -392,6 +397,33 @@ router.post('/add-items/special-mentions/added-special-mentions-route', function
     } else {
         res.redirect('../documents/add-documents');
     }
+})
+
+router.post('/add-items/special-mentions/added-special-mentions-route', function (req, res) {
+    var sessionData = req.session.data;
+    var mentionsArray = sessionData.mentionsArray || [];
+    var mention = {
+        "id": mentionsArray.length,
+        "type": sessionData.specialMentionType,
+        "additionalInfo": sessionData.addAdditionalInformation,
+        "exportCountry": sessionData.exportCountry
+    }
+    mentionsArray.push(mention);
+    sessionData.mentionsArray = mentionsArray;
+    sessionData.mentionCount = mentionsArray.length;
+    res.redirect('added-special-mentions');
+})
+
+
+router.post('/add-items/special-mentions/delete-special-mention', function (req, res) {
+    var sessionData = req.session.data;
+    let removeMentionResponse = sessionData.removeMentionResponse;
+    var mentionsArray = sessionData.mentionsArray;
+    if (removeMentionResponse == 'Yes')
+        mentionsArray.length = mentionsArray.length - 1
+    sessionData.mentionsArray = mentionsArray;
+    sessionData.mentionCount = mentionsArray.length;
+    res.redirect('added-special-mentions');
 })
 
 
@@ -406,10 +438,10 @@ router.post('/add-items/documents/add-documents-route', function (req, res) {
     if (addDocumentsResponse == 'Yes') {
         res.redirect('document-type');
     } else {
-        var nonEuCtcCountries= sessionData.nonEuCtcCountries || [];
-        var declarationType= sessionData.declarationType;
-        var dispatchCountry= sessionData.dispatchCountry;
-        if(nonEuCtcCountries.includes(dispatchCountry) && (declarationType=='T2' || declarationType=='T2F'))
+        var nonEuCtcCountries = sessionData.nonEuCtcCountries || [];
+        var declarationType = sessionData.declarationType;
+        var dispatchCountry = sessionData.dispatchCountry;
+        if (nonEuCtcCountries.includes(dispatchCountry) && (declarationType == 'T2' || declarationType == 'T2F'))
             res.redirect('../previous-references/add-administrative-reference');
         else
             res.redirect('../previous-references/reference-type');
@@ -451,6 +483,7 @@ router.post('/add-items/documents/add-document-info', function (req, res) {
     }
     documentsArray.push(document);
     sessionData.documentsArray = documentsArray;
+    sessionData.documentCount = documentsArray.length;
     res.redirect('add-another-document');
 })
 
@@ -461,6 +494,7 @@ router.post('/add-items/documents/delete-document', function (req, res) {
     if (removeDocumentResponse == 'Yes')
         documentsArray.length = documentsArray.length - 1
     sessionData.documentsArray = documentsArray;
+    sessionData.documentCount = documentsArray.length;
     res.redirect('add-another-document');
 })
 
@@ -470,14 +504,14 @@ router.post('/add-items/documents/add-another-document-route', function (req, re
     if (addAnotherDocument == 'Yes') {
         res.redirect('document-type');
     } else {
-        var nonEuCtcCountries= sessionData.nonEuCtcCountries || [];
-        var declarationType= sessionData.declarationType;
-        var dispatchCountry= sessionData.dispatchCountry;
-        if(nonEuCtcCountries.includes(dispatchCountry) && (declarationType=='T2' || declarationType=='T2F'))
+        var nonEuCtcCountries = sessionData.nonEuCtcCountries || [];
+        var declarationType = sessionData.declarationType;
+        var dispatchCountry = sessionData.dispatchCountry;
+        if (nonEuCtcCountries.includes(dispatchCountry) && (declarationType == 'T2' || declarationType == 'T2F'))
             res.redirect('../previous-references/add-administrative-reference');
         else
             res.redirect('../previous-references/reference-type');
-            
+
     }
 })
 
@@ -494,7 +528,7 @@ router.post('/add-items/previous-references/add-admin-reference-route', function
     if (adminRefResponse == 'Yes') {
         res.redirect('reference-type');
     } else {
-        req.url='/add-items/item-details/save-item';
+        req.url = '/add-items/item-details/save-item';
         return router.handle(req, res);
     }
 })
@@ -534,6 +568,7 @@ router.post('/add-items/previous-references/add-document-info', function (req, r
     }
     previousDocumentsArray.push(document);
     sessionData.previousDocumentsArray = previousDocumentsArray;
+    sessionData.prevDocCount = previousDocumentsArray.length;
     res.redirect('add-another-document');
 })
 
@@ -544,6 +579,7 @@ router.post('/add-items/previous-references/delete-document', function (req, res
     if (previousRemoveDocumentResponse == 'Yes')
         previousDocumentsArray.length = previousDocumentsArray.length - 1
     sessionData.previousDocumentsArray = previousDocumentsArray;
+    sessionData.prevDocCount = previousDocumentsArray.length;
     res.redirect('add-another-document');
 })
 
@@ -553,7 +589,7 @@ router.post('/add-items/previous-references/add-another-document-route', functio
     if (addAnotherDocument == 'Yes') {
         res.redirect('reference-type');
     } else {
-        req.url='/add-items/item-details/save-item';
+        req.url = '/add-items/item-details/save-item';
         return router.handle(req, res);
     }
 })
@@ -561,7 +597,6 @@ router.post('/add-items/previous-references/add-another-document-route', functio
 /*
     Movement details routing
 */
-
 
 
 /*
