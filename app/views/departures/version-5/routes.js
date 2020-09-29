@@ -122,15 +122,17 @@ router.post('/add-items/item-details/commodity-code', function (req, res) {
 
 
 
-router.post('/add-items/item-details/check-answers-route', function (req, res) {
-    var sessionData = req.session.data;
-    let belongToTrader = sessionData.belongToTrader;
-    if (belongToTrader == 'Yes') {
-        res.redirect('../packages/package-type');
-    } else {
-        res.redirect('../trader-details/add-consignor');
-    }
-})
+// router.post('/add-items/item-details/check-answers-route', function (req, res) {
+//     var sessionData = req.session.data;
+//     let belongToTrader = sessionData.belongToTrader;
+//     if (belongToTrader == 'Yes') {
+//         res.redirect('../packages/package-type');
+//     } else {
+//         res.redirect('../trader-details/add-consignor');
+//     }
+// })
+
+
 //If all items belong to consignee & all items belong to consignor, go to type of package
 //Else go to 
 router.post('/add-items/item-details/trader-details-route', function (req, res) {
@@ -138,18 +140,46 @@ router.post('/add-items/item-details/trader-details-route', function (req, res) 
     let allItemsBelongToConsignee = sessionData.allItemsBelongToConsignee;
     let allItemsBelongToConsignor = sessionData.allItemsBelongToConsignor;
 
-    if (allItemsBelongToConsignor == 'Yes') {
+    if (allItemsBelongToConsignor == 'Yes ') {
 
-        if (allItemsBelongToConsignee == 'Yes') {
+        if (allItemsBelongToConsignee == 'Yes ') {
             res.redirect('../packages/package-type');
         } else {
-            res.redirect('../trader-details/add-consignee');
+            res.redirect('../trader-details/is-consignee-eori-known');
         }
 
     } else {
-        res.redirect('../trader-details/add-consignor');
+        res.redirect('../trader-details/is-consignor-eori-known');
     }
 })
+
+router.post('/add-items/trader-details/consignor-eori-route', function (req, res) {
+
+    var sessionData = req.session.data;
+    let allItemsBelongToConsignee = sessionData.allItemsBelongToConsignee;
+
+    if (allItemsBelongToConsignee == 'Yes') {
+        res.redirect('check-answers');
+
+    } else {
+        res.redirect('is-consignee-eori-known');
+    }
+})
+
+router.post('/add-items/trader-details/consignor-address-route', function (req, res) {
+
+    var sessionData = req.session.data;
+    let allItemsBelongToConsignee = sessionData.allItemsBelongToConsignee;
+
+    if (allItemsBelongToConsignee == 'Yes ') {
+        res.redirect('../packages/package-type');
+
+    } else {
+        res.redirect('check-answers');
+    }
+})
+
+
 
 router.post('/add-items/item-details/save-item', function (req, res) {
     var sessionData = req.session.data;

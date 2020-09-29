@@ -97,10 +97,9 @@ module.exports = {
 
   "declarationType" : "T2",
 
-  "dispatchCountry" : "Norway"
+  "dispatchCountry" : "Norway",
 
-
-  // "allItemsBelongToConsignee" : "No",
-  // "allItemsBelongToConsignor" : "Yes"
+  // "allItemsBelongToConsignor" : "No ",
+  // "allItemsBelongToConsignee" : "No "
 
 }
