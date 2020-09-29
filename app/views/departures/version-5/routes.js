@@ -158,7 +158,7 @@ router.post('/add-items/trader-details/consignor-eori-route', function (req, res
     var sessionData = req.session.data;
     let allItemsBelongToConsignee = sessionData.allItemsBelongToConsignee;
 
-    if (allItemsBelongToConsignee == 'Yes') {
+    if (allItemsBelongToConsignee == 'Yes ') {
         res.redirect('check-answers');
 
     } else {
