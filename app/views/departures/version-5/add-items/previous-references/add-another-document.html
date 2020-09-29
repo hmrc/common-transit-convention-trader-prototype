@@ -1,7 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add another document or certificate? {{ data['pageTitleAddOn']}}
+  {% if (data['prevDocCount'] == "1") %}
+    You have added {{ data['prevDocCount']}} produced document or certificate {{ data['pageTitleAddOn']}}
+  {% else %}
+    You have added {{ data['prevDocCount']}} produced documents or certificates {{ data['pageTitleAddOn']}}
+  {% endif %}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,9 +19,15 @@ Do you need to add another document or certificate? {{ data['pageTitleAddOn']}}
 
     <form class="form" method="post" action="add-another-document-route">
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
+
       <h1 class="govuk-heading-xl">
-        You have added {{ data['prevDocCount']}} document or certificate
+        {% if (data['prevDocCount'] == "1") %}
+          You have added {{ data['prevDocCount']}} produced document or certificate
+        {% else %}
+          You have added {{ data['prevDocCount']}} produced documents or certificates
+        {% endif %}
       </h1>
+
       <div class="govuk-form-group">
           
           <table class="govuk-table hmrc-responsive-table" role="table">

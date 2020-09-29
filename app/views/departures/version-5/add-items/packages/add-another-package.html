@@ -1,13 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-
   {% if (data['packageNumbers'] == "1") %}
-      You have added {{ data['packageNumbers'] }} package {{ data['pageTitleAddOn']}}
+      You have added {{ data['packageNumber'] }} package {{ data['pageTitleAddOn']}}
   {% else %}
-      You have added {{ data['packageNumbers'] }} packages {{ data['pageTitleAddOn']}}
+      You have added {{ data['packageNumber'] }} packages {{ data['pageTitleAddOn']}}
   {% endif %}
-
 {% endblock %}
 
 {% block beforeContent %}
@@ -22,11 +20,14 @@
     <form class="form" method="post">
 
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
-      
-      
-        <h1 class="govuk-heading-xl">
-          You have added {{ data['packageNumber']-1 }} package
-        </h1>
+
+      <h1 class="govuk-heading-xl">
+        {% if (data['packageNumbers'] == "1") %}
+          You have added {{ data['packageNumber']}} packages
+        {% else %}
+          You have added {{ data['packageNumber']}} packages
+        {% endif %}
+      </h1>
 
       <div class="govuk-form-group">
           

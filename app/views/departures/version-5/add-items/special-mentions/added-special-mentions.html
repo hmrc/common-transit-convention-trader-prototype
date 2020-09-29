@@ -1,7 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-You have added 1 special mention for item {{ data['itemNumber']}} {{ data['pageTitleAddOn']}}
+  {% if (data['mentionCount'] == "1") %}
+      You have added {{ data['mentionCount'] }} special mention for item {{ data['itemNumber']}} {{ data['pageTitleAddOn']}}
+  {% else %}
+      You have added {{ data['mentionCount'] }} special mentions for item {{ data['itemNumber']}} {{ data['pageTitleAddOn']}}
+  {% endif %}
 {% endblock %}
 
 {% block beforeContent %}
@@ -16,10 +20,13 @@ You have added 1 special mention for item {{ data['itemNumber']}} {{ data['pageT
     <form class="form" method="post" action="add-special-mention-route">
 
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
-      
-      
+
         <h1 class="govuk-heading-xl">
-          You have added {{ data['mentionCount'] }} special mentions for item {{ data['itemNumber'] }}
+          {% if (data['mentionCount'] == "1") %}
+            You have added {{ data['mentionCount']}} special mention for item {{ data['itemNumber'] }}
+          {% else %}
+            You have added {{ data['mentionCount']}} special mentions for item {{ data['itemNumber'] }}
+          {% endif %}
         </h1>
 
       <div class="govuk-form-group">
