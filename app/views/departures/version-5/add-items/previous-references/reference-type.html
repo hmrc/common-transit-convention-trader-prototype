@@ -4,6 +4,12 @@
 What type of reference? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
+{% block pageHead %}
+<!--[if gt IE 8]><!-->
+<link href="/public/stylesheets/accessible-autocomplete.css" media="all" rel="stylesheet" type="text/css" />
+<!--<![endif]-->
+{% endblock %}
+
 {% block beforeContent %}
 <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
@@ -43,4 +49,8 @@ What type of reference? {{ data['pageTitleAddOn']}}
   </div>
 </div>
 
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/accessible-autocomplete.js"></script>
 {% endblock %}
