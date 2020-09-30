@@ -66,7 +66,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
 
           <!-- Route -->
 
-          {% if data['addAnotherOfficeOfTransit'] | length != "0" %}
+          {% if data['addAnotherOfficeOfTransit'] == "No " %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="route/dispatch-country" aria-describedby="route-completed">Edit route</a>
@@ -97,11 +97,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
 
           <!-- Transport -->
 
-          {% if (data['addTransportDetails'] == "No") 
-            or (data['nationality-crossing-border'] | length != "0") 
-            or (data['modeCrossingBorder'] | length != "0") 
-            or (data['nationality-at-departure'] | length != "0") 
-          %}
+          {% if data['changeAtBorder'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="transport/inland-mode" aria-describedby="transport-completed">Edit transport</a>
@@ -193,7 +189,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
 
           <!-- Goods summary -->
 
-          {% if (data['do-you-need-seals-info'] == "No ") or (data['seal-ID'] == "No ") or (data['add-another-seal'] == "No ") %}
+          {% if data['do-you-need-seals-info'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="goods-summary/declare-packages" aria-describedby="goods-summary-completed">Edit goods summary</a>
@@ -224,7 +220,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           
           <!-- Guarantee -->
 
-          {% if (data['access-code'] | length != "0") or (data['liability-amount'] | length != "0") %}
+          {% if data['liabilityAmount'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="guarantee/guarantee-type" aria-describedby="guarantee-completed">Edit guarantee</a>
@@ -274,12 +270,12 @@ Declaration summary {{ data['pageTitleAddOn']}}
     -->
 
     {% if (data['on-behalf-of-someone-else'] | length != "0") 
-        and (data['addAnotherOfficeOfTransit'] | length != "0")
+        and (data['addAnotherOfficeOfTransit'] == "No ")
         and (data['changeAtBorder'] | length != "0")
         and (data['add-consignee'] | length != "0")
-        and (data['liability-amount'] | length != "0")
+        and (data['addAnotherItem'] == "No ")
+        and (data['liabilityAmount'] | length != "0")
         and (data['departuresPreLodge'] == "Yes")
-        and (data['addAnotherItem'] == "No")
           %}
 
         <h2 class="govuk-heading-m">Now pre-lodge your departure declaration</h2>
@@ -292,13 +288,14 @@ Declaration summary {{ data['pageTitleAddOn']}}
       {{ govukButton({ text: "Pre-lodge declaration", href: "pre-lodged-confirmation" }) }}
 
     {% elif (data['on-behalf-of-someone-else'] | length != "0") 
-        and (data['addAnotherOfficeOfTransit'] | length != "0")
+        and (data['addAnotherOfficeOfTransit'] == "No ")
         and (data['changeAtBorder'] | length != "0")
         and (data['add-consignee'] | length != "0")
-        and (data['liability-amount'] | length != "0")
-        and (data['departuresProcedureType'] == "Simplified")
-        and (data['addAnotherItem'] == "No")
+        and (data['liabilityAmount'] | length != "0")
+        and (data['addAnotherItem'] == "No ")
           %}
+
+          {# and (data['departuresProcedureType'] == "Simplified") #}
 
       <h2 class="govuk-heading-m">Now send your departure declaration</h2>
 
