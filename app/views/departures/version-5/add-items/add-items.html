@@ -1,7 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Items added to list {{ data['pageTitleAddOn']}}
+  {% if (data['itemNumbers'] == "1") %}
+      You have added {{ data['itemNumber'] }} item {{ data['pageTitleAddOn']}}
+  {% else %}
+      You have added {{ data['itemNumber'] }} items {{ data['pageTitleAddOn']}}
+  {% endif %}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,9 +19,18 @@ Items added to list {{ data['pageTitleAddOn']}}
 
     <form class="form" method="post" action="item-description-route">
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
-      <h1 class="govuk-heading-xl">
+      {# <h1 class="govuk-heading-xl">
         Items added to list
+        {{ data['itemNumber']}}
+      </h1> #}
+      <h1 class="govuk-heading-xl">
+        {% if (data['itemNumbers'] == "1") %}
+          You have added {{ data['itemNumber']}} item
+        {% else %}
+          You have added {{ data['itemNumber']}} items
+        {% endif %}
       </h1>
+
       <div class="govuk-form-group">
           <!-- {% if (data['itemsize'] == null) %}
           
