@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  {% if (data['packageNumbers'] == "1") %}
-      You have added {{ data['packageNumber'] }} package {{ data['pageTitleAddOn']}}
+  {% if (data['packageCount'] == "1") %}
+      You have added {{ data['packageCount'] }} package {{ data['pageTitleAddOn']}}
   {% else %}
-      You have added {{ data['packageNumber'] }} packages {{ data['pageTitleAddOn']}}
+      You have added {{ data['packageCount'] }} packages {{ data['pageTitleAddOn']}}
   {% endif %}
 {% endblock %}
 
@@ -23,7 +23,7 @@
 
       <h1 class="govuk-heading-xl">
         {% if (data['packageCount'] == "1") %}
-          You have added {{ data['packageCount']}} packages
+          You have added {{ data['packageCount']}} package
         {% else %}
           You have added {{ data['packageCount']}} packages
         {% endif %}
