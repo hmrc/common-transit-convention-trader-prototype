@@ -22,10 +22,10 @@
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
 
       <h1 class="govuk-heading-xl">
-        {% if (data['packageNumbers'] == "1") %}
-          You have added {{ data['packageNumber']}} packages
+        {% if (data['packageCount'] == "1") %}
+          You have added {{ data['packageCount']}} packages
         {% else %}
-          You have added {{ data['packageNumber']}} packages
+          You have added {{ data['packageCount']}} packages
         {% endif %}
       </h1>
 
