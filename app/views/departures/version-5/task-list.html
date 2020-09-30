@@ -162,7 +162,25 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% endif %}
 
           <!-- Add items -->
-
+          {% if data['addAnotherItem'] == "No " %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="add-items/items-belong-to-trader/all-items-belong-to-consignor" aria-describedby="add-items-not-started">Add items</a>
+            </span>
+            <span class="hmrc-status-tag" id="goods-summary-not-started">
+              Completed
+            </span>
+          </li>
+          {% elif (data['allItemsBelongToConsignor'] == "No ") or (data['allItemsBelongToConsignor'] == "Yes ") %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="add-items/items-belong-to-trader/all-items-belong-to-consignor" aria-describedby="add-items-not-started">Add items</a>
+            </span>
+            <span class="hmrc-status-tag" id="goods-summary-not-started">
+              In progress
+            </span>
+          </li>
+          {% else %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="add-items/items-belong-to-trader/all-items-belong-to-consignor" aria-describedby="add-items-not-started">Add items</a>
@@ -171,6 +189,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
               Not started
             </span>
           </li>
+          {% endif %}
 
           <!-- Goods summary -->
 
@@ -260,6 +279,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
         and (data['add-consignee'] | length != "0")
         and (data['liability-amount'] | length != "0")
         and (data['departuresPreLodge'] == "Yes")
+        and (data['addAnotherItem'] == "No")
           %}
 
         <h2 class="govuk-heading-m">Now pre-lodge your departure declaration</h2>
@@ -277,6 +297,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
         and (data['add-consignee'] | length != "0")
         and (data['liability-amount'] | length != "0")
         and (data['departuresProcedureType'] == "Simplified")
+        and (data['addAnotherItem'] == "No")
           %}
 
       <h2 class="govuk-heading-m">Now send your departure declaration</h2>

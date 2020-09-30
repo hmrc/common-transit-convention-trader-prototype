@@ -200,6 +200,7 @@ router.post('/add-items/item-details/save-item', function (req, res) {
     var packagesArray = sessionData.packagesArray;
     packagesArray = [];
     sessionData.packagesArray = packagesArray;
+    sessionData.packageNumber = 1;
 
     var containersArray = sessionData.containersArray;
     containersArray = [];
@@ -295,6 +296,7 @@ router.post('/add-items/packages/add-package', function (req, res) {
     }
     packagesArray.push(package);
     sessionData.packagesArray = packagesArray;
+    sessionData.packageCount = packagesArray.length;
     sessionData.packageNumber = packagesArray.length + 1;
     res.redirect('add-another-package');
 })
@@ -324,6 +326,7 @@ router.post('/add-items/packages/delete-package', function (req, res) {
     if (removePackageResponse == 'Yes')
         packagesArray.length = packagesArray.length - 1
     sessionData.packagesArray = packagesArray;
+    sessionData.packageCount = packagesArray.length;
     sessionData.packageNumber = packagesArray.length + 1;
     res.redirect('add-another-package');
 })
