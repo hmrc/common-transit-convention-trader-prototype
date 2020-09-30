@@ -2,9 +2,9 @@
 
 {% block pageTitle %}
   {% if (data['containerCount'] == "1") %}
-      You have added {{ data['containerCount'] }} container {{ data['pageTitleAddOn']}}
+      You have added {{ data['containerCount'] }} shipping container {{ data['pageTitleAddOn']}}
   {% else %}
-      You have added {{ data['containerCount'] }} containers {{ data['pageTitleAddOn']}}
+      You have added {{ data['containerCount'] }} shipping containers {{ data['pageTitleAddOn']}}
   {% endif %}
 {% endblock %}
 
@@ -22,16 +22,16 @@
 
         <h1 class="govuk-heading-xl">
           {% if (data['containerCount'] == "1") %}
-            You have added {{ data['containerCount']}} container
+            You have added {{ data['containerCount']}} shipping container
           {% else %}
-            You have added {{ data['containerCount']}} containers
+            You have added {{ data['containerCount']}} shipping containers
           {% endif %}
         </h1>
 
       <div class="govuk-form-group">
           
           <table class="govuk-table hmrc-responsive-table" role="table">
-            <caption class="govuk-visually-hidden">containers</caption>
+            <caption class="govuk-visually-hidden">shipping containers</caption>
             <tbody>
               {% for container in data['containersArray'] %}
               <tr class="govuk-table__row">
@@ -49,7 +49,7 @@
           name: "addAnotherContainer",
           fieldset: {
             legend: {
-              text: "Do you need to add another container?",
+              text: "Do you need to add another shipping container?",
               isPageHeading: false,
               classes: "govuk-fieldset__legend--m"
             }
