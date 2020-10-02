@@ -36,6 +36,7 @@ $(document).ready(function () {
         originalSelect = document.querySelector('.autocomplete');
         accessibleAutocomplete.enhanceSelectElement({
             selectElement: document.querySelector('.autocomplete'),
+            minLength: 5,
             showAllValues: true
         });
     }
