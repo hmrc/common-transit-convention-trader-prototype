@@ -629,6 +629,29 @@ router.post('/add-items/previous-references/add-another-document-route', functio
     }
 })
 
+
+/**
+ * security details routing
+ */
+router.post('/add-items/security/transport-charges-route', function (req, res) {
+    res.redirect('commercial-reference-number');
+})
+
+router.post('/add-items/security/commercial-reference-route', function (req, res) {
+    res.redirect('dangerous-goods-code');
+})
+
+router.post('/add-items/security/dangerous-goods-route', function (req, res) {
+    res.redirect('check-answers');
+})
+
+router.post('/add-items/security/check-answers-route', function (req, res) {
+    res.redirect('../trader-security/security-trader-information');
+})
+
+
+
+
 /*
     Movement details routing
 */

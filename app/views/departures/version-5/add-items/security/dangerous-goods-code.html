@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the UN dangerous goods code? {{ data['pageTitleAddOn']}}
+What is the United Nations number for dangerous goods? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,8 +19,8 @@ What is the UN dangerous goods code? {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-xl">{{ data['items'] }}</span>
-    <h1 class="govuk-heading-xl">What is the UN dangerous goods code?</h1>
-    <form class="form" method="post" action="package-type-route">
+    <h1 class="govuk-heading-xl">What is the United Nations number for dangerous goods?</h1>
+    <form class="form" method="post" action="dangerous-goods-route">
 
       {{ govukSelect({
           classes: "govuk-input--width-20 autocomplete",
