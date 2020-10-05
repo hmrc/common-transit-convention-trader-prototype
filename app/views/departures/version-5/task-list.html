@@ -158,7 +158,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% endif %}
 
           <!-- Add items -->
-          {% if data['addAnotherItem'] == "No " %}
+          {# {% if data['addAnotherItem'] == "No " %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="add-items/items-belong-to-trader/all-items-belong-to-consignor" aria-describedby="add-items-not-started">Add items</a>
@@ -185,7 +185,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
               Not started
             </span>
           </li>
-          {% endif %}
+          {% endif %} #}
 
           <!-- Goods summary -->
 
@@ -260,20 +260,14 @@ Declaration summary {{ data['pageTitleAddOn']}}
     -->
 
     <!--
-      Movement details - claiming on behalf of someone
-      Route details - added-transit-offices 
-      Transport - will details change at the border
-      Trader's add consignee
-
-      Goods summary -  do you need to add seal numbers
-      Guarantee - liability amount
+      Snippet to add in to if statement once "add items" journey is uncommented
+      and (data['addAnotherItem'] == "No ")
     -->
 
     {% if (data['on-behalf-of-someone-else'] | length != "0") 
         and (data['addAnotherOfficeOfTransit'] == "No ")
         and (data['changeAtBorder'] | length != "0")
         and (data['add-consignee'] | length != "0")
-        and (data['addAnotherItem'] == "No ")
         and (data['liabilityAmount'] | length != "0")
         and (data['departuresPreLodge'] == "Yes")
           %}
@@ -287,12 +281,16 @@ Declaration summary {{ data['pageTitleAddOn']}}
 
       {{ govukButton({ text: "Pre-lodge declaration", href: "pre-lodged-confirmation" }) }}
 
+    <!--
+      Snippet to add in to if statement once "add items" journey is uncommented
+      and (data['addAnotherItem'] == "No ")
+    -->
+
     {% elif (data['on-behalf-of-someone-else'] | length != "0") 
         and (data['addAnotherOfficeOfTransit'] == "No ")
         and (data['changeAtBorder'] | length != "0")
         and (data['add-consignee'] | length != "0")
         and (data['liabilityAmount'] | length != "0")
-        and (data['addAnotherItem'] == "No ")
           %}
 
           {# and (data['departuresProcedureType'] == "Simplified") #}
