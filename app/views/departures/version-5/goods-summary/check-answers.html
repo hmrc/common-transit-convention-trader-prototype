@@ -31,28 +31,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
         {% set goodsSummary = [] %}
 
-          {% set goodsSummary = (goodsSummary.push(
-
-            {
-                key: {
-                text: "Declare any packages?"
-                },
-                value: {
-                text: data['declare-packages']
-                },
-                actions: {
-                items: [
-                    {
-                    href: "declare-packages",
-                    text: "Change",
-                    visuallyHiddenText: "declare any packages"
-                    }
-                ]
-                }
-            }
-          ), goodsSummary) %}
-
-        {% if (data['declare-packages'] == "Yes ") %}
+       
 
           {% set goodsSummary = (goodsSummary.push(
             {
@@ -65,7 +44,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
               actions: {
                 items: [
                   {
-                    href: "declaring-packages",
+                    href: "total-packages",
                     text: "Change",
                     visuallyHiddenText: "total packages declared"
                   }
@@ -73,8 +52,6 @@ Check your answers {{ data['pageTitleAddOn' ]}}
               }
             }
           ), goodsSummary) %}
-          
-        {% endif %}
 
         {% set goodsSummary = (goodsSummary.push(   
 
