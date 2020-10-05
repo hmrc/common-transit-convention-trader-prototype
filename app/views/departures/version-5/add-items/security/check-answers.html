@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <span class="govuk-caption-xl">{{ data['items'] }}</span>
+      <form class="form" method="post" action="check-answers-route">
+
+        <h1 class="govuk-heading-xl">Check your answers</h1>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+          <div class="govuk-summary-list__row">
+
+              <dt class="govuk-summary-list__key">
+                Transport Charges
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['transportChargesResponse'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="transport-charges">
+                  Change<span class="govuk-visually-hidden">
+                    Transport Charges</span>
+                </a>
+              </dd>
+          </div>
+
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Commercial reference number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['commercialReferenceNumber'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="commercial-reference-number">
+                    Change<span class="govuk-visually-hidden">
+                      Commercial reference number</span>
+                  </a>
+                </dd>
+              </div>
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Dangerous goods code
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['UNDangerousGoods'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="dangerous-goods-code.html">
+                  Change<span class="govuk-visually-hidden">
+                    Dangerous goods code</span>
+                </a>
+              </dd>
+            </div>
+
+        </dl>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+      
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
