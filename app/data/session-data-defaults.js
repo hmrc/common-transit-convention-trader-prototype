@@ -69,7 +69,7 @@ module.exports = {
 
   //Departures - overview section captions
 
-  "movementDetails": "Movement details",
+  "movementDetails": "General information",
 
   "items": "Items",
 

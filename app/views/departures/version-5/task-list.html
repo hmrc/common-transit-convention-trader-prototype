@@ -38,7 +38,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% if data['on-behalf-of-someone-else'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="movement-details/declaration-type" aria-describedby="movement-details-completed">Edit movement details</a>
+              <a href="movement-details/declaration-type" aria-describedby="movement-details-completed">Edit general information</a>
             </span>
             <span class="hmrc-status-tag" id="movement-details-completed">
               Completed
@@ -47,7 +47,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% elif data['declaration-type'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="movement-details/declaration-type" aria-describedby="movement-details-in-progress">Add movement details</a>
+              <a href="movement-details/declaration-type" aria-describedby="movement-details-in-progress">Add general information</a>
             </span>
             <span class="hmrc-status-tag" id="movement-details-in-progress">
               In progress
@@ -56,7 +56,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% else %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="movement-details/declaration-type" aria-describedby="movement-details-not-started">Add movement details</a>
+              <a href="movement-details/declaration-type" aria-describedby="movement-details-not-started">Add general information</a>
             </span>
             <span class="hmrc-status-tag" id="movement-details-not-started">
               Not started
