@@ -192,7 +192,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% if data['do-you-need-seals-info'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="goods-summary/declare-packages" aria-describedby="goods-summary-completed">Edit goods summary</a>
+              <a href="goods-summary/total-packages" aria-describedby="goods-summary-completed">Edit goods summary</a>
             </span>
             <span class="hmrc-status-tag" id="goods-summary-completed">
               Completed
@@ -201,7 +201,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% elif data['total-number-of-items'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="goods-summary/declare-packages" aria-describedby="goods-summary-in-progress">Add goods summary</a>
+              <a href="goods-summary/total-packages" aria-describedby="goods-summary-in-progress">Add goods summary</a>
             </span>
             <span class="hmrc-status-tag" id="goods-summary-in-progress">
               In progress
@@ -210,7 +210,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% else %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="goods-summary/declare-packages" aria-describedby="goods-summary-not-started">Add goods summary</a>
+              <a href="goods-summary/total-packages" aria-describedby="goods-summary-not-started">Add goods summary</a>
             </span>
             <span class="hmrc-status-tag" id="goods-summary-not-started">
               Not started
