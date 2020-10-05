@@ -4,6 +4,17 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
+router.post('/movement-details/procedure-type-route', function (req, res) {
+
+    let departuresProcedureType = req.session.data.departuresProcedureType;
+
+    if (departuresProcedureType == 'Normal') {
+        res.redirect('will-you-be-pre-lodging');
+    } else {
+        res.redirect('containers-used');
+    }
+
+})
 
 /*
     Cancel departure
