@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Are you creating this declaration on behalf of someone else? {{ data['pageTitleAddOn']}}
+Are you acting as a representative? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,7 +23,7 @@ Are you creating this declaration on behalf of someone else? {{ data['pageTitleA
           name: "on-behalf-of-someone-else",
           fieldset: {
             legend: {
-              text: "Are you creating this declaration on behalf of someone else?",
+              text: "Are you acting as a representative?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }

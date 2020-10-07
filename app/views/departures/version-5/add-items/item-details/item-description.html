@@ -19,17 +19,6 @@ What is the description of item {{ data['itemNumber']}}? {{ data['pageTitleAddOn
 
       <h1 class="govuk-heading-xl">What is the description of item {{ data['itemNumber']}}?</h1>
 
-      {# <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="280">
-        <div class="govuk-form-group">
-          <p class="govuk-body">
-            Give a brief summary of the item.
-          </p>
-          <textarea class="govuk-textarea govuk-js-character-count" id="itemDescription" name="itemDescription" rows="5"
-            aria-describedby="itemDescription-info itemDescription-hint"></textarea>
-        </div>
-      </div> #}
-
-
       <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="280">
         <div class="govuk-form-group">
           <label class="govuk-label" for="itemDescription">
@@ -41,10 +30,7 @@ What is the description of item {{ data['itemNumber']}}? {{ data['pageTitleAddOn
         <div id="itemDescription-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
           You can enter up to 280 characters
         </div>
-
       </div>
-
-
 
       {{ govukButton({
           text: "Save and continue"
