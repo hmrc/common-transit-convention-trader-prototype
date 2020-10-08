@@ -4,6 +4,12 @@
 What type of special mention do you want to add for item {{ data['itemNumber']}}? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
+{% block pageHead %}
+<!--[if gt IE 8]><!-->
+<link href="/public/stylesheets/accessible-autocomplete.css" media="all" rel="stylesheet" type="text/css" />
+<!--<![endif]-->
+{% endblock %}
+
 {% block beforeContent %}
 <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
@@ -15,7 +21,9 @@ What type of special mention do you want to add for item {{ data['itemNumber']}}
     <span class="govuk-caption-xl">{{ data['items'] }}</span>
     <form class="form" method="post">
 
-      {{ govukRadios({
+    <h1 class="govuk-heading-xl">What type of special mention do you want to add for item {{ data['itemNumber']}}?</h1>
+
+      {# {{ govukRadios({
         classes: "govuk-radios",
         idPrefix: "specialMentionType",
         name: "specialMentionType",
@@ -51,6 +59,20 @@ What type of special mention do you want to add for item {{ data['itemNumber']}}
             text: "(CAL) Test Liability"
           }
         ]
+      }) }} #}
+
+
+      {{ govukSelect({
+        classes: "govuk-input--width-20 autocomplete",
+        label: {
+          text: header,
+          isPageHeading: true,
+          classes: "govuk-label--xl"
+        },
+        id: "specialMentionType",
+        name: "specialMentionType",
+        errorMessage: form.value.error,
+        items: CTCData.specialMentions
       }) }}
 
       {{ govukButton({
@@ -64,4 +86,8 @@ What type of special mention do you want to add for item {{ data['itemNumber']}}
   </div>
 </div>
 
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/accessible-autocomplete.js"></script>
 {% endblock %}
