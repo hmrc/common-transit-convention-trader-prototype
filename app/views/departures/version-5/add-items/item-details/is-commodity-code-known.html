@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Does item {{ data['itemNumber']}} have a commodity code? {{ data['pageTitleAddOn']}}
+Do you know the commodity code for item {{ data['itemNumber']}}? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,7 +21,7 @@ Does item {{ data['itemNumber']}} have a commodity code? {{ data['pageTitleAddOn
         name: "commodityCodeResponse",
         fieldset: {
           legend: {
-            text: "Does item "+data['itemNumber']+" have a commodity code?",
+            text: "Do you know the commodity code for item "+data['itemNumber']+"?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }

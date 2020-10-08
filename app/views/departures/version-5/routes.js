@@ -98,7 +98,7 @@ router.post('/add-items/item-details/add-net-mass', function (req, res) {
         res.redirect('total-net-mass');
     } else {
         sessionData.netMass = '';
-        res.redirect('item-given-commodity-code');
+        res.redirect('is-commodity-code-known');
     }
 })
 
@@ -112,11 +112,11 @@ router.post('/add-items/item-details/check-answers-route', function (req, res) {
     }
 })
 
-router.post('/add-items/item-details/item-given-commodity-code-route', function (req, res) {
-    res.redirect('item-given-commodity-code');
+router.post('/add-items/item-details/is-commodity-code-known-route', function (req, res) {
+    res.redirect('is-commodity-code-known');
 });
 
-router.post('/add-items/item-details/item-given-commodity-code', function (req, res) {
+router.post('/add-items/item-details/is-commodity-code-known', function (req, res) {
     var sessionData = req.session.data;
     let commodityCodeResponse = sessionData.commodityCodeResponse;
     if (commodityCodeResponse == 'Yes') {
