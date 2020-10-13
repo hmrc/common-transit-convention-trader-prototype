@@ -1,0 +1,834 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+        <span class="govuk-caption-xl">{{ data['items'] }}</span>
+        <form class="form" method="post" action="check-answers-route">
+
+            <h1 class="govuk-heading-xl">Check your answers</h1>
+
+
+
+            <h2 class="govuk-heading-m">Item details</h2>
+
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+                <div class="govuk-summary-list__row">
+
+                    <!-- Item description -->
+
+                    <dt class="govuk-summary-list__key">
+                        Description of item {{ data['itemNumber']}}
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['itemDescription'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="item-description">
+                            Change<span class="govuk-visually-hidden">
+                                description of item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <!-- Total gross mass -->
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Total gross mass for item {{ data['itemNumber']}}
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['grossMass'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                total gross mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <!-- Total net mass -->
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Declare total net mass for item {{ data['itemNumber']}}?
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['netMassResponse'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="add-total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                declare total net mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                {% if (data['netMassResponse'] == "Yes ") %}
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Total net mass for item {{ data['itemNumber']}}
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['netMass'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                total net mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                {% endif %}
+
+                <!-- Commodity code -->
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Does item {{ data['itemNumber']}} have a commodity code?
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['commodityCodeResponse'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="is-commodity-code-known">
+                            Change<span class="govuk-visually-hidden">
+                                if item {{ data['itemNumber']}} has a commodity code</span>
+                        </a>
+                    </dd>
+                </div>
+
+                {% if (data['commodityCodeResponse'] == "Yes") %}
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Commodity code for item {{ data['itemNumber']}}
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['itemCode'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="commodity-code">
+                            Change<span class="govuk-visually-hidden">
+                                commodity code for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                {% endif %}
+
+            </dl>
+
+
+
+
+
+
+            <h2 class="govuk-heading-m">Trader details</h2>
+
+            <h3 class="govuk-heading-s">Consignor</h3>
+
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Know consignor’s EORI number?
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['is-consignor-eori-known'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="is-consignor-eori-known">
+                            Change<span class="govuk-visually-hidden">
+                                do you know the consignor’s EORI number</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Consignor’s name
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['consignorName'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="consignor-name">
+                            Change<span class="govuk-visually-hidden">
+                                consignor’s name</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Consignor’s address
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['consignor-number-street'] }} </br>
+                        {{ data['consignor-town'] }} </br>
+                        {{ data['consignor-postcode'] }} <br>
+                        {{ data['consignor-country'] | getCountry }} <br>
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="consignor-address">
+                            Change<span class="govuk-visually-hidden">
+                                consignor’s address</span>
+                        </a>
+                    </dd>
+                </div>
+
+            </dl>
+
+            <!-- 
+            Consignee details
+        -->
+
+            <h3 class="govuk-heading-s">Consignee</h3>
+
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Know consignee’s EORI number?
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['is-consignee-eori-known'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="is-consignee-eori-known">
+                            Change<span class="govuk-visually-hidden">
+                                do you know the consignee’s EORI number</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Consignee’s name
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['consigneeName'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="consignee-name">
+                            Change<span class="govuk-visually-hidden">
+                                consignee’s name</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Consignee’s address
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['consignee-number-street'] }} </br>
+                        {{ data['consignee-town'] }} </br>
+                        {{ data['consignee-postcode'] }} <br>
+                        {{ data['consignee-country'] | getCountry }} <br>
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="consignee-address">
+                            Change<span class="govuk-visually-hidden">
+                                consignee’s address</span>
+                        </a>
+                    </dd>
+                </div>
+
+            </dl>
+
+            <h2 class="govuk-heading-m">Packages</h2>
+
+
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+                <div class="govuk-summary-list__row">
+
+                    <!-- Item description -->
+
+                    <dt class="govuk-summary-list__key">
+                        Package 1
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['itemDescription'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="item-description">
+                            Change<span class="govuk-visually-hidden">
+                                description of item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <!-- Total gross mass -->
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Package 2
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['grossMass'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                total gross mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <!-- Total net mass -->
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Package 3
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['netMassResponse'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="add-total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                declare total net mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Package 4
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['netMass'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                total net mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+            </dl>
+
+            <p class="govuk-body"><a href="#">Add or remove packages</a></p>
+
+
+
+
+
+            <h2 class="govuk-heading-m">Containers</h2>
+
+
+
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+                <div class="govuk-summary-list__row">
+
+                    <!-- Item description -->
+
+                    <dt class="govuk-summary-list__key">
+                        Container 1
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['itemDescription'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="item-description">
+                            Change<span class="govuk-visually-hidden">
+                                description of item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <!-- Total gross mass -->
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Container 2
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['grossMass'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                total gross mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <!-- Total net mass -->
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Container 3
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['netMassResponse'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="add-total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                declare total net mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Container 4
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['netMass'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                total net mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+            </dl>
+
+            <p class="govuk-body"><a href="#">Add or remove containers</a></p>
+
+
+
+
+
+
+            <h2 class="govuk-heading-m">Special mentions</h2>
+
+
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+                <div class="govuk-summary-list__row">
+
+                    <!-- Item description -->
+
+                    <dt class="govuk-summary-list__key">
+                        Special mention 1
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['itemDescription'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="item-description">
+                            Change<span class="govuk-visually-hidden">
+                                description of item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <!-- Total gross mass -->
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Special mention 2
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['grossMass'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                total gross mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <!-- Total net mass -->
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Special mention 3
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['netMassResponse'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="add-total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                declare total net mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Special mention 4
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['netMass'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                total net mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+            </dl>
+
+            <p class="govuk-body"><a href="#">Add or remove special mentions</a></p>
+
+
+
+
+
+            <h2 class="govuk-heading-m">Produced documents and work certificates</h2>
+
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+                <div class="govuk-summary-list__row">
+
+                    <!-- Item description -->
+
+                    <dt class="govuk-summary-list__key">
+                        Produced document 1
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['itemDescription'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="item-description">
+                            Change<span class="govuk-visually-hidden">
+                                description of item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <!-- Total gross mass -->
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Produced document 2
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['grossMass'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                total gross mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <!-- Total net mass -->
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Produced document 3
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['netMassResponse'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="add-total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                declare total net mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Produced document 4
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['netMass'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                total net mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+            </dl>
+
+            <p class="govuk-body"><a href="#">Add or remove sproduced documents and work certificates</a></p>
+
+
+
+
+
+
+            <h2 class="govuk-heading-m">Previous administrative references</h2>
+
+
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+                <div class="govuk-summary-list__row">
+
+                    <!-- Item description -->
+
+                    <dt class="govuk-summary-list__key">
+                        Previous administrative reference 1
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['itemDescription'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="item-description">
+                            Change<span class="govuk-visually-hidden">
+                                description of item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <!-- Total gross mass -->
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Previous administrative reference 2
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['grossMass'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                total gross mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <!-- Total net mass -->
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Previous administrative reference 3
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['netMassResponse'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="add-total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                declare total net mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Previous administrative reference 4
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['netMass'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                total net mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+            </dl>
+
+            <p class="govuk-body"><a href="#">Add or remove previous administrative references</a></p>
+
+
+
+            <h2 class="govuk-heading-m">Safety and security</h2>
+
+
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+                <div class="govuk-summary-list__row">
+
+                    <!-- Item description -->
+
+                    <dt class="govuk-summary-list__key">
+                        Transport charges method of payment
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['itemDescription'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="item-description">
+                            Change<span class="govuk-visually-hidden">
+                                description of item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <!-- Total gross mass -->
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Commercial reference number
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['grossMass'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                total gross mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <!-- Total net mass -->
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        UN dangerous goods code
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['netMassResponse'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="add-total-net-mass">
+                            Change<span class="govuk-visually-hidden">
+                                declare total net mass for item {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
+
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Know consignor’s EORI number?
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['is-consignor-eori-known'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="is-consignor-eori-known">
+                            Change<span class="govuk-visually-hidden">
+                                do you know the consignor’s EORI number</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Consignor’s name
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['consignorName'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="consignor-name">
+                            Change<span class="govuk-visually-hidden">
+                                consignor’s name</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Consignor’s address
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['consignor-number-street'] }} </br>
+                        {{ data['consignor-town'] }} </br>
+                        {{ data['consignor-postcode'] }} <br>
+                        {{ data['consignor-country'] | getCountry }} <br>
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="consignor-address">
+                            Change<span class="govuk-visually-hidden">
+                                consignor’s address</span>
+                        </a>
+                    </dd>
+                </div>
+
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Know consignee’s EORI number?
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['is-consignee-eori-known'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="is-consignee-eori-known">
+                            Change<span class="govuk-visually-hidden">
+                                do you know the consignee’s EORI number</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Consignee’s name
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['consigneeName'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="consignee-name">
+                            Change<span class="govuk-visually-hidden">
+                                consignee’s name</span>
+                        </a>
+                    </dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Consignee’s address
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['consignee-number-street'] }} </br>
+                        {{ data['consignee-town'] }} </br>
+                        {{ data['consignee-postcode'] }} <br>
+                        {{ data['consignee-country'] | getCountry }} <br>
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="consignee-address">
+                            Change<span class="govuk-visually-hidden">
+                                consignee’s address</span>
+                        </a>
+                    </dd>
+                </div>
+
+
+
+
+
+
+
+
+
+            </dl>
+
+
+
+            {{ govukButton({
+                text: "Save and continue"
+            }) }}
+
+            <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a></p> -->
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}
