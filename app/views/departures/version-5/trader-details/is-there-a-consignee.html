@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add a consignor? {{ data['pageTitleAddOn']}}
+Is there a consignee for all items? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,17 +13,18 @@ Do you need to add a consignor? {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-xl">{{ data['traderDetails'] }}</span>
+
     <form class="form" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        idPrefix: "add-consignor",
-        name: "add-consignor",
+        idPrefix: "is-there-a-consignee",
+        name: "isThereAConsignee",
         fieldset: {
           legend: {
-            text: "Do you need to add a consignor?",
+            text: "Is there a consignee for all items?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
@@ -33,11 +34,11 @@ Do you need to add a consignor? {{ data['pageTitleAddOn']}}
         },
         items: [
           {
-            value: "Yes redirect(is-consignor-eori-known)",
+            value: "Yes redirect(is-consignee-eori-known)",
             text: "Yes"
           },
           {
-            value: "No redirect(add-consignee)",
+            value: "No redirect(check-answers)",
             text: "No"
           }
         ]

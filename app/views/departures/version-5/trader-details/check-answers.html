@@ -102,20 +102,37 @@ Check your answers {{ data['pageTitleAddOn']}}
 
       <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Add consignor?
+            Are you the consignor?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['add-consignor'] }}
+            {{ data['areYouTheConsignor'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="is-consignor-eori-known">
+            <a class="govuk-link" href="are-you-the-consignor">
               Change<span class="govuk-visually-hidden">
-                do you want to add a consignor</span>
+                are you the consignor for all items</span>
             </a>
           </dd>
         </div>
 
-      {% if (data['add-consignor'] == "Yes ") %}
+      {% if (data['areYouTheConsignor'] == "No ") %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Is there a consignor?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['isThereAConsignor'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="is-there-a-consignor">
+            Change<span class="govuk-visually-hidden">
+              is there a consignor</span>
+          </a>
+        </dd>
+      </div>
+
+      {% if (data['isThereAConsignor'] == "Yes ") %}
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -131,6 +148,7 @@ Check your answers {{ data['pageTitleAddOn']}}
             </a>
           </dd>
         </div>
+
 
       {% if (data['is-consignor-eori-known'] == "Yes ") %}
 
@@ -188,6 +206,8 @@ Check your answers {{ data['pageTitleAddOn']}}
 
       {% endif %}
 
+      {% endif %}
+
       </dl>
 
       <!-- 
@@ -198,22 +218,39 @@ Check your answers {{ data['pageTitleAddOn']}}
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-      <div class="govuk-summary-list__row">
+        <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Add consignee?
+            Are you the consignee?
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['add-consignee'] }}
+            {{ data['areYouTheConsignee'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="is-consignee-eori-known">
+            <a class="govuk-link" href="are-you-the-consignee">
               Change<span class="govuk-visually-hidden">
-                do you want to add a consignee</span>
+                are you the consignee for all items</span>
             </a>
           </dd>
         </div>
 
-      {% if (data['add-consignee'] == "Yes ") %}
+      {% if (data['areYouTheConsignee'] == "No ") %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Is there a consignee?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['isThereAConsignee'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="is-there-a-consignee">
+            Change<span class="govuk-visually-hidden">
+              is there a consignee</span>
+          </a>
+        </dd>
+      </div>
+
+      {% if (data['isThereAConsignee'] == "Yes ") %}
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -281,6 +318,8 @@ Check your answers {{ data['pageTitleAddOn']}}
             </a>
           </dd>
         </div>
+
+      {% endif %}
 
       {% endif %}
 

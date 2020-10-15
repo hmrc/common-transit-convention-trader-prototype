@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Are you the consignor for all items? {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">{{ data['traderDetails'] }}</span>
+    <form class="form" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "are-you-the-consignor",
+        name: "areYouTheConsignor",
+        fieldset: {
+          legend: {
+            text: "Are you the consignor for all items?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "Yes redirect(are-you-the-consignee)",
+            text: "Yes"
+          },
+          {
+            value: "No redirect(is-there-a-consignor)",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+
+    <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+  </div>
+</div>
+
+{% endblock %}
