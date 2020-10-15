@@ -186,7 +186,7 @@ router.post('/add-items/trader-details/consignor-address-route', function (req, 
         res.redirect('../packages/package-type');
 
     } else {
-        res.redirect('check-answers');
+        res.redirect('is-consignee-eori-known');
     }
 })
 

@@ -100,8 +100,8 @@ module.exports = {
   "dispatchCountry" : "Norway",
 
   //Placeholder for testing add items routing
-  // "allItemsBelongToConsignor" : "No ",
-  // "allItemsBelongToConsignee" : "No "
+  "allItemsBelongToConsignor" : "No ",
+  "allItemsBelongToConsignee" : "No "
 
   //Placeholder for completing all sections on the task list
   // "on-behalf-of-someone-else" : "123",
