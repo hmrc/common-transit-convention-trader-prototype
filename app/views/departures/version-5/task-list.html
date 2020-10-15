@@ -158,34 +158,34 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% endif %}
 
           <!-- Add items -->
-          {# {% if data['addAnotherItem'] == "No " %}
+          {% if data['addAnotherItem'] == "No " %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="add-items/items-belong-to-trader/all-items-belong-to-consignor" aria-describedby="add-items-not-started">Add items</a>
+              <a href="add-items/item-details/item-description" aria-describedby="add-items-completed">Add items</a>
             </span>
-            <span class="hmrc-status-tag" id="goods-summary-not-started">
+            <span class="hmrc-status-tag" id="add-items-completed">
               Completed
             </span>
           </li>
-          {% elif (data['allItemsBelongToConsignor'] == "No ") or (data['allItemsBelongToConsignor'] == "Yes ") %}
+          {% elif (data['itemDescription'] | length != "0") %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="add-items/items-belong-to-trader/all-items-belong-to-consignor" aria-describedby="add-items-not-started">Add items</a>
+              <a href="add-items/item-details/item-description" aria-describedby="add-items-in-progress">Add items</a>
             </span>
-            <span class="hmrc-status-tag" id="goods-summary-not-started">
+            <span class="hmrc-status-tag" id="goods-summary-in-progress">
               In progress
             </span>
           </li>
           {% else %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="add-items/items-belong-to-trader/all-items-belong-to-consignor" aria-describedby="add-items-not-started">Add items</a>
+              <a href="add-items/item-details/item-description" aria-describedby="add-items-not-started">Add items</a>
             </span>
             <span class="hmrc-status-tag" id="goods-summary-not-started">
               Not started
             </span>
           </li>
-          {% endif %} #}
+          {% endif %}
 
           <!-- Goods summary -->
 
