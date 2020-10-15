@@ -146,6 +146,10 @@ router.post('/add-items/item-details/commodity-code', function (req, res) {
 
 //If all items belong to consignee & all items belong to consignor, go to type of package
 //Else go to 
+
+/**
+ * Trader Details Routing
+ */
 router.post('/add-items/item-details/trader-details-route', function (req, res) {
     var sessionData = req.session.data;
     let allItemsBelongToConsignee = sessionData.allItemsBelongToConsignee;
@@ -189,6 +193,10 @@ router.post('/add-items/trader-details/consignor-address-route', function (req, 
         res.redirect('is-consignee-eori-known');
     }
 })
+
+
+
+
 
 
 

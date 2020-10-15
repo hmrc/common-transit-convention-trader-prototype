@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Are you the consignor for all items? {{ data['pageTitleAddOn']}}
+Are you the consignee for all the items? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,11 +19,11 @@ Are you the consignor for all items? {{ data['pageTitleAddOn']}}
 
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        idPrefix: "are-you-the-consignor",
-        name: "areYouTheConsignor",
+        idPrefix: "are-you-the-consignee",
+        name: "areYouTheConsignee",
         fieldset: {
           legend: {
-            text: "Are you the consignor for all items?",
+            text: "Are you the consignee for all the items?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
@@ -33,11 +33,11 @@ Are you the consignor for all items? {{ data['pageTitleAddOn']}}
         },
         items: [
           {
-            value: "Yes redirect(are-you-the-consignee)",
+            value: "Yes redirect(check-answers)",
             text: "Yes"
           },
           {
-            value: "No redirect(is-there-a-consignor)",
+            value: "No redirect(is-there-a-consignee)",
             text: "No"
           }
         ]
