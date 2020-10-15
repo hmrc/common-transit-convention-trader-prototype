@@ -1,11 +1,17 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Transport charges/ method of payment {{ data['pageTitleAddOn' ]}}
+What method of payment has been used for the transport charges? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
 <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block pageHead %}
+<!--[if gt IE 8]><!-->
+<link href="/public/stylesheets/accessible-autocomplete.css" media="all" rel="stylesheet" type="text/css" />
+<!--<![endif]-->
 {% endblock %}
 
 {% block content %}
@@ -15,33 +21,20 @@ Transport charges/ method of payment {{ data['pageTitleAddOn' ]}}
     <span class="govuk-caption-xl">{{ data['items'] }}</span>
     <form class="form" method="post" action="transport-charges-route">
 
-      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      <h1 class="govuk-heading-xl">What method of payment has been used for the transport charges?</h1>
 
-      {{ govukRadios({
-        classes: "govuk-radios",
-        idPrefix: "transportChargesResponse",
-        name: "transportChargesResponse",
-        fieldset: {
-          legend: {
-            text: "Transport charges/ method of payment",
+      {{ govukSelect({
+          classes: "govuk-input--width-20 autocomplete",
+          label: {
+            text: header,
             isPageHeading: true,
-            classes: "govuk-fieldset__legend--xl"
-          }
-        },
-        hint: {
-          text: ""
-        },
-        items: [
-          {
-            value: "Yes",
-            text: "Yes"
+            classes: "govuk-label--xl"
           },
-          {
-            value: "No",
-            text: "No"
-          }
-        ]
-      }) }}
+          id: "transportCharges",
+          name: "transportCharges",
+          errorMessage: form.value.error,
+          items: CTCData.documents
+        }) }}
 
       {{ govukButton({
         text: "Save and continue"
@@ -55,4 +48,8 @@ Transport charges/ method of payment {{ data['pageTitleAddOn' ]}}
   </div>
 </div>
 
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/accessible-autocomplete.js"></script>
 {% endblock %}
