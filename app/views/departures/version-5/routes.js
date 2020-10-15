@@ -105,10 +105,20 @@ router.post('/add-items/item-details/add-net-mass', function (req, res) {
 router.post('/add-items/item-details/check-answers-route', function (req, res) {
     var sessionData = req.session.data;
     let commodityCodeResponse = sessionData.commodityCodeResponse;
+    let isThereAConsignee = sessionData.isThereAConsignee;
+    let isThereAConsignor = sessionData.isThereAConsignor;
     if (commodityCodeResponse == 'Yes') {
         res.redirect('commodity-code');
     } else {
-        res.redirect('check-answers');
+        if (isThereAConsignor == 'Yes ' && isThereAConsignee == 'Yes '){
+            res.redirect('../packages/package-type');
+        }
+        else if (isThereAConsignor == 'Yes ' && isThereAConsignee == 'No '){
+            res.redirect('../trader-details/is-consignee-eori-known');
+        } 
+         else {
+            res.redirect('../trader-details/is-consignor-eori-known');
+        }
     }
 })
 
@@ -128,7 +138,21 @@ router.post('/add-items/item-details/is-commodity-code-known', function (req, re
 })
 
 router.post('/add-items/item-details/commodity-code', function (req, res) {
-    res.redirect('check-answers');
+    // res.redirect('check-answers');
+    var sessionData = req.session.data;
+
+    let isThereAConsignee = sessionData.isThereAConsignee;
+    let isThereAConsignor = sessionData.isThereAConsignor;
+
+    if (isThereAConsignor == 'Yes ' && isThereAConsignee == 'Yes '){
+        res.redirect('../packages/package-type');
+    }
+    else if (isThereAConsignor == 'Yes ' && isThereAConsignee == 'No '){
+        res.redirect('../trader-details/is-consignee-eori-known');
+    } 
+     else {
+        res.redirect('../trader-details/is-consignor-eori-known');
+    }
 });
 
 
@@ -234,7 +258,8 @@ router.post('/add-items/item-details/save-item', function (req, res) {
     sessionData.previousDocumentsArray = previousDocumentsArray;
 
 
-    res.redirect('../add-items');
+    // res.redirect('../add-items');
+    res.redirect('../check-answers');
 })
 
 router.post('/add-items/delete-item', function (req, res) {
@@ -574,7 +599,11 @@ router.post('/add-items/documents/add-another-document-route', function (req, re
  * admin reference routing
  */
 
+ 
+router.post('/add-items/check-answers-route', function (req, res) {
+    res.redirect('add-items');
 
+})
 
 router.post('/add-items/previous-references/add-admin-reference-route', function (req, res) {
     var sessionData = req.session.data;
@@ -645,6 +674,7 @@ router.post('/add-items/previous-references/add-another-document-route', functio
     } else {
         req.url = '/add-items/item-details/save-item';
         return router.handle(req, res);
+        // res.redirect('../check-answers');
     }
 })
 
