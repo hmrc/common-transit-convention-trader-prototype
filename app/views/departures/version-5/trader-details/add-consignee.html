@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add a consignee? {{ data['pageTitleAddOn']}}
+Are you the consignee for all the items? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,18 +13,17 @@ Do you need to add a consignee? {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-xl">{{ data['traderDetails'] }}</span>
-
     <form class="form" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        idPrefix: "add-consignee",
-        name: "add-consignee",
+        idPrefix: "are-you-the-consignee",
+        name: "areYouTheConsignee",
         fieldset: {
           legend: {
-            text: "Do you need to add a consignee?",
+            text: "Are you the consignee for all the items?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
@@ -34,11 +33,11 @@ Do you need to add a consignee? {{ data['pageTitleAddOn']}}
         },
         items: [
           {
-            value: "Yes redirect(is-consignee-eori-known)",
+            value: "Yes redirect(check-answers)",
             text: "Yes"
           },
           {
-            value: "No redirect(check-answers)",
+            value: "No redirect(is-there-a-consignee)",
             text: "No"
           }
         ]

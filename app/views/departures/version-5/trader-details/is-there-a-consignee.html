@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do all the items you are declaring belong to the same consignor? {{ data['pageTitleAddOn']}}
+Is there a consignee for all the items? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,18 +12,19 @@ Do all the items you are declaring belong to the same consignor? {{ data['pageTi
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <span class="govuk-caption-xl">{{ data['items'] }}</span>
+    <span class="govuk-caption-xl">{{ data['traderDetails'] }}</span>
+
     <form class="form" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        idPrefix: "allItemsBelongToConsignor",
-        name: "allItemsBelongToConsignor",
+        idPrefix: "is-there-a-consignee",
+        name: "isThereAConsignee",
         fieldset: {
           legend: {
-            text: "Do all the items you are declaring belong to the same consignor?",
+            text: "Is there a consignee for all the items?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
@@ -33,11 +34,11 @@ Do all the items you are declaring belong to the same consignor? {{ data['pageTi
         },
         items: [
           {
-            value: "Yes redirect(is-consignor-eori-known)",
+            value: "Yes redirect(is-consignee-eori-known)",
             text: "Yes"
           },
           {
-            value: "No redirect(all-items-belong-to-consignee)",
+            value: "No redirect(check-answers)",
             text: "No"
           }
         ]

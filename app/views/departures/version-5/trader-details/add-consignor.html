@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add a consignor? {{ data['pageTitleAddOn']}}
+Are you the consignor for all the items? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,11 +19,11 @@ Do you need to add a consignor? {{ data['pageTitleAddOn']}}
 
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        idPrefix: "add-consignor",
-        name: "add-consignor",
+        idPrefix: "are-you-the-consignor",
+        name: "areYouTheConsignor",
         fieldset: {
           legend: {
-            text: "Do you need to add a consignor?",
+            text: "Are you the consignor for all the items?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
@@ -33,11 +33,11 @@ Do you need to add a consignor? {{ data['pageTitleAddOn']}}
         },
         items: [
           {
-            value: "Yes redirect(is-consignor-eori-known)",
+            value: "Yes redirect(are-you-the-consignee)",
             text: "Yes"
           },
           {
-            value: "No redirect(add-consignee)",
+            value: "No redirect(is-there-a-consignor)",
             text: "No"
           }
         ]
