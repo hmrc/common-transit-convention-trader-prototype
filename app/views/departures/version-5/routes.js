@@ -396,42 +396,42 @@ router.post('/add-items/special-mentions/add-special-mention', function (req, re
 })
 
 router.post('/add-items/special-mentions/special-mention-type', function (req, res) {
-    res.redirect('add-additional-information');
+    res.redirect('additional-information');
 });
 
-router.post('/add-items/special-mentions/add-additional-information', function (req, res) {
-    var sessionData = req.session.data;
-    let addAdditionalInformation = sessionData.addAdditionalInformation;
-    let specialMentionType = sessionData.specialMentionType;
+// router.post('/add-items/special-mentions/add-additional-information', function (req, res) {
+//     var sessionData = req.session.data;
+//     let addAdditionalInformation = sessionData.addAdditionalInformation;
+//     let specialMentionType = sessionData.specialMentionType;
 
-    if (addAdditionalInformation == 'Yes') {
-        res.redirect('additional-information');
-    } else {
+//     if (addAdditionalInformation == 'Yes') {
+//         res.redirect('additional-information');
+//     } else {
 
-        if ((specialMentionType == '(DG1) Export subject to duties' || specialMentionType == '(DG0) Export subjection to restriction')) {
-            res.redirect('export-country');
-        } else {
-            req.url = '/add-items/special-mentions/added-special-mentions-route';
-            return router.handle(req, res);
-        }
+//         if ((specialMentionType == '(DG1) Export subject to duties' || specialMentionType == '(DG0) Export subjection to restriction')) {
+//             res.redirect('export-country');
+//         } else {
+//             req.url = '/add-items/special-mentions/added-special-mentions-route';
+//             return router.handle(req, res);
+//         }
 
-    }
-})
+//     }
+// })
 
-router.post('/add-items/special-mentions/additional-information', function (req, res) {
-    var sessionData = req.session.data;
-    let specialMentionType = sessionData.specialMentionType;
-    if ((specialMentionType == '(DG1) Export subject to duties' || specialMentionType == '(DG0) Export subjection to restriction')) {
-        res.redirect('export-country');
-    } else {
-        req.url = '/add-items/special-mentions/added-special-mentions-route';
-        return router.handle(req, res);
-    }
-})
+// router.post('/add-items/special-mentions/additional-information', function (req, res) {
+//     var sessionData = req.session.data;
+//     let specialMentionType = sessionData.specialMentionType;
+//     if ((specialMentionType == '(DG1) Export subject to duties' || specialMentionType == '(DG0) Export subjection to restriction')) {
+//         res.redirect('export-country');
+//     } else {
+//         req.url = '/add-items/special-mentions/added-special-mentions-route';
+//         return router.handle(req, res);
+//     }
+// })
 
-router.post('/add-items/special-mentions/export-country', function (req, res) {
-    res.redirect('added-special-mentions');
-});
+// router.post('/add-items/special-mentions/export-country', function (req, res) {
+//     res.redirect('added-special-mentions');
+// });
 
 
 
@@ -451,8 +451,8 @@ router.post('/add-items/special-mentions/added-special-mentions-route', function
     var mention = {
         "id": mentionsArray.length,
         "type": sessionData.specialMentionType,
-        "additionalInfo": sessionData.addAdditionalInformation,
-        "exportCountry": sessionData.exportCountry
+        "additionalInfo": sessionData.addAdditionalInformation
+        // "exportCountry": sessionData.exportCountry
     }
     mentionsArray.push(mention);
     sessionData.mentionsArray = mentionsArray;
