@@ -228,7 +228,7 @@ router.post('/add-items/item-details/save-item', function (req, res) {
     var sessionData = req.session.data;
     var itemsArray = sessionData.itemsArray || [];
     var item = {
-        "id": itemsArray.length,
+        "id": itemsArray.length+1,
         "desciption": sessionData.itemDescription,
         "grossMass": sessionData.grossMass,
         "netMass": sessionData.netMass,
@@ -239,23 +239,7 @@ router.post('/add-items/item-details/save-item', function (req, res) {
     sessionData.itemsize = itemsArray.length;
     sessionData.itemNumber = itemsArray.length + 1;
 
-    //arrays of package/containers etc need to be erased from session for next item
-    var packagesArray = sessionData.packagesArray;
-    packagesArray = [];
-    sessionData.packagesArray = packagesArray;
-    sessionData.packageNumber = 1;
-
-    var containersArray = sessionData.containersArray;
-    containersArray = [];
-    sessionData.containersArray = containersArray;
-
-    var documentsArray = sessionData.documentsArray;
-    documentsArray = [];
-    sessionData.documentsArray = documentsArray;
-
-    var previousDocumentsArray = sessionData.previousDocumentsArray;
-    previousDocumentsArray = [];
-    sessionData.previousDocumentsArray = previousDocumentsArray;
+    
 
 
     // res.redirect('../add-items');
@@ -332,7 +316,7 @@ router.post('/add-items/packages/add-package', function (req, res) {
     var sessionData = req.session.data;
     var packagesArray = sessionData.packagesArray || [];
     var package = {
-        "id": packagesArray.length,
+        "id": packagesArray.length+1,
         "type": sessionData.packageTypeResponse,
         "packageNumbers": sessionData.packageNumbers,
         "itemPieces": sessionData.itemPieces,
@@ -383,7 +367,7 @@ router.post('/add-items/containers/add-another-container-route', function (req, 
     var sessionData = req.session.data;
     var containersArray = sessionData.containersArray || [];
     var container = {
-        "id": containersArray.length,
+        "id": containersArray.length+1,
         "number": sessionData.containerNumber,
     }
     containersArray.push(container);
@@ -482,7 +466,7 @@ router.post('/add-items/special-mentions/added-special-mentions-route', function
     var sessionData = req.session.data;
     var mentionsArray = sessionData.mentionsArray || [];
     var mention = {
-        "id": mentionsArray.length,
+        "id": mentionsArray.length+1,
         "type": sessionData.specialMentionType,
         "additionalInfo": sessionData.addAdditionalInformation
         // "exportCountry": sessionData.exportCountry
@@ -532,6 +516,10 @@ router.post('/add-items/documents/document-type-route', function (req, res) {
 })
 
 router.post('/add-items/documents/document-reference-route', function (req, res) {
+    var sessionData = req.session.data;
+    var documentsArray = sessionData.documentsArray || [];
+    
+    sessionData.documentCount=documentsArray.length+1;
     res.redirect('add-extra-information');
 })
 
@@ -555,7 +543,7 @@ router.post('/add-items/documents/add-document-info', function (req, res) {
     var sessionData = req.session.data;
     var documentsArray = sessionData.documentsArray || [];
     var document = {
-        "id": documentsArray.length,
+        "id": documentsArray.length+1,
         "type": sessionData.documentTypeResponse,
         "reference": sessionData.documentReference,
         "extraInfo": sessionData.extraInformation
@@ -601,6 +589,25 @@ router.post('/add-items/documents/add-another-document-route', function (req, re
 
  
 router.post('/add-items/check-answers-route', function (req, res) {
+
+    var sessionData = req.session.data;
+    //arrays of package/containers etc need to be erased from session for next item
+    var packagesArray = sessionData.packagesArray;
+    packagesArray = [];
+    sessionData.packagesArray = packagesArray;
+    sessionData.packageNumber = 1;
+
+    var containersArray = sessionData.containersArray;
+    containersArray = [];
+    sessionData.containersArray = containersArray;
+
+    var documentsArray = sessionData.documentsArray;
+    documentsArray = [];
+    sessionData.documentsArray = documentsArray;
+
+    var previousDocumentsArray = sessionData.previousDocumentsArray;
+    previousDocumentsArray = [];
+    sessionData.previousDocumentsArray = previousDocumentsArray;
     res.redirect('add-items');
 
 })
@@ -644,7 +651,7 @@ router.post('/add-items/previous-references/add-document-info', function (req, r
     var sessionData = req.session.data;
     var previousDocumentsArray = sessionData.previousDocumentsArray || [];
     var document = {
-        "id": previousDocumentsArray.length,
+        "id": previousDocumentsArray.length+1,
         "type": sessionData.referenceTypeResponse,
         "reference": sessionData.previousDocumentReference,
         "extraInfo": sessionData.previousExtraInformation
