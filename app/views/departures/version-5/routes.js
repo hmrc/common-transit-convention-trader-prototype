@@ -107,20 +107,56 @@ router.post('/add-items/item-details/check-answers-route', function (req, res) {
     let commodityCodeResponse = sessionData.commodityCodeResponse;
     let isThereAConsignee = sessionData.isThereAConsignee;
     let isThereAConsignor = sessionData.isThereAConsignor;
+    let areYouTheConsignor = sessionData.areYouTheConsignor;
+    let areYouTheConsignee = sessionData.areYouTheConsignee;
+
     if (commodityCodeResponse == 'Yes') {
         res.redirect('commodity-code');
     } else {
-        if (isThereAConsignor == 'Yes ' && isThereAConsignee == 'Yes '){
-            res.redirect('../packages/package-type');
+
+        if (areYouTheConsignor == 'Yes ' || isThereAConsignor == 'Yes '){
+
+            if (areYouTheConsignee == 'Yes ' || isThereAConsignee == 'Yes '){
+                res.redirect('../packages/package-type');
+            }
+            else {
+                res.redirect('../trader-details/is-consignee-eori-known');
+            }
         }
-        else if (isThereAConsignor == 'Yes ' && isThereAConsignee == 'No '){
-            res.redirect('../trader-details/is-consignee-eori-known');
-        } 
-         else {
+        else {
             res.redirect('../trader-details/is-consignor-eori-known');
         }
     }
 })
+
+// router.post('/add-items/item-details/check-answers-route', function (req, res) {
+//     var sessionData = req.session.data;
+//     let commodityCodeResponse = sessionData.commodityCodeResponse;
+//     let isThereAConsignee = sessionData.isThereAConsignee;
+//     let isThereAConsignor = sessionData.isThereAConsignor;
+//     let areYouTheConsignor = sessionData.areYouTheConsignor;
+//     let areYouTheConsignee = sessionData.areYouTheConsignee;
+    
+//     if (commodityCodeResponse == 'Yes') {
+//         res.redirect('commodity-code');
+//     } else {
+
+//         if (areYouTheConsignor == 'Yes ' || isThereAConsignor == 'Yes ' && areYouTheConsignor == 'Yes ' || isThereAConsignee == 'Yes '){
+//             res.redirect('../packages/package-type');
+//         }
+
+//         // if (isThereAConsignor == 'Yes ' && isThereAConsignee == 'Yes '){
+//         //     res.redirect('../packages/package-type');
+//         // }
+//         else if (isThereAConsignor == 'Yes ' && isThereAConsignee == 'No '){
+//             res.redirect('../trader-details/is-consignee-eori-known');
+//         } 
+//          else {
+//             res.redirect('../trader-details/is-consignor-eori-known');
+//         }
+//     }
+// })
+
 
 router.post('/add-items/item-details/is-commodity-code-known-route', function (req, res) {
     res.redirect('is-commodity-code-known');
@@ -143,14 +179,19 @@ router.post('/add-items/item-details/commodity-code', function (req, res) {
 
     let isThereAConsignee = sessionData.isThereAConsignee;
     let isThereAConsignor = sessionData.isThereAConsignor;
+    let areYouTheConsignor = sessionData.areYouTheConsignor;
+    let areYouTheConsignee = sessionData.areYouTheConsignee;
 
-    if (isThereAConsignor == 'Yes ' && isThereAConsignee == 'Yes '){
-        res.redirect('../packages/package-type');
+    if (areYouTheConsignor == 'Yes ' || isThereAConsignor == 'Yes '){
+
+        if (areYouTheConsignee == 'Yes ' || isThereAConsignee == 'Yes '){
+            res.redirect('../packages/package-type');
+        }
+        else {
+            res.redirect('../trader-details/is-consignee-eori-known');
+        }
     }
-    else if (isThereAConsignor == 'Yes ' && isThereAConsignee == 'No '){
-        res.redirect('../trader-details/is-consignee-eori-known');
-    } 
-     else {
+    else {
         res.redirect('../trader-details/is-consignor-eori-known');
     }
 });
@@ -194,12 +235,15 @@ router.post('/add-items/item-details/trader-details-route', function (req, res) 
 
 router.post('/add-items/trader-details/consignor-eori-route', function (req, res) {
 
+
+
     var sessionData = req.session.data;
-    let allItemsBelongToConsignee = sessionData.allItemsBelongToConsignee;
 
-    if (allItemsBelongToConsignee == 'Yes ') {
-        res.redirect('check-answers');
+    let isThereAConsignee = sessionData.isThereAConsignee;
+    let areYouTheConsignee = sessionData.areYouTheConsignee;
 
+    if (areYouTheConsignee == 'Yes ' || isThereAConsignee == 'Yes '){
+        res.redirect('../packages/package-type');
     } else {
         res.redirect('is-consignee-eori-known');
     }
@@ -208,9 +252,10 @@ router.post('/add-items/trader-details/consignor-eori-route', function (req, res
 router.post('/add-items/trader-details/consignor-address-route', function (req, res) {
 
     var sessionData = req.session.data;
-    let allItemsBelongToConsignee = sessionData.allItemsBelongToConsignee;
+    let isThereAConsignee = sessionData.isThereAConsignee;
+    let areYouTheConsignee = sessionData.areYouTheConsignee;
 
-    if (allItemsBelongToConsignee == 'Yes ') {
+    if (areYouTheConsignee == 'Yes ' || isThereAConsignee == 'Yes ') {
         res.redirect('../packages/package-type');
 
     } else {
@@ -505,9 +550,9 @@ router.post('/add-items/documents/add-documents-route', function (req, res) {
         var declarationType = sessionData.declarationType;
         var dispatchCountry = sessionData.dispatchCountry;
         if (nonEuCtcCountries.includes(dispatchCountry) && (declarationType == 'T2' || declarationType == 'T2F'))
-            res.redirect('../previous-references/add-administrative-reference');
-        else
             res.redirect('../previous-references/reference-type');
+        else
+            res.redirect('../previous-references/add-administrative-reference');
     }
 })
 
@@ -575,10 +620,9 @@ router.post('/add-items/documents/add-another-document-route', function (req, re
         var declarationType = sessionData.declarationType;
         var dispatchCountry = sessionData.dispatchCountry;
         if (nonEuCtcCountries.includes(dispatchCountry) && (declarationType == 'T2' || declarationType == 'T2F'))
-            res.redirect('../previous-references/add-administrative-reference');
-        else
             res.redirect('../previous-references/reference-type');
-
+        else
+            res.redirect('../previous-references/add-administrative-reference');
     }
 })
 

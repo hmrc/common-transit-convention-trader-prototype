@@ -128,7 +128,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
 
           <!-- Trader details -->
 
-          {% if data['add-consignee'] | length != "0" %}
+          {% if data['areYouTheConsignee'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-completed">Edit trader’s details</a>
@@ -267,7 +267,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
     {% if (data['on-behalf-of-someone-else'] | length != "0") 
         and (data['addAnotherOfficeOfTransit'] == "No ")
         and (data['changeAtBorder'] | length != "0")
-        and (data['add-consignee'] | length != "0")
+        and (data['areYouTheConsignee'] | length != "0")
         and (data['liabilityAmount'] | length != "0")
         and (data['departuresPreLodge'] == "Yes")
           %}
@@ -289,7 +289,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
     {% elif (data['on-behalf-of-someone-else'] | length != "0") 
         and (data['addAnotherOfficeOfTransit'] == "No ")
         and (data['changeAtBorder'] | length != "0")
-        and (data['add-consignee'] | length != "0")
+        and (data['areYouTheConsignee'] | length != "0")
         and (data['liabilityAmount'] | length != "0")
           %}
 
