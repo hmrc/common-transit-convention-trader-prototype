@@ -95,9 +95,16 @@ module.exports = {
 
   "containersUsed" : "Yes",
 
-  "declarationType" : "T2",
 
-  "dispatchCountry" : "Norway",
+  //For testing trader details & trader details in add items
+  // "areYouTheConsignor" : "No ",
+  // "isThereAConsignor" : "No ",
+  // "areYouTheConsignee" : "No ",
+  // "isThereAConsignee" : "Yes "
+
+  // "declarationType" : "T2",
+
+  // "dispatchCountry" : "Norway",
 
   //Placeholder for testing add items routing
   // "isThereAConsignor" : "No ",
