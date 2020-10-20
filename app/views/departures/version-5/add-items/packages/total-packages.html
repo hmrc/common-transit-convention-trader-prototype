@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-How many packages have been used for item {{ data['itemNumber']}}? {{ data['pageTitleAddOn']}}
+How many of this package type have you used for item {{ data['itemNumber']}}? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,7 +17,7 @@ How many packages have been used for item {{ data['itemNumber']}}? {{ data['page
 
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
 
-      <h1 class="govuk-heading-xl">How many packages have been used for item {{ data['itemNumber']}}?</h1>
+      <h1 class="govuk-heading-xl">How many of this package type have you used for item {{ data['itemNumber']}}?</h1>
       <div class="govuk-form-group">
         
         <input class="govuk-input govuk-input--width-10" id="packageNumbers" name="packageNumbers" type="text"

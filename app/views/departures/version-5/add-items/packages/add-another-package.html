@@ -2,9 +2,9 @@
 
 {% block pageTitle %}
   {% if (data['packageCount'] == "1") %}
-      You have added {{ data['packageCount'] }} package {{ data['pageTitleAddOn']}}
+      You have added {{ data['packageCount'] }} type of package {{ data['pageTitleAddOn']}}
   {% else %}
-      You have added {{ data['packageCount'] }} packages {{ data['pageTitleAddOn']}}
+      You have added {{ data['packageCount'] }} types of packages {{ data['pageTitleAddOn']}}
   {% endif %}
 {% endblock %}
 
@@ -23,9 +23,9 @@
 
       <h1 class="govuk-heading-xl">
         {% if (data['packageCount'] == "1") %}
-          You have added {{ data['packageCount']}} package
+          You have added {{ data['packageCount']}} type of package
         {% else %}
-          You have added {{ data['packageCount']}} packages
+          You have added {{ data['packageCount']}} types of packages
         {% endif %}
       </h1>
 
