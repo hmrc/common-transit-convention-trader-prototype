@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-How many packages have been used for item {{ data['itemNumber']}}? {{ data['pageTitleAddOn']}}
+How many of this package type have you used for item {{ data['itemNumber']}}? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -9,17 +9,14 @@ How many packages have been used for item {{ data['itemNumber']}}? {{ data['page
 {% endblock %}
 
 {% block content %}
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
     <form action="total-packages-route" class="form" method="post">
-
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
+      <h1 class="govuk-heading-xl">How many of this package type have you used for item {{ data['itemNumber']}}?</h1>
 
-      <h1 class="govuk-heading-xl">How many packages have been used for item {{ data['itemNumber']}}?</h1>
       <div class="govuk-form-group">
-        
         <input class="govuk-input govuk-input--width-10" id="packageNumbers" name="packageNumbers" type="text"
           spellcheck="false" aria-describedby="weight-hint" inputmode="numeric">
       </div>
@@ -29,10 +26,9 @@ How many packages have been used for item {{ data['itemNumber']}}? {{ data['page
         }) }}
 
       <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
-
+        
     </form>
 
   </div>
 </div>
-
 {% endblock %}

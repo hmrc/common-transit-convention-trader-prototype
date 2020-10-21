@@ -2,9 +2,9 @@
 
 {% block pageTitle %}
   {% if (data['packageCount'] == "1") %}
-      You have added {{ data['packageCount'] }} package {{ data['pageTitleAddOn']}}
+      You have added {{ data['packageCount'] }} type of package {{ data['pageTitleAddOn']}}
   {% else %}
-      You have added {{ data['packageCount'] }} packages {{ data['pageTitleAddOn']}}
+      You have added {{ data['packageCount'] }} types of packages {{ data['pageTitleAddOn']}}
   {% endif %}
 {% endblock %}
 
@@ -16,21 +16,17 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
     <form class="form" method="post">
-
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
-
       <h1 class="govuk-heading-xl">
         {% if (data['packageCount'] == "1") %}
-          You have added {{ data['packageCount']}} package
+          You have added {{ data['packageCount']}} type of package
         {% else %}
-          You have added {{ data['packageCount']}} packages
+          You have added {{ data['packageCount']}} types of packages
         {% endif %}
       </h1>
 
       <div class="govuk-form-group">
-          
           <table class="govuk-table hmrc-responsive-table" role="table">
             <caption class="govuk-visually-hidden">Packages</caption>
             <tbody>
@@ -42,15 +38,15 @@
               {% endfor %}
             </tbody>
           </table>
+          
           {% from "govuk/components/button/macro.njk" import govukButton %}
-
-      {{ govukRadios({
+          {{ govukRadios({
           classes: "govuk-radios--inline",
           idPrefix: "addAnotherPackage",
           name: "addAnotherPackage",
           fieldset: {
             legend: {
-              text: "Do you need to add another package?",
+              text: "Do you need to add another type of package?",
               isPageHeading: false,
               classes: "govuk-fieldset__legend--m"
             }
@@ -76,8 +72,7 @@
     </form>
 
     <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
-
+      
   </div>
 </div>
-
 {% endblock %}

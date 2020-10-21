@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the mark or number for package {{ data['packageNumber'] }}? {{ data['pageTitleAddOn']}}
+What is the mark or number for package type {{ data['packageNumber'] }}? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,13 +12,10 @@ What is the mark or number for package {{ data['packageNumber'] }}? {{ data['pag
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
     <form action="add-package" class="form" method="post">
-
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
+      <h1 class="govuk-heading-xl">What is the mark or number for package type {{ data['packageNumber'] }}?</h1>
 
-      <h1 class="govuk-heading-xl">What is the mark or number for package {{ data['packageNumber'] }}?</h1>
-      
       <div class="govuk-form-group">
         <input class="govuk-input govuk-input--width-10" id="itemMark" name="itemMark" type="text"
           spellcheck="false" aria-describedby="weight-hint">
@@ -29,10 +26,8 @@ What is the mark or number for package {{ data['packageNumber'] }}? {{ data['pag
       }) }}
 
       <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
-
+        
     </form>
-
   </div>
 </div>
-
 {% endblock %}
