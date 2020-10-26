@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-You have added 1 transit office {{ data['pageTitleAddOn']}}
+You have added 1 office of transit {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,7 +15,7 @@ You have added 1 transit office {{ data['pageTitleAddOn']}}
 
     <span class="govuk-caption-xl">{{ data['routeDetails'] }}</span>
 
-    <h1 class="govuk-heading-xl">You have added 1 transit office</h1>
+    <h1 class="govuk-heading-xl">You have added 1 office of transit</h1>
 
     <form class="form" method="post">
       {% if data['securityProcess'] == "Yes" %}
@@ -29,7 +29,7 @@ You have added 1 transit office {{ data['pageTitleAddOn']}}
               },
               
               value: {
-                  text:(data['controlDateDay']+" "+data['controlDateMonth']+" "+data['controlDateYear']+" "+data['controlDateHour']+":"+data['controlDateMin']+" "+data['controlDateAmPm'])
+                  text:(data['controlDateDay']+" "+data['controlDateMonth']+" "+data['controlDateYear']+" "+data['controlDateHour']+":"+data['controlDateMin']+data['controlDateAmPm'])
               },
               
               actions: {
@@ -91,7 +91,7 @@ You have added 1 transit office {{ data['pageTitleAddOn']}}
           name: "addAnotherOfficeOfTransit",
           fieldset: {
             legend: {
-              text: "Do you need to add another transit office?",
+              text: "Do you need to add another office of transit?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--m"
             }

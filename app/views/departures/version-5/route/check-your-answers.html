@@ -130,7 +130,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
       {% set transitOffices = (transitOffices.push(
               {
                     key: {
-                      text: "Transit office 1"
+                      text: "Office of transit 1"
                     },
                     value: {
                       html: data['office-of-transit'] | getOfficeOfTransit
@@ -140,23 +140,23 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                         {
                           href: "add-another-transit-office",
                           text: "Change",
-                          visuallyHiddenText: "transit office 1"
+                          visuallyHiddenText: "office of transit 1"
                         }
                       ]
                     }
                   },{
                     key: {
-                      text: "Transit office 1 arrival time"
+                      text: "Arrival time at office of transit 1"
                     },
                     value: {
-                      html: data['controlDateDay']+" "+data['controlDateMonth']+" "+data['controlDateYear']+" "+data['controlDateHour']+":"+data['controlDateMin']+" "+data['controlDateAmPm']
+                      html: data['controlDateDay']+" "+data['controlDateMonth']+" "+data['controlDateYear']+" "+data['controlDateHour']+":"+data['controlDateMin']+data['controlDateAmPm']
                     },
                     actions: {
                       items: [
                         {
                           href: "arrival-times-at-office-of-transit",
                           text: "Change",
-                          visuallyHiddenText: "transit office 1"
+                          visuallyHiddenText: "office of transit 1"
                         }
                       ]
                     }
@@ -168,7 +168,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
       {% set transitOffices = (transitOffices.push(
               {
                     key: {
-                      text: "Transit office 1"
+                      text: "Office of transit 1"
                     },
                     value: {
                       html: data['office-of-transit'] | getOfficeOfTransit
@@ -178,7 +178,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                         {
                           href: "add-another-transit-office",
                           text: "Change",
-                          visuallyHiddenText: "transit office 1"
+                          visuallyHiddenText: "office of transit 1"
                         }
                       ]
                     }
@@ -187,14 +187,14 @@ Check your answers {{ data['pageTitleAddOn' ]}}
               {% endif %}
 
 
-      <h2 class="govuk-heading-m">Transit offices</h2>
+      <h2 class="govuk-heading-m">Offices of transit</h2>
 
       {{ govukSummaryList({
            classes: 'govuk-!-margin-bottom-4',
            rows: transitOffices
         }) }}
 
-      <p class="govuk-body"><a href="added-transit-offices">Add or remove transit offices</a>
+      <p class="govuk-body"><a href="added-transit-offices">Add or remove office of transit</a>
         <p>
 
           <br>
