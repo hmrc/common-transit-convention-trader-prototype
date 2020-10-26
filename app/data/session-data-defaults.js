@@ -95,6 +95,8 @@ module.exports = {
 
   "containersUsed" : "Yes",
 
+  "securityProcess" : "Yes"
+
 
   //For testing trader details & trader details in add items
   // "areYouTheConsignor" : "No ",
