@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Are you sure you want to remove the special mention? {{ data['pageTitleAddOn' ]}}
+Are you sure you want to remove this special mention? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,7 +23,7 @@ Are you sure you want to remove the special mention? {{ data['pageTitleAddOn' ]}
         name: "removeMentionResponse",
         fieldset: {
           legend: {
-            text: "Are you sure you want to remove the special mention?",
+            text: "Are you sure you want to remove this special mention?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }

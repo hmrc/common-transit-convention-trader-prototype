@@ -73,6 +73,8 @@ module.exports = {
 
   "items": "Items",
 
+  "itemSize": 0,
+
   "itemNumber": 1,
 
   "packageNumber": 1,
@@ -95,8 +97,9 @@ module.exports = {
 
   "containersUsed" : "Yes",
 
-  "securityProcess" : "Yes"
+  "securityProcess" : "Yes",
 
+  "mentionNumber" : 1
 
   //For testing trader details & trader details in add items
   // "areYouTheConsignor" : "No ",

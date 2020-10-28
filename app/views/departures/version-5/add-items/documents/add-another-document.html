@@ -36,7 +36,10 @@
               {% for document in data['documentsArray'] %}
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">{{ document.type }}</td>
-                <td class="govuk-table__cell govuk-table__cell--action"><a href="document-type">Change</a>  |  <a href="remove-document" >Remove</a></td>
+                <td class="govuk-table__cell govuk-table__cell--action">
+                  <a href="document-type">Change<span class="govuk-visually-hidden">change document {{document.id}} {{document.type}}</span></a>  
+                  |  <a href="remove-document" >Remove<span class="govuk-visually-hidden">remove document {{document.id}} {{document.type}}</span></a>
+                </td>
               </tr>
               {% endfor %}
             </tbody>
@@ -49,7 +52,7 @@
           name: "addAnotherDocument",
           fieldset: {
             legend: {
-              text: "Do you need to add another document or certificate?",
+              text: "Do you need to add another produced document or work certificate?",
               isPageHeading: false,
               classes: "govuk-fieldset__legend--m"
             }

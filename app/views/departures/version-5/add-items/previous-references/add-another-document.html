@@ -2,9 +2,9 @@
 
 {% block pageTitle %}
   {% if (data['prevDocCount'] == "1") %}
-    You have added {{ data['prevDocCount']}} produced document or certificate {{ data['pageTitleAddOn']}}
+    You have added {{ data['prevDocCount']}} previous administrative reference {{ data['pageTitleAddOn']}}
   {% else %}
-    You have added {{ data['prevDocCount']}} produced documents or certificates {{ data['pageTitleAddOn']}}
+    You have added {{ data['prevDocCount']}} previous administrative references {{ data['pageTitleAddOn']}}
   {% endif %}
 {% endblock %}
 
@@ -22,9 +22,9 @@
 
       <h1 class="govuk-heading-xl">
         {% if (data['prevDocCount'] == "1") %}
-          You have added {{ data['prevDocCount']}} produced document or certificate
+          You have added {{ data['prevDocCount']}} previous administrative reference
         {% else %}
-          You have added {{ data['prevDocCount']}} produced documents or certificates
+          You have added {{ data['prevDocCount']}} previous administrative references
         {% endif %}
       </h1>
 
@@ -36,7 +36,9 @@
               {% for document in data['previousDocumentsArray'] %}
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">{{ document.type }}</td>
-                <td class="govuk-table__cell govuk-table__cell--action"><a href="reference-type">Change</a>  |  <a href="remove-document" >Remove</a></td>
+                <td class="govuk-table__cell govuk-table__cell--action">
+                  <a href="reference-type">Change<span class="govuk-visually-hidden">change previous administrative reference {{document.id}} {{document.type}}</span></a>  
+                  |  <a href="remove-document" >Remove<span class="govuk-visually-hidden">remove previous administrative reference {{document.id}} {{document.type}}</span></a></td>
               </tr>
               {% endfor %}
             </tbody>
@@ -49,7 +51,7 @@
           name: "addAnotherDocument",
           fieldset: {
             legend: {
-              text: "Do you need to add another document or certificate?",
+              text: "Do you need to add another previous administrative reference?",
               isPageHeading: false,
               classes: "govuk-fieldset__legend--m"
             }
