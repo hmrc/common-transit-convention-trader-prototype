@@ -18,7 +18,6 @@ Do you know the consignee’s EORI number? {{ data['pageTitleAddOn']}}
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        classes: "govuk-radios--inline",
         idPrefix: "is-consignee-eori-known",
         name: "is-consignee-eori-known",
         fieldset: {

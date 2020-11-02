@@ -18,7 +18,6 @@ Do you need to add customs seals numbers? {{ data['pageTitleAddOn' ]}}
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        classes: "govuk-radios--inline",
         idPrefix: "do-you-need-seals-info",
         name: "do-you-need-seals-info",
         fieldset: {
