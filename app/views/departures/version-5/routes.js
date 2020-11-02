@@ -549,7 +549,7 @@ router.post('/add-items/documents/add-documents-route', function (req, res) {
         var nonEuCtcCountries = sessionData.nonEuCtcCountries || [];
         var declarationType = sessionData.declarationType;
         var dispatchCountry = sessionData.dispatchCountry;
-        if (nonEuCtcCountries.includes(dispatchCountry) && (declarationType == 'T2' || declarationType == 'T2F'))
+        if (nonEuCtcCountries.includes(dispatchCountry) && declarationType == 'T2')
             res.redirect('../previous-references/reference-type');
         else
             res.redirect('../previous-references/add-administrative-reference');
@@ -619,7 +619,7 @@ router.post('/add-items/documents/add-another-document-route', function (req, re
         var nonEuCtcCountries = sessionData.nonEuCtcCountries || [];
         var declarationType = sessionData.declarationType;
         var dispatchCountry = sessionData.dispatchCountry;
-        if (nonEuCtcCountries.includes(dispatchCountry) && (declarationType == 'T2' || declarationType == 'T2F'))
+        if (nonEuCtcCountries.includes(dispatchCountry) && declarationType == 'T2' )
             res.redirect('../previous-references/reference-type');
         else
             res.redirect('../previous-references/add-administrative-reference');
