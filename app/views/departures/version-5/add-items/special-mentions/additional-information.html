@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Provide additional information about the special mention {{ data['pageTitleAddOn']}}
+What information do you need to add for special mention {{ data['mentionNumber']}} for item {{data['itemNumber']}}? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -16,7 +16,7 @@ Provide additional information about the special mention {{ data['pageTitleAddOn
     <form class="form" method="post" action="added-special-mentions-route">
 
       <span class="govuk-caption-xl">{{ data['items'] }}</span>
-      <h1 class="govuk-heading-xl">Provide additional information about the special mention</h1>
+      <h1 class="govuk-heading-xl">What information do you need to add for special mention {{ data['mentionNumber']}} for item {{data['itemNumber']}}?</h1>
       <div class="govuk-form-group">
         <input class="govuk-input" id="grossMass" name="grossMass" type="text"
           spellcheck="false" aria-describedby="weight-hint">

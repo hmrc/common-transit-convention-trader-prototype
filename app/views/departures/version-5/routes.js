@@ -519,6 +519,7 @@ router.post('/add-items/special-mentions/added-special-mentions-route', function
     mentionsArray.push(mention);
     sessionData.mentionsArray = mentionsArray;
     sessionData.mentionCount = mentionsArray.length;
+    sessionData.mentionNumber = mentionsArray.length+1;
     res.redirect('added-special-mentions');
 })
 
@@ -531,6 +532,7 @@ router.post('/add-items/special-mentions/delete-special-mention', function (req,
         mentionsArray.length = mentionsArray.length - 1
     sessionData.mentionsArray = mentionsArray;
     sessionData.mentionCount = mentionsArray.length;
+    sessionData.mentionNumber = mentionsArray.length+1;
     res.redirect('added-special-mentions');
 })
 
@@ -645,6 +647,11 @@ router.post('/add-items/check-answers-route', function (req, res) {
     containersArray = [];
     sessionData.containersArray = containersArray;
 
+    var mentionsArray = sessionData.mentionsArray;
+    mentionsArray = [];
+    sessionData.mentionsArray = mentionsArray;
+    sessionData.mentionNumber = 1;
+
     var documentsArray = sessionData.documentsArray;
     documentsArray = [];
     sessionData.documentsArray = documentsArray;
@@ -653,7 +660,6 @@ router.post('/add-items/check-answers-route', function (req, res) {
     previousDocumentsArray = [];
     sessionData.previousDocumentsArray = previousDocumentsArray;
     res.redirect('add-items');
-
 })
 
 router.post('/add-items/previous-references/add-admin-reference-route', function (req, res) {
