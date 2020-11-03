@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add a specific circumstance indicator? {{ data['pageTitleAddOn']}}
+Do you need to add safety and security details? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,16 +13,16 @@ Do you need to add a specific circumstance indicator? {{ data['pageTitleAddOn']}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-xl">{{ data['items'] }}</span>
-    <form class="form" method="post">
+    <form class="form" method="post" action="task-list">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        idPrefix: "addCircumstanceIndicatorResponse",
-        name: "addCircumstanceIndicatorResponse",
+        idPrefix: "addSafetySecurityResponse",
+        name: "addSafetySecurityResponse",
         fieldset: {
           legend: {
-            text: "Do you need to add a specific circumstance indicator?",
+            text: "Do you need to add safety and security details?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
@@ -32,11 +32,11 @@ Do you need to add a specific circumstance indicator? {{ data['pageTitleAddOn']}
         },
         items: [
           {
-            value: "Yes redirect(what-is-consignee-eori)",
+            value: "Yes ",
             text: "Yes"
           },
           {
-            value: "No redirect(consignee-name)",
+            value: "No ",
             text: "No"
           }
         ]
