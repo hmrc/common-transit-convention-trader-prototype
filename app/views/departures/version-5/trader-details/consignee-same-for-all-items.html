@@ -19,7 +19,6 @@ Is there a consignee for all the items? {{ data['pageTitleAddOn']}}
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        classes: "govuk-radios--inline",
         idPrefix: "is-there-a-consignee",
         name: "isThereAConsignee",
         fieldset: {
