@@ -48,6 +48,118 @@ router.post('/route/added-transit-offices-route', function (req, res) {
     }
 })
 
+/**
+ * Safety & Security Details Routing
+ */
+
+router.post('/security/add-circumstance-indicator-route', function (req, res) {
+    let addCircumstanceIndicatorResponse = req.session.data.addCircumstanceIndicatorResponse;
+    if (addCircumstanceIndicatorResponse == 'Yes') {
+        res.redirect('circumstance-indicator');
+    } else {
+        res.redirect('add-payment-method');
+    }
+})
+
+router.post('/security/add-payment-method-route', function (req, res) {
+    let addPaymentMethodResponse = req.session.data.addPaymentMethodResponse;
+    if (addPaymentMethodResponse == 'Yes') {
+        res.redirect('transport-charges');
+    } else {
+        res.redirect('add-commercial-reference-number');
+    }
+})
+
+router.post('/security/add-commercial-reference-route', function (req, res) {
+    let addCommercialReferenceResponse = req.session.data.addCommercialReferenceResponse;
+    if (addCommercialReferenceResponse == 'Yes') {
+        res.redirect('same-commercial-reference-number');
+    } else {
+        req.url = '/security/commercial-reference-route';
+        return router.handle(req, res);
+    }
+})
+
+router.post('/security/same-commercial-reference-route', function (req, res) {
+    let sameCommercialReferenceResponse = req.session.data.sameCommercialReferenceResponse;
+    if (sameCommercialReferenceResponse == 'Yes') {
+        res.redirect('commercial-reference-number');
+    } else {
+        req.url = '/security/commercial-reference-route';
+        return router.handle(req, res);
+    }
+})
+
+router.post('/security/commercial-reference-route', function (req, res) {
+    let modeAtBorder = req.session.data.modeAtBorder;
+    if (modeAtBorder == '(4) Air transport' || modeAtBorder == '(40) Air transport') {
+        res.redirect('conveyance-reference-number');
+    } else {
+        res.redirect('add-conveyance-reference-number');
+    }
+})
+
+router.post('/security/add-conveyance-reference-route', function (req, res) {
+    let addConveyanceReferenceResponse = req.session.data.addConveyanceReferenceResponse;
+    if (addConveyanceReferenceResponse == 'Yes') {
+        res.redirect('conveyance-reference-number');
+    } else {
+        req.url = '/security/conveyance-reference-route';
+        return router.handle(req, res);
+    }
+})
+
+router.post('/security/conveyance-reference-route', function (req, res) {
+    let circumstanceIndicator = req.session.data.circumstanceIndicator;
+    if (circumstanceIndicator == '(E) Authorised Economic Operators' ) {
+        res.redirect('add-place-of-unloading');
+    } else {
+        res.redirect('place-of-unloading');
+    }
+})
+
+router.post('/security/add-place-of-unloading-route', function (req, res) {
+    let addUnloadingPlaceResponse = req.session.data.addUnloadingPlaceResponse;
+    if (addUnloadingPlaceResponse == 'Yes') {
+        res.redirect('place-of-unloading');
+    } else {
+        res.redirect('country-of-routing');
+    }
+})
+
+router.post('/security/country-of-routing-route', function (req, res) {
+    var sessionData = req.session.data;
+    var countriesArray = sessionData.countriesArray || [];
+    var country = {
+        "id": countriesArray.length+1,
+        "country": sessionData.countryOfRoutingResponse,
+    }
+    countriesArray.push(country);
+    sessionData.countriesArray = countriesArray;
+    sessionData.countriesCount = countriesArray.length;
+    res.redirect('add-another-country');
+})
+
+router.post('/security/add-another-country-route', function (req, res) {
+    let addAnotherCountryResponse = req.session.data.addAnotherCountryResponse;
+    if (addAnotherCountryResponse == 'Yes') {
+        res.redirect('country-of-routing');
+    } else {
+        res.redirect('security-consignor');
+    }
+})
+
+router.post('/security/remove-country-route', function (req, res) {
+    var sessionData = req.session.data;
+    let removeCountryResponse = sessionData.removeCountryResponse;
+    var countriesArray = sessionData.countriesArray;
+    if (removeCountryResponse == 'Yes')
+        countriesArray.length = countriesArray.length - 1
+    sessionData.countriesArray = countriesArray;
+    sessionData.countriesCount = countriesCount.length;
+    res.redirect('add-another-country');
+})
+
 
 /*
     Add items

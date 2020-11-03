@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the Conveyance reference number? {{ data['pageTitleAddOn']}}
+What is the Conveyance Reference Number (CRN)? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,14 +13,14 @@ What is the Conveyance reference number? {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="extra-information-route" class="form" method="post">
+    <form action="conveyance-reference-route" class="form" method="post">
 
-      <span class="govuk-caption-xl">{{ data['items'] }}</span>
+      <span class="govuk-caption-xl">{{ data['safetySecurity'] }}</span>
 
-      <h1 class="govuk-heading-xl">What is the Conveyance reference number?</h1>
+      <h1 class="govuk-heading-xl">What is the Conveyance Reference Number (CRN)?</h1>
 
       <div class="govuk-form-group">
-        <input class="govuk-input govuk-input--width-25" id="extraInformation" name="extraInformation" type="text"
+        <input class="govuk-input govuk-input--width-25" id="conveyanceReferenceNumber" name="conveyanceReferenceNumber" type="text"
           spellcheck="false" maxlength="26">
       </div>
 

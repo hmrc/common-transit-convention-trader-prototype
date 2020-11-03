@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the commercial reference number? {{ data['pageTitleAddOn']}}
+What is the commercial reference number for all the items? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,9 +15,9 @@ What is the commercial reference number? {{ data['pageTitleAddOn']}}
 
     <form action="commercial-reference-route" class="form" method="post">
 
-      <span class="govuk-caption-xl">{{ data['items'] }}</span>
+      <span class="govuk-caption-xl">{{ data['safetySecurity'] }}</span>
 
-      <h1 class="govuk-heading-xl">What is the commercial reference number?</h1>
+      <h1 class="govuk-heading-xl">What is the commercial reference number for all the items?</h1>
 
       <div class="govuk-form-group">
         <input class="govuk-input govuk-input--width-70" id="commercialReferenceNumber" name="commercialReferenceNumber" type="text"
