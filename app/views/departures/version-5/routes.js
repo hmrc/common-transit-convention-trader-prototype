@@ -156,7 +156,7 @@ router.post('/security/remove-country-route', function (req, res) {
     if (removeCountryResponse == 'Yes')
         countriesArray.length = countriesArray.length - 1
     sessionData.countriesArray = countriesArray;
-    sessionData.countriesCount = countriesCount.length;
+    sessionData.countriesCount = countriesArray.length;
     res.redirect('add-another-country');
 })
 

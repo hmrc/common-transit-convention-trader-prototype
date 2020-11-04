@@ -97,7 +97,9 @@ module.exports = {
 
   "securityProcess" : "Yes",
 
-  "safetySecurity" : "Safety and Security"
+  "safetySecurity" : "Safety and Security",
+
+  "addSafetySecurityResponse" : "Yes "
 
 
   //For testing trader details & trader details in add items
