@@ -8,77 +8,188 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
 
-  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-  {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
-      <span class="govuk-caption-xl">{{ data['items'] }}</span>
-      <form class="form" method="post" action="check-answers-route">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <span class="govuk-caption-xl">{{ data['safetySecurity'] }}</span>
+    <form class="form" method="post" action="check-answers-route">
 
-        <h1 class="govuk-heading-xl">Check your answers</h1>
+      <h1 class="govuk-heading-xl">Check your answers</h1>
 
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-          <div class="govuk-summary-list__row">
+        <div class="govuk-summary-list__row">
 
-              <dt class="govuk-summary-list__key">
-                Transport Charges
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{ data['transportCharges'] }}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="transport-charges">
-                  Change<span class="govuk-visually-hidden">
-                    Transport Charges</span>
-                </a>
-              </dd>
-          </div>
+          <dt class="govuk-summary-list__key">
+            Specific circumstances indicator
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['circumstanceIndicator'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="circumstance-indicator">
+              Change<span class="govuk-visually-hidden">
+                specific circumstances indicator</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
 
+          <dt class="govuk-summary-list__key">
+            Add payment method for transport charges for all items?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['addPaymentMethodResponse'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="add-payment-method.html">
+              Change<span class="govuk-visually-hidden">
+                if you are adding a payment method for the transport charges for all items</span>
+            </a>
+          </dd>
+        </div>
 
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Commercial reference number
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  {{ data['commercialReferenceNumber'] }}
-                </dd>
-                <dd class="govuk-summary-list__actions">
-                  <a class="govuk-link" href="commercial-reference-number">
-                    Change<span class="govuk-visually-hidden">
-                      Commercial reference number</span>
-                  </a>
-                </dd>
-              </div>
+        <div class="govuk-summary-list__row">
 
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Dangerous goods code
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{ data['UNDangerousGoods'] }}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="dangerous-goods-code.html">
-                  Change<span class="govuk-visually-hidden">
-                    Dangerous goods code</span>
-                </a>
-              </dd>
-            </div>
+          <dt class="govuk-summary-list__key">
+            Payment method for transport charges for all items
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['transportCharges'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="transport-charges">
+              Change<span class="govuk-visually-hidden">
+                the payment method you are using for the transport charges for all items</span>
+            </a>
+          </dd>
+        </div>
 
-        </dl>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Same commercial reference number for all items
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['sameCommercialReferenceResponse'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="same-commercial-reference-number">
+              Change<span class="govuk-visually-hidden">
+                if you are using the same commercial reference for all the items</span>
+            </a>
+          </dd>
+        </div>
 
-        {{ govukButton({
+        {% if data['sameCommercialReferenceResponse'] == "Yes" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Commercial reference number for all items
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['commercialReferenceNumber'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="commercial-reference-number">
+              Change<span class="govuk-visually-hidden">
+                commercial reference number for all items</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Add Conveyance Reference Number?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['addConveyanceReferenceResponse'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="add-conveyance-reference-number">
+              Change<span class="govuk-visually-hidden">
+                if you need to add a conveyance reference number</span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data['addConveyanceReferenceResponse'] == "Yes" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Conveyance Reference Number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['conveyanceReferenceNumber'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="conveyance-reference-number">
+              Change<span class="govuk-visually-hidden">
+                conveyance reference number</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Add a place of unloading code?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['addUnloadingPlaceResponse'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="add-place-of-unloading">
+              Change<span class="govuk-visually-hidden">
+                if you need to add a place of unloading code</span>
+            </a>
+          </dd>
+        </div>
+
+        {% if data['addUnloadingPlaceResponse'] == "Yes" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Place of unloading code
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['unloadingPlaceCode'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="place-of-unloading">
+              Change<span class="govuk-visually-hidden">
+                place of unloading code</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Country of routing
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['countryOfRoutingResponse'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="country-of-routing">
+              Change<span class="govuk-visually-hidden">
+                country of routing</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+
+      {{ govukButton({
           text: "Save and continue"
         }) }}
 
       <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
-      
-      </form>
-    </div>
+
+    </form>
   </div>
+</div>
 
 {% endblock %}

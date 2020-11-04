@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you know the security consignee’s EORI number? {{ data['pageTitleAddOn']}}
+Do you need to add a place of unloading code? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,17 +13,16 @@ Do you know the security consignee’s EORI number? {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-xl">{{ data['safetySecurity'] }}</span>
-    <form class="form" method="post" action="is-consignee-eori-known-route">
+    <form class="form" method="post" action="add-place-of-unloading-route">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        classes: "govuk-radios--inline",
-        idPrefix: "isConsigneeEoriKnown",
-        name: "isConsigneeEoriKnown",
+        idPrefix: "addUnloadingPlaceResponse",
+        name: "addUnloadingPlaceResponse",
         fieldset: {
           legend: {
-            text: "Do you know the security consignee’s EORI number?",
+            text: " Do you need to add a place of unloading code?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }

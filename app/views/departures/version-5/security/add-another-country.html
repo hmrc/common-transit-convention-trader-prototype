@@ -2,9 +2,9 @@
 
 {% block pageTitle %}
 {% if (data['countriesArray'].length == "1") %}
-You have added {{ data['countriesArray'].length}} country {{ data['pageTitleAddOn']}}
+You have added {{ data['countriesArray'].length}} country of routing {{ data['pageTitleAddOn']}}
 {% else %}
-You have added {{ data['countriesArray'].length}} countries {{ data['pageTitleAddOn']}}
+You have added {{ data['countriesArray'].length}} countries of routing {{ data['pageTitleAddOn']}}
 {% endif %}
 {% endblock %}
 
@@ -17,27 +17,29 @@ You have added {{ data['countriesArray'].length}} countries {{ data['pageTitleAd
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" method="post" action="add-another-document-route">
-      <span class="govuk-caption-xl">{{ data['items'] }}</span>
+    <form class="form" method="post" action="add-another-country-route">
+      <span class="govuk-caption-xl">{{ data['safetySecurity'] }}</span>
 
       <h1 class="govuk-heading-xl">
         {% if (data['countriesArray'].length == "1") %}
-        You have added {{ data['countriesArray'].length}} country {{ data['pageTitleAddOn']}}
+        You have added {{ data['countriesArray'].length}} country of routing {{ data['pageTitleAddOn']}}
         {% else %}
-        You have added {{ data['countriesArray'].length}} countries {{ data['pageTitleAddOn']}}
+        You have added {{ data['countriesArray'].length}} countries of routing {{ data['pageTitleAddOn']}}
         {% endif %}
       </h1>
 
       <div class="govuk-form-group">
 
         <table class="govuk-table hmrc-responsive-table" role="table">
-          <caption class="govuk-visually-hidden">Produced document or certificates</caption>
+          <caption class="govuk-visually-hidden">Countries of routing</caption>
           <tbody>
             {% for country in data['countriesArray'] %}
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell">{{ country }}</td>
-              <td class="govuk-table__cell govuk-table__cell--action"><a href="document-type">Change</a> | <a
-                  href="remove-document">Remove</a></td>
+              <td class="govuk-table__cell">{{ country.country }}</td>
+              <td class="govuk-table__cell govuk-table__cell--action"
+              ><a href="country-of-routing">Change<span class="govuk-visually-hidden">Change {{country.country}} country of routing</span></a> 
+              | <a href="remove-country">Remove<span class="govuk-visually-hidden">Remove {{country.country}} country of routing</span></a></td>
+                  
             </tr>
             {% endfor %}
           </tbody>
@@ -46,8 +48,8 @@ You have added {{ data['countriesArray'].length}} countries {{ data['pageTitleAd
 
         {{ govukRadios({
           classes: "govuk-radios--inline",
-          idPrefix: "addAnotherCountry",
-          name: "addAnotherCountry",
+          idPrefix: "addAnotherCountryResponse",
+          name: "addAnotherCountryResponse",
           fieldset: {
             legend: {
               text: "Do you need to add another country or routing?",

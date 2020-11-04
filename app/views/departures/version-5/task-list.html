@@ -157,6 +157,40 @@ Declaration summary {{ data['pageTitleAddOn']}}
           </li>
           {% endif %}
 
+          <!-- Safety & Security Summary -->
+
+          {% if data['addSafetySecurityResponse'] == "Yes " %}
+          {% if (data['addACarrierResponse'] | length != "0") %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="security/add-circumstance-indicator" aria-describedby="safety-and-security-details-completed">Edit Safety & Security Details</a>
+            </span>
+            <span class="hmrc-status-tag" id="safety-and-security-details-completed">
+              Completed
+            </span>
+          </li>
+          {% elif (data['addCircumstanceIndicatorResponse'] | length != "0") %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="security/add-circumstance-indicator" aria-describedby="safety-and-security-details-in-progress">Add Safety & Security Details</a>
+            </span>
+            <span class="hmrc-status-tag" id="safety-and-security-details-in-progress">
+              In progress
+            </span>
+          </li>
+          {% else %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="security/add-circumstance-indicator" aria-describedby="safety-and-security-details-not-started">Add Safety & Security Details</a>
+            </span>
+            <span class="hmrc-status-tag" id="safety-and-security-details-not-started">
+              Not started
+            </span>
+          </li>
+
+          {% endif %}
+          {% endif %}
+
           <!-- Add items -->
           {% if data['addAnotherItem'] == "No " %}
           <li class="app-task-list__item">
