@@ -145,7 +145,7 @@ router.post('/security/add-another-country-route', function (req, res) {
     if (addAnotherCountryResponse == 'Yes') {
         res.redirect('country-of-routing');
     } else {
-        res.redirect('security-consignor');
+        res.redirect('trader-security/same-security-consignor');
     }
 })
 
@@ -158,6 +158,83 @@ router.post('/security/remove-country-route', function (req, res) {
     sessionData.countriesArray = countriesArray;
     sessionData.countriesCount = countriesCount.length;
     res.redirect('add-another-country');
+})
+
+router.post('/security/trader-security/same-security-consignor-route', function (req, res) {
+    let sameSecurityConsignorResponse = req.session.data.sameSecurityConsignorResponse;
+    if (sameSecurityConsignorResponse == 'Yes') {
+        res.redirect('same-security-consignee');
+    } else {
+        res.redirect('security-consignor');
+    }
+})
+
+router.post('/security/trader-security/security-consignor-route', function (req, res) {
+    let securityConsignorResponse = req.session.data.securityConsignorResponse;
+    if (securityConsignorResponse == 'Yes') {
+        res.redirect('is-consignor-eori-known');
+    } else {
+        res.redirect('same-security-consignee');
+    }
+})
+
+router.post('/security/trader-security/is-consignor-eori-known-route', function (req, res) {
+    let isConsignorEoriKnown = req.session.data.isConsignorEoriKnown;
+    if (isConsignorEoriKnown == 'Yes') {
+        res.redirect('what-is-consignor-eori');
+    } else {
+        res.redirect('consignor-name');
+    }
+})
+
+router.post('/security/trader-security/same-security-consignee-route', function (req, res) {
+    let sameSecurityConsigneeResponse = req.session.data.sameSecurityConsigneeResponse;
+    if (sameSecurityConsigneeResponse == 'Yes') {
+        res.redirect('add-a-carrier');
+    } else {
+        res.redirect('security-consignee');
+    }
+})
+
+router.post('/security/trader-security/security-consignee-route', function (req, res) {
+    let securityConsigneeResponse = req.session.data.securityConsigneeResponse;
+    if (securityConsigneeResponse == 'Yes') {
+        res.redirect('is-consignee-eori-known');
+    } else {
+        res.redirect('add-a-carrier');
+    }
+})
+
+router.post('/security/trader-security/is-consignee-eori-known-route', function (req, res) {
+    let isConsigneeEoriKnown = req.session.data.isConsigneeEoriKnown;
+    if (isConsigneeEoriKnown == 'Yes') {
+        res.redirect('what-is-consignee-eori');
+    } else {
+        res.redirect('consignee-name');
+    }
+})
+
+router.post('/security/trader-security/add-a-carrier-route', function (req, res) {
+    let addACarrierResponse = req.session.data.addACarrierResponse;
+    if (addACarrierResponse == 'Yes') {
+        res.redirect('is-carrier-eori-known');
+    } else {
+        res.redirect('../check-answers');
+    }
+})
+
+router.post('/security/trader-security/is-carrier-eori-known-route', function (req, res) {
+    let isCarrierEoriKnown = req.session.data.isCarrierEoriKnown;
+    if (isCarrierEoriKnown == 'Yes') {
+        res.redirect('what-is-carrier-eori');
+    } else {
+        res.redirect('carrier-name');
+    }
+})
+
+
+router.post('/security/trader-security/check-answers-route', function (req, res) {
+    res.redirect('../check-answers');
 })
 
 

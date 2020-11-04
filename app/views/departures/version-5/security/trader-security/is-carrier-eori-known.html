@@ -12,15 +12,15 @@ Do you know the carrier’s EORI number? {{ data['pageTitleAddOn']}}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <span class="govuk-caption-xl">{{ data['items'] }}</span>
-    <form class="form" method="post">
+    <span class="govuk-caption-xl">{{ data['safetySecurity'] }}</span>
+    <form class="form" method="post" action="is-carrier-eori-known-route">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        idPrefix: "is-carrier-eori-known",
-        name: "is-carrier-eori-known",
+        idPrefix: "isCarrierEoriKnown",
+        name: "isCarrierEoriKnown",
         fieldset: {
           legend: {
             text: "Do you know the carrier’s EORI number?",
@@ -33,11 +33,11 @@ Do you know the carrier’s EORI number? {{ data['pageTitleAddOn']}}
         },
         items: [
           {
-            value: "Yes redirect(what-is-carrier-eori)",
+            value: "Yesredirect(what-is-carrier-eori)",
             text: "Yes"
           },
           {
-            value: "No redirect(carrier-name)",
+            value: "Noredirect(carrier-name)",
             text: "No"
           }
         ]
