@@ -73,6 +73,8 @@ module.exports = {
 
   "items": "Items",
 
+  "itemSize": 0,
+
   "itemNumber": 1,
 
   "packageNumber": 1,
@@ -101,6 +103,7 @@ module.exports = {
 
   "addSafetySecurityResponse" : "Yes "
 
+  "mentionNumber" : 1
 
   //For testing trader details & trader details in add items
   // "areYouTheConsignor" : "No ",

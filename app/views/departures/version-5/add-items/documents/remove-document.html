@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Are you sure you want to remove the document? {{ data['pageTitleAddOn' ]}}
+Are you sure you want to remove this document? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,7 +23,7 @@ Are you sure you want to remove the document? {{ data['pageTitleAddOn' ]}}
         name: "removeDocumentResponse",
         fieldset: {
           legend: {
-            text: "Are you sure you want to remove the document?",
+            text: "Are you sure you want to remove this document?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }

@@ -37,7 +37,9 @@
               {% for mention in data['mentionsArray'] %}
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">{{ mention.type }}</td>
-                <td class="govuk-table__cell govuk-table__cell--action"><a href="special-mention-type">Change</a>  |  <a href="remove-special-mention" >Remove</a></td>
+                <td class="govuk-table__cell govuk-table__cell--action">
+                  <a href="special-mention-type">Change<span class="govuk-visually-hidden">change special mention {{mention.id}} {{mention.type}}</span></a>  |  
+                  <a href="remove-special-mention" >Remove<span class="govuk-visually-hidden">remove special mention {{mention.id}} {{mention.type}}</span></a></td>
               </tr>
               {% endfor %}
             </tbody>
