@@ -2307,6 +2307,86 @@ var data = {
             "selected": false
           }
 
+        ],
+
+        'specificCircumstanceIndicator': [
+
+          {
+            "value": "",
+            "text": "",
+            "selected": false
+          },
+          {
+            "value": "(E) Authorised economic operators",
+            "text": "(E) Authorised economic operators",
+            "selected": false
+          },
+          {
+            "value": "(A) Postal and express consignments",
+            "text": "(A) Postal and express consignments",
+            "selected": false
+          },
+          {
+            "value": "(D) Rail mode of transport",
+            "text": "(D) Rail mode of transport",
+            "selected": false
+          },
+          {
+            "value": "(C) Road mode of transport",
+            "text": "(C) Road mode of transport",
+            "selected": false
+          },
+          {
+            "value": "(B) Ship and aircraft supplies",
+            "text": "(B) Ship and aircraft supplies",
+            "selected": false
+          }
+
+        ],
+
+        'transportCharges': [
+
+          {
+            "value": "",
+            "text": "",
+            "selected": false
+          },
+          {
+            "value": "(Y) Account holder with carrier",
+            "text": "(Y) Account holder with carrier",
+            "selected": false
+          },
+          {
+            "value": "(H) Electronic credit transfer ",
+            "text": "(H) Electronic credit transfer ",
+            "selected": false
+          },
+          {
+            "value": "(Z) Not pre-paid",
+            "text": "(Z) Not pre-paid",
+            "selected": false
+          },
+          {
+            "value": "(D) Other",
+            "text": "(D) Other",
+            "selected": false
+          },
+          {
+            "value": "(C) Payment by cheque",
+            "text": "(C) Payment by cheque",
+            "selected": false
+          },
+          {
+            "value": "(B) Payment by credit card",
+            "text": "(B) Payment by credit card",
+            "selected": false
+          },
+          {
+            "value": "(A) Payment in cash",
+            "text": "(A) Payment in cash",
+            "selected": false
+          }
+
         ]
 
 
@@ -2325,6 +2405,10 @@ module.exports.documents = data.reference['documents'];
 module.exports.adminReference = data.reference['adminReference'];
 module.exports.UNDangerousGoods = data.reference['dangerousGoods'];
 module.exports.specialMentions = data.reference['specialMentions'];
+module.exports.specificCircumstanceIndicator = data.reference['specificCircumstanceIndicator'];
+module.exports.transportCharges = data.reference['transportCharges'];
+
+
 
 
 

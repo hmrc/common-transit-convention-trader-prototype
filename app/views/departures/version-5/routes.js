@@ -111,7 +111,7 @@ router.post('/security/add-conveyance-reference-route', function (req, res) {
 
 router.post('/security/conveyance-reference-route', function (req, res) {
     let circumstanceIndicator = req.session.data.circumstanceIndicator;
-    if (circumstanceIndicator == '(E) Authorised Economic Operators' ) {
+    if (circumstanceIndicator == '(E) Authorised economic operators' ) {
         res.redirect('add-place-of-unloading');
     } else {
         res.redirect('place-of-unloading');

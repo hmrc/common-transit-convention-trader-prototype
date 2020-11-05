@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Is the security consignee the same for all items? {{ data['pageTitleAddOn']}}
+Is this the security consignee for all items? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,21 +15,27 @@ Is the security consignee the same for all items? {{ data['pageTitleAddOn']}}
     <span class="govuk-caption-xl">{{ data['safetySecurity'] }}</span>
     <form class="form" method="post" action="same-security-consignee-route">
 
+      <h1 class="govuk-heading-xl">Is this the security consignee for all items?</h1>
+
+      {% if (data['consigneeEORINumber'] | length != "0") %}
+        <div class="govuk-inset-text">
+          {{ data['consigneeEORINumber'] }}
+        </div>
+      {% else %}
+        <div class="govuk-inset-text">
+          {{ data['consigneeName'] }} </br>
+          {{ data['consignee-number-street'] }} </br>
+          {{ data['consignee-town'] }} </br>
+          {{ data['consignee-postcode'] }} <br>
+          {{ data['consignee-country'] | getCountry }} <br>
+        </div>
+      {% endif %}
+
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
         idPrefix: "sameSecurityConsigneeResponse",
         name: "sameSecurityConsigneeResponse",
-        fieldset: {
-          legend: {
-            text: "Is the security consignee the same for all items?",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--xl"
-          }
-        },
-        hint: {
-          text: ""
-        },
         items: [
           {
             value: "Yes",
