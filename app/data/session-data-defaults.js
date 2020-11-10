@@ -111,6 +111,7 @@ module.exports = {
   // "areYouTheConsignee" : "No ",
   // "isThereAConsignee" : "Yes "
 
+
   // "declarationType" : "T2",
 
   // "dispatchCountry" : "Norway",
