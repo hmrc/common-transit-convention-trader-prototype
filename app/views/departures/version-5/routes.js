@@ -111,7 +111,7 @@ router.post('/security/add-conveyance-reference-route', function (req, res) {
 
 router.post('/security/conveyance-reference-route', function (req, res) {
     let circumstanceIndicator = req.session.data.circumstanceIndicator;
-    if (circumstanceIndicator == '(E) Authorised Economic Operators' ) {
+    if (circumstanceIndicator == '(E) Authorised economic operators' ) {
         res.redirect('add-place-of-unloading');
     } else {
         res.redirect('place-of-unloading');
@@ -179,8 +179,8 @@ router.post('/security/trader-security/security-consignor-route', function (req,
 })
 
 router.post('/security/trader-security/is-consignor-eori-known-route', function (req, res) {
-    let isConsignorEoriKnown = req.session.data.isConsignorEoriKnown;
-    if (isConsignorEoriKnown == 'Yes') {
+    let isSecurityConsignorEoriKnown = req.session.data.isSecurityConsignorEoriKnown;
+    if (isSecurityConsignorEoriKnown == 'Yes') {
         res.redirect('what-is-consignor-eori');
     } else {
         res.redirect('consignor-name');
@@ -206,8 +206,8 @@ router.post('/security/trader-security/security-consignee-route', function (req,
 })
 
 router.post('/security/trader-security/is-consignee-eori-known-route', function (req, res) {
-    let isConsigneeEoriKnown = req.session.data.isConsigneeEoriKnown;
-    if (isConsigneeEoriKnown == 'Yes') {
+    let isSecurityConsigneeEoriKnown = req.session.data.isSecurityConsigneeEoriKnown;
+    if (isSecurityConsigneeEoriKnown == 'Yes') {
         res.redirect('what-is-consignee-eori');
     } else {
         res.redirect('consignee-name');

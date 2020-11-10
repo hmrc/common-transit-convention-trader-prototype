@@ -27,9 +27,9 @@ What is {{ data['consignorName'] }}’s address? {{ data['pageTitleAddOn']}}
           label: {
             text: "Address line 1"
           },
-          id: "consignor-number-street",
+          id: "security-consignor-number-street",
           classes: "govuk-input--width-20",
-          name: "consignor-number-street"
+          name: "security-consignor-number-street"
         }) }} 
 
         {{ govukInput({
@@ -38,16 +38,16 @@ What is {{ data['consignorName'] }}’s address? {{ data['pageTitleAddOn']}}
           },
           id: "consignor-town",
           classes: "govuk-input--width-20",
-          name: "consignor-town"
+          name: "security-consignor-town"
         }) }} 
 
         {{ govukInput({
           label: {
             text: "Address line 3"
           },
-          id: "consignor-postcode",
+          id: "security-consignor-postcode",
           classes: "govuk-input--width-20",
-          name: "consignor-postcode"
+          name: "security-consignor-postcode"
         }) }} 
 
         {{ govukSelect({
@@ -55,8 +55,8 @@ What is {{ data['consignorName'] }}’s address? {{ data['pageTitleAddOn']}}
           label: {
             text: "Country"
           },
-          id: "consignor-country",
-          name: "consignor-country",
+          id: "security-consignor-country",
+          name: "security-consignor-country",
           errorMessage: form.value.error,
           items: CTCData.countries
         }) }}

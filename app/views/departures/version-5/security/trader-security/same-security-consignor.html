@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Is the security consignor the same for all items? {{ data['pageTitleAddOn']}}
+Is this the security consignor for all items? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,21 +15,27 @@ Is the security consignor the same for all items? {{ data['pageTitleAddOn']}}
     <span class="govuk-caption-xl">{{ data['safetySecurity'] }}</span>
     <form class="form" method="post" action="same-security-consignor-route">
 
+      <h1 class="govuk-heading-xl">Is this the security consignor for all items?</h1>
+
+      {% if (data['consignorEORINumber'] | length != "0") %}
+        <div class="govuk-inset-text">
+          {{ data['consignorEORINumber'] }}
+        </div>
+      {% else %}
+        <div class="govuk-inset-text">
+          {{ data['consignorName'] }} </br>
+          {{ data['consignor-number-street'] }} </br>
+          {{ data['consignor-town'] }} </br>
+          {{ data['consignor-postcode'] }} <br>
+          {{ data['consignor-country'] | getCountry }} <br>
+        </div>
+      {% endif %}
+
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
         idPrefix: "sameSecurityConsignorResponse",
         name: "sameSecurityConsignorResponse",
-        fieldset: {
-          legend: {
-            text: "Is the security consignor the same for all items?",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--xl"
-          }
-        },
-        hint: {
-          text: ""
-        },
         items: [
           {
             value: "Yes",
@@ -56,3 +62,10 @@ Is the security consignor the same for all items? {{ data['pageTitleAddOn']}}
 </div>
 
 {% endblock %}
+
+
+<!-- {{ data['consignorName'] }}
+{{ data['consignor-number-street'] }} </br>
+{{ data['consignor-town'] }} </br>
+{{ data['consignor-postcode'] }} <br>
+{{ data['consignor-country'] | getCountry }} <br> -->
