@@ -111,7 +111,7 @@ router.post('/security/add-conveyance-reference-route', function (req, res) {
 
 router.post('/security/conveyance-reference-route', function (req, res) {
     let circumstanceIndicator = req.session.data.circumstanceIndicator;
-    if (circumstanceIndicator == '(E) Authorised economic operators' ) {
+    if (circumstanceIndicator == '(E) Authorised economic operators') {
         res.redirect('add-place-of-unloading');
     } else {
         res.redirect('place-of-unloading');
@@ -131,7 +131,7 @@ router.post('/security/country-of-routing-route', function (req, res) {
     var sessionData = req.session.data;
     var countriesArray = sessionData.countriesArray || [];
     var country = {
-        "id": countriesArray.length+1,
+        "id": countriesArray.length + 1,
         "country": sessionData.countryOfRoutingResponse,
     }
     countriesArray.push(country);
@@ -303,9 +303,9 @@ router.post('/add-items/item-details/check-answers-route', function (req, res) {
         res.redirect('commodity-code');
     } else {
 
-        if (areYouTheConsignor == 'Yes ' || isThereAConsignor == 'Yes '){
+        if (areYouTheConsignor == 'Yes ' || isThereAConsignor == 'Yes ') {
 
-            if (areYouTheConsignee == 'Yes ' || isThereAConsignee == 'Yes '){
+            if (areYouTheConsignee == 'Yes ' || isThereAConsignee == 'Yes ') {
                 res.redirect('../packages/package-type');
             }
             else {
@@ -325,7 +325,7 @@ router.post('/add-items/item-details/check-answers-route', function (req, res) {
 //     let isThereAConsignor = sessionData.isThereAConsignor;
 //     let areYouTheConsignor = sessionData.areYouTheConsignor;
 //     let areYouTheConsignee = sessionData.areYouTheConsignee;
-    
+
 //     if (commodityCodeResponse == 'Yes') {
 //         res.redirect('commodity-code');
 //     } else {
@@ -371,9 +371,9 @@ router.post('/add-items/item-details/commodity-code', function (req, res) {
     let areYouTheConsignor = sessionData.areYouTheConsignor;
     let areYouTheConsignee = sessionData.areYouTheConsignee;
 
-    if (areYouTheConsignor == 'Yes ' || isThereAConsignor == 'Yes '){
+    if (areYouTheConsignor == 'Yes ' || isThereAConsignor == 'Yes ') {
 
-        if (areYouTheConsignee == 'Yes ' || isThereAConsignee == 'Yes '){
+        if (areYouTheConsignee == 'Yes ' || isThereAConsignee == 'Yes ') {
             res.redirect('../packages/package-type');
         }
         else {
@@ -431,7 +431,7 @@ router.post('/add-items/trader-details/consignor-eori-route', function (req, res
     let isThereAConsignee = sessionData.isThereAConsignee;
     let areYouTheConsignee = sessionData.areYouTheConsignee;
 
-    if (areYouTheConsignee == 'Yes ' || isThereAConsignee == 'Yes '){
+    if (areYouTheConsignee == 'Yes ' || isThereAConsignee == 'Yes ') {
         res.redirect('../packages/package-type');
     } else {
         res.redirect('is-consignee-eori-known');
@@ -462,7 +462,7 @@ router.post('/add-items/item-details/save-item', function (req, res) {
     var sessionData = req.session.data;
     var itemsArray = sessionData.itemsArray || [];
     var item = {
-        "id": itemsArray.length+1,
+        "id": itemsArray.length + 1,
         "desciption": sessionData.itemDescription,
         "grossMass": sessionData.grossMass,
         "netMass": sessionData.netMass,
@@ -473,7 +473,7 @@ router.post('/add-items/item-details/save-item', function (req, res) {
     sessionData.itemsize = itemsArray.length;
     sessionData.itemNumber = itemsArray.length + 1;
 
-    
+
 
 
     // res.redirect('../add-items');
@@ -550,7 +550,7 @@ router.post('/add-items/packages/add-package', function (req, res) {
     var sessionData = req.session.data;
     var packagesArray = sessionData.packagesArray || [];
     var package = {
-        "id": packagesArray.length+1,
+        "id": packagesArray.length + 1,
         "type": sessionData.packageTypeResponse,
         "packageNumbers": sessionData.packageNumbers,
         "itemPieces": sessionData.itemPieces,
@@ -601,7 +601,7 @@ router.post('/add-items/containers/add-another-container-route', function (req, 
     var sessionData = req.session.data;
     var containersArray = sessionData.containersArray || [];
     var container = {
-        "id": containersArray.length+1,
+        "id": containersArray.length + 1,
         "number": sessionData.containerNumber,
     }
     containersArray.push(container);
@@ -700,7 +700,7 @@ router.post('/add-items/special-mentions/added-special-mentions-route', function
     var sessionData = req.session.data;
     var mentionsArray = sessionData.mentionsArray || [];
     var mention = {
-        "id": mentionsArray.length+1,
+        "id": mentionsArray.length + 1,
         "type": sessionData.specialMentionType,
         "additionalInfo": sessionData.addAdditionalInformation
         // "exportCountry": sessionData.exportCountry
@@ -708,7 +708,7 @@ router.post('/add-items/special-mentions/added-special-mentions-route', function
     mentionsArray.push(mention);
     sessionData.mentionsArray = mentionsArray;
     sessionData.mentionCount = mentionsArray.length;
-    sessionData.mentionNumber = mentionsArray.length+1;
+    sessionData.mentionNumber = mentionsArray.length + 1;
     res.redirect('added-special-mentions');
 })
 
@@ -721,7 +721,7 @@ router.post('/add-items/special-mentions/delete-special-mention', function (req,
         mentionsArray.length = mentionsArray.length - 1
     sessionData.mentionsArray = mentionsArray;
     sessionData.mentionCount = mentionsArray.length;
-    sessionData.mentionNumber = mentionsArray.length+1;
+    sessionData.mentionNumber = mentionsArray.length + 1;
     res.redirect('added-special-mentions');
 })
 
@@ -754,8 +754,8 @@ router.post('/add-items/documents/document-type-route', function (req, res) {
 router.post('/add-items/documents/document-reference-route', function (req, res) {
     var sessionData = req.session.data;
     var documentsArray = sessionData.documentsArray || [];
-    
-    sessionData.documentCount=documentsArray.length+1;
+
+    sessionData.documentCount = documentsArray.length + 1;
     res.redirect('add-extra-information');
 })
 
@@ -779,7 +779,7 @@ router.post('/add-items/documents/add-document-info', function (req, res) {
     var sessionData = req.session.data;
     var documentsArray = sessionData.documentsArray || [];
     var document = {
-        "id": documentsArray.length+1,
+        "id": documentsArray.length + 1,
         "type": sessionData.documentTypeResponse,
         "reference": sessionData.documentReference,
         "extraInfo": sessionData.extraInformation
@@ -810,7 +810,7 @@ router.post('/add-items/documents/add-another-document-route', function (req, re
         var nonEuCtcCountries = sessionData.nonEuCtcCountries || [];
         var declarationType = sessionData.declarationType;
         var dispatchCountry = sessionData.dispatchCountry;
-        if (nonEuCtcCountries.includes(dispatchCountry) && declarationType == 'T2' )
+        if (nonEuCtcCountries.includes(dispatchCountry) && declarationType == 'T2')
             res.redirect('../previous-references/reference-type');
         else
             res.redirect('../previous-references/add-administrative-reference');
@@ -822,7 +822,7 @@ router.post('/add-items/documents/add-another-document-route', function (req, re
  * admin reference routing
  */
 
- 
+
 router.post('/add-items/check-answers-route', function (req, res) {
 
     var sessionData = req.session.data;
@@ -857,7 +857,7 @@ router.post('/add-items/previous-references/add-admin-reference-route', function
     if (adminRefResponse == 'Yes') {
         res.redirect('reference-type');
     } else {
-        req.url = '/add-items/item-details/save-item';
+        req.url = '/add-items/security/security-routing';
         return router.handle(req, res);
     }
 })
@@ -890,7 +890,7 @@ router.post('/add-items/previous-references/add-document-info', function (req, r
     var sessionData = req.session.data;
     var previousDocumentsArray = sessionData.previousDocumentsArray || [];
     var document = {
-        "id": previousDocumentsArray.length+1,
+        "id": previousDocumentsArray.length + 1,
         "type": sessionData.referenceTypeResponse,
         "reference": sessionData.previousDocumentReference,
         "extraInfo": sessionData.previousExtraInformation
@@ -918,7 +918,7 @@ router.post('/add-items/previous-references/add-another-document-route', functio
     if (addAnotherDocument == 'Yes') {
         res.redirect('reference-type');
     } else {
-        req.url = '/add-items/item-details/save-item';
+        req.url = '/add-items/security/security-routing';
         return router.handle(req, res);
         // res.redirect('../check-answers');
     }
@@ -928,23 +928,81 @@ router.post('/add-items/previous-references/add-another-document-route', functio
 /**
  * security details routing
  */
-router.post('/add-items/security/transport-charges-route', function (req, res) {
-    res.redirect('commercial-reference-number');
+router.post('/add-items/security/security-routing', function (req, res) {
+    let addSafetySecurityResponse = req.session.data.addSafetySecurityResponse;
+    let addPaymentMethodResponse = req.session.data.addPaymentMethodResponse;
+    if (addSafetySecurityResponse == 'Yes') {
+        if (addPaymentMethodResponse == 'Yes')
+            res.redirect('transport-charges');
+        else {
+            req.url = '/add-items/security/commercial-reference-number-routing';
+            return router.handle(req, res);
+        }
+    } else {
+        res.redirect('../check-answers');
+    }
 })
 
-router.post('/add-items/security/commercial-reference-route', function (req, res) {
-    res.redirect('dangerous-goods-code');
+
+router.post('/add-items/security/commercial-reference-number-routing', function (req, res) {
+    let addCommercialReferenceResponse = req.session.data.addCommercialReferenceResponse;
+    let sameCommercialReferenceResponse = req.session.data.sameCommercialReferenceResponse;
+    if (addCommercialReferenceResponse == 'Yes' && sameCommercialReferenceResponse == 'Yes')
+        res.redirect('../security/add-dangerous-goods-code');
+    else
+        res.redirect('../security/commercial-reference-number');
 })
 
-router.post('/add-items/security/dangerous-goods-route', function (req, res) {
-    res.redirect('check-answers');
+router.post('/add-items/security/add-dangerous-goods-code-route', function (req, res) {
+    let unGoodsCodeResponse = req.session.data.unGoodsCodeResponse;
+    if (unGoodsCodeResponse == 'Yes')
+        res.redirect('dangerous-goods-code');
+    else {
+        req.url = '/add-items/security/security-consignor-routing';
+        return router.handle(req, res);
+    }
+})
+
+router.post('/add-items/security/security-consignor-routing', function (req, res) {
+    let securityConsignorResponse = req.session.data.securityConsignorResponse;
+    if (securityConsignorResponse == 'No')
+        res.redirect('is-consignor-eori-known');
+    else {
+        req.url = '/add-items/security/security-consignee-routing';
+        return router.handle(req, res);
+    }
+})
+
+router.post('/add-items/security/security-consignee-routing', function (req, res) {
+    let securityConsigneeResponse = req.session.data.securityConsigneeResponse;
+    if (securityConsigneeResponse == 'No')
+        res.redirect('is-consignee-eori-known');
+    else {
+        res.redirect('../check-answers');
+    }
+})
+
+router.post('/add-items/security/is-consignor-eori-known-route', function (req, res) {
+    let addItemsIsSecurityConsignorEoriKnown = req.session.data.addItemsIsSecurityConsignorEoriKnown;
+    if (addItemsIsSecurityConsignorEoriKnown == 'Yes')
+        res.redirect('what-is-consignor-eori');
+    else {
+        res.redirect('consignor-name');
+    }
+})
+
+router.post('/add-items/security/is-consignee-eori-known-route', function (req, res) {
+    let addItemsIsSecurityConsigneeEoriKnown = req.session.data.addItemsIsSecurityConsigneeEoriKnown;
+    if (addItemsIsSecurityConsigneeEoriKnown == 'Yes')
+        res.redirect('what-is-consignee-eori');
+    else {
+        res.redirect('consignee-name');
+    }
 })
 
 router.post('/add-items/security/check-answers-route', function (req, res) {
-    res.redirect('../trader-security/security-trader-information');
+    res.redirect('../check-answers');
 })
-
-
 
 
 /*

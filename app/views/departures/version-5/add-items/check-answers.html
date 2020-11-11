@@ -224,7 +224,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
                 {% endif %}
 
-            {% endif %}
+                {% endif %}
 
             </dl>
 
@@ -307,7 +307,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
                 {% endif %}
 
-            {% endif %}
+                {% endif %}
 
             </dl>
 
@@ -317,244 +317,247 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
             <h2 class="govuk-heading-m">Packages</h2>
 
-                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
 
-                    {% for package in data['packagesArray'] %}
+                {% for package in data['packagesArray'] %}
 
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Package {{ package.id }}
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{ package.type }}
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="item-description">
-                                Change<span class="govuk-visually-hidden">
-                                    package {{ data['itemNumber']}}</span>
-                            </a>
-                        </dd>
-                    </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Package {{ package.id }}
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ package.type }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="item-description">
+                            Change<span class="govuk-visually-hidden">
+                                package {{ data['itemNumber']}}</span>
+                        </a>
+                    </dd>
+                </div>
 
-                    {% endfor %}
-                
-                </dl>
+                {% endfor %}
 
-                <p class="govuk-body"><a href="packages/add-another-package">Add or remove packages</a></p>
+            </dl>
 
-                <!-- 
+            <p class="govuk-body"><a href="packages/add-another-package">Add or remove packages</a></p>
+
+            <!-- 
                     Containers
                 -->
 
-                {% if (data['addAnotherContainer'] | length != "0") %}
+            {% if (data['addAnotherContainer'] | length != "0") %}
 
-                <h2 class="govuk-heading-m">Containers</h2>
+            <h2 class="govuk-heading-m">Containers</h2>
 
-                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
                 {% for container in data['containersArray'] %}
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Shipping container {{ container.id }}
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{ container.number }}
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="containers/container-number">
-                                Change<span class="govuk-visually-hidden">
-                                    shipping container {{ data['containerCount']}}</span>
-                            </a>
-                        </dd>
-                    </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Shipping container {{ container.id }}
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ container.number }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="containers/container-number">
+                            Change<span class="govuk-visually-hidden">
+                                shipping container {{ data['containerCount']}}</span>
+                        </a>
+                    </dd>
+                </div>
                 {% endfor %}
-                </dl>
+            </dl>
 
-                <p class="govuk-body"><a href="containers/add-another-container">Add or remove containers</a></p>
+            <p class="govuk-body"><a href="containers/add-another-container">Add or remove containers</a></p>
 
-                {% endif %}
+            {% endif %}
 
 
-                <!-- 
+            <!-- 
                     Special mentions
                 -->
 
-                <h2 class="govuk-heading-m">Special mentions</h2>
+            <h2 class="govuk-heading-m">Special mentions</h2>
 
-                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Add special mentions?
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{ data['addSpecialMention'] }}
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="special-mention/add-special-mention">
-                                Change<span class="govuk-visually-hidden">
-                                    do you need to add special mentions</span>
-                            </a>
-                        </dd>
-                    </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Add special mentions?
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['addSpecialMention'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="special-mention/add-special-mention">
+                            Change<span class="govuk-visually-hidden">
+                                do you need to add special mentions</span>
+                        </a>
+                    </dd>
+                </div>
 
                 {% if (data['addSpecialMention'] == "Yes") %}
 
                 {% for mention in data['mentionsArray'] %}
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Special mention {{ mention.id }}
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{ mention.type }}
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="special-mention/special-mention-type">
-                                Change<span class="govuk-visually-hidden">
-                                    special mention {{ data['mentionsCount']}}</span>
-                            </a>
-                        </dd>
-                    </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Special mention {{ mention.id }}
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ mention.type }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="special-mention/special-mention-type">
+                            Change<span class="govuk-visually-hidden">
+                                special mention {{ data['mentionsCount']}}</span>
+                        </a>
+                    </dd>
+                </div>
                 {% endfor %}
 
-                </dl>
-                <p class="govuk-body"><a href="special-mentions/added-special-mentions">Add or remove special mentions</a></p>
+            </dl>
+            <p class="govuk-body"><a href="special-mentions/added-special-mentions">Add or remove special mentions</a>
+            </p>
 
-                {% else %}
-                </dl>
-                {% endif %}
+            {% else %}
+            </dl>
+            {% endif %}
 
 
 
-                <!-- 
+            <!-- 
                     Produced documents and work certificates
                 -->
 
-                <h2 class="govuk-heading-m">Produced documents and work certificates</h2>
+            <h2 class="govuk-heading-m">Produced documents and work certificates</h2>
 
-                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Add Produced documents and work certificates?
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{ data['addDocumentsResponse'] }}
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="special-mention/add-special-mention">
-                                Change<span class="govuk-visually-hidden">
-                                    do you need to add produced documents and work certificates</span>
-                            </a>
-                        </dd>
-                    </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Add Produced documents and work certificates?
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['addDocumentsResponse'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="special-mention/add-special-mention">
+                            Change<span class="govuk-visually-hidden">
+                                do you need to add produced documents and work certificates</span>
+                        </a>
+                    </dd>
+                </div>
 
                 {% if (data['addSpecialMention'] == "Yes") %}
 
                 {% for document in data['documentsArray'] %}
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Document {{ document.id }}
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{ document.type }}
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="documents/document-type">
-                                Change<span class="govuk-visually-hidden">
-                                    produced document {{ data['documentCount']}}</span>
-                            </a>
-                        </dd>
-                    </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Document {{ document.id }}
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ document.type }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="documents/document-type">
+                            Change<span class="govuk-visually-hidden">
+                                produced document {{ data['documentCount']}}</span>
+                        </a>
+                    </dd>
+                </div>
                 {% endfor %}
-                </dl>
+            </dl>
 
-                <p class="govuk-body"><a href="documents/add-another-document">Add or remove produced documents and work certificates</a></p>
-                
-                {% else %}
-                </dl>
-                {% endif %}
+            <p class="govuk-body"><a href="documents/add-another-document">Add or remove produced documents and work
+                    certificates</a></p>
+
+            {% else %}
+            </dl>
+            {% endif %}
 
 
-                <!-- 
+            <!-- 
                     Previous administrative references
                 -->
 
-                <h2 class="govuk-heading-m">Previous administrative references</h2>
+            <h2 class="govuk-heading-m">Previous administrative references</h2>
 
-                {# {% for document in data['previousDocumentsArray'] %}
+            {# {% for document in data['previousDocumentsArray'] %}
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">{{ document.type }}</td>
                 <td class="govuk-table__cell govuk-table__cell--action"><a href="reference-type">Change</a>  |  <a href="remove-document" >Remove</a></td>
               </tr>
               {% endfor %} #}
 
-                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
                 <div class="govuk-summary-list__row">
 
-                        <dt class="govuk-summary-list__key">
-                            Add previous administrative reference?
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{ data['adminRefResponse'] }}
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="special-mention/add-special-mention">
-                                Change<span class="govuk-visually-hidden">
-                                    do you need to add previous administrative reference</span>
-                            </a>
-                        </dd>
-                    </div>
+                    <dt class="govuk-summary-list__key">
+                        Add previous administrative reference?
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data['adminRefResponse'] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="special-mention/add-special-mention">
+                            Change<span class="govuk-visually-hidden">
+                                do you need to add previous administrative reference</span>
+                        </a>
+                    </dd>
+                </div>
 
 
                 {% if (data['adminRefResponse'] == "Yes") %}
 
                 {% for document in data['previousDocumentsArray'] %}
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Produced document or certificate {{ document.id }}
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{ document.type }}
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="previous-references/reference-type">
-                                Change<span class="govuk-visually-hidden">
-                                    produced document or certificate {{ data['prevDocCount']}}</span>
-                            </a>
-                        </dd>
-                    </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Produced document or certificate {{ document.id }}
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ document.type }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="previous-references/reference-type">
+                            Change<span class="govuk-visually-hidden">
+                                produced document or certificate {{ data['prevDocCount']}}</span>
+                        </a>
+                    </dd>
+                </div>
                 {% endfor %}
-                </dl>
+            </dl>
 
-                <p class="govuk-body"><a href="previous-references/add-another-document">Add or remove previous administrative references</a></p>
+            <p class="govuk-body"><a href="previous-references/add-another-document">Add or remove previous
+                    administrative references</a></p>
 
-                {% else %}
-                </dl>
-                {% endif %}
+            {% else %}
+            </dl>
+            {% endif %}
 
 
-                <!-- 
+            <!-- 
                     Safety and security
                 -->
 
-                {# <h2 class="govuk-heading-m">Safety and security</h2>
+            <h2 class="govuk-heading-m">Safety and security</h2>
 
                 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
                     <div class="govuk-summary-list__row">
 
                     <dt class="govuk-summary-list__key">
-                            Method of payment for transport charges
+                        Payment method for transport charges
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            {{ data['transportCharges'] }}
+                            {{ data['addItemsTransportCharges'] }}
                         </dd>
                         <dd class="govuk-summary-list__actions">
                             <a class="govuk-link" href="security/transport-charges">
                                 Change<span class="govuk-visually-hidden">
-                                    method of payment for transport charges</span>
+                                    the payment method you are using for the transport charges</span>
                             </a>
                         </dd>
                     </div>
@@ -564,7 +567,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                             Commercial reference number
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            {{ data['commercialReferenceNumber'] }}
+                            {{ data['addItemsCommercialReferenceNumber'] }}
                         </dd>
                         <dd class="govuk-summary-list__actions">
                             <a class="govuk-link" href="security/commercial-reference-number">
@@ -576,84 +579,134 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                            UN dangerous goods code
+                            Know the United Nations number for dangerous goods?
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            {{ data['netMassResponse'] }}
+                            {{ data['unGoodsCodeResponse'] }}
                         </dd>
                         <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="add-total-net-mass">
+                            <a class="govuk-link" href="security/add-dangerous-goods-code">
                                 Change<span class="govuk-visually-hidden">
-                                    declare total net mass for item {{ data['itemNumber']}}</span>
+                                    if you know the United Nations number for dangerous goods</span>
+                            </a>
+                        </dd>
+                    </div>
+                    {% if (data['unGoodsCodeResponse'] == "Yes") %}
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            United Nations number for dangerous goods
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['UNDangerousGoods'] }}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="security/dangerous-goods-code">
+                                Change<span class="govuk-visually-hidden">
+                                    united nations number for dangerous goods</span>
+                            </a>
+                        </dd>
+                    </div>
+                    {% endif %}
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Know the consignor's EORI number?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['addItemsIsSecurityConsignorEoriKnown'] }}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="security/is-consignor-eori-known">
+                                Change<span class="govuk-visually-hidden">
+                                    if you know the security consignor’s EORI number</span>
                             </a>
                         </dd>
                     </div>
 
+                    {% if (data['addItemsIsSecurityConsignorEoriKnown'] == "Yes") %}
+
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                            Know consignor’s EORI number?
+                            Security consignor’s EORI number
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            {{ data['is-consignor-eori-known'] }}
+                            {{ data['addItemsSecurityConsignorEORINumber'] }}
                         </dd>
                         <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="is-consignor-eori-known">
+                            <a class="govuk-link" href="security/what-is-consignor-eori">
                                 Change<span class="govuk-visually-hidden">
-                                    do you know the consignor’s EORI number</span>
+                                    security consignor’s EORI number</span>
                             </a>
                         </dd>
                     </div>
 
-                    <div class="govuk-summary-list__row">
+                    {% else %}
+
+                    <!-- <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                            Consignor’s name
+                            Security consignor’s name
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            {{ data['consignorName'] }}
+                            {{ data['addItemsSecurityConsignorName'] }}
                         </dd>
                         <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="consignor-name">
+                            <a class="govuk-link" href="security/consignor-name">
                                 Change<span class="govuk-visually-hidden">
                                     consignor’s name</span>
                             </a>
                         </dd>
-                    </div>
+                    </div> -->
 
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                            Consignor’s address
+                            {{data['addItemsSecurityConsignorName']}}’s address
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            {{ data['consignor-number-street'] }} </br>
-                            {{ data['consignor-town'] }} </br>
-                            {{ data['consignor-postcode'] }} <br>
-                            {{ data['consignor-country'] | getCountry }} <br>
+                            {{ data['add-items-security-consignor-number-street'] }} </br>
+                            {{ data['add-items-security-consignor-town'] }} </br>
+                            {{ data['add-items-security-consignor-postcode'] }} <br>
+                            {{ data['add-items-security-consignor-country'] | getCountry }} <br>
                         </dd>
                         <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="consignor-address">
+                            <a class="govuk-link" href="security/consignor-address">
                                 Change<span class="govuk-visually-hidden">
-                                    consignor’s address</span>
+                                    {{data['addItemsSecurityConsignorName']}}’s address</span>
                             </a>
                         </dd>
                     </div>
-
+                    {% endif %}
 
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                            Know consignee’s EORI number?
+                            Know the security consignee’s EORI number?
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            {{ data['is-consignee-eori-known'] }}
+                            {{ data['addItemsIsSecurityConsigneeEoriKnown'] }}
                         </dd>
                         <dd class="govuk-summary-list__actions">
                             <a class="govuk-link" href="is-consignee-eori-known">
                                 Change<span class="govuk-visually-hidden">
-                                    do you know the consignee’s EORI number</span>
+                                    if you know the security consignee’s EORI number</span>
+                            </a>
+                        </dd>
+                    </div>
+                    {% if (data['addItemsIsSecurityConsigneeEoriKnown'] == "Yes") %}
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Security consignee’s EORI number
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['addItemsSecurityConsigneeEORINumber'] }}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="security/what-is-consignee-eori">
+                                Change<span class="govuk-visually-hidden">
+                                    security consignee’s EORI number</span>
                             </a>
                         </dd>
                     </div>
 
-                    <div class="govuk-summary-list__row">
+                    {% else %}
+                    <!-- <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                             Consignee’s name
                         </dt>
@@ -666,35 +719,36 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                                     consignee’s name</span>
                             </a>
                         </dd>
-                    </div>
+                    </div> -->
 
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                            Consignee’s address
+                            {{data['addItemsSecurityConsigneeName']}}’s address
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            {{ data['consignee-number-street'] }} </br>
-                            {{ data['consignee-town'] }} </br>
-                            {{ data['consignee-postcode'] }} <br>
-                            {{ data['consignee-country'] | getCountry }} <br>
+                            {{ data['add-items-security-consignee-number-street'] }} </br>
+                            {{ data['add-items-security-consignee-town'] }} </br>
+                            {{ data['add-items-security-consignee-postcode'] }} <br>
+                            {{ data['add-items-security-consignee-country'] | getCountry }} <br>
                         </dd>
                         <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="consignee-address">
+                            <a class="govuk-link" href="security/consignee-address">
                                 Change<span class="govuk-visually-hidden">
-                                    consignee’s address</span>
+                                    {{data['addItemsSecurityConsigneeName']}}’s address</span>
                             </a>
                         </dd>
                     </div>
+                    {% endif %}
 
-                </dl> #}
+                </dl>
 
 
 
-                {{ govukButton({
+            {{ govukButton({
                 text: "Save and continue"
             }) }}
 
-                <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a></p> -->
+            <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a></p> -->
 
         </form>
     </div>
