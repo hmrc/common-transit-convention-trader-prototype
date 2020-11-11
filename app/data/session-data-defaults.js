@@ -101,7 +101,11 @@ module.exports = {
 
   "safetySecurity" : "Safety and Security",
 
-  "addSafetySecurityResponse" : "Yes ",
+  "addSafetySecurityResponse" : "Yes",
+
+  "securityConsignorResponse" : "No",
+
+  "securityConsigneeResponse" : "No",
 
   "mentionNumber" : 1
 
