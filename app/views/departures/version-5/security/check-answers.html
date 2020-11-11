@@ -25,6 +25,21 @@ Check your answers {{ data['pageTitleAddOn' ]}}
         <div class="govuk-summary-list__row">
 
           <dt class="govuk-summary-list__key">
+            Add specific circumstance indicator?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['addCircumstanceIndicatorResponse'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="add-circumstance-indicator">
+              Change<span class="govuk-visually-hidden">
+                if you need to add a specific circumstance indicator</span>
+            </a>
+          </dd>
+        </div>
+        {% if data['addCircumstanceIndicatorResponse'] == "Yes" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
             Specific circumstances indicator
           </dt>
           <dd class="govuk-summary-list__value">
@@ -37,6 +52,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
             </a>
           </dd>
         </div>
+        {% endif %}
         <div class="govuk-summary-list__row">
 
           <dt class="govuk-summary-list__key">
@@ -65,6 +81,21 @@ Check your answers {{ data['pageTitleAddOn' ]}}
             <a class="govuk-link" href="transport-charges">
               Change<span class="govuk-visually-hidden">
                 the payment method you are using for the transport charges for all items</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Does movement have commercial reference number?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['addCommercialReferenceResponse'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="add-commercial-reference-number">
+              Change<span class="govuk-visually-hidden">
+                if movement has commercial reference number</span>
             </a>
           </dd>
         </div>
@@ -133,6 +164,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
         </div>
         {% endif %}
 
+        {% if data['circumstanceIndicator'] == "(E) Authorised Economic Operators" %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Add a place of unloading code?
@@ -147,8 +179,10 @@ Check your answers {{ data['pageTitleAddOn' ]}}
             </a>
           </dd>
         </div>
+        {% endif %}
 
-        {% if data['addUnloadingPlaceResponse'] == "Yes" %}
+        {% if (data['addUnloadingPlaceResponse'] == "Yes") or 
+        (data['circumstanceIndicator'] != "(E) Authorised Economic Operators") %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Place of unloading code
