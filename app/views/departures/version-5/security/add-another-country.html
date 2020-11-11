@@ -22,9 +22,9 @@ You have added {{ data['countriesArray'].length}} countries of routing {{ data['
 
       <h1 class="govuk-heading-xl">
         {% if (data['countriesArray'].length == "1") %}
-        You have added {{ data['countriesArray'].length}} country of routing {{ data['pageTitleAddOn']}}
+        You have added {{ data['countriesArray'].length}} country of routing
         {% else %}
-        You have added {{ data['countriesArray'].length}} countries of routing {{ data['pageTitleAddOn']}}
+        You have added {{ data['countriesArray'].length}} countries of routing
         {% endif %}
       </h1>
 
@@ -35,7 +35,7 @@ You have added {{ data['countriesArray'].length}} countries of routing {{ data['
           <tbody>
             {% for country in data['countriesArray'] %}
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell">{{ country.country }}</td>
+              <td class="govuk-table__cell">{{ country.country | getCountry }}</td>
               <td class="govuk-table__cell govuk-table__cell--action"
               ><a href="country-of-routing">Change<span class="govuk-visually-hidden">Change {{country.country}} country of routing</span></a> 
               | <a href="remove-country">Remove<span class="govuk-visually-hidden">Remove {{country.country}} country of routing</span></a></td>
@@ -52,7 +52,7 @@ You have added {{ data['countriesArray'].length}} countries of routing {{ data['
           name: "addAnotherCountryResponse",
           fieldset: {
             legend: {
-              text: "Do you need to add another country or routing?",
+              text: "Do you need to add another country of routing?",
               isPageHeading: false,
               classes: "govuk-fieldset__legend--m"
             }

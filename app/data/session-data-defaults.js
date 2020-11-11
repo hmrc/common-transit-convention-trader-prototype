@@ -101,7 +101,7 @@ module.exports = {
 
   "safetySecurity" : "Safety and Security",
 
-  "addSafetySecurityResponse" : "Yes "
+  "addSafetySecurityResponse" : "Yes ",
 
   "mentionNumber" : 1
 
@@ -110,6 +110,7 @@ module.exports = {
   // "isThereAConsignor" : "No ",
   // "areYouTheConsignee" : "No ",
   // "isThereAConsignee" : "Yes "
+
 
   // "declarationType" : "T2",
 
