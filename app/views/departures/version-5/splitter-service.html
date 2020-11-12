@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What do you want to do? {{ data['pageTitleAddOn'] }}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "splitterPageResponse",
+          name: "splitterPageResponse",
+          fieldset: {
+            legend: {
+              text: "What do you want to do?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "Create a new movement redirect(homepage)",
+              text: "Create a new movement"
+            },
+            {
+              value: "View the status of a movement submitted on or after 1 January 2021 redirect(homepage)",
+              text: "View the status of a movement submitted on or after 1 January 2021"
+            },
+            {
+              value: "View the status of a movement submitted on or before 31 December 2020",
+              text: "View the status of a movement submitted on or before 31 December 2020"
+            },
+            {
+              value: "View the status of a Northern Ireland (NI) movement",
+              text: "View the status of a Northern Ireland (NI) movement"
+            }
+          ]
+        }) }}
+
+        <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-warning-text__assistive">Warning</span>
+              This page will no longer be available after 31 January 2020.
+            </strong>
+          </div>
+
+        <!-- <div class="govuk-inset-text">
+            This page will no longer be available after 31 January 2020.
+        </div> -->
+
+        <!-- <p class="govuk-body">This page will no longer be available after 31 January 2020.</p> -->
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        
+
+      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+      </form>
+
+  </div>
+</div>
+
+{% endblock %}
