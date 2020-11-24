@@ -77,7 +77,11 @@ router.use('/departures/version-4', require('./views/departures/version-4/routes
 
 router.use('/departures/version-5', require('./views/departures/version-5/routes'));
 
+router.use('/departures/version-6', require('./views/departures/version-6/routes'));
+
 router.use('/departures/static-v4', require('./views/departures/static-v4/routes'));
+
+router.use('/departures/static-v6', require('./views/departures/static-v6/routes'));
 
 
 module.exports = router

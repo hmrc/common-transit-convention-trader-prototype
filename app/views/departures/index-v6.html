@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Departures journeys
+    </h1>
+
+    <h2 class="govuk-heading-m">Standard journey</h2>
+
+    <p class="govuk-body"><a href="version-6/what-do-you-want-to-do">Start</a></p>
+
+    <h2 class="govuk-heading-m">Static pre-lodged journey</h2>
+
+    <p class="govuk-body"><a href="static-v6/homepage">Start</a></p>
+
+    <p class="govuk-body">Normal declaration with task list already fully completed to demonstrate pre-lodged journey without needing to complete all sections.</p>
+
+  </div>
+</div>
+{% endblock %}
