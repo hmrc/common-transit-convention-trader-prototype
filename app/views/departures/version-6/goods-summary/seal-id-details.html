@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is the Customs seal number? {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">{{ data['goodsSummary'] }}</span>
+    <form class="form" action="seals-information" method="post">
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      <h1 class="govuk-heading-xl">What is the Customs seal number?</h1>
+      {{ govukInput({
+        label: {
+          text: ""
+        },
+        id: "seal-id-details",
+        classes: "govuk-input--width-20",
+        name: "seal-id-details"
+      }) }}
+                  
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

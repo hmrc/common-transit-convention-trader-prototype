@@ -1,0 +1,249 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <span class="govuk-caption-xl">{{ data['goodsSummary'] }}</span>
+      <form class="form" action="../task-list" method="post">
+
+        <h1 class="govuk-heading-xl">Check your answers</h1>
+
+        <!-- 
+          packages
+          total gross mass
+          loading place
+
+          normal/simplified divide 
+          = (goodsSummary.push(
+        -->
+
+        {% set goodsSummary = [] %}
+
+       
+
+          {% set goodsSummary = (goodsSummary.push(
+            {
+              key: {
+                text: "Total packages declared"
+              },
+              value: {
+                text: data['totalPackages']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "total-packages",
+                    text: "Change",
+                    visuallyHiddenText: "total packages declared"
+                  }
+                ]
+              }
+            }
+          ), goodsSummary) %}
+
+        {% set goodsSummary = (goodsSummary.push(   
+
+            {
+              key: {
+                text: "Total gross mass in kilograms"
+              },
+              value: {
+                text: data['totalGrossMass']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "total-gross-mass",
+                    text: "Change",
+                    visuallyHiddenText: "total gross mass in kilograms"
+                  }
+                ]
+              }
+            }
+          ), goodsSummary) %}
+
+
+        {% if (data['securityProcess'] == "Yes") %}
+
+          {% set goodsSummary = (goodsSummary.push(
+              {
+                key: {
+                  text: "Loading place"
+                  },
+                  value: {
+                  text: data['loadingPlace']
+                  },
+                  actions: {
+                  items: [
+                      {
+                      href: "loading-place",
+                      text: "Change",
+                      visuallyHiddenText: "loading place"
+                      }
+                  ]
+                  }
+              }
+          ), goodsSummary) %}  
+        {% endif %}  
+
+        {% if (data['departuresProcedureType'] == "Normal") %}
+
+          {% set goodsSummary = (goodsSummary.push(
+              {
+                key: {
+                  text: "Add Customs-approved location?"
+                },
+                value: {
+                  text: data['add-customs-sub-place']
+                },
+                actions: {
+                  items: [
+                      {
+                      href: "add-customs-approved-location",
+                      text: "Change",
+                      visuallyHiddenText: "add Customs-approved location"
+                      }
+                  ]
+                }
+              }
+          ), goodsSummary) %}
+
+              {% if (data['add-customs-sub-place'] == "Yes ") %}
+                {% set goodsSummary = (goodsSummary.push(
+                          {
+                            key: {
+                              text: "Customs-approved location"
+                            },
+                            value: {
+                              text: data['customs-sub-place']
+                            },
+                            actions: {
+                              items: [
+                                {
+                                  href: "customs-approved-location",
+                                  text: "Change",
+                                  visuallyHiddenText: "Customs approved location"
+                                }
+                              ]
+                            }
+                          }
+                      ), goodsSummary) %}
+              {% endif %}
+
+        {% else %}
+
+          {% set goodsSummary = (goodsSummary.push(
+
+              {
+                key: {
+                  text: "Authorised location code"
+                },
+                value: {
+                  text: data['authorisedLocationCode']
+                },
+                actions: {
+                  items: [
+                      {
+                      href: "authorised-location-code",
+                      text: "Change",
+                      visuallyHiddenText: "Authorised location code"
+                      }
+                  ]
+                }
+              }
+          ), goodsSummary) %}
+
+        {% endif %}
+
+        {% set goodsSummary = (goodsSummary.push( 
+          {
+                  key: {
+                  text: "Control result date limit"
+                  },
+                  value: {
+                  text: data['controlDateDay'] +' '+data['controlDateMonth']+' '+data['controlDateYear']
+                  },
+                  actions: {
+                  items: [
+                      {
+                      href: "control-result-date-limit",
+                      text: "Change",
+                      visuallyHiddenText: "Control result date limit"
+                      }
+                  ]
+                  }
+              }
+        ), goodsSummary) %}
+      
+        {% set goodsSummary = (goodsSummary.push( 
+          {
+                  key: {
+                  text: "Add customs seals numbers?"
+                  },
+                  value: {
+                  text: data['do-you-need-seals-info']
+                  },
+                  actions: {
+                  items: [
+                      {
+                      href: "do-you-need-seals-info",
+                      text: "Change",
+                      visuallyHiddenText: "Add seals"
+                      }
+                  ]
+                  }
+              }
+        ), goodsSummary) %}
+
+        {% if (data['do-you-need-seals-info'] == "Yes ") %}
+          {% set goodsSummary = (goodsSummary.push(
+                  {
+                    key: {
+                      text: "Customs seals numbers"
+
+                    },
+                    value: {
+                      html: data['seal-id-details'] + "<br>" + data['seal-id-details-2']|default("", true)
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "seals-information-2",
+                          text: "Change",
+                          visuallyHiddenText: "seals"
+                        }
+                      ]
+                    }
+                  }
+              ), goodsSummary) %}
+        {% endif %}
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: goodsSummary
+                }) }}
+
+        {{ govukButton({
+                text: "Save and continue",
+                href: "../task-list"
+                }) }}
+
+      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+      
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

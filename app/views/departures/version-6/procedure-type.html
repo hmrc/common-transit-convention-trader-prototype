@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What type of procedure are you using? {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" action="add-safety-and-security">
+
+      {# <span class="govuk-caption-xl">{{ data['movementDetails'] }}</span> #}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "departuresProcedureType",
+          name: "departuresProcedureType",
+          fieldset: {
+            legend: {
+              text: "What type of procedure are you using?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "Normal",
+              text: "Normal"
+            },
+            {
+              value: "Simplified",
+              text: "Simplified"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+      </form>
+
+  </div>
+</div>
+
+{% endblock %}

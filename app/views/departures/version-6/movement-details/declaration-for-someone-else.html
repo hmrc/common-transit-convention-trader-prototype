@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Are you acting as a representative? {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form method="post">
+
+      <span class="govuk-caption-xl">{{ data['movementDetails'] }}</span>
+
+        {{ govukRadios({
+          idPrefix: "on-behalf-of-someone-else",
+          name: "on-behalf-of-someone-else",
+          fieldset: {
+            legend: {
+              text: "Are you acting as a representative?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "Yes, redirect(representative-name)",
+              text: "Yes"
+            },
+            {
+              value: "No, redirect(check-your-answers)",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+      </form>
+
+  </div>
+</div>
+
+{% endblock %}

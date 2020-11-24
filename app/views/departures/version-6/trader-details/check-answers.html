@@ -1,0 +1,344 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <span class="govuk-caption-xl">{{ data['traderDetails'] }}</span>
+    <form class="form" action="../task-list" method="post">
+
+      <h1 class="govuk-heading-xl">Check your answers</h1>
+
+      <!-- 
+        Principal details
+      -->
+
+      <h2 class="govuk-heading-m">Principal</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Know principal’s EORI number?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['is-principal-eori-known'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="is-principal-eori-known">
+              Change<span class="govuk-visually-hidden">
+                do you know the principal’s EORI number</span>
+            </a>
+          </dd>
+        </div>
+
+        {% if (data['is-principal-eori-known'] == "Yes ") %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Principal’s EORI number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['traderEORINumber'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-is-principal-eori">
+              Change<span class="govuk-visually-hidden">
+                principal’s EORI number</span>
+            </a>
+          </dd>
+        </div>
+
+        {% else %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Principal’s name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['traderName'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="principal-name">
+              Change<span class="govuk-visually-hidden">
+                principal’s name</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Principal’s address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['number-street'] }} </br>
+            {{ data['town'] }} </br>
+            {{ data['postcode'] }} <br>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="principal-address">
+              Change<span class="govuk-visually-hidden">
+                principal’s address</span>
+            </a>
+          </dd>
+        </div>
+
+        {% endif %}
+
+      </dl>
+
+      <!-- 
+        Consignor details
+      -->
+
+      <h2 class="govuk-heading-m">Consignor</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+      <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Are you the consignor for all the items?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['areYouTheConsignor'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="are-you-the-consignor">
+              Change<span class="govuk-visually-hidden">
+                if you are the consignor for all the items</span>
+            </a>
+          </dd>
+        </div>
+
+      {% if (data['areYouTheConsignor'] == "No ") %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Consignor for all the items?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['isThereAConsignor'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="is-there-a-consignor">
+            Change<span class="govuk-visually-hidden">
+              if there is a consignor for all the items</span>
+          </a>
+        </dd>
+      </div>
+
+      {% if (data['isThereAConsignor'] == "Yes ") %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Know consignor’s EORI number?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['is-consignor-eori-known'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="is-consignor-eori-known">
+              Change<span class="govuk-visually-hidden">
+                do you know the consignor’s EORI number</span>
+            </a>
+          </dd>
+        </div>
+
+
+      {% if (data['is-consignor-eori-known'] == "Yes ") %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Consignor’s EORI number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['consignorEORINumber'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-is-consignor-eori">
+              Change<span class="govuk-visually-hidden">
+                consignor’s EORI number</span>
+            </a>
+          </dd>
+        </div>
+      
+      {% else %}
+
+      <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Consignor’s name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['consignorName'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="consignor-name">
+              Change<span class="govuk-visually-hidden">
+                consignor’s name</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Consignor’s address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['consignor-number-street'] }} </br>
+            {{ data['consignor-town'] }} </br>
+            {{ data['consignor-postcode'] }} <br>
+            {{ data['consignor-country'] | getCountry }} <br>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="consignor-address">
+              Change<span class="govuk-visually-hidden">
+                consignor’s address</span>
+            </a>
+          </dd>
+        </div>
+
+      {% endif %}
+
+      {% endif %}
+
+      {% endif %}
+
+      </dl>
+
+      <!-- 
+        Consignee details
+      -->
+
+      <h2 class="govuk-heading-m">Consignee</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Are you the consignee for all the items?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['areYouTheConsignee'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="are-you-the-consignee">
+              Change<span class="govuk-visually-hidden">
+                if you are the consignee for all the items</span>
+            </a>
+          </dd>
+        </div>
+
+      {% if (data['areYouTheConsignee'] == "No ") %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Consignee for all the items?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['isThereAConsignee'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="is-there-a-consignee">
+            Change<span class="govuk-visually-hidden">
+              if there is a consignee for all the items</span>
+          </a>
+        </dd>
+      </div>
+
+      {% if (data['isThereAConsignee'] == "Yes ") %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Know consignee’s EORI number?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['is-consignee-eori-known'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="is-consignee-eori-known">
+              Change<span class="govuk-visually-hidden">
+                do you know the consignee’s EORI number</span>
+            </a>
+          </dd>
+        </div>
+
+      {% if (data['is-consignee-eori-known'] == "Yes ") %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Consignee’s EORI number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['consigneeEORINumber'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-is-consignee-eori">
+              Change<span class="govuk-visually-hidden">
+                consignee’s EORI number</span>
+            </a>
+          </dd>
+        </div>
+      
+      {% else %}
+
+      <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Consignee’s name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['consigneeName'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="consignee-name">
+              Change<span class="govuk-visually-hidden">
+                consignee’s name</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Consignee’s address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['consignee-number-street'] }} </br>
+            {{ data['consignee-town'] }} </br>
+            {{ data['consignee-postcode'] }} <br>
+            {{ data['consignee-country'] | getCountry }} <br>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="consignee-address">
+              Change<span class="govuk-visually-hidden">
+                consignee’s address</span>
+            </a>
+          </dd>
+        </div>
+
+      {% endif %}
+
+      {% endif %}
+
+      {% endif %}
+
+      </dl>
+
+
+
+      {{ govukButton({
+                text: "Save and continue",
+                href: "../task-list"
+                }) }}
+
+    </form>
+
+    <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+  </div>
+</div>
+
+{% endblock %}
