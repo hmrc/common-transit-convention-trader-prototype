@@ -159,7 +159,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
 
           <!-- Safety & Security Summary -->
 
-          <!-- {% if data['addSafetySecurityResponse'] == "Yes " %}
+          {% if data['addSafetySecurityResponse'] == "Yes " %}
             {% if (data['addACarrierResponse'] | length != "0") %}
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
@@ -188,7 +188,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
                 </span>
               </li>
             {% endif %}
-          {% endif %} -->
+          {% endif %}
 
           <!-- Add items -->
           {% if data['addAnotherItem'] == "No " %}
