@@ -238,11 +238,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
         Security consignor details
       -->
 
-      <h3 class="govuk-heading-s">Security consignor</h3>
-
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-
-      <div class="govuk-summary-list__row">
+      <!-- <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Is this the security consignor for all items?
 
@@ -266,24 +262,26 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                 if this is the security consignor for all items</span>
             </a>
           </dd>
+        </div> -->
+
+      <h3 class="govuk-heading-s">Security consignor</h3>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Security consignor for all the items?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['securityConsignorResponse'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="is-there-a-consignor">
+              Change<span class="govuk-visually-hidden">
+                if there is a consignor for all the items</span>
+            </a>
+          </dd>
         </div>
-
-      {% if (data['sameSecurityConsignorResponse'] == "No") %}
-
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Security consignor for all the items?
-        </dt>
-        <dd class="govuk-summary-list__value">
-          {{ data['securityConsignorResponse'] }}
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="is-there-a-consignor">
-            Change<span class="govuk-visually-hidden">
-              if there is a consignor for all the items</span>
-          </a>
-        </dd>
-      </div>
 
         {% if (data['securityConsignorResponse'] == "Yes") %}
 
@@ -303,7 +301,6 @@ Check your answers {{ data['pageTitleAddOn' ]}}
         </div>
 
           {% if (data['isSecurityConsignorEoriKnown'] == "Yes") %}
-
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Security consignor’s EORI number
@@ -318,10 +315,8 @@ Check your answers {{ data['pageTitleAddOn' ]}}
               </a>
             </dd>
           </div>
-        
           {% else %}
-
-          <div class="govuk-summary-list__row">
+            <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Security consignor’s name
               </dt>
@@ -353,12 +348,9 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                 </a>
               </dd>
             </div>
-
           {% endif %}
 
         {% endif %}
-
-      {% endif %}
 
       </dl>
 
@@ -369,34 +361,6 @@ Check your answers {{ data['pageTitleAddOn' ]}}
       <h3 class="govuk-heading-s">Security consignee</h3>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-
-      <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Is this the security consignee for all items?
-
-            {% if (data['consigneeEORINumber'] | length != "0") %}
-                <br><br><p class="govuk-body">{{ data['consigneeEORINumber'] }}</p>
-            {% else %}
-                <br><br><p class="govuk-body">{{ data['consigneeName'] }}<br>
-                  {{ data['consignee-number-street'] }}<br>
-                  {{ data['consignee-town'] }}<br>
-                  {{ data['consignee-postcode'] }}<br>
-                  {{ data['consignee-country'] | getCountry }}</p> 
-            {% endif %}
-          </dt>
-
-          <dd class="govuk-summary-list__value">
-            {{ data['sameSecurityConsigneeResponse'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="are-you-the-consignee">
-              Change<span class="govuk-visually-hidden">
-                if this is the security consignee for all items</span>
-            </a>
-          </dd>
-        </div>
-
-      {% if (data['sameSecurityConsigneeResponse'] == "No") %}
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
@@ -486,10 +450,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
         {% endif %}
 
-      {% endif %}
-
       </dl>
-
 
       <!-- 
         Carrier details

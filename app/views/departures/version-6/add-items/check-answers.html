@@ -542,12 +542,13 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     Safety and security
                 -->
 
-            <!-- <h2 class="govuk-heading-m">Safety and security</h2>
+            <h2 class="govuk-heading-m">Safety and security</h2>
 
                 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
                     <div class="govuk-summary-list__row">
 
+                    {% if data['addItemsTransportCharges'] | length != "0" %}
                     <dt class="govuk-summary-list__key">
                         Payment method for transport charges
                         </dt>
@@ -561,7 +562,9 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                             </a>
                         </dd>
                     </div>
+                    {% endif %}
 
+                    {% if data['addItemsCommercialReferenceNumber'] | length != "0" %}
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                             Commercial reference number
@@ -576,7 +579,9 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                             </a>
                         </dd>
                     </div>
-
+                    {% endif %}
+                    
+                    {% if data['unGoodsCodeResponse'] | length != "0" %}
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                             Know the United Nations number for dangerous goods?
@@ -591,6 +596,8 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                             </a>
                         </dd>
                     </div>
+                    {% endif %}
+
                     {% if (data['unGoodsCodeResponse'] == "Yes") %}
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
@@ -607,6 +614,9 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                         </dd>
                     </div>
                     {% endif %}
+
+                    {% if data['addItemsIsSecurityConsignorEoriKnown'] | length != "0" %}
+
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                             Know the consignor's EORI number?
@@ -622,44 +632,46 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                         </dd>
                     </div>
 
-                    {% if (data['addItemsIsSecurityConsignorEoriKnown'] == "Yes") %}
+                        {% if (data['addItemsIsSecurityConsignorEoriKnown'] == "Yes") %}
 
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Security consignor’s EORI number
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{ data['addItemsSecurityConsignorEORINumber'] }}
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="security/what-is-consignor-eori">
-                                Change<span class="govuk-visually-hidden">
-                                    security consignor’s EORI number</span>
-                            </a>
-                        </dd>
-                    </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Security consignor’s EORI number
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                {{ data['addItemsSecurityConsignorEORINumber'] }}
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="security/what-is-consignor-eori">
+                                    Change<span class="govuk-visually-hidden">
+                                        security consignor’s EORI number</span>
+                                </a>
+                            </dd>
+                        </div>
 
-                    {% else %}
+                        {% else %}
 
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            {{data['addItemsSecurityConsignorName']}}’s address
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{ data['add-items-security-consignor-number-street'] }} </br>
-                            {{ data['add-items-security-consignor-town'] }} </br>
-                            {{ data['add-items-security-consignor-postcode'] }} <br>
-                            {{ data['add-items-security-consignor-country'] | getCountry }} <br>
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="security/consignor-address">
-                                Change<span class="govuk-visually-hidden">
-                                    {{data['addItemsSecurityConsignorName']}}’s address</span>
-                            </a>
-                        </dd>
-                    </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                {{data['addItemsSecurityConsignorName']}}’s address
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                {{ data['add-items-security-consignor-number-street'] }} </br>
+                                {{ data['add-items-security-consignor-town'] }} </br>
+                                {{ data['add-items-security-consignor-postcode'] }} <br>
+                                {{ data['add-items-security-consignor-country'] | getCountry }} <br>
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="security/consignor-address">
+                                    Change<span class="govuk-visually-hidden">
+                                        {{data['addItemsSecurityConsignorName']}}’s address</span>
+                                </a>
+                            </dd>
+                        </div>
+                        {% endif %}
                     {% endif %}
-
+                    
+                    {% if data['addItemsIsSecurityConsigneeEoriKnown'] | length != "0" %}
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                             Know the security consignee’s EORI number?
@@ -674,44 +686,45 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                             </a>
                         </dd>
                     </div>
-                    {% if (data['addItemsIsSecurityConsigneeEoriKnown'] == "Yes") %}
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Security consignee’s EORI number
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{ data['addItemsSecurityConsigneeEORINumber'] }}
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="security/what-is-consignee-eori">
-                                Change<span class="govuk-visually-hidden">
-                                    security consignee’s EORI number</span>
-                            </a>
-                        </dd>
-                    </div>
 
-                    {% else %}
-
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            {{data['addItemsSecurityConsigneeName']}}’s address
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{ data['add-items-security-consignee-number-street'] }} </br>
-                            {{ data['add-items-security-consignee-town'] }} </br>
-                            {{ data['add-items-security-consignee-postcode'] }} <br>
-                            {{ data['add-items-security-consignee-country'] | getCountry }} <br>
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="security/consignee-address">
-                                Change<span class="govuk-visually-hidden">
-                                    {{data['addItemsSecurityConsigneeName']}}’s address</span>
-                            </a>
-                        </dd>
-                    </div>
+                        {% if (data['addItemsIsSecurityConsigneeEoriKnown'] == "Yes") %}
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Security consignee’s EORI number
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                {{ data['addItemsSecurityConsigneeEORINumber'] }}
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="security/what-is-consignee-eori">
+                                    Change<span class="govuk-visually-hidden">
+                                        security consignee’s EORI number</span>
+                                </a>
+                            </dd>
+                        </div>
+                        {% else %}
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                {{data['addItemsSecurityConsigneeName']}}’s address
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                {{ data['add-items-security-consignee-number-street'] }} </br>
+                                {{ data['add-items-security-consignee-town'] }} </br>
+                                {{ data['add-items-security-consignee-postcode'] }} <br>
+                                {{ data['add-items-security-consignee-country'] | getCountry }} <br>
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="security/consignee-address">
+                                    Change<span class="govuk-visually-hidden">
+                                        {{data['addItemsSecurityConsigneeName']}}’s address</span>
+                                </a>
+                            </dd>
+                        </div>
+                        {% endif %}
                     {% endif %}
+                    
 
-                </dl> -->
+                </dl>
 
 
 

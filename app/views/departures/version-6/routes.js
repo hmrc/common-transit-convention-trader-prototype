@@ -145,7 +145,7 @@ router.post('/security/add-another-country-route', function (req, res) {
     if (addAnotherCountryResponse == 'Yes') {
         res.redirect('country-of-routing');
     } else {
-        res.redirect('trader-security/same-security-consignor');
+        res.redirect('trader-security/security-consignor');
     }
 })
 
@@ -174,7 +174,7 @@ router.post('/security/trader-security/security-consignor-route', function (req,
     if (securityConsignorResponse == 'Yes') {
         res.redirect('is-consignor-eori-known');
     } else {
-        res.redirect('same-security-consignee');
+        res.redirect('security-consignee');
     }
 })
 
@@ -936,8 +936,8 @@ router.post('/add-items/security/security-routing', function (req, res) {
     let addSafetySecurityResponse = req.session.data.addSafetySecurityResponse;
     let addPaymentMethodResponse = req.session.data.addPaymentMethodResponse;
     if (addSafetySecurityResponse == 'Yes') {
-        if (addPaymentMethodResponse == 'Yes')
-            res.redirect('transport-charges');
+        if (addPaymentMethodResponse == 'No')
+            res.redirect('../security/transport-charges');
         else {
             req.url = '/add-items/security/commercial-reference-number-routing';
             return router.handle(req, res);
@@ -1005,7 +1005,7 @@ router.post('/add-items/security/is-consignee-eori-known-route', function (req, 
 })
 
 router.post('/add-items/security/check-answers-route', function (req, res) {
-    res.redirect('../task-list');
+    res.redirect('../check-answers');
 })
 
 
