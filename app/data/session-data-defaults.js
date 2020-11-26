@@ -73,7 +73,7 @@ module.exports = {
 
   "items": "Items",
 
-  "itemSize": 0,
+  "itemSize": 1,
 
   "itemNumber": 1,
 
@@ -103,11 +103,22 @@ module.exports = {
 
   "addSafetySecurityResponse" : "Yes",
 
-  "securityConsignorResponse" : "No",
+  "securityConsignorResponse" : "Yes",
 
   "securityConsigneeResponse" : "No",
 
-  "mentionNumber" : 1
+  "mentionNumber" : 1,
+
+  // "addSafetySecurityResponse" : "Yes",
+  // "addPaymentMethodResponse" : "Yes",
+  // "addCommercialReferenceResponse" : "Yes",
+  // "sameCommercialReferenceResponse" : "Yes"
+
+  
+
+
+  
+
 
   //For testing trader details & trader details in add items
   // "areYouTheConsignor" : "No ",
