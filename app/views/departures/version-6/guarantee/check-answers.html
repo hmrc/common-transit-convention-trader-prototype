@@ -155,6 +155,9 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                   }
               ), guaranteeSummary) %}
 
+            {% if data['liabilityAmount'] | length != "0" %}
+
+
               {% set guaranteeSummary = (guaranteeSummary.push(
                                 {
                       key: {
@@ -174,6 +177,8 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                       }
                     }
                 ), guaranteeSummary) %}
+            
+            {% endif %}
 
         {% endif %}
 
