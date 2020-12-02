@@ -1183,10 +1183,49 @@ router.post('/goods-summary/loading-place', function (req, res) {
 
 })
 
+/*
+ Guarantee Routing
+*/
+
+router.post('/guarantee/add-another-guarantee-route', function (req, res) {
+    var sessionData = req.session.data;
+    var guaranteeArray = sessionData.guaranteeArray || [];
+    var guarantee = {
+        "id": guaranteeArray.length + 1,
+        "guarantee": sessionData.guaranteeType,
+    }
+    guaranteeArray.push(guarantee);
+    sessionData.guaranteeArray = guaranteeArray;
+    sessionData.guaranteeCount = guaranteeArray.length;
+    res.redirect('add-another-guarantee');
+})
+
+router.post('/guarantee/delete-guarantee', function (req, res) {
+    var sessionData = req.session.data;
+    let removeGuaranteeResponse = sessionData.removeGuaranteeResponse;
+    var guaranteeArray = sessionData.guaranteeArray;
+    if (removeGuaranteeResponse == 'Yes')
+        guaranteeArray.length = guaranteeArray.length - 1
+    sessionData.guaranteeArray = guaranteeArray;
+    sessionData.guaranteeCount = guaranteeArray.length;
+    res.redirect('add-another-guarantee');
+})
+
+router.post('/guarantee/add-another-guarantee', function (req, res) {
+    var sessionData = req.session.data;
+    let addAnotherGuarantee = sessionData.addAnotherGuarantee;
+    if (addAnotherGuarantee == 'Yes')
+        res.redirect('guarantee-type');
+    else
+        res.redirect('../task-list');
+})
+
+
+
 /**
  * Liability Amount
  */
-router.post('/guarantee/check-libaility-amount', function (req, res) {
+router.post('/guarantee/check-liability-amount', function (req, res) {
     var sessionData = req.session.data;
     let liabilityAmount = sessionData.liabilityAmount;
     if (String(liabilityAmount).length > 0) {

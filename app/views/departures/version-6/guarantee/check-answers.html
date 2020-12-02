@@ -16,7 +16,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <span class="govuk-caption-xl">{{ data['guaranteeSummary'] }}</span>
-      <form class="form" action="../task-list" method="post">
+      <form class="form" action="add-another-guarantee-route" method="post">
 
         <h1 class="govuk-heading-xl">Check your answers</h1>
 
@@ -28,14 +28,14 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     text: "Guarantee type"
                     },
                     value: {
-                    text: data['guarantee-type']
+                    text: data['guaranteeType']
                     },
                     actions: {
                     items: [
                         {
                         href: "guarantee-type",
                         text: "Change",
-                        visuallyHiddenText: "guarantee-type"
+                        visuallyHiddenText: "change guarantee type"
                         }
                     ]
                     }
@@ -43,7 +43,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                 ), guaranteeSummary) %}
 
       
-        {% if (data['guarantee-type'] == "(1) Comprehensive guarantee ") or (data['guarantee-type'] == "(4) Flat-rate voucher ") or (data['guarantee-type'] == "(0) Guarantee waiver ") or (data['guarantee-type'] == "(2) Individual guarantee ") or (data['guarantee-type'] == "(9) Individual guarantee with multiple usage ") %} 
+        {% if (data['guaranteeType'] == "(1) Comprehensive guarantee ") or (data['guaranteeType'] == "(4) Flat-rate voucher ") or (data['guaranteeType'] == "(0) Guarantee waiver ") or (data['guaranteeType'] == "(2) Individual guarantee ") or (data['guaranteeType'] == "(9) Individual guarantee with multiple usage ") %} 
           {% set guaranteeSummary = (guaranteeSummary.push(
                   {
                     key: {
@@ -132,6 +132,27 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
           {% endif %}
 
+          {%
+            set guaranteeSummary = (guaranteeSummary.push( 
+              {
+                      key: {
+                      text: "Access code"
+                      },
+                      value: {
+                      text: "••••"
+                      },
+                      actions: {
+                      items: [
+                          {
+                          href: "access-code",
+                          text: "Change",
+                          visuallyHiddenText: "change access code"
+                          }
+                      ]
+                      }
+                  }
+                  ), guaranteeSummary) %}
+
         {% else %}
                   
 
@@ -155,57 +176,9 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                   }
               ), guaranteeSummary) %}
 
-            {% if data['liabilityAmount'] | length != "0" %}
-
-
-              {% set guaranteeSummary = (guaranteeSummary.push(
-                                {
-                      key: {
-                        text: "Liability amount"
-                      },
-                      value: {
-                        text: data['liabilityAmount']
-                      },
-                      actions: {
-                        items: [
-                          {
-                            href: "liability-amount",
-                            text: "Change",
-                            visuallyHiddenText: "change liability amount"
-                          }
-                        ]
-                      }
-                    }
-                ), guaranteeSummary) %}
-            
-            {% endif %}
-
         {% endif %}
 
-        {% if data['access-code'] | length != "0" %}
-
-        {%
-          set guaranteeSummary = (guaranteeSummary.push( 
-            {
-                    key: {
-                    text: "Access code"
-                    },
-                    value: {
-                    text: "••••"
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "access-code",
-                        text: "Change",
-                        visuallyHiddenText: "change access code"
-                        }
-                    ]
-                    }
-                }
-                ), guaranteeSummary) %}
-
-        {% endif %}
+        
 
 
         {{ govukSummaryList({
