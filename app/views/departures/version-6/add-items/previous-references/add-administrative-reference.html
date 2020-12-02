@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add a previous administrative reference? {{ data['pageTitleAddOn' ]}}
+Do you have a proof of customs status document for item {{data['itemNumber']}} {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,7 +23,7 @@ Do you need to add a previous administrative reference? {{ data['pageTitleAddOn'
         name: "adminRefResponse",
         fieldset: {
           legend: {
-            text: "Do you need to add a previous administrative reference?",
+            text: "Do you have a proof of customs status document for item " + data['itemNumber'] +"?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
