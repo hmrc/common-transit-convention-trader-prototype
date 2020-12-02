@@ -496,7 +496,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                 <div class="govuk-summary-list__row">
 
                     <dt class="govuk-summary-list__key">
-                        Add previous administrative reference?
+                        Have proof of customs status document for item {{ data['itemNumber']}}?
                     </dt>
                     <dd class="govuk-summary-list__value">
                         {{ data['adminRefResponse'] }}
@@ -504,7 +504,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="special-mention/add-special-mention">
                             Change<span class="govuk-visually-hidden">
-                                do you need to add previous administrative reference</span>
+                                if you have proof of union status for item {{ data['itemNumber']}}</span>
                         </a>
                     </dd>
                 </div>
@@ -515,7 +515,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                 {% for document in data['previousDocumentsArray'] %}
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                        Produced document or certificate {{ document.id }}
+                        Proof of customs status document {{ document.id }}
                     </dt>
                     <dd class="govuk-summary-list__value">
                         {{ document.type }}
@@ -523,16 +523,14 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="previous-references/reference-type">
                             Change<span class="govuk-visually-hidden">
-                                produced document or certificate {{ data['prevDocCount']}}</span>
+                                proof of customs status document {{ document.id }}</span>
                         </a>
                     </dd>
                 </div>
                 {% endfor %}
             </dl>
 
-            <p class="govuk-body"><a href="previous-references/add-another-document">Add or remove previous
-                    administrative references</a></p>
-
+            <p class="govuk-body"><a href="previous-references/add-another-document">Add or remove previous administrative references</a></p>
             {% else %}
             </dl>
             {% endif %}
