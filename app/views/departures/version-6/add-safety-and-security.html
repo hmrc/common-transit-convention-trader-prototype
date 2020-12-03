@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Are the goods moving to or through the European Union? {{ data['pageTitleAddOn']}}
+Do you need to add safety and security details? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,34 +14,32 @@ Are the goods moving to or through the European Union? {{ data['pageTitleAddOn']
   <div class="govuk-grid-column-two-thirds">
     <form class="form" method="post" action="task-list">
 
-      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="addSafetySecurityResponse-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              Do you need to add safety and security details?
+            </h1>
+          </legend>
 
-      {{ govukRadios({
-        idPrefix: "addSafetySecurityResponse",
-        name: "addSafetySecurityResponse",
-        fieldset: {
-          legend: {
-            text: "Are the goods moving to or through the European Union?",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--xl"
-          }
-        },
-        hint: {
-          text: ""
-        },
-        items: [
-          {
-            value: "Yes ",
-            text: "Yes"
-          },
-          {
-            value: "No ",
-            text: "No"
-          }
-        ]
-      }) }}
+          <p class="govuk-body">This information can be sent in an entry summary declaration instead. You should check the requirements of the countries the goods will be travelling through.</p>
 
-      {% from "govuk/components/button/macro.njk" import govukButton %}
+          <div class="govuk-radios govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="addSafetySecurityResponse" name="addSafetySecurityResponse" type="radio" value="Yes ">
+              <label class="govuk-label govuk-radios__label" for="addSafetySecurityResponse">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="addSafetySecurityResponse-2" name="addSafetySecurityResponse" type="radio" value="No ">
+              <label class="govuk-label govuk-radios__label" for="addSafetySecurityResponse-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
 
       {{ govukButton({
         text: "Save and continue"
