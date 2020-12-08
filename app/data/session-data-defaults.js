@@ -109,6 +109,9 @@ module.exports = {
 
   "mentionNumber" : 1,
 
+  // "dispatchCountry" : "United Kingdom12",
+  // "country-of-destination" : "United Kingdom",
+
   // "addSafetySecurityResponse" : "Yes",
   // "addPaymentMethodResponse" : "Yes",
   // "addCommercialReferenceResponse" : "Yes",
