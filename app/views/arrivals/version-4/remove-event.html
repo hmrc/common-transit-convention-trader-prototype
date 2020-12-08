@@ -21,39 +21,38 @@ Did something happen on the route? {{ data['pageTitleAddOn' ]}}
 
     {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-{{ govukRadios({
-  classes: "govuk-radios--inline",
-  idPrefix: "something-happened",
-  name: "something-happened",
-  fieldset: {
-    legend: {
-      text: heading,
-      isPageHeading: true, 
-      classes: "govuk-fieldset__legend--xl"
-    }
-  },
-  hint: {
-    text: ""
-  },
-  items: [
-    {
-      value: "Yes redirect(event-list)",
-      text: "Yes"
-    },
-    {
-      value: "No redirect(event-list)",
-      text: "No"
-    }
-  ]
-}) }}
+    {{ govukRadios({
+      classes: "govuk-radios--inline",
+      idPrefix: "something-happened",
+      name: "something-happened",
+      fieldset: {
+        legend: {
+          text: heading,
+          isPageHeading: true, 
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+        text: ""
+      },
+      items: [
+        {
+          value: "Yes redirect(event-list)",
+          text: "Yes"
+        },
+        {
+          value: "No redirect(event-list)",
+          text: "No"
+        }
+      ]
+    }) }}
 
+    {{ govukButton({
+      text: "Continue"
+    }) }}
 
-{{ govukButton({
-  text: "Continue"
-}) }}
-
-</form>
-{# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
+  </form>
+  <!-- <p><a href="homepage.html">Go back to manage transit movements</a></p> -->
 
   </div>
 </div>
