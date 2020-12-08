@@ -16,7 +16,7 @@ How much is the liability amount? {{ data['pageTitleAddOn' ]}}
 
     <!-- If the movement is a UK to UK movement, the default EUR10,000 guarantee is not available -->
 
-    {% if (data['dispatchCountry'] == "United Kingdom") and
+    {% if (data['dispatchCountry'] == "GB") and
           (data['country-of-destination'] == "United Kingdom")
     %}
 
