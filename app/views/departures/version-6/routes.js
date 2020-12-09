@@ -935,7 +935,7 @@ router.post('/add-items/previous-references/add-another-document-route', functio
 router.post('/add-items/security/security-routing', function (req, res) {
     let addSafetySecurityResponse = req.session.data.addSafetySecurityResponse;
     let addPaymentMethodResponse = req.session.data.addPaymentMethodResponse;
-    if (addSafetySecurityResponse == 'Yes') {
+    if (addSafetySecurityResponse == 'Yes ') {
         if (addPaymentMethodResponse == 'No')
             res.redirect('../security/transport-charges');
         else {
