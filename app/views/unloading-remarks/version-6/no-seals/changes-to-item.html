@@ -14,7 +14,8 @@ Tell us about the changes to this item {{ data['pageTitleAddOn' ]}}
   <div class="govuk-grid-column-two-thirds">
 
     <form class="form" action="unloading-remarks" method="post">
-
+      
+        <span class="govuk-caption-xl">{{ data['movement-reference'] }}</span>
         <h1 class="govuk-heading-xl">What has changed?</h1>
         {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 

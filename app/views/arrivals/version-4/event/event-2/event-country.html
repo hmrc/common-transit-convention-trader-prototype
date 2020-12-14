@@ -24,22 +24,6 @@ Which country did the event happen in? {{ data['pageTitleAddOn' ]}}
 
       <h1 class="govuk-heading-xl">Which country were the goods in when the event happened?</h1>
 
-      {# {{ govukSelect({
-        classes: "govuk-input--width-20 autocomplete-country",
-        label: {
-          text: header,
-          isPageHeading: true,
-          classes: "govuk-label--xl"
-        },
-        id: "event-country-2",
-        name: "event-country-2",
-        hint: {
-          text: " "
-        },
-        items: CTCData.countries,
-        value: data['event-country']
-      }) }} #}
-
       {{ govukSelect({
         classes: "govuk-input--width-20 autocomplete",
         label: {
@@ -50,7 +34,7 @@ Which country did the event happen in? {{ data['pageTitleAddOn' ]}}
         id: "event-country-2",
         name: "event-country-2",
         errorMessage: form.value.error,
-        items: CTCData.countries
+        items: CTCData.ctcOnlyCountries
       }) }}
 
       {{ govukButton({

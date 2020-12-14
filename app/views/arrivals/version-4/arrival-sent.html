@@ -24,12 +24,24 @@
         <p class="govuk-body"></p>
 
         <h2 class="govuk-heading-m">What happens next</h2>
+
+        {% if data['where-are-the-goods'] == "BorderForce" %}
       
-        <p class="govuk-body"><a href="../version-4/arrivals-history.html" class="govuk-link">Check the status of arrival notifications</a> and find out when goods are released. </p>
+        <p class="govuk-body"><a href="../version-4/arrivals-history.html" class="govuk-link">Check the status of arrival notifications</a> and find out when unloading permission has been granted.</p>
 
         <p class="govuk-body">If the goods are not released or you have another problem, contact Customs at Teesport, telephone 01642 440 111.</p> 
 
         <p class="govuk-body"><a href="../version-4/movement-reference" class="govuk-link">Make another arrival notification</a></p>
+
+        {% else %}
+
+        <p class="govuk-body"><a href="../version-4/arrivals-history.html" class="govuk-link">Check the status of arrival notifications</a> and find out when goods have been released.</p>
+
+        <p class="govuk-body">If the goods are not released or you have another problem, contact Customs at Teesport, telephone 01642 440 111.</p> 
+
+        <p class="govuk-body"><a href="../version-4/movement-reference" class="govuk-link">Make another arrival notification</a></p>
+
+        {% endif %}
 
 
       </div>
