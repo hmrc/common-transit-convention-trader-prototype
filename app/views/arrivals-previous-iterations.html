@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Arrivals previous iterations
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Arrivals previous iterations
+    </h1>
+
+    <!--
+      Arrivals
+    -->
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Date</th>
+          <th scope="col" class="govuk-table__header">Comments</th>
+          <th scope="col" class="govuk-table__header">Link</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">15/12/2020</td>
+          <td class="govuk-table__cell">Post go live iterations</td>
+          <td class="govuk-table__cell"><a href="/arrivals/version-5/triage/what-do-you-want-to-do">Version 5</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">05/02/2020</td>
+          <td class="govuk-table__cell">Go live version. Content changes after Fred’s content review when he first joined the team.</td>
+          <td class="govuk-table__cell"><a href="/arrivals/version-4/triage/what-do-you-want-to-do">Version 4</a></td>
+        </tr>  
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">05/02/2020</td>
+          <td class="govuk-table__cell">Any changes after Ladine left</td>
+          <td class="govuk-table__cell"><a href="/arrivals/version-3/index">Version 3</a></td>
+        </tr>  
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">20/12/2019</td>
+          <td class="govuk-table__cell">Iteration to include seals</td>
+          <td class="govuk-table__cell"><a href="/arrivals/version-2/index">Version 2</a></td>
+        </tr>        
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">14/11/2019</td>
+          <td class="govuk-table__cell">Iteration to collect if incident or transhipment<br> and response/error messages</td>
+          <td class="govuk-table__cell"><a href="/arrivals/version-1/index">Version 1</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">23/10/2019</td>
+          <td class="govuk-table__cell">First draft of arrivals</td>
+          <td class="govuk-table__cell"><a href="/arrivals/version-0/index">Version 0</a></td>
+        </tr>
+       
+      </tbody>
+    </table>
+
+  </div>
+</div>
+{% endblock %}

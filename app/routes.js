@@ -69,7 +69,7 @@ router.use('/unloading-remarks/version-4/seals-included', require('./views/unloa
 
 router.use('/unloading-remarks/version-5/seals-included', require('./views/unloading-remarks/version-5/seals-included/routes'));
 
-//Departures routing
+//Standard departures routing
 
 router.use('/departures/version-3', require('./views/departures/version-3/routes'));
 
@@ -79,9 +79,15 @@ router.use('/departures/version-5', require('./views/departures/version-5/routes
 
 router.use('/departures/version-6', require('./views/departures/version-6/routes'));
 
+router.use('/departures/version-7', require('./views/departures/version-7/routes'));
+
+//Departures static version routing
+
 router.use('/departures/static-v4', require('./views/departures/static-v4/routes'));
 
 router.use('/departures/static-v6', require('./views/departures/static-v6/routes'));
+
+router.use('/departures/static-v7', require('./views/departures/static-v7/routes'));
 
 
 module.exports = router

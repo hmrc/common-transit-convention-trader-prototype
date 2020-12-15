@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {% if (data['containerCount'] == "1") %}
+      You have added {{ data['containerCount'] }} shipping container {{ data['pageTitleAddOn']}}
+  {% else %}
+      You have added {{ data['containerCount'] }} shipping containers {{ data['pageTitleAddOn']}}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post" action="add-another-container">
+      <span class="govuk-caption-xl">{{ data['items'] }}</span>
+
+        <h1 class="govuk-heading-xl">
+          {% if (data['containerCount'] == "1") %}
+            You have added {{ data['containerCount']}} shipping container
+          {% else %}
+            You have added {{ data['containerCount']}} shipping containers
+          {% endif %}
+        </h1>
+
+      <div class="govuk-form-group">
+          
+          <table class="govuk-table hmrc-responsive-table" role="table">
+            <caption class="govuk-visually-hidden">shipping containers</caption>
+            <tbody>
+              {% for container in data['containersArray'] %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">{{ container.number }}</td>
+                <td class="govuk-table__cell govuk-table__cell--action"><a href="container-number">Change</a>  |  <a href="remove-container" >Remove</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "addAnotherContainer",
+          name: "addAnotherContainer",
+          fieldset: {
+            legend: {
+              text: "Do you need to add another shipping container?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        <br><br>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+    </form>
+
+    <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+  </div>
+</div>
+
+{% endblock %}

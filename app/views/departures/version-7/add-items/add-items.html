@@ -1,0 +1,131 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {% if (data['itemSize'] == "1") %}
+      You have added {{ data['itemSize'] }} item {{ data['pageTitleAddOn']}}
+  {% else %}
+      You have added {{ data['itemSize'] }} items {{ data['pageTitleAddOn']}}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post" action="item-description-route">
+      <span class="govuk-caption-xl">{{ data['items'] }}</span>
+      {# <h1 class="govuk-heading-xl">
+        Items added to list
+        {{ data['itemNumber']}}
+      </h1> #}
+      <h1 class="govuk-heading-xl">
+        {% if (data['itemSize'] == "1") %}
+          You have added {{ data['itemSize']}} item
+        {% else %}
+          You have added {{ data['itemSize']}} items
+        {% endif %}
+      </h1>
+
+      <div class="govuk-form-group">
+          <!-- {% if (data['itemsize'] == null) %}
+          
+          <h1 class="govuk-heading-m">
+            We have 0 items.
+          </h1>
+        
+          {% else %}
+          
+            <h1 class="govuk-heading-m">
+              We have {{ data['itemsize'] }} items.
+            </h1> -->
+          
+          <table class="govuk-table hmrc-responsive-table" role="table">
+            <caption class="govuk-visually-hidden">items</caption>
+            <tbody>
+              {% for item in data['itemsArray'] %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">{{ item.desciption }}</td>
+                <td class="govuk-table__cell govuk-table__cell--action"><a href="item-details/item-description">Change</a>  |  <a href="item-details/remove-item" >Remove</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+      
+
+          <!-- {% endif %} -->
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {# {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "addAnotherItem",
+          name: "addAnotherItem",
+          fieldset: {
+            legend: {
+              text: "Do you need to add another item?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes redirect(item-description)",
+              text: "Yes"
+            },
+            {
+              value: "no redirect(../../task-list)",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }} #}
+
+        <br><br>
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "add-another-item",
+          name: "addAnotherItem",
+          fieldset: {
+            legend: {
+              text: "Do you need to add another item?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes redirect(item-details/item-description)",
+              text: "Yes"
+            },
+            {
+              value: "No redirect(../task-list)",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        <br>
+        <br>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+    </form>
+
+    <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+  </div>
+</div>
+
+{% endblock %}

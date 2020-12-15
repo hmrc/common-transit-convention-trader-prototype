@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Does item {{ data['itemNumber']}} have a consignor? {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">{{ data['items'] }}</span>
+    <form class="form" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      <!-- data['event-place'] -->
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "add-consignor",
+        name: "add-consignor",
+        fieldset: {
+          legend: {
+            text: "Does item " + data['itemNumber'] + " have a consignor?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "Yes redirect(is-consignor-eori-known)",
+            text: "Yes"
+          },
+          {
+            value: "No redirect(check-answers)",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+
+    <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+  </div>
+</div>
+
+{% endblock %}

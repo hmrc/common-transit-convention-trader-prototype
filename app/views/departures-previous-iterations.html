@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Departures iterations
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Departures iterations
+    </h1>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Date</th>
+          <th scope="col" class="govuk-table__header">Comments</th>
+          <th scope="col" class="govuk-table__header">Link</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">24/11/2020</td>
+          <td class="govuk-table__cell">Version 7 of departures journey. Post live iterations to be added here.</td>
+          <td class="govuk-table__cell"><a href="departures/index-v7">Version 7</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">24/11/2020</td>
+          <td class="govuk-table__cell">Version 6 of departures journey. Changes from <a href="https://jira.tools.tax.service.gov.uk/browse/CTCTRADERS-1471">CTCTRADERS-1471</a> to be added.</td>
+          <td class="govuk-table__cell"><a href="departures/index-v6">Version 6</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">07/09/2020</td>
+          <td class="govuk-table__cell">Version 5 of departures journey. Changes from first round of UR, add items journey to be added.</td>
+          <td class="govuk-table__cell"><a href="departures/index-v5">Version 5</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">16/07/2020</td>
+          <td class="govuk-table__cell">Version 4 of departures journey. First round of UR conducted.</td>
+          <td class="govuk-table__cell"><a href="departures/index-v4">Version 4</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">4/05/2020</td>
+          <td class="govuk-table__cell">Version 3 of departures journey, picked up in Alpha</td>
+          <td class="govuk-table__cell"><a href="departures/version-3/local-reference-number">Version 3</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!--
+      Departures
+    -->
+
+    <h2 class="govuk-heading-m">Departures iterations (from Discovery)</h2>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Date</th>
+          <th scope="col" class="govuk-table__header">Comments</th>
+          <th scope="col" class="govuk-table__header">Link</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">28/11/2019</td>
+          <td class="govuk-table__cell">Version 2 of 'barebones' departures journey</td>
+          <td class="govuk-table__cell"><a href="departures/version-2/task-list">Version 2</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">11/11/2019</td>
+          <td class="govuk-table__cell">First draft of departures journey 1</td>
+          <td class="govuk-table__cell"><a href="departures/version-1/task-list">Version 1</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+{% endblock %}
