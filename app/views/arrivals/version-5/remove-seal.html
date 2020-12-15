@@ -1,0 +1,73 @@
+
+
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Remove seals {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Are you sure you want to remove this seal?</h1>
+
+  <form class="form" method="post">
+
+
+    <dl class="govuk-summary-list govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key" style="width: 48%">
+            Seal number or mark
+          </dt>
+          <dd class="govuk-summary-list__value" style="width: 62%">
+            1945488998768
+          </dd>
+        </div>
+      </dl>
+
+    
+
+
+    <h1 class="govuk-heading-s"></h1>
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "place-postcode",
+        name: "place-postcode",
+        fieldset: {
+          legend: {
+            text: heading,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "Yes redirect(seal-list)",
+            text: "Yes"
+          },
+          {
+            value: "No redirect(seal-list-2)",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+    {# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
+
+  </div>
+</div>
+{% endblock %}

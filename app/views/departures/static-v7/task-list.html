@@ -1,0 +1,143 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Declaration summary {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-xl">{{ data['local-reference-number']}}</span>
+    <h1 class="govuk-heading-xl">
+       Declaration summary
+    </h1>
+
+      <p class="govuk-body">You can save your declaration and come back later. You have 28 days from the first time you save to complete this declaration or your information will be deleted. </p>
+
+    <!-- 
+        New task list pattern
+      -->
+
+    <ol class="app-task-list">
+
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">Departure details
+        </h2>
+
+        <ul class="app-task-list__items">
+
+          <!-- Movement details -->
+
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="movement-details/declaration-type" aria-describedby="movement-details-completed">Edit movement details</a>
+            </span>
+            <span class="hmrc-status-tag" id="movement-details-completed">
+              Completed
+            </span>
+          </li>
+
+          <!-- Route -->
+
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="route/dispatch-country" aria-describedby="route-completed">Edit route</a>
+            </span>
+            <span class="hmrc-status-tag" id="route-completed">
+              Completed
+            </span>
+          </li>
+
+          <!-- Transport -->
+
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="transport/add-transport-details" aria-describedby="transport-completed">Edit transport</a>
+            </span>
+            <span class="hmrc-status-tag" id="transport-completed">
+              Completed
+            </span>
+          </li>
+
+          <!-- Trader details -->
+
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-completed">Edit trader’s details</a>
+            </span>
+            <span class="hmrc-status-tag" id="trader-details-completed">
+              Completed
+            </span>
+          </li>
+
+          <!-- Safety & Security Summary -->
+
+          {% if data['security-process'] == "Yes " %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="security/add-circumstance-indicator" aria-describedby="safety-and-security-details-completed">Edit safety and security details</a>
+            </span>
+            <span class="hmrc-status-tag" id="safety-and-security-details-completed">
+              Completed
+            </span>
+          </li>
+          {% endif %}
+
+          <!-- Add items -->
+          
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="add-items/item-details/item-description" aria-describedby="add-items-completed">Edit items</a>
+            </span>
+            <span class="hmrc-status-tag" id="add-items-completed">
+              Completed
+            </span>
+          </li>
+
+          <!-- Goods summary -->
+
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="goods-summary/items-declaring" aria-describedby="goods-summary-completed">Edit goods summary</a>
+            </span>
+            <span class="hmrc-status-tag" id="goods-summary-completed">
+              Completed
+            </span>
+          </li>
+          
+          <!-- Guarantee -->
+
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="guarantee/guarantee-type" aria-describedby="guarantee-completed">Edit guarantee</a>
+            </span>
+            <span class="hmrc-status-tag" id="guarantee-completed">
+              Completed
+            </span>
+          </li>
+
+        </ul>
+      </li>
+    </ol>
+
+    <h2 class="govuk-heading-m">Now pre-lodge your departure declaration</h2>
+
+      <p class="govuk-body">
+        By sending this you are confirming that the details you are providing are correct, to the best of your knowledge.
+      </p>
+
+      {{ govukButton({ text: "Pre-lodge declaration", href: "pre-lodged-confirmation" }) }}
+
+    <p class="govuk-body"><a href="homepage">Back to transit movements</a></p>
+
+  </div>
+</div>
+
+{% endblock %}

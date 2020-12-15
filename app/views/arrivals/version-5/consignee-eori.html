@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is the authorised consignee’s EORI number? {{ data['pageTitleAddOn'] }}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">What is the authorised consignee’s EORI number?</h1>
+
+    <form class="form" action="border-force-office" method="post">
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      {{ govukInput({
+        classes: "govuk-input--width-20",
+        hint: {
+          text: "The first 2 letters are the country code, like 'GB'. This is followed by up to 12 numbers, like GB123456123456."
+        },
+        id: "consignee-eori-number",
+        name: "consignee-eori-number"
+      }) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+    {# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
+
+
+  </div>
+</div>
+
+{% endblock %}

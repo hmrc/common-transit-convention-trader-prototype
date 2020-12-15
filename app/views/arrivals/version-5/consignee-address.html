@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is the authorised consignee’s address? {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form action="border-force-office" class="form" method="post">
+
+        <h1 class="govuk-heading-xl">What is {{ data['consignee-name'] }}’s address?</h1>
+
+        <p class="govuk-body">This is the address where GB123456789012345 is registered.</p>
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+        
+        {% call govukFieldset({
+          
+        }) %}
+        
+          {{ govukInput({
+            label: {
+              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+            },
+            id: "consignee-address-line-1",
+            classes: "govuk-!-width-two-thirds",
+            name: "consignee-address-line-1"
+          }) }}
+        
+          <!-- {{ govukInput({ 
+            label: {
+              html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+            },
+            id: "address-line-2",
+            name: "address-line-2"
+          }) }}-->
+        
+          {{ govukInput({
+            label: {
+              text: "Town or city"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "consignee-address-town",
+            name: "consignee-address-town"
+          }) }}
+
+        
+          {{ govukInput({
+            label: {
+              text: "Postcode"
+            },
+            classes: "govuk-input--width-10",
+            id: "consignee-address-postcode",
+            name: "consignee-address-postcode"
+          }) }}
+        
+        {% endcall %}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        {# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
+
+  </div>
+</div>
+
+{% endblock %}

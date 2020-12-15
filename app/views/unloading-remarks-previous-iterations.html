@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Unloading remarks iterations
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Unloading remarks iterations
+    </h1>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Date</th>
+          <th scope="col" class="govuk-table__header">Comments</th>
+          <th scope="col" class="govuk-table__header">Link</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">10/02/2020</td>
+          <td class="govuk-table__cell">Redesigned change/add item functionality</td>
+          <td class="govuk-table__cell"><a href="unloading-remarks/version-6/index">Version 6</a></td>
+        </tr>   
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">10/02/2020</td>
+          <td class="govuk-table__cell">Redesigned journey</td>
+          <td class="govuk-table__cell"><a href="unloading-remarks/version-5/index">Version 5</a></td>
+        </tr>   
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">10/02/2020</td>
+          <td class="govuk-table__cell">Start from homepage</td>
+          <td class="govuk-table__cell"><a href="unloading-remarks/version-4/index">Version 4</a></td>
+        </tr>    
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">05/02/2020</td>
+          <td class="govuk-table__cell">Tried removing yes/no questions - didn't work</td>
+          <td class="govuk-table__cell"><a href="unloading-remarks/version-3/index">Version 3</a></td>
+        </tr>      
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">27/01/2020</td>
+          <td class="govuk-table__cell">Full journey only with new information regarding business rules.</td>
+          <td class="govuk-table__cell"><a href="unloading-remarks/version-2/index">Version 2</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">14/01/2020</td>
+          <td class="govuk-table__cell">Early journey ideas (both full journey and workaround)</td>
+          <td class="govuk-table__cell"><a href="unloading-remarks/version-1/index">Version 1</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+{% endblock %}

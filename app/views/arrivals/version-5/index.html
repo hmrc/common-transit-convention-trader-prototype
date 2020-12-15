@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+       Version 3
+      </h1>
+
+      <p><a href="homepage.html">Home page</a> - manage arrivals</p>
+
+      <h2 class="govuk-heading-m">
+        View actions to be taken and rejection reason info from BF 
+       </h2>
+       <p>IE008 message (arrival notification rejection) has action to be taken and rejection reason fields that BF can fill in. We need to display these messages back to the user.</p>
+
+      <p><a href="rejected-arrivals/bf-actions-reasons/arrivals-history">View BF messages</a></p>
+     
+      <h2 class="govuk-heading-m">
+        Designs to cover core errors
+       </h2>
+       <p>We think the user will not get these. We have fixed these with journey design, new system and validation. Plan to monitor and record occurrences of these (if there are any).</p>
+       </p><p><a href="rejected-arrivals/generic-not-supported.html">Rejected code 15 not supported in this position</a> (data received that should not be)</p>
+      <p><a href="rejected-arrivals/generic-duplicate-reference.html">Rejected code 26 duplicate detected</a> (core receives messages with the same interchange reference)</p>
+      <p><a href="rejected-arrivals/generic-invalid-characters.html">Rejected code 37 invalid characters</a> (fixed with validation?)</p>
+     
+      <h3 class="govuk-heading-m">Added 11/03/2020</h3>
+      <p><a href="../version-3/cannot-access-service.html">You cannot access this service</a> error if authentication fails</p>
+    </div>
+  </div>
+
+{% endblock %}

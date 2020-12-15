@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Arrival notification received - Name of service - GOV.UK
+{% endblock %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    {% set mainClasses = "govuk-main-wrapper--l" %}
+
+    {% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+    {% block content %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            Sent arrival notification
+          </h1>
+          <div class="govuk-panel__body">
+            for movement reference number <br><strong>{{ data['movementReferenceReject'] }}</strong>
+          </div>
+        </div>
+
+        <p class="govuk-body"></p>
+
+        <h2 class="govuk-heading-m">What happens next</h2>
+        <p class="govuk-body"><a href="../../../unloading-remarks/version-6/arrivals-history-after-unloading-2" class="govuk-link">Check the status of arrival notifications</a> and find out when goods are released. </p>
+
+        <p class="govuk-body">If the goods are not released or you have another problem, contact Border Force at Teesport, telephone 01642 440 111.</p> 
+        
+        <p class="govuk-body">Go to 
+          <a href="../version-2/homepage.html" class="govuk-link">manage transit movements</a>
+        </p>
+
+      </div>
+    </div>
+       
+    </form>
+
+  </div>
+</div>
+{% endblock %}
