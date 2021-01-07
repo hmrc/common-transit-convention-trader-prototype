@@ -27,7 +27,7 @@ module.exports = {
 
   "movement-reference": "20NL5631291B1A3361",
 
-  "pageTitleAddOn": "– Common Transit Convention for traders – GOV.UK",
+  "pageTitleAddOn": "– Manage your transit movements – GOV.UK",
 
   "saveAndReturn": "Back to manage transit movements",
 
