@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the office of destination in {{ data['country-of-destination'] }}? {{ data['pageTitleAddOn']}}
+Which office in {{ data['movementDestinationCountry'] }} is the transit movement ending in? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block pageHead %}
@@ -21,9 +21,9 @@ What is the office of destination in {{ data['country-of-destination'] }}? {{ da
 
     <span class="govuk-caption-xl">{{ data['routeDetails'] }}</span>
 
-    <h1 class="govuk-heading-xl">What is the office of destination in {{ data['country-of-destination'] }}?</h1>
+    <h1 class="govuk-heading-xl">Which office in {{ data['movementDestinationCountry'] }} is the transit movement ending in?</h1>
 
-    <p class="govuk-body">This is the office in {{ data['country-of-destination'] }} where the transit movement is ending.</p>
+    <p class="govuk-body">This is the office where the transit movement is ending.</p>
 
     <form action="add-another-transit-office" class="form" method="post">
 
