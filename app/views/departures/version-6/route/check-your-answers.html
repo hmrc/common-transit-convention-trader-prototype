@@ -58,41 +58,37 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                 
               ), routeDetails) %}
 
-      {% if (data['add-country-of-destination'] == "Yes") %}
-      {% set routeDetails = (routeDetails.push(
-                  {
-                    key: {
-                      text: "Destination country"
-                    },
-                    value: {
-                      html: data['country-of-destination'] | getCountry
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "destination-country",
-                          text: "Change",
-                          visuallyHiddenText: "destination country"
-                        }
-                      ]
-                    }
-                  }
-        ), routeDetails) %}
-      {% endif %}
-
       {% set routeDetails = (routeDetails.push(
         
                   {
                     key: {
-                    text: "Destination country"
+                    text: "Country goods are ending"
                     },
                     value: {
-                    text: data['country-of-destination']
+                    text: data['country-of-destination'] | getCountry
                     },
                     actions: {
                     items: [
                         {
                         href: "destination-country",
+                        text: "Change",
+                        visuallyHiddenText: "destination country"
+                        }
+                    ]
+                    }
+                  },
+
+                  {
+                    key: {
+                    text: "Country transit movement is ending"
+                    },
+                    value: {
+                    text: data['movementDestinationCountry'] | getCountry
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "movement-destination-country",
                         text: "Change",
                         visuallyHiddenText: "destination country"
                         }
