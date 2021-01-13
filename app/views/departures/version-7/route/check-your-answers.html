@@ -58,67 +58,63 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                 
               ), routeDetails) %}
 
-      {% if (data['add-country-of-destination'] == "Yes") %}
       {% set routeDetails = (routeDetails.push(
-                  {
-                    key: {
-                      text: "Destination country"
-                    },
-                    value: {
-                      html: data['country-of-destination'] | getCountry
-                    },
-                    actions: {
-                      items: [
-                        {
-                          href: "destination-country",
-                          text: "Change",
-                          visuallyHiddenText: "destination country"
-                        }
-                      ]
-                    }
-                  }
-        ), routeDetails) %}
-      {% endif %}
 
-      {% set routeDetails = (routeDetails.push(
-        
-                  {
-                    key: {
-                    text: "Destination country"
-                    },
-                    value: {
-                    text: data['country-of-destination']
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "destination-country",
-                        text: "Change",
-                        visuallyHiddenText: "destination country"
-                        }
-                    ]
+              {
+                key: {
+                text: "Country goods are ending"
+                },
+                value: {
+                text: data['country-of-destination'] | getCountry
+                },
+                actions: {
+                items: [
+                    {
+                    href: "destination-country",
+                    text: "Change",
+                    visuallyHiddenText: "country goods are ending"
                     }
-                  },
+                ]
+                }
+              },
 
-                  {
-                    key: {
-                    text: "Destination office"
-                    },
-                    value: {
-                    text: data['office-of-destination'] | getOffice
-                    },
-                    actions: {
-                    items: [
-                        {
-                        href: "destination-office",
-                        text: "Change",
-                        visuallyHiddenText: "destination office"
-                        }
-                    ]
+              {
+                key: {
+                text: "Country transit movement is ending"
+                },
+                value: {
+                text: data['movementDestinationCountry'] | getCountry
+                },
+                actions: {
+                items: [
+                    {
+                    href: "movement-destination-country",
+                    text: "Change",
+                    visuallyHiddenText: "country transit movement is ending"
                     }
-                  }
-                
-              ), routeDetails) %}
+                ]
+                }
+              },
+
+              {
+                key: {
+                text: "Destination office"
+                },
+                value: {
+                text: data['office-of-destination'] | getOffice
+                },
+                actions: {
+                items: [
+                    {
+                    href: "destination-office",
+                    text: "Change",
+                    visuallyHiddenText: "destination office"
+                    }
+                ]
+                }
+              }
+            
+          ), routeDetails) %}
 
       {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',
@@ -156,7 +152,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                         {
                           href: "arrival-times-at-office-of-transit",
                           text: "Change",
-                          visuallyHiddenText: "office of transit 1"
+                          visuallyHiddenText: "arrival time at office of transit 1"
                         }
                       ]
                     }

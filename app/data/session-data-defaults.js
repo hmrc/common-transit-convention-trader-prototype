@@ -99,7 +99,7 @@ module.exports = {
 
   "securityProcess" : "Yes",
 
-  "safetySecurity" : "Safety and Security",
+  "safetySecurity" : "Safety and security",
 
   "addSafetySecurityResponse" : "Yes",
 

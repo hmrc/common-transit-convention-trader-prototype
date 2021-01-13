@@ -1,17 +1,17 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Which office in {{ data['movementDestinationCountry'] }} is the transit movement ending in? {{ data['pageTitleAddOn']}}
+What country is the transit movement ending in? {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
 
 {% block pageHead %}
 <!--[if gt IE 8]><!-->
 <link href="/public/stylesheets/accessible-autocomplete.css" media="all" rel="stylesheet" type="text/css" />
 <!--<![endif]-->
-{% endblock %}
-
-{% block beforeContent %}
-<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -21,11 +21,11 @@ Which office in {{ data['movementDestinationCountry'] }} is the transit movement
 
     <span class="govuk-caption-xl">{{ data['routeDetails'] }}</span>
 
-    <h1 class="govuk-heading-xl">What office in {{ data['movementDestinationCountry'] }} is the transit movement ending in?</h1>
+    <h1 class="govuk-heading-xl">What country is the transit movement ending in?</h1>
 
-    <p class="govuk-body">This is the office where the transit movement is ending.</p>
+    <!-- <p class="govuk-body">This may not be where the transit movement ends.</p> -->
 
-    <form action="add-another-transit-office" class="form" method="post">
+    <form action="destination-office" class="form" method="post">
 
       {{ govukSelect({
         classes: "govuk-input--width-20 autocomplete",
@@ -34,10 +34,10 @@ Which office in {{ data['movementDestinationCountry'] }} is the transit movement
           isPageHeading: true,
           classes: "govuk-label--xl"
         },
-        id: "office-of-destination",
-        name: "office-of-destination",
+        id: "movementDestinationCountry",
+        name: "movementDestinationCountry",
         errorMessage: form.value.error,
-        items: CTCData.officesOfDeparture
+        items: CTCData.ctcOnlyCountries
       }) }}
 
       {{ govukButton({
