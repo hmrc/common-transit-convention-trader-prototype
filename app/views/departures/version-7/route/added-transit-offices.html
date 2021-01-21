@@ -20,7 +20,7 @@ You have added 1 office of transit {{ data['pageTitleAddOn']}}
     <form class="form" method="post">
       {% if data['securityProcess'] == "Yes" %}
         {{ govukSummaryList({
-          classes: 'govuk-!-margin-bottom-9',
+          classes: 'govuk-!-margin-bottom-9 addToListSizing',
           rows: [
             {
               key: {
@@ -98,7 +98,7 @@ You have added 1 office of transit {{ data['pageTitleAddOn']}}
           },
           items: [
             {
-              value: "Yes redirect(add-another-transit-office",
+              value: "Yes redirect(office-of-transit-country)",
               text: "Yes"
             },
             {

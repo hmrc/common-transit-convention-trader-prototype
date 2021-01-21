@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What office of transit in {{ data ['officeOfTransitCountry'] }} do you want to add? {{ data['pageTitleAddOn']}}
+Which country is the office of transit in? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block pageHead %}
@@ -21,11 +21,13 @@ What office of transit in {{ data ['officeOfTransitCountry'] }} do you want to a
 
     <span class="govuk-caption-xl">{{ data['routeDetails'] }}</span>  
 
-    <h1 class="govuk-heading-xl">Which office of transit in {{ data ['officeOfTransitCountry'] }} do you want to add?</h1>
+    <h1 class="govuk-heading-xl">Which country is the office of transit in?</h1>
 
-    <p class="govuk-body">If there is no office of transit, enter the office of destination.</p>
+    <p class="govuk-body">You must add an office of transit for every customs border the route goes through. If there is no office of transit, enter the country of the office of destination.</p>
 
-    <form action="added-transit-offices-route" class="form" method="post">
+    <!-- <p class="govuk-body"></p> -->
+
+    <form action="add-another-transit-office" class="form" method="post">
 
       {{ govukSelect({
         classes: "govuk-input--width-20 autocomplete",
@@ -34,10 +36,10 @@ What office of transit in {{ data ['officeOfTransitCountry'] }} do you want to a
           isPageHeading: true,
           classes: "govuk-label--xl"
         },
-        id: "office-of-transit",
-        name: "office-of-transit",
+        id: "officeOfTransitCountry",
+        name: "officeOfTransitCountry",
         errorMessage: form.value.error,
-        items: CTCData.officeOfTransit
+        items: CTCData.ctcOnlyCountries
       }) }}
 
       {{ govukButton({

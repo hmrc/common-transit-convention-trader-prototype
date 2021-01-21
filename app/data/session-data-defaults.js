@@ -109,8 +109,6 @@ module.exports = {
 
   "mentionNumber" : 1,
 
-  // "office-of-departure" : 1,
-
   
 
   // "dispatchCountry" : "United Kingdom12",
