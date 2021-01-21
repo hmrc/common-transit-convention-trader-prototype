@@ -37,7 +37,8 @@ $(document).ready(function () {
         accessibleAutocomplete.enhanceSelectElement({
             selectElement: document.querySelector('.autocomplete'),
             minLength: 5,
-            showAllValues: true
+            showAllValues: true,
+            autoselect:false
         });
     }
     if(document.querySelector('.autocomplete-country') != null){

@@ -18,7 +18,7 @@ How much is the liability amount? {{ data['pageTitleAddOn' ]}}
 
     
 
-    {% if ('GB' in data['office-of-departure']) and (data['movementDestinationCountry'] == "United Kingdom") %}
+    {% if data['movementDestinationCountry'] == "United Kingdom" %}
 
     <form class="form" action="access-code" method="post">
 

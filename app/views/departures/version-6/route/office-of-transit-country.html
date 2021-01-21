@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Which office in {{ data['movementDestinationCountry'] }} is the transit movement ending in? {{ data['pageTitleAddOn']}}
+Which country is the office of transit in? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block pageHead %}
@@ -19,13 +19,15 @@ Which office in {{ data['movementDestinationCountry'] }} is the transit movement
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <span class="govuk-caption-xl">{{ data['routeDetails'] }}</span>
+    <span class="govuk-caption-xl">{{ data['routeDetails'] }}</span>  
 
-    <h1 class="govuk-heading-xl">What office in {{ data['movementDestinationCountry'] }} is the transit movement ending in?</h1>
+    <h1 class="govuk-heading-xl">Which country is the office of transit in?</h1>
 
-    <p class="govuk-body">This is the office where the transit movement is ending.</p>
+    <p class="govuk-body">You must add an office of transit for every customs border the route goes through. If there is no office of transit, enter the country of the office of destination.</p>
 
-    <form action="office-of-transit-country" class="form" method="post">
+    <!-- <p class="govuk-body"></p> -->
+
+    <form action="add-another-transit-office" class="form" method="post">
 
       {{ govukSelect({
         classes: "govuk-input--width-20 autocomplete",
@@ -34,10 +36,10 @@ Which office in {{ data['movementDestinationCountry'] }} is the transit movement
           isPageHeading: true,
           classes: "govuk-label--xl"
         },
-        id: "office-of-destination",
-        name: "office-of-destination",
+        id: "officeOfTransitCountry",
+        name: "officeOfTransitCountry",
         errorMessage: form.value.error,
-        items: CTCData.officesOfDeparture
+        items: CTCData.ctcOnlyCountries
       }) }}
 
       {{ govukButton({
@@ -45,7 +47,7 @@ Which office in {{ data['movementDestinationCountry'] }} is the transit movement
       }) }}
 
       <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
-
+      
     </form>
 
   </div>
