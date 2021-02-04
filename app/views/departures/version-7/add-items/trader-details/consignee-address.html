@@ -21,7 +21,7 @@ What is the consignee’s address? {{ data['pageTitleAddOn']}}
     <span class="govuk-caption-xl">{{ data['items'] }}</span>
     <form class="form" action="../packages/package-type" method="post">
 
-        <h1 class="govuk-heading-xl">What is {{ data['consigneeName'] }}’s address?</h1>
+        <h1 class="govuk-heading-xl">What is {{ data['consigneeName'] }}’s address for item {{ data['itemNumber'] }}?</h1>
 
         {{ govukInput({
           label: {

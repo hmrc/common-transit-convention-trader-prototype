@@ -33,7 +33,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     <!-- Item description -->
 
                     <dt class="govuk-summary-list__key">
-                        Description of item {{ data['itemsize']}}
+                        Description of item {{ data['itemNumber']}}
                     </dt>
                     <dd class="govuk-summary-list__value">
                         {{ data['itemDescription'] }}
@@ -41,7 +41,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="item-details/item-description">
                             Change<span class="govuk-visually-hidden">
-                                description of item {{ data['itemsize']}}</span>
+                                description of item {{ data['itemNumber']}}</span>
                         </a>
                     </dd>
                 </div>
@@ -50,7 +50,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                        Total gross mass for item {{ data['itemsize']}}
+                        Total gross mass for item {{ data['itemNumber']}}
                     </dt>
                     <dd class="govuk-summary-list__value">
                         {{ data['grossMass'] }}
@@ -58,7 +58,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="item-details/total-net-mass">
                             Change<span class="govuk-visually-hidden">
-                                total gross mass for item {{ data['itemsize']}}</span>
+                                total gross mass for item {{ data['itemNumber']}}</span>
                         </a>
                     </dd>
                 </div>
@@ -67,7 +67,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                        Declare total net mass for item {{ data['itemsize']}}?
+                        Declare total net mass for item {{ data['itemNumber']}}?
                     </dt>
                     <dd class="govuk-summary-list__value">
                         {{ data['netMassResponse'] }}
@@ -75,7 +75,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="item-details/add-total-net-mass">
                             Change<span class="govuk-visually-hidden">
-                                declare total net mass for item {{ data['itemsize']}}</span>
+                                declare total net mass for item {{ data['itemNumber']}}</span>
                         </a>
                     </dd>
                 </div>
@@ -84,7 +84,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                        Total net mass for item {{ data['itemsize']}}
+                        Total net mass for item {{ data['itemNumber']}}
                     </dt>
                     <dd class="govuk-summary-list__value">
                         {{ data['netMass'] }}
@@ -92,7 +92,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="item-details/total-net-mass">
                             Change<span class="govuk-visually-hidden">
-                                total net mass for item {{ data['itemsize']}}</span>
+                                total net mass for item {{ data['itemNumber']}}</span>
                         </a>
                     </dd>
                 </div>
@@ -103,7 +103,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                        Does item {{ data['itemsize']}} have a commodity code?
+                        Does item {{ data['itemNumber']}} have a commodity code?
                     </dt>
                     <dd class="govuk-summary-list__value">
                         {{ data['commodityCodeResponse'] }}
@@ -111,7 +111,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="item-details/is-commodity-code-known">
                             Change<span class="govuk-visually-hidden">
-                                if item {{ data['itemsize']}} has a commodity code</span>
+                                if item {{ data['itemNumber']}} has a commodity code</span>
                         </a>
                     </dd>
                 </div>
@@ -120,7 +120,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                        Commodity code for item {{ data['itemsize']}}
+                        Commodity code for item {{ data['itemNumber']}}
                     </dt>
                     <dd class="govuk-summary-list__value">
                         {{ data['itemCode'] }}
@@ -128,7 +128,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="item-details/commodity-code">
                             Change<span class="govuk-visually-hidden">
-                                commodity code for item {{ data['itemsize']}}</span>
+                                commodity code for item {{ data['itemNumber']}}</span>
                         </a>
                     </dd>
                 </div>
@@ -157,7 +157,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                        Know consignor’s EORI number?
+                        Know consignor’s EORI number for item {{ data['itemNumber'] }}?
                     </dt>
                     <dd class="govuk-summary-list__value">
                         {{ data['is-consignor-eori-known'] }}
@@ -165,7 +165,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="is-consignor-eori-known">
                             Change<span class="govuk-visually-hidden">
-                                do you know the consignor’s EORI number</span>
+                                do you know the consignor’s EORI number for item {{ data['itemNumber'] }}</span>
                         </a>
                     </dd>
                 </div>
@@ -174,7 +174,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                        Consignor’s EORI number
+                        Consignor’s EORI number for item {{ data['itemNumber'] }}
                     </dt>
                     <dd class="govuk-summary-list__value">
                         {{ data['consignorEORINumber'] }}
@@ -182,7 +182,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="what-is-consignor-eori">
                             Change<span class="govuk-visually-hidden">
-                                consignor’s EORI number</span>
+                                consignor’s EORI number for item {{ data['itemNumber'] }}</span>
                         </a>
                     </dd>
                 </div>
@@ -191,7 +191,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                        Consignor’s name
+                        Consignor’s name for item {{ data['itemNumber'] }}
                     </dt>
                     <dd class="govuk-summary-list__value">
                         {{ data['consignorName'] }}
@@ -199,14 +199,14 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="consignor-name">
                             Change<span class="govuk-visually-hidden">
-                                consignor’s name</span>
+                                consignor’s name for item {{ data['itemNumber'] }}</span>
                         </a>
                     </dd>
                 </div>
 
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                        Consignor’s address
+                        Consignor’s address for item {{ data['itemNumber'] }}
                     </dt>
                     <dd class="govuk-summary-list__value">
                         {{ data['consignor-number-street'] }} </br>
@@ -217,7 +217,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="consignor-address">
                             Change<span class="govuk-visually-hidden">
-                                consignor’s address</span>
+                                consignor’s address for item {{ data['itemNumber'] }}</span>
                         </a>
                     </dd>
                 </div>
@@ -240,7 +240,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                        Know consignee’s EORI number?
+                        Know consignee’s EORI number for item {{ data['itemNumber'] }}
                     </dt>
                     <dd class="govuk-summary-list__value">
                         {{ data['is-consignee-eori-known'] }}
@@ -248,7 +248,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="is-consignee-eori-known">
                             Change<span class="govuk-visually-hidden">
-                                do you know the consignee’s EORI number</span>
+                                do you know the consignee’s EORI number for item {{ data['itemNumber'] }}</span>
                         </a>
                     </dd>
                 </div>
@@ -257,7 +257,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                        Consignee’s EORI number
+                        Consignee’s EORI number for item {{ data['itemNumber'] }}
                     </dt>
                     <dd class="govuk-summary-list__value">
                         {{ data['consigneeEORINumber'] }}
@@ -265,7 +265,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="what-is-consignee-eori">
                             Change<span class="govuk-visually-hidden">
-                                consignee’s EORI number</span>
+                                consignee’s EORI number for item {{ data['itemNumber'] }}</span>
                         </a>
                     </dd>
                 </div>
@@ -274,7 +274,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                        Consignee’s name
+                        Consignee’s name for item {{ data['itemNumber'] }}
                     </dt>
                     <dd class="govuk-summary-list__value">
                         {{ data['consigneeName'] }}
@@ -282,14 +282,14 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="consignee-name">
                             Change<span class="govuk-visually-hidden">
-                                consignee’s name</span>
+                                consignee’s name for item {{ data['itemNumber'] }}</span>
                         </a>
                     </dd>
                 </div>
 
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                        Consignee’s address
+                        Consignee’s address for item {{ data['itemNumber'] }}
                     </dt>
                     <dd class="govuk-summary-list__value">
                         {{ data['consignee-number-street'] }} </br>
@@ -300,7 +300,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     <dd class="govuk-summary-list__actions">
                         <a class="govuk-link" href="consignee-address">
                             Change<span class="govuk-visually-hidden">
-                                consignee’s address</span>
+                                consignee’s address for item {{ data['itemNumber'] }}</span>
                         </a>
                     </dd>
                 </div>

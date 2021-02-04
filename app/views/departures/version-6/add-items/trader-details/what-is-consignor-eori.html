@@ -15,7 +15,7 @@ What is the consignor’s EORI number? {{ data['pageTitleAddOn']}}
     <span class="govuk-caption-xl">{{ data['items'] }}</span>
     <form class="form" action="consignor-eori-route" method="post">
 
-        <h1 class="govuk-heading-xl">What is the consignor’s EORI number?</h1>
+        <h1 class="govuk-heading-xl">What is the consignor’s EORI number for item {{ data['itemNumber'] }}?</h1>
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
         

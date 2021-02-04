@@ -122,7 +122,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
               }) }}
 
       {% set transitOffices = [] %}
-      {% if data['securityProcess'] == "Yes" %}
+      {% if data['addSafetySecurityResponse'] == "Yes" %}
       {% set transitOffices = (transitOffices.push(
               {
                     key: {
@@ -159,9 +159,9 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                   }  
 
               ), transitOffices) %}
-              {% endif %}
-              {% if data['securityProcess'] == "No" %}
-      {% set transitOffices = (transitOffices.push(
+              {% else %}
+
+              {% set transitOffices = (transitOffices.push(
               {
                     key: {
                       text: "Office of transit 1"

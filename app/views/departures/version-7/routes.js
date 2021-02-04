@@ -40,7 +40,7 @@ router.post('/cancel-departure', function (req, res) {
 */
 
 router.post('/route/added-transit-offices-route', function (req, res) {
-    let securityVal = req.session.data.securityProcess;
+    let securityVal = req.session.data.addSafetySecurityResponse;
     if (securityVal == 'Yes') {
         res.redirect('arrival-times-at-office-of-transit');
     } else {
@@ -1146,10 +1146,10 @@ router.post('/goods-summary/total-packages', function (req, res) {
 
 router.post('/goods-summary/total-gross-mass', function (req, res) {
 
-    let securityProcess = req.session.data.securityProcess;
+    let addSafetySecurityResponse = req.session.data.addSafetySecurityResponse;
     let departuresProcedureType = req.session.data.departuresProcedureType;
 
-    if (securityProcess == 'Yes') {
+    if (addSafetySecurityResponse == 'Yes') {
         res.redirect('loading-place');
     } else {
 

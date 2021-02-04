@@ -18,7 +18,7 @@ You have added 1 office of transit {{ data['pageTitleAddOn']}}
     <h1 class="govuk-heading-xl">You have added 1 office of transit</h1>
 
     <form class="form" method="post">
-      {% if data['securityProcess'] == "Yes" %}
+      {% if data['addSafetySecurityResponse'] == "Yes" %}
         {{ govukSummaryList({
           classes: 'govuk-!-margin-bottom-9 addToListSizing',
           rows: [
@@ -50,8 +50,9 @@ You have added 1 office of transit {{ data['pageTitleAddOn']}}
             }
           ]
         }) }}
-        {% endif %}
-        {% if data['securityProcess'] == "No" %}
+        
+        {% else %}
+
         {{ govukSummaryList({
           classes: 'govuk-!-margin-bottom-9',
           rows: [

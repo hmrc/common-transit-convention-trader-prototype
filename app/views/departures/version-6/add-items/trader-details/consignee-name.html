@@ -17,7 +17,7 @@ What is the consignee’s name? {{ data['pageTitleAddOn']}}
 
         {{ govukInput({
           label: {
-            text: "What is the consignee’s name?",
+            text: "What is the consignee’s name for item " + data['itemNumber']+"?",
             classes: "govuk-label--xl",
             isPageHeading: true
           },
