@@ -1020,6 +1020,28 @@ router.post('/add-items/security/check-answers-route', function (req, res) {
     If the user selects 2,20 take them to "add nationality at departure?"
 */
 
+// router.post('/transport/inland-mode', function (req, res) {
+
+//     let inlandMode = req.session.data.inlandMode;
+//     let containersUsed = req.session.data.containersUsed;
+
+//     if ((inlandMode == '(5) Postal Consignment' ||
+//         inlandMode == '(50) Postal Consignment' ||
+//         inlandMode == '(7) Fixed transport installations' ||
+//         inlandMode == '(70) Fixed transport installations' ||
+//         (containersUsed == 'Yes ')
+//     )) {
+//         res.redirect('nationality-at-departure');
+//     } else if ((inlandMode == '(2) Rail transport' ||
+//         inlandMode == '(20) Rail transport'
+//     )) {
+//         res.redirect('change-at-border');
+//     } else {
+//         res.redirect('add-id-at-departure')
+//     }
+
+// })
+
 router.post('/transport/inland-mode', function (req, res) {
 
     let inlandMode = req.session.data.inlandMode;
@@ -1028,19 +1050,44 @@ router.post('/transport/inland-mode', function (req, res) {
     if ((inlandMode == '(5) Postal Consignment' ||
         inlandMode == '(50) Postal Consignment' ||
         inlandMode == '(7) Fixed transport installations' ||
-        inlandMode == '(70) Fixed transport installations' ||
-        (containersUsed == 'Yes ')
+        inlandMode == '(70) Fixed transport installations'
     )) {
-        res.redirect('nationality-at-departure');
-    } else if ((inlandMode == '(2) Rail transport' ||
+        res.redirect('change-at-border');
+
+    } else {
+
+        if (containersUsed == 'Yes') {
+            res.redirect('add-id-at-departure');
+        } else {
+            res.redirect('id-at-departure');
+            }
+        }
+})
+
+router.post('/transport/nationality-at-departure-route', function (req, res) {
+
+    let inlandMode = req.session.data.inlandMode;
+    let containersUsed = req.session.data.containersUsed;
+
+    if ((inlandMode == '(5) Postal Consignment' ||
+        inlandMode == '(50) Postal Consignment' ||
+        inlandMode == '(7) Fixed transport installations' ||
+        inlandMode == '(70) Fixed transport installations' ||
+        inlandMode == '(2) Rail transport' ||
         inlandMode == '(20) Rail transport'
     )) {
         res.redirect('change-at-border');
-    } else {
-        res.redirect('add-id-at-departure')
-    }
 
+    } else {
+
+        if (containersUsed == 'Yes') {
+            res.redirect('add-nationality-at-departure');
+        } else {
+            res.redirect('nationality-at-departure');
+            }
+        }
 })
+
 
 /*
     Add ID at departure
@@ -1066,8 +1113,19 @@ router.post('/transport/id-at-departure', function (req, res) {
 });
 
 //Add ID at departure later to change at border
-router.post('/transport/add-id-at-departure-later', function (req, res) {
-    res.redirect('nationality-at-departure');
+// router.post('/transport/add-id-at-departure-later', function (req, res) {
+//     res.redirect('nationality-at-departure');
+// });
+
+router.post('/transport/add-nationality-at-departure-route', function (req, res) {
+
+    let addNationalityAtDeparture = req.session.data.addNationalityAtDeparture;
+
+    if (addNationalityAtDeparture == 'Yes') {
+        res.redirect('nationality-at-departure');
+    } else {
+        res.redirect('change-at-border');
+    }
 });
 
 //Nationality at departure to change at border
