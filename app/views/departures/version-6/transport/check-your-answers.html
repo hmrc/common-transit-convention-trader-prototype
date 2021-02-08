@@ -93,6 +93,32 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
       {% endif %}
 
+      <!-- Add nationality at departure -->
+
+      {% if data['addNationalityAtDeparture'] | length != "0" %}
+
+      {% set transportDetails = (transportDetails.push(
+            {
+                key: {
+                  text: "Add nationality at departure?"
+                },
+                value: {
+                  html: data['addNationalityAtDeparture']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "add-nationality-at-departure",
+                      text: "Change",
+                      visuallyHiddenText: "add nationality at departure"
+                    }
+                  ]
+                }
+              }
+            ), transportDetails) %}
+
+      {% endif %}
+
       <!-- Nationality at departure -->
 
       {% if data['nationality-at-departure'] | length != "0" %}
