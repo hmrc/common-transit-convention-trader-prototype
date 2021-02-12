@@ -214,14 +214,14 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
           Simplified procedure - consignee's details
         -->
 
-          {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
+        {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
+      
 
+        {% set consigneeDetails = [] %}
 
-          {% set consigneeDetails = [] %}
+        <h2 class="govuk-heading-m">Consignee’s details</h1>
 
-          <h2 class="govuk-heading-m">Authorised consignee’s details</h1>
-
-            {# {% set consigneeDetails = (consigneeDetails.push(
+        {% set consigneeDetails = (consigneeDetails.push(
                 {
                     key: {
                     text: "What is the name of the authorised consignee?"
@@ -232,19 +232,19 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
                     actions: {
                     items: [
                         {
-                        href: "#",
+                        href: "consignee-address",
                         text: "Change",
-                        visuallyHiddenText: "Authorised consignee’s name"
+                        visuallyHiddenText: "what is the name of the authorised consignee"
                         }
                     ]
                     }
                 }
-                ), consigneeDetails) %} #}
+                ), consigneeDetails) %}
 
             {% set consigneeDetails = (consigneeDetails.push(
                     {
                     key: {
-                    html: "Is GB123456789012345 the EORI number for the authorised consignee?"
+                    html: "Is GB123456789012345 the EORI number for "+ data['consignee-name'] + "?"
                     },
                     value: {
                     text: data['consigneeEoriToUse']
@@ -254,7 +254,7 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
                         {
                         href: "consignee-eori-to-use",
                         text: "Change",
-                        visuallyHiddenText: "if this is the EORI number for authorised consignee"
+                        visuallyHiddenText: "is GB123456789012345 the EORI number for "+ data['consignee-name'] + "?"
                         }
                     ]
                     }
@@ -266,7 +266,7 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
             {% set consigneeDetails = (consigneeDetails.push(
                 {
                     key: {
-                    html: "What is the EORI number for the authorised consignee?"
+                    html: "What is the EORI number for " + data['consignee-name'] + "?"
                     },
                     value: {
                     text: data['consignee-eori-number']
@@ -276,7 +276,7 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
                         {
                         href: "consignee-eori",
                         text: "Change",
-                        visuallyHiddenText: "which Border Force office supervises this place"
+                        visuallyHiddenText: "what is the EORI number for " + data['consignee-name'] + "?"
                         }
                     ]
                     }
@@ -285,7 +285,7 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
 
             {% endif %}
 
-            {# {% set consigneeDetails = (consigneeDetails.push(
+           {% set consigneeDetails = (consigneeDetails.push(
                 {
                         key: {
                           text: "Address"
@@ -303,14 +303,14 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
                           ]
                         }
                       }
-                ), consigneeDetails) %} #}
+                ), consigneeDetails) %}
 
-            {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
+        {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
+
               {% set consigneeDetails = (consigneeDetails.push(
-
                   {
                   key: {
-                    text: "Customs supervising office"
+                    text: "Which Customs office supervises " + data['consignee-name'] + "’s address?"
                   },
                   value: {
                     text: data['border-force-office'] | getOffice
@@ -319,12 +319,14 @@ Check your answers before sending this arrival notification {{ data['pageTitleAd
                     items: [{
                       href: "border-force-office",
                       text: "Change",
-                      visuallyHiddenText: "Customs supervising office"
+                      visuallyHiddenText: "Change which customs office supervises " + data['consignee-name'] + "’s address?"
                     }]
                   }
                 }
               ), consigneeDetails) %}
-            {% endif %}
+
+        {% endif %}
+            
 
             {{ govukSummaryList({
                 classes: 'govuk-!-margin-bottom-9',

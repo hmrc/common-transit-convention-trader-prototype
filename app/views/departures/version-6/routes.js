@@ -442,6 +442,11 @@ router.post('/add-items/trader-details/consignor-eori-route', function (req, res
     }
 })
 
+/* 
+    Consignor EORI needs to go to consignor's name
+    Consignor's address needs to do the route above 
+*/
+
 router.post('/add-items/trader-details/consignor-address-route', function (req, res) {
 
     var sessionData = req.session.data;
@@ -467,7 +472,7 @@ router.post('/add-items/item-details/save-item', function (req, res) {
     var itemsArray = sessionData.itemsArray || [];
     var item = {
         "id": itemsArray.length + 1,
-        "desciption": sessionData.itemDescription,
+        "description": sessionData.itemDescription,
         "grossMass": sessionData.grossMass,
         "netMass": sessionData.netMass,
         "code": sessionData.itemCode
@@ -477,10 +482,6 @@ router.post('/add-items/item-details/save-item', function (req, res) {
     sessionData.itemsize = itemsArray.length;
     sessionData.itemNumber = itemsArray.length + 1;
 
-
-
-
-    // res.redirect('../add-items');
     res.redirect('../check-answers');
 })
 
@@ -944,6 +945,9 @@ router.post('/add-items/security/security-routing', function (req, res) {
         }
     } else {
         res.redirect('../check-answers');
+        // /add-items/item-details/save-item
+
+        /* Does this need to go to save answer route then check your answers?*/
     }
 })
 
