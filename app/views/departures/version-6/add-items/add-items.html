@@ -1,10 +1,12 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  {% if (data['itemSize'] == "1") %}
-      You have added {{ data['itemSize'] }} item {{ data['pageTitleAddOn']}}
+  {% if (data['itemsize'] == "1") %}
+      You have added {{ data['itemsize'] }} item {{ data['pageTitleAddOn']}}
+  {% elif (data['itemsize'] > "1") %}
+      You have added {{ data['itemsize'] }} items {{ data['pageTitleAddOn']}}
   {% else %}
-      You have added {{ data['itemSize'] }} items {{ data['pageTitleAddOn']}}
+      You have added 0 items {{ data['pageTitleAddOn']}}
   {% endif %}
 {% endblock %}
 
@@ -24,10 +26,12 @@
         {{ data['itemNumber']}}
       </h1> #}
       <h1 class="govuk-heading-xl">
-        {% if (data['itemSize'] == "1") %}
-          You have added {{ data['itemSize']}} item
+        {% if (data['itemsize'] == "1") %}
+          You have added {{ data['itemsize']}} item
+        {% elif (data['itemsize'] > "1") %}
+          You have added {{ data['itemsize']}} items
         {% else %}
-          You have added {{ data['itemSize']}} items
+          You have added 0 items
         {% endif %}
       </h1>
 
@@ -49,7 +53,7 @@
             <tbody>
               {% for item in data['itemsArray'] %}
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell">{{ item.desciption }}</td>
+                <td class="govuk-table__cell">{{ item.itemDescription }}</td>
                 <td class="govuk-table__cell govuk-table__cell--action"><a href="item-details/item-description">Change</a>  |  <a href="item-details/remove-item" >Remove</a></td>
               </tr>
               {% endfor %}

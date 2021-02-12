@@ -852,6 +852,20 @@ router.post('/add-items/check-answers-route', function (req, res) {
     var previousDocumentsArray = sessionData.previousDocumentsArray;
     previousDocumentsArray = [];
     sessionData.previousDocumentsArray = previousDocumentsArray;
+
+    var itemsArray = sessionData.itemsArray || [];
+    var item = {
+        "id": itemsArray.length + 1,
+        "itemDescription": sessionData.itemDescription,
+        "grossMass": sessionData.grossMass,
+        "netMass": sessionData.netMass,
+        "code": sessionData.itemCode
+    }
+    itemsArray.push(item);
+    sessionData.itemsArray = itemsArray;
+    sessionData.itemsize = itemsArray.length;
+    sessionData.itemNumber = itemsArray.length + 1;
+
     res.redirect('add-items');
 })
 
@@ -930,7 +944,7 @@ router.post('/add-items/previous-references/add-another-document-route', functio
 
 
 /**
- * security details routing
+ * add item security details routing
  */
 router.post('/add-items/security/security-routing', function (req, res) {
     let addSafetySecurityResponse = req.session.data.addSafetySecurityResponse;
