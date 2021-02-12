@@ -90,7 +90,7 @@
     {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
       {% set goodsLocation = (goodsLocation.push({
         key: {
-          text: "Authorised location code"
+          text: "Authorised location"
         },
         value: {
           text: data['authorised-location-code']
@@ -99,7 +99,7 @@
           items: [{
             href: "authorised-location-code",
             text: "Change",
-            visuallyHiddenText: "authorisation location code"
+            visuallyHiddenText: "authorisation location"
           }]
         }
       }), goodsLocation) %}
@@ -189,9 +189,9 @@
 
         {% set consigneeDetails = [] %}
 
-        <h2 class="govuk-heading-m">Authorised consignee’s details</h1>
+        <h2 class="govuk-heading-m">Consignee’s details</h1>
 
-        {# {% set consigneeDetails = (consigneeDetails.push(
+        {% set consigneeDetails = (consigneeDetails.push(
                 {
                     key: {
                     text: "What is the name of the authorised consignee?"
@@ -202,19 +202,19 @@
                     actions: {
                     items: [
                         {
-                        href: "#",
+                        href: "consignee-address",
                         text: "Change",
-                        visuallyHiddenText: "Authorised consignee’s name"
+                        visuallyHiddenText: "what is the name of the authorised consignee"
                         }
                     ]
                     }
                 }
-                ), consigneeDetails) %} #}
+                ), consigneeDetails) %}
 
             {% set consigneeDetails = (consigneeDetails.push(
                     {
                     key: {
-                    html: "Is GB123456789012345 the EORI number for the authorised consignee?"
+                    html: "Is GB123456789012345 the EORI number for "+ data['consignee-name'] + "?"
                     },
                     value: {
                     text: data['consigneeEoriToUse']
@@ -224,7 +224,7 @@
                         {
                         href: "consignee-eori-to-use",
                         text: "Change",
-                        visuallyHiddenText: "if this is the EORI number for authorised consignee"
+                        visuallyHiddenText: "is GB123456789012345 the EORI number for "+ data['consignee-name'] + "?"
                         }
                     ]
                     }
@@ -236,7 +236,7 @@
             {% set consigneeDetails = (consigneeDetails.push(
                 {
                     key: {
-                    html: "What is the EORI number for the authorised consignee?"
+                    html: "What is the EORI number for " + data['consignee-name'] + "?"
                     },
                     value: {
                     text: data['consignee-eori-number']
@@ -246,7 +246,7 @@
                         {
                         href: "consignee-eori",
                         text: "Change",
-                        visuallyHiddenText: "which Border Force office supervises this place"
+                        visuallyHiddenText: "what is the EORI number for " + data['consignee-name'] + "?"
                         }
                     ]
                     }
@@ -255,7 +255,7 @@
 
             {% endif %}
 
-            {# {% set consigneeDetails = (consigneeDetails.push(
+           {% set consigneeDetails = (consigneeDetails.push(
                 {
                         key: {
                           text: "Address"
@@ -273,14 +273,14 @@
                           ]
                         }
                       }
-                ), consigneeDetails) %} #}
+                ), consigneeDetails) %}
 
         {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
 
               {% set consigneeDetails = (consigneeDetails.push(
                   {
                   key: {
-                    text: "Customs supervising office"
+                    text: "Which Customs office supervises " + data['consignee-name'] + "’s address?"
                   },
                   value: {
                     text: data['border-force-office'] | getOffice
@@ -289,7 +289,7 @@
                     items: [{
                       href: "border-force-office",
                       text: "Change",
-                      visuallyHiddenText: "Customs supervising office"
+                      visuallyHiddenText: "Change which customs office supervises " + data['consignee-name'] + "’s address?"
                     }]
                   }
                 }
