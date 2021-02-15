@@ -170,8 +170,6 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     </dd>
                 </div>
 
-                {% if (data['is-consignor-eori-known'] == "Yes ") %}
-
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
                         Consignor’s EORI number for item {{ data['itemNumber'] }}
@@ -186,8 +184,6 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                         </a>
                     </dd>
                 </div>
-
-                {% else %}
 
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
@@ -224,8 +220,6 @@ Check your answers {{ data['pageTitleAddOn' ]}}
 
                 {% endif %}
 
-                {% endif %}
-
             </dl>
 
             <!-- 
@@ -253,8 +247,6 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     </dd>
                 </div>
 
-                {% if (data['is-consignee-eori-known'] == "Yes ") %}
-
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
                         Consignee’s EORI number for item {{ data['itemNumber'] }}
@@ -269,8 +261,6 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                         </a>
                     </dd>
                 </div>
-
-                {% else %}
 
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
@@ -304,8 +294,6 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                         </a>
                     </dd>
                 </div>
-
-                {% endif %}
 
                 {% endif %}
 
