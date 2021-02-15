@@ -528,7 +528,11 @@ Check your answers {{ data['pageTitleAddOn' ]}}
                     Safety and security
                 -->
 
+            {% if data['addSafetySecurityResponse'] == "Yes" %}
+
             <h2 class="govuk-heading-m">Safety and security</h2>
+
+            {% endif %}
 
                 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
