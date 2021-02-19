@@ -2,9 +2,9 @@
 
 {% block pageTitle %}
   {% if (data['prevDocCount'] == "1") %}
-    You have added {{ data['prevDocCount']}} proof of customs status document {{ data['pageTitleAddOn']}}
+    You have added {{ data['prevDocCount']}} document to prove the customs status of this item {{ data['pageTitleAddOn']}}
   {% else %}
-    You have added {{ data['prevDocCount']}} proof of customs status documents {{ data['pageTitleAddOn']}}
+    You have added {{ data['prevDocCount']}} documents to prove the customs status of this item {{ data['pageTitleAddOn']}}
   {% endif %}
 {% endblock %}
 
@@ -22,9 +22,9 @@
 
       <h1 class="govuk-heading-xl">
         {% if (data['prevDocCount'] == "1") %}
-          You have added {{ data['prevDocCount']}} proof of customs status document
+          You have added {{ data['prevDocCount']}} document to prove the customs status of this item
         {% else %}
-          You have added {{ data['prevDocCount']}} proof of customs status documents
+          You have added {{ data['prevDocCount']}} documents to prove the customs status of this item
         {% endif %}
       </h1>
 
