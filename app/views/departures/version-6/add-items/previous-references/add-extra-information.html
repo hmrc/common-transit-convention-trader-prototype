@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add any extra information for this document? {{ data['pageTitleAddOn']}}
+Do you need to add any extra information for the document to prove the customs status? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,7 +21,7 @@ Do you need to add any extra information for this document? {{ data['pageTitleAd
         name: "addPreviousExtraInfoResponse",
         fieldset: {
           legend: {
-            text: "Do you need to add any extra information for this document?",
+            text: "Do you need to add any extra information for the document to prove the customs status?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
