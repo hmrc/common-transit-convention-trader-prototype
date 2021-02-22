@@ -90,4 +90,7 @@ router.use('/departures/static-v6', require('./views/departures/static-v6/routes
 router.use('/departures/static-v7', require('./views/departures/static-v7/routes'));
 
 
+router.use('/iterations/', require('./views/iterations/routes'));
+
+
 module.exports = router
