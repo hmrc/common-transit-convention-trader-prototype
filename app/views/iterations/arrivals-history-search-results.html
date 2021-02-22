@@ -25,7 +25,7 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
           Search by movement reference number
         </label>
       </h1>
-      <input class="govuk-input" style="width:50%" id="notificationSearch" name="notificationSearch" type="text">
+      <input class="govuk-input" style="width:50%" id="notificationSearch" name="notificationSearch" type="text" value="{{ data['notificationSearch'] }}">
       <button class="govuk-button" data-module="govuk-button">Search again</button>
 
       <p class="govuk-body"><a href="arrivals-history">Clear search</a></p>
@@ -223,10 +223,6 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
     </table>
 
     <p class="govuk-body govuk-!-margin-top-3"><a href="homepage">Go to manage transit movements</a></p>
-
-    <br><br>
-
-    <p class="govuk-body govuk-!-margin-top-3"><a href="arrivals-history-2">Usability testing scenario</a></p>
 
   </div>
 </div>
