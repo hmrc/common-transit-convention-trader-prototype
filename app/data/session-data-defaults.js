@@ -33,9 +33,9 @@ module.exports = {
 
   //Arrival notifications pages dates & times
 
-  "tableOneDate": "17 July",
+  "tableOneDate": "22 February",
 
-  "tableTwoDate": "15 July",
+  "tableTwoDate": "21 February",
 
   "arrivalSentTime": "11:30am",
 
