@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Search by movement iterations
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-xl">
+      Search by movement iterations
+    </h1>
+
+    <h2 class="govuk-heading-m">Arrivals search version 1</h2>
+
+    <p class="govuk-body">Search by movement reference number.</p>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Page</th>
+          <th scope="col" class="govuk-table__header">Link</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Main journey</td>
+          <td class="govuk-table__cell"><a href="arrivals-v1/arrivals-history">Start</a></td></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">No search results page</td>
+          <td class="govuk-table__cell"><a href="arrivals-v1/arrivals-history-no-results">View</a></td></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Error page</td>
+          <td class="govuk-table__cell"><a href="arrivals-v1/arrivals-history-search-error">View</a></td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-m">Arrivals search version 2</h2>
+
+    <p class="govuk-body">Search by movement reference number and supervising office.</p>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Page</th>
+          <th scope="col" class="govuk-table__header">Link</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Main journey</td>
+          <td class="govuk-table__cell"><a href="arrivals-v2/arrivals-history">Start</a></td></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">No search results page</td>
+          <td class="govuk-table__cell"><a href="arrivals-v2/arrivals-history-no-results">View</a></td></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Error page</td>
+          <td class="govuk-table__cell"><a href="arrivals-v2/arrivals-history-search-error">View</a></td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-m">Departures search version 1</h2>
+
+    <p class="govuk-body">Search by local reference number.</p>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Page</th>
+          <th scope="col" class="govuk-table__header">Link</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Main journey</td>
+          <td class="govuk-table__cell"><a href="departures-v1/departures-history">Start</a></td></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">No search results page</td>
+          <td class="govuk-table__cell"><a href="departures-v1/departures-history-no-results">View</a></td></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Error page</td>
+          <td class="govuk-table__cell"><a href="departures-v1/departures-history-search-error">View</a></td></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+{% endblock %}
