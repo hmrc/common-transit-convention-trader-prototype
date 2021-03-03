@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+You cannot access this service with this account {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">You cannot use this service</h1>
+      <p class="govuk-body">
+        You must have an account with an activated EORI number. 
+      </p>
+      <p class="govuk-body">If you are waiting for an EORI number to be activated, you can try to <a class ="govuk-link" href="https://www.gov.uk/log-in-register-hmrc-online-services">sign in to HMRC services</a> again later.</p>
+    </div>
+  </div>
+{% endblock %}

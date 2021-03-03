@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Delete draft declaration
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <form class="form" method="post">
+
+
+      
+      <h1 class="govuk-heading-xl">Are you sure you want to delete this draft arrival notification?</h1>
+
+      {% set movementReference = [] %}
+
+      {% set movementReference = (movementReference.push(
+                {
+                    key: {
+                    text: "Created"
+                    },
+                    value: {
+                    text: "25 November 2019 9:45am"
+                    },
+                    actions: {
+                    items: [
+                        {
+                        }
+                    ]
+                    }
+                }
+                ), movementReference) %}
+      
+        {% set movementReference = (movementReference.push(
+                  {
+                      key: {
+                      text: "Movement reference number"
+                      },
+                      value: {
+                      text: "IL00714298701827497"
+                      },
+                      actions: {
+                      items: [
+                          {
+                          }
+                      ]
+                      }
+                  }
+                  ), movementReference) %}
+      
+      
+            {{ govukSummaryList({
+              classes: 'govuk-!-margin-bottom-9',
+              rows: movementReference
+      }) }}
+
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "changed-name",
+        name: "changed-name",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+          {{ govukButton({
+            text: "Continue",
+            href: "../draft-declarations.html"
+            }) }}
+
+
+
+          <p class="govuk-body"><a href="draft-declarations">Go to drafts</a></p>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

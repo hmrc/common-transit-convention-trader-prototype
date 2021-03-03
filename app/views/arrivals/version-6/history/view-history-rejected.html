@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+View history {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-width-container">
+
+    <main class="govuk-main-wrapper">
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+
+                <span class="govuk-caption-xl">20IT02130010005402</span>
+
+                <h1 class="govuk-heading-xl">History</h1>
+
+                <h2 class="govuk-heading-m">Arrival notification rejected</h2>
+
+                <p>15 January at 9:19am</p>
+
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">        
+
+                <h2 class="govuk-heading-m">Arrival notification sent</h2>
+
+                <p>15 January 2020 at 9:12am</p>
+
+                <p><a href="../view-arrival-notification">View arrival notification</a></p>
+
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">        
+
+            </div>
+        </div>
+
+        <p><a href="../arrivals-history.html" class="govuk-link">Go back to arrival notifications</a></p>
+
+
+    </main>
+</div>
+
+
+{% endblock %}
