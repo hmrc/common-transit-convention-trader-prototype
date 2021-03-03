@@ -1,0 +1,292 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers before sending this arrival notification - Name of service - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+  
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <form class="form" action="arrival-sent-after-error-correction" method="post">
+
+        <h1 class="govuk-heading-xl">Check your answers before sending this arrival notification</h1>
+
+        {% set movementReference = [] %}
+
+        {% set movementReference = (movementReference.push(
+                {
+                    key: {
+                    text: "Movement reference number"
+                    },
+                    value: {
+                    text: data['movementReferenceReject']
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "movement-reference-reject",
+                        text: "Change",
+                        visuallyHiddenText: "movement reference number"
+                        }
+                    ]
+                    }
+                }
+                ), movementReference) %}
+
+        {% set goodsLocation = [] %}
+
+        {% set goodsLocation = (goodsLocation.push(
+                {
+                    key: {
+                    text: "Where are the goods?"
+                    },
+                    value: {
+                    text: "Border force office"
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "where-goods",
+                        text: "Change",
+                        visuallyHiddenText: "where are the goods"
+                        }
+                    ]
+                    }
+                }
+                ), goodsLocation) %}
+
+        
+          {% set goodsLocation = (goodsLocation.push(
+                    { 
+                    key: {
+                    text: "Which customs sub-place or approved location has the goods?"
+                    },
+                    value: {
+                    text: "Teesport"
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "border-force-office",
+                        text: "Change",
+                        visuallyHiddenText: "address"
+                        }
+                    ]
+                    }
+                },
+                { 
+                    key: {
+                    text: "Which border force office supervises?"
+                    },
+                    value: {
+                    text: "Newcastle"
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "customs-facility",
+                        text: "Change",
+                        visuallyHiddenText: "which location has the goods?"
+                        }
+                    ]
+                    }
+                }
+                ), goodsLocation) %}
+        
+
+        {% if (data['where-are-the-goods'] == "Authorised consignee’s location") %}
+          {% set goodsLocation = (goodsLocation.push(
+                { 
+                key: {
+                  text: "Authorised location code"
+                },
+                value: {
+                  text: data['authorised-location-code']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "authorised-location-code",
+                      text: "Change",
+                      visuallyHiddenText: "address"
+                    }
+                  ]
+                }
+              }
+                ), goodsLocation) %}
+        {% endif %}
+
+        {% set traderDetails = [] %}
+
+        {% set traderDetails = (traderDetails.push(
+                {
+                    key: {
+                    text: "Name"
+                    },
+                    value: {
+                    text: "M&S"
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "trader-name",
+                        text: "Change",
+                        visuallyHiddenText: "date of birth"
+                        }
+                    ]
+                    }
+                },
+                {
+                    key: {
+                    text: "Address"
+                    },
+                    value: {
+                    html: "10 Hastings Street <br> Newcastle <br> NE92J29"
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "trader-address",
+                        text: "Change",
+                        visuallyHiddenText: "trader address"
+                        }
+                    ]
+                    }
+                },
+                {
+                    key: {
+                    text: "EORI number"
+                    },
+                    value: {
+                    text: "GB02847107794274"
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "eori-number",
+                        text: "Change",
+                        visuallyHiddenText: "date of birth"
+                        }
+                    ]
+                    }
+                }
+                ), traderDetails) %}
+
+        
+
+        {% set events = [] %}
+
+        {% set events = (events.push(
+                {
+                    key: {
+                    text: "Event 1"
+                    },
+                    value: {
+                    text: "Berlin in Germany"
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "check-event-answers",
+                        text: "Change",
+                        visuallyHiddenText: "check event answers"
+                        }
+                    ]
+                    }
+                },
+                {
+                    key: {
+                    text: "Event 2"
+                    },
+                    value: {
+                    text: "Champs Elysees in Paris"
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "check-event-answers",
+                        text: "Change",
+                        visuallyHiddenText: "date of birth"
+                        }
+                    ]
+                    }
+                },
+                 {
+                    key: {
+                    text: "Do you need to add another event?"
+                    },
+                    value: {
+                    text: "No"
+                    },
+                    actions: {
+                    items: [
+                        {
+                        href: "event-list",
+                        text: "Change",
+                        visuallyHiddenText: "date of birth"
+                        }
+                    ]
+                    }
+                }
+                ), events) %}
+
+
+        
+
+         
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: movementReference
+        }) }}
+
+        <h2 class="govuk-heading-m">Goods details</h1>
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: goodsLocation
+        }) }}
+
+        <h2 class="govuk-heading-m">Trader details</h1>
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: traderDetails
+        }) }}
+
+        <h2 class="govuk-heading-m">Events</h2>
+
+        {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-9',
+                rows: events
+
+        }) }}
+
+
+        <h2 class="govuk-heading-m">Now send your arrival notification</h2>
+
+        <p class="govuk-body">By sending this you are confirming that the details you are providing are correct, to the best of your knowledge.</p>
+        <input type="hidden" name="answers-checked" value="true">
+
+        {{ govukButton({
+                text: "Confirm and send"
+                
+                }) }}
+
+                {# href: "../version-6/arrival-sent-after-error-correction" #}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+View history {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <span class="govuk-caption-xl">{{ data['movement-reference'] }}</span>
+
+            <h1 class="govuk-heading-xl">History</h1>
+
+            <h2 class="govuk-heading-m">Unloading permissions granted</h2>
+
+            <p>{{ data['tableOneDate'] }} at {{ data['unloadingPermissionTime']}}</p>
+
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+            <h2 class="govuk-heading-m">Arrival notification sent</h2>
+
+            <p>{{ data['tableOneDate'] }} at {{ data['arrivalSentTime']}}</p>
+
+            <p><a href="../view-arrival-notification">View arrival notification</a></p>
+
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+            <p><a href="../arrivals-history.html" class="govuk-link">Go back to arrival notifications</a></p>
+
+        </div>
+    </div>
+
+{% endblock %}
