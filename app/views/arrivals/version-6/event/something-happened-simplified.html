@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Did any events happen on the journey? {{ data['pageTitleAddOn' ]}}
+Do you need to report any en route events? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,14 +23,14 @@ Did any events happen on the journey? {{ data['pageTitleAddOn' ]}}
           name: "something-happened",
           fieldset: {
             legend: {
-              text: "Did any events happen on the journey?",
+              text: "Do you need to report any en route events?",
               isPageHeading: true, 
               classes: "govuk-fieldset__legend--xl"
             }
           },
           hint: {
             html: 
-            '<p class="govuk-body">Events should be recorded on the transit accompanying document (TAD) in box 55.</p>
+            '<p class="govuk-body">Events should be recorded on the Transit Accompanying Document (TAD) in box 55.</p>
             <p class="govuk-body">Tell us if:</p>
               <ul class="govuk-list govuk-list--bullet govuk-body">
                 <li>there was an accident</li>
