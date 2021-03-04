@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you have a proof of customs status document for item {{data['itemNumber']}} {{ data['pageTitleAddOn' ]}}
+Do you have a document to prove the customs status of item {{data['itemNumber']}} {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,13 +23,13 @@ Do you have a proof of customs status document for item {{data['itemNumber']}} {
         name: "adminRefResponse",
         fieldset: {
           legend: {
-            text: "Do you have a proof of customs status document for item " + data['itemNumber'] +"?",
+            text: "Do you have a document to prove the customs status of item " + data['itemNumber'] +"?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
         },
         hint: {
-          text: ""
+          html: "<p>The document will confirm if the duty has already been paid or that it still has its duty-free status.</p>"
         },
         items: [
           {
