@@ -2,9 +2,9 @@
 
 {% block pageTitle %}
   {% if (data['prevDocCount'] == "1") %}
-    You have added {{ data['prevDocCount']}} proof of customs status document {{ data['pageTitleAddOn']}}
+    You have added {{ data['prevDocCount']}} document to prove the customs status of this item {{ data['pageTitleAddOn']}}
   {% else %}
-    You have added {{ data['prevDocCount']}} proof of customs status documents {{ data['pageTitleAddOn']}}
+    You have added {{ data['prevDocCount']}} documents to prove the customs status of this item {{ data['pageTitleAddOn']}}
   {% endif %}
 {% endblock %}
 
@@ -22,9 +22,9 @@
 
       <h1 class="govuk-heading-xl">
         {% if (data['prevDocCount'] == "1") %}
-          You have added {{ data['prevDocCount']}} proof of customs status document
+          You have added {{ data['prevDocCount']}} document to prove the customs status of this item
         {% else %}
-          You have added {{ data['prevDocCount']}} proof of customs status documents
+          You have added {{ data['prevDocCount']}} documents to prove the customs status of this item
         {% endif %}
       </h1>
 
@@ -37,8 +37,8 @@
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">{{ document.type }}</td>
                 <td class="govuk-table__cell govuk-table__cell--action">
-                  <a href="reference-type">Change<span class="govuk-visually-hidden">proof of customs status document {{document.reference}}</span></a>  
-                  |  <a href="remove-document">Remove<span class="govuk-visually-hidden">proof of customs status document {{document.reference}}</span></a></td>
+                  <a href="reference-type">Change<span class="govuk-visually-hidden">document to prove the customs status</span></a>  
+                  |  <a href="remove-document">Remove<span class="govuk-visually-hidden">document to prove the customs status</span></a></td>
               </tr>
               {% endfor %}
             </tbody>
@@ -51,7 +51,7 @@
           name: "addAnotherDocument",
           fieldset: {
             legend: {
-              text: "Do you need to add another proof of customs status document?",
+              text: "Do you need to add another document to prove the customs status of this item?",
               isPageHeading: false,
               classes: "govuk-fieldset__legend--m"
             }

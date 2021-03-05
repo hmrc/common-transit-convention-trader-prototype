@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add any extra information for document {{ data['documentCount'] }}? {{ data['pageTitleAddOn']}}
+What extra information do you need to add for this document? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,7 +21,7 @@ Do you need to add any extra information for document {{ data['documentCount'] }
         name: "addExtraInfoResponse",
         fieldset: {
           legend: {
-            text: "Do you need to add any extra information for document " + data['documentCount'] + "?",
+            text: "What extra information do you need to add for document " + data['documentCount'] + "?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
