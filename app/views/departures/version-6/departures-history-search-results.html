@@ -24,7 +24,7 @@ Departure declarations {{ data['pageTitleAddOn' ]}}
             Search by local reference number or movement reference number
           </label>
         </h1>
-        <input class="govuk-input" style="width:50%" id="notificationSearch" name="notificationSearch" type="text">
+        <input class="govuk-input" style="width:50%" id="notificationSearch" name="notificationSearch" type="text" value="{{ data['notificationSearch'] }}">
         <button class="govuk-button" data-module="govuk-button">Search</button>
       </div>
     </form>
@@ -52,13 +52,6 @@ Departure declarations {{ data['pageTitleAddOn' ]}}
 
     {%
       set feb19 = [
-        {
-          "updated": "11:20am",
-          "lrn": data['local-reference-number'],
-          "officeOfDeparture": data['office-of-departure'] | getOffice,
-          "status": "Departure declaration sent",
-          "actions": ["history"]
-        },
 
         {
           "updated": "11:03am",
@@ -74,28 +67,6 @@ Departure declarations {{ data['pageTitleAddOn' ]}}
           "officeOfDeparture": "Dover (OTS) Freight Clearance (GB000040)",
           "status": "Released for transit",
           "actions": ["coreAccepted", "history"]
-        },
-        
-        {
-          "updated": "10:35am",
-          "lrn": "20IT02139050009385",
-          "officeOfDeparture": "Dover (OTS) Freight Clearance (GB000040)",
-          "status": "Transit declaration rejected",
-          "actions": ["fixError", "history"]
-        },
-        {
-          "updated": "8:30am",
-          "lrn": "20IT02130010005402",
-          "officeOfDeparture": "Felixstowe (GB000051)",
-          "status": "Departure declaration received",
-          "actions": ["history"]
-        },
-        {
-          "updated": "7:19am",
-          "lrn": "20IT02102937825102",
-          "officeOfDeparture": "Dover/Folkestone Eurotunnel Freight (GB000060)",
-          "status": "Guarantee rejected",
-          "actions": ["fixGuarantee", "history"]
         }
       ]
     %}
@@ -186,28 +157,6 @@ Departure declarations {{ data['pageTitleAddOn' ]}}
           "updated": "5:03pm",
           "lrn": "20GB000009800BA9W3",
           "officeOfDeparture": "Felixstowe (GB000051)",
-          "status": "Transit declaration sent",
-          "actions": ["history"]
-        },
-        
-        {
-          "updated": "2:10pm",
-          "lrn": "20IT02130092847394",
-          "officeOfDeparture": "Dover (OTS) Freight Clearance (GB000040)",
-          "status": "Transit declaration rejected",
-          "actions": ["fixError", "history"]
-        },
-        {
-          "updated": "11:30am",
-          "lrn": "20IT02130029462957",
-          "officeOfDeparture": "Dover/Folkestone Eurotunnel Freight (GB000060)",
-          "status": "Transit declaration sent",
-          "actions": ["history"]
-        },
-        {
-          "updated": "7:19am",
-          "lrn": "20IT02130004860376",
-          "officeOfDeparture": "Dover (OTS) Freight Clearance (GB000040)",
           "status": "Transit declaration sent",
           "actions": ["history"]
         }

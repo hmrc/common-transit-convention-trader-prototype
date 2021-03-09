@@ -16,6 +16,16 @@ router.post('/movement-details/procedure-type-route', function (req, res) {
 
 })
 
+router.post('/departures-history-search-route', function (req, res) {
+  var sessionData = req.session.data;
+  let notificationSearch = sessionData.notificationSearch;
+  if (notificationSearch != '') {
+      res.redirect('departures-history-search-results');
+  } else {
+      res.redirect('departures-history-search-error');
+  }
+})
+
 /*
     Cancel departure
     If the user selects "yes" to cancel departure, take them to "departure cancelled confirmation"
