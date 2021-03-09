@@ -79,8 +79,6 @@ router.use('/departures/version-5', require('./views/departures/version-5/routes
 
 router.use('/departures/version-6', require('./views/departures/version-6/routes'));
 
-router.use('/departures/version-7', require('./views/departures/version-7/routes'));
-
 //Departures static version routing
 
 router.use('/departures/static-v4', require('./views/departures/static-v4/routes'));

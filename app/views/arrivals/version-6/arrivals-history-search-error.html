@@ -10,6 +10,19 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
+    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <li>
+            <a href="#passport-issued-error">Enter a movement reference number</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
     <h1 class="govuk-heading-xl">
       Arrival notifications
     </h1>
@@ -19,14 +32,22 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
     <br><br>
 
     <form class="form" method="post" action="arrivals-history-search-route">
-      <div class="govuk-form-group">
-        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="notificationSearch">
-            Search by movement reference number
-          </label>
-        </h1>
-        <input class="govuk-input" style="width:50%" id="notificationSearch" name="notificationSearch" type="text">
+
+      <div class="govuk-form-group govuk-form-group--error">
+        <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="notificationSearch">
+          Search by movement reference number
+        </label>
+        </h2>
+        <span id="notificationSearch-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> Enter a movement reference number
+        </span>
+        <input class="govuk-input govuk-input--error" style="width:50%" id="notificationSearch" name="notificationSearch" type="text" aria-describedby="notificationSearch-hint notificationSearch-error">
         <button class="govuk-button" data-module="govuk-button">Search</button>
       </div>
+      
+        </fieldset>
+      </div>
+
     </form>
 
     {# {
@@ -218,7 +239,7 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
                   <a href="view-history.html">View history<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span> </a>
                 {% endif %}
                 {% if action == "unloading" %}
-                  <a href="../../unloading-remarks/version-6/seals-included/all-goods-unloaded">Make unloading remarks<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                  <a href="../../unloading-remarks/version-5/seals-included/all-goods-unloaded">Make unloading remarks<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
                 {% endif %}
                 {% if notice.actions.length > 0 %}</li>{% endif %}
               {% endfor %}
@@ -235,10 +256,6 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
     </table>
 
     <p class="govuk-body govuk-!-margin-top-3"><a href="homepage">Go to manage transit movements</a></p>
-
-    <br><br>
-
-    <p class="govuk-body govuk-!-margin-top-3"><a href="arrivals-history-2">Usability testing scenario</a></p>
 
   </div>
 </div>

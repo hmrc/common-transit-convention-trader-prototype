@@ -18,15 +18,21 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
 
     <br><br>
 
-    <form class="form" method="post" action="arrivals-history-search-route">
-      <div class="govuk-form-group">
-        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="notificationSearch">
-            Search by movement reference number
-          </label>
-        </h1>
-        <input class="govuk-input" style="width:50%" id="notificationSearch" name="notificationSearch" type="text">
-        <button class="govuk-button" data-module="govuk-button">Search</button>
-      </div>
+    <form class="form" method="post" action="arrivals-history-search-results">
+
+    <div class="govuk-form-group">
+      <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="notificationSearch">
+          Search by movement reference number
+        </label>
+      </h1>
+      <input class="govuk-input" style="width:50%" id="notificationSearch" name="notificationSearch" type="text" value="{{ data['notificationSearch'] }}">
+      <button class="govuk-button" data-module="govuk-button">Search again</button>
+
+      <p class="govuk-body"><a href="arrivals-history">View all arrival notifications</a></p>
+
+      <p class="govuk-body">3 results</p>
+    </div>
+
     </form>
 
     {# {
@@ -50,18 +56,6 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
           "mrn": "	20GB080360100C06F8",
           "status": "Arrival notification rejected",
           "actions": ["mrnInvalid", "history"]
-        },
-        {
-          "updated": "8:30am",
-          "mrn": "LS20090910MRN0001654",
-          "status": "Arrival notification rejected",
-          "actions": ["mrnUnknown", "history"]
-        },
-        {
-          "updated": "7:19am",
-          "mrn": "20IT02130010005402",
-          "status": "Arrival notification rejected",
-          "actions": ["outOfSequence", "history"]
         }
       ]
     %}
@@ -164,14 +158,8 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
     {%
       set feb18 = [
         {
-          "updated": "5.39pm",
-          "mrn": "20DK0004601366B740",
-          "status": "Arrival notification rejected",
-          "actions": ["errors","history"]
-        },
-        {
           "updated": "12:39pm",
-          "mrn": "20IT02140015005333",
+          "mrn": "20GB02140015005333",
           "status": "Arrival notification rejected",
           "actions": ["errors","history"]
         }
@@ -218,7 +206,7 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
                   <a href="view-history.html">View history<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span> </a>
                 {% endif %}
                 {% if action == "unloading" %}
-                  <a href="../../unloading-remarks/version-6/seals-included/all-goods-unloaded">Make unloading remarks<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                  <a href="../../unloading-remarks/version-5/seals-included/all-goods-unloaded">Make unloading remarks<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
                 {% endif %}
                 {% if notice.actions.length > 0 %}</li>{% endif %}
               {% endfor %}
@@ -235,10 +223,6 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
     </table>
 
     <p class="govuk-body govuk-!-margin-top-3"><a href="homepage">Go to manage transit movements</a></p>
-
-    <br><br>
-
-    <p class="govuk-body govuk-!-margin-top-3"><a href="arrivals-history-2">Usability testing scenario</a></p>
 
   </div>
 </div>

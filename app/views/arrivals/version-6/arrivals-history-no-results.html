@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Arrival notifications {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl">
+      Arrival notifications
+    </h1>
+
+    <p class="govuk-body"><a href="movement-reference">Make an arrival notification</a></p>
+
+    <br><br>
+
+    <form class="form" method="post" action="arrivals-history-search-results">
+
+    <div class="govuk-form-group">
+      <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="notificationSearch">
+          Search by movement reference number
+        </label>
+      </h1>
+      <input class="govuk-input" style="width:50%" id="notificationSearch" name="notificationSearch" type="text" value="{{ data['notificationSearch'] }}">
+      <button class="govuk-button" data-module="govuk-button">Search again</button>
+
+      <p class="govuk-body"><a href="arrivals-history">View all arrival notifications</a></p>
+
+      <p class="govuk-body">0 results</p>
+    </div>
+
+    </form>
+
+    <p class="govuk-body">We did not find any movements matching your search.</p>
+
+  </div>
+</div>
+
+
+
+{% endblock %}
