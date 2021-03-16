@@ -38,7 +38,11 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% if data['on-behalf-of-someone-else'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
+            {% if data['changeAtBorder'] | length != "0" %}
+              <a href="movement-details/confirm-change" aria-describedby="movement-details-completed">Edit general information</a>
+            {% else %}
               <a href="movement-details/declaration-type" aria-describedby="movement-details-completed">Edit general information</a>
+            {% endif%}
             </span>
             <span class="hmrc-status-tag" id="movement-details-completed">
               Completed
@@ -94,6 +98,74 @@ Declaration summary {{ data['pageTitleAddOn']}}
             </span>
           </li>
           {% endif %}
+          
+          <!-- Trader details -->
+
+          {% if data['departuresProcedureType'] == "Simplified" %}
+          <!-- Simplified procedure - Take the user straight to "What is the principal's EORI?"-->
+
+            {% if data['areYouTheConsignee'] | length != "0" %}
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="trader-details/check-answers" aria-describedby="trader-details-completed">Edit trader details</a>
+              </span>
+              <span class="hmrc-status-tag" id="trader-details-completed">
+                Completed
+              </span>
+            </li>
+            {% elif data['is-principal-eori-known'] | length != "0" %}
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="trader-details/what-is-principal-eori" aria-describedby="trader-details-in-progress">Add trader details</a>
+              </span>
+              <span class="hmrc-status-tag" id="trader-details-in-progress">
+                In progress
+              </span>
+            </li>
+            {% else %}
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="trader-details/what-is-principal-eori" aria-describedby="trader-details-not-started">Add trader details</a>
+              </span>
+              <span class="hmrc-status-tag" id="trader-details-not-started">
+                Not started
+              </span>
+            </li>
+            {% endif %}
+
+          {% else %}
+          <!-- Normal procedure - Carry on taking the user to "Do you know the principal's EORI number?" -->
+
+            {% if data['areYouTheConsignee'] | length != "0" %}
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-completed">Edit trader details</a>
+              </span>
+              <span class="hmrc-status-tag" id="trader-details-completed">
+                Completed
+              </span>
+            </li>
+            {% elif data['is-principal-eori-known'] | length != "0" %}
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-in-progress">Add trader details</a>
+              </span>
+              <span class="hmrc-status-tag" id="trader-details-in-progress">
+                In progress
+              </span>
+            </li>
+            {% else %}
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-not-started">Add trader details</a>
+              </span>
+              <span class="hmrc-status-tag" id="trader-details-not-started">
+                Not started
+              </span>
+            </li>
+            {% endif %}
+
+          {% endif %}
 
           <!-- Transport -->
 
@@ -125,77 +197,6 @@ Declaration summary {{ data['pageTitleAddOn']}}
             </span>
           </li>
           {% endif %}
-
-          <!-- Trader details -->
-
-          {% if data['departuresProcedureType'] == "Simplified" %}
-          <!-- Simplified procedure - Take the user straight to "What is the principal's EORI?"-->
-
-            {% if data['areYouTheConsignee'] | length != "0" %}
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="trader-details/check-answers" aria-describedby="trader-details-completed">Edit trader’s details</a>
-              </span>
-              <span class="hmrc-status-tag" id="trader-details-completed">
-                Completed
-              </span>
-            </li>
-            {% elif data['is-principal-eori-known'] | length != "0" %}
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="trader-details/what-is-principal-eori" aria-describedby="trader-details-in-progress">Add trader’s details</a>
-              </span>
-              <span class="hmrc-status-tag" id="trader-details-in-progress">
-                In progress
-              </span>
-            </li>
-            {% else %}
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="trader-details/what-is-principal-eori" aria-describedby="trader-details-not-started">Add trader’s details</a>
-              </span>
-              <span class="hmrc-status-tag" id="trader-details-not-started">
-                Not started
-              </span>
-            </li>
-            {% endif %}
-
-          {% else %}
-          <!-- Normal procedure - Carry on taking the user to "Do you know the principal's EORI number?" -->
-
-            {% if data['areYouTheConsignee'] | length != "0" %}
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-completed">Edit trader’s details</a>
-              </span>
-              <span class="hmrc-status-tag" id="trader-details-completed">
-                Completed
-              </span>
-            </li>
-            {% elif data['is-principal-eori-known'] | length != "0" %}
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-in-progress">Add trader’s details</a>
-              </span>
-              <span class="hmrc-status-tag" id="trader-details-in-progress">
-                In progress
-              </span>
-            </li>
-            {% else %}
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-not-started">Add trader’s details</a>
-              </span>
-              <span class="hmrc-status-tag" id="trader-details-not-started">
-                Not started
-              </span>
-            </li>
-            {% endif %}
-
-          {% endif %}
-          
-
-          
 
           <!-- Safety & Security Summary -->
 
