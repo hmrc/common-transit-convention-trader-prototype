@@ -13,14 +13,14 @@ Are you sure you want to change the answers in this section? {{ data['pageTitleA
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-      <form action="declaration-type" class="form" method="post">
+      <form action="inland-mode" class="form" method="post">
 
-      <span class="govuk-caption-xl">{{ data['movementDetails'] }}</span>
+      <span class="govuk-caption-xl">{{ data['transportDetails'] }}</span>
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "confirmChangeMovement",
-          name: "confirmChangeMovement",
+          idPrefix: "confirmChangeTransport",
+          name: "confirmChangeTransport",
           fieldset: {
             legend: {
               text: "Are you sure you want to change the answers in this section?",
@@ -33,7 +33,7 @@ Are you sure you want to change the answers in this section? {{ data['pageTitleA
                     <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
                     <strong class="govuk-warning-text__text">
                       <span class="govuk-warning-text__assistive">Warning</span>
-                      If you choose yes, the answers you have saved in the transport details section will be reset.
+                      If you choose yes, the answers you have saved in the safety and security details section will be reset.
                     </strong>
                   </div>'
           },
