@@ -38,7 +38,11 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% if data['on-behalf-of-someone-else'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
+            {% if data['changeAtBorder'] | length != "0" %}
+              <a href="movement-details/confirm-change" aria-describedby="movement-details-completed">Edit general information</a>
+            {% else %}
               <a href="movement-details/declaration-type" aria-describedby="movement-details-completed">Edit general information</a>
+            {% endif%}
             </span>
             <span class="hmrc-status-tag" id="movement-details-completed">
               Completed
@@ -69,7 +73,11 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% if data['addAnotherOfficeOfTransit'] == "No " %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="route/dispatch-country" aria-describedby="route-completed">Edit route</a>
+              {% if data['liabilityAmount'] | length != "0" %}
+                <a href="route/confirm-change" aria-describedby="route-completed">Edit route</a>
+              {% else %}
+                <a href="route/dispatch-country" aria-describedby="route-completed">Edit route</a>
+              {% endif%}
             </span>
             <span class="hmrc-status-tag" id="route-completed">
               Completed
@@ -94,13 +102,89 @@ Declaration summary {{ data['pageTitleAddOn']}}
             </span>
           </li>
           {% endif %}
+          
+          <!-- Trader details -->
+
+          {% if data['departuresProcedureType'] == "Simplified" %}
+          <!-- Simplified procedure - Take the user straight to "What is the principal's EORI?"-->
+
+            {% if data['areYouTheConsignee'] | length != "0" %}
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="trader-details/check-answers" aria-describedby="trader-details-completed">Edit trader details</a>
+              </span>
+              <span class="hmrc-status-tag" id="trader-details-completed">
+                Completed
+              </span>
+            </li>
+            {% elif data['is-principal-eori-known'] | length != "0" %}
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="trader-details/what-is-principal-eori" aria-describedby="trader-details-in-progress">Add trader details</a>
+              </span>
+              <span class="hmrc-status-tag" id="trader-details-in-progress">
+                In progress
+              </span>
+            </li>
+            {% else %}
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="trader-details/what-is-principal-eori" aria-describedby="trader-details-not-started">Add trader details</a>
+              </span>
+              <span class="hmrc-status-tag" id="trader-details-not-started">
+                Not started
+              </span>
+            </li>
+            {% endif %}
+
+          {% else %}
+          <!-- Normal procedure - Carry on taking the user to "Do you know the principal's EORI number?" -->
+
+            {% if data['areYouTheConsignee'] | length != "0" %}
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-completed">Edit trader details</a>
+              </span>
+              <span class="hmrc-status-tag" id="trader-details-completed">
+                Completed
+              </span>
+            </li>
+            {% elif data['is-principal-eori-known'] | length != "0" %}
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-in-progress">Add trader details</a>
+              </span>
+              <span class="hmrc-status-tag" id="trader-details-in-progress">
+                In progress
+              </span>
+            </li>
+            {% else %}
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-not-started">Add trader details</a>
+              </span>
+              <span class="hmrc-status-tag" id="trader-details-not-started">
+                Not started
+              </span>
+            </li>
+            {% endif %}
+
+          {% endif %}
 
           <!-- Transport -->
 
           {% if data['changeAtBorder'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="transport/inland-mode" aria-describedby="transport-completed">Edit transport</a>
+              {% if data['addSafetySecurityResponse'] == "Yes" %}
+                {% if (data['addACarrierResponse'] | length != "0") %}
+                  <a href="transport/confirm-change" aria-describedby="transport-completed">Edit transport</a>
+                {% else %}
+                  <a href="transport/inland-mode" aria-describedby="transport-completed">Edit transport</a>
+                {% endif %}
+              {% else %}
+                <a href="transport/inland-mode" aria-describedby="transport-completed">Edit transport</a>
+              {% endif %}
             </span>
             <span class="hmrc-status-tag" id="transport-completed">
               Completed
@@ -115,7 +199,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
               In progress
             </span>
           </li>
-          {% else %}
+          {% elif data['on-behalf-of-someone-else'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="transport/inland-mode" aria-describedby="transport-not-started">Add transport</a>
@@ -124,78 +208,16 @@ Declaration summary {{ data['pageTitleAddOn']}}
               Not started
             </span>
           </li>
-          {% endif %}
-
-          <!-- Trader details -->
-
-          {% if data['departuresProcedureType'] == "Simplified" %}
-          <!-- Simplified procedure - Take the user straight to "What is the principal's EORI?"-->
-
-            {% if data['areYouTheConsignee'] | length != "0" %}
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="trader-details/check-answers" aria-describedby="trader-details-completed">Edit trader’s details</a>
-              </span>
-              <span class="hmrc-status-tag" id="trader-details-completed">
-                Completed
-              </span>
-            </li>
-            {% elif data['is-principal-eori-known'] | length != "0" %}
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="trader-details/what-is-principal-eori" aria-describedby="trader-details-in-progress">Add trader’s details</a>
-              </span>
-              <span class="hmrc-status-tag" id="trader-details-in-progress">
-                In progress
-              </span>
-            </li>
-            {% else %}
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="trader-details/what-is-principal-eori" aria-describedby="trader-details-not-started">Add trader’s details</a>
-              </span>
-              <span class="hmrc-status-tag" id="trader-details-not-started">
-                Not started
-              </span>
-            </li>
-            {% endif %}
-
           {% else %}
-          <!-- Normal procedure - Carry on taking the user to "Do you know the principal's EORI number?" -->
-
-            {% if data['areYouTheConsignee'] | length != "0" %}
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-completed">Edit trader’s details</a>
-              </span>
-              <span class="hmrc-status-tag" id="trader-details-completed">
-                Completed
-              </span>
-            </li>
-            {% elif data['is-principal-eori-known'] | length != "0" %}
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-in-progress">Add trader’s details</a>
-              </span>
-              <span class="hmrc-status-tag" id="trader-details-in-progress">
-                In progress
-              </span>
-            </li>
-            {% else %}
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="trader-details/is-principal-eori-known" aria-describedby="trader-details-not-started">Add trader’s details</a>
-              </span>
-              <span class="hmrc-status-tag" id="trader-details-not-started">
-                Not started
-              </span>
-            </li>
-            {% endif %}
-
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              Add transport
+            </span>
+            <span class="hmrc-status-tag" id="transport-not-started">
+              Cannot start yet
+            </span>
+          </li>
           {% endif %}
-          
-
-          
 
           <!-- Safety & Security Summary -->
 
@@ -209,7 +231,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
                   Completed
                 </span>
               </li>
-                {% elif (data['addCircumstanceIndicatorResponse'] | length != "0") %}
+            {% elif (data['addCircumstanceIndicatorResponse'] | length != "0") %}
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
                   <a href="security/add-circumstance-indicator" aria-describedby="safety-and-security-details-in-progress">Add safety and security details</a>
@@ -218,13 +240,22 @@ Declaration summary {{ data['pageTitleAddOn']}}
                   In progress
                 </span>
               </li>
-                {% else %}
+            {% elif data['changeAtBorder'] | length != "0" %}
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
                   <a href="security/add-circumstance-indicator" aria-describedby="safety-and-security-details-not-started">Add safety and security details</a>
                 </span>
                 <span class="hmrc-status-tag" id="safety-and-security-details-not-started">
                   Not started
+                </span>
+              </li>
+            {% else %}
+              <li class="app-task-list__item">
+                <span class="app-task-list__task-name">
+                  Add safety and security details
+                </span>
+                <span class="hmrc-status-tag" id="safety-and-security-details-not-started">
+                  Cannot start yet
                 </span>
               </li>
             {% endif %}
@@ -234,7 +265,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% if data['addAnotherItem'] == "No " %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="add-items/item-details/item-description" aria-describedby="add-items-completed">Edit items</a>
+              <a href="add-items/item-warning" aria-describedby="add-items-completed">Edit items</a>
             </span>
             <span class="hmrc-status-tag" id="add-items-completed">
               Completed
@@ -243,21 +274,54 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% elif (data['itemDescription'] | length != "0") %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="add-items/item-details/item-description" aria-describedby="add-items-in-progress">Add items</a>
+              <a href="add-items/item-warning" aria-describedby="add-items-in-progress">Add items</a>
             </span>
             <span class="hmrc-status-tag" id="goods-summary-in-progress">
               In progress
             </span>
           </li>
           {% else %}
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="add-items/item-details/item-description" aria-describedby="add-items-not-started">Add items</a>
-            </span>
-            <span class="hmrc-status-tag" id="goods-summary-not-started">
-              Not started
-            </span>
-          </li>
+            {% if data['addSafetySecurityResponse'] == "Yes" %}
+              {% if data['on-behalf-of-someone-else'] | length != "0" and data['areYouTheConsignee'] | length != "0" and data['addAnotherOfficeOfTransit'] == "No " and data['addACarrierResponse'] | length != "0" %}
+              <li class="app-task-list__item">
+                <span class="app-task-list__task-name">
+                  <a href="add-items/item-warning" aria-describedby="add-items-not-started">Add items</a>
+                </span>
+                <span class="hmrc-status-tag" id="goods-summary-not-started">
+                  Not started
+                </span>
+              </li>
+              {% else %}
+              <li class="app-task-list__item">
+                <span class="app-task-list__task-name">
+                  Add items
+                </span>
+                <span class="hmrc-status-tag" id="goods-summary-not-started">
+                  Cannot start yet
+                </span>
+              </li>
+              {% endif %}
+            {% else %}
+              {% if data['on-behalf-of-someone-else'] | length != "0" and data['areYouTheConsignee'] | length != "0" and data['addAnotherOfficeOfTransit'] == "No " %}
+              <li class="app-task-list__item">
+                <span class="app-task-list__task-name">
+                  <a href="add-items/item-warning" aria-describedby="add-items-not-started">Add items</a>
+                </span>
+                <span class="hmrc-status-tag" id="goods-summary-not-started">
+                  Not started
+                </span>
+              </li>
+              {% else %}
+              <li class="app-task-list__item">
+                <span class="app-task-list__task-name">
+                  Add items
+                </span>
+                <span class="hmrc-status-tag" id="goods-summary-not-started">
+                  Cannot start yet
+                </span>
+              </li>
+              {% endif %}
+            {% endif %}
           {% endif %}
 
           <!-- Goods summary -->
@@ -311,13 +375,22 @@ Declaration summary {{ data['pageTitleAddOn']}}
               In progress
             </span>
           </li>
-          {% else %}
+          {% elif data['addAnotherOfficeOfTransit'] == "No " %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="guarantee/guarantee-type" aria-describedby="guarantee-not-started">Add guarantee</a>
             </span>
             <span class="hmrc-status-tag" id="guarantee-not-started">
               Not started
+            </span>
+          </li>
+          {% else %}
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              Add guarantee
+            </span>
+            <span class="hmrc-status-tag" id="guarantee-not-started">
+              Cannot start yet
             </span>
           </li>
           {% endif %}
