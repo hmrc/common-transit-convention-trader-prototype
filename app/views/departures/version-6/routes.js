@@ -5,49 +5,6 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
-
-// Task list confirm change routing
-router.post('/movement-details/declaration-type', function (req, res) {
-
-    let confirmChangeMovement = req.session.data.confirmChangeMovement;
-
-    if (confirmChangeMovement == 'Yes') {
-        res.redirect('declaration-type');
-    } else {
-        res.redirect('../task-list');
-    }
-})
-router.post('/movement-details/dispatch-country', function (req, res) {
-
-    let confirmChangeRoute = req.session.data.confirmChangeRoute;
-
-    if (confirmChangeRoute == 'Yes') {
-        res.redirect('dispatch-country');
-    } else {
-        res.redirect('../task-list');
-    }
-})
-router.post('/movement-details/inland-mode', function (req, res) {
-
-    let confirmChangeTransport = req.session.data.confirmChangeTransport;
-
-    if (confirmChangeTransport == 'Yes') {
-        res.redirect('inland-mode');
-    } else {
-        res.redirect('../task-list');
-    }
-})
-router.post('/add-items/item-warning', function (req, res) {
-
-    let itemWarning = req.session.data.itemWarning;
-
-    if (itemWarning == 'Yes') {
-        res.redirect('item-details/item-description');
-    } else {
-        res.redirect('../task-list');
-    }
-})
-
 router.post('/movement-details/procedure-type-route', function (req, res) {
 
     let departuresProcedureType = req.session.data.departuresProcedureType;

@@ -38,11 +38,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% if data['on-behalf-of-someone-else'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-            {% if data['changeAtBorder'] | length != "0" %}
-              <a href="movement-details/confirm-change" aria-describedby="movement-details-completed">Edit general information</a>
-            {% else %}
               <a href="movement-details/declaration-type" aria-describedby="movement-details-completed">Edit general information</a>
-            {% endif%}
             </span>
             <span class="hmrc-status-tag" id="movement-details-completed">
               Completed
@@ -73,11 +69,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% if data['addAnotherOfficeOfTransit'] == "No " %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              {% if data['liabilityAmount'] | length != "0" %}
-                <a href="route/confirm-change" aria-describedby="route-completed">Edit route</a>
-              {% else %}
-                <a href="route/dispatch-country" aria-describedby="route-completed">Edit route</a>
-              {% endif%}
+              <a href="route/dispatch-country" aria-describedby="route-completed">Edit route</a>
             </span>
             <span class="hmrc-status-tag" id="route-completed">
               Completed
@@ -176,15 +168,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% if data['changeAtBorder'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              {% if data['addSafetySecurityResponse'] == "Yes" %}
-                {% if (data['addACarrierResponse'] | length != "0") %}
-                  <a href="transport/confirm-change" aria-describedby="transport-completed">Edit transport</a>
-                {% else %}
-                  <a href="transport/inland-mode" aria-describedby="transport-completed">Edit transport</a>
-                {% endif %}
-              {% else %}
-                <a href="transport/inland-mode" aria-describedby="transport-completed">Edit transport</a>
-              {% endif %}
+              <a href="transport/inland-mode" aria-describedby="transport-completed">Edit transport</a>
             </span>
             <span class="hmrc-status-tag" id="transport-completed">
               Completed
@@ -262,10 +246,11 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% endif %}
 
           <!-- Add items -->
+
           {% if data['addAnotherItem'] == "No " %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="add-items/item-warning" aria-describedby="add-items-completed">Edit items</a>
+              <a href="add-items/item-details/item-description" aria-describedby="add-items-completed">Edit items</a>
             </span>
             <span class="hmrc-status-tag" id="add-items-completed">
               Completed
@@ -274,7 +259,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% elif (data['itemDescription'] | length != "0") %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="add-items/item-warning" aria-describedby="add-items-in-progress">Add items</a>
+              <a href="add-items/item-details/item-description" aria-describedby="add-items-in-progress">Add items</a>
             </span>
             <span class="hmrc-status-tag" id="goods-summary-in-progress">
               In progress
@@ -285,7 +270,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
               {% if data['on-behalf-of-someone-else'] | length != "0" and data['areYouTheConsignee'] | length != "0" and data['addAnotherOfficeOfTransit'] == "No " and data['addACarrierResponse'] | length != "0" %}
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
-                  <a href="add-items/item-warning" aria-describedby="add-items-not-started">Add items</a>
+                  <a href="add-items/item-details/item-description" aria-describedby="add-items-not-started">Add items</a>
                 </span>
                 <span class="hmrc-status-tag" id="goods-summary-not-started">
                   Not started
@@ -305,7 +290,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
               {% if data['on-behalf-of-someone-else'] | length != "0" and data['areYouTheConsignee'] | length != "0" and data['addAnotherOfficeOfTransit'] == "No " %}
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
-                  <a href="add-items/item-warning" aria-describedby="add-items-not-started">Add items</a>
+                  <a href="add-items/item-details/item-description" aria-describedby="add-items-not-started">Add items</a>
                 </span>
                 <span class="hmrc-status-tag" id="goods-summary-not-started">
                   Not started
