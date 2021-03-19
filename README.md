@@ -27,7 +27,7 @@ The `master` branch of this prototype is for **MVP** iterations of the service a
     > **Push** changes to remote `origin`
 
 6.  Send all the changes you've made to the MVP Heroku prototype
-    > **Push** changes from to remote `heroku`
+    > **Push** changes to remote `heroku`
 
 #### Replicate those changes into the Post-MVP Heroku prototype
 1.  Switch to the Post-MVP branch
@@ -42,10 +42,10 @@ The `master` branch of this prototype is for **MVP** iterations of the service a
     3.    Check all changes in the browser at `localhost:3000`
     4.    **Stage** the changed files
     5.    Add a commit message and **commit** the changes
-    6.    **Push** changes from local `main` to remote `origin`
+    6.    **Push** changes to remote `origin`
 
 3.  Send all the changes you've made to the Post-MVP Heroku prototype
-    > **Push** changes from local `main` to remote `heroku-postmvp`
+    > **Push** changes to remote `heroku-postmvp`
 
 ## Post-MVP
 The `main` branch of of this prototype is for **Post-MVP** iterations of the service and is deployed to https://ctc-traders-postmvp.herokuapp.com.
