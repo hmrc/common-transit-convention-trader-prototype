@@ -13,16 +13,16 @@
     > Type: `npm install` and hot enter
 
 5.  Add MVP and Post-MVP Heroku App remotes
-    > Type: `remote add heroku https://git.heroku.com/ctc-traders.git` and hit enter
-    > Type: `remote add heroku-postmvp https://git.heroku.com/ctc-traders-postmvp.git` and hit enter
+    > - Type: `remote add heroku https://git.heroku.com/ctc-traders.git` and hit enter
+    > - Type: `remote add heroku-postmvp https://git.heroku.com/ctc-traders-postmvp.git` and hit enter
 
 6.  Get Post-MVP branch and switch back to MVP branch
-    > Type: `git switch main` and hit enter
-    > Type: `git checkout master` and hit enter
+    > - Type: `git switch main` and hit enter
+    > - Type: `git checkout master` and hit enter
 
 7.  Start the prototype
-    > Type: `npm start` and hit enter
-    > Go to `localhost:3000` in your browser
+    > - Type: `npm start` and hit enter
+    > - Go to `localhost:3000` in your browser
     
 
 
