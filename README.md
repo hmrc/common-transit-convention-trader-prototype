@@ -1,6 +1,31 @@
 
 # Common Transit Convention Trader Prototype
 
+## Set up the prototype
+1.  Open a `terminal` and navigate to the folder where you want to add the prototype repository
+2.  Clone the GitHub file repository so that it exists on your local machine
+    > Type: `git clone git@github.com:hmrc/common-transit-convention-trader-prototype.git ctc-trader-prototype` and hit enter
+
+3.  Change into the new protoype folder
+    > Type: `cd ctc-trader-prototype` and hit enter
+
+4.  Install Node dependencies
+    > Type: `npm install` and hot enter
+
+5.  Add MVP and Post-MVP Heroku App remotes
+    > Type: `remote add heroku https://git.heroku.com/ctc-traders.git` and hit enter
+    > Type: `remote add heroku-postmvp https://git.heroku.com/ctc-traders-postmvp.git` and hit enter
+
+6.  Get Post-MVP branch and switch back to MVP branch
+    > Type: `git switch main` and hit enter
+    > Type: `git checkout master` and hit enter
+
+7.  Start the prototype
+    > Type: `npm start` and hit enter
+    > Go to `localhost:3000` in your browser
+    
+
+
 ## MVP Iteration process
 The `master` branch of this prototype is for **MVP** iterations and is deployed to `heroku`.
 
