@@ -29,7 +29,7 @@
 ## MVP Iteration process
 The `master` branch of this prototype is for **MVP** iterations and is deployed to `heroku`.
 
-https://ctc-traders.herokuapp.com.
+https://ctc-traders.herokuapp.com
 
 ### Make changes to the MVP Heroku prototype
 1.  Make sure you're on the MVP branch
