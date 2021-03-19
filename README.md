@@ -2,7 +2,8 @@
 # common-transit-convention-trader-prototype
 
 ## MVP
-The `master` branch of this prototype is for **MVP** iterations of the service and is deployed to `heroku`.
+The `master` branch of this prototype is for **MVP** iterations and is deployed to `heroku`.
+
 https://ctc-traders.herokuapp.com.
 
 ### Iteration process
@@ -49,7 +50,8 @@ https://ctc-traders.herokuapp.com.
     > **Push** changes to remote `heroku-postmvp`
 
 ## Post-MVP
-The `main` branch of of this prototype is for **Post-MVP** iterations of the service and is deployed to `heroku-postvmp`.
+The `main` branch of of this prototype is for **Post-MVP** iterations and is deployed to `heroku-postvmp`.
+
 https://ctc-traders-postmvp.herokuapp.com
 
 ### Iteration process
