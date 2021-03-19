@@ -81,4 +81,4 @@ https://ctc-traders-postmvp.herokuapp.com
 
 
 ## GitHub and Heroku Structure
-![GitHub and Heroku Structure](/assets/images/CTC-GitHub-and-Heroku-Structure.png)
+![GitHub and Heroku Structure](/app/assets/images/CTC-GitHub-and-Heroku-Structure.png)
