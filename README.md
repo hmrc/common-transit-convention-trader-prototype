@@ -8,7 +8,7 @@ The `master` branch of this prototype is for **MVP** iterations of the service a
 1. **Checkout** local `master` branch
 2. **Pull** from remote `origin` to local `master`
 3. Iterate the prototype as necessary
-4. **Commit** changes
+4. **Stage** changed files and **commit** changes
 5. **Push** changes from local `master` to remote `origin`
 6. **Push** changes from local `master` to remote `heroku`
 7. **Checkout** local `main` branch
@@ -24,7 +24,7 @@ The `main` branch of of this prototype is for **Post-MVP** iterations of the ser
 ### Iteration process
 1. **Checkout** local `main` branch
 2. Iterate the prototype as necessary
-3. **Commit** changes
+3. **Stage** changed files and **commit** changes
 4. **Push** changes from local `main` to remote `origin`
 5. **Push** changes from local `main` to remote `heroku-postmvp`
 6. **Checkout** local `master` branch
