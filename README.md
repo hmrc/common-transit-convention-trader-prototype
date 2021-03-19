@@ -10,7 +10,7 @@
     > Type: `cd ctc-trader-prototype` and hit enter
 
 4.  Install Node dependencies
-    > Type: `npm install` and hot enter
+    > Type: `npm install` and hit enter
 
 5.  Add MVP and Post-MVP Heroku App remotes
     > - Type: `remote add heroku https://git.heroku.com/ctc-traders.git` and hit enter
