@@ -1,14 +1,12 @@
 
 # common-transit-convention-trader-prototype
 
-## MVP
+## MVP Iteration process
 The `master` branch of this prototype is for **MVP** iterations and is deployed to `heroku`.
 
 https://ctc-traders.herokuapp.com.
 
-### Iteration process
-
-#### Make changes to the MVP Heroku prototype
+### Make changes to the MVP Heroku prototype
 1.  Make sure you're on the MVP branch
     > **Checkout** local `master` branch
 
@@ -31,14 +29,14 @@ https://ctc-traders.herokuapp.com.
 6.  Send all the changes you've made to the MVP Heroku prototype
     > **Push** changes to remote `heroku`
 
-#### Replicate those changes into the Post-MVP Heroku prototype
+### Replicate those changes into the Post-MVP Heroku prototype
 1.  Switch to the Post-MVP branch
     > **Checkout** local `main` branch
 
 2.  Merge the changes you made in the MVP branch into the Post-MVP branch
     > **Merge** changes from local `master` branch into local `main` branch
 
-    ##### If there are merge conflicts
+    #### If there are merge conflicts
     1.    Resolve the merge conflicts by choosing whether to keep the current or incoming changes
     2.    Save the files that have changed
     3.    Check all changes in the browser at `localhost:3000`
@@ -49,14 +47,12 @@ https://ctc-traders.herokuapp.com.
 3.  Send all the changes you've made to the Post-MVP Heroku prototype
     > **Push** changes to remote `heroku-postmvp`
 
-## Post-MVP
+## Post-MVP Iteration process
 The `main` branch of of this prototype is for **Post-MVP** iterations and is deployed to `heroku-postvmp`.
 
 https://ctc-traders-postmvp.herokuapp.com
 
-### Iteration process
-
-#### Make changes to the Post-MVP Heroku prototype
+### Make changes to the Post-MVP Heroku prototype
 1.  Make sure you're on the Post-MVP branch
     > **Checkout** local `main` branch
 
