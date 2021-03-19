@@ -78,3 +78,7 @@ https://ctc-traders-postmvp.herokuapp.com
 6.  Send all the changes you've made to the Post-MVP Heroku prototype
     > **Push** changes to remote `heroku-postmvp`
 
+
+
+## GitHub and Heroku Structure
+![GitHub and Heroku Structure](/assets/images/CTC-GitHub-and-Heroku-Structure.png)
