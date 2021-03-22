@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Are you sure you are ready to add items now? {{ data['pageTitleAddOn']}}
+Are you ready to start adding items? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,7 +21,7 @@ Are you sure you are ready to add items now? {{ data['pageTitleAddOn']}}
         name: "itemWarning",
         fieldset: {
           legend: {
-            text: "Are you sure you are ready to add items now?",
+            text: "Are you ready to start adding items?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
@@ -31,7 +31,7 @@ Are you sure you are ready to add items now? {{ data['pageTitleAddOn']}}
                     <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
                     <strong class="govuk-warning-text__text">
                       <span class="govuk-warning-text__assistive">Warning</span>
-                      Make sure the answers provided in the general information, trader details, route details or safety and security sections are accurate. Changing the answers any of these previous sections will reset this section.
+                      Make sure the answers in general information, route, trader details, and safety and security sections are correct. Changing any answers in these sections will reset this section.
                     </strong>
                   </div>'
         },
