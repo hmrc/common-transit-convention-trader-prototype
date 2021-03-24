@@ -24,7 +24,7 @@ The `main` branch of of this prototype is for **Post-MVP** iterations of the ser
 ### Iteration process
 1. **Checkout** local `main` branch
 2. Iterate the prototype as necessary
-3. **Stage** changed files and **commit** changes
+3. **Stage** changed files, comment and **commit** changes
 4. **Push** changes from local `main` to remote `origin`
 5. **Push** changes from local `main` to remote `heroku-postmvp`
 6. **Checkout** local `master` branch
