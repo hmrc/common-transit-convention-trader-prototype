@@ -24,7 +24,6 @@
     > - Go to `localhost:3000` in your browser
     
 
-
 ## MVP Iteration process
 The `master` branch of this prototype is for **MVP** iterations and is deployed to `heroku`.
 
