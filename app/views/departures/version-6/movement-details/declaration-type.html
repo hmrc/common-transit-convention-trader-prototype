@@ -16,17 +16,14 @@ What declaration do you want to create? {{ data['pageTitleAddOn']}}
     <form action="procedure-type-route" class="form" method="post">
       
       <span class="govuk-caption-xl">{{ data['movementDetails'] }}</span>
-
+<h1 class="govuk-fieldset__legend--xl">          
+  What declaration do you want to create?
+</h1>
+<p class="govuk-body">For mixed consignments, you will need to create separate T1 and T2 declarations. </p>
       {{ govukRadios({
         idPrefix: "declarationType",
         name: "declarationType",
-        fieldset: {
-          legend: {
-            text: "What declaration do you want to create?",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--xl"
-          }
-        },
+        
         items: [
           {
             value: "T1",
@@ -35,10 +32,6 @@ What declaration do you want to create? {{ data['pageTitleAddOn']}}
           {
             value: "T2",
             text: "T2 (goods originating inside the EU, such as NI)"
-          },
-          {
-            value: "T-",
-            text: "T- (mixed consignment of T1 and T2 goods)"
           }
         ]
       }) }}

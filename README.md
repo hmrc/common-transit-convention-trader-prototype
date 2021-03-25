@@ -1,4 +1,3 @@
-
 # Common Transit Convention Trader Prototype
 
 ## Set up the prototype
