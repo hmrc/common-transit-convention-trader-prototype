@@ -1,4 +1,3 @@
-
 # Common Transit Convention Trader Prototype
 
 ## Set up the prototype
@@ -24,7 +23,6 @@
     > - Type: `npm start` and hit enter
     > - Go to `localhost:3000` in your browser
     
-
 
 ## MVP Iteration process
 The `master` branch of this prototype is for **MVP** iterations and is deployed to `heroku`.
