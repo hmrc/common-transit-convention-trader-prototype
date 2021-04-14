@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Are you the consignee for all the items? {{ data['pageTitleAddOn']}}
+Is there a consignee for all items? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -22,7 +22,7 @@ Are you the consignee for all the items? {{ data['pageTitleAddOn']}}
         name: "areYouTheConsignee",
         fieldset: {
           legend: {
-            text: "Are you the consignee for all the items?",
+            text: "Is there a consignee for all  items?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
@@ -32,11 +32,11 @@ Are you the consignee for all the items? {{ data['pageTitleAddOn']}}
         },
         items: [
           {
-            value: "Yes redirect(check-answers)",
+            value: "Yes redirect(is-consignee-eori-known)",
             text: "Yes"
           },
           {
-            value: "No redirect(consignee-same-for-all-items)",
+            value: "No redirect(check-answers)",
             text: "No"
           }
         ]
