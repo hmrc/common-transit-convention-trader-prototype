@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What do you want to do? {{ data['pageTitleAddOn'] }}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "splitterPageResponse",
+          name: "splitterPageResponse",
+          fieldset: {
+            legend: {
+              text: "What do you want to do?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "Make an arrival notification redirect(homepage)",
+              text: "Make an arrival notification"
+            },
+            {
+              value: "View arrival notifications sent on or after 1 January 2021 redirect(homepage)",
+              text: "View arrival notifications sent on or after 1 January 2021"
+            },
+            {
+              value: "View arrival notifications sent on or before 11pm on 31 December 2020 redirect(cannot-use-this-service)",
+              text: "View arrival notifications sent on or before 11pm on 31 December 2020"
+            },
+            {
+              value: "Make a new departure declaration redirect(cannot-use-this-service)",
+              text: "Make a new departure declaration"
+            },
+            {
+              value: "View sent departure declarations  redirect(cannot-use-this-service)",
+              text: "View sent departure declarations "
+            },
+            {
+              value: "View a Northern Ireland (NI) movement redirect(cannot-use-this-service-northern-ireland)",
+              text: "Northern Ireland (NI) movements"
+            }
+          ]
+        }) }}
+
+        <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-warning-text__assistive">Warning</span>
+              From 30 June 2021, you will no longer be able to access movements sent on or before 31 December 2020.
+            </strong>
+          </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        <br><br><br><br>
+
+        <p class="govuk-body"><a href="homepage">Usability testing scenario</a></p>
+
+      </form>
+
+  </div>
+</div>
+
+{% endblock %}

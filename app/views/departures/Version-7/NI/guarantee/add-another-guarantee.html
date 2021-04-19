@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {% if (data['guaranteeCount'] == "1") %}
+      You have added {{ data['guaranteeCount'] }} guarantee {{ data['pageTitleAddOn']}}
+  {% else %}
+      You have added {{ data['guaranteeCount'] }} guarantees {{ data['pageTitleAddOn']}}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post" action="add-another-guarantee">
+      <span class="govuk-caption-xl">{{ data['guaranteeSummary'] }}</span>
+
+        <h1 class="govuk-heading-xl">
+          {% if (data['guaranteeCount'] == "1") %}
+            You have added {{ data['guaranteeCount']}} guarantee
+          {% else %}
+            You have added {{ data['guaranteeCount']}} guarantees
+          {% endif %}
+        </h1>
+
+      <div class="govuk-form-group">
+          
+          <table class="govuk-table hmrc-responsive-table" role="table">
+            <caption class="govuk-visually-hidden">guarantees</caption>
+            <tbody>
+              {% for guarantee in data['guaranteeArray'] %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">{{ guarantee.guarantee }}</td>
+                <td class="govuk-table__cell govuk-table__cell--action"><a href="guarantee-number">Change</a>  |  <a href="remove-guarantee" >Remove</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "addAnotherGuarantee",
+          name: "addAnotherGuarantee",
+          fieldset: {
+            legend: {
+              text: "Do you need to add another guarantee?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        <br><br>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+    </form>
+
+    <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+  </div>
+</div>
+
+{% endblock %}

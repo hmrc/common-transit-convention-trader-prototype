@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {% if (data['documentCount'] == "1") %}
+    You have added {{ data['documentCount']}} produced document or certificate {{ data['pageTitleAddOn']}}
+  {% else %}
+    You have added {{ data['documentCount']}} produced documents or certificates {{ data['pageTitleAddOn']}}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post" action="add-another-document-route">
+      <span class="govuk-caption-xl">{{ data['items'] }}</span>
+
+      <h1 class="govuk-heading-xl">
+        {% if (data['documentCount'] == "1") %}
+          You have added {{ data['documentCount']}} produced document or certificate
+        {% else %}
+          You have added {{ data['documentCount']}} produced documents or certificates
+        {% endif %}
+      </h1>
+
+      <div class="govuk-form-group">
+          
+          <table class="govuk-table hmrc-responsive-table" role="table">
+            <caption class="govuk-visually-hidden">Produced document or certificates</caption>
+            <tbody>
+              {% for document in data['documentsArray'] %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">{{ document.type }}</td>
+                <td class="govuk-table__cell govuk-table__cell--action">
+                  <a href="document-type">Change<span class="govuk-visually-hidden">change document {{document.id}} {{document.reference}}</span></a>  
+                  |  <a href="remove-document" >Remove<span class="govuk-visually-hidden">remove document {{document.id}} {{document.reference}}</span></a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "addAnotherDocument",
+          name: "addAnotherDocument",
+          fieldset: {
+            legend: {
+              text: "Do you need to add another produced document or work certificate?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        <br><br>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+    </form>
+
+    <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+  </div>
+</div>
+
+{% endblock %}
