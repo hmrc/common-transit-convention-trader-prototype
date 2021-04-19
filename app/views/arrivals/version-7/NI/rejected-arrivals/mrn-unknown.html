@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+There is a problem with this arrival notification {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="correct-mrn-error" method="post">
+
+      <h1 class="govuk-heading-xl">There is a problem with this arrival notification</h1>
+
+      <p class="govuk-heading-body">The movement reference number cannot be found. </p>
+
+      <dl class="govuk-summary-list govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key" style="width: 48%">
+            Movement reference number
+          </dt>
+          <dd class="govuk-summary-list__value" style="width: 62%">
+            10IT02130010005402
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden">movement reference number</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+       <p class="govuk-body">If this information is correct, you will need to <a href="#">contact the New Computerised Transit System helpdesk (opens in a new window)</a>.</p>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

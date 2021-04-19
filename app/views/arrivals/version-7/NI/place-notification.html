@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is the postcode for the place of notification?  {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<form action="event/something-happened" class="form" method="post">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">What is the postcode for the place of notification?</h1>
+
+      {{ govukInput({
+      classes: "govuk-input--width-10",
+      hint: {
+        html: 
+        '<p class="govuk-body">This is where you are completing the arrival notification.</p>
+        <span id="changed-name-hint" class="govuk-hint">
+          Give the postcode, like AB1 1AB.
+        </span>'
+      },  
+      id: "place-notification",
+      name: "place-notification",
+      value: data['place-notification']
+      }) }}
+
+
+      {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </div>
+  </div>
+</form>
+
+{# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
+
+{% endblock %}

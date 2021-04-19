@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Where were the goods moved? {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      classes: "govuk-radios",
+      idPrefix: "new-transport-type",
+      name: "new-transport-type",
+      fieldset: {
+        legend: {
+          text: "Where were the goods moved?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+        text: ""
+      },
+      items: [
+        {
+          value: "Container, redirect(new-container-number)",
+          text: "A different shipping container"
+        },
+        {
+          value: "Vehicle, redirect(vehicle-reference)",
+          text: "A different vehicle"
+        },
+        {
+          value: "Both, redirect(new-container-number)",
+          text: "A different shipping container on a different vehicle"
+        }
+      ]
+    }) }}
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+    {# <p><a href="homepage.html">Go back to manage transit movements</a></p> #}
+
+  </div>
+</div>
+
+{% endblock %}
