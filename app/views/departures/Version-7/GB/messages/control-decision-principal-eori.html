@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Your goods have been selected for control {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Your goods have been selected for control</h1>
+
+    <dl class="govuk-summary-list govuk-summary-list">
+
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width: 48%">
+              Movement reference number
+            </dt>
+            <dd class="govuk-summary-list__value" style="width: 62%">
+                20GB00006010023GB40
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width: 48%">
+              Local reference number
+            </dt>
+            <dd class="govuk-summary-list__value" style="width: 62%">
+              OR023NCTSWEB100310930
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width: 48%">
+              Principal EORI number
+            </dt>
+            <dd class="govuk-summary-list__value" style="width: 62%">
+              GB123456123456
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width: 48%">
+                Date of control
+            </dt>
+            <dd class="govuk-summary-list__value" style="width: 62%">
+                {{ data['traderName']|default("11 January 2011", true) }}
+            </dd>
+          </div>
+
+      </dl>
+
+
+
+    <!-- <p class="govuk-body govuk-!-font-weight-bold">Principal <span class="govuk-body govuk-!-font-weight-regular">{{ data['traderName']|default("DHL", true) }}.</span></p>
+
+    <p class="govuk-body govuk-!-font-weight-bold">Movement reference number <span class="govuk-body govuk-!-font-weight-regular">20GB00006010023GB40.</span></p>
+
+    <p class="govuk-body govuk-!-font-weight-bold">Date of control <span class="govuk-body govuk-!-font-weight-regular">{{ data['traderName']|default("11 Jan 2011", true) }}.</span></p> -->
+
+    <p class="govuk-body">You must wait for the outcome of your customs check.</p>
+    
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What type of special mention do you want to add for item {{ data['itemNumber']}}? {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block pageHead %}
+<!--[if gt IE 8]><!-->
+<link href="/public/stylesheets/accessible-autocomplete.css" media="all" rel="stylesheet" type="text/css" />
+<!--<![endif]-->
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">{{ data['items'] }}</span>
+    <form class="form" method="post">
+
+    <h1 class="govuk-heading-xl">What type of special mention do you want to add for item {{ data['itemNumber']}}?</h1>
+
+      {# {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "specialMentionType",
+        name: "specialMentionType",
+        fieldset: {
+          legend: {
+            text: "What type of special mention do you want to add for item "+data['itemNumber']+"?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "(DG2) Export",
+            text: "(DG2) Export"
+          },
+          {
+            value: "(DG1) Export subject to duties",
+            text: "(DG1) Export subject to duties"
+          },
+          {
+            value: "(DG0) Export subjection to restriction",
+            text: "(DG0) Export subjection to restriction"
+          },
+          {
+            value: "(10600) Negotiable Bill of lading to order blank endorsed",
+            text: "(10600) Negotiable Bill of lading to order blank endorsed"
+          },
+          {
+            value: "(CAL) Test Liability",
+            text: "(CAL) Test Liability"
+          }
+        ]
+      }) }} #}
+
+
+      {{ govukSelect({
+        classes: "govuk-input--width-20 autocomplete",
+        label: {
+          text: header,
+          isPageHeading: true,
+          classes: "govuk-label--xl"
+        },
+        id: "specialMentionType",
+        name: "specialMentionType",
+        errorMessage: form.value.error,
+        items: CTCData.specialMentions
+      }) }}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+
+    <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/accessible-autocomplete.js"></script>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is the Conveyance Reference Number (CRN)? {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="conveyance-reference-route" class="form" method="post">
+
+      <span class="govuk-caption-xl">{{ data['safetySecurity'] }}</span>
+
+      <h1 class="govuk-heading-xl">What is the Conveyance Reference Number (CRN)?</h1>
+
+      <div class="govuk-form-group">
+        <input class="govuk-input govuk-input--width-25" id="conveyanceReferenceNumber" name="conveyanceReferenceNumber" type="text"
+          spellcheck="false" maxlength="26">
+      </div>
+
+      {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

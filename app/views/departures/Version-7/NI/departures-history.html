@@ -1,0 +1,286 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Departure declarations {{ data['pageTitleAddOn' ]}}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl">
+      Departure declarations
+    </h1>
+
+    <p class="govuk-body"><a href="local-reference-number">Make a departure declaration</a></p>
+
+    <br><br>
+
+    <form class="form" method="post" action="departures-history-search-route">
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="notificationSearch">
+            Search by local reference number or movement reference number
+          </label>
+        </h1>
+        <input class="govuk-input" style="width:50%" id="notificationSearch" name="notificationSearch" type="text">
+        <button class="govuk-button" data-module="govuk-button">Search</button>
+      </div>
+    </form>
+
+    <!-- 
+
+      Not yet included on this page:
+
+      Arrival advise issues
+      Declaration cancelled
+      Non arrival information request
+      MRN allocated
+      Not released for transit
+      Released for transit
+      Write-off transit movement
+
+      Included on this page:
+
+      Transit declaration sent
+      Declaration rejected
+      Transit declaration submitted (accepted by NCTS)
+      Guarantee invalid
+
+    -->
+
+    {%
+      set feb19 = [
+        {
+          "updated": "11:20am",
+          "lrn": data['local-reference-number'],
+          "officeOfDeparture": data['office-of-departure'] | getOffice,
+          "status": "Departure declaration sent",
+          "actions": ["history"]
+        },
+
+        {
+          "updated": "11:03am",
+          "lrn": "20GB000060100C06E0",
+          "officeOfDeparture": "Dover (OTS) Freight Clearance (GB000040)",
+          "status": "MRN allocated MRN:20GB00006010023GB40",
+          "actions": ["history"]
+        },
+
+        {
+          "updated": "10:50am",
+          "lrn": "20GB000060210B0685",
+          "officeOfDeparture": "Dover (OTS) Freight Clearance (GB000040)",
+          "status": "Released for transit",
+          "actions": ["coreAccepted", "history"]
+        },
+        
+        {
+          "updated": "10:35am",
+          "lrn": "20IT02139050009385",
+          "officeOfDeparture": "Dover (OTS) Freight Clearance (GB000040)",
+          "status": "Transit declaration rejected",
+          "actions": ["fixError", "history"]
+        },
+        {
+          "updated": "8:30am",
+          "lrn": "20IT02130010005402",
+          "officeOfDeparture": "Felixstowe (GB000051)",
+          "status": "Departure declaration received",
+          "actions": ["history"]
+        },
+        {
+          "updated": "7:19am",
+          "lrn": "20IT02102937825102",
+          "officeOfDeparture": "Dover/Folkestone Eurotunnel Freight (GB000060)",
+          "status": "Guarantee rejected",
+          "actions": ["fixGuarantee", "history"]
+        }
+      ]
+    %}
+
+    <h2 class="govuk-heading-m">{{ data['tableOneDate'] }}</h2>
+
+    <table class="govuk-table hmrc-responsive-table" role="table">
+      <caption class="govuk-visually-hidden">{{ data['tableOneDate'] }}</caption>
+      <thead role="rowgroup">
+        <tr role="row">
+          <th class="govuk-table__header" scope="col" role="columnheader">Updated</th>
+          <th class="govuk-table__header u--w-20" scope="col" role="columnheader">Local reference number</th>
+          <th class="govuk-table__header u--w-20" scope="col" role="columnheader">Status</th>
+          <th class="govuk-table__header u--w-10" scope="col" role="columnheader">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      {# {% if (data['where-are-the-goods'] == "AuthorisedConsignee") %}
+          <tr role="row">
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Updated</span>{{ data['arrivalSentTime']}}</td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Movement reference number</span>{{ data['movement-reference'] }}</td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Status</span>Arrival notification sent</td>
+            <td class="govuk-table__cell" role="cell">
+              <span class="hmrc-responsive-table__heading" aria-hidden="true">Action</span>
+                <ul class="govuk-list">
+                  <li>
+                    <a href="history/view-history-notification-sent">View history<span class="govuk-visually-hidden"> for {{ data['movement-reference'] }}</span> </a>
+                  </li>
+                </ul>
+            </td>
+          </tr>
+        {% endif %} #}
+
+        {% for notice in feb19 %}
+          <tr role="row">
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Updated</span>{{ notice.updated }}</td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Local reference number</span><span class="hmrc-responsive-table__value">{{ notice.lrn }}</span></td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Status</span>{{ notice.status }}</td>
+            <td class="govuk-table__cell" role="cell">
+              <span class="hmrc-responsive-table__heading" aria-hidden="true">Action</span>
+              {% if notice.actions.length > 0 %}
+                <ul class="govuk-list">
+              {% else %}
+                <div>
+              {% endif %}
+
+              {% for action in notice.actions %}
+                {% if notice.actions.length > 0 %}<li>{% endif %}
+                {% if action == "continueDeparture" %}
+                  <a href="#">Continue declaration<span class="govuk-visually-hidden"> for {{ notice.lrn }}</span></a>
+                {% endif %}
+                {% if action == "cancelDeparture" %}
+                  <a href="cancel-departure">Cancel declaration<span class="govuk-visually-hidden"> for {{ notice.lrn }}</span></a>
+                {% endif %}
+                {% if action == "history" %}
+                  <a href="#">View history<span class="govuk-visually-hidden"> for {{ notice.lrn }}</span></a>
+                {% endif %}
+                {% if action == "fixError" %}
+                  <a href="#">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.lrn }}</span></a>
+                {% endif %}
+                {% if action == "fixGuarantee" %}
+                  <a href="#">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.lrn }}</span></a>
+                {% endif %}
+                {% if action == "coreAccepted" %}
+                  <a href="/public/downloaddocs/Sample_TAD.pdf" target="blank">TAD PDF (43KB)<span class="govuk-visually-hidden">View TAD PDF (opens in a new window or tab)</span></a>
+                {% endif %}
+                {% if notice.actions.length > 0 %}</li>{% endif %}
+              {% endfor %}
+
+              {% if notice.actions | length > 0 %}
+                </ul>
+              {% else %}
+                </div>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+
+    {# <h2 class="govuk-heading-m govuk-!-margin-top-6">{{ data['tableTwoDate'] }}</h2> #}
+
+    {%
+      set feb18 = [
+        {
+          "updated": "5:03pm",
+          "lrn": "20GB000009800BA9W3",
+          "officeOfDeparture": "Felixstowe (GB000051)",
+          "status": "Transit declaration sent",
+          "actions": ["history"]
+        },
+        
+        {
+          "updated": "2:10pm",
+          "lrn": "20IT02130092847394",
+          "officeOfDeparture": "Dover (OTS) Freight Clearance (GB000040)",
+          "status": "Transit declaration rejected",
+          "actions": ["fixError", "history"]
+        },
+        {
+          "updated": "11:30am",
+          "lrn": "20IT02130029462957",
+          "officeOfDeparture": "Dover/Folkestone Eurotunnel Freight (GB000060)",
+          "status": "Transit declaration sent",
+          "actions": ["history"]
+        },
+        {
+          "updated": "7:19am",
+          "lrn": "20IT02130004860376",
+          "officeOfDeparture": "Dover (OTS) Freight Clearance (GB000040)",
+          "status": "Transit declaration sent",
+          "actions": ["history"]
+        }
+      ]
+    %}
+
+    <h2 class="govuk-heading-m">{{ data['tableTwoDate'] }}</h2>
+
+    <table class="govuk-table hmrc-responsive-table" role="table">
+      <caption class="govuk-visually-hidden">{{ data['tableTwoDate'] }}</caption>
+      <thead role="rowgroup">
+        <tr role="row">
+          <th class="govuk-table__header" scope="col" role="columnheader">Updated</th>
+          <th class="govuk-table__header u--w-20" scope="col" role="columnheader">Local reference number</th>
+          <th class="govuk-table__header u--w-20" scope="col" role="columnheader">Status</th>
+          <th class="govuk-table__header u--w-10" scope="col" role="columnheader">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for notice in feb18 %}
+          <tr role="row">
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Updated</span>{{ notice.updated }}</td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Local reference number</span><span class="hmrc-responsive-table__value">{{ notice.lrn }}</span></td>
+            <td class="govuk-table__cell" role="cell"><span class="hmrc-responsive-table__heading" aria-hidden="true">Status</span>{{ notice.status }}</td>
+            <td class="govuk-table__cell" role="cell">
+              <span class="hmrc-responsive-table__heading" aria-hidden="true">Action</span>
+              {% if notice.actions.length > 0 %}
+                <ul class="govuk-list">
+              {% else %}
+                <div>
+              {% endif %}
+
+              {% for action in notice.actions %}
+                {% if notice.actions.length > 0 %}<li>{% endif %}
+                {% if action == "continueDeparture" %}
+                  <a href="#">Continue declaration<span class="govuk-visually-hidden"> for {{ notice.lrn }}</span></a>
+                {% endif %}
+                {% if action == "cancelDeparture" %}
+                  <a href="cancel-departure">Cancel declaration<span class="govuk-visually-hidden"> for {{ notice.lrn }}</span></a>
+                {% endif %}
+                {% if action == "history" %}
+                  <a href="#">View history<span class="govuk-visually-hidden"> for {{ notice.lrn }}</span></a>
+                {% endif %}
+                {% if action == "fixError" %}
+                  <a href="#">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.lrn }}</span></a>
+                {% endif %}
+                {% if action == "fixGuarantee" %}
+                  <a href="#">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.lrn }}</span></a>
+                {% endif %}
+                {% if notice.actions.length > 0 %}</li>{% endif %}
+              {% endfor %}
+
+              {% if notice.actions | length > 0 %}
+                </ul>
+              {% else %}
+                </div>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <p class="govuk-body govuk-!-margin-top-3"><a href="homepage">Go to manage transit movements</a></p>
+
+    <br><br>
+
+    {# <p class="govuk-body govuk-!-margin-top-3"><a href="arrivals-history-2">Usability testing scenario</a></p> #}
+
+  </div>
+</div>
+
+
+
+{% endblock %}

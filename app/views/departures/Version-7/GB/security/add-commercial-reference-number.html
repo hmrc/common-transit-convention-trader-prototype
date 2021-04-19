@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Does this movement have a commercial reference number? {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl">{{ data['safetySecurity'] }}</span>
+    <form class="form" method="post" action="add-commercial-reference-route">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        idPrefix: "addCommercialReferenceResponse",
+        name: "addCommercialReferenceResponse",
+        fieldset: {
+          legend: {
+            text: "Does this movement have a commercial reference number?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+
+    <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+  </div>
+</div>
+
+{% endblock %}
