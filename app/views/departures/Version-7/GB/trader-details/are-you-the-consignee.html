@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Are you the consignee for all the items? {{ data['pageTitleAddOn']}}
+Is there a consignee for all the items? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -22,7 +22,7 @@ Are you the consignee for all the items? {{ data['pageTitleAddOn']}}
         name: "areYouTheConsignee",
         fieldset: {
           legend: {
-            text: "Are you the consignee for all the items?",
+            text: "Is there a consignee for all the items?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
