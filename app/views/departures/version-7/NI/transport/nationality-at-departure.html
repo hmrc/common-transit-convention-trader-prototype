@@ -25,11 +25,11 @@ What is the nationality at departure? {{ data['pageTitleAddOn']}}
 
     {% if (data['which-transport-details'] == "At the point of departure") %}
 
-      <form class="form" method="post">
+    <form class="form" method="post" action="change-at-border">
 
           {% from "govuk/components/input/macro.njk" import govukInput %}
 
-          <h1 class="govuk-heading-xl">What is the nationality at departure?</h1>
+          <h1 class="govuk-heading-xl">What is the nationality at departure   ?</h1>
 
           {{ govukSelect({
             classes: "govuk-input--width-20 autocomplete",
@@ -59,7 +59,7 @@ What is the nationality at departure? {{ data['pageTitleAddOn']}}
     
     {% else %}
 
-      <form class="form" method="post">
+      <form class="form" method="post" action="change-at-border">
 
         <span class="govuk-caption-xl">{{ data['transportDetails'] }}</span>
 
