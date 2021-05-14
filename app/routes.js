@@ -12,6 +12,11 @@ router.use('/unloading-remarks/version-:routeVersion', (req, res, next) => {
   require('./views/unloading-remarks/version-' + routeVersion + '/routes')(req, res, next)
 })
 
+router.use('/departures/version-:routeVersion', (req, res, next) => {
+  var routeVersion = req.params.routeVersion
+  require('./views/departures/version-' + routeVersion + '/routes')(req, res, next)
+})
+
 // Add your routes here - above the module.exports line
 function getData(res){
   var dummyData = require('./data/data.js')
@@ -71,13 +76,15 @@ router.use('/unloading-remarks/version-5/seals-included', require('./views/unloa
 
 //Standard departures routing
 
-router.use('/departures/version-3', require('./views/departures/version-3/routes'));
+// //router.use('/departures/version-3', require('./views/departures/version-3/routes'));
 
-router.use('/departures/version-4', require('./views/departures/version-4/routes'));
+// //router.use('/departures/version-4', require('./views/departures/version-4/routes'));
 
-router.use('/departures/version-5', require('./views/departures/version-5/routes'));
+// //router.use('/departures/version-5', require('./views/departures/version-5/routes'));
 
-router.use('/departures/version-6', require('./views/departures/version-6/routes'));
+// router.use('/departures/version-6', require('./views/departures/version-6/routes'));
+
+// router.use('/departures/version-7', require('./views/departures/version-7/routes'));
 
 //Departures static version routing
 
