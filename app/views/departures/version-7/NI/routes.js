@@ -227,9 +227,9 @@ router.post('/security/trader-security/same-security-consignor-route', function 
 router.post('/security/trader-security/security-consignor-route', function (req, res) {
     let securityConsignorResponse = req.session.data.securityConsignorResponse;
     if (securityConsignorResponse == 'Yes') {
-        res.redirect('is-consignor-eori-known');
+        res.redirect('what-is-consignor-eori');
     } else {
-        res.redirect('security-consignee');
+        res.redirect('consignor-eori-for-item-1');
     }
 })
 
