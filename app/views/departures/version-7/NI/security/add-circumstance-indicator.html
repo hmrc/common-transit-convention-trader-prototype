@@ -13,7 +13,7 @@ Do you need to add a specific circumstance indicator? {{ data['pageTitleAddOn']}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-xl">{{ data['safetySecurity'] }}</span>
-    <form class="form" method="post" action="circumstance-indicator">
+    <form class="form" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -32,11 +32,11 @@ Do you need to add a specific circumstance indicator? {{ data['pageTitleAddOn']}
         },
         items: [
           {
-            value: "Yes",
+            value: "Yes redirect(circumstance-indicator)",
             text: "Yes"
           },
           {
-            value: "No",
+            value: "No redirect(add-payment-method)",
             text: "No"
           }
         ]

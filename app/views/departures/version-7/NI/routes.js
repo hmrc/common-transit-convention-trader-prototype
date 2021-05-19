@@ -229,7 +229,7 @@ router.post('/security/trader-security/security-consignor-route', function (req,
     if (securityConsignorResponse == 'Yes') {
         res.redirect('what-is-consignor-eori');
     } else {
-        res.redirect('consignor-eori-for-item-1');
+        res.redirect('security-consignee');
     }
 })
 
