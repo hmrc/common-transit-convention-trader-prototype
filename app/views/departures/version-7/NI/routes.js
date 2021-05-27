@@ -1171,7 +1171,7 @@ router.post('/transport/nationality-at-departure-route', function (req, res) {
 router.post('/transport/add-id-at-departure', function (req, res) {
 
     let addIDAtDeparture = req.session.data.addIDAtDeparture;
-
+//let containersUsed = req.session.data.containersUsed;
     if (addIDAtDeparture == 'Yes') {
         res.redirect('id-at-departure');
     } else {
