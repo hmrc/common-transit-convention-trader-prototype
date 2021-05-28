@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Do you need to add a Customs-approved location? {{ data['pageTitleAddOn' ]}}
+Do you need to add agreed location of goods? {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,11 +18,11 @@ Do you need to add a Customs-approved location? {{ data['pageTitleAddOn' ]}}
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        idPrefix: "add-customs-sub-place",
-        name: "add-customs-sub-place",
+        idPrefix: "add-agreed-goods-location",
+        name: "add-agreed-goods-location",
         fieldset: {
           legend: {
-            text: "Do you need to add a Customs-approved location?",
+            text: "Do you need to add agreed location of goods?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
@@ -32,11 +32,11 @@ Do you need to add a Customs-approved location? {{ data['pageTitleAddOn' ]}}
         },
         items: [
           {
-            value: "Yes redirect(customs-approved-location)",
+            value: "Yes redirect(agreed-location-of-goods)",
             text: "Yes"
           },
           {
-            value: "No redirect(add-agreed-goods-location)",
+            value: "No redirect(add-seals)",
             text: "No"
           }
         ]
