@@ -1279,17 +1279,21 @@ router.post('/goods-summary/total-gross-mass', function (req, res) {
 
     let addSafetySecurityResponse = req.session.data.addSafetySecurityResponse;
     let departuresProcedureType = req.session.data.departuresProcedureType;
+    let departuresPreLodge = req.session.data.departuresPreLodge;
 
     if (addSafetySecurityResponse == 'Yes') {
         res.redirect('loading-place');
     } else {
 
-        if (departuresProcedureType == 'Normal') {
-            res.redirect('add-customs-approved-location');
-        } else {
+        if (departuresProcedureType == 'Normal' && departuresPreLodge == 'Yes'){
+            res.redirect('add-agreed-goods-location');
+    
+        } else if (departuresProcedureType == 'Normal' && departuresPreLodge == 'No'){
+            res.redirect('customs-approved-location');
+    
+        }    else {
             res.redirect('authorised-location-code');
-
-        }
+    }
     }
 
 })
@@ -1305,12 +1309,20 @@ router.post('/goods-summary/total-gross-mass', function (req, res) {
 router.post('/goods-summary/loading-place', function (req, res) {
 
     let departuresProcedureType = req.session.data.departuresProcedureType;
+    let departuresPreLodge = req.session.data.departuresPreLodge;
 
-    if (departuresProcedureType == 'Normal') {
+    if (departuresProcedureType == 'Normal' && departuresPreLodge == 'Yes'){
+        res.redirect('add-agreed-goods-location');
+
+    } else if (departuresProcedureType == 'Normal' && departuresPreLodge == 'No'){
         res.redirect('add-customs-approved-location');
-    } else {
+
+    }    else {
         res.redirect('authorised-location-code');
-    }
+}
+
+    //else if (departuresProcedureType == 'Normal' && departuresPreLodge == 'No'){
+       // res.redirect('add-customs-approved-location');
 
 })
 
