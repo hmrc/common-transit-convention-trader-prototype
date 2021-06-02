@@ -6,16 +6,31 @@ const router = express.Router()
 // Add your routes here - above the module.exports line
 
 // Task list confirm change routing
+
+
+//emeka entry x2
 router.post('/movement-details/declaration-type', function (req, res) {
 
-    let confirmChangeMovement = req.session.data.confirmChangeMovement;
+    let departuresProcedureType = req.session.data.departuresProcedureType;
 
-    if (confirmChangeMovement == 'Yes') {
-        res.redirect('declaration-type');
+    if (departuresProcedureType == 'Normal') {
+        res.redirect('will-you-be-pre-lodging');
     } else {
-        res.redirect('../task-list');
+        res.redirect('containers-used');
     }
 })
+
+router.post('/movement-details/declaration-type-tir', function (req, res) {
+
+    let departuresProcedureType = req.session.data.departuresProcedureType;
+
+    if (departuresProcedureType == 'Normal') {
+        res.redirect('will-you-be-pre-lodging');
+    } else {
+        res.redirect('containers-used');
+    }
+})
+
 router.post('/movement-details/dispatch-country', function (req, res) {
 
     let confirmChangeRoute = req.session.data.confirmChangeRoute;
