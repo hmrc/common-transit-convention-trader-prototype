@@ -41,10 +41,10 @@ Declaration summary {{ data['pageTitleAddOn']}}
               {% if data['changeAtBorder'] | length != "0" %}
                 <a href="movement-details/confirm-change" aria-describedby="movement-details-completed">Edit general information</a>
               {% else %}
-              {% if (data['officesOfDeparture'] == 'XI000142') or (data['officesOfDeparture'] == 'XI005160') or (data['officesOfDeparture'] == 'XI005220') and (data['declarationType'] == 'Normal') %}
+              {% if (data['officesOfDeparture'] == 'XI000142') or (data['officesOfDeparture'] == 'XI005160') or (data['officesOfDeparture'] == 'XI005220')  %}
                 <a href="movement-details/declaration-type-tir" aria-describedby="movement-details-completed">Edit general information</a>
               {% else %}
-              <a href="movement-details/declaration-type" aria-describedby="movement-details-completed">Edit general information</a>
+              <a href="movement-details/declaration-type-no-t2f" aria-describedby="movement-details-completed">Edit general information</a>
                 {% endif%}
                 {% endif%}
             </span>
@@ -55,10 +55,10 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% elif data['declaration-type'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              {% if (data['officesOfDeparture'] == 'XI000142') or (data['officesOfDeparture'] == 'XI005160') or (data['officesOfDeparture'] == 'XI005220') and (data['declarationType'] == 'Normal') %}
+              {% if (data['officesOfDeparture'] == 'XI000142') or (data['officesOfDeparture'] == 'XI005160') or (data['officesOfDeparture'] == 'XI005220')  %}
               <a href="movement-details/declaration-type-tir" aria-describedby="movement-details-in-progress">Add general information</a>
             {% else %}
-            <a href="movement-details/declaration-type" aria-describedby="movement-details-in-progress">Add general information</a>
+            <a href="movement-details/declaration-type-no-t2f" aria-describedby="movement-details-in-progress">Add general information</a>
               {% endif%}
             </span>
             <span class="hmrc-status-tag" id="movement-details-in-progress">
@@ -68,11 +68,12 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% else %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              {% if (data['officesOfDeparture'] == 'XI000142') or (data['officesOfDeparture'] == 'XI005160') or (data['officesOfDeparture'] == 'XI005220') and (data['declarationType'] == 'Normal') %}
+            {% if (data['officesOfDeparture'] == 'XI000142') or (data['officesOfDeparture'] == 'XI005160') or (data['officesOfDeparture'] == 'XI005220')  %}
               <a href="movement-details/declaration-type-tir" aria-describedby="movement-details-not-started">Add general information</a>
             {% else %}
-            <a href="movement-details/declaration-type" aria-describedby="movement-details-not-started">Add general information</a>
-              {% endif%}
+            <a href="movement-details/declaration-type-no-t2f" aria-describedby="movement-details-not-started">Add general information</a>
+                       
+            {% endif%}
             </span>
             <span class="hmrc-status-tag" id="movement-details-not-started">
               Not started
