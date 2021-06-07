@@ -1195,6 +1195,18 @@ router.post('/transport/add-id-at-departure', function (req, res) {
 
 })
 
+//Emeka added the following:
+router.post('/trader-details/what-is-principal-eori', function (req, res) {
+
+    let traderEORINumber = req.session.data.traderEORINumber;
+
+    if (traderEORINumber == "") {
+        res.redirect('principal-name');
+    } else {
+        res.redirect('principals-tir-id');
+    }
+});
+
 //ID at departure to change at border
 router.post('/transport/id-at-departure', function (req, res) {
     res.redirect('nationality-at-departure');
