@@ -1325,14 +1325,14 @@ router.post('/goods-summary/total-gross-mass', function (req, res) {
         if (departuresProcedureType == 'Normal' && departuresPreLodge == 'Yes'){
             res.redirect('add-agreed-goods-location');
     
-        } else if (departuresProcedureType == 'Normal' && departuresPreLodge == 'No'){
-            res.redirect('customs-approved-location');
+        } else if (addSafetySecurityResponse == 'No' && departuresProcedureType == 'Normal' && departuresPreLodge == 'No'){
+            res.redirect('add-customs-approved-location');
     
         }    else {
             res.redirect('authorised-location-code');
     }
     }
-
+   
 })
 
 
