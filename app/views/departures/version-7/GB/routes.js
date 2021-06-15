@@ -1308,6 +1308,7 @@ router.post('/goods-summary/total-gross-mass', function (req, res) {
 
 router.post('/goods-summary/loading-place', function (req, res) {
 
+    let addSafetySecurityResponse = req.session.data.addSafetySecurityResponse;
     let departuresProcedureType = req.session.data.departuresProcedureType;
     let departuresPreLodge = req.session.data.departuresPreLodge;
 
