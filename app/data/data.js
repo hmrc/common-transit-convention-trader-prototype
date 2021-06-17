@@ -1,10 +1,12 @@
+var officesNI = [
+  { value: "XI000142", text: "Belfast EPU (XI000142)", selected: false },
+  { value: "XI005160", text: "Warrenpoint (XI005160)", selected: false },
+  { value: "XI005220", text: "Larne (XI005220)", selected: false }
+]
+
 var data = {
   reference: {
-    offices: [
-      { value: "", text: "" },
-      { value: "XI000142", text: "Belfast EPU (XI000142)", selected: false },
-      { value: "XI005160", text: "Warrenpoint (XI005160)", selected: false },
-      { value: "XI005220", text: "Larne (XI005220)", selected: false },
+    officesGB: [
       {
         value: "GB000011",
         text: "Birmingham Airport (GB000011)",
@@ -20379,7 +20381,7 @@ var data = {
         value: "(B) Payment by credit card",
         text: "(B) Payment by credit card",
         selected: false,
-      },
+      },+ 
       {
         value: "(A) Payment in cash",
         text: "(A) Payment in cash",
@@ -20389,7 +20391,12 @@ var data = {
   },
 };
 
-module.exports.officesOfDeparture = data.reference["offices"];
+
+
+var blank = [{ value: "", text: "" }]
+
+module.exports.officesOfDepartureGB = blank + data.reference["officesGB"];
+module.exports.officesOfDepartureNI = blank +  data.reference["officesGB"] + officesNI;
 module.exports.countries = data.reference["countries"];
 module.exports.officeOfTransit = data.reference["officeOfTransit"];
 module.exports.ctcOnlyCountries = data.reference["ctcOnlyCountries"];
