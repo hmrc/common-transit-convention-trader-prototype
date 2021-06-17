@@ -66,7 +66,7 @@ module.exports = function (env) {
     if(code){
       var data = getData();
       var retVal = code;
-      data.officesOfDeparture.forEach(function(office){
+      data.officesOfDepartureNI.forEach(function(office){
         if(office.value.toLowerCase().trim() == code.toLowerCase().trim()){
           //console.log("-" + office.value.toLowerCase().trim() + "-", "-" + code.toLowerCase().trim() + "-")
           retVal = office.text;
