@@ -1394,10 +1394,15 @@ router.post('/guarantee/delete-guarantee', function (req, res) {
 router.post('/guarantee/add-another-guarantee', function (req, res) {
     var sessionData = req.session.data;
     let addAnotherGuarantee = sessionData.addAnotherGuarantee;
-    if (addAnotherGuarantee == 'Yes')
+    let declarationType = sessionData.declarationType;
+    console.log(declarationType)
+    if (addAnotherGuarantee == 'Yes' && declarationType == 'TIR'){
+        res.redirect('guarantee-type-tir');
+    } else if (addAnotherGuarantee == 'Yes'){
         res.redirect('guarantee-type');
-    else
+    } else{
         res.redirect('../task-list');
+    }
 })
 
 
