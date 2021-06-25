@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What is the principal’s holder TIR ID? {{ data['pageTitleAddOn']}}
+What is the principal's TIR holder identification? {{ data['pageTitleAddOn']}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,12 +15,14 @@ What is the principal’s holder TIR ID? {{ data['pageTitleAddOn']}}
     <span class="govuk-caption-xl">{{ data['traderDetails'] }}</span>
     <form class="form" action="are-you-the-consignor" method="post">
 
+      <h1 class="govuk-heading-xl">What is the principal's TIR holder identification?</h1>
+      <span class="govuk-hint">Like GBR/xxx/xxxxxxx or NIR/xxx/xxxxxxx.</span>
         {{ govukInput({
           label: {
-            text: "What is the principal’s holder TIR ID?",
             classes: "govuk-label--xl",
             isPageHeading: true
           },
+        
           id: "traderName",
           name: "traderName"
         }) }}
