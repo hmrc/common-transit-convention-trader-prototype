@@ -1196,17 +1196,32 @@ router.post('/transport/add-id-at-departure', function (req, res) {
 })
 
 //Emeka added the following:
-router.post('/trader-details/what-is-principal-eori', function (req, res) {
+
+router.post('/trader-details/principal-address', function (req, res) {
     
 
+    let declarationType = req.session.data.declarationType;
+
+     if  (declarationType == 'TIR') {
+        res.redirect('principals-tir-id');
+    } else {
+        res.redirect('are-you-the-consignor');
+    }
+    
+});
+
+//Emeka added the following:
+
+router.post('/trader-details/what-is-principal-eori', function (req, res) {
+    
 
     let traderEORINumber = req.session.data.traderEORINumber;
     let departuresProcedureType = req.session.data.departuresProcedureType;
     let declarationType = req.session.data.declarationType;
 
      if  (traderEORINumber != "" && departuresProcedureType == 'Simplified' && declarationType == 'TIR') {
-        res.redirect('principals-tir-id');
-    } else if (traderEORINumber != "" && departuresProcedureType == 'Simplified')  {
+        res.redirect('principal-name');
+    } else if (traderEORINumber != "" && departuresProcedureType == 'Simplified' && declarationType != 'TIR')  {
         res.redirect('are-you-the-consignor');
     } else if (traderEORINumber != "" && departuresProcedureType == 'Normal')  {
         res.redirect('principals-tir-id');
