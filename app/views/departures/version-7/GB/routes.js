@@ -687,7 +687,7 @@ router.post('/add-items/containers/add-another-container', function (req, res) {
     if (addAnotherContainer == 'Yes')
         res.redirect('container-number');
     else
-        res.redirect('../special-mentions/add-special-mention');
+        res.redirect('../special-mentions/add-additional-information');
 })
 
 /*
