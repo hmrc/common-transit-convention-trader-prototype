@@ -34,51 +34,45 @@ Declaration summary {{ data['pageTitleAddOn']}}
         <ul class="app-task-list__items">
 
           <!-- Movement details -->
-
-          {% if data['on-behalf-of-someone-else'] | length != "0" %}
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              {% if data['changeAtBorder'] | length != "0" %}
-                <a href="movement-details/confirm-change" aria-describedby="movement-details-completed">Edit general information</a>
-              {% else %}
-              {% if (data['officesOfDeparture'] == 'XI000142') or (data['officesOfDeparture'] == 'XI005160') or (data['officesOfDeparture'] == 'XI005220')  %}
-                <a href="movement-details/declaration-type-tir" aria-describedby="movement-details-completed">Edit general information</a>
-              {% else %}
-              <a href="movement-details/declaration-type-no-t2f" aria-describedby="movement-details-completed">Edit general information</a>
-                {% endif%}
-                {% endif%}
-            </span>
-            <span class="hmrc-status-tag" id="movement-details-completed">
-              Completed
-            </span>
-          </li>
-          {% elif data['declaration-type'] | length != "0" %}
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              {% if (data['officesOfDeparture'] == 'XI000142') or (data['officesOfDeparture'] == 'XI005160') or (data['officesOfDeparture'] == 'XI005220')  %}
-              <a href="movement-details/declaration-type-tir" aria-describedby="movement-details-in-progress">Add general information</a>
-            {% else %}
-            <a href="movement-details/declaration-type-no-t2f" aria-describedby="movement-details-in-progress">Add general information</a>
-              {% endif%}
-            </span>
-            <span class="hmrc-status-tag" id="movement-details-in-progress">
-              In progress
-            </span>
-          </li>
+          {% if data['on-behalf-of-someone-else'] | length != "0" %} <!-- Completed Section -->
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                {% if data['departuresProcedureType'] == "Normal" %}
+                  <a href="movement-details/will-you-be-pre-lodging" aria-describedby="movement-details-completed">Edit general information</a>
+                {% else %}
+                  <a href="movement-details/containers-used" aria-describedby="movement-details-completed">Edit general information</a>
+                {% endif %}
+              </span>
+              <span class="hmrc-status-tag" id="movement-details-completed">
+                Completed
+              </span>
+            </li>
+          {% if data['departuresPreLodge'] | length != "0" or data['containersUsed'] | length != "0" %}
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                {% if data['departuresProcedureType'] == "Normal" %}
+                  <a href="movement-details/will-you-be-pre-lodging" aria-describedby="movement-details-in-progress">Add general information</a>
+                {% else %}
+                  <a href="movement-details/containers-used" aria-describedby="movement-details-in-progress">Add general information</a>
+                {% endif %}
+              </span>
+              <span class="hmrc-status-tag" id="movement-details-in-progress">
+                In progress
+              </span>
+            </li>
           {% else %}
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-            {% if (data['officesOfDeparture'] == 'XI000142') or (data['officesOfDeparture'] == 'XI005160') or (data['officesOfDeparture'] == 'XI005220')  %}
-              <a href="movement-details/declaration-type-tir" aria-describedby="movement-details-not-started">Add general information</a>
-            {% else %}
-            <a href="movement-details/declaration-type-no-t2f" aria-describedby="movement-details-not-started">Add general information</a>
-                       
-            {% endif%}
-            </span>
-            <span class="hmrc-status-tag" id="movement-details-not-started">
-              Not started
-            </span>
-          </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                {% if data['departuresProcedureType'] == "Normal" %}
+                  <a href="movement-details/will-you-be-pre-lodging" aria-describedby="movement-details-not-started">Add general information</a>
+                {% else %}
+                  <a href="movement-details/containers-used" aria-describedby="movement-details-not-started">Add general information</a>
+                {% endif %}
+              </span>
+              <span class="hmrc-status-tag" id="movement-details-not-started">
+                Not started
+              </span>
+            </li>
           {% endif %}
 
           <!-- Route -->
