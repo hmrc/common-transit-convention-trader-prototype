@@ -9,7 +9,7 @@ const router = express.Router()
 
 
 //emeka entry x2
-router.post('/movement-details/declaration-type', function (req, res) {
+router.post('/declaration-type', function (req, res) {
 
     let departuresProcedureType = req.session.data.departuresProcedureType;
 

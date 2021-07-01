@@ -6,7 +6,7 @@ const router = express.Router()
 // Add your routes here - above the module.exports line
 
 // Task list confirm change routing
-router.post('/movement-details/declaration-type', function (req, res) {
+router.post('/declaration-type', function (req, res) {
 
     let confirmChangeMovement = req.session.data.confirmChangeMovement;
 
