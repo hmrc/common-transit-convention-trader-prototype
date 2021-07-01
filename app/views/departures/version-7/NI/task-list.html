@@ -46,7 +46,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
                 Completed
               </span>
             </li>
-          {% elif data['departuresPreLodge'] | length != "0" %}
+          {% elif (data['departuresPreLodge'] | length != "0") or (data['containersUsed'] | length != "0") %}
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 {% if data['departuresProcedureType'] == "Normal" %}
