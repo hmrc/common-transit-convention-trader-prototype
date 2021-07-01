@@ -18,7 +18,7 @@ router.post('/procedure-type', function (req, res){
     let departuresProcedureType = req.session.data.departuresProcedureType
 
     console.log(`post of procedure-type accessed with office of departure as ${officeOfDeparture} and precedure type as ${departuresProcedureType}`)
-    console.log(`containers used ${req.session.data.containersUsed} and departuresPreLodge is ${req.session.data.departuresPreLodge}`)
+    console.log(req.session.data)
 
     if (officeOfDeparture.startsWith("XI") && departuresProcedureType == "Normal"){
         res.redirect("declaration-type-tir")
