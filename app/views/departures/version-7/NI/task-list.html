@@ -33,6 +33,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
 
         <ul class="app-task-list__items">
 
+          <script>console.log( '{{ data.departuresPreLodge }}', '{{ data.containersUsed }}' )</script>
           <!-- Movement details -->
           {% if data['on-behalf-of-someone-else'] | length != "0" %} <!-- Completed Section -->
             <li class="app-task-list__item">
