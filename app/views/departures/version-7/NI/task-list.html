@@ -32,8 +32,6 @@ Declaration summary {{ data['pageTitleAddOn']}}
         </h2>
 
         <ul class="app-task-list__items">
-
-          <script>console.log( '{{ data.departuresPreLodge }}', '{{ data.containersUsed }}' )</script>
           <!-- Movement details -->
           {% if data['on-behalf-of-someone-else'] | length != "0" %} <!-- Completed Section -->
             <li class="app-task-list__item">
@@ -48,7 +46,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
                 Completed
               </span>
             </li>
-          {% elif (data['departuresPreLodge'] | length != "0") or (data['containersUsed'] | length != "0") %}
+          {% elif data['containersUsed'] | length != "0" %}
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 {% if data['departuresProcedureType'] == "Normal" %}
