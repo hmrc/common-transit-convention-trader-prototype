@@ -13,7 +13,7 @@ What declaration do you want to create? {{ data['pageTitleAddOn']}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="add-safety-and-security" class="form" method="post">
+    <form action="" class="form" method="post">
       
       <span class="govuk-caption-xl">{{ data['movementDetails'] }}</span>
 <h1 class="govuk-fieldset__legend--xl">          
@@ -26,20 +26,12 @@ What declaration do you want to create? {{ data['pageTitleAddOn']}}
         
         items: [
           {
-            value: "T1",
+            value: "T1 redirect(add-safety-and-security)",
             text: "T1 (goods originating outside the EU, such as GB)"
             },
           {
-            value: "T2",
+            value: "T2 redirect(add-safety-and-security)",
             text: "T2 (goods originating inside the EU, such as NI)"
-          },
-          {
-            value: "T2F",
-            text: "T2F (goods moving to, from or between the EU special territories)"
-          },
-          {
-            value: "TIR",
-            text: "TIR (goods moving under the cover of TIR Carnet)"
           }
         ]
       }) }}
