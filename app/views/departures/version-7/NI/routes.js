@@ -7,6 +7,25 @@ const router = express.Router()
 
 // Task list confirm change routing
 
+/**
+ * **********************************
+ * Pre Task list Section
+ * **********************************
+ */
+
+router.post('/procedure-type', function (req, res){
+    let officeOfDeparture       = req.session.data.officesOfDeparture
+    let departuresProcedureType = req.session.data.departuresProcedureType
+
+    if (officeOfDeparture.startsWith("XI") && departuresProcedureType == "Normal"){
+        res.redirect("declaration-type-tir")
+    } else if (officeOfDeparture.startsWith("XI") && departuresProcedureType == "Simplified") {
+        res.redirect("declaration-type-t2f")
+    } else {
+        res.redirect("declaration-type")
+    }
+})
+
 
 //emeka entry x2
 router.post('/declaration-type', function (req, res) {
