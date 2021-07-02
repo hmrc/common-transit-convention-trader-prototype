@@ -95,9 +95,7 @@ module.exports = {
 
   "nonEuCtcCountries" :["Andorra","Iceland", "Liechtenstein", "Norway", "San Marino", "Svalbard and Jan Mayen Islands", "Switzerland"],
 
-  "containersUsed" : "Yes",
-
-  "securityProcess" : "Yes",
+    "securityProcess" : "Yes",
 
   "safetySecurity" : "Safety and security",
 
