@@ -1263,9 +1263,9 @@ router.post('/transport/mode-crossing-border', function (req, res) {
 */
 
 //Total packages to total gross mass
-router.post('/goods-summary/total-packages', function (req, res) {
+/*router.post('/goods-summary/total-packages', function (req, res) {
     res.redirect('total-gross-mass');
-});
+});*/
 
 /*
     Total gross mass
@@ -1275,7 +1275,7 @@ router.post('/goods-summary/total-packages', function (req, res) {
         If the user has selected "simplified procedure" take them to "authorised location code"
 */
 
-router.post('/goods-summary/total-gross-mass', function (req, res) {
+router.post('/goods-summary/total-packages', function (req, res) {
 
     let addSafetySecurityResponse = req.session.data.addSafetySecurityResponse;
     let departuresProcedureType = req.session.data.departuresProcedureType;
