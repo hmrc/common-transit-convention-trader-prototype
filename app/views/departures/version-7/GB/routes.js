@@ -668,7 +668,11 @@ router.post('/add-items/containers/add-another-container-route', function (req, 
     sessionData.containersArray = containersArray;
     sessionData.containerCount = containersArray.length;
     res.redirect('add-another-container');
+
+
 })
+
+
 
 router.post('/add-items/containers/delete-container', function (req, res) {
     var sessionData = req.session.data;
@@ -683,11 +687,20 @@ router.post('/add-items/containers/delete-container', function (req, res) {
 
 router.post('/add-items/containers/add-another-container', function (req, res) {
     var sessionData = req.session.data;
+    let declarationType = sessionData.declarationType;
     let addAnotherContainer = sessionData.addAnotherContainer;
+    console.log(sessionData)
     if (addAnotherContainer == 'Yes')
         res.redirect('container-number');
-    else
-        res.redirect('../special-mentions/add-additional-information');
+    else{
+       
+
+        if (declarationType == 'T2') {
+            res.redirect('../special-mentions/add-additional-information');
+        } else {
+            res.redirect('../special-mentions/add-special-mention');
+        }
+    }
 })
 
 /*
