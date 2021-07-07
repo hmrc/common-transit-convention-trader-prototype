@@ -53,26 +53,7 @@ Check your answers {{ data['pageTitleAddOn' ]}}
             }
           ), goodsSummary) %}
 
-        {% set goodsSummary = (goodsSummary.push(   
-
-            {
-              key: {
-                text: "Total gross mass in kilograms"
-              },
-              value: {
-                text: data['totalGrossMass']
-              },
-              actions: {
-                items: [
-                  {
-                    href: "total-gross-mass",
-                    text: "Change",
-                    visuallyHiddenText: "total gross mass in kilograms"
-                  }
-                ]
-              }
-            }
-          ), goodsSummary) %}
+       
 
 
         {% if (data['addSafetySecurityResponse'] == "Yes") %}
