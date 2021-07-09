@@ -1369,7 +1369,26 @@ router.post('/goods-summary/total-packages', function (req, res) {
    
 })
 
+//Route journey - transit office (emeka)
 
+router.post('/route/destination-office', function (req, res) {
+
+    let declarationType = req.session.data.declarationType;
+    let officeOfDeparture = req.session.data.officesOfDeparture;
+
+    if (declarationType == 'TIR') {
+        res.redirect('check-your-answers');
+    } else {
+
+        if (officeOfDeparture.startsWith("XI")){
+            res.redirect('add-transit-office');
+    
+        }    else {
+            res.redirect('office-of-transit-country');
+    }
+    }
+   
+})
 
 /*
     Mode crossing the border

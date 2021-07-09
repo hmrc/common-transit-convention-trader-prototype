@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Do you need to add an office of transit? {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form method="post">
+
+      <span class="govuk-caption-xl">{{ data['routeDetails'] }}</span>
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "addTransitOffice",
+          name: "addTransitOffice",
+          fieldset: {
+            legend: {
+              text: "Do you need to add an office of transit?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "Yes, redirect(office-of-transit-country)",
+              text: "Yes"
+            },
+            {
+              value: "No, redirect(check-your-answers)",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      <!-- <p class="govuk-body"><a href="#">{{ data['saveAndReturn'] }}</a><p> -->
+
+      </form>
+
+  </div>
+</div>
+
+{% endblock %}
