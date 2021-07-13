@@ -6732,6 +6732,150 @@ var ctcOnlyCountries = [
   },
 ];
 
+/*emeka added - for movement-destination-country*/
+var onlyEUCountries = [
+  {
+    value: "",
+    text: "",
+    selected: false,
+  },
+  {
+    value: "Austria",
+    text: "Austria",
+    selected: false,
+  },
+  {
+    value: "Belgium",
+    text: "Belgium",
+    selected: false,
+  },
+  {
+    value: "Bulgaria",
+    text: "Bulgaria",
+    selected: false,
+  },
+  {
+    value: "Croatia",
+    text: "Croatia",
+    selected: false,
+  },
+  {
+    value: "Cyprus",
+    text: "Cyprus",
+    selected: false,
+  },
+  {
+    value: "Czech Republic",
+    text: "Czech Republic",
+    selected: false,
+  },
+  {
+    value: "Denmark",
+    text: "Denmark",
+    selected: false,
+  },
+  {
+    value: "Estonia",
+    text: "Estonia",
+    selected: false,
+  },
+  {
+    value: "Finland",
+    text: "Finland",
+    selected: false,
+  },
+  {
+    value: "France",
+    text: "France",
+    selected: false,
+  },
+  {
+    value: "Germany",
+    text: "Germany",
+    selected: false,
+  },
+  {
+    value: "Greece",
+    text: "Greece",
+    selected: false,
+  },
+  {
+    value: "Hungary",
+    text: "Hungary",
+    selected: false,
+  },
+  {
+    value: "Ireland",
+    text: "Ireland",
+    selected: false,
+  },
+  {
+    value: "Italy",
+    text: "Italy",
+    selected: false,
+  },
+  {
+    value: "Latvia",
+    text: "Latvia",
+    selected: false,
+  },
+  {
+    value: "Lithuania",
+    text: "Lithuania",
+    selected: false,
+  },
+  {
+    value: "Luxembourg",
+    text: "Luxembourg",
+    selected: false,
+  },
+  {
+    value: "Malta",
+    text: "Malta",
+    selected: false,
+  },
+  {
+    value: "Netherlands",
+    text: "Netherlands",
+    selected: false,
+  },
+  {
+    value: "Poland",
+    text: "Poland",
+    selected: false,
+  },
+  {
+    value: "Portugal",
+    text: "Portugal",
+    selected: false,
+  },
+  {
+    value: "Romania",
+    text: "Romania",
+    selected: false,
+  },
+  {
+    value: "Slovakia",
+    text: "Slovakia",
+    selected: false,
+  },
+  {
+    value: "Slovenia",
+    text: "Slovenia",
+    selected: false,
+  },
+  {
+    value: "Spain",
+    text: "Spain",
+    selected: false,
+  },
+  {
+    value: "Sweden",
+    text: "Sweden",
+    selected: false,
+  },
+];
+
 var transportMode = [
   {
     value: "",
@@ -20371,3 +20515,5 @@ module.exports.UNDangerousGoods = dangerousGoods;
 module.exports.specialMentions = specialMentions;
 module.exports.specificCircumstanceIndicator = specificCircumstanceIndicator;
 module.exports.transportCharges = transportCharges;
+
+module.exports.onlyEUCountries = onlyEUCountries;
