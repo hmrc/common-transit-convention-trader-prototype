@@ -26,7 +26,7 @@ What country is the transit movement ending in? {{ data['pageTitleAddOn']}}
     <!-- <p class="govuk-body">This may not be where the transit movement ends.</p> -->
 
     <form action="destination-office" class="form" method="get">
-
+      {% if data['declarationType'] == "TIR" %}
       {{ govukSelect({
         classes: "govuk-input--width-20 autocomplete",
         label: {
@@ -37,9 +37,25 @@ What country is the transit movement ending in? {{ data['pageTitleAddOn']}}
         id: "movementDestinationCountry",
         name: "movementDestinationCountry",
         errorMessage: form.value.error,
-        items: CTCData.ctcOnlyCountries
+        items:CTCData.onlyEUCountries
+         
       }) }}
 
+      {% else %}
+      {{ govukSelect({
+        classes: "govuk-input--width-20 autocomplete",
+        label: {
+          text: header,
+          isPageHeading: true,
+          classes: "govuk-label--xl"
+        },
+        id: "movementDestinationCountry",
+        name: "movementDestinationCountry",
+        errorMessage: form.value.error,
+        items:CTCData.ctcOnlyCountries
+         
+      }) }}
+      {% endif %}
       {{ govukButton({
         text: "Save and continue"
       }) }}
