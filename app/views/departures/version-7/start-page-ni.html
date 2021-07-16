@@ -1,0 +1,117 @@
+<style type="text/css">
+
+.divider {
+    border-top: 1px solid #b1b4b6;
+}
+
+</style>
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Declaration summary {{ data['pageTitleAddOn']}}
+{% endblock %}
+
+{% block beforeContent %}<p></p>
+<a href="#">Home</a> &nbsp;&nbsp;>&nbsp;&nbsp; <a href="#">Import export and customs for businesses</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-xl">Guidance</span>
+    <h1 class="govuk-heading-xl">
+       Submit union transport declarations through NCTS
+    </h1>
+
+    <p class="govuk-body" style="font-size: 24px">Log in to the New Computerised Transit System (NCTS) to submit union transit declarations to HM Revenue and Customs (HMRC).</p>
+<p>&nbsp;</p>
+  </div>
+</div> 
+
+<div class="govuk-grid-row" style="border-top:1px solid #b1b4b6">
+<div class="govuk-grid-column-full" style="margin-top:2em">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds" style="margin-bottom:1em">
+       
+           <p>From:<a class="govuk-link" href="#">  HM Revenue &amp; Customs</a></p>
+    
+           <p>Published: 18 July 2021</p>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation" style="background-color:#1d70b8; margin-bottom:2em">
+              <div style="font-size:large; text-align: left;">
+                Applies to: <strong>Wales, England, and Scotland (see guidance for Northern Ireland)
+              </strong></div>
+        </div>
+    
+        <button class="govuk-button" data-module="govuk-button" style="background-color: #ffffff; border:1px solid #ccc;">
+          <a style="text-decoration: none" href="#">Print this page</a>
+        </button>
+
+        <div class="govuk-inset-text" style="margin-top:0em">
+          Online services may be slow during busy times. <a href="#">Check if there are any problems with this service.</a>
+        </div>
+
+          <a href="NI/homepage" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+          Start now
+          <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+          </svg></a>
+
+          <h2 class="govuk-heading-l">
+            Before you start
+          </h2>
+          <p class="govuk-body">
+              The NCTS is an online system that traders must use to manage your transit departure declarations and arrival notifications.<br /><br />
+              You’ll need a Government Gateway user ID and password to sign in to the service. If you do not have a user ID, you can create one when you submit a declaration.
+          </p>
+
+          <div class="govuk-inset-text" style="margin-top:0em">
+            Contact the <a href="#">NCTS helpdesk if you need help using the system.</a>
+          </div>   
+    </div>
+  
+      
+
+    <div class="govuk-grid-column-one-third" style="border-top: 2px solid #1d70b8;">
+      <h3 class="govuk-heading-m" style="margin-top:1em">Related contents</h3>
+      <p class="govuk-body">
+        You can return to the <a class="" href="javascript:history.go(-1)">Previous page</a> to make a different selection or go<a href="../../index.html"> Back to transit movements</a>
+      </p>
+    </div>
+
+    
+  
+</div>
+
+
+
+    {% if (data['on-behalf-of-someone-else'] | length != "0") 
+        and (data['addAnotherOfficeOfTransit'] == "No ")
+        and (data['changeAtBorder'] | length != "0")
+        and (data['areYouTheConsignee'] | length != "0")
+        and (data['liabilityAmount'] | length != "0")
+        and (data['departuresPreLodge'] == "Yes")
+          %}
+
+      {{ govukButton({ text: "Pre-lodge declaration", href: "pre-lodged-confirmation" }) }}
+
+          {# and (data['departuresProcedureType'] == "Simplified") #}
+
+      {{ govukButton({ text: "Confirm and send", href: "confirmation" }) }}
+
+    {% endif %}
+
+    <!--<p class="govuk-body"><a href="homepage">Back to transit movements</a></p>
+    -->
+  </div>
+</div>
+
+{% endblock %}
