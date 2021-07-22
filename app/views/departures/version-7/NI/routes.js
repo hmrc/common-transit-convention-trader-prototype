@@ -1449,9 +1449,9 @@ router.post('/guarantee/add-another-guarantee', function (req, res) {
     var sessionData = req.session.data;
     let addAnotherGuarantee = sessionData.addAnotherGuarantee;
     let declarationType = sessionData.declarationType;
-    console.log(declarationType)
+ 
     if (addAnotherGuarantee == 'Yes' && declarationType == 'TIR'){
-        res.redirect('guarantee-type-tir');
+        res.redirect('tir-carnet-reference');
     } else if (addAnotherGuarantee == 'Yes'){
         res.redirect('guarantee-type');
     } else{
