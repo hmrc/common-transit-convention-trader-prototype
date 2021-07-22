@@ -1381,7 +1381,7 @@ router.post('/route/destination-office', function (req, res) {
         res.redirect('check-your-answers');
     } else {
 
-        if (officeOfDeparture.startsWith("XI")){
+        If (officeOfDeparture && officeOfDeparture.startsWith("XI")){
             res.redirect('add-transit-office');
     
         }    else {
