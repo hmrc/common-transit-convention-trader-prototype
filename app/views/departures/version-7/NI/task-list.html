@@ -76,7 +76,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
 
           <!-- Route -->
 
-          {% if data['addAnotherOfficeOfTransit'] == "No " %}
+          {% if data['addAnotherOfficeOfTransit'] == "No " or (data['declarationType'] == "TIR" and data['office-of-destination'] | length != "0")%}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               {% if data['liabilityAmount'] | length != "0" %}
@@ -89,7 +89,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
               Completed
             </span>
           </li>
-          {% elif data['dispatch-country'] | length != "0" %}
+          {% elif data['dispatchCountry'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="route/dispatch-country" aria-describedby="route-in-progress">Add route</a>
@@ -289,7 +289,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           </li>
           {% else %}
             {% if data['addSafetySecurityResponse'] == "Yes" %}
-              {% if data['on-behalf-of-someone-else'] | length != "0" and data['areYouTheConsignee'] | length != "0" and data['addAnotherOfficeOfTransit'] == "No " and data['addACarrierResponse'] | length != "0" %}
+              {% if data['on-behalf-of-someone-else'] | length != "0" and data['areYouTheConsignee'] | length != "0" and ( data['addAnotherOfficeOfTransit'] == "No " or (data['declarationType'] == "TIR" and data['office-of-destination'] | length != "0")) and data['addACarrierResponse'] | length != "0" %}
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
                   <a href="add-items/item-warning" aria-describedby="add-items-not-started">Add items</a>
@@ -364,10 +364,14 @@ Declaration summary {{ data['pageTitleAddOn']}}
           
           <!-- Guarantee -->
 
-          {% if data['liabilityAmount'] | length != "0" %}
+          {% if data['liabilityAmount'] | length != "0" or data['tir-reference'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="guarantee/guarantee-type" aria-describedby="guarantee-completed">Edit guarantee</a>
+              {% if data['declarationType'] == "TIR" %}
+                <a href="guarantee/tir-carnet-reference" aria-describedby="guarantee-completed">Edit guarantee</a>
+              {% else %}
+                <a href="guarantee/guarantee-type" aria-describedby="guarantee-completed">Edit guarantee</a>
+              {% endif %}
             </span>
             <span class="hmrc-status-tag" id="guarantee-completed">
               Completed
@@ -376,16 +380,24 @@ Declaration summary {{ data['pageTitleAddOn']}}
           {% elif data['guaranteeType'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="guarantee/guarantee-type" aria-describedby="guarantee-in-progress">Add guarantee</a>
+              {% if data['declarationType'] == "TIR" %}
+                <a href="guarantee/tir-carnet-reference" aria-describedby="guarantee-in-progress">Add guarantee</a>
+              {% else %}
+                <a href="guarantee/guarantee-type" aria-describedby="guarantee-in-progress">Add guarantee</a>
+              {% endif %}
             </span>
             <span class="hmrc-status-tag" id="guarantee-in-progress">
               In progress
             </span>
           </li>
-          {% elif data['addAnotherOfficeOfTransit'] == "No " %}
+          {% elif data['addAnotherOfficeOfTransit'] == "No " or (data['declarationType'] == "TIR" and data['office-of-destination'] | length != "0")%}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="guarantee/guarantee-type" aria-describedby="guarantee-not-started">Add guarantee</a>
+              {% if data['declarationType'] == "TIR" %}
+                <a href="guarantee/tir-carnet-reference" aria-describedby="guarantee-not-started">Add guarantee</a>
+              {% else %}
+                <a href="guarantee/guarantee-type" aria-describedby="guarantee-not-started">Add guarantee</a>
+              {% endif %}
             </span>
             <span class="hmrc-status-tag" id="guarantee-not-started">
               Not started
@@ -406,6 +418,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
       </li>
     </ol>
 
+  
 
     <!--
       Check all sections are complete and process = NORMAL, then display pre-lodged and submit

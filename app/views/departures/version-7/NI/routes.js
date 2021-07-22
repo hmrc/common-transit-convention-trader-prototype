@@ -1379,15 +1379,13 @@ router.post('/route/destination-office', function (req, res) {
 
     if (declarationType == 'TIR') {
         res.redirect('check-your-answers');
-    } else {
-
-        if (officeOfDeparture.startsWith("XI")){
+    } else if (officeOfDeparture && officeOfDeparture.startsWith("XI")){
             res.redirect('add-transit-office');
     
         }    else {
             res.redirect('office-of-transit-country');
     }
-    }
+    
    
 })
 
@@ -1449,9 +1447,9 @@ router.post('/guarantee/add-another-guarantee', function (req, res) {
     var sessionData = req.session.data;
     let addAnotherGuarantee = sessionData.addAnotherGuarantee;
     let declarationType = sessionData.declarationType;
-    console.log(declarationType)
+ 
     if (addAnotherGuarantee == 'Yes' && declarationType == 'TIR'){
-        res.redirect('guarantee-type-tir');
+        res.redirect('tir-carnet-reference');
     } else if (addAnotherGuarantee == 'Yes'){
         res.redirect('guarantee-type');
     } else{
