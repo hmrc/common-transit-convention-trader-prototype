@@ -1379,15 +1379,13 @@ router.post('/route/destination-office', function (req, res) {
 
     if (declarationType == 'TIR') {
         res.redirect('check-your-answers');
-    } else {
-
-        If (officeOfDeparture && officeOfDeparture.startsWith("XI")){
+    } else if (officeOfDeparture && officeOfDeparture.startsWith("XI")){
             res.redirect('add-transit-office');
     
         }    else {
             res.redirect('office-of-transit-country');
     }
-    }
+    
    
 })
 
