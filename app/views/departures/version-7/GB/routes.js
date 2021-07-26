@@ -1123,7 +1123,7 @@ router.post('/add-items/security/check-answers-route', function (req, res) {
 //     )) {
 //         res.redirect('change-at-border');
 //     } else {
-//         res.redirect('add-id-at-departure')
+//         res.redirect('add-id-at-departure') 
 //     }
 
 // })
