@@ -333,34 +333,66 @@ Declaration summary {{ data['pageTitleAddOn']}}
 
           <!-- Goods summary -->
 
-          {% if data['do-you-need-seals-info'] | length != "0" %}
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="goods-summary/total-packages" aria-describedby="goods-summary-completed">Edit goods summary</a>
-            </span>
-            <span class="hmrc-status-tag" id="goods-summary-completed">
-              Completed
-            </span>
-          </li>
-          {% elif data['total-number-of-items'] | length != "0" %}
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="goods-summary/total-packages" aria-describedby="goods-summary-in-progress">Add goods summary</a>
-            </span>
-            <span class="hmrc-status-tag" id="goods-summary-in-progress">
-              In progress
-            </span>
-          </li>
-          {% else %}
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="goods-summary/total-packages" aria-describedby="goods-summary-not-started">Add goods summary</a>
-            </span>
-            <span class="hmrc-status-tag" id="goods-summary-not-started">
-              Not started
-            </span>
-          </li>
-          {% endif %}
+          
+
+{% if data['do-you-need-seals-info'] | length != "0" %}
+<li class="app-task-list__item">
+  <span class="app-task-list__task-name">
+      {% if data['addSafetySecurityResponse'] == "Yes" %}
+        <a href="goods-summary/loading-place" aria-describedby="goods-summary-completed">Edit goods summary</a>
+      {% elif data['addSafetySecurityResponse'] == "No" and data['departuresProcedureType'] == "Simplified" %}
+        <a href="goods-summary/authorised-location-code" aria-describedby="goods-summary-completed">Edit goods summary</a>
+      {% elif data['addSafetySecurityResponse'] == "No" and data['departuresProcedureType'] == "Normal" %}
+        <a href="goods-summary/add-customs-approved-location" aria-describedby="goods-summary-completed">Edit goods summary</a>
+      {% elif data['addSafetySecurityResponse'] == "No" and data['departuresProcedureType'] == "Normal" and data['departuresPreLodge'] == "Yes" %}
+        <a href="goods-summary/add-agreed-goods-location" aria-describedby="goods-summary-completed">Edit goods summary</a>
+      {% elif data['addSafetySecurityResponse'] == "No" and data['departuresProcedureType'] == "Normal" and data['departuresPreLodge'] == "No" %}
+        <a href="goods-summary/add-customs-approved-location" aria-describedby="goods-summary-completed">Edit goods summary</a>
+      {% endif %}
+  </span>
+  <span class="hmrc-status-tag" id="goods-summary-completed">
+    Completed
+  </span>
+</li>
+{% elif data['total-number-of-items'] | length != "0" %}
+<li class="app-task-list__item">
+  <span class="app-task-list__task-name">
+      {% if data['addSafetySecurityResponse'] == "Yes" %}
+        <a href="goods-summary/loading-place" aria-describedby="goods-summary-in-progress">Add goods summary</a>
+      {% elif data['addSafetySecurityResponse'] == "No" and data['departuresProcedureType'] == "Simplified" %}
+        <a href="goods-summary/authorised-location-code" aria-describedby="goods-summary-in-progress">Add goods summary</a>
+      {% elif data['addSafetySecurityResponse'] == "No" and data['departuresProcedureType'] == "Normal" %}
+        <a href="goods-summary/add-customs-approved-location" aria-describedby="goods-summary-in-progress">Add goods summary</a>
+      {% elif data['addSafetySecurityResponse'] == "No" and data['departuresProcedureType'] == "Normal" and data['departuresPreLodge'] == "Yes" %}
+        <a href="goods-summary/add-agreed-goods-location" aria-describedby="goods-summary-in-progress">Add goods summary</a>
+      {% elif data['addSafetySecurityResponse'] == "No" and data['departuresProcedureType'] == "Normal" and data['departuresPreLodge'] == "No" %}
+        <a href="goods-summary/add-customs-approved-location" aria-describedby="goods-summary-in-progress">Add goods summary</a>
+      {% endif %}
+  </span>
+  <span class="hmrc-status-tag" id="goods-summary-in-progress">
+    In progress
+  </span>
+</li>
+{% else %}
+<li class="app-task-list__item">
+  <span class="app-task-list__task-name">
+      {% if data['addSafetySecurityResponse'] == "Yes" %}
+        <a href="goods-summary/loading-place" aria-describedby="goods-summary-not-started">Add goods summary</a>
+      {% elif data['addSafetySecurityResponse'] == "No" and data['departuresProcedureType'] == "Simplified" %}
+        <a href="goods-summary/authorised-location-code" aria-describedby="goods-summary-not-started">Add goods summary</a>
+      {% elif data['addSafetySecurityResponse'] == "No" and data['departuresProcedureType'] == "Normal" %}
+        <a href="goods-summary/add-customs-approved-location" aria-describedby="goods-summary-not-started">Add goods summary</a>
+      {% elif data['addSafetySecurityResponse'] == "No" and data['departuresProcedureType'] == "Normal" and data['departuresPreLodge'] == "Yes" %}
+        <a href="goods-summary/add-agreed-goods-location" aria-describedby="goods-summary-not-started">Add goods summary</a>
+      {% elif data['addSafetySecurityResponse'] == "No" and data['departuresProcedureType'] == "Normal" and data['departuresPreLodge'] == "No" %}
+        <a href="goods-summary/add-customs-approved-location" aria-describedby="goods-summary-not-started">Add goods summary</a>
+      {% endif %}
+  </span>
+  <span class="hmrc-status-tag" id="goods-summary-not-started">
+    Not started
+  </span>
+</li>
+{% endif %}
           
           <!-- Guarantee -->
 
