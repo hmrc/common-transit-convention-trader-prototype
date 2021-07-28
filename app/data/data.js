@@ -664,6 +664,7 @@ var countries = [
   { text: "Ukraine", value: "UA", selected: false },
   { text: "Uganda", value: "UG", selected: false },
   { text: "United Kingdom", value: "GB", selected: false },
+  { text: "United Kingdom (Northern Ireland)", value: "NI", selected: false },
   {
     text: "United States Minor Outlying Island",
     value: "UM",
