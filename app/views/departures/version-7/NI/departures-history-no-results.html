@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Arrival notifications {{ data['pageTitleAddOn' ]}}
+Departure declarations {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 
@@ -11,25 +11,23 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
   <div class="govuk-grid-column-full">
 
     <h1 class="govuk-heading-xl">
-      Arrival notifications
+      Departure declarations
     </h1>
 
-   <!--<p class="govuk-body"><a href="movement-reference">Make an arrival notification</a></p>--> 
-   <p style="margin-bottom:20px"  class="govuk-body"><a href="arrivals-history">View all arrival notifications</a></p>
+   <!-- <p class="govuk-body"><a href="movement-reference">Make an arrival notification</a></p>-->
+   <p class="govuk-body"><a href="departures-history">View all departure declarations</a></p>
 
-
-    <form class="form" method="post" action="arrivals-history-no-results">
+    <form class="form" method="post" action="departures-history-search-route">
 
     <div class="govuk-form-group">
       <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="notificationSearch">
-          Search by movement reference number 
+          Search by local reference number 
         </label>
       </h1>
       <input class="govuk-input" style="width:50%" id="notificationSearch" name="notificationSearch" type="text" value="{{ data['notificationSearch'] }}">
       <button class="govuk-button" data-module="govuk-button">Search again</button>
 
-
-
+    
       <p class="govuk-body">No results found</p>
     </div>
 

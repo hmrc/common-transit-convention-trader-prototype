@@ -67,7 +67,7 @@ router.post('/departures-history-search-route', function (req, res) {
   if (notificationSearch != '') {
       res.redirect('departures-history-search-results');
   } else {
-      res.redirect('departures-history-search-error');
+      res.redirect('departures-history-no-results');
   }
 })
 
