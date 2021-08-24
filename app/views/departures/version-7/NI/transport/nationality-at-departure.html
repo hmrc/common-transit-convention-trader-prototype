@@ -25,7 +25,7 @@ What is the nationality at departure? {{ data['pageTitleAddOn']}}
 
     {% if (data['which-transport-details'] == "At the point of departure") %}
 
-    <form class="form" method="post" action="change-at-border">
+    <form class="form" method="post" action="nationality-at-departure">
 
           {% from "govuk/components/input/macro.njk" import govukInput %}
 
@@ -59,7 +59,7 @@ What is the nationality at departure? {{ data['pageTitleAddOn']}}
     
     {% else %}
 
-      <form class="form" method="post" action="change-at-border">
+      <form class="form" method="post" action="nationality-at-departure">
 
         <span class="govuk-caption-xl">{{ data['transportDetails'] }}</span>
 
