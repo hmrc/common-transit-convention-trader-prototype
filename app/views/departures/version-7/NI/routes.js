@@ -1207,6 +1207,7 @@ router.post('/transport/add-id-at-departure', function (req, res) {
 
     let addIDAtDeparture = req.session.data.addIDAtDeparture;
 //let containersUsed = req.session.data.containersUsed;
+
     if (addIDAtDeparture == 'Yes') {
         res.redirect('id-at-departure');
     } else {
@@ -1258,9 +1259,9 @@ router.post('/transport/id-at-departure', function (req, res) {
 });
 
 //Add ID at departure later to change at border
-// router.post('/transport/add-id-at-departure-later', function (req, res) {
-//     res.redirect('nationality-at-departure');
-// });
+ router.post('/transport/add-id-at-departure-later', function (req, res) {
+     res.redirect('change-at-border');
+ });
 
 router.post('/transport/add-nationality-at-departure-route', function (req, res) {
 
@@ -1325,7 +1326,7 @@ router.post('/transport/mode-crossing-border', function (req, res) {
     )) {
         res.redirect('check-your-answers');
     } else {
-        res.redirect('nationality-crossing-border')
+        res.redirect('id-crossing-border')
     }
 
 })
