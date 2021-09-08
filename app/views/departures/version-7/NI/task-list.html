@@ -396,7 +396,7 @@ Declaration summary {{ data['pageTitleAddOn']}}
           
           <!-- Guarantee -->
 
-          {% if data['tir-reference'] | length != "0" %}
+          {% if data['liabilityAmount'] | length != "0" or data['tir-reference'] | length != "0" %}
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               {% if data['declarationType'] == "TIR" %}
