@@ -12,8 +12,8 @@
     > Type: `npm install` and hit enter
 
 5.  Add MVP and Post-MVP Heroku App remotes
-    > - Type: `remote add heroku https://git.heroku.com/ctc-traders.git` and hit enter
-    > - Type: `remote add heroku-postmvp https://git.heroku.com/ctc-traders-postmvp.git` and hit enter
+    > - Type: `git remote add heroku https://git.heroku.com/ctc-traders.git` and hit enter
+    > - Type: `git remote add heroku-postmvp https://git.heroku.com/ctc-traders-postmvp.git` and hit enter
 
 6.  Get Post-MVP branch and switch back to MVP branch
     > - Type: `git switch main` and hit enter
