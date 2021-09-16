@@ -131,13 +131,13 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
               {% for action in notice.actions %}
                 {% if notice.actions.length > 0 %}<li>{% endif %}
                 {% if action == "mrnDuplicate" %}
-                  <a href="rejected-arrivals/mrn-duplicate">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                  <a href="rejected-arrivals/mrn-invalid">View errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
                 {% endif %}
                 {% if action == "mrnInvalid" %}
-                  <a href="rejected-arrivals/mrn-invalid">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                  <a href="rejected-arrivals/guarantee-rejections">View errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
                 {% endif %}
                 {% if action == "mrnUnknown" %}
-                  <a href="rejected-arrivals/mrn-unknown">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                  <a href="rejected-arrivals/unloading-rejection">View errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
                 {% endif %}
                 {% if action == "history" %}
                   <a href="history/view-history-rejected.html">View history<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span> </a>
@@ -149,7 +149,7 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
                   <a href="#">Make unloading remarks<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
                 {% endif %}
                 {% if action == "outOfSequence" %}
-                  <a href="rejected-arrivals/message-out-of-sequence">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                  <a href="rejected-arrivals/guarantee-rejections">View errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
                 {% endif %}
                 {% if notice.actions.length > 0 %}</li>{% endif %}
               {% endfor %}
@@ -223,7 +223,7 @@ Arrival notifications {{ data['pageTitleAddOn' ]}}
               {% for action in notice.actions %}
                 {% if notice.actions.length > 0 %}<li>{% endif %}
                 {% if action == "errors" %}
-                  <a href="rejected-arrivals/mrn-duplicate">View and fix errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
+                  <a href="rejected-arrivals/mrn-duplicate">View errors<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span></a>
                 {% endif %}
                 {% if action == "history" %}
                   <a href="view-history.html">View history<span class="govuk-visually-hidden"> for {{ notice.mrn }}</span> </a>
