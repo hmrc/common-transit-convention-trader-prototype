@@ -15,10 +15,59 @@ There is a problem with this arrival notification {{ data['pageTitleAddOn' ]}}
 
     <form class="form" action="correct-mrn-error" method="post">
 
+    <h1 class="govuk-heading-xl">There is a problem with this arrival notification</h1>
+
+    <p class="govuk-heading-body">There is conflicting information </strong> that must be fixed.</p>
+
+    <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Error code
+            </dt>
+            <dd class="govuk-summary-list__value">
+            XXXXX
+            </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Pointer
+            </dt>
+            <dd class="govuk-summary-list__value">
+            XXX.XXX
+            </dd>
+        </div>
+    </dl>
+
+    <p class="govuk-body">You must review the error and <a href="/arrivals/version-7/GB/movement-reference">send a new arrival notification with the right information</a>.</p>
+    <p class="govuk-body">You can <a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries" target="blank">contact the New Computerised Transit System helpdesk if you need help understanding the error</a></p>
+
+
+    {# <p class="govuk-body"><a href="../movement-reference">Create a new movement</a></p>
+
+    <p class="govuk-body"><a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries" target="blank">Contact the New Computerised Transit System helpdesk (opens in a new window or tab)</a></p> #}
+
+
+    {# <ul class="govuk-list">
+      <li>
+        <a href="../movement-reference">Create a new movement</a>
+      </li>
+      <li>
+        <a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries" target="blank">Contact the New Computerised Transit System helpdesk (opens in a new window or tab)</a>
+      </li>
+    </ul> #}
+
+    {# <p class="govuk-body">You can either <a href="../movement-reference">create a new movement</a> or 
+    <a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries" target="blank"> contact the New Computerised Transit System helpdesk (opens in a new window or tab)</a>.</p> #}
+
+
+    {# <p class="govuk-body">You must <a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries" target="blank">contact the New Computerised Transit System helpdesk (opens in a new window or tab)</a>.</p> #} 
+     
+     
+     <!-- 
       <h1 class="govuk-heading-xl">There is a problem with this arrival notification</h1>
-
+      
       <p class="govuk-heading-body">The movement reference number is not real. </p>
-
+      
       <dl class="govuk-summary-list govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key" style="width: 48%">
@@ -32,10 +81,13 @@ There is a problem with this arrival notification {{ data['pageTitleAddOn' ]}}
               Change<span class="govuk-visually-hidden">movement reference number</span>
             </a>
           </dd>
-        </div>
+      
+          </div>
       </dl>
-
-      <p class="govuk-body">If this information is correct, you will need to <a href="#">contact the New Computerised Transit System helpdesk (opens in a new window)</a>.</p>
+      
+      
+      <p class="govuk-body">If this information is correct, you will need to <a href="#">contact the New Computerised Transit System helpdesk (opens in a new window)</a>.</p> -->
+      
 
     </form>
 
