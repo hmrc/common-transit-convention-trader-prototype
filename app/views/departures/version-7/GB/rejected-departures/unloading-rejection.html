@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-There is a problem with this departure declaration {{ data['pageTitleAddOn' ]}}
+There is a problem with these unloading remarks - Manage your transit movements - GOV.UK {{ data['pageTitleAddOn' ]}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,27 +15,31 @@ There is a problem with this departure declaration {{ data['pageTitleAddOn' ]}}
 
     <form class="form" action="correct-mrn-error" method="post">
 
-      <h1 class="govuk-heading-xl">There is a problem with this departure declaration</h1>
+      <h1 class="govuk-heading-xl">There is a problem with these unloading remarks</h1>
 
-      <p class="govuk-heading-body">The local reference number is not real. </p>
+    <p class="govuk-heading-body">There is conflicting information that must be fixed.</p>
 
-      <dl class="govuk-summary-list govuk-summary-list">
+    <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key" style="width: 48%">
-            local reference number
-          </dt>
-          <dd class="govuk-summary-list__value" style="width: 62%">
-            10IT02130010005402
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
-              Change<span class="govuk-visually-hidden">local reference number</span>
-            </a>
-          </dd>
+            <dt class="govuk-summary-list__key">
+            Error code
+            </dt>
+            <dd class="govuk-summary-list__value">
+            XXXXX
+            </dd>
         </div>
-      </dl>
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Pointer
+            </dt>
+            <dd class="govuk-summary-list__value">
+            XXX.XXX
+            </dd>
+        </div>
+    </dl>
 
-      <p class="govuk-body">If this information is correct, you will need to <a href="#">contact the New Computerised Transit System helpdesk (opens in a new window)</a>.</p>
+    <p class="govuk-body">You must review the error and <a href="/unloading-remarks/version-6/seals-included/all-goods-unloaded">send new unloading remarks with the right information</a>.</p>
+    <p class="govuk-body">You can <a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries" target="blank">contact the New Computerised Transit System helpdesk if you need help understanding the error</a></p>
 
     </form>
 
