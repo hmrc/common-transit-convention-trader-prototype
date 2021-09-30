@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Confirmation page example
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">No response</h1>
+        <div class="govuk-panel__body">
+          Your reference number<br><strong>HDJ2123F</strong>
+        </div>
+      </div>
+
+      <p>
+        We have sent you a confirmation email.
+      </p>
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+      <p>Something will happen</p>
+      
+       <a href="start.html">Start again</a>
+
+
+    </div>
+  </div>
+
+{% endblock %}
