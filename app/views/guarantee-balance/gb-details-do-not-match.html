@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Question page
+  Your details do not match our records - [service name] - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,31 +13,23 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">What is the guarantee reference number?</h1>
+      <h1 class="govuk-heading-xl">Your details do not match our records</h1>
 
       <form class="form" action="/url/of/next/page" method="post">
 
-        <p>You must make sure this reference is up to date</p>
-
 <!--
+        <p>[Insert question content here]</p>
+
         <p>[See <a href="https://design-system.service.gov.uk">the GOV.UK Design System</a> for examples]</p>
-        
 -->
+        <p>The information you have entered does not match our records.
+</p>
        
 
-     <div class="govuk-form-group">
-<!--
-  <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
-      What is the name of the event?
-    </label>
-  </h1>
--->
-  <input class="govuk-input" id="event-name" name="event-name" type="text">
-</div>
    
+ <a href="#" class="govuk-button">Try again</a>
 
-
-       <a href="gb-code.html" class="govuk-button">Continue</a>
+<!--       <a href="#" class="govuk-button">Continue</a>-->
 
       </form>
 
