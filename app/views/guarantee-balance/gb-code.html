@@ -31,7 +31,15 @@
     10 character width
   </label>
 -->
-  <input class="govuk-input govuk-input--width-5" id="width-5" name="width-5" type="text">
+  {{ govukInput({
+        label: {
+          text: ""
+        },
+        type: "password",
+        id: "access-code",
+        classes: "govuk-input--width-5",
+        name: "access-code"
+      }) }}
 </div>
    
 
