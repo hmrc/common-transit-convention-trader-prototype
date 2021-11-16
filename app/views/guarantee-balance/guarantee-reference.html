@@ -4,49 +4,36 @@
 Check your guarantee balance
 {% endset%}
 
-
 {% block pageTitle %}
   What is your guarantee reference number? - Check your guarantee balance
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="/url/of/previous/page">Back</a>
+  <a class="govuk-back-link" href="eori">Back</a>
 {% endblock %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">What is the guarantee reference number?</h1>
+            <h1 class="govuk-heading-xl">What is the guarantee reference number?</h1>
 
-      <form class="form" action="/url/of/next/page" method="post">
+            <form class="form" action="guarantee-reference" method="post">
 
-        <p>You must make sure this reference is up to date.</p>
+                <p>You must make sure this reference is up to date.</p>
 
-<!--
-        <p>[See <a href="https://design-system.service.gov.uk">the GOV.UK Design System</a> for examples]</p>
-        
--->
-       
+                <div class="govuk-form-group">
+                    <input class="govuk-input govuk-input--width-20" id="guaranteeReference" name="guaranteeReference" type="text" value="{{ data['guaranteeReference'] }}">
+                </div>
 
-     <div class="govuk-form-group">
-<!--
-  <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
-      What is the name of the event?
-    </label>
-  </h1>
--->
-  <input class="govuk-input govuk-input--width-20" id="width-24" name="width-24" type="text">
-</div>
-   
+                {{ govukButton({
+                  text: "Continue"
+                }) }}
 
+            </form>
 
-       <a href="access-code.html" class="govuk-button">Continue</a>
-
-      </form>
-
+        </div>
     </div>
-  </div>
 
 {% endblock %}

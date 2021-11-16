@@ -97,5 +97,9 @@ router.use('/departures/static-v7', require('./views/departures/static-v7/routes
 
 router.use('/iterations/', require('./views/iterations/routes'));
 
+// Guarantee balance routing
+
+router.use('/guarantee-balance', require('./views/guarantee-balance/routes'))
+
 
 module.exports = router
