@@ -1,57 +1,41 @@
 {% extends "layout.html" %}
-{% set serviceName %}
-Check your guarantee balance
-{% endset%}
-
 
 {% block pageTitle %}
   What is your access code - Check your guarantee balance
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="/url/of/previous/page">Back</a>
+  <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">What is the access code?</h1>
+            <h1 class="govuk-heading-xl">What is the access code?</h1>
 
-      <form class="form" action="/url/of/next/page" method="post">
+            <form class="form" action="access-code" method="post">
 
-<!--
-        <p>[Insert question content here]</p>
+                <div class="govuk-form-group">
+                    {{ govukInput({
+                      label: {
+                        text: ""
+                      },
+                      type: "password",
+                      id: "accessCode",
+                      classes: "govuk-input--width-5",
+                      name: "accessCode",
+                      value: data['accessCode']
+                    }) }}
+                </div>
 
-        <p>[See <a href="https://design-system.service.gov.uk">the GOV.UK Design System</a> for examples]</p>
--->
-        
-       
+                {{ govukButton({
+                  text: "Continue"
+                }) }}
 
-     <div class="govuk-form-group">
-<!--
-<label class="govuk-label" for="width-10">
-    10 character width
-  </label>
--->
-  {{ govukInput({
-        label: {
-          text: ""
-        },
-        type: "password",
-        id: "access-code",
-        classes: "govuk-input--width-5",
-        name: "access-code"
-      }) }}
-</div>
-   
-
-
-       <a href="check-your-answers.html" class="govuk-button">Continue</a>
-
-      </form>
+            </form>
+        </div>
     </div>
-  </div>
 
 {% endblock %}

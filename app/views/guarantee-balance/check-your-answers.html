@@ -1,37 +1,31 @@
 {% extends "layout.html" %}
-{% set serviceName %}
-Check your guarantee balance
-{% endset%}
-
 
 {% block pageTitle %}
   Check your answers - Check your guarantee balance
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="/url/of/previous/page">Back</a>
+  <a class="govuk-back-link" href="javascript:history.go(-1)">Back</a>
 {% endblock %}
 
 {% block content %}
-<div class="govuk-grid-row">
+  <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-<span class="govuk-caption-xl">Guarantee balance</span>
+      <span class="govuk-caption-xl">Guarantee balance</span>
 
       <h1 class="govuk-heading-xl">Check your answers</h1>
 
-<!--      <h2 class="govuk-heading-m">Personal details</h2>-->
-
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-       
+
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             EORI number
           </dt>
           <dd class="govuk-summary-list__value">
-            GB123456789012
+            {{ data['eori'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="#">
+            <a href="eori.html">
               Change
               <span class="govuk-visually-hidden"> EORI number</span>
             </a>
@@ -42,10 +36,10 @@ Check your guarantee balance
             Guarantee reference number
           </dt>
           <dd class="govuk-summary-list__value">
-            19GB00000102GB0000015000
+            {{ data['guaranteeReference'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="#">
+            <a href="guarantee-reference.html">
               Change
               <span class="govuk-visually-hidden"> Guarantee refernce number</span>
             </a>
@@ -56,111 +50,23 @@ Check your guarantee balance
             Access code
           </dt>
           <dd class="govuk-summary-list__value">
-            ••••
+            {{ data['accessCode'] | replace(r/(.+)/, "••••") }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="#">
+            <a href="access-code.html">
               Change
               <span class="govuk-visually-hidden"> Access code</span>
             </a>
           </dd>
         </div>
-        
+
       </dl>
 
-<!--
-      <h2 class="govuk-heading-m">Application details</h2>
-
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Previous application number
-          </dt>
-          <dd class="govuk-summary-list__value">
-            502135326
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a href="#">
-              Change
-              <span class="govuk-visually-hidden"> previous application number</span>
-            </a>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Licence type
-          </dt>
-          <dd class="govuk-summary-list__value">
-            For personal use
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a href="#">
-              Change
-              <span class="govuk-visually-hidden"> licence type</span>
-            </a>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Home address
-          </dt>
-          <dd class="govuk-summary-list__value">
-            72 Guild Street
-            <br>London
-            <br>SE23 6FH
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a href="#">
-              Change
-              <span class="govuk-visually-hidden"> home address</span>
-            </a>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Licence period
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Valid for 6 months
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a href="#">
-              Change
-              <span class="govuk-visually-hidden"> licence period</span>
-            </a>
-          </dd>
-        </div>
-      </dl>
-
-      <h2 class="govuk-heading-m">Now send your application</h2>
-
-      <p>By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
--->
-
-<a href="balance-confirmation.html" class="govuk-button">Continue</a>
-
-<!--
-      <form action="/confirmation" method="post" novalidate>
-
-        <input type="hidden" name="answers-checked" value="true">
-
-        <button type="submit" class="govuk-button" data-module="govuk-button">
-          Submit
-        </button>
-
+      <form action="check-your-answers" class="form" method="post">
+        {{ govukButton({
+          text: "Continue"
+        }) }}
       </form>
--->
-    
-    <h1 class="govuk-panel__title">&nbsp;</h1>
-      <h1 class="govuk-panel__title">&nbsp;</h1>
-      <h1 class="govuk-panel__title">&nbsp;</h1>
-      
-      <a href="delays.html">Testing scenario 1</a>
-      <br>
-      <a href="details-do-not-match.html">Testing scenario 2</a>
-      <br>
-      <a href="cannot-confirm-details.html">Testing scenario 3</a>
-      <br>
 
 
     </div>
