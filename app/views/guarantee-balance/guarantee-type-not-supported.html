@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  CONTENT TO BE COMPLETED - Check your guarantee balance
+  We cannot get the balance for this type of guarantee - Check your guarantee balance - GOV.UK
+
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,9 +14,24 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">CONTENT TO BE COMPLETED</h1>
+      <h1 class="govuk-heading-xl">We cannot get the balance for this type of guarantee </h1>
 
-      <p>CONTENT TO BE COMPLETED</p>
+       <p>We can only check the balance for: </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Comprehensive guarantee</li>
+        <li>Guarantee waiver</li>
+        <li>Individual guarantee with multiple usage</li>
+      </ul>
+      
+      <p>You can <a href="check-your-answers.html">change the reference of the guarantee you are checking
+
+      </a> or you can start again. </p>
+      <form class="form" action="/url/of/next/page" method="post">
+        
+          <a href="check-guarantee-balance.html" class="govuk-button">Start again</a>
+
+      </form>
 
     </div>
   </div>

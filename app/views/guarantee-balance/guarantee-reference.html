@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is the guarantee reference number? - Check your guarantee balance
+  What is the guarantee reference number? - Check your transit guarantee balance - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,6 +14,14 @@
         <div class="govuk-grid-column-two-thirds">
 
             <h1 class="govuk-heading-xl">What is the guarantee reference number?</h1>
+            
+            <p>You can only check the balance for: </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Comprehensive guarantee</li>
+        <li>Guarantee waiver</li>
+        <li>Individual guarantee with multiple usage</li>
+      </ul>
 
             <form class="form" action="guarantee-reference" method="post">
 
