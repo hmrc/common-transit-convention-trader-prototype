@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="afc5e2b2-cb69-4220-9781-ebd1773d05df" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/views/guarantee-balance/guarantee-type-not-supported.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/guarantee-balance/access-code.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/guarantee-balance/access-code.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/guarantee-balance/balance-confirmation.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/guarantee-balance/balance-confirmation.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/guarantee-balance/check-your-answers.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/guarantee-balance/check-your-answers.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/guarantee-balance/eori.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/guarantee-balance/eori.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/guarantee-balance/guarantee-reference.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/guarantee-balance/guarantee-reference.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/guarantee-balance/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/guarantee-balance/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/stylesheets/application-ie8.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/application-ie8.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/stylesheets/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/application.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

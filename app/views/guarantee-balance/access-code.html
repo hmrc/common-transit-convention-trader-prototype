@@ -16,26 +16,26 @@ Check your transit guarantee balance
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-
-            <h1 class="govuk-heading-xl">What is the access code?</h1>
-
             <form class="form" action="access-code" method="post">
 
-                <div class="govuk-form-group">
-                    {{ govukInput({
-                      label: {
-                        text: ""
-                      },
-                      type: "password",
-                      id: "accessCode",
-                      classes: "govuk-input--width-5",
-                      name: "accessCode",
-                      value: data['accessCode']
-                    }) }}
-                </div>
+                {{ govukInput({
+                    label: {
+                        text: "What is the access code?",
+                        isPageHeading: true,
+                        classes: "govuk-label--xl"
+                    },
+                    type: "password",
+                    id: "value",
+                    classes: "govuk-input--width-5",
+                    name: "accessCode",
+                    value: data['accessCode'],
+                    hint: {
+                        text: "The access code must be 4 characters long, like 0000 or X9X9"
+                    }
+                }) }}
 
                 {{ govukButton({
-                  text: "Continue"
+                    text: "Continue"
                 }) }}
 
             </form>
