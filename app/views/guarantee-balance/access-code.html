@@ -19,7 +19,7 @@ Check your transit guarantee balance
 
 
             <h1 class="govuk-heading-xl">What is the access code?</h1>
-            <p>The person responsible for your transit movements will have received an email about access codes. </p>
+<!--            <p>The person responsible for your transit movements will have received an email about access codes. </p>-->
 
 
             <form class="form" action="access-code" method="post">
@@ -28,15 +28,18 @@ Check your transit guarantee balance
                     label: {
                         text: "What is the access code?",
                         isPageHeading: true,
-                        classes: "govuk-label--xl"
+                        classes: "govuk-label--xl",
+                        text: "The person responsible for your transit movements will have received an email about access codes.",
+                        classes: ""
                     },
+                  
                     type: "password",
                     id: "value",
                     classes: "govuk-input--width-5",
                     name: "accessCode",
                     value: data['accessCode'],
                     hint: {
-                        text: "The access code must be 4 characters long, like 0000 or X9X9"
+                        text: "The access code must be 4 characters long, like 0000 or X9X9."
                     }
                 }) }}
 
