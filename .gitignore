@@ -10,3 +10,4 @@ lib/extensions/_extensions.scss
 node_modules/*
 .tmuxp.*
 .idea
+public
