@@ -5,7 +5,7 @@ Check your transit guarantee balance
     
 
 {% block pageTitle %}
-  What is your access code - Check your guarantee balance
+  Access code - Check your transit guarantee balance
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,22 +17,18 @@ Check your transit guarantee balance
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
+            <h1 class="govuk-heading-xl">Access code</h1>
 
-            <h1 class="govuk-heading-xl">What is the access code?</h1>
-<!--            <p>The person responsible for your transit movements will have received an email about access codes. </p>-->
-
+            <p>The person responsible for your transit movements will have received an email about access codes. </p>
 
             <form class="form" action="access-code" method="post">
 
                 {{ govukInput({
                     label: {
                         text: "What is the access code?",
-                        isPageHeading: true,
-                        classes: "govuk-label--xl",
-                        text: "The person responsible for your transit movements will have received an email about access codes.",
-                        classes: ""
+                        isPageHeading: false,
+                        classes: "govuk-label--m"
                     },
-                  
                     type: "password",
                     id: "value",
                     classes: "govuk-input--width-5",
